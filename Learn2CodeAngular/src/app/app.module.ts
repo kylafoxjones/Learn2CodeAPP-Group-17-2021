@@ -7,6 +7,9 @@ import { LoginModule } from './Login/login.module';
 import { ReportModule } from './Report/report.module';
 import { StudentModule } from './Student/student.module';
 import { TutorModule } from './Tutor/tutor.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NbThemeModule, NbLayoutModule } from '@nebular/theme';
+import { NbEvaIconsModule } from '@nebular/eva-icons';
 
 @NgModule({
   declarations: [AppComponent],
@@ -19,6 +22,10 @@ import { TutorModule } from './Tutor/tutor.module';
     ReportModule,
     StudentModule,
     TutorModule,
+    BrowserAnimationsModule,
+    NbThemeModule.forRoot({ name: 'default' }),
+    NbLayoutModule,
+    NbEvaIconsModule
   ],
   providers: [],
   bootstrap: [AppComponent],
