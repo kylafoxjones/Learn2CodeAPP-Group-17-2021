@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminComponent } from './admin.component';
+import { DegreeComponent } from './degree/degree.component';
 import { UniversityComponent } from './university/university.component';
 
 const routes: Routes = [
@@ -8,17 +9,15 @@ const routes: Routes = [
     path: '',
     component: AdminComponent,
     children: [
-     // { path: '', redirectTo: 'university' },
+      // every child component of admin needs routing here
       {
         path: 'university',
         component: UniversityComponent,
       },
-      // every child component of admin needs routing
-
-      // {
-      //   path: 'university',
-      //   component: UniversityComponent,
-      // },
+      {
+        path: 'degree',
+        component: DegreeComponent,
+      },
     ],
   },
 ];
