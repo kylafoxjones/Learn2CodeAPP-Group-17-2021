@@ -15,4 +15,6 @@ export class UniversityComponent implements OnInit {
   edit() {
     this.router.navigateByUrl('/addEditUni');
   }
+
+  
 }

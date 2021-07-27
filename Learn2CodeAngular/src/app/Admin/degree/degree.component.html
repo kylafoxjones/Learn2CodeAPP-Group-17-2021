@@ -22,10 +22,10 @@
 </nav>
 
 <div style="padding-top: 2rem; padding-bottom: 2rem">
-  <div class="header">List of Degress</div>
+  <div class="header">List of Degrees</div>
 </div>
 
-<button style="margin-left: 8rem" class="btn btn-info">Universities</button>
+<button routerLink="/university" style="margin-left: 8rem" class="btn btn-info">Universities</button>
 
 <div
   style="
@@ -66,7 +66,7 @@
       <tr>
         <td>Bcom Informatics</td>
         <td>
-          <button class="btn btn-primary">
+          <button (click)="edit()" class="btn btn-primary">
             <i class="fa fa-pencil"></i>
           </button>
         </td>

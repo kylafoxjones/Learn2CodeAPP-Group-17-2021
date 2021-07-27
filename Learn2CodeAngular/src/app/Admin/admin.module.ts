@@ -8,6 +8,8 @@ import { AddEditUniversityComponent } from './university/add-edit-university/add
 import { DegreeComponent } from './degree/degree.component';
 import { AddEditDegreeComponent } from './degree/add-edit-degree/add-edit-degree.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { ModuleComponent } from './module/module.component';
+import { AddEditModuleComponent } from './module/add-edit-module/add-edit-module.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +18,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     AddEditUniversityComponent,
     DegreeComponent,
     AddEditDegreeComponent,
+    ModuleComponent,
+    AddEditModuleComponent,
   ],
   imports: [CommonModule, AdminRoutingModule, MatFormFieldModule],
 })
