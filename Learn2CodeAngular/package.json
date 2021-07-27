@@ -26,6 +26,7 @@
     "bootstrap": "^5.0.2",
     "eva-icons": "^1.1.2",
     "rxjs": "~6.6.0",
+    "sweetalert2": "^11.0.20",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.3"
   },

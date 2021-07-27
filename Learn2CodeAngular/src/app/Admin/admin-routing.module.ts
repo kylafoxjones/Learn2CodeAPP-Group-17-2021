@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminComponent } from './admin.component';
+import { AddEditDegreeComponent } from './degree/add-edit-degree/add-edit-degree.component';
 import { DegreeComponent } from './degree/degree.component';
+import { AddEditUniversityComponent } from './university/add-edit-university/add-edit-university.component';
 import { UniversityComponent } from './university/university.component';
 
 const routes: Routes = [
@@ -18,6 +20,15 @@ const routes: Routes = [
         path: 'degree',
         component: DegreeComponent,
       },
+      //I dont know if the addEdit path though stand alone or have soemthing before it e.g admin/univers
+      {
+        path: 'addEditUni',
+        component: AddEditUniversityComponent,
+      },
+      {
+        path: 'addEditDegree',
+        component: AddEditDegreeComponent,
+      }
     ],
   },
 ];
