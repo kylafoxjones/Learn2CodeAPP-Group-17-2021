@@ -14,6 +14,8 @@ import {MatDialogModule} from '@angular/material/dialog';
 
 import {FormsModule} from "@angular/forms";
 import { MatInputModule } from '@angular/material/input';
+import { NbLayoutModule } from '@nebular/theme';
+//import { NbLayoutModule } from '@nebular/theme';
 
 @NgModule({
   declarations: [
@@ -24,9 +26,10 @@ import { MatInputModule } from '@angular/material/input';
     AddEditDegreeComponent,
     ModuleComponent,
     AddEditModuleComponent,
+  //  NbLayoutModule
     
     
   ],
-  imports: [CommonModule, AdminRoutingModule, MatFormFieldModule , FormsModule, MatInputModule, MatDialogModule],
+  imports: [CommonModule, AdminRoutingModule, MatFormFieldModule , FormsModule, MatInputModule, MatDialogModule, NbLayoutModule],
 })
 export class AdminModule {}
