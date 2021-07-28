@@ -10,6 +10,10 @@ import { AddEditDegreeComponent } from './degree/add-edit-degree/add-edit-degree
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ModuleComponent } from './module/module.component';
 import { AddEditModuleComponent } from './module/add-edit-module/add-edit-module.component';
+import {MatDialogModule} from '@angular/material/dialog';
+
+import {FormsModule} from "@angular/forms";
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -20,7 +24,9 @@ import { AddEditModuleComponent } from './module/add-edit-module/add-edit-module
     AddEditDegreeComponent,
     ModuleComponent,
     AddEditModuleComponent,
+    
+    
   ],
-  imports: [CommonModule, AdminRoutingModule, MatFormFieldModule],
+  imports: [CommonModule, AdminRoutingModule, MatFormFieldModule , FormsModule, MatInputModule, MatDialogModule],
 })
 export class AdminModule {}
