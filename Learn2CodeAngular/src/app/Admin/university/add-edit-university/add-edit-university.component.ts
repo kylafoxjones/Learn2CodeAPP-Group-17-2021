@@ -41,9 +41,9 @@ export class AddEditUniversityComponent implements OnInit {
           this.data = result;
           console.log(this.data);
           this.dialogRef.close();
+
           Swal.fire('Saved!', this.data.message, 'success');
         });
-       
       }
     });
   }

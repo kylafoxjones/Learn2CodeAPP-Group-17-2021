@@ -20,4 +20,8 @@ export class AdminService {
     return this.http.post(this.apiUrl + 'CreateUniversity',obj);
     
   }
+  //delete a uni
+  deleteUniversity(id:number){
+    return this.http.delete(this.apiUrl + 'DeleteUniversity/'+id);
+  }
 }

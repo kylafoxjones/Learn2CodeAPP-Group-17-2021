@@ -14,9 +14,8 @@ import { University } from '../admin resources/university';
 })
 export class UniversityComponent implements OnInit {
   //declare variables
-  universityList: any;
+  universityList: any = [];
   university: any;
-  
 
   constructor(
     private router: Router,
@@ -24,9 +23,11 @@ export class UniversityComponent implements OnInit {
     private service: AdminService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit() {
+    this.getAllUniversities();
+  }
 
-  delete() {
+  delete(id: number) {
     Swal.fire({
       title: 'Are you sure you want to delete the University?',
       text: '',
@@ -37,6 +38,10 @@ export class UniversityComponent implements OnInit {
       confirmButtonText: 'Yes',
     }).then((result) => {
       if (result.isConfirmed) {
+        console.log(id);
+        this.service.deleteUniversity(id).subscribe((result) => {
+          this.getAllUniversities();
+        });
         Swal.fire('Successful Deletion', '', 'success');
       }
     });
@@ -48,11 +53,13 @@ export class UniversityComponent implements OnInit {
       width: '350px',
     });
     dialogRef.afterClosed().subscribe((result) => {
+      this.getAllUniversities();
     });
   }
 
   getAllUniversities() {
     this.service.getUniversities().subscribe((result) => {
+      console.log(result);
       this.universityList = result; //uni list is populated
     });
   }
