@@ -5,7 +5,6 @@ import { MatDialog } from '@angular/material/dialog';
 import { AddEditUniversityComponent } from './add-edit-university/add-edit-university.component';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AdminService } from '../admin resources/admin.service';
-import { University } from '../admin resources/university';
 
 @Component({
   selector: 'app-university',

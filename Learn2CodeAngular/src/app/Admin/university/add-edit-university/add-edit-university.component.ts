@@ -14,6 +14,7 @@ export class AddEditUniversityComponent implements OnInit {
   university: any;
   //instance of empty object
   newUniversity: University = <University>{};
+ // newUniversity: any = <any>{};
   data: any = {};
 
   constructor(

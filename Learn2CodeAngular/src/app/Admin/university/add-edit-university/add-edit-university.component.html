@@ -1,15 +1,25 @@
 <h5 style="text-align: center">Edit University</h5>
 <hr />
 <mat-dialog-content>
-<mat-form-field class="example-full-width">
-  <mat-label>Name:</mat-label>
-  <input [(ngModel)]="data.UniversityName" matInput placeholder="University" />
-</mat-form-field>
+  <mat-form-field class="example-full-width">
+    <mat-label>Name:</mat-label>
+    <input
+      [(ngModel)]="data.UniversityName"
+      matInput
+      placeholder="University"
+    />
+  </mat-form-field>
 </mat-dialog-content>
 
-<div style="margin: auto; padding-top: 1rem; text-align: center" >
-  <button (click)="submitEdittedUni()" style="width: 6rem" class="btn btn-info">Submit</button>
-  <button [mat-dialog-close] style="margin-left: 2rem; width: 6rem" class="btn btn-danger">
+<div style="margin: auto; padding-top: 1rem; text-align: center">
+  <button (click)="submitEdittedUni()" style="width: 6rem" class="btn btn-info">
+    Submit
+  </button>
+  <button
+    [mat-dialog-close]
+    style="margin-left: 2rem; width: 6rem"
+    class="btn btn-danger"
+  >
     Cancel
   </button>
 </div>
