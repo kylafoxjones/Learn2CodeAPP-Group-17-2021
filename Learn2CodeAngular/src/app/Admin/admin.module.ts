@@ -10,12 +10,14 @@ import { AddEditDegreeComponent } from './degree/add-edit-degree/add-edit-degree
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ModuleComponent } from './module/module.component';
 import { AddEditModuleComponent } from './module/add-edit-module/add-edit-module.component';
-import {MatDialogModule} from '@angular/material/dialog';
+import { MatDialogModule } from '@angular/material/dialog';
 
-import {FormsModule} from "@angular/forms";
+import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { NbLayoutModule } from '@nebular/theme';
 //import { NbLayoutModule } from '@nebular/theme';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -26,10 +28,17 @@ import { NbLayoutModule } from '@nebular/theme';
     AddEditDegreeComponent,
     ModuleComponent,
     AddEditModuleComponent,
-  //  NbLayoutModule
-    
-    
+    //  NbLayoutModule
   ],
-  imports: [CommonModule, AdminRoutingModule, MatFormFieldModule , FormsModule, MatInputModule, MatDialogModule, NbLayoutModule],
+  imports: [
+    CommonModule,
+    AdminRoutingModule,
+    MatFormFieldModule,
+    FormsModule,
+    MatInputModule,
+    MatDialogModule,
+    NbLayoutModule,
+    HttpClientModule
+  ],
 })
 export class AdminModule {}

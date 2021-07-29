@@ -3,6 +3,9 @@ import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { MatDialog } from '@angular/material/dialog';
 import { AddEditUniversityComponent } from './add-edit-university/add-edit-university.component';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { AdminService } from '../admin resources/admin.service';
+import { University } from '../admin resources/university';
 
 @Component({
   selector: 'app-university',
@@ -10,7 +13,16 @@ import { AddEditUniversityComponent } from './add-edit-university/add-edit-unive
   styleUrls: ['./university.component.scss'],
 })
 export class UniversityComponent implements OnInit {
-  constructor(private router: Router, public dialog: MatDialog) {}
+  //declare variables
+  universityList: any;
+  university: any;
+  
+
+  constructor(
+    private router: Router,
+    public dialog: MatDialog,
+    private service: AdminService
+  ) {}
 
   ngOnInit(): void {}
 
@@ -29,20 +41,19 @@ export class UniversityComponent implements OnInit {
       }
     });
   }
-  
-    
-   
-    openDialog() {
-      const dialogRef = this.dialog.open(AddEditUniversityComponent, {
-        width: '350px',
-        
-      });
 
-      dialogRef.afterClosed().subscribe(result => {
-        
-      });
-    }
-    
+  openDialog() {
+    //this.service.editId = 0;
+    const dialogRef = this.dialog.open(AddEditUniversityComponent, {
+      width: '350px',
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+    });
   }
 
-
+  getAllUniversities() {
+    this.service.getUniversities().subscribe((result) => {
+      this.universityList = result; //uni list is populated
+    });
+  }
+}

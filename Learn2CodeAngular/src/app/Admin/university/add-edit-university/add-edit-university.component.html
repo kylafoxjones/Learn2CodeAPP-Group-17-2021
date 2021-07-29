@@ -1,9 +1,11 @@
 <h5 style="text-align: center">Edit University</h5>
 <hr />
+<mat-dialog-content>
 <mat-form-field class="example-full-width">
   <mat-label>Name:</mat-label>
-  <input matInput placeholder="University" />
+  <input [(ngModel)]="newUniversity.UniversityName" matInput placeholder="University" />
 </mat-form-field>
+</mat-dialog-content>
 
 <div style="margin: auto; padding-top: 1rem; text-align: center" >
   <button (click)="submitEdittedUni()" style="width: 6rem" class="btn btn-info">Submit</button>
