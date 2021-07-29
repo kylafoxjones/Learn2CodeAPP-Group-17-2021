@@ -14,6 +14,7 @@ export class AddEditUniversityComponent implements OnInit {
   university: any;
   //instance of empty object
   newUniversity: University = <University>{};
+  data: any = {};
 
   constructor(
     public dialog: MatDialog,
@@ -22,7 +23,7 @@ export class AddEditUniversityComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.refreshUniversityObj();
+    //this.refreshUniversityObj();
   }
 
   submitEdittedUni() {
@@ -36,10 +37,13 @@ export class AddEditUniversityComponent implements OnInit {
       confirmButtonText: 'Yes',
     }).then((result) => {
       if (result.isConfirmed) {
-        console.log(this.newUniversity);
-        this.service.createUniversity(this.newUniversity);
-        this.dialogRef.close();
-        Swal.fire('Saved!', 'University has been updated.', 'success');
+        this.service.createUniversity(this.data).subscribe((result) => {
+          this.data = result;
+          console.log(this.data);
+          this.dialogRef.close();
+          Swal.fire('Saved!', this.data.message, 'success');
+        });
+       
       }
     });
   }
