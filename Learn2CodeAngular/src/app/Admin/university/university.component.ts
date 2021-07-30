@@ -48,6 +48,8 @@ export class UniversityComponent implements OnInit {
 
   openAddDialog() {
     this.service.editId = 0;
+    console.log(this.service.editId);
+    this.service.title="Create University";
     const dialogRef = this.dialog.open(AddEditUniversityComponent, {
       width: '350px',
     });
@@ -58,8 +60,11 @@ export class UniversityComponent implements OnInit {
 
   openEditDialog(obj) {
     this.service.editUni = obj;
+    this.service.oldUniName = obj.UniversityName;
     this.service.unis=this.universityList;
     this.service.editId = obj.id;
+    this.service.title="Edit University";
+    console.log(this.service.editId);
     const dialogRef = this.dialog.open(AddEditUniversityComponent, {
       width: '350px',
     });

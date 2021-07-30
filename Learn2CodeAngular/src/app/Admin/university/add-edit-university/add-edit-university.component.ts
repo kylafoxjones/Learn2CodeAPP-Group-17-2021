@@ -14,6 +14,8 @@ export class AddEditUniversityComponent implements OnInit {
   //instance of empty object
   newUniversity: any = <any>{};
   data: any = {};
+  popupTitle=this.service.title;
+  placeholder= this.service.oldUniName;
 
   constructor(
     public dialog: MatDialog,
@@ -25,7 +27,6 @@ export class AddEditUniversityComponent implements OnInit {
 
   submitEdittedUni() {
     if (this.service.editId > 0) {
-      console.log(this.service.editId);
       Swal.fire({
         title: 'Are you sure you want to edit the university?',
         icon: 'question',
@@ -37,9 +38,7 @@ export class AddEditUniversityComponent implements OnInit {
         if (result.isConfirmed) {
           this.service.editUniversity(this.data).subscribe((result) => {
             this.data = result;
-            console.log('this is the editted data',this.data);
             this.dialogRef.close();
-
             Swal.fire('Update successful!', this.data.message, 'success');
           });
         }
@@ -56,9 +55,7 @@ export class AddEditUniversityComponent implements OnInit {
         if (result.isConfirmed) {
           this.service.createUniversity(this.data).subscribe((result) => {
             this.data = result;
-            console.log(this.data);
             this.dialogRef.close();
-
             Swal.fire('Saved!', this.data.message, 'success');
           });
         }

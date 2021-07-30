@@ -1,4 +1,4 @@
-<h5 style="text-align: center">Edit University</h5>
+<h5 style="text-align: center"> {{popupTitle}}</h5>
 <hr />
 <mat-dialog-content>
   <mat-form-field class="example-full-width">
@@ -6,7 +6,7 @@
     <input
       [(ngModel)]="data.UniversityName"
       matInput
-      placeholder="University"
+      placeholder= "{{data.UniversityName}}"
     />
   </mat-form-field>
 </mat-dialog-content>

@@ -9,7 +9,10 @@ export class AdminService {
   editId = 0;
   editUni: any;
   unis: any = [];
-  random: any = {};
+  updatedUni: any = {};
+  title: any;
+  oldUniName:any;
+  
   constructor(private http: HttpClient) {}
 
   getUniversities() {
@@ -25,16 +28,13 @@ export class AdminService {
     return this.http.delete(this.apiUrl + 'DeleteUniversity/' + id);
   }
 
-  editUniversity(newObj) {
-    console.log(this.editId);
-
-    var xx = this.unis.find((x) => x.id === this.editId);
-    // xx.UniversityName==newObj.UniversityName;
-    console.log(xx);
-    console.log(newObj);
-    this.random = { Id: xx.id, UniversityName: newObj.UniversityName };
-    console.log(this.random);
-
-    return this.http.put(this.apiUrl + 'EditUniversity', this.random);
+  editUniversity(newUniName) {
+    var oldObj = this.unis.find((x) => x.id === this.editId);
+ 
+    this.updatedUni = {
+      Id: oldObj.id,
+      UniversityName: newUniName.UniversityName,
+    };
+    return this.http.put(this.apiUrl + 'EditUniversity', this.updatedUni);
   }
 }
