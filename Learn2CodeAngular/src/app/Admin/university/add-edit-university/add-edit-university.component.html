@@ -1,13 +1,19 @@
-<h5 style="text-align: center"> {{popupTitle}}</h5>
+<h5 style="text-align: center">{{ popupTitle }}</h5>
 <hr />
 <mat-dialog-content>
   <mat-form-field class="example-full-width">
     <mat-label>Name:</mat-label>
-    <input
-      [(ngModel)]="data.UniversityName"
-      matInput
-      placeholder= "{{data.UniversityName}}"
-    />
+    <div *ngIf="placeHolderOrNo">
+      <input
+        [(ngModel)]="data.UniversityName"
+        matInput
+        placeholder="{{ oldUni }}"
+      />
+    </div>
+
+    <div *ngIf="!placeHolderOrNo">
+      <input [(ngModel)]="data.UniversityName" matInput />
+    </div>
   </mat-form-field>
 </mat-dialog-content>
 <h1>{{ data.id }}</h1>

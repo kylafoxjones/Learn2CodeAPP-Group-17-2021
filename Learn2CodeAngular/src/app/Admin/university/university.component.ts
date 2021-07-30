@@ -15,6 +15,7 @@ export class UniversityComponent implements OnInit {
   //declare variables
   universityList: any = [];
   university: any;
+  search;
 
   constructor(
     private router: Router,
@@ -37,7 +38,6 @@ export class UniversityComponent implements OnInit {
       confirmButtonText: 'Yes',
     }).then((result) => {
       if (result.isConfirmed) {
-        console.log(id);
         this.service.deleteUniversity(id).subscribe((result) => {
           this.getAllUniversities();
         });
@@ -47,9 +47,9 @@ export class UniversityComponent implements OnInit {
   }
 
   openAddDialog() {
+    this.service.edit = false;
     this.service.editId = 0;
-    console.log(this.service.editId);
-    this.service.title="Create University";
+    this.service.title = 'Create University';
     const dialogRef = this.dialog.open(AddEditUniversityComponent, {
       width: '350px',
     });
@@ -59,12 +59,12 @@ export class UniversityComponent implements OnInit {
   }
 
   openEditDialog(obj) {
+    this.service.edit = true;
     this.service.editUni = obj;
-    this.service.oldUniName = obj.UniversityName;
-    this.service.unis=this.universityList;
+    this.service.oldUniName = obj.universityName;
+    this.service.unis = this.universityList;
     this.service.editId = obj.id;
-    this.service.title="Edit University";
-    console.log(this.service.editId);
+    this.service.title = 'Edit University';
     const dialogRef = this.dialog.open(AddEditUniversityComponent, {
       width: '350px',
     });
@@ -75,7 +75,6 @@ export class UniversityComponent implements OnInit {
 
   getAllUniversities() {
     this.service.getUniversities().subscribe((result) => {
-      console.log(result);
       this.universityList = result; //uni list is populated
     });
   }

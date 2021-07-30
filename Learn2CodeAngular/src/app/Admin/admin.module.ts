@@ -17,7 +17,7 @@ import { MatInputModule } from '@angular/material/input';
 import { NbLayoutModule } from '@nebular/theme';
 //import { NbLayoutModule } from '@nebular/theme';
 import { HttpClientModule } from '@angular/common/http';
-
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
   declarations: [
@@ -38,7 +38,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatInputModule,
     MatDialogModule,
     NbLayoutModule,
-    HttpClientModule
+    HttpClientModule,
+    Ng2SearchPipeModule,
   ],
 })
 export class AdminModule {}

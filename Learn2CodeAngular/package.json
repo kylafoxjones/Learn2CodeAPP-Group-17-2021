@@ -25,6 +25,7 @@
     "@nebular/theme": "^7.0.0",
     "bootstrap": "^5.0.2",
     "eva-icons": "^1.1.2",
+    "ng2-search-filter": "^0.5.1",
     "rxjs": "~6.6.0",
     "sweetalert": "^2.1.2",
     "sweetalert2": "^11.0.20",

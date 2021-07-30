@@ -14,8 +14,10 @@ export class AddEditUniversityComponent implements OnInit {
   //instance of empty object
   newUniversity: any = <any>{};
   data: any = {};
-  popupTitle=this.service.title;
-  placeholder= this.service.oldUniName;
+  popupTitle = this.service.title;
+  placeholder = this.service.oldUniName;
+  oldUni: any;
+  placeHolderOrNo = this.service.edit;
 
   constructor(
     public dialog: MatDialog,
@@ -23,9 +25,12 @@ export class AddEditUniversityComponent implements OnInit {
     private service: AdminService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.oldUni = this.service.oldUniName;
+  }
 
   submitEdittedUni() {
+    console.log(this.service.editUni);
     if (this.service.editId > 0) {
       Swal.fire({
         title: 'Are you sure you want to edit the university?',

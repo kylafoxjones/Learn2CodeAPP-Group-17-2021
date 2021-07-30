@@ -11,8 +11,9 @@ export class AdminService {
   unis: any = [];
   updatedUni: any = {};
   title: any;
-  oldUniName:any;
-  
+  oldUniName: any;
+  edit: boolean = true;
+
   constructor(private http: HttpClient) {}
 
   getUniversities() {
@@ -30,7 +31,7 @@ export class AdminService {
 
   editUniversity(newUniName) {
     var oldObj = this.unis.find((x) => x.id === this.editId);
- 
+
     this.updatedUni = {
       Id: oldObj.id,
       UniversityName: newUniName.UniversityName,

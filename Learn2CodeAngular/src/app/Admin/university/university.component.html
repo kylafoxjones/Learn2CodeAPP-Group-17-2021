@@ -44,6 +44,7 @@
       <br />
       <div class="input-group rounded" style="width: 30%; padding-left: 6rem">
         <input
+          [(ngModel)]="search"
           type="search"
           class="form-control rounded"
           placeholder="Search"
@@ -51,7 +52,9 @@
           aria-describedby="search-addon"
         />
         <span>
-          <button class="btn btn-primary"><i class="fa fa-search"></i></button>
+          <button class="btn btn-primary">
+            <i class="fa fa-search"></i>
+          </button>
         </span>
       </div>
       <br />
@@ -67,7 +70,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let item of universityList">
+          <tr *ngFor="let item of universityList | filter: search">
             <td>{{ item.universityName }}</td>
             <td>
               <button (click)="openEditDialog(item)" class="btn btn-primary">
