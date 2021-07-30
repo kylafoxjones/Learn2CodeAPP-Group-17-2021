@@ -70,7 +70,7 @@
           <tr *ngFor="let item of universityList">
             <td>{{ item.universityName }}</td>
             <td>
-              <button (click)="openDialog()" class="btn btn-primary">
+              <button (click)="openEditDialog(item)" class="btn btn-primary">
                 <i class="fa fa-pencil"></i>
               </button>
             </td>
@@ -110,7 +110,7 @@
     </div>
     <br />
     <button
-      (click)="openDialog()"
+      (click)="openAddDialog()"
       style="margin-left: 8rem"
       class="btn btn-info"
     >

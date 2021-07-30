@@ -46,8 +46,20 @@ export class UniversityComponent implements OnInit {
     });
   }
 
-  openDialog() {
-    //this.service.editId = 0;
+  openAddDialog() {
+    this.service.editId = 0;
+    const dialogRef = this.dialog.open(AddEditUniversityComponent, {
+      width: '350px',
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+      this.getAllUniversities();
+    });
+  }
+
+  openEditDialog(obj) {
+    this.service.editUni = obj;
+    this.service.unis=this.universityList;
+    this.service.editId = obj.id;
     const dialogRef = this.dialog.open(AddEditUniversityComponent, {
       width: '350px',
     });
