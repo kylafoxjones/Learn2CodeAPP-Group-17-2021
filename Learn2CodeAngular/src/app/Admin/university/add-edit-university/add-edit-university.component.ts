@@ -3,7 +3,6 @@ import Swal from 'sweetalert2';
 import { MatDialog } from '@angular/material/dialog';
 import { MatDialogRef } from '@angular/material/dialog';
 import { AdminService } from '../../admin resources/admin.service';
-import { University } from '../../admin resources/university';
 
 @Component({
   selector: 'app-add-edit-university',
@@ -13,8 +12,7 @@ import { University } from '../../admin resources/university';
 export class AddEditUniversityComponent implements OnInit {
   university: any;
   //instance of empty object
-  newUniversity: University = <University>{};
- // newUniversity: any = <any>{};
+  newUniversity: any = <any>{};
   data: any = {};
 
   constructor(
@@ -23,9 +21,7 @@ export class AddEditUniversityComponent implements OnInit {
     private service: AdminService
   ) {}
 
-  ngOnInit(): void {
-    //this.refreshUniversityObj();
-  }
+  ngOnInit(): void {}
 
   submitEdittedUni() {
     Swal.fire({
@@ -49,6 +45,6 @@ export class AddEditUniversityComponent implements OnInit {
     });
   }
   refreshUniversityObj() {
-    this.newUniversity = <University>{};
+    this.newUniversity = <any>{};
   }
 }
