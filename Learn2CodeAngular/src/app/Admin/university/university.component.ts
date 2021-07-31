@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { AddEditUniversityComponent } from './add-edit-university/add-edit-university.component';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AdminService } from '../admin resources/admin.service';
+import { NbAccordionItemHeaderComponent } from '@nebular/theme';
 
 @Component({
   selector: 'app-university',
@@ -16,6 +17,7 @@ export class UniversityComponent implements OnInit {
   universityList: any = [];
   university: any;
   search;
+  
 
   constructor(
     private router: Router,
@@ -77,5 +79,10 @@ export class UniversityComponent implements OnInit {
     this.service.getUniversities().subscribe((result) => {
       this.universityList = result; //uni list is populated
     });
+  }
+
+  navigateToDegree(id:number){
+    this.service.universityIdToSend=id;
+    this.router.navigateByUrl('/degree');
   }
 }

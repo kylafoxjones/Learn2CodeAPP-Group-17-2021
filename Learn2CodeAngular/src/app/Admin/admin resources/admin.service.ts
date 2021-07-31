@@ -6,6 +6,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AdminService {
   apiUrl = 'https://localhost:44393/api/Admin/';
+  //uni variables below
   editId = 0;
   editUni: any;
   unis: any = [];
@@ -13,7 +14,14 @@ export class AdminService {
   title: any;
   oldUniName: any;
   edit: boolean = true;
+  universityIdToSend: any;
 
+  //degree variables below
+  editDeg: any;
+  degrees: any = [];
+  updatedDegree: any = {};
+  oldDegreeName: any;
+  degreeToSave: any = {};
   constructor(private http: HttpClient) {}
 
   getUniversities() {
@@ -37,5 +45,35 @@ export class AdminService {
       UniversityName: newUniName.UniversityName,
     };
     return this.http.put(this.apiUrl + 'EditUniversity', this.updatedUni);
+  }
+
+  getDegrees(id: number) {
+    return this.http.get(this.apiUrl + 'GetAllDegrees/' +this.universityIdToSend);
+  }
+
+  createDegree(obj) {
+    console.log('im just the input name from html',obj);
+    this.degreeToSave = {
+      DegreeName: obj.DegreeName,
+      UniversityId: this.universityIdToSend,
+    };
+    console.log(this.degreeToSave);
+    return this.http.post(this.apiUrl + 'CreateDegree', this.degreeToSave);
+  }
+
+  deleteDegree(id: number) {
+    return this.http.delete(this.apiUrl + 'DeleteDegree/' + id);
+  }
+
+  editDegree(newDegreeName) {
+    var oldObj = this.degrees.find((x) => x.id === this.editId);
+
+    this.updatedDegree = { 
+      Id: oldObj.id,
+      DegreeName: newDegreeName.DegreeName,
+      UniversityId: this.universityIdToSend,
+      
+    };
+    return this.http.put(this.apiUrl + 'EditDegree', this.updatedDegree);
   }
 }

@@ -12,7 +12,11 @@
     </div>
 
     <div *ngIf="!placeHolderOrNo">
-      <input [(ngModel)]="data.UniversityName" matInput />
+      <input
+        [(ngModel)]="data.UniversityName"
+        matInput
+        placeholder="University name"
+      />
     </div>
   </mat-form-field>
 </mat-dialog-content>
