@@ -22,6 +22,15 @@ export class AdminService {
   updatedDegree: any = {};
   oldDegreeName: any;
   degreeToSave: any = {};
+
+  //course variables
+  editCrs: any;
+  courses: any = [];
+  updatedCourse: any = {};
+  oldCourseName: any;
+  courseToSave: any ={};
+  adminId: any;
+
   constructor(private http: HttpClient) {}
 
   getUniversities() {
@@ -75,5 +84,38 @@ export class AdminService {
       
     };
     return this.http.put(this.apiUrl + 'EditDegree', this.updatedDegree);
+  }
+
+
+  getCourses() {
+    return this.http.get(this.apiUrl + 'GetAllCourseFolder');
+  }
+
+  createCourse(obj) {
+    this.courseToSave = {
+      AdminId: this.adminId,
+      CourseFolderName: obj.CourseName,
+  
+    };
+    console.log(this.courseToSave);
+    return this.http.post(this.apiUrl + 'CreateCourseFolder', this.courseToSave);
+ 
+  }
+
+  deleteCourse(id: number) {
+    return this.http.delete(this.apiUrl + 'DeleteCourseFolder/' + id);
+  }
+
+  editCourse(newCourseName) {
+    var oldObj = this.courses.find((x) => x.id === this.editId);
+console.log(oldObj);
+    this.updatedCourse = {
+      Id: oldObj.id,
+      AdminId:this.adminId,
+      CourseFolderName: newCourseName.CourseName,
+    };
+    console.log(this.adminId);
+    console.log(this.updatedCourse);
+    return this.http.put(this.apiUrl + 'EditCourseFolder', this.updatedCourse);
   }
 }
