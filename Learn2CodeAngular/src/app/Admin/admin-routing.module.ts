@@ -9,6 +9,7 @@ import { DegreeComponent } from './degree/degree.component';
 import { AddEditModuleComponent } from './module/add-edit-module/add-edit-module.component';
 import { ModuleComponent } from './module/module.component';
 import { SessionContentCategoryComponent } from './session-content-category/session-content-category.component';
+import { StudentComponent } from './student/student.component';
 import { AddEditUniversityComponent } from './university/add-edit-university/add-edit-university.component';
 import { UniversityComponent } from './university/university.component';
 
@@ -41,6 +42,10 @@ const routes: Routes = [
       {
         path: 'coursecontentcategory',
         component: CourseContentCategoryComponent,
+      },
+      {
+        path: 'student',
+        component: StudentComponent,
       },
       //I dont know if the addEdit path though stand alone or have soemthing before it e.g admin/univers
       {

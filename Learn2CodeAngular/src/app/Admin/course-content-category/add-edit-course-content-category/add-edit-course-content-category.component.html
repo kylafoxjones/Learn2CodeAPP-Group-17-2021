@@ -1,26 +1,52 @@
 <h5 style="text-align: center">{{ popupTitle }}</h5>
 <hr />
 <mat-dialog-content>
-    <mat-form-field class="example-full-width">
-      <mat-label>Name:</mat-label>
+  <mat-form-field class="example-full-width">
+    <mat-label>Name:</mat-label>
+    <div *ngIf="placeHolderOrNo">
       <input
         [(ngModel)]="data.CourseSubCategoryName"
         matInput
         placeholder="{{ oldCourseContentCategory }}"
       />
-    </mat-form-field>
+    </div>
+    <div *ngIf="!placeHolderOrNo">
+      <input
+        [(ngModel)]="data.CourseSubCategoryName"
+        matInput
+        placeholder="{{ oldCourseContentCategory }}"
+      />
+    </div>
+  </mat-form-field>
 
-    <mat-form-field class="example-full-width">
-      <mat-label>Description:</mat-label>
-      <input [(ngModel)]="data.Description" matInput placeholder="Description" />
-    </mat-form-field>
-    
-    <mat-form-field class="example-full-width">
-      <mat-label>Price:</mat-label>
+  <mat-form-field class="example-full-width">
+    <mat-label>Description:</mat-label>
+    <div *ngIf="placeHolderOrNo">
+      <input
+        [(ngModel)]="data.Description"
+        matInput
+        placeholder="Description"
+      />
+    </div>
+    <div *ngIf="!placeHolderOrNo">
+      <input
+        [(ngModel)]="data.Description"
+        matInput
+        placeholder="Description"
+      />
+    </div>
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>Price:</mat-label>
+    <div *ngIf="placeHolderOrNo">
       <input [(ngModel)]="data.price" matInput placeholder="Price" />
-    </mat-form-field>
+    </div>
+    <div *ngIf="!placeHolderOrNo">
+      <input [(ngModel)]="data.price" matInput placeholder="Price" />
+    </div>
+  </mat-form-field>
 </mat-dialog-content>
-
 
 <h1>{{ data.id }}</h1>
 <div style="margin: auto; padding-top: 1rem; text-align: center">

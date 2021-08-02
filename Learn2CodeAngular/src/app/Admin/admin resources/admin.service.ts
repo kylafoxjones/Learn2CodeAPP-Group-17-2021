@@ -177,7 +177,7 @@ export class AdminService {
 
    
   getCourseContentCategories() {
-    return this.http.get(this.apiUrl + 'GetAllCourseSubCategory');
+    return this.http.get(this.apiUrl + 'GetAllCourseSubCategory/'+ this.courseFolderIdToSend);
   }
 
   createCourseContentCategory(obj) {
@@ -201,8 +201,8 @@ export class AdminService {
 
   editCourseContentCategory(newCourseContentCat) {
     var oldObj = this.courseContentCategories.find((x) => x.id === this.editId);
-    console.log(oldObj);
-    
+    console.log(oldObj); //extract from array where objects are based off the model which has courseFolder
+    //what you get from api is based off the model
     this.updatedCourseContentCategory = {
      
       Id: oldObj.id,
@@ -211,8 +211,9 @@ export class AdminService {
       Description: newCourseContentCat.Description,
       price:newCourseContentCat.price,
     };
-    console.log(this.updatedCourseContentCategory);
-    return this.http.put(this.apiUrl + 'DeleteCourseSubCategory', this.updatedCourseContentCategory);
+    console.log(this.updatedCourseContentCategory); //this is the dto
+    //what you send is dtos, they are not based exactly on the models
+    return this.http.put(this.apiUrl + 'EditCourseSubCategory', this.updatedCourseContentCategory);
   }
   
   getSessionContentCategories() {
@@ -246,5 +247,12 @@ export class AdminService {
     console.log(this.adminId);
     console.log(this.updatedSessionContentCategory);
     return this.http.put(this.apiUrl + 'EditSessionContentCategory', this.updatedSessionContentCategory);
+  }
+
+  getStudents() {
+    return this.http.get(this.apiUrl + 'GeAllStudents');
+  }
+  deleteStudent(id:string) {
+    return this.http.delete(this.apiUrl + 'DeleteStudent/' + id);
   }
 }
