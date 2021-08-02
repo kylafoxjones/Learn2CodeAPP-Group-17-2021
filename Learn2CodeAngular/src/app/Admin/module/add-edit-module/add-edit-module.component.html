@@ -1,13 +1,35 @@
-<h5 style="text-align: center">Edit University</h5>
+<h5 style="text-align: center">{{ popupTitle }}</h5>
 <hr />
-<mat-form-field class="example-full-width">
-  <mat-label>Name:</mat-label>
-  <input matInput placeholder="Module Code" />
-</mat-form-field>
+<mat-dialog-content>
+  <mat-form-field class="example-full-width">
+    <mat-label>Module Code:</mat-label>
+    <div *ngIf="placeHolderOrNo">
+      <input
+        [(ngModel)]="data.ModuleCode"
+        matInput
+        placeholder="{{ oldModule }}"
+      />
+    </div>
 
-<div style="margin: auto; padding-top: 1rem; text-align: center" >
-  <button style="width: 6rem" class="btn btn-info">Submit</button>
-  <button style="margin-left: 2rem; width: 6rem" class="btn btn-danger">
+    <div *ngIf="!placeHolderOrNo">
+      <input [(ngModel)]="data.ModuleCode" matInput placeholder="Module Code" />
+    </div>
+  </mat-form-field>
+</mat-dialog-content>
+<h1>{{ data.id }}</h1>
+<div style="margin: auto; padding-top: 1rem; text-align: center">
+  <button
+    (click)="submitEdittedModule()"
+    style="width: 6rem"
+    class="btn btn-info"
+  >
+    Submit
+  </button>
+  <button
+    [mat-dialog-close]
+    style="margin-left: 2rem; width: 6rem"
+    class="btn btn-danger"
+  >
     Cancel
   </button>
 </div>

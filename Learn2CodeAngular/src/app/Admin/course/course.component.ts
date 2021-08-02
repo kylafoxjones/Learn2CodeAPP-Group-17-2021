@@ -85,6 +85,6 @@ export class CourseComponent implements OnInit {
 
   //function for creating adminId link
   getAdminId(){
-    this.service.adminId=2;
+    this.service.adminId=1;
   }
 }

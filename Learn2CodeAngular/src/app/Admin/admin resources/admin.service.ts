@@ -22,6 +22,14 @@ export class AdminService {
   updatedDegree: any = {};
   oldDegreeName: any;
   degreeToSave: any = {};
+  degreeIdToSend: any;
+
+  //module variables below
+  editMod: any;
+  modules: any = [];
+  updatedModule: any = {};
+  oldModuleName: any;
+  moduleToSave: any = {};
 
   //course variables
   editCrs: any;
@@ -86,6 +94,36 @@ export class AdminService {
     return this.http.put(this.apiUrl + 'EditDegree', this.updatedDegree);
   }
 
+  getModules(id: number) {
+    return this.http.get(this.apiUrl + 'GetAllModules/' +this.degreeIdToSend);
+  }
+
+  createModule(obj) {
+    console.log('im just the input name from html',obj);
+    this.moduleToSave = {
+      ModuleCode: obj.ModuleCode,
+      DegreeId: this.degreeIdToSend,
+    };
+    console.log(this.moduleToSave);
+    return this.http.post(this.apiUrl + 'CreateModule', this.moduleToSave);
+  }
+
+  deleteModule(id: number) {
+    return this.http.delete(this.apiUrl + 'DeleteModule/' + id);
+  }
+
+  editModule(newModuleName) {
+    var oldObj = this.modules.find((x) => x.id === this.editId);
+
+    this.updatedModule = { 
+      Id: oldObj.id,
+      ModuleCode: newModuleName.ModuleCode,
+      DegreeId: this.degreeIdToSend,
+      
+    };
+    return this.http.put(this.apiUrl + 'EditModule', this.updatedModule);
+  }
+
 
   getCourses() {
     return this.http.get(this.apiUrl + 'GetAllCourseFolder');
@@ -118,4 +156,7 @@ console.log(oldObj);
     console.log(this.updatedCourse);
     return this.http.put(this.apiUrl + 'EditCourseFolder', this.updatedCourse);
   }
+
+
+
 }

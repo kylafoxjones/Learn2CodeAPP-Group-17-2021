@@ -74,7 +74,7 @@
         </thead>
         <tbody>
           <tr *ngFor="let item of degreeList | filter: search">
-            <td>{{ item.degreeName }}</td>
+            <td (click)="navigateToModule(item.id)">{{ item.degreeName }}</td>
             <td>
               <button (click)="openEditDialog(item)" class="btn btn-primary">
                 <i class="fa fa-pencil"></i>
