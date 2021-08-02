@@ -29,7 +29,6 @@ export class AddEditDegreeComponent implements OnInit {
   }
 
   submitEdittedDegree() {
-    console.log(this.service.editDeg);
     if (this.service.editId > 0) {
       Swal.fire({
         title: 'Are you sure you want to edit the degree?',

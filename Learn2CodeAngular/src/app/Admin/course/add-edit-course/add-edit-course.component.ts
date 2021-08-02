@@ -60,6 +60,7 @@ export class AddEditCourseComponent implements OnInit {
       }).then((result) => {
         if (result.isConfirmed) {
           this.service.createCourse(this.data).subscribe((result) => {
+            console.log(this.data);
             this.data = result;
             this.dialogRef.close();
             Swal.fire('Saved!', this.data.message, 'success');

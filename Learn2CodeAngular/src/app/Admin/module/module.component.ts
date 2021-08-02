@@ -62,7 +62,7 @@ export class ModuleComponent implements OnInit {
   openEditDialog(obj) {
     this.service.edit = true;
     this.service.editMod = obj;
-    this.service.oldModuleName = obj.ModuleCode;
+    this.service.oldModuleName = obj.moduleCode;
     this.service.modules = this.moduleList;
     this.service.editId = obj.id;
     this.service.title = 'Edit module';
@@ -76,6 +76,7 @@ export class ModuleComponent implements OnInit {
   getAllModules() {
     this.service.getModules(this.service.degreeIdToSend).subscribe((result) => {
       this.moduleList = result; //uni list is populated
+      console.log("this is the degree id, the modules for this id should be displayed",this.service.degreeIdToSend)
     });
   }
 }

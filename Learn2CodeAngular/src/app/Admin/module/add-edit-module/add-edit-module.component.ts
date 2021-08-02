@@ -6,7 +6,7 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'app-add-edit-module',
   templateUrl: './add-edit-module.component.html',
-  styleUrls: ['./add-edit-module.component.scss']
+  styleUrls: ['./add-edit-module.component.scss'],
 })
 export class AddEditModuleComponent implements OnInit {
   module: any;
@@ -22,14 +22,13 @@ export class AddEditModuleComponent implements OnInit {
     public dialog: MatDialog,
     private dialogRef: MatDialogRef<AddEditModuleComponent>,
     private service: AdminService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.oldModule = this.service.oldModuleName;
   }
 
   submitEdittedModule() {
-    console.log(this.service.editMod);
     if (this.service.editId > 0) {
       Swal.fire({
         title: 'Are you sure you want to edit the module?',
@@ -69,5 +68,4 @@ export class AddEditModuleComponent implements OnInit {
   refreshModuleObj() {
     this.newModule = <any>{};
   }
-
 }

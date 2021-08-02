@@ -30,13 +30,14 @@ export class AdminService {
   updatedModule: any = {};
   oldModuleName: any;
   moduleToSave: any = {};
+  //degreeId: any;
 
   //course variables
   editCrs: any;
   courses: any = [];
   updatedCourse: any = {};
   oldCourseName: any;
-  courseToSave: any ={};
+  courseToSave: any = {};
   adminId: any;
 
   constructor(private http: HttpClient) {}
@@ -65,11 +66,13 @@ export class AdminService {
   }
 
   getDegrees(id: number) {
-    return this.http.get(this.apiUrl + 'GetAllDegrees/' +this.universityIdToSend);
+    return this.http.get(
+      this.apiUrl + 'GetAllDegrees/' + this.universityIdToSend
+    );
   }
 
   createDegree(obj) {
-    console.log('im just the input name from html',obj);
+    console.log('im just the input name from html', obj);
     this.degreeToSave = {
       DegreeName: obj.DegreeName,
       UniversityId: this.universityIdToSend,
@@ -85,26 +88,25 @@ export class AdminService {
   editDegree(newDegreeName) {
     var oldObj = this.degrees.find((x) => x.id === this.editId);
 
-    this.updatedDegree = { 
+    this.updatedDegree = {
       Id: oldObj.id,
       DegreeName: newDegreeName.DegreeName,
       UniversityId: this.universityIdToSend,
-      
     };
     return this.http.put(this.apiUrl + 'EditDegree', this.updatedDegree);
   }
 
   getModules(id: number) {
-    return this.http.get(this.apiUrl + 'GetAllModules/' +this.degreeIdToSend);
+    return this.http.get(this.apiUrl + 'GetAllModules/' + this.degreeIdToSend);
   }
 
   createModule(obj) {
-    console.log('im just the input name from html',obj);
+    console.log('im just the input name from html', obj);
     this.moduleToSave = {
       ModuleCode: obj.ModuleCode,
       DegreeId: this.degreeIdToSend,
     };
-    console.log(this.moduleToSave);
+    console.log('this is what is sent to api', this.moduleToSave);
     return this.http.post(this.apiUrl + 'CreateModule', this.moduleToSave);
   }
 
@@ -115,15 +117,14 @@ export class AdminService {
   editModule(newModuleName) {
     var oldObj = this.modules.find((x) => x.id === this.editId);
 
-    this.updatedModule = { 
+    this.updatedModule = {
       Id: oldObj.id,
       ModuleCode: newModuleName.ModuleCode,
       DegreeId: this.degreeIdToSend,
-      
     };
+    console.log(this.updatedModule);
     return this.http.put(this.apiUrl + 'EditModule', this.updatedModule);
   }
-
 
   getCourses() {
     return this.http.get(this.apiUrl + 'GetAllCourseFolder');
@@ -133,11 +134,12 @@ export class AdminService {
     this.courseToSave = {
       AdminId: this.adminId,
       CourseFolderName: obj.CourseName,
-  
     };
     console.log(this.courseToSave);
-    return this.http.post(this.apiUrl + 'CreateCourseFolder', this.courseToSave);
- 
+    return this.http.post(
+      this.apiUrl + 'CreateCourseFolder',
+      this.courseToSave
+    );
   }
 
   deleteCourse(id: number) {
@@ -146,17 +148,14 @@ export class AdminService {
 
   editCourse(newCourseName) {
     var oldObj = this.courses.find((x) => x.id === this.editId);
-console.log(oldObj);
+    console.log(oldObj);
     this.updatedCourse = {
       Id: oldObj.id,
-      AdminId:this.adminId,
+      AdminId: this.adminId,
       CourseFolderName: newCourseName.CourseName,
     };
     console.log(this.adminId);
     console.log(this.updatedCourse);
     return this.http.put(this.apiUrl + 'EditCourseFolder', this.updatedCourse);
   }
-
-
-
 }
