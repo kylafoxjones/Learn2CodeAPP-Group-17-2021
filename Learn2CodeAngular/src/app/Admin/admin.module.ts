@@ -17,6 +17,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { CourseComponent } from './course/course.component';
 import { AddEditCourseComponent } from './course/add-edit-course/add-edit-course.component';
+import { SessionContentCategoryComponent } from './session-content-category/session-content-category.component';
+import { AddEditSessionContentCategoryComponent } from './session-content-category/add-edit-session-content-category/add-edit-session-content-category.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,8 @@ import { AddEditCourseComponent } from './course/add-edit-course/add-edit-course
     AddEditModuleComponent,
     CourseComponent,
     AddEditCourseComponent,
+    SessionContentCategoryComponent,
+    AddEditSessionContentCategoryComponent,
    
   ],
   imports: [

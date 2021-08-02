@@ -1,0 +1,35 @@
+<h5 style="text-align: center">{{ popupTitle }}</h5>
+<hr />
+<mat-dialog-content>
+  <mat-form-field class="example-full-width">
+    <mat-label>Name:</mat-label>
+    <div *ngIf="placeHolderOrNo">
+      <input
+        [(ngModel)]="data.SessionContentCategoryName"
+        matInput
+        placeholder="{{ oldSessionContentCategory }}"
+      />
+    </div>
+
+    <div *ngIf="!placeHolderOrNo">
+      <input
+        [(ngModel)]="data.SessionContentCategoryName"
+        matInput
+        placeholder="Session content category"
+      />
+    </div>
+  </mat-form-field>
+</mat-dialog-content>
+<h1>{{ data.id }}</h1>
+<div style="margin: auto; padding-top: 1rem; text-align: center">
+  <button (click)="submitEdittedSessionContentCategory()" style="width: 6rem" class="btn btn-info">
+    Submit
+  </button>
+  <button
+    [mat-dialog-close]
+    style="margin-left: 2rem; width: 6rem"
+    class="btn btn-danger"
+  >
+    Cancel
+  </button>
+</div>
