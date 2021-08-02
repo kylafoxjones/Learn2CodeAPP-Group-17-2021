@@ -19,6 +19,8 @@ import { CourseComponent } from './course/course.component';
 import { AddEditCourseComponent } from './course/add-edit-course/add-edit-course.component';
 import { SessionContentCategoryComponent } from './session-content-category/session-content-category.component';
 import { AddEditSessionContentCategoryComponent } from './session-content-category/add-edit-session-content-category/add-edit-session-content-category.component';
+import { CourseContentCategoryComponent } from './course-content-category/course-content-category.component';
+import { AddEditCourseContentCategoryComponent } from './course-content-category/add-edit-course-content-category/add-edit-course-content-category.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +35,8 @@ import { AddEditSessionContentCategoryComponent } from './session-content-catego
     AddEditCourseComponent,
     SessionContentCategoryComponent,
     AddEditSessionContentCategoryComponent,
+    CourseContentCategoryComponent,
+    AddEditCourseContentCategoryComponent,
    
   ],
   imports: [

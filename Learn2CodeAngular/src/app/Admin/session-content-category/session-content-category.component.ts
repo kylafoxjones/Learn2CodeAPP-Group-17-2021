@@ -22,7 +22,7 @@ export class SessionContentCategoryComponent implements OnInit {
     public dialog: MatDialog,
     private service: AdminService) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.getAllSessionContentCategories();
   }
 

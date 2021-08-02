@@ -1,0 +1,41 @@
+<h5 style="text-align: center">{{ popupTitle }}</h5>
+<hr />
+<mat-dialog-content>
+    <mat-form-field class="example-full-width">
+      <mat-label>Name:</mat-label>
+      <input
+        [(ngModel)]="data.CourseSubCategoryName"
+        matInput
+        placeholder="{{ oldCourseContentCategory }}"
+      />
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Description:</mat-label>
+      <input [(ngModel)]="data.Description" matInput placeholder="Description" />
+    </mat-form-field>
+    
+    <mat-form-field class="example-full-width">
+      <mat-label>Price:</mat-label>
+      <input [(ngModel)]="data.price" matInput placeholder="Price" />
+    </mat-form-field>
+</mat-dialog-content>
+
+
+<h1>{{ data.id }}</h1>
+<div style="margin: auto; padding-top: 1rem; text-align: center">
+  <button
+    (click)="submitEdittedCourseContentCategory()"
+    style="width: 6rem"
+    class="btn btn-info"
+  >
+    Submit
+  </button>
+  <button
+    [mat-dialog-close]
+    style="margin-left: 2rem; width: 6rem"
+    class="btn btn-danger"
+  >
+    Cancel
+  </button>
+</div>

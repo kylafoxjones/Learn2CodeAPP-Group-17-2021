@@ -48,6 +48,14 @@ export class AdminService {
   sessionContentCategoryToSave: any = {};
   // admin id is used here too
 
+   //course content cat variables
+   editCourseContentCat: any;
+   courseContentCategories: any = [];
+   updatedCourseContentCategory: any = {};
+   oldCourseContentCategoryName: any;
+   courseContentCategoryToSave: any = {};
+   courseFolderIdToSend: any;
+
   constructor(private http: HttpClient) {}
 
   getUniversities() {
@@ -167,6 +175,45 @@ export class AdminService {
     return this.http.put(this.apiUrl + 'EditCourseFolder', this.updatedCourse);
   }
 
+   
+  getCourseContentCategories() {
+    return this.http.get(this.apiUrl + 'GetAllCourseSubCategory');
+  }
+
+  createCourseContentCategory(obj) {
+    this.courseContentCategoryToSave = {
+      CourseFolderId:this.courseFolderIdToSend,
+      CourseSubCategoryName: obj.CourseSubCategoryName,
+      Description: obj.Description,
+      price:obj.price,
+      
+    };
+    console.log(this.courseContentCategoryToSave);
+    return this.http.post(
+      this.apiUrl + 'CreateCourseSubCategory',
+      this.courseContentCategoryToSave
+    );
+  }
+
+  deleteCourseContentCategory(id: number) {
+    return this.http.delete(this.apiUrl + 'DeleteCourseSubCategory/' + id);
+  }
+
+  editCourseContentCategory(newCourseContentCat) {
+    var oldObj = this.courseContentCategories.find((x) => x.id === this.editId);
+    console.log(oldObj);
+    
+    this.updatedCourseContentCategory = {
+     
+      Id: oldObj.id,
+      CourseFolderId: this.courseFolderIdToSend,
+      CourseSubCategoryName: newCourseContentCat.CourseSubCategoryName,
+      Description: newCourseContentCat.Description,
+      price:newCourseContentCat.price,
+    };
+    console.log(this.updatedCourseContentCategory);
+    return this.http.put(this.apiUrl + 'DeleteCourseSubCategory', this.updatedCourseContentCategory);
+  }
   
   getSessionContentCategories() {
     return this.http.get(this.apiUrl + 'GetAllSessionContentCategory');
