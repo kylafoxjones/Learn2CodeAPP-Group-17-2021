@@ -50,6 +50,8 @@ export class CourseContentCategoryComponent implements OnInit {
   openAddDialog() {
     this.service.edit = false;
     this.service.editId = 0;
+    //fill a object place holder when add is clicked with nothing
+    this.service.editCourseContentCat = {};
     this.service.title = 'Create course content category';
     const dialogRef = this.dialog.open(AddEditCourseContentCategoryComponent, {
       width: '350px',
@@ -61,6 +63,7 @@ export class CourseContentCategoryComponent implements OnInit {
 
   openEditDialog(obj) {
     this.service.edit = true;
+    //fill the object place holder when edit is clicked
     this.service.editCourseContentCat = obj;
     console.log(this.service.editCourseContentCat);
     this.service.oldCourseContentCategoryName = obj.courseContentCategoryName;

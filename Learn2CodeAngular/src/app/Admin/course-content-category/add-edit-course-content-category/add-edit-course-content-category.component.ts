@@ -15,10 +15,12 @@ export class AddEditCourseContentCategoryComponent implements OnInit {
   newCourseContentCategory: any = <any>{};
   data: any = {};
   popupTitle = this.service.title;
-  placeholder = this.service.oldCourseContentCategoryName;
+  
+  // get the placeholder object below
+  placeholder = this.service.editCourseContentCat;
   oldCourseContentCategory: any;
-  oldDescription:any;
-  oldPrice:any;
+  oldDescription: any;
+  oldPrice: any;
   placeHolderOrNo = this.service.edit;
 
   constructor(
@@ -28,13 +30,17 @@ export class AddEditCourseContentCategoryComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.oldCourseContentCategory = this.service.oldCourseContentCategoryName;
-    this.oldDescription = this.service.oldCourseContentCategoryDescription;
-    this.oldPrice = this.service.oldCourseContentCategoryPrice;
-    
+    console.log(this.placeholder);
+    // getting the object placeholder and its values from the course ts
+    this.data.CourseSubCategoryName = this.placeholder.courseSubCategoryName;
+    this.data.Description = this.placeholder.description;
+    this.data.price = this.placeholder.price;
   }
   submitEdittedCourseContentCategory() {
-    console.log('this is the id i got from the folder', this.service.courseFolderIdToSend);
+    console.log(
+      'this is the id i got from the folder',
+      this.service.courseFolderIdToSend
+    );
     if (this.service.editId > 0) {
       Swal.fire({
         title: 'Are you sure you want to edit the course content category?',
@@ -45,11 +51,13 @@ export class AddEditCourseContentCategoryComponent implements OnInit {
         confirmButtonText: 'Yes',
       }).then((result) => {
         if (result.isConfirmed) {
-          this.service.editCourseContentCategory(this.data).subscribe((result) => {
-            this.data = result;
-            this.dialogRef.close();
-            Swal.fire('Update successful!', this.data.message, 'success');
-          });
+          this.service
+            .editCourseContentCategory(this.data)
+            .subscribe((result) => {
+              this.data = result;
+              this.dialogRef.close();
+              Swal.fire('Update successful!', this.data.message, 'success');
+            });
         }
       });
     } else {
@@ -62,11 +70,13 @@ export class AddEditCourseContentCategoryComponent implements OnInit {
         confirmButtonText: 'Yes',
       }).then((result) => {
         if (result.isConfirmed) {
-          this.service.createCourseContentCategory(this.data).subscribe((result) => {
-            this.data = result;
-            this.dialogRef.close();
-            Swal.fire('Saved!', this.data.message, 'success');
-          });
+          this.service
+            .createCourseContentCategory(this.data)
+            .subscribe((result) => {
+              this.data = result;
+              this.dialogRef.close();
+              Swal.fire('Saved!', this.data.message, 'success');
+            });
         }
       });
     }

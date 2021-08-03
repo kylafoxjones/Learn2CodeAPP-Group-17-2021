@@ -3,48 +3,20 @@
 <mat-dialog-content>
   <mat-form-field class="example-full-width">
     <mat-label>Name:</mat-label>
-    <div *ngIf="placeHolderOrNo">
-      <input
-        [(ngModel)]="data.CourseSubCategoryName"
-        matInput
-        placeholder="{{ oldCourseContentCategory }}"
-      />
-    </div>
-    <div *ngIf="!placeHolderOrNo">
-      <input
-        [(ngModel)]="data.CourseSubCategoryName"
-        matInput
-        placeholder="Course content category name"
-      />
-    </div>
+
+    <input [(ngModel)]="data.CourseSubCategoryName" matInput />
   </mat-form-field>
 
   <mat-form-field class="example-full-width">
     <mat-label>Description:</mat-label>
-    <div *ngIf="placeHolderOrNo">
-      <input
-        [(ngModel)]="data.Description"
-        matInput
-        placeholder="{{ oldDescription }}"
-      />
-    </div>
-    <div *ngIf="!placeHolderOrNo">
-      <input
-        [(ngModel)]="data.Description"
-        matInput
-        placeholder="Description"
-      />
-    </div>
+
+    <input [(ngModel)]="data.Description" matInput />
   </mat-form-field>
 
   <mat-form-field class="example-full-width">
     <mat-label>Price:</mat-label>
-    <div *ngIf="placeHolderOrNo">
-      <input [(ngModel)]="data.price" matInput placeholder="{{ oldPrice }}" />
-    </div>
-    <div *ngIf="!placeHolderOrNo">
-      <input [(ngModel)]="data.price" matInput placeholder="Price" />
-    </div>
+
+    <input [(ngModel)]="data.price" matInput />
   </mat-form-field>
 </mat-dialog-content>
 
