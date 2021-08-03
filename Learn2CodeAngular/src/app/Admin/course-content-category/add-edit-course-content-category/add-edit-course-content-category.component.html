@@ -14,7 +14,7 @@
       <input
         [(ngModel)]="data.CourseSubCategoryName"
         matInput
-        placeholder="{{ oldCourseContentCategory }}"
+        placeholder="Course content category name"
       />
     </div>
   </mat-form-field>
@@ -25,7 +25,7 @@
       <input
         [(ngModel)]="data.Description"
         matInput
-        placeholder="Description"
+        placeholder="{{ oldDescription }}"
       />
     </div>
     <div *ngIf="!placeHolderOrNo">
@@ -40,7 +40,7 @@
   <mat-form-field class="example-full-width">
     <mat-label>Price:</mat-label>
     <div *ngIf="placeHolderOrNo">
-      <input [(ngModel)]="data.price" matInput placeholder="Price" />
+      <input [(ngModel)]="data.price" matInput placeholder="{{ oldPrice }}" />
     </div>
     <div *ngIf="!placeHolderOrNo">
       <input [(ngModel)]="data.price" matInput placeholder="Price" />

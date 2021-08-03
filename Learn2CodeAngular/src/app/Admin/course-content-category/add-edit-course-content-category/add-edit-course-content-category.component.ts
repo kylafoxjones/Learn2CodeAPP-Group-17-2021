@@ -17,6 +17,8 @@ export class AddEditCourseContentCategoryComponent implements OnInit {
   popupTitle = this.service.title;
   placeholder = this.service.oldCourseContentCategoryName;
   oldCourseContentCategory: any;
+  oldDescription:any;
+  oldPrice:any;
   placeHolderOrNo = this.service.edit;
 
   constructor(
@@ -27,6 +29,9 @@ export class AddEditCourseContentCategoryComponent implements OnInit {
 
   ngOnInit() {
     this.oldCourseContentCategory = this.service.oldCourseContentCategoryName;
+    this.oldDescription = this.service.oldCourseContentCategoryDescription;
+    this.oldPrice = this.service.oldCourseContentCategoryPrice;
+    
   }
   submitEdittedCourseContentCategory() {
     console.log('this is the id i got from the folder', this.service.courseFolderIdToSend);

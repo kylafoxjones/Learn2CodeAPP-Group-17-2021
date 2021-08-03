@@ -50,7 +50,7 @@ export class CourseContentCategoryComponent implements OnInit {
   openAddDialog() {
     this.service.edit = false;
     this.service.editId = 0;
-    this.service.title = 'Create degree';
+    this.service.title = 'Create course content category';
     const dialogRef = this.dialog.open(AddEditCourseContentCategoryComponent, {
       width: '350px',
     });
@@ -64,6 +64,9 @@ export class CourseContentCategoryComponent implements OnInit {
     this.service.editCourseContentCat = obj;
     console.log(this.service.editCourseContentCat);
     this.service.oldCourseContentCategoryName = obj.courseContentCategoryName;
+    this.service.oldCourseContentCategoryDescription = obj.Description;
+    console.log(this.service.oldCourseContentCategoryDescription);
+    this.service.oldCourseContentCategoryPrice = obj.price;
     this.service.courseContentCategories = this.courseContentCategoryList;
     this.service.editId = obj.id;
     this.service.title = 'Edit course content category';

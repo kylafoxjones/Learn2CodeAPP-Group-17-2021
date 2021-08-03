@@ -53,6 +53,8 @@ export class AdminService {
    courseContentCategories: any = [];
    updatedCourseContentCategory: any = {};
    oldCourseContentCategoryName: any;
+   oldCourseContentCategoryDescription:any;
+   oldCourseContentCategoryPrice:any;
    courseContentCategoryToSave: any = {};
    courseFolderIdToSend: any;
 
@@ -254,5 +256,12 @@ export class AdminService {
   }
   deleteStudent(id:string) {
     return this.http.delete(this.apiUrl + 'DeleteStudent/' + id);
+  }
+
+  getTutors() {
+    return this.http.get(this.apiUrl + 'GetAllTutors');
+  }
+  deleteTutor(id:string) {
+    return this.http.delete(this.apiUrl + 'DeleteTutor/' + id);
   }
 }

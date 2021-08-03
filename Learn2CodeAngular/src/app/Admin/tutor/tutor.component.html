@@ -24,7 +24,7 @@
   <nb-layout>
     <nb-layout-column>
       <div style="padding-top: 2rem; padding-bottom: 2rem">
-        <div class="header">List of Students</div>
+        <div class="header">Tutors</div>
       </div>
   
       <div
@@ -59,21 +59,17 @@
         >
           <thead>
             <tr>
-              <th scope="col">Student Name</th>
-              <th scope="col">Student Surname</th>
-              <th scope="col">Student Email</th>
-              <th scope="col">Student Phone</th>
-              <th scope="col">Module</th>
+              <th scope="col">Tutor Name</th>
+              <th scope="col">Tutor Surname</th>
+              <th scope="col">Tutor Email</th>
               <th scope="col"></th>
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let item of studentList | filter: search">
-              <td>{{ item.studentName }}</td>
-              <td>{{ item.studentSurname }}</td>
-              <td>{{ item.identity.email }}</td>
-               <td>{{ item.studentCell }}</td>
-              <td>{{ item.studentModule[0].module.moduleCode }}</td> 
+            <tr *ngFor="let item of tutorList | filter: search">
+              <td>{{ item.tutorName }}</td>
+              <td>{{ item.tutorSurname }}</td>
+              <td>{{ item.tutorEmail }}</td>
               <td>
                 <button (click)="delete(item.userId)" class="btn btn-danger">
                   <i class="fa fa-trash"></i>

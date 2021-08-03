@@ -22,6 +22,7 @@ import { AddEditSessionContentCategoryComponent } from './session-content-catego
 import { CourseContentCategoryComponent } from './course-content-category/course-content-category.component';
 import { AddEditCourseContentCategoryComponent } from './course-content-category/add-edit-course-content-category/add-edit-course-content-category.component';
 import { StudentComponent } from './student/student.component';
+import { TutorComponent } from './tutor/tutor.component';
 
 
 @NgModule({
@@ -40,6 +41,7 @@ import { StudentComponent } from './student/student.component';
     CourseContentCategoryComponent,
     AddEditCourseContentCategoryComponent,
     StudentComponent,
+    TutorComponent,
   
    
   ],
