@@ -27,6 +27,7 @@ export class UniversityComponent implements OnInit {
 
   ngOnInit() {
     this.getAllUniversities();
+
   }
 
   delete(id: number) {
@@ -51,6 +52,8 @@ export class UniversityComponent implements OnInit {
   openAddDialog() {
     this.service.edit = false;
     this.service.editId = 0;
+      //fill a object place holder when add is clicked with nothing
+      this.service.editUni = {};
     this.service.title = 'Create University';
     const dialogRef = this.dialog.open(AddEditUniversityComponent, {
       width: '350px',
@@ -62,6 +65,7 @@ export class UniversityComponent implements OnInit {
 
   openEditDialog(obj) {
     this.service.edit = true;
+        //fill the object place holder when edit is clicked
     this.service.editUni = obj;
     this.service.oldUniName = obj.universityName;
     this.service.unis = this.universityList;

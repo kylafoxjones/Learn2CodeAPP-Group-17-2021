@@ -15,7 +15,7 @@ export class AddEditUniversityComponent implements OnInit {
   newUniversity: any = <any>{};
   data: any = {};
   popupTitle = this.service.title;
-  placeholder = this.service.oldUniName;
+  placeholder = this.service.editUni;
   oldUni: any;
   placeHolderOrNo = this.service.edit;
 
@@ -26,7 +26,9 @@ export class AddEditUniversityComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.oldUni = this.service.oldUniName;
+  //  this.oldUni = this.service.oldUniName;
+    this.data.UniversityName=this.placeholder.universityName;
+  console.log(this.placeholder.universityName);
   }
 
   submitEdittedUni() {

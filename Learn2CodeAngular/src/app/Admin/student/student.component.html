@@ -63,7 +63,7 @@
               <th scope="col">Student Surname</th>
               <th scope="col">Student Email</th>
               <th scope="col">Student Phone</th>
-              <th scope="col">Module</th>
+              <th scope="col">University</th>
               <th scope="col"></th>
             </tr>
           </thead>
@@ -73,7 +73,7 @@
               <td>{{ item.studentSurname }}</td>
               <td>{{ item.identity.email }}</td>
                <td>{{ item.studentCell }}</td>
-              <td>{{ item.studentModule[0].module.moduleCode }}</td> 
+              <td>{{ item.studentModule[0].module.degree.university.universityName }}</td> 
               <td>
                 <button (click)="delete(item.userId)" class="btn btn-danger">
                   <i class="fa fa-trash"></i>

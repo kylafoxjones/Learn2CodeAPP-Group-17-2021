@@ -3,17 +3,13 @@
 <mat-dialog-content>
   <mat-form-field class="example-full-width">
     <mat-label>Name:</mat-label>
-    <div *ngIf="placeHolderOrNo">
+  
       <input
         [(ngModel)]="data.DegreeName"
         matInput
-        placeholder="{{ oldDegree }}"
+  
       />
-    </div>
-
-    <div *ngIf="!placeHolderOrNo">
-      <input [(ngModel)]="data.DegreeName" matInput placeholder="Degree name" />
-    </div>
+   
   </mat-form-field>
 </mat-dialog-content>
 <h1>{{ data.id }}</h1>

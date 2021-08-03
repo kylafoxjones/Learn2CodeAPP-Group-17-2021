@@ -14,7 +14,7 @@ export class AddEditModuleComponent implements OnInit {
   newModule: any = <any>{};
   data: any = {};
   popupTitle = this.service.title;
-  placeholder = this.service.oldModuleName;
+  placeholder = this.service.editMod;
   oldModule: any;
   placeHolderOrNo = this.service.edit;
 
@@ -25,7 +25,8 @@ export class AddEditModuleComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.oldModule = this.service.oldModuleName;
+   
+    this.data.ModuleCode=this.placeholder.moduleCode;
   }
 
   submitEdittedModule() {

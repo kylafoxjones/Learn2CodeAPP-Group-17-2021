@@ -50,6 +50,7 @@ export class ModuleComponent implements OnInit {
   openAddDialog() {
     this.service.edit = false;
     this.service.editId = 0;
+    this.service.editMod = {};
     this.service.title = 'Create module';
     const dialogRef = this.dialog.open(AddEditModuleComponent, {
       width: '350px',

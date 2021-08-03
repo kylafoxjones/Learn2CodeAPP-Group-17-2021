@@ -51,6 +51,8 @@ export class CourseComponent implements OnInit {
     this.getAdminId();
     this.service.edit = false;
     this.service.editId = 0;
+      //fill a object place holder when add is clicked with nothing
+    this.service.editCrs = {};
     this.service.title = 'Create Course';
     const dialogRef = this.dialog.open(AddEditCourseComponent, {
       width: '350px',
@@ -63,6 +65,7 @@ export class CourseComponent implements OnInit {
   openEditDialog(obj) {
     this.getAdminId();
     this.service.edit = true;
+     //fill the object place holder when edit is clicked
     this.service.editCrs = obj;
     console.log(this.service.editCrs);
     this.service.oldCourseName = obj.courseFolderName;

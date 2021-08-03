@@ -15,7 +15,8 @@ export class AddEditCourseComponent implements OnInit {
   newCourse: any = <any>{};
   data: any = {};
   popupTitle = this.service.title;
-  placeholder = this.service.oldCourseName;
+    // get the placeholder object below
+  placeholder = this.service.editCrs;
   oldCourse: any;
   placeHolderOrNo = this.service.edit;
 
@@ -26,7 +27,9 @@ export class AddEditCourseComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.oldCourse = this.service.oldCourseName;
+    //this.oldCourse = this.service.oldCourseName;
+    this.data.CourseFolderName=this.placeholder.courseFolderName;
+    console.log(this.data.CourseFolderName);
   }
 
   submitEdittedCourse() {

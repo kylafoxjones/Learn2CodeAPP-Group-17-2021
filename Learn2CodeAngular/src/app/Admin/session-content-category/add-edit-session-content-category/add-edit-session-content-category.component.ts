@@ -15,7 +15,7 @@ export class AddEditSessionContentCategoryComponent implements OnInit {
   newSessonContentCategory: any = <any>{};
   data: any = {};
   popupTitle = this.service.title;
-  placeholder = this.service.oldSessionContentCategoryName;
+  placeholder = this.service.editSessionContentCat;
   oldSessionContentCategory: any;
   placeHolderOrNo = this.service.edit;
 
@@ -24,7 +24,7 @@ export class AddEditSessionContentCategoryComponent implements OnInit {
     private service: AdminService) { }
 
   ngOnInit(): void {
-    this.oldSessionContentCategory = this.service.oldSessionContentCategoryName;
+    this.data.SessionContentCategoryName = this.placeholder.sessionContentCategoryName;
   }
   submitEdittedSessionContentCategory() {
     if (this.service.editId > 0) {

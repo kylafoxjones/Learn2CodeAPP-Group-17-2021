@@ -30,7 +30,7 @@ export class AdminService {
   updatedModule: any = {};
   oldModuleName: any;
   moduleToSave: any = {};
-  //degreeId: any;
+
 
   //course variables
   editCrs: any;
@@ -57,6 +57,15 @@ export class AdminService {
    oldCourseContentCategoryPrice:any;
    courseContentCategoryToSave: any = {};
    courseFolderIdToSend: any;
+
+
+      //subscription variables
+      editSubscr: any;
+      subscriptions: any = [];
+      updatedSubscription: any = {};
+      oldSubscription: any;
+      subscriptionToSave: any = {};
+     
 
   constructor(private http: HttpClient) {}
 
@@ -252,7 +261,7 @@ export class AdminService {
   }
 
   getStudents() {
-    return this.http.get(this.apiUrl + 'GeAllStudents');
+    return this.http.get(this.apiUrl + 'GetAllStudents');
   }
   deleteStudent(id:string) {
     return this.http.delete(this.apiUrl + 'DeleteStudent/' + id);
@@ -264,4 +273,50 @@ export class AdminService {
   deleteTutor(id:string) {
     return this.http.delete(this.apiUrl + 'DeleteTutor/' + id);
   }
+
+   
+  getSubscriptions() {
+    return this.http.get(this.apiUrl + 'GetAllSubscriptions');
+  }
+
+  createSubscription(obj) {
+    this.subscriptionToSave = {
+      AdminId:this.adminId,
+      SubscriptionName: obj.SubscriptionName,
+      Duration: obj.Duration,
+      price:obj.price,
+      Quantity:obj.Quantity,
+      TutorSessionId:
+      
+    };
+    console.log(this.subscriptionToSave);
+    return this.http.post(
+      this.apiUrl + 'CreateSubscription',
+      this.subscriptionToSave
+    );
+  }
+
+  deleteSubscription(id: number) {
+    return this.http.delete(this.apiUrl + 'DeleteSubscription/' + id);
+  }
+
+  editSubscription(newSubscription) {
+    var oldObj = this.subscriptions.find((x) => x.id === this.editId);
+    console.log(oldObj); //extract from array where objects are based off the model which has courseFolder
+    //what you get from api is based off the model
+  
+    this.updatedSubscription = {
+      AdminId:this.adminId,
+      SubscriptionName: newSubscription.SubscriptionName,
+      Duration: newSubscription.Duration,
+      price:newSubscription.price,
+      Quantity:newSubscription.Quantity,
+      TutorSessionId:
+      
+    };
+    console.log(this.updatedSubscription); //this is the dto
+    //what you send is dtos, they are not based exactly on the models
+    return this.http.put(this.apiUrl + 'EditSubscription', this.updatedSubscription);
+  }
+  
 }

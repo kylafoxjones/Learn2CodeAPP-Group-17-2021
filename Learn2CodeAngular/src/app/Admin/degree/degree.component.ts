@@ -49,6 +49,8 @@ export class DegreeComponent implements OnInit {
   openAddDialog() {
     this.service.edit = false;
     this.service.editId = 0;
+      //fill a object place holder when add is clicked with nothing
+      this.service.editDeg = {};
     this.service.title = 'Create degree';
     const dialogRef = this.dialog.open(AddEditDegreeComponent, {
       width: '350px',

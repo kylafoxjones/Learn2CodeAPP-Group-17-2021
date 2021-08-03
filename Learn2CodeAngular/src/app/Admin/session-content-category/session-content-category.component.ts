@@ -49,6 +49,7 @@ export class SessionContentCategoryComponent implements OnInit {
     this.getAdminId();
     this.service.edit = false;
     this.service.editId = 0;
+    this.service.editSessionContentCat = {};
     this.service.title = 'Create session content category';
     const dialogRef = this.dialog.open(AddEditSessionContentCategoryComponent, {
       width: '350px',

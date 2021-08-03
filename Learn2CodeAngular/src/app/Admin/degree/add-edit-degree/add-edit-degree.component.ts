@@ -14,7 +14,7 @@ export class AddEditDegreeComponent implements OnInit {
   newDegree: any = <any>{};
   data: any = {};
   popupTitle = this.service.title;
-  placeholder = this.service.oldDegreeName;
+  placeholder = this.service.editDeg;
   oldDegree: any;
   placeHolderOrNo = this.service.edit;
 
@@ -25,7 +25,9 @@ export class AddEditDegreeComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.oldDegree = this.service.oldDegreeName;
+   // this.oldDegree = this.service.oldDegreeName;
+    this.data.DegreeName=this.placeholder.degreeName;
+    console.log(this.placeholder.degreeName);
   }
 
   submitEdittedDegree() {
