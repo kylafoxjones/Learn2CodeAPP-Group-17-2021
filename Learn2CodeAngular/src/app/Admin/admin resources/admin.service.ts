@@ -59,16 +59,16 @@ export class AdminService {
    courseFolderIdToSend: any;
 
 
-      //subscription variables
-      editSubscr: any;
-      subscriptions: any = [];
-      updatedSubscription: any = {};
-      oldSubscription: any;
-      subscriptionToSave: any = {};
-      TutorSessionIdFromDropdown:any;
+  //subscription variables
+  editSubscr: any;
+  subscriptions: any = [];
+  updatedSubscription: any = {};
+  oldSubscription: any;
+  subscriptionToSave: any = {};
+  TutorSessionIdFromDropdown:any;
 
   constructor(private http: HttpClient) {}
-
+//#region university
   getUniversities() {
     return this.http.get(this.apiUrl + 'GetAllUniversities');
   }
@@ -91,8 +91,10 @@ export class AdminService {
     };
     return this.http.put(this.apiUrl + 'EditUniversity', this.updatedUni);
   }
+//#endregion
 
-  getDegrees(id: number) {
+//#region degree
+getDegrees(id: number) {
     return this.http.get(
       this.apiUrl + 'GetAllDegrees/' + this.universityIdToSend
     );
@@ -122,8 +124,10 @@ export class AdminService {
     };
     return this.http.put(this.apiUrl + 'EditDegree', this.updatedDegree);
   }
+//#endregion
 
-  getModules(id: number) {
+//#region Modules  
+getModules(id: number) {
     return this.http.get(this.apiUrl + 'GetAllModules/' + this.degreeIdToSend);
   }
 
@@ -152,7 +156,9 @@ export class AdminService {
     console.log(this.updatedModule);
     return this.http.put(this.apiUrl + 'EditModule', this.updatedModule);
   }
+//#endregion
 
+//#region courses
   getCourses() {
     return this.http.get(this.apiUrl + 'GetAllCourseFolder');
   }
@@ -185,8 +191,9 @@ export class AdminService {
     console.log(this.updatedCourse);
     return this.http.put(this.apiUrl + 'EditCourseFolder', this.updatedCourse);
   }
+//#endregion
 
-   
+//#region course content category
   getCourseContentCategories() {
     return this.http.get(this.apiUrl + 'GetAllCourseSubCategory/'+ this.courseFolderIdToSend);
   }
@@ -226,7 +233,9 @@ export class AdminService {
     //what you send is dtos, they are not based exactly on the models
     return this.http.put(this.apiUrl + 'EditCourseSubCategory', this.updatedCourseContentCategory);
   }
-  
+  //#endregion
+
+//#region session content category
   getSessionContentCategories() {
     return this.http.get(this.apiUrl + 'GetAllSessionContentCategory');
   }
@@ -259,22 +268,29 @@ export class AdminService {
     console.log(this.updatedSessionContentCategory);
     return this.http.put(this.apiUrl + 'EditSessionContentCategory', this.updatedSessionContentCategory);
   }
+//#endregion
 
-  getStudents() {
+//#region students
+getStudents() {
     return this.http.get(this.apiUrl + 'GetAllStudents');
   }
+
   deleteStudent(id:string) {
     return this.http.delete(this.apiUrl + 'DeleteStudent/' + id);
   }
-
+//#endregion
+ 
+//#region Tutors
   getTutors() {
     return this.http.get(this.apiUrl + 'GetAllTutors');
   }
   deleteTutor(id:string) {
     return this.http.delete(this.apiUrl + 'DeleteTutor/' + id);
   }
-
-  getSubscriptions() {
+//#endregion
+  
+//#region subscriptions
+getSubscriptions() {
     return this.http.get(this.apiUrl + 'GetAllSubscriptions');
   }
 
@@ -305,6 +321,7 @@ export class AdminService {
     //what you get from api is based off the model
   
     this.updatedSubscription = {
+      Id: oldObj.id,
       AdminId:this.adminId,
       SubscriptionName: newSubscription.SubscriptionName,
       Duration: newSubscription.Duration,
@@ -318,11 +335,9 @@ export class AdminService {
     return this.http.put(this.apiUrl + 'EditSubscription', this.updatedSubscription);
   }
 
-  // getAdminId(){
-  //   return this.http.get(this.apiUrl + 'GetAdmin');
-  // }
   getSessionTypes()
   {
     return this.http.get(this.apiUrl + 'GetAllTutorSessions');
   }
+//#endregion
 }

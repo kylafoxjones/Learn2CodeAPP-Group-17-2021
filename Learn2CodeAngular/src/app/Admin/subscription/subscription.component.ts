@@ -9,18 +9,18 @@ import { AddEditSubscriptionComponent } from './add-edit-subscription/add-edit-s
 @Component({
   selector: 'app-subscription',
   templateUrl: './subscription.component.html',
-  styleUrls: ['./subscription.component.scss']
+  styleUrls: ['./subscription.component.scss'],
 })
 export class SubscriptionComponent implements OnInit {
- //declare variables
- subscriptionList: any = [];
- subscription: any;
- search;
+  //declare variables
+  subscriptionList: any = [];
+  subscription: any;
+  search;
   constructor(
     public dialog: MatDialog,
     private service: AdminService,
     private router: Router
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.getAllSubscriptions();
@@ -66,10 +66,7 @@ export class SubscriptionComponent implements OnInit {
     //fill the object place holder when edit is clicked
     this.service.editSubscr = obj;
     console.log(this.service.editSubscription);
-    // this.service.oldSubscriptionName = obj.SubscriptionName;
-    // this.service.oldSubscriptionDuration = obj.Duration;
-    
-    // this.service.oldSubscriptionPrice = obj.price;
+
     this.service.subscriptions = this.subscriptionList;
     this.service.editId = obj.id;
     this.service.title = 'Edit subscription';
@@ -83,13 +80,12 @@ export class SubscriptionComponent implements OnInit {
   getAllSubscriptions() {
     this.service.getSubscriptions().subscribe((result) => {
       this.subscriptionList = result;
-      console.log('all subscriptions from api',this.subscriptionList)
+      console.log('all subscriptions from api', this.subscriptionList);
     });
   }
 
-  getAdminId(){
-    this.service.adminId=1;
-    //function on service using the api function 
-    //in ngOnit calls serv
+  getAdminId() {
+    this.service.adminId = 1;
+    //function on service using the api function
   }
 }
