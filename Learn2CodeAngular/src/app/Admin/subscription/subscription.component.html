@@ -27,9 +27,6 @@
         <div class="header">List of Subscriptions</div>
       </div>
   
-      <button routerLink="/course" style="margin-left: 8rem" class="btn btn-info">
-        Courses
-      </button>
   
       <div
         style="
@@ -64,8 +61,8 @@
           <thead>
             <tr>
               <th scope="col">Subscription</th>
-              <th scope="col">Price</th>
               <th scope="col">Duration</th>
+              <th scope="col">Price</th>
               <th scope="col"></th>
               <th scope="col"></th>
             </tr>
@@ -73,8 +70,8 @@
           <tbody>
             <tr *ngFor="let item of subscriptionList | filter: search">
               <td>{{ item.subscriptionName }}</td>
-              <td>{{ item.price }}</td>
               <td>{{ item.duration }}</td>
+              <td>{{ item.price }}</td>
               <td>
                 <button (click)="openEditDialog(item)" class="btn btn-primary">
                   <i class="fa fa-pencil"></i>

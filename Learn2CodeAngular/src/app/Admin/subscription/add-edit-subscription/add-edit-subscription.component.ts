@@ -17,7 +17,7 @@ export class AddEditSubscriptionComponent implements OnInit {
   popupTitle = this.service.title;
   
   // get the placeholder object below
-  placeholder = this.service.editSubscription;
+  placeholder = this.service.editSubscr;
   oldSubscription: any;
 
 

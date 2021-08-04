@@ -286,7 +286,7 @@ export class AdminService {
       Duration: obj.Duration,
       price:obj.price,
       Quantity:obj.Quantity,
-      TutorSessionId:
+      TutorSessionId:1
       
     };
     console.log(this.subscriptionToSave);
@@ -311,12 +311,16 @@ export class AdminService {
       Duration: newSubscription.Duration,
       price:newSubscription.price,
       Quantity:newSubscription.Quantity,
-      TutorSessionId:
+      TutorSessionId:1
       
     };
     console.log(this.updatedSubscription); //this is the dto
     //what you send is dtos, they are not based exactly on the models
     return this.http.put(this.apiUrl + 'EditSubscription', this.updatedSubscription);
   }
+
+  // getAdminId(){
+  //   return this.http.get(this.apiUrl + 'GetAdmin');
+  // }
   
 }

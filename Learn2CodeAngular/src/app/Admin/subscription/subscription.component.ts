@@ -25,6 +25,7 @@ export class SubscriptionComponent implements OnInit {
   ngOnInit() {
     this.getAllSubscriptions();
     this.getAdminId();
+    console.log(this.service.adminId);
   }
 
   delete(id: number) {
