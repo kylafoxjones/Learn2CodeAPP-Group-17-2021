@@ -26,7 +26,9 @@ import { TutorComponent } from './tutor/tutor.component';
 import { SubscriptionComponent } from './subscription/subscription.component';
 import { AddEditSubscriptionComponent } from './subscription/add-edit-subscription/add-edit-subscription.component';
 import { MatSelectModule} from '@angular/material/select/';
-
+import { TutorApplicationComponent } from './tutor-application/tutor-application.component';
+import { AcceptRejectApplicationComponent } from './tutor-application/accept-reject-application/accept-reject-application.component';
+import {MatCardModule} from '@angular/material/card'; 
 
 
 @NgModule({
@@ -48,6 +50,8 @@ import { MatSelectModule} from '@angular/material/select/';
     TutorComponent,
     SubscriptionComponent,
     AddEditSubscriptionComponent,
+    TutorApplicationComponent,
+    AcceptRejectApplicationComponent,
   
    
   ],
@@ -61,7 +65,8 @@ import { MatSelectModule} from '@angular/material/select/';
     NbLayoutModule,
     HttpClientModule,
     Ng2SearchPipeModule,
-    MatSelectModule
+    MatSelectModule,
+    MatCardModule
     
   ],
 })

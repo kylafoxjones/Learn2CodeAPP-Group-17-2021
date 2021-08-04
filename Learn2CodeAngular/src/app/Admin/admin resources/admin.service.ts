@@ -58,14 +58,19 @@ export class AdminService {
    courseContentCategoryToSave: any = {};
    courseFolderIdToSend: any;
 
-
-  //subscription variables
+//#region subscription variables
   editSubscr: any;
   subscriptions: any = [];
   updatedSubscription: any = {};
   oldSubscription: any;
   subscriptionToSave: any = {};
   TutorSessionIdFromDropdown:any;
+//#endregion
+
+//#region tutor application variables 
+application:any ={};
+applications:any [];
+//#endregion
 
   constructor(private http: HttpClient) {}
 //#region university
@@ -339,5 +344,19 @@ getSubscriptions() {
   {
     return this.http.get(this.apiUrl + 'GetAllTutorSessions');
   }
+//#endregion
+
+//#region tutor application
+
+getTutorApplications() {
+  return this.http.get(this.apiUrl + 'GetAllAplications');
+}
+
+getTutorApplicationToLoad(id: number){
+  return this.http.get(this.apiUrl + 'GetTutorbyId/'+ id); 
+}
+rejectApp(obj) {
+  return this.http.delete(this.apiUrl + 'RejectTutor/' + obj);
+}
 //#endregion
 }

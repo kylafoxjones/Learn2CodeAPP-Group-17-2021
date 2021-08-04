@@ -11,6 +11,8 @@ import { ModuleComponent } from './module/module.component';
 import { SessionContentCategoryComponent } from './session-content-category/session-content-category.component';
 import { StudentComponent } from './student/student.component';
 import { SubscriptionComponent } from './subscription/subscription.component';
+import { AcceptRejectApplicationComponent } from './tutor-application/accept-reject-application/accept-reject-application.component';
+import { TutorApplicationComponent } from './tutor-application/tutor-application.component';
 import { TutorComponent } from './tutor/tutor.component';
 import { AddEditUniversityComponent } from './university/add-edit-university/add-edit-university.component';
 import { UniversityComponent } from './university/university.component';
@@ -57,6 +59,10 @@ const routes: Routes = [
         path: 'subscription',
         component: SubscriptionComponent,
       },
+      {
+        path: 'applications',
+        component: TutorApplicationComponent,
+      },
       //I dont know if the addEdit path though stand alone or have soemthing before it e.g admin/univers
       {
         path: 'addEditUni',
@@ -73,6 +79,10 @@ const routes: Routes = [
       {
         path: 'addEditCourse',
         component: AddEditCourseComponent,
+      },
+      {
+        path: 'acceptreject',
+        component: AcceptRejectApplicationComponent,
       },
     ],
   },
