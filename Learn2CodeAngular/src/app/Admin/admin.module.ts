@@ -25,6 +25,8 @@ import { StudentComponent } from './student/student.component';
 import { TutorComponent } from './tutor/tutor.component';
 import { SubscriptionComponent } from './subscription/subscription.component';
 import { AddEditSubscriptionComponent } from './subscription/add-edit-subscription/add-edit-subscription.component';
+import { MatSelectModule} from '@angular/material/select/';
+
 
 
 @NgModule({
@@ -59,6 +61,8 @@ import { AddEditSubscriptionComponent } from './subscription/add-edit-subscripti
     NbLayoutModule,
     HttpClientModule,
     Ng2SearchPipeModule,
+    MatSelectModule
+    
   ],
 })
 export class AdminModule {}

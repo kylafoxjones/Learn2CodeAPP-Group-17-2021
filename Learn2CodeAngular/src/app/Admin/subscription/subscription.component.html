@@ -63,6 +63,7 @@
               <th scope="col">Subscription</th>
               <th scope="col">Duration</th>
               <th scope="col">Price</th>
+              <th scope="col">Quantity</th>
               <th scope="col"></th>
               <th scope="col"></th>
             </tr>
@@ -72,6 +73,7 @@
               <td>{{ item.subscriptionName }}</td>
               <td>{{ item.duration }}</td>
               <td>{{ item.price }}</td>
+              <td>{{ item.subscriptionTutorSession[0].quantity }}</td>
               <td>
                 <button (click)="openEditDialog(item)" class="btn btn-primary">
                   <i class="fa fa-pencil"></i>

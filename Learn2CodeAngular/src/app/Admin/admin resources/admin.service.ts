@@ -65,7 +65,7 @@ export class AdminService {
       updatedSubscription: any = {};
       oldSubscription: any;
       subscriptionToSave: any = {};
-     
+      TutorSessionIdFromDropdown:any;
 
   constructor(private http: HttpClient) {}
 
@@ -274,7 +274,6 @@ export class AdminService {
     return this.http.delete(this.apiUrl + 'DeleteTutor/' + id);
   }
 
-   
   getSubscriptions() {
     return this.http.get(this.apiUrl + 'GetAllSubscriptions');
   }
@@ -286,7 +285,7 @@ export class AdminService {
       Duration: obj.Duration,
       price:obj.price,
       Quantity:obj.Quantity,
-      TutorSessionId:1
+      TutorSessionId:this.TutorSessionIdFromDropdown
       
     };
     console.log(this.subscriptionToSave);
@@ -311,7 +310,7 @@ export class AdminService {
       Duration: newSubscription.Duration,
       price:newSubscription.price,
       Quantity:newSubscription.Quantity,
-      TutorSessionId:1
+      TutorSessionId:this.TutorSessionIdFromDropdown
       
     };
     console.log(this.updatedSubscription); //this is the dto
@@ -322,5 +321,8 @@ export class AdminService {
   // getAdminId(){
   //   return this.http.get(this.apiUrl + 'GetAdmin');
   // }
-  
+  getSessionTypes()
+  {
+    return this.http.get(this.apiUrl + 'GetAllTutorSessions');
+  }
 }

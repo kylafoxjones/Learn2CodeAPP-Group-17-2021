@@ -64,7 +64,7 @@ export class SubscriptionComponent implements OnInit {
   openEditDialog(obj) {
     this.service.edit = true;
     //fill the object place holder when edit is clicked
-    this.service.editSubscription = obj;
+    this.service.editSubscr = obj;
     console.log(this.service.editSubscription);
     // this.service.oldSubscriptionName = obj.SubscriptionName;
     // this.service.oldSubscriptionDuration = obj.Duration;
@@ -83,6 +83,7 @@ export class SubscriptionComponent implements OnInit {
   getAllSubscriptions() {
     this.service.getSubscriptions().subscribe((result) => {
       this.subscriptionList = result;
+      console.log('all subscriptions from api',this.subscriptionList)
     });
   }
 

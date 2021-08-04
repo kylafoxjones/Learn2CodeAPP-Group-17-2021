@@ -2,22 +2,36 @@
 <hr />
 <mat-dialog-content>
   <mat-form-field class="example-full-width">
-    <mat-label>Name:</mat-label>
+    <!--dropdown with session type names -->
+    <mat-label>Session Type </mat-label>
+    <mat-select (valueChange)="selectType($event)">
+      <mat-option *ngFor="let item of typeList" [value]="item.id">
+        {{ item.sessionType.sessionTypeName }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
 
+  <!-- subscription name -->
+  <mat-form-field class="example-full-width">
+    <mat-label>Name:</mat-label>
     <input [(ngModel)]="data.SubscriptionName" matInput />
   </mat-form-field>
 
   <mat-form-field class="example-full-width">
     <mat-label>Duration:</mat-label>
-
     <input [(ngModel)]="data.Duration" matInput />
   </mat-form-field>
 
   <mat-form-field class="example-full-width">
-    <mat-label>Price:</mat-label>
+    <mat-label>Quantity:</mat-label>
+    <input [(ngModel)]="data.Quantity" matInput />
+  </mat-form-field>
 
+  <mat-form-field class="example-full-width">
+    <mat-label>Price:</mat-label>
     <input [(ngModel)]="data.price" matInput />
   </mat-form-field>
+
 </mat-dialog-content>
 
 <h1>{{ data.id }}</h1>
