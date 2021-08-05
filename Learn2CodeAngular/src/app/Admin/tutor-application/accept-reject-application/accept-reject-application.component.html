@@ -1,40 +1,28 @@
-<style>
-  .example-card {
-    max-width: 400px;
-  }
+<h5 style="text-align: center">{{ tutorApplicationToview.tutorName + " " + tutorApplicationToview.tutorSurname}}</h5>
+<hr />
 
-  .example-header-image {
-    background-image: url("https://material.angular.io/assets/img/examples/shiba1.jpg");
-    background-size: cover;
-  }
-</style>
-
-<mat-card class="example-card">
-  <mat-card-header>
-    <div mat-card-avatar class="example-header-image"></div>
-    <mat-card-title>{{ tutorApplicationToview.tutorName + " " + tutorApplicationToview.tutorSurname}}</mat-card-title>
-    <mat-card-subtitle>Tutor Applicant</mat-card-subtitle>
-  </mat-card-header>
-  <mat-card-content>
-    <p><strong>About:</strong></p>
-    <p>
-      {{ tutorApplicationToview.tutorAbout }}
-    </p>
+    <p><strong>About:</strong>  {{ tutorApplicationToview.tutorAbout }}</p>
+   
     <p><strong>Cellphone:</strong> {{ tutorApplicationToview.tutorCell }}</p>
     <p><strong>Email:</strong> {{ tutorApplicationToview.tutorEmail }}</p>
-  </mat-card-content>
-  <mat-card-actions>
-    <button
-      (click)="acceptTutorApplication(tutorApplicationToview.id)"
-      mat-raised-button
-      color="primary"
-    >
-      Accept
-    </button>
-    <button (click)="rejectTutorApplication(tutorApplicationToview.id)" mat-raised-button color="warn">
-      Reject
-    </button>
-  </mat-card-actions>
-</mat-card>
- 
+   
+
+
+<div style="margin: auto; padding-top: 1rem; text-align: center">
+  <button
+    (click)="acceptTutorApplication(tutorApplicationToview.id)"
+    style="width: 6rem"
+    class="btn btn-info"
+  >
+    Accept
+  </button>
+  <button
+    [mat-dialog-close]
+    (click)="rejectTutorApplication(tutorApplicationToview.id)"
+    style="margin-left: 2rem; width: 6rem"
+    class="btn btn-danger"
+  >
+    Reject
+  </button>
+</div>
 
