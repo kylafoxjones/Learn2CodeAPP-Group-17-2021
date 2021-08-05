@@ -371,7 +371,7 @@ createTutor(obj){
     TutorAbout: this.tutorToCreate.tutorAbout,
     TutorPhoto: this.tutorToCreate.tutorPhoto,
     TutorEmail: this.tutorToCreate.tutorEmail,
-
+Id: this.tutorToCreate.id,
     UserName: obj.UserName,
     Password: obj.Password,
     TutorStatusId: this.tutorToCreate.tutorStatusId,
