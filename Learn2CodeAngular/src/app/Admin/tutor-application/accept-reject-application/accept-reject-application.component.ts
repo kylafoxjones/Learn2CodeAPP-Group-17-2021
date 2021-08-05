@@ -59,10 +59,16 @@ export class AcceptRejectApplicationComponent implements OnInit {
         this.service.getTutorApplicationToLoad(id).subscribe((result) => {
           this.service.tutorToDelete = result;
           console.log('the tutor chosen to reject', this.service.tutorToDelete);
+          this.service.rejectApp().subscribe((result) => {
+            Swal.fire('Successful rejection', '', 'success');
+            });
         });
         this.dialogRef.close();
-        Swal.fire('Successful rejection', '', 'success');
+        // this.dialogRef.afterClosed().subscribe((result) => {
+        //   // this.getAllTutorApplications();
+        // });
       }
+     
       // this.router.navigateByUrl('/applications');
     });
   }

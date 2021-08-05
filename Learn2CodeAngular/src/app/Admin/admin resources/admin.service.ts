@@ -31,7 +31,6 @@ export class AdminService {
   oldModuleName: any;
   moduleToSave: any = {};
 
-
   //course variables
   editCrs: any;
   courses: any = [];
@@ -48,35 +47,36 @@ export class AdminService {
   sessionContentCategoryToSave: any = {};
   // admin id is used here too
 
-   //course content cat variables
-   editCourseContentCat: any;
-   courseContentCategories: any = [];
-   updatedCourseContentCategory: any = {};
-   oldCourseContentCategoryName: any;
-   oldCourseContentCategoryDescription:any;
-   oldCourseContentCategoryPrice:any;
-   courseContentCategoryToSave: any = {};
-   courseFolderIdToSend: any;
+  //course content cat variables
+  editCourseContentCat: any;
+  courseContentCategories: any = [];
+  updatedCourseContentCategory: any = {};
+  oldCourseContentCategoryName: any;
+  oldCourseContentCategoryDescription: any;
+  oldCourseContentCategoryPrice: any;
+  courseContentCategoryToSave: any = {};
+  courseFolderIdToSend: any;
 
-//#region subscription variables
+  //#region subscription variables
   editSubscr: any;
   subscriptions: any = [];
   updatedSubscription: any = {};
   oldSubscription: any;
   subscriptionToSave: any = {};
-  TutorSessionIdFromDropdown:any;
-//#endregion
+  TutorSessionIdFromDropdown: any;
+  //#endregion
 
-//#region tutor application variables 
-application:any ={};
-applications:any [];
-tutorToSave:any;
-tutorToCreate:any ={};
-tutorToDelete:any={};
-//#endregion
+  //#region tutor application variables
+  application: any = {};
+  applications: any[];
+  tutorToSave: any;
+  tutorToCreate: any = {};
+  tutorToDelete: any = {};
+  deleteTutorr:any ={}
+  //#endregion
 
   constructor(private http: HttpClient) {}
-//#region university
+  //#region university
   getUniversities() {
     return this.http.get(this.apiUrl + 'GetAllUniversities');
   }
@@ -99,10 +99,10 @@ tutorToDelete:any={};
     };
     return this.http.put(this.apiUrl + 'EditUniversity', this.updatedUni);
   }
-//#endregion
+  //#endregion
 
-//#region degree
-getDegrees(id: number) {
+  //#region degree
+  getDegrees(id: number) {
     return this.http.get(
       this.apiUrl + 'GetAllDegrees/' + this.universityIdToSend
     );
@@ -132,10 +132,10 @@ getDegrees(id: number) {
     };
     return this.http.put(this.apiUrl + 'EditDegree', this.updatedDegree);
   }
-//#endregion
+  //#endregion
 
-//#region Modules  
-getModules(id: number) {
+  //#region Modules
+  getModules(id: number) {
     return this.http.get(this.apiUrl + 'GetAllModules/' + this.degreeIdToSend);
   }
 
@@ -164,9 +164,9 @@ getModules(id: number) {
     console.log(this.updatedModule);
     return this.http.put(this.apiUrl + 'EditModule', this.updatedModule);
   }
-//#endregion
+  //#endregion
 
-//#region courses
+  //#region courses
   getCourses() {
     return this.http.get(this.apiUrl + 'GetAllCourseFolder');
   }
@@ -199,20 +199,21 @@ getModules(id: number) {
     console.log(this.updatedCourse);
     return this.http.put(this.apiUrl + 'EditCourseFolder', this.updatedCourse);
   }
-//#endregion
+  //#endregion
 
-//#region course content category
+  //#region course content category
   getCourseContentCategories() {
-    return this.http.get(this.apiUrl + 'GetAllCourseSubCategory/'+ this.courseFolderIdToSend);
+    return this.http.get(
+      this.apiUrl + 'GetAllCourseSubCategory/' + this.courseFolderIdToSend
+    );
   }
 
   createCourseContentCategory(obj) {
     this.courseContentCategoryToSave = {
-      CourseFolderId:this.courseFolderIdToSend,
+      CourseFolderId: this.courseFolderIdToSend,
       CourseSubCategoryName: obj.CourseSubCategoryName,
       Description: obj.Description,
-      price:obj.price,
-      
+      price: obj.price,
     };
     console.log(this.courseContentCategoryToSave);
     return this.http.post(
@@ -230,20 +231,22 @@ getModules(id: number) {
     console.log(oldObj); //extract from array where objects are based off the model which has courseFolder
     //what you get from api is based off the model
     this.updatedCourseContentCategory = {
-     
       Id: oldObj.id,
       CourseFolderId: this.courseFolderIdToSend,
       CourseSubCategoryName: newCourseContentCat.CourseSubCategoryName,
       Description: newCourseContentCat.Description,
-      price:newCourseContentCat.price,
+      price: newCourseContentCat.price,
     };
     console.log(this.updatedCourseContentCategory); //this is the dto
     //what you send is dtos, they are not based exactly on the models
-    return this.http.put(this.apiUrl + 'EditCourseSubCategory', this.updatedCourseContentCategory);
+    return this.http.put(
+      this.apiUrl + 'EditCourseSubCategory',
+      this.updatedCourseContentCategory
+    );
   }
   //#endregion
 
-//#region session content category
+  //#region session content category
   getSessionContentCategories() {
     return this.http.get(this.apiUrl + 'GetAllSessionContentCategory');
   }
@@ -265,52 +268,57 @@ getModules(id: number) {
   }
 
   editSessionContentCategory(newSessionContentCategoryName) {
-    var oldObj = this.sessionContentCategories.find((x) => x.id === this.editId);
+    var oldObj = this.sessionContentCategories.find(
+      (x) => x.id === this.editId
+    );
     console.log(oldObj);
     this.updatedSessionContentCategory = {
       Id: oldObj.id,
       AdminId: this.adminId,
-      SessionContentCategoryName: newSessionContentCategoryName.SessionContentCategoryName,
+      SessionContentCategoryName:
+        newSessionContentCategoryName.SessionContentCategoryName,
     };
     console.log(this.adminId);
     console.log(this.updatedSessionContentCategory);
-    return this.http.put(this.apiUrl + 'EditSessionContentCategory', this.updatedSessionContentCategory);
+    return this.http.put(
+      this.apiUrl + 'EditSessionContentCategory',
+      this.updatedSessionContentCategory
+    );
   }
-//#endregion
+  //#endregion
 
-//#region students
-getStudents() {
+  //#region students
+  getStudents() {
     return this.http.get(this.apiUrl + 'GetAllStudents');
   }
 
-  deleteStudent(id:string) {
+  deleteStudent(id: string) {
     return this.http.delete(this.apiUrl + 'DeleteStudent/' + id);
   }
-//#endregion
- 
-//#region Tutors
+  //#endregion
+
+  //#region Tutors
   getTutors() {
     return this.http.get(this.apiUrl + 'GetAllTutors');
   }
-  deleteTutor(id:string) {
+  deleteTutor(id: string) {
     return this.http.delete(this.apiUrl + 'DeleteTutor/' + id);
   }
-//#endregion
-  
-//#region subscriptions
-getSubscriptions() {
+  //#endregion
+
+  //#region subscriptions
+  getSubscriptions() {
     return this.http.get(this.apiUrl + 'GetAllSubscriptions');
   }
 
   createSubscription(obj) {
     this.subscriptionToSave = {
-      AdminId:this.adminId,
+      AdminId: this.adminId,
       SubscriptionName: obj.SubscriptionName,
       Duration: obj.Duration,
-      price:obj.price,
-      Quantity:obj.Quantity,
-      TutorSessionId:this.TutorSessionIdFromDropdown
-      
+      price: obj.price,
+      Quantity: obj.Quantity,
+      TutorSessionId: this.TutorSessionIdFromDropdown,
     };
     console.log(this.subscriptionToSave);
     return this.http.post(
@@ -327,65 +335,72 @@ getSubscriptions() {
     var oldObj = this.subscriptions.find((x) => x.id === this.editId);
     console.log(oldObj); //extract from array where objects are based off the model which has courseFolder
     //what you get from api is based off the model
-  
+
     this.updatedSubscription = {
       Id: oldObj.id,
-      AdminId:this.adminId,
+      AdminId: this.adminId,
       SubscriptionName: newSubscription.SubscriptionName,
       Duration: newSubscription.Duration,
-      price:newSubscription.price,
-      Quantity:newSubscription.Quantity,
-      TutorSessionId:this.TutorSessionIdFromDropdown
-      
+      price: newSubscription.price,
+      Quantity: newSubscription.Quantity,
+      TutorSessionId: this.TutorSessionIdFromDropdown,
     };
     console.log(this.updatedSubscription); //this is the dto
     //what you send is dtos, they are not based exactly on the models
-    return this.http.put(this.apiUrl + 'EditSubscription', this.updatedSubscription);
+    return this.http.put(
+      this.apiUrl + 'EditSubscription',
+      this.updatedSubscription
+    );
   }
 
-  getSessionTypes()
-  {
+  getSessionTypes() {
     return this.http.get(this.apiUrl + 'GetAllTutorSessions');
   }
-//#endregion
+  //#endregion
 
-//#region tutor application
+  //#region tutor application
 
-getTutorApplications() {
-  return this.http.get(this.apiUrl + 'GetAllAplications');
-}
+  getTutorApplications() {
+    return this.http.get(this.apiUrl + 'GetAllAplications');
+  }
 
-getTutorApplicationToLoad(id: number){
-  return this.http.get(this.apiUrl + 'GetTutorbyId/'+ id); 
-}
-rejectApp() {
-  return this.http.delete(this.apiUrl + 'RejectTutor/' + this.tutorToDelete);
-}
+  getTutorApplicationToLoad(id: number) {
+    return this.http.get(this.apiUrl + 'GetTutorbyId/' + id);
+  }
+  rejectApp() {
+    this.deleteTutorr ={
+      Id: this.tutorToDelete.id,
+      TutorName: this.tutorToDelete.tutorName,
+      TutorSurname: this.tutorToDelete.tutorSurname,
+      TutorCell:this.tutorToDelete.tutorCell,
+      TutorAbout: this.tutorToDelete.tutorAbout,
+      TutorPhoto: this.tutorToDelete.tutorPhoto,
+      TutorEmail: this.tutorToDelete.tutorEmail,
+      FileId: this.tutorToDelete.fileId,
+      TutorStatusId: this.tutorToDelete.tutorStatusId,
+    }
+    console.log('dto sent to api to reject',this.deleteTutorr)
+   return this.http.put(this.apiUrl + 'RejectTutor', this.deleteTutorr);
+  }
 
-createTutor(obj){
+  createTutor(obj) {
+    this.tutorToSave = {
+      TutorName: this.tutorToCreate.tutorName,
+      TutorSurname: this.tutorToCreate.tutorSurname,
+      TutorCell: this.tutorToCreate.tutorCell,
+      TutorAbout: this.tutorToCreate.tutorAbout,
+      TutorPhoto: this.tutorToCreate.tutorPhoto,
+      TutorEmail: this.tutorToCreate.tutorEmail,
+      Id: this.tutorToCreate.id,
+      UserName: obj.UserName,
+      Password: obj.Password,
+      TutorStatusId: this.tutorToCreate.tutorStatusId,
+      FileId: this.tutorToCreate.fileId,
+      UserId: this.tutorToCreate.userId,
+    };
+    console.log('object sending to api:', this.tutorToSave);
+    return this.http.put(this.apiUrl + 'CreateTutor', this.tutorToSave);
+  }
 
-  this.tutorToSave = {
-    TutorName: this.tutorToCreate.tutorName,
-    TutorSurname: this.tutorToCreate.tutorSurname,
-    TutorCell: this.tutorToCreate.tutorCell,
-    TutorAbout: this.tutorToCreate.tutorAbout,
-    TutorPhoto: this.tutorToCreate.tutorPhoto,
-    TutorEmail: this.tutorToCreate.tutorEmail,
-Id: this.tutorToCreate.id,
-    UserName: obj.UserName,
-    Password: obj.Password,
-    TutorStatusId: this.tutorToCreate.tutorStatusId,
-    FileId: this.tutorToCreate.fileId,
-    UserId: this.tutorToCreate.userId,
-    
-  };
-  console.log("object sending to api:" , this.tutorToSave);
-  return this.http.put(
-    this.apiUrl + 'CreateTutor',
-    this.tutorToSave
-  );
-  
-}
-
-//#endregion
+  //#endregion
 }

@@ -38,7 +38,6 @@ export class TutorApplicationComponent implements OnInit {
         this.getAllTutorApplications();
       });
     });
-    
   }
 
   getAllTutorApplications() {
