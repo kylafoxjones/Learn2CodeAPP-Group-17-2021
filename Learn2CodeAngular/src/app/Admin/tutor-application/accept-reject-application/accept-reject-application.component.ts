@@ -6,7 +6,8 @@ import { AdminService } from '../../admin resources/admin.service';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select/';
 import { RouteConfigLoadStart, Router } from '@angular/router';
-import {MatCardModule} from '@angular/material/card'
+import { MatCardModule } from '@angular/material/card';
+import { CreateTutorComponent } from '../create-tutor/create-tutor.component';
 
 @Component({
   selector: 'app-accept-reject-application',
@@ -14,8 +15,8 @@ import {MatCardModule} from '@angular/material/card'
   styleUrls: ['./accept-reject-application.component.scss'],
 })
 export class AcceptRejectApplicationComponent implements OnInit {
-  tutorApplicationToview=this.service.application;
-  x:any;
+  tutorApplicationToview: any = {};
+  x: any;
   // tutorApplicationToview={
   //   tutorName: this.service.application.TutorName,
   // }
@@ -27,31 +28,47 @@ export class AcceptRejectApplicationComponent implements OnInit {
     private router: Router
   ) {}
 
-  ngOnInit(): void {
-    
+  ngOnInit() {
+    console.log(
+      'aplicant to view on accept reject',
+      this.tutorApplicationToview
+    );
+    this.tutorApplicationToview = this.service.application;
   }
 
-  
-  acceptTutorApplication() {
-    //naviagte to create
-  }
-
-  rejectTutorApplication(id: number ) {
-      Swal.fire({
-        title: 'Are you sure you want to reject the applicant?',
-        text: '',
-        icon: 'question',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes',
-      }).then((result) => {
-        if (result.isConfirmed) {
-          // this.service.deleteTutor(this.tutorApplicationToview).subscribe((result) => {
-          //  this.x = result;
-          // });
-          Swal.fire('Successful rejection', '', 'success');
-        }
+  acceptTutorApplication(id: number) {
+    this.service.getTutorApplicationToLoad(id).subscribe((result) => {
+      this.service.tutorToCreate = result;
+      console.log('the tutor chosen', this.service.tutorToCreate);
+      const dialogRef = this.dialog.open(CreateTutorComponent, {
+        width: '350px',
       });
-    }
+      dialogRef.afterClosed().subscribe((result) => {
+        // this.getAllTutorApplications();
+      });
+    });
+  }
+
+  rejectTutorApplication(id: number) {
+    Swal.fire({
+      title: 'Are you sure you want to reject the applicant?',
+      text: '',
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.service.getTutorApplicationToLoad(id).subscribe((result) => {
+          this.service.tutorToDelete = result;
+          console.log('the tutor chosen', this.service.tutorToDelete);
+        });
+
+        Swal.fire('Successful rejection', '', 'success');
+      
+      }
+     // this.router.navigateByUrl('/applications');
+    });
+  }
 }

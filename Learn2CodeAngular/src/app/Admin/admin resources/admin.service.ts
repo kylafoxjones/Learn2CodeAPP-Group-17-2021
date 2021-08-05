@@ -70,6 +70,9 @@ export class AdminService {
 //#region tutor application variables 
 application:any ={};
 applications:any [];
+tutorToSave:any;
+tutorToCreate:any ={};
+tutorToDelete:any={};
 //#endregion
 
   constructor(private http: HttpClient) {}
@@ -355,8 +358,34 @@ getTutorApplications() {
 getTutorApplicationToLoad(id: number){
   return this.http.get(this.apiUrl + 'GetTutorbyId/'+ id); 
 }
-rejectApp(obj) {
-  return this.http.delete(this.apiUrl + 'RejectTutor/' + obj);
+rejectApp() {
+  return this.http.delete(this.apiUrl + 'RejectTutor/' + this.tutorToDelete);
 }
+
+createTutor(obj){
+
+  this.tutorToSave = {
+    TutorName: this.tutorToCreate.tutorName,
+    TutorSurname: this.tutorToCreate.tutorSurname,
+    TutorCell: this.tutorToCreate.tutorCell,
+    TutorAbout: this.tutorToCreate.tutorAbout,
+    TutorPhoto: this.tutorToCreate.tutorPhoto,
+    TutorEmail: this.tutorToCreate.tutorEmail,
+
+    UserName: obj.UserName,
+    Password: obj.Password,
+    TutorStatusId: this.tutorToCreate.tutorStatusId,
+    FileId: this.tutorToCreate.fileId,
+    UserId: this.tutorToCreate.userId,
+    
+  };
+  console.log("object sending to api:" , this.tutorToSave);
+  return this.http.put(
+    this.apiUrl + 'CreateTutor',
+    this.tutorToSave
+  );
+  
+}
+
 //#endregion
 }

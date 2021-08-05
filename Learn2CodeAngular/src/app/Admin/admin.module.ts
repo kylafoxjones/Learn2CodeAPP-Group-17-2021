@@ -28,7 +28,8 @@ import { AddEditSubscriptionComponent } from './subscription/add-edit-subscripti
 import { MatSelectModule} from '@angular/material/select/';
 import { TutorApplicationComponent } from './tutor-application/tutor-application.component';
 import { AcceptRejectApplicationComponent } from './tutor-application/accept-reject-application/accept-reject-application.component';
-import {MatCardModule} from '@angular/material/card'; 
+import {MatCardModule} from '@angular/material/card';
+import { CreateTutorComponent } from './tutor-application/create-tutor/create-tutor.component'; 
 
 
 @NgModule({
@@ -52,6 +53,7 @@ import {MatCardModule} from '@angular/material/card';
     AddEditSubscriptionComponent,
     TutorApplicationComponent,
     AcceptRejectApplicationComponent,
+    CreateTutorComponent,
   
    
   ],

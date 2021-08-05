@@ -30,14 +30,15 @@ export class TutorApplicationComponent implements OnInit {
   navigateToApplication(id: number) {
     this.service.getTutorApplicationToLoad(id).subscribe((result) => {
       this.service.application = result;
-      console.log('the applicant chosen',  this.service.application)
+      console.log('the applicant chosen',  this.service.application);
+      const dialogRef = this.dialog.open(AcceptRejectApplicationComponent, {
+        width: '350px',
+      });
+      dialogRef.afterClosed().subscribe((result) => {
+        this.getAllTutorApplications();
+      });
     });
-    const dialogRef = this.dialog.open(AcceptRejectApplicationComponent, {
-      width: '350px',
-    });
-    dialogRef.afterClosed().subscribe((result) => {
-      this.getAllTutorApplications();
-    });
+    
   }
 
   getAllTutorApplications() {
