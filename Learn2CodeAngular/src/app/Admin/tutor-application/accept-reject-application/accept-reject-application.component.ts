@@ -29,17 +29,13 @@ export class AcceptRejectApplicationComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    console.log(
-      'aplicant to view on accept reject',
-      this.tutorApplicationToview
-    );
     this.tutorApplicationToview = this.service.application;
   }
 
   acceptTutorApplication(id: number) {
     this.service.getTutorApplicationToLoad(id).subscribe((result) => {
       this.service.tutorToCreate = result;
-      console.log('the tutor chosen', this.service.tutorToCreate);
+      console.log('the tutor chosen to accept', this.service.tutorToCreate);
       const dialogRef = this.dialog.open(CreateTutorComponent, {
         width: '350px',
       });
@@ -62,13 +58,12 @@ export class AcceptRejectApplicationComponent implements OnInit {
       if (result.isConfirmed) {
         this.service.getTutorApplicationToLoad(id).subscribe((result) => {
           this.service.tutorToDelete = result;
-          console.log('the tutor chosen', this.service.tutorToDelete);
+          console.log('the tutor chosen to reject', this.service.tutorToDelete);
         });
-
+        this.dialogRef.close();
         Swal.fire('Successful rejection', '', 'success');
-      
       }
-     // this.router.navigateByUrl('/applications');
+      // this.router.navigateByUrl('/applications');
     });
   }
 }
