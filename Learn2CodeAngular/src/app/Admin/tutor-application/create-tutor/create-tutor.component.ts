@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-create-tutor',
   templateUrl: './create-tutor.component.html',
-  styleUrls: ['./create-tutor.component.scss']
+  styleUrls: ['./create-tutor.component.scss'],
 })
 export class CreateTutorComponent implements OnInit {
   data: any = {};
@@ -15,13 +15,13 @@ export class CreateTutorComponent implements OnInit {
   constructor(
     public dialog: MatDialog,
     private dialogRef: MatDialogRef<CreateTutorComponent>,
-    private service: AdminService,    private router: Router
-  ) { }
+    private service: AdminService,
+    private router: Router
+  ) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
-  submitCreateTutor(){
+  submitCreateTutor() {
     this.service.createTutor(this.data).subscribe((result) => {
       this.router.navigateByUrl('/tutor');
     });

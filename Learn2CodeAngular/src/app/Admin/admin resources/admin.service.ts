@@ -73,7 +73,8 @@ export class AdminService {
   tutorToCreate: any = {};
   tutorToDelete: any = {};
   deleteTutorr:any ={}
-  //#endregion
+  applicationList: any = [];
+   //#endregion
 
   constructor(private http: HttpClient) {}
   //#region university
@@ -401,6 +402,9 @@ export class AdminService {
     console.log('object sending to api:', this.tutorToSave);
     return this.http.put(this.apiUrl + 'CreateTutor', this.tutorToSave);
   }
+  // getAllTutorApplications() {
+  //   this.getTutorApplications();
+  // }
 
   //#endregion
 }

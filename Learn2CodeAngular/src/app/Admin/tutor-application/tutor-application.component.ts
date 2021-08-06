@@ -13,7 +13,8 @@ import { MatCardModule } from '@angular/material/card';
   styleUrls: ['./tutor-application.component.scss'],
 })
 export class TutorApplicationComponent implements OnInit {
-  applicationList: any = [];
+ // applicationList: any = [];
+  applications; any =[];
   application: any;
   search;
 
@@ -42,8 +43,9 @@ export class TutorApplicationComponent implements OnInit {
 
   getAllTutorApplications() {
     this.service.getTutorApplications().subscribe((result) => {
-      this.applicationList = result;
-      console.log('all applications from api', this.applicationList);
+      this.service.applicationList = result;
+      this.applications = this.service.applicationList;
+      console.log('all applications from api', this.applications);
     });
   }
 }
