@@ -17,6 +17,14 @@ export class TutorService {
    edit: boolean = true;
   // universityIdToSend: any;
 
+    //message variables below
+   
+    editMessage: any;
+    //messages: any = [];
+    //updatedCat: any = {};
+   // oldCatName: any;
+   // universityIdToSend: any;
+
   constructor(private http: HttpClient) { }
 
  getResourceCategories() {
@@ -42,5 +50,18 @@ export class TutorService {
     return this.http.put(this.apiUrl + 'EditResourceCategory', this.updatedCat);
   }
   //#endregion
+
+  getMessages(id: number) {
+    return this.http.get(this.apiUrl + 'GetRecievedMessages' + id);
+  }
+
+  createMessages(obj) {
+    console.log(obj);
+    return this.http.post(this.apiUrl + 'CreateMessage', obj);
+  }
+
+  deleteMessages(id: number) {
+    return this.http.delete(this.apiUrl + 'DeleteMessage/' + id);
+  }
 
 }

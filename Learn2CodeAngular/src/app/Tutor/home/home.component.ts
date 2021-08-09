@@ -4,9 +4,9 @@
   import { Observable,} from 'rxjs';
   import { map,shareReplay } from 'rxjs/operators';
   import {MatDialog} from '@angular/material/dialog';
-  //import { ChartType,ChartOptions } from 'chart.js';
+  import { ChartType,ChartOptions } from 'chart.js';
   import Swal from 'sweetalert2'
-  //import * as Chart from 'chart.js';
+  import * as Chart from 'chart.js';
   import { title } from 'process';
 import { MaintainComponent } from '../maintain/maintain.component';
 

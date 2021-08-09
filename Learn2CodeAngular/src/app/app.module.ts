@@ -10,6 +10,7 @@ import { TutorModule } from './Tutor/tutor.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NbThemeModule, NbLayoutModule, NbSidebarModule } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
+import { ChartsModule } from 'ng2-charts';
 
 
 
@@ -23,6 +24,7 @@ import { NbEvaIconsModule } from '@nebular/eva-icons';
     LoginModule,
     ReportModule,
     StudentModule,
+    ChartsModule,
     TutorModule,
     BrowserAnimationsModule,
     NbThemeModule.forRoot({ name: 'default' }),

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { MaintainComponent } from './maintain/maintain.component';
+import { MessagesComponent } from './messages/messages.component';
 import { ResourceCategoryComponent } from './resource-category/resource-category.component';
 import { TutorComponent } from './tutor.component';
 
@@ -20,7 +21,10 @@ const routes: Routes = [
           path: 'maintain',
           component: MaintainComponent,
         },
-     
+        {
+          path: 'messages',
+          component: MessagesComponent,
+        },
         {
           path: 'resourcecategory',
           component: ResourceCategoryComponent,

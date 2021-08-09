@@ -6,6 +6,7 @@ import { AddEditCourseComponent } from './course/add-edit-course/add-edit-course
 import { CourseComponent } from './course/course.component';
 import { AddEditDegreeComponent } from './degree/add-edit-degree/add-edit-degree.component';
 import { DegreeComponent } from './degree/degree.component';
+import { HomeComponent } from './home/home.component';
 import { AddEditModuleComponent } from './module/add-edit-module/add-edit-module.component';
 import { ModuleComponent } from './module/module.component';
 import { SessionContentCategoryComponent } from './session-content-category/session-content-category.component';
@@ -23,6 +24,10 @@ const routes: Routes = [
     component: AdminComponent,
     children: [
       // every child component of admin needs routing here
+      {
+        path: 'adminhome',
+        component: HomeComponent,
+      },
       {
         path: 'university',
         component: UniversityComponent,

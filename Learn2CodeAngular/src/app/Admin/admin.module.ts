@@ -29,8 +29,13 @@ import { MatSelectModule} from '@angular/material/select/';
 import { TutorApplicationComponent } from './tutor-application/tutor-application.component';
 import { AcceptRejectApplicationComponent } from './tutor-application/accept-reject-application/accept-reject-application.component';
 import {MatCardModule} from '@angular/material/card';
-import { CreateTutorComponent } from './tutor-application/create-tutor/create-tutor.component'; 
-
+import { CreateTutorComponent } from './tutor-application/create-tutor/create-tutor.component';
+import { HomeComponent } from './home/home.component'; 
+import { ChartsModule } from 'ng2-charts';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatListModule} from '@angular/material/list';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import { MatMenuModule} from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -54,11 +59,15 @@ import { CreateTutorComponent } from './tutor-application/create-tutor/create-tu
     TutorApplicationComponent,
     AcceptRejectApplicationComponent,
     CreateTutorComponent,
+    HomeComponent,
   
    
   ],
   imports: [
     CommonModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatListModule,
     AdminRoutingModule,
     MatFormFieldModule,
     FormsModule,
@@ -68,7 +77,9 @@ import { CreateTutorComponent } from './tutor-application/create-tutor/create-tu
     HttpClientModule,
     Ng2SearchPipeModule,
     MatSelectModule,
-    MatCardModule
+    MatMenuModule,
+    MatCardModule,
+    ChartsModule
     
   ],
 })
