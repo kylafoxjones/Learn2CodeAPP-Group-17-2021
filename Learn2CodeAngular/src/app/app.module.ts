@@ -8,7 +8,7 @@ import { ReportModule } from './Report/report.module';
 import { StudentModule } from './Student/student.module';
 import { TutorModule } from './Tutor/tutor.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NbThemeModule, NbLayoutModule } from '@nebular/theme';
+import { NbThemeModule, NbLayoutModule, NbSidebarModule } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 
 
@@ -27,6 +27,7 @@ import { NbEvaIconsModule } from '@nebular/eva-icons';
     BrowserAnimationsModule,
     NbThemeModule.forRoot({ name: 'default' }),
     NbLayoutModule,
+    NbSidebarModule.forRoot(),
     NbEvaIconsModule
   ],
   providers: [],
