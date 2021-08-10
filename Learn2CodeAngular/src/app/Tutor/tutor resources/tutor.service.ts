@@ -19,11 +19,8 @@ export class TutorService {
 
     //message variables below
    
-    editMessage: any;
-    //messages: any = [];
-    //updatedCat: any = {};
-   // oldCatName: any;
-   // universityIdToSend: any;
+    studentId: any;
+    studentObj: any={};
 
   constructor(private http: HttpClient) { }
 
@@ -51,8 +48,8 @@ export class TutorService {
   }
   //#endregion
 
-  getMessages(id: number) {
-    return this.http.get(this.apiUrl + 'GetRecievedMessages' + id);
+  getStudents() {
+    return this.http.get(this.apiUrl + 'GetAllStudents');
   }
 
   createMessages(obj) {

@@ -1,0 +1,28 @@
+<h5 style="text-align: center">New Message</h5>
+<hr />
+<mat-dialog-content>
+  <mat-form-field class="example-full-width">
+    <mat-label>Student: {{ student.studentName}}</mat-label>
+  <p>Message</p>
+      <input
+    
+        [(ngModel)]="data.Message"
+        matInput
+ 
+      />
+  
+  </mat-form-field>
+</mat-dialog-content>
+<h1>{{ data.id }}</h1>
+<div style="margin: auto; padding-top: 1rem; text-align: center">
+  <button (click)="sendMessage()" style="width: 6rem" class="btn btn-info">
+    Send
+  </button>
+  <button
+    [mat-dialog-close]
+    style="margin-left: 2rem; width: 6rem"
+    class="btn btn-danger"
+  >
+    Cancel
+  </button>
+</div>

@@ -73,7 +73,7 @@
               <td>{{ item.studentSurname }}</td>
               <td>{{ item.identity.email }}</td>
                <td>{{ item.studentCell }}</td>
-              <td>{{ item.studentModule[0].module.degree.university.universityName }}</td> 
+              <td>{{ item.studentModule[0].tutor.degree.university.universityName }}</td> 
               <td>
                 <button (click)="delete(item.userId)" class="btn btn-danger">
                   <i class="fa fa-trash"></i>
