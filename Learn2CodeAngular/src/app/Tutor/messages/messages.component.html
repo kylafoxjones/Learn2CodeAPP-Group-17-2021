@@ -26,6 +26,10 @@
   </div>
 </nav>
 
+
+<nb-layout>
+  <nb-layout-column>
+
 <div style="padding-top: 2rem; padding-bottom: 2rem">
   <div class="header">Students:</div>
 </div>
@@ -39,42 +43,6 @@
   "
 >
   <br />
-
-  <div style="float: left">
-    <select
-      style="width: 10rem; margin-left: 6.5rem"
-      class="form-select"
-      aria-label="Default select example"
-    >
-      <option selected>University</option>
-      <option value="1">University of pretoria</option>
-      <option value="2">University of Johannesburg</option>
-      <option value="3">University of Limpopo</option>
-    </select>
-  </div>
-  <div style="float: left">
-    <select
-      style="width: 10rem; margin-left: 0.5rem"
-      class="form-select"
-      aria-label="Default select example"
-    >
-      <option selected>Degree</option>
-      <option value="1">Bcom Informatics</option>
-      <option value="2">Bsc Computer Science</option>
-    </select>
-  </div>
-  <div style="float: left">
-    <select
-      style="width: 10rem; margin-left: 0.5rem"
-      class="form-select"
-      aria-label="Default select example"
-    >
-      <option selected>Module</option>
-      <option value="1">INF272</option>
-      <option value="2">INF214</option>
-      <option value="3">INF354</option>
-    </select>
-  </div>
 
   <div class="input-group rounded" style="width: 20%; padding-left: 0.5rem">
     <input
@@ -106,10 +74,10 @@
     </thead>
     <tbody>
       <tr *ngFor="let item of studentList | filter: search">
-        <td (click)= "createMessage(item)">{{ item.studentName }}</td>
+        <td>{{ item.studentName }}</td>
         <td>{{ item.studentSurname }}</td>
         <td>{{ item.identity.email }}</td>
-        <td>
+        <td (click)="createMessage(item)">
           <i
             style="font-size: x-large"
             class="fa fa-envelope-o"
@@ -119,6 +87,7 @@
       </tr>
     </tbody>
   </table>
+
   <br />
   <nav
     aria-label="Page navigation example "
@@ -144,6 +113,8 @@
   </nav>
 </div>
 <br />
+</nb-layout-column>
+</nb-layout>
 
 <footer style="width: 100%; position: absolute; bottom: 0">
   <nav id="foot" class="navbar">

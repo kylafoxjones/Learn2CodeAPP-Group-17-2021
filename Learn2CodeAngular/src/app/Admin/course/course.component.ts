@@ -51,7 +51,7 @@ export class CourseComponent implements OnInit {
     this.getAdminId();
     this.service.edit = false;
     this.service.editId = 0;
-      //fill a object place holder when add is clicked with nothing
+    //fill a object place holder when add is clicked with nothing
     this.service.editCrs = {};
     this.service.title = 'Create Course';
     const dialogRef = this.dialog.open(AddEditCourseComponent, {
@@ -65,7 +65,7 @@ export class CourseComponent implements OnInit {
   openEditDialog(obj) {
     this.getAdminId();
     this.service.edit = true;
-     //fill the object place holder when edit is clicked
+    //fill the object place holder when edit is clicked
     this.service.editCrs = obj;
     console.log(this.service.editCrs);
     this.service.oldCourseName = obj.courseFolderName;
@@ -87,12 +87,15 @@ export class CourseComponent implements OnInit {
   }
 
   //function for creating adminId link
-  getAdminId(){
-    this.service.adminId=1;
+  getAdminId() {
+    this.service.adminId = 1;
   }
-  navigateToCourseContentCategories(id:number){
-    this.service.courseFolderIdToSend=id;
-    console.log('this is the id of the folder',this.service.courseFolderIdToSend);
+  navigateToCourseContentCategories(id: number) {
+    this.service.courseFolderIdToSend = id;
+    console.log(
+      'this is the id of the folder',
+      this.service.courseFolderIdToSend
+    );
     this.router.navigateByUrl('/coursecontentcategory');
   }
 }

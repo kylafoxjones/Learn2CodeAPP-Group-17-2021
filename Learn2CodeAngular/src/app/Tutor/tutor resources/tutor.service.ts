@@ -2,29 +2,29 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class TutorService {
   apiUrl = 'https://localhost:44393/api/Tutor/';
 
-   //resource category variables below
-   editId = 0;
-   editCat: any;
-   categories: any = [];
-   updatedCat: any = {};
-   title: any;
-   oldCatName: any;
-   edit: boolean = true;
+  //resource category variables below
+  editId = 0;
+  editCat: any;
+  categories: any = [];
+  updatedCat: any = {};
+  title: any;
+  oldCatName: any;
+  edit: boolean = true;
   // universityIdToSend: any;
 
-    //message variables below
-   
-    studentId: any;
-    studentObj: any={};
+  //message variables below
 
-  constructor(private http: HttpClient) { }
+  studentId: any;
+  studentObj: any = {};
 
- getResourceCategories() {
+  constructor(private http: HttpClient) {}
+
+  getResourceCategories() {
     return this.http.get(this.apiUrl + 'GetAllResourceCategories');
   }
 
@@ -53,12 +53,14 @@ export class TutorService {
   }
 
   createMessages(obj) {
-    console.log(obj);
     return this.http.post(this.apiUrl + 'CreateMessage', obj);
   }
 
-  deleteMessages(id: number) {
+  deleteMessages(id) {
     return this.http.delete(this.apiUrl + 'DeleteMessage/' + id);
   }
 
+  getSentMessagesForTutor(id) {
+    return this.http.get(this.apiUrl + 'GetSentMessages/' + id);
+  }
 }

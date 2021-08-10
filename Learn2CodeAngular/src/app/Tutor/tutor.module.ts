@@ -23,6 +23,7 @@ import { HomeComponent } from './home/home.component';
 import { ChartsModule } from 'ng2-charts';
 import { MessagesComponent } from './messages/messages.component';
 import { CreateMessageComponent } from './messages/create-message/create-message.component';
+import { SentRecievedMessagesComponent } from './sent-recieved-messages/sent-recieved-messages.component';
 
 
 @NgModule({
@@ -34,6 +35,7 @@ import { CreateMessageComponent } from './messages/create-message/create-message
     HomeComponent,
     MessagesComponent,
     CreateMessageComponent,
+    SentRecievedMessagesComponent,
  
   ],
   imports: [

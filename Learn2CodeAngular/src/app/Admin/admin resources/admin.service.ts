@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -72,10 +73,13 @@ export class AdminService {
   tutorToSave: any;
   tutorToCreate: any = {};
   tutorToDelete: any = {};
-  deleteTutorr:any ={}
+  deleteTutorr: any = {};
   applicationList: any = [];
-   //#endregion
+  //#endregion
 
+//#region payment variables
+paymentList:any;
+  //#endregion
   constructor(private http: HttpClient) {}
   //#region university
   getUniversities() {
@@ -369,19 +373,19 @@ export class AdminService {
     return this.http.get(this.apiUrl + 'GetTutorbyId/' + id);
   }
   rejectApp() {
-    this.deleteTutorr ={
+    this.deleteTutorr = {
       Id: this.tutorToDelete.id,
       TutorName: this.tutorToDelete.tutorName,
       TutorSurname: this.tutorToDelete.tutorSurname,
-      TutorCell:this.tutorToDelete.tutorCell,
+      TutorCell: this.tutorToDelete.tutorCell,
       TutorAbout: this.tutorToDelete.tutorAbout,
       TutorPhoto: this.tutorToDelete.tutorPhoto,
       TutorEmail: this.tutorToDelete.tutorEmail,
       FileId: this.tutorToDelete.fileId,
       TutorStatusId: this.tutorToDelete.tutorStatusId,
-    }
-    console.log('dto sent to api to reject',this.deleteTutorr)
-   return this.http.put(this.apiUrl + 'RejectTutor', this.deleteTutorr);
+    };
+    console.log('dto sent to api to reject', this.deleteTutorr);
+    return this.http.put(this.apiUrl + 'RejectTutor', this.deleteTutorr);
   }
 
   createTutor(obj) {
@@ -405,6 +409,15 @@ export class AdminService {
   // getAllTutorApplications() {
   //   this.getTutorApplications();
   // }
+
+  //#endregion
+
+  //#region payments
+  postfile(obj): Observable<any> {
+    return this.http.post(this.apiUrl + 'CSVUpload', obj, {
+      responseType: 'text',
+    });
+  }
 
   //#endregion
 }

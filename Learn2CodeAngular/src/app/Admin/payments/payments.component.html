@@ -1,9 +1,4 @@
-<!-- university read table here -->
-<!-- university edit + delete button on each row of table -->
-<!-- university add button here -->
-<!-- add and edit button calls university child component which is add-edit-university -->
-
-<nav id="adminnav" class="navbar navbar-dark bg-dark">
+<nav class="navbar navbar-dark bg-dark">
   <a class="navbar-brand" href="#">
     <img
       src="../.././assets/pics/HD logo.png"
@@ -16,22 +11,19 @@
   <span class="TDO" style="color: rgb(0, 156, 158); margin-right: auto"
     >TutorDevOps</span
   >
-  <div class="right">
-    <a style="color: whitesmoke; margin-right: 3rem">Home</a>
+  <div class="topnav-right">
+    <a>Home</a>
   </div>
   <div class="topnav-right">
-    <div class="topnav-right">
-      <div class="dot">A</div>
-    </div>
+    <div class="dot">A</div>
   </div>
 </nav>
 
+<div style="padding-top: 2rem; padding-bottom: 2rem">
+  <div class="header">Payments:</div>
+</div>
 <nb-layout>
   <nb-layout-column>
-    <div style="padding-top: 2rem; padding-bottom: 2rem">
-      <div class="header">Universities</div>
-    </div>
-
     <div
       style="
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
@@ -42,21 +34,7 @@
       "
     >
       <br />
-      <div class="input-group rounded" style="width: 30%; padding-left: 6rem">
-        <input
-          [(ngModel)]="search"
-          type="search"
-          class="form-control rounded"
-          placeholder="Search"
-          aria-label="Search"
-          aria-describedby="search-addon"
-        />
-        <span>
-          <button class="btn btn-primary">
-            <i class="fa fa-search"></i>
-          </button>
-        </span>
-      </div>
+
       <br />
       <table
         class="table table-hover"
@@ -64,31 +42,21 @@
       >
         <thead>
           <tr>
-            <th scope="col">University</th>
-            <th scope="col"></th>
-            <th scope="col"></th>
+            <th scope="col">Student name</th>
+            <th scope="col">Student surname</th>
+            <th scope="col">Payment date</th>
+            <th scope="col">Amount</th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let item of universityList | filter: search">
-            <td (click)="navigateToDegree(item.id)">
-              {{ item.universityName }}
-            </td>
-            <td>
-              <button (click)="openEditDialog(item)" class="btn btn-primary">
-                <i class="fa fa-pencil"></i>
-              </button>
-            </td>
-            <td>
-              <button (click)="delete(item.id)" class="btn btn-danger">
-                <i class="fa fa-trash"></i>
-              </button>
-            </td>
+          <tr *ngFor="let item of payments | filter: search">
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
           </tr>
         </tbody>
       </table>
-      <br />
-
       <br />
       <nav
         aria-label="Page navigation example "
@@ -114,17 +82,18 @@
       </nav>
     </div>
     <br />
-    <button
-      (click)="openAddDialog()"
-      style="margin-left: 8rem"
-      class="btn btn-info"
-    >
-      Create University
-    </button>
+    <div style="padding: 0.4rem">
+      <button
+        style="margin-left: 8rem"
+       (click)="openPopUpUpload()"
+        class="btn btn-info"
+      >
+        Upload
+      </button>
+    </div>
   </nb-layout-column>
 </nb-layout>
-
-<footer style="bottom: 0; position: absolute; width: 100%">
+<footer style="width: 100%; position: absolute; bottom: 0">
   <nav id="foot" class="navbar">
     <a class="navbar-brand" href="#"> </a>
     <span class="TDO" style="margin-right: auto"> &lt; TDO &gt;</span>

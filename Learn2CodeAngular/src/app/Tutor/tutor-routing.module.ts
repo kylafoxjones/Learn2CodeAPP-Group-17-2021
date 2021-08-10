@@ -4,6 +4,7 @@ import { HomeComponent } from './home/home.component';
 import { MaintainComponent } from './maintain/maintain.component';
 import { MessagesComponent } from './messages/messages.component';
 import { ResourceCategoryComponent } from './resource-category/resource-category.component';
+import { SentRecievedMessagesComponent } from './sent-recieved-messages/sent-recieved-messages.component';
 import { TutorComponent } from './tutor.component';
 
 const routes: Routes = [
@@ -22,15 +23,17 @@ const routes: Routes = [
           component: MaintainComponent,
         },
         {
-          path: 'messages',
+          path: 'students',
           component: MessagesComponent,
         },
         {
           path: 'resourcecategory',
           component: ResourceCategoryComponent,
         },
-       
-  
+        {
+          path: 'messages',
+          component: SentRecievedMessagesComponent,
+        }
       ],
     },
   ];

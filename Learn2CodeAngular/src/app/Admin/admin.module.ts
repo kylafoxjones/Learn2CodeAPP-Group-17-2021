@@ -36,6 +36,8 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatListModule} from '@angular/material/list';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { MatMenuModule} from '@angular/material/menu';
+import { PaymentsComponent } from './payments/payments.component';
+import { UploadCsvFileComponent } from './payments/upload-csv-file/upload-csv-file.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +62,8 @@ import { MatMenuModule} from '@angular/material/menu';
     AcceptRejectApplicationComponent,
     CreateTutorComponent,
     HomeComponent,
+    PaymentsComponent,
+    UploadCsvFileComponent,
   
    
   ],

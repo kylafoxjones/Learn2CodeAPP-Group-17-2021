@@ -1,16 +1,10 @@
-<h5 style="text-align: center">New Message</h5>
+<h5 style="text-align: center">New Message To:</h5>
+<h5 style="text-align: center">{{ student.studentName }}</h5>
 <hr />
 <mat-dialog-content>
   <mat-form-field class="example-full-width">
-    <mat-label>Student: {{ student.studentName}}</mat-label>
-  <p>Message</p>
-      <input
-    
-        [(ngModel)]="data.Message"
-        matInput
- 
-      />
-  
+    <mat-label>Message: </mat-label>
+    <input [(ngModel)]="data.Message" matInput />
   </mat-form-field>
 </mat-dialog-content>
 <h1>{{ data.id }}</h1>
