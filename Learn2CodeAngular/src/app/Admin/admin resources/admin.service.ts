@@ -77,9 +77,10 @@ export class AdminService {
   applicationList: any = [];
   //#endregion
 
-//#region payment variables
-paymentList:any;
-  //#endregion
+  //#region course content variables
+  courseContentCat:any;
+
+
   constructor(private http: HttpClient) {}
   //#region university
   getUniversities() {
@@ -419,5 +420,26 @@ paymentList:any;
     });
   }
 
+  getPayments() {
+    return this.http.get(this.apiUrl + 'GetPayments');
+  }
+  //#endregion
+
+  //#region course content
+  getCourseContent() {
+    return this.http.get(
+      this.apiUrl + 'GetContent/' + this.courseContentCat.id
+    );
+  }
+
+  posttfile(obj): Observable<any> {
+    return this.http.post(this.apiUrl + 'CreatContent', obj, {
+      responseType: 'text',
+    });
+  }
+
+  deleteContent(id) {
+    return this.http.delete(this.apiUrl + 'DeleteContent/' + id);
+  }
   //#endregion
 }

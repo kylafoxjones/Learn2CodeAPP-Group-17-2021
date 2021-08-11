@@ -14,15 +14,15 @@ export class PaymentsComponent implements OnInit {
   search;
   constructor(public dialog: MatDialog, private service: AdminService) {}
 
-  ngOnInit(): void {
-    this.payments = this.service.paymentList;
+  ngOnInit() {
+   this.getPaymentList();
   }
 
-  // getPaymentList(){
-  //   this.service.getPayments().subscribe((result) => {
-  //     this.payments = result; //uni list is populated
-  //   });
-  // }
+  getPaymentList(){
+    this.service.getPayments().subscribe((result) => {
+      this.payments = result;
+    });
+  }
 
   openPopUpUpload(): void {
     const dialogRef = this.dialog.open(UploadCsvFileComponent, {
