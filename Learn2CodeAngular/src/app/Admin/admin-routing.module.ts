@@ -73,6 +73,10 @@ const routes: Routes = [
         path: 'payments',
         component: PaymentsComponent,
       },
+      {
+        path: 'coursecontent',
+        component: PaymentsComponent,
+      },
       //I dont know if the addEdit path though stand alone or have soemthing before it e.g admin/univers
       {
         path: 'addEditUni',

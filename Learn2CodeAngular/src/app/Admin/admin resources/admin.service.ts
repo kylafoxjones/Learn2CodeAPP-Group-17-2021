@@ -78,7 +78,7 @@ export class AdminService {
   //#endregion
 
 //#region payment variables
-paymentList:any;
+
   //#endregion
   constructor(private http: HttpClient) {}
   //#region university
@@ -419,5 +419,8 @@ paymentList:any;
     });
   }
 
+  getPayments() {
+  return this.http.get(this.apiUrl + 'GetPayments');
+  }
   //#endregion
 }

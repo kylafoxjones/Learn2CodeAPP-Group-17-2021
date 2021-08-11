@@ -43,17 +43,15 @@
         <thead>
           <tr>
             <th scope="col">Student name</th>
-            <th scope="col">Student surname</th>
             <th scope="col">Payment date</th>
             <th scope="col">Amount</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let item of payments | filter: search">
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>{{item.fullName}}</td>
+            <td>{{item.paymentDate}}</td>
+            <td>{{"R "+ item.paymentAmount}}</td>
           </tr>
         </tbody>
       </table>
