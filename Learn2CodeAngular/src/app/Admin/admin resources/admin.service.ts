@@ -79,7 +79,12 @@ export class AdminService {
 
   //#region course content variables
   courseContentCat:any;
-
+  editCont: any;
+  contents: any = [];
+  updatedContent: any = {};
+  oldContent: any;
+  typeChosenn: any;
+  //ContentTypeIdFromDropdown: any;
 
   constructor(private http: HttpClient) {}
   //#region university
@@ -438,8 +443,32 @@ export class AdminService {
     });
   }
 
+  getCourseContentType(){
+    return this.http.get(
+      this.apiUrl + 'GetContenttype');
+  }
   deleteContent(id) {
     return this.http.delete(this.apiUrl + 'DeleteContent/' + id);
+  }
+
+  editContent(obj){
+    var oldObj = this.contents.find((x) => x.id === this.editId);
+    console.log(oldObj); //extract from array where objects are based off the model which has courseFolder
+    //what you get from api is based off the model
+
+    this.updatedContent = {
+      Id: oldObj.id,
+      Content: obj.content,
+      CourseSubCategoryId: this.courseContentCat.id,
+      ContentTypeId: this.typeChosenn,
+  
+    };
+    console.log(this.updatedContent); //this is the dto
+    //what you send is dtos, they are not based exactly on the models
+    return this.http.put(
+      this.apiUrl + 'EditContent',
+      this.updatedContent
+    );
   }
   //#endregion
 }

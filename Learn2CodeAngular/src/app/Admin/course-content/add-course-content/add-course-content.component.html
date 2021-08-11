@@ -1,23 +1,26 @@
-<h2 style="text-align: center">Edit course content file</h2>
+<h2 style="text-align: center">{{popupTitle}}</h2>
 <hr />
 <label for="formFile" class="form-label">Course content file:</label>
 <input type="file" #file placeholder="Choose file" accept="application/pdf" (change)="content($event)" />
+<!-- <video width="320" height="240" controls [src]="prev_url" >
+</video> -->
 <br/>
 
 <mat-form-field appearance="outline">
   <mat-label>File Type:</mat-label>
   <mat-select (valueChange)="selectType($event)">s
-    <mat-option *ngFor="let type of types" [value]="type.value">
-      {{ type.viewValue }}
+    <mat-option *ngFor="let type of typeList" [value]="type.id">
+
+      {{ type.contentTypeName }}
     </mat-option>
   </mat-select>
 </mat-form-field>
 
 <div style="margin-left: 2.5rem">
   <div style="margin: auto; padding-top: 1rem">
-    <button style="width: 6rem" class="btn btn-info">Submit</button>
-    <button style="margin-left: 2rem; width: 6rem" class="btn btn-danger">
-      cancel
+    <button  (click)="submitEdittedCourseContent($event)" style="width: 6rem" class="btn btn-info">Submit</button>
+    <button  [mat-dialog-close] style="margin-left: 2rem; width: 6rem" class="btn btn-danger">
+      Cancel
     </button>
   </div>
 </div>
