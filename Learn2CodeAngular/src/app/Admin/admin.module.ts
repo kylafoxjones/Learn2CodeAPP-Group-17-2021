@@ -39,6 +39,7 @@ import { MatMenuModule} from '@angular/material/menu';
 import { PaymentsComponent } from './payments/payments.component';
 import { UploadCsvFileComponent } from './payments/upload-csv-file/upload-csv-file.component';
 import { CourseContentComponent } from './course-content/course-content.component';
+import { AddCourseContentComponent } from './course-content/add-course-content/add-course-content.component';
 
 @NgModule({
   declarations: [
@@ -66,6 +67,7 @@ import { CourseContentComponent } from './course-content/course-content.componen
     PaymentsComponent,
     UploadCsvFileComponent,
     CourseContentComponent,
+    AddCourseContentComponent,
   
    
   ],

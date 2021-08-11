@@ -71,7 +71,7 @@
         </thead>
         <tbody>
           <tr *ngFor="let item of courseContentCategoryList | filter: search">
-            <td [routerLink]="['/coursecontent']">{{ item.courseSubCategoryName }}</td>
+            <td (click)= "goToContent(item)" >{{ item.courseSubCategoryName }}</td>
             <td>{{ item.price }}</td>
             <td>
               <button (click)="openEditDialog(item)" class="btn btn-primary">

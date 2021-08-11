@@ -12,7 +12,6 @@ import { AdminService } from '../admin resources/admin.service';
   styleUrls: ['./course-content-category.component.scss'],
 })
 export class CourseContentCategoryComponent implements OnInit {
-
   //declare variables
   courseContentCategoryList: any = [];
   courseContentCategory: any;
@@ -24,7 +23,7 @@ export class CourseContentCategoryComponent implements OnInit {
     private router: Router
   ) {}
 
-  ngOnInit() {  
+  ngOnInit() {
     this.getAllCourseContentCategories();
   }
 
@@ -85,5 +84,10 @@ export class CourseContentCategoryComponent implements OnInit {
       this.courseContentCategoryList = result; //uni list is populated
     });
   }
+
+  goToContent(item) {
+    this.service.courseContentCat = item;
+    console.log('the cateory chosen', this.service.courseContentCat);
+    this.router.navigateByUrl('/coursecontent');
+  }
 }
- 
