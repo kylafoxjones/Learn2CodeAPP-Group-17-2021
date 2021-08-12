@@ -9,6 +9,11 @@ import { SalesReportComponent } from './Sales-Report/sales-report/sales-report.c
 import { TotalStudentsReportComponent } from './TotalStudents-Report/total-students-report/total-students-report.component';
 import { TutorDetailsReportComponent } from './TutorDetails-Report/tutor-details-report/tutor-details-report.component';
 import { TutorSessionReportComponent } from './TutorSession-Report/tutor-session-report/tutor-session-report.component';
+import { ChartsModule } from 'ng2-charts';
+import { Chart } from 'chart.js';
+import { FormsModule } from '@angular/forms';
+
+
 
 
 @NgModule({
@@ -23,7 +28,12 @@ import { TutorSessionReportComponent } from './TutorSession-Report/tutor-session
   ],
   imports: [
     CommonModule,
-    ReportRoutingModule
+    ReportRoutingModule,
+    ChartsModule,
+  FormsModule,
+  
+    
+  
   ]
 })
 export class ReportModule { }
