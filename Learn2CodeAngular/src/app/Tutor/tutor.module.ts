@@ -36,7 +36,6 @@ import { SentRecievedMessagesComponent } from './sent-recieved-messages/sent-rec
     MessagesComponent,
     CreateMessageComponent,
     SentRecievedMessagesComponent,
- 
   ],
   imports: [
     CommonModule,
