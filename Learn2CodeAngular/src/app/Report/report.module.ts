@@ -11,8 +11,15 @@ import { TutorDetailsReportComponent } from './TutorDetails-Report/tutor-details
 import { TutorSessionReportComponent } from './TutorSession-Report/tutor-session-report/tutor-session-report.component';
 import { ChartsModule } from 'ng2-charts';
 import { Chart } from 'chart.js';
-import { FormsModule } from '@angular/forms';
 import { ReportHomeComponent } from './Home/report-home/report-home.component';
+import { NbLayoutModule } from '@nebular/theme';
+import { FormsModule } from '@angular/forms';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatFormFieldModule } from '@angular/material/form-field';
+
+
+
+
 
 
 
@@ -32,7 +39,17 @@ import { ReportHomeComponent } from './Home/report-home/report-home.component';
     CommonModule,
     ReportRoutingModule,
     ChartsModule,
-  FormsModule,
+    NbLayoutModule,
+    FormsModule,
+    MatDatepickerModule,
+    MatFormFieldModule
+    
+  
+    
+  
+  
+ 
+  
   
     
   
