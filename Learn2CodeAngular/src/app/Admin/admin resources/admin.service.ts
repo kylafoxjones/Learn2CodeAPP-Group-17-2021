@@ -84,7 +84,6 @@ export class AdminService {
   contents: any = [];
   updatedContent: any = {};
   oldContent: any;
-  typeChosenn: any;
   //ContentTypeIdFromDropdown: any;
 
   constructor(private http: HttpClient) {}
@@ -456,10 +455,8 @@ export class AdminService {
     return this.http.delete(this.apiUrl + 'DeleteContent/' + id);
   }
 
-  editContent(obj): Observable<any> {
-    return this.http.put(this.apiUrl + 'EditContent', obj, {
-      responseType: 'text',
-    });
+  editContent(formdata): Observable<any> {
+    return this.http.put(this.apiUrl + 'EditContent', formdata);
   // editContent(obj){
   //   var oldObj = this.contents.find((x) => x.id === this.editId);
   //   console.log(oldObj); //extract from array where objects are based off the model which has courseFolder

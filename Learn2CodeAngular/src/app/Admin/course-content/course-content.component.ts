@@ -13,7 +13,6 @@ export class CourseContentComponent implements OnInit {
   contentList: any;
   coursecat = this.service.courseContentCat;
   search;
-  
   content: any;
  
   constructor(public dialog: MatDialog, private service: AdminService) {}
@@ -33,11 +32,15 @@ export class CourseContentComponent implements OnInit {
     }).then((result) => {
       if (result.isConfirmed) {
         this.service.deleteContent(id).subscribe((result) => {
-          this.getAllCourseContent();
+         this.getAllCourseContent();
+         
         });
         Swal.fire('Successful Deletion', '', 'success');
+        
       }
+   
     });
+
   }
 
   getAllCourseContent() {
@@ -53,8 +56,7 @@ export class CourseContentComponent implements OnInit {
     this.service.edit = true;
     //fill the object place holder when edit is clicked
     this.service.editCont = obj;
-    console.log(this.service.editContent);
-
+    console.log(this.service.editCont);
     this.service.contents = this.contentList;
     this.service.editId = obj.id;
     this.service.title = 'Edit course content';

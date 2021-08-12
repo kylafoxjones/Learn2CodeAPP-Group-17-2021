@@ -41,14 +41,41 @@ export class AddCourseContentComponent implements OnInit {
   }
 
   public Test() {
+    console.log(this.typeChosen);
+    if (this.service.editId==0){
+      console.log(this.service.editId);
     let data = new FormData();
-    
-    data.append('courseSubCategoryId', '1');
-    data.append('contentTypeId', '2');
+    data.append('courseSubCategoryId', this.service.courseContentCat.id);
+    data.append('contentTypeId',this.typeChosen );
     data.append('content', this.image);
     this.service.test(data).subscribe((res) => {
       console.log(res);
+      this.data = res;
+    //  Swal.fire({title:'Course content has been upload!' , icon:'success'});
+      this.dialogRef.close();
+      Swal.fire('Course content has been upload!', this.data.message, 'success');
     });
+  }
+  else{
+    let editIdd= (this.service.editId);
+      console.log(this.service.editId);
+      console.log(editIdd);
+    let formdata = new FormData();
+    formdata.append('courseSubCategoryId', this.service.courseContentCat.id);
+    formdata.append('contentTypeId',this.typeChosen );
+    formdata.append('content', this.image);
+    formdata.append('id',editIdd.toString());
+    console.log('the data sent through for edit',formdata)
+    this.service.editContent(formdata).subscribe((res) => {
+       console.log(res);
+      this.data = res;
+       this.dialogRef.close();
+       Swal.fire('Course content has been updated!', this.data.message, 'success');
+
+          });
+         
+  }
+  
   }
 
   ApplicationImage(event) {
@@ -57,16 +84,7 @@ export class AddCourseContentComponent implements OnInit {
     console.log(this.image);
   }
 
-  content() {
-    this.data = new FormData();
-    //data.append('courseSubCategoryId', this.service.courseContentCat.id);
-    this.data.append('contentTypeId', 'hey');
-   // data.append('content', event.target.files[0]);
-    console.log(this.data);
-    //this.service.posttfile(data).subscribe((res) => {
-      //console.log(res);
-    //});
-  }
+
   // content(event) {
   //   //create
   //   if (this.service.editId==0) {
@@ -98,7 +116,7 @@ export class AddCourseContentComponent implements OnInit {
     console.log('this is the event', $event);
     this.typeChosen = $event; //what is selected in the dropdown is sent back in this parameter to the api
     console.log(this.typeChosen);
-    this.typeChosen= this.service.typeChosenn;
+  
   }
 
   // submitEdittedCourseContent(event) {
@@ -149,3 +167,6 @@ export class AddCourseContentComponent implements OnInit {
   //   }
   // }
 }
+
+
+
