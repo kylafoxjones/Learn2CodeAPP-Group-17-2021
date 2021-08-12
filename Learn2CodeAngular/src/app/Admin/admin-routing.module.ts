@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ReportHomeComponent } from '../Report/Home/report-home/report-home.component';
 import { AdminComponent } from './admin.component';
 import { CourseContentCategoryComponent } from './course-content-category/course-content-category.component';
 import { AddEditCourseComponent } from './course/add-edit-course/add-edit-course.component';
@@ -94,6 +95,10 @@ const routes: Routes = [
         path: 'acceptreject',
         component: AcceptRejectApplicationComponent,
       },
+      {
+        path: 'report-home',
+        component: ReportHomeComponent,
+      }
     ],
   },
 ];

@@ -12,6 +12,7 @@ import { TutorSessionReportComponent } from './TutorSession-Report/tutor-session
 import { ChartsModule } from 'ng2-charts';
 import { Chart } from 'chart.js';
 import { FormsModule } from '@angular/forms';
+import { ReportHomeComponent } from './Home/report-home/report-home.component';
 
 
 
@@ -24,7 +25,8 @@ import { FormsModule } from '@angular/forms';
     SalesReportComponent,
     TotalStudentsReportComponent,
     TutorDetailsReportComponent,
-    TutorSessionReportComponent
+    TutorSessionReportComponent,
+    ReportHomeComponent
   ],
   imports: [
     CommonModule,
