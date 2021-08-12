@@ -14,24 +14,101 @@
   <!-- subscription name -->
   <mat-form-field class="example-full-width">
     <mat-label>Name:</mat-label>
-    <input [(ngModel)]="data.SubscriptionName" matInput />
+    <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert">
+      <div *ngIf="name.errors?.required" style="font-size: smaller; color: red">
+        Name is required.
+      </div>
+      <div
+        *ngIf="name.errors?.minlength"
+        style="font-size: smaller; color: red"
+      >
+        Name must be at least 2 characters long.
+      </div>
+    </div>
+    <input
+      [(ngModel)]="data.SubscriptionName"
+      #name="ngModel"
+      matInput
+      type="text"
+      id="name"
+      name="name"
+      class="form-control"
+      required
+      minlength="2"
+    />
   </mat-form-field>
 
   <mat-form-field class="example-full-width">
     <mat-label>Duration:</mat-label>
-    <input [(ngModel)]="data.Duration" matInput />
+    <div
+      *ngIf="duration.invalid && (duration.dirty || duration.touched)"
+      class="alert"
+    >
+      <div
+        *ngIf="duration.errors?.required"
+        style="font-size: smaller; color: red"
+      >
+        Duration is required.
+      </div>
+    </div>
+    <input
+      [(ngModel)]="data.Duration"
+      #duration="ngModel"
+      matInput
+      type="number"
+      id="duration"
+      name="Duration"
+      class="form-control"
+      required
+    />
   </mat-form-field>
 
   <mat-form-field class="example-full-width">
     <mat-label>Quantity:</mat-label>
-    <input [(ngModel)]="data.Quantity" matInput />
+    <div
+      *ngIf="quantity.invalid && (quantity.dirty || quantity.touched)"
+      class="alert"
+    >
+      <div
+        *ngIf="quantity.errors?.required"
+        style="font-size: smaller; color: red"
+      >
+        Quantity is required.
+      </div>
+    </div>
+    <input
+      [(ngModel)]="data.Quantity"
+      #quantity="ngModel"
+      matInput
+      type="number"
+      id="quantity"
+      name="quantity"
+      class="form-control"
+      required
+    />
   </mat-form-field>
 
   <mat-form-field class="example-full-width">
     <mat-label>Price:</mat-label>
-    <input [(ngModel)]="data.price" matInput />
+    <div *ngIf="price.invalid && (price.dirty || price.touched)" class="alert">
+      <div
+        *ngIf="price.errors?.required"
+        style="font-size: smaller; color: red"
+      >
+        Price is required.
+      </div>
+    </div>
+    <input
+      [(ngModel)]="data.price"
+      #price="ngModel"
+      matInput
+      type="number"
+      id="price"
+      name="price"
+      class="form-control"
+      required
+    />
   </mat-form-field>
-
 </mat-dialog-content>
 
 <h1>{{ data.id }}</h1>
@@ -40,6 +117,9 @@
     (click)="submitEdittedSubscription()"
     style="width: 6rem"
     class="btn btn-info"
+    [disabled]="
+      name.invalid || duration.invalid || quantity.invalid || price.invalid
+    "
   >
     Submit
   </button>
