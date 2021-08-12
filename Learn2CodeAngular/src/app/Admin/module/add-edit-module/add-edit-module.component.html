@@ -3,13 +3,25 @@
 <mat-dialog-content>
   <mat-form-field class="example-full-width">
     <mat-label>Module Code:</mat-label>
+    <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert">
+      <div *ngIf="name.errors?.required" style="font-size: smaller; color: red;">
+        Module Code is required.</div>
+      <div *ngIf="name.errors?.minlength" style="font-size: smaller; color: red;">
+        Name must be at least 5 characters long.
+      </div>
+    </div>
 
       <input
         [(ngModel)]="data.ModuleCode"
         matInput
-      
+        id="name"
+      name="name"
+      class="form-control"
+      required
+      minlength="5"
+      #name="ngModel"
       />
-    
+
   </mat-form-field>
 </mat-dialog-content>
 <h1>{{ data.id }}</h1>
@@ -18,6 +30,7 @@
     (click)="submitEdittedModule()"
     style="width: 6rem"
     class="btn btn-info"
+    [disabled]="name.invalid"
   >
     Submit
   </button>
