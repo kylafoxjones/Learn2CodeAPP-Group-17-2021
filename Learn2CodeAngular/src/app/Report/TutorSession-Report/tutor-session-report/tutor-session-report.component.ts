@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import Swal from 'sweetalert2';
+
 @Component({
   selector: 'app-tutor-session-report',
   templateUrl: './tutor-session-report.component.html',
@@ -11,5 +13,13 @@ export class TutorSessionReportComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  x(){
+    Swal.fire(
+      '',
+      'Successfully downloaded report',
+      'success'
+    )
+  }
+
 
 }

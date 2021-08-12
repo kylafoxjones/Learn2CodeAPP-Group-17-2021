@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-tutor-details-report',
@@ -9,7 +11,15 @@ export class TutorDetailsReportComponent implements OnInit {
 
   constructor() { }
 
+  
   ngOnInit(): void {
+  }
+  x(){
+    Swal.fire(
+      '',
+      'Successfully downloaded report',
+      'success'
+    )
   }
 
 }

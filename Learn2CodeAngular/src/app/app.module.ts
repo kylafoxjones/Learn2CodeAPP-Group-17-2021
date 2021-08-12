@@ -11,12 +11,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NbThemeModule, NbLayoutModule, NbSidebarModule } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { ChartsModule } from 'ng2-charts';
-import { AttendanceReportComponent } from './attendance-report/attendance-report.component';
+
 
 
 
 @NgModule({
-  declarations: [AppComponent, AttendanceReportComponent],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -31,7 +31,8 @@ import { AttendanceReportComponent } from './attendance-report/attendance-report
     NbThemeModule.forRoot({ name: 'default' }),
     NbLayoutModule,
     NbSidebarModule.forRoot(),
-    NbEvaIconsModule
+    NbEvaIconsModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-total-students-report',
@@ -10,6 +11,13 @@ export class TotalStudentsReportComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+  }
+  x(){
+    Swal.fire(
+      '',
+      'Successfully downloaded report',
+      'success'
+    )
   }
 
 }
