@@ -46,7 +46,7 @@ export class CourseContentComponent implements OnInit {
   getAllCourseContent() {
     this.service.getCourseContent().subscribe((result) => {
       this.contentList = result;
-      console.log('list of content for category cosen', this.contentList);
+      console.log('list of content for category chosen', this.contentList);
     });
   }
 
