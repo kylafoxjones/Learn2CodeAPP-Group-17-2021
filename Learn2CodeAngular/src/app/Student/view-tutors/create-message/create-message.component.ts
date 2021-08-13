@@ -27,12 +27,13 @@ export class CreateMessageComponent implements OnInit {
 
   ngOnInit() {
     this.tutor = this.service.tutorObj;
-    this.getSenderInfo();
+    this.getStudentInfo();
   }
 
-  getSenderInfo() {
+  getStudentInfo() {
     //need to get the userId of the student that is logged in
-    //it will then be used in the funx below as "SenderId" to send to api
+    //it will then be used in the funx below as "SenderId" to send messages
+    //it will also be used as recieverId to look at recieved messages
     //maybe get the entire object of student
     this.senderId = '02174cf0–9412–4cfe - afbf - 59f706d72cf6';
     this.studentId = 2;
@@ -41,7 +42,7 @@ export class CreateMessageComponent implements OnInit {
   sendMessage() {
     this.messageObj = {
       SenderId: this.senderId,
-      RecieverId: this.service.tutorObj.userId,
+      ReceiverId: this.service.tutorObj.userId,
       MessageSent: this.data.Message,
       TutorId: this.service.tutorObj.id,
       StudentId: this.studentId,
