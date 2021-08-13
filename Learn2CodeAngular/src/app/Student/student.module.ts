@@ -18,13 +18,18 @@ import {MatListModule} from '@angular/material/list';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { ChartsModule } from 'ng2-charts';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { StudentHomeComponent } from './student-home/student-home.component';
+import {MatMenuModule} from '@angular/material/menu';
+import { ShopComponent } from './shop/shop.component';
 
 @NgModule({
   declarations: [
     StudentComponent,
     ViewTutorsComponent,
     SentRecievedMessagesComponent,
-    CreateMessageComponent
+    CreateMessageComponent,
+    StudentHomeComponent,
+    ShopComponent
   ],
   imports: [
     CommonModule,
@@ -43,7 +48,8 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     MatListModule,
     MatSidenavModule,
     ChartsModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+    MatMenuModule
   ]
 })
 export class StudentModule { }

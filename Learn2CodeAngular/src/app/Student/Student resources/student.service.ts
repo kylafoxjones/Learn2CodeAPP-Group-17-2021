@@ -35,4 +35,14 @@ getRecievedMessagesForStudent(id){
   return this.http.get(this.apiUrl + 'GetRecievedMessages/' + id);
 }
 //#endregion
+
+//#region shop
+getCourses(){
+  return this.http.get(this.apiUrl + 'GetCourseFolder');
+}
+
+getSubscriptions(){
+  return this.http.get(this.apiUrl + 'GetSubscription');
+}
+//#endregion
 }
