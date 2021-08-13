@@ -30,5 +30,9 @@ deleteMessages(id) {
 getSentMessagesForStudent(id) {
   return this.http.get(this.apiUrl + 'GetSentMessages/' + id);
 }
+
+getRecievedMessagesForStudent(id){
+  return this.http.get(this.apiUrl + 'GetRecievedMessages/' + id);
+}
 //#endregion
 }

@@ -25,8 +25,7 @@ export class AddEditModuleComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-   
-    this.data.ModuleCode=this.placeholder.moduleCode;
+    this.data.ModuleCode = this.placeholder.moduleCode;
   }
 
   submitEdittedModule() {

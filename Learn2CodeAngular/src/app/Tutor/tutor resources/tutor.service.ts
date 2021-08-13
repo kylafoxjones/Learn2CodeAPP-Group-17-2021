@@ -64,5 +64,8 @@ export class TutorService {
   getSentMessagesForTutor(id) {
     return this.http.get(this.apiUrl + 'GetSentMessages/' + id);
   }
+  getRecievedMessagesForTutor(id){
+    return this.http.get(this.apiUrl + 'GetRecievedMessages/' + id);
+  }
   //#endregion
 }

@@ -140,7 +140,7 @@
         <br />
       </nb-tab>
 
-      <nb-tab tabTitle="Recieved">
+      <nb-tab tabTitle="Received">
         <div
           style="
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
@@ -171,6 +171,43 @@
             </span>
           </div>
 
+          <table
+            class="table table-hover"
+            style="width: 80%; margin: auto; padding-top: 3.5rem"
+          >
+            <thead>
+              <tr>
+                <th scope="col">Student name:</th>
+                <th scope="col">Surname:</th>
+                <th scope="col">Email:</th>
+                <th scope="col">Time:</th>
+                <th scope="col">Message:</th>
+
+                <th scope="col"></th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of MessagesRecieved | filter: search">
+                <td>{{ item.student.studentName }}</td>
+                <td>{{ item.student.studentSurname }}</td>
+                <td>{{ item.student.identity.email }}</td>
+                <td>{{ item.timeStamp }}</td>
+                <td (click)="viewReceivedMessage(item)">
+                  <i
+                    style="font-size: x-large"
+                    class="fa fa-envelope-o"
+                    aria-hidden="true"
+                  ></i>
+                </td>
+                <td (click)="deleteSentMessage(item.id)">
+                  <button class="btn btn-danger">
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
           <br />
           <br />
 
@@ -207,7 +244,6 @@
             New message
           </button>
         </div>
-        <br />
         <br />
       </nb-tab>
     </nb-tabset>
