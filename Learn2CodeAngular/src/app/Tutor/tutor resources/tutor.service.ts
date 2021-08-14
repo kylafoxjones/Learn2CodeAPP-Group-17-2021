@@ -29,7 +29,8 @@ export class TutorService {
   updatedContent: any = {};
   oldContent: any;
   bookingIdToSend: any;
-
+ // typeList: any = [];
+ SessionTitle:any;
 
 
   constructor(private http: HttpClient) {}

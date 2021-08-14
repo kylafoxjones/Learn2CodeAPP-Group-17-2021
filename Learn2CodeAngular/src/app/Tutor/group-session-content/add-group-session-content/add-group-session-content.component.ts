@@ -66,9 +66,9 @@ export class AddGroupSessionContentComponent implements OnInit {
       let data = new FormData();
       console.log('cat id',this.typeChosen);
       data.append('sessionContentCategoryId', this.typeChosen);
-      data.append('bookingInstanceId','1' );
-      data.append('notes', this.notes);
-      data.append('recording', this.recording);
+      data.append('BookingInstanceId',this.service.bookingIdToSend  );
+      data.append('Notes', this.notes);
+      data.append('Recording', this.recording);
       this.service.posttFile(data).subscribe((res) => {
         console.log(res);
         this.data = res;
@@ -89,13 +89,14 @@ export class AddGroupSessionContentComponent implements OnInit {
       }).then((result) => {
         if (result.isConfirmed) {
       let editIdd= (this.service.editId);
+    //  let bookId= this.service.bookingIdToSend;
         console.log(this.service.editId);
         console.log(editIdd);
       let formdata = new FormData();
       formdata.append('sessionContentCategoryId', this.typeChosen);
-      formdata.append('bookingInstanceId','1' );//this.service.bookingIdToSend
-      formdata.append('notes', this.notes);
-      formdata.append('recording', this.recording);
+      formdata.append('BookingInstanceId',this.service.bookingIdToSend );
+      formdata.append('Notes', this.notes);
+      formdata.append('Recording', this.recording);
       formdata.append('id',editIdd.toString());
       console.log('the data sent through for edit',formdata)
       this.service.editContent(formdata).subscribe((res) => {

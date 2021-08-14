@@ -32,7 +32,7 @@
 </nav>
 
 <div style="padding-top: 2rem; padding-bottom: 1rem">
-  <div class="header">Razor Session Content</div>
+  <div class="header">Session Content</div>
 </div>
 
 <br />
@@ -149,10 +149,9 @@
       <button style="align-content: center;margin-right: 10px;" class="btn btn-primary">
         <i class="fa fa-pencil" aria-hidden="true"></i>Edit
       </button> 
-      <button style="align-content: center" class="btn btn-danger">
+      <button (click)= "delete(item.id)" style="align-content: center" class="btn btn-danger">
         <i class="fa fa-trash" aria-hidden="true"></i>Delete
       </button>
-      <br/>
     </div>
     </div>
     <br/>
