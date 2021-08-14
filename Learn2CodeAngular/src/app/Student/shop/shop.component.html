@@ -17,9 +17,9 @@
         [matMenuTriggerFor]="menu"
         style="color: whitesmoke; font-size: large"
         class="fa fa-shopping-cart"
-        aria-hidden="true"s
+        aria-hidden="true"
       ></i>
-      (1)
+      ({{ finalCart.length }})
     </span>
 
     <span style="color: whitesmoke; margin-right: 2rem; padding-left: 1.5rem"
@@ -36,12 +36,12 @@
   <hr />
 
   <h6 style="margin-left: 0.5rem; text-decoration: underline">Subscriptions</h6>
-
-  <ul>
+  <!-- <h6 style="margin-left: 0.5rem; text-decoration: underline">Items in your cart: </h6> -->
+  <ul *ngFor="let item of subscriptionCartItems">
     <li>
-      Standard(1) R400
+      {{ item.subscriptionName }} R{{ item.price }}
       <i
-        (click)="delete()"
+        (click)="removeItemFromCart(item)"
         style="float: right; margin-right: 1rem"
         class="fa fa-times"
         aria-hidden="true"
@@ -50,9 +50,9 @@
   </ul>
   <h6 style="margin-left: 0.5rem; text-decoration: underline">Short Courses</h6>
 
-  <ul>
+  <ul  *ngFor="let item of courseCartItems">
     <li>
-      SASS(1) R100
+      {{ item.courseSubCategoryName }} R{{ item.price }}
       <i
         style="float: right; margin-right: 1rem"
         class="fa fa-times"
@@ -60,8 +60,17 @@
       ></i>
     </li>
   </ul>
-  <h6 style="margin-left: 0.5rem; text-decoration: underline">Total R500</h6>
-  <button class="btn btn-info" style="width: 100%">Checkout</button>
+  <h6 style="margin-left: 0.5rem; text-decoration: underline">
+    Total: R{{ runningTotal }}
+  </h6>
+  <br />
+  <button
+    (click)="checkout()"
+    class="btn btn-info"
+    style="width: 100%; position: bottom"
+  >
+    Checkout
+  </button>
 </mat-menu>
 
 <div style="padding-top: 2rem; padding-bottom: 1rem; margin-left: 3.5rem">
@@ -94,7 +103,10 @@
     </div>
 
     <div class="row">
-      <div class="col-md-4"  *ngFor="let item of listOfSubscriptions | filter: search">
+      <div
+        class="col-md-4"
+        *ngFor="let item of listOfSubscriptions | filter: search"
+      >
         <div
           style="
             margin-top: 3rem;
@@ -116,53 +128,61 @@
               margin-left: 0.5rem;
             "
           >
-            <h5 style="margin-left: 2.5rem; color: white">{{item.subscriptionName}}</h5>
+            <h5 style="margin-left: 2.5rem; color: white">
+              {{ item.subscriptionName }}
+            </h5>
             <hr style="width: 125%; color: white" />
           </div>
 
           <div style="text-align: center; padding-top: 1.9rem">
             <div>
-              <h6 style="color: white">Price: R {{item.price}}</h6>
+              <h6 style="color: white">Price: R {{ item.price }}</h6>
               <p style="color: white">
-                This subscription will last for: <br/>
-                 {{item.duration}} months
+                This subscription will last for: <br />
+                {{ item.duration }} months
                 <br />
                 <br />
-               It includes: {{item.subscriptionTutorSession[0].quantity}}x {{item.subscriptionTutorSession[0].tutorSession.sessionType.sessionTypeName}} session tickets
+                It includes: {{ item.subscriptionTutorSession[0].quantity }}x
+                {{
+                  item.subscriptionTutorSession[0].tutorSession.sessionType
+                    .sessionTypeName
+                }}
+                session tickets
               </p>
             </div>
             <div style="margin-top: 2.3rem">
-              <button style="width: 7rem" class="btn btn-outline-info">
+              <button
+                (click)="addToSubscriptCart(item)"
+                style="width: 7rem"
+                class="btn btn-outline-info"
+              >
                 Buy
               </button>
             </div>
           </div>
         </div>
       </div>
-    
     </div>
 
     <div style="padding-top: 2.5rem">
       <h3 style="text-decoration: underline">Short Courses</h3>
       <span>
-        <div class="input-group" style="width: 12.5rem">
-          <select class="custom-select" id="inputGroupSelect04">
-            <option selected>Topic</option>
-            <option value="1">Angular</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
-          </select>
-          <div class="input-group-append">
-            <button matTooltip="My tooltip" class="btn btn-primary">
-              <i class="fa fa-search"></i>
-            </button>
-          </div>
-        </div>
+        <mat-form-field appearance="outline">
+          <mat-label>Course Type:</mat-label>
+          <mat-select (valueChange)="selectType($event)">
+            <mat-option
+              *ngFor="let type of listOfCourseTypes"
+              [value]="type.id"
+            >
+              {{ type.courseFolderName }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
       </span>
     </div>
 
     <div class="row">
-      <div class="col-md-4" *ngFor="let item of listOfCourses | filter: search" >
+      <div class="col-md-4" *ngFor="let item of listOfCourses | filter: search">
         <div
           style="
             margin-top: 2rem;
@@ -184,24 +204,29 @@
               margin-left: 0.5rem;
             "
           >
-            <h5 style="margin-left: 2.5rem; color: white">{{item.courseFolderName}}</h5>
+            <h5 style="margin-left: 2.5rem; color: white">
+              {{ item.courseSubCategoryName }}
+            </h5>
             <hr style="width: 125%; color: white" />
-            <br/>
+            <br />
           </div>
 
           <div style="text-align: center; padding-top: 1.9rem">
             <div>
-                
-              <h6 style="color: white">Price: R </h6>
+              <h6 style="color: white">Price: R {{ item.price }}</h6>
               <p style="color: white">
-                Learn how to use components with this short course.
+                {{ item.description }}.
                 <br />
                 <br />
-                Includes: a video and notes on components
+                Includes: a video and notes.
               </p>
             </div>
             <div style="margin-top: 2.3rem">
-              <button style="width: 7rem" class="btn btn-outline-info">
+              <button
+                (click)="addToCourseCart(item)"
+                style="width: 7rem"
+                class="btn btn-outline-info"
+              >
                 Buy
               </button>
             </div>
