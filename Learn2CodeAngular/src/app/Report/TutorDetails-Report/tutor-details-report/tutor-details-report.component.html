@@ -33,39 +33,25 @@
   <br>
   
     <br>
-      <table class="table table-hover" style="width: 90%;margin: auto; padding-top: 2rem;">
-          <thead >
-            <tr>
-              <th scope="col">Tutor Name</th>
-              <th scope="col">Tutor Surname</th>
-              <th scope="col">Cell</th>
-              <th scope="col">Email</th>
-            
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Hermione</td>
-              <td>Granger</td>
-              <td>HP@gmail.com</td>
-              <td>0716547856</td>
-            
-            </tr>
-            <tr>
-                <td>Luca</td>
-                <td>Zax</td>
-                <td>ZX@gmail.com</td>
-                <td>0716543246</td>
-            </tr>
-            <tr>
-                <td>Nick</td>
-                <td>Stewart</td>
-                <td>Stewrat@gmail.com</td>
-                <td>071244856</td>
-            </tr>
-           
-          </tbody>
-        </table>
+      <table class="table table-hover" id="TutorDetailsData" style="width: 90%;margin: auto; padding-top: 2rem;">
+      
+        <thead>
+          <tr>
+            <th scope="col">Tutor Name</th>
+            <th scope="col">Tutor Surname</th>
+            <th scope="col">Tutor Cellhpone</th>
+            <th scope="col">Tutor Email</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of tutorList">
+            <td>{{ item.tutorName }}</td>
+            <td>{{ item.tutorSurname }}</td>
+            <td>{{ item.tutorCell }}</td>
+            <td>{{ item.tutorEmail }}</td>
+          </tr>
+        </tbody>
+      </table>
         <br>
         <nav aria-label="Page navigation example " style="margin-left: 75%;padding-bottom: 0.5rem;">
             <ul class="pagination">
@@ -90,9 +76,9 @@
   
   </div>
   <br>
-  <div style="padding:0.4rem">
-  <button  style="margin-left: 8rem;width: 10rem;"  class="btn btn-info">Generate PDF</button>
-  <button (click)="x()" style="margin-left: 1rem;width: 8rem;"  class="btn btn-primary">Report Home</button>
+  <div style="padding:0.4rem;position: relative;left: 50px;">
+  <button  (click)="DownloadPDF();x()" style="margin-left: 8rem;width: 10rem;"  class="btn btn-info">Generate PDF</button>
+  <button (click)="RedirectReportHome()" style="margin-left: 1rem;width: 8rem;"  class="btn btn-primary">Report Home</button>
 </div>
 </nb-layout-column>
 </nb-layout>

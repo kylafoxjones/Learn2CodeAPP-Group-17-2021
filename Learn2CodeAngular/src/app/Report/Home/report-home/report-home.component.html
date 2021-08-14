@@ -12,10 +12,10 @@
       >TutorDevOps</span
     >
     <div class="topnav-right">
-      <a>Home</a>
+      <a [routerLink]="['/adminhome']">Home</a>
      
     </div>
-    <div class="topnav-right">
+    <div  class="topnav-right">
        
         <div class="dot" >A</div>
     </div>
@@ -26,7 +26,7 @@
   </div>
   
   
-  <div class="row" style="margin-right: 1rem;">
+  <div [routerLink]="['/TutorDetails-Report']" class="row" style="margin-right: 1rem;">
     <div class="col-md-4">
         <div style=" margin-top: 3rem;
         border-radius: 25px;
@@ -52,7 +52,7 @@
     
     </div>
     </div>
-    <div class="col-md-4">
+    <div [routerLink]="['/Attendance-Report']" class="col-md-4">
         <div style=" margin-top: 3rem;
         border-radius: 25px;
         background-color: white;
@@ -74,7 +74,7 @@
     />
     </div>
     </div>
-    <div class="col-md-4">
+    <div [routerLink]="['/TutorSession-Report']" class="col-md-4">
         <div style=" margin-top: 3rem;
         border-radius: 25px;
         background-color: white;
@@ -97,7 +97,7 @@
     </div>
     </div>
   </div>
-  <div class="row" style="margin-right: 1rem;">
+  <div [routerLink]="['/TotalStudents-Report']" class="row" style="margin-right: 1rem;">
     <div class="col-md-4">
         <div style=" margin-top: 3rem;
         border-radius: 25px;
@@ -120,7 +120,7 @@
      />
     </div>
     </div>
-    <div class="col-md-4">
+    <div [routerLink]="['/Feedback-Report']" class="col-md-4">
         <div style=" margin-top: 3rem;
         border-radius: 25px;
         background-color: white;
@@ -142,7 +142,7 @@
    />  
     </div>
     </div>
-    <div class="col-md-4">
+    <div [routerLink]="['/Sales-Report']" class="col-md-4">
         <div style=" margin-top: 3rem;
         border-radius: 25px;
         background-color: white;
@@ -167,7 +167,10 @@
   </div>
   <br>
   <br>
-  <footer >
+  <footer style="position:absolute;
+                 bottom: 0;
+                 width: 100%;
+                 height: 2.5rem;" >
     <nav  id="foot" class="navbar ">
       <a class="navbar-brand" href="#">
        
