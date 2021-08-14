@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
+import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
@@ -21,6 +21,16 @@ export class TutorService {
 
   studentId: any;
   studentObj: any = {};
+
+  //group session content variables
+  sessionContentCat:any;
+  editSess: any;
+  contents: any = [];
+  updatedContent: any = {};
+  oldContent: any;
+  bookingIdToSend: any;
+
+
 
   constructor(private http: HttpClient) {}
 
@@ -63,4 +73,36 @@ export class TutorService {
   getSentMessagesForTutor(id) {
     return this.http.get(this.apiUrl + 'GetSentMessages/' + id);
   }
+//#group-session-content region
+// getSessionContentCategory() {
+//   return this.http.get(
+//     this.apiUrl + 'GetSessionContentCategory'
+//   );
+// }
+getSessionContentForInstance(id) { //get all content for an instance
+  return this.http.get(this.apiUrl + 'GetSessionContent/' + id);
+}
+
+getAllTutorSessions(id){ //get specific tutor's sessions
+  return this.http.get(this.apiUrl + 'GetTutorSessions/' + id);
+
+}
+posttFile(formdata): Observable<any>{ //create actual content
+ 
+  return this.http.post(this.apiUrl+'CreateSessionContent',formdata);
+}
+
+getSessionContentType(){ //for dropdown options
+  return this.http.get(
+    this.apiUrl + 'GetSessionContentCategory');
+}
+deleteContent(id) {
+  return this.http.delete(this.apiUrl + 'DeleteSessionContent/' + id);
+}
+
+editContent(formdata): Observable<any> {
+  return this.http.put(this.apiUrl + 'EditSessionContent', formdata);
+}
+
+  //#endregion
 }

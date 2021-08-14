@@ -1,0 +1,185 @@
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+/>
+
+<nav class="navbar navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">
+    <img
+      src="../.././assets/pics/HD logo.png"
+      width="40"
+      height="40"
+      class="d-inline-block align-top"
+      alt=""
+    />
+  </a>
+  <span class="TDO" style="color: rgb(0, 156, 158); margin-right: auto"
+    >TutorDevOps</span
+  >
+  <div class="topnav-right">
+    <a>Home</a>
+  </div>
+  <div class="topnav-right" style="margin-right: 0.5rem">
+    <img
+      src="../../../assets/pics/circle-cropped.png"
+      width="50"
+      height="50"
+      style="border-radius: 55px"
+      class="d-inline-block align-top"
+      alt=""
+    />
+  </div>
+</nav>
+
+<div style="padding-top: 2rem; padding-bottom: 1rem">
+  <div class="header">Razor Session Content</div>
+</div>
+
+<br />
+
+<nb-layout>
+  <nb-layout-column>
+    <br />
+
+    <div
+      style="
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
+          0 6px 6px rgba(0, 0, 0, 0.23);
+        width: 80%;
+        margin: auto;
+        border-radius: 15px;
+        align-items: center;
+      "
+    >
+      <br />
+      <h1 style="text-align: center">Category: {{ sessioncat }}</h1>
+      <div class="row">
+        <div div class="col-sm-6">
+          <div
+            style="
+              margin-top: 3rem;
+              border-radius: 25px;
+              background-color: rgb(44, 51, 54);
+              width: 16rem;
+              margin-left: 20%;
+              height: 19rem;
+              box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
+                0 6px 6px rgba(0, 0, 0, 0.23);
+            "
+          >
+            <br />
+            <div
+              style="
+                text-align: center;
+                width: 12rem;
+                height: 2rem;
+                margin-left: 0.5rem;
+              "
+            >
+              <h5 style="margin-left: 2.5rem; color: white">Video:</h5>
+              <hr style="width: 125%; color: white" />
+            </div>
+
+            <div style="text-align: center; padding-top: 1.9rem">
+              <div>
+                <h6 style="color: white">Price: R</h6>
+                <p style="color: white">
+                  blaaaaahhh
+                  <br />
+                  <br />
+                </p>
+              </div>
+              <div style="margin-top: 2.3rem">
+                <button class="btn btn-outline-info">
+                  <i class="fa fa-play"></i>
+                  Watch
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+     
+        <div div class="col-sm-6">
+          <div
+            style="
+              margin-top: 3rem;
+              border-radius: 25px;
+              background-color: rgb(44, 51, 54);
+              width: 16rem;
+              margin-left: 20%;
+              height: 19rem;
+              box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
+                0 6px 6px rgba(0, 0, 0, 0.23);
+            "
+          >
+            <br />
+            <div
+              style="
+                text-align: center;
+                width: 12rem;
+                height: 2rem;
+                margin-left: 0.5rem;
+              "
+            >
+              <h5 style="margin-left: 2.5rem; color: white">Notes:</h5>
+              <hr style="width: 125%; color: white" />
+            </div>
+
+            <div style="text-align: center; padding-top: 1.9rem">
+              <div>
+                <h6 style="color: white">Price: R</h6>
+                <p style="color: white">
+                  blaaaaahhh
+                  <br />
+                  <br />
+                </p>
+              </div>
+              <div style="margin-top: 2.3rem">
+                <button class="btn btn-outline-info">
+                  <i class="fa fa-download"></i> Download
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+<br/>
+
+      <div style="position: relative; left: 45%;">
+      <button style="align-content: center;margin-right: 10px;" class="btn btn-primary">
+        <i class="fa fa-pencil" aria-hidden="true"></i>Edit
+      </button> 
+      <button style="align-content: center" class="btn btn-danger">
+        <i class="fa fa-trash" aria-hidden="true"></i>Delete
+      </button>
+      <br/>
+    </div>
+    </div>
+    <br/>
+    <div style="padding: 0.4rem; margin-left: 3rem">
+      <button
+        style="margin-left: 8rem; width: 11.5rem"
+        (click)="SessionContent()"
+        class="btn btn-info"
+      >
+        Add Session Content
+      </button>
+    </div>
+  </nb-layout-column>
+</nb-layout>
+<footer>
+  <nav
+    id="foot"
+    class="navbar"
+    style="width: 100%; position: absolute; bottom: 0"
+  >
+    <a class="navbar-brand" href="#"> </a>
+    <span class="TDO" style="margin-right: auto"> &lt; TDO &gt;</span>
+    <div class="topnav-right">
+      <a href="#"> <i class="fa fa-facebook"></i> </a>
+      <a href="#"> <i class="fa fa-instagram"></i> </a>
+      <a href="#"> <i class="fa fa-twitter"></i> </a>
+      <a>TutorDevOps@gmail.com</a>
+    </div>
+  </nav>
+</footer>
