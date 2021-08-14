@@ -1,3 +1,14 @@
+<style>
+  #card:hover {
+  background-color:rgb(32, 136, 138);
+  color: antiquewhite;
+  font-weight: 500;
+  transition: 0.5s;
+}
+</style>
+
+
+<!--TOP NAV BAR-->
 <nav class="navbar navbar-dark bg-dark" >
     <a class="navbar-brand" href="#">
       <img
@@ -24,149 +35,126 @@
   <div style="padding-top: 2rem;padding-bottom: 0.5rem;">
     <div class="header" >Reports</div>
   </div>
-  
-  
-  <div [routerLink]="['/TutorDetails-Report']" class="row" style="margin-right: 1rem;">
-    <div class="col-md-4">
-        <div style=" margin-top: 3rem;
-        border-radius: 25px;
-        background-color: white;
-        width: 18rem;
-        margin-left: 20%;
-        height: 11rem;
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
-          0 6px 6px rgba(0, 0, 0, 0.23);
-        
-      ">
-      <h1 style="text-align: center;padding-top: 0.5rem;">
-          Tutor details
-      </h1>
-      <img
-      src="../../assets/pics/829453_user_512x512.png"
-      width="95"
-      height="95"
-      style="border-radius: 55px;margin-left: 6rem;"
-      class="d-inline-block align-top"
-      alt=""
-    />
-    
-    </div>
-    </div>
-    <div [routerLink]="['/Attendance-Report']" class="col-md-4">
-        <div style=" margin-top: 3rem;
-        border-radius: 25px;
-        background-color: white;
-        width: 18rem;
-        margin-left: 20%;
-        height: 11rem;
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
-          0 6px 6px rgba(0, 0, 0, 0.23);
-        
-      ">
-      <h1 style="text-align: center;padding-top: 0.5rem;">Attendance</h1>
-      <img
-      src="../../assets/pics/attendance-list-2389219_640.png"
-      width="105"
-      height="92"
-      style="border-radius: 55px;margin-left: 5.5rem;"
-      class="d-inline-block align-top"
-      alt=""
-    />
-    </div>
-    </div>
-    <div [routerLink]="['/TutorSession-Report']" class="col-md-4">
-        <div style=" margin-top: 3rem;
-        border-radius: 25px;
-        background-color: white;
-        width: 18rem;
-        margin-left: 20%;
-        height: 11rem;
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
-          0 6px 6px rgba(0, 0, 0, 0.23);
-        
-      ">
-      <h1 style="text-align: center;padding-top: 0.5rem;">Tutor Session</h1>
-      <img
-      src="../../assets/pics/classroom-icon.png"
-      width="155"
-      height="92"
-      style="border-radius: 55px;margin-left: 4.1rem;"
-      class="d-inline-block align-top"
-      alt=""
-    />
-    </div>
-    </div>
-  </div>
-  <div [routerLink]="['/TotalStudents-Report']" class="row" style="margin-right: 1rem;">
-    <div class="col-md-4">
-        <div style=" margin-top: 3rem;
-        border-radius: 25px;
-        background-color: white;
-        width: 18rem;
-        margin-left: 20%;
-        height: 11rem;
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
-          0 6px 6px rgba(0, 0, 0, 0.23);
-        
-      ">
-       <h1 style="text-align: center;padding-top: 0.5rem;">Total Students</h1>
-       <img
-       src="../../assets/pics/students.jpg"
-       width="114"
-       height="92"
-       style="border-radius: 55px;margin-left: 5.1rem;"
-       class="d-inline-block align-top"
-       alt=""
-     />
-    </div>
-    </div>
-    <div [routerLink]="['/Feedback-Report']" class="col-md-4">
-        <div style=" margin-top: 3rem;
-        border-radius: 25px;
-        background-color: white;
-        width: 18rem;
-        margin-left: 20%;
-        height: 11rem;
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
-          0 6px 6px rgba(0, 0, 0, 0.23);
-        
-      ">
-     <h1 style="text-align: center;padding-top: 0.5rem;">Feedback</h1>
-     <img
-     src="../../assets/pics/Write-the-interview-follow-up-letter-and-email.jpg"
-     width="115"
-     height="95"
-     style="border-radius: 55px;margin-left: 5.5rem;"
-     class="d-inline-block align-top"
-     alt=""
-   />  
-    </div>
-    </div>
-    <div [routerLink]="['/Sales-Report']" class="col-md-4">
-        <div style=" margin-top: 3rem;
-        border-radius: 25px;
-        background-color: white;
-        width: 18rem;
-        margin-left: 20%;
-        height: 11rem;
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
-          0 6px 6px rgba(0, 0, 0, 0.23);
-        
-      ">
-     <h1 style="text-align: center;padding-top: 0.5rem;">Sales</h1>
-     <img
-     src="../../assets/pics/sales_adobespark.png"
-     width="125"
-     height="95"
-     style="border-radius: 55px;margin-left: 5.3rem;"
-     class="d-inline-block align-top"
-     alt=""
-   />    
-    </div>
-    </div>
-  </div>
   <br>
   <br>
+  
+
+  
+ <!--REPORT DIV CARD BOXES COME HERE-->
+
+ <div class="card-deck" style="margin-bottom: 30px; margin-left: 50px; margin-right: 50px;">
+
+  <div id="card" class="card shadow" [routerLink]="['/TutorDetails-Report']" style="border-radius: 15px;border-color: rgb(0, 156, 158);"
+    >
+
+    <img
+    src="../../assets/pics/829453_user_512x512.png"
+    width="95"
+    height="95"
+    style="border-radius: 55px;margin-left: 40%;margin-top: 5px;"
+    class="d-inline-block align-top"
+    alt=""
+  />   
+  <div class="card-body" style="text-align: center;">
+      <h5 class="card-title" style="text-align: center; font-size: large;">Tutor Details</h5>
+      <p class="card-text" style="text-align: center;">Report containing particulars of tutors at TDO</p>
+   
+    </div>
+  </div>
+
+  <div id="card" class="card shadow" [routerLink]="['/Attendance-Report']" style="border-radius: 15px;border-color: rgb(0, 156, 158);">
+
+    <img
+    src="../../assets/pics/attendance-list-2389219_640.png"
+    width="105"
+    height="92"
+    style="border-radius: 55px; display: block; margin-left: auto; margin-right: auto;width: 26%;margin-top: 5px;"
+    class="d-inline-block align-top"
+    alt=""
+    />    <div class="card-body" style="text-align: center;">
+      <h5 class="card-title" style="font-size: large">Attendance</h5>
+      <p class="card-text">Report containing a list of students who attended a certain session</p>
+     
+    </div>
+  </div>
+
+  <div id="card" class="card shadow" [routerLink]="['/TutorSession-Report']" style="border-radius: 15px;border-color: rgb(0, 156, 158);">
+
+    <img
+    src="../../assets/pics/classroom-icon.png"
+    width="155"
+    height="92"
+    style="border-radius: 55px; display: block; margin-left: auto; margin-right: auto;width: 40%;margin-top: 5px;"
+    class="d-inline-block align-top"
+    alt=""
+  />  
+    <div class="card-body" style="text-align: center;">
+      <h5 class="card-title" style="font-size: large">Tutor Session</h5>
+      <p class="card-text">Report containing sessions done by a tutor</p>
+     
+    </div>
+  </div>
+
+
+</div>
+
+<div class="card-deck" style="margin-bottom: 30px; margin-left: 50px; margin-right: 50px;">
+
+  <div id="card" class="card shadow"  [routerLink]="['/TotalStudents-Report']"  style="border-radius: 15px;border-color: rgb(0, 156, 158);">
+
+    <img
+    src="../../assets/pics/students.jpg"
+    width="114"
+    height="92"
+    style="border-radius: 55px; display: block; margin-left: auto; margin-right: auto;width: 30%;margin-top: 5px;"
+    class="d-inline-block align-top"
+    alt=""
+  />    <div class="card-body" style="text-align: center;">
+      <h5 class="card-title" style="font-size: large">Total Students</h5>
+      <p class="card-text">Report containing details on current TDO students</p>
+     
+    </div>
+  </div>
+
+  <div id="card" class="card shadow" [routerLink]="['/Feedback-Report']" style="border-radius: 15px;border-color: rgb(0, 156, 158);">
+
+    <img
+    src="../../assets/pics/Write-the-interview-follow-up-letter-and-email.jpg"
+    width="115"
+    height="95"
+    style="border-radius: 55px; display: block; margin-left: auto; margin-right: auto;width: 30%;margin-top: 5px;"
+    class="d-inline-block align-top"
+    alt=""
+   />     <div class="card-body" style="text-align: center;">
+      <h5 class="card-title" style="font-size: large">Feedback</h5>
+      <p class="card-text">Report containing feedback from users on a specific tutor session</p>
+     
+    </div>
+  </div>
+
+  <div id="card" class="card shadow" [routerLink]="['/Sales-Report']" style="border-radius: 15px; border-color: rgb(0, 156, 158);">
+
+    <img
+    src="../../assets/pics/sales_adobespark.png"
+    width="125"
+    height="95"
+    style="border-radius: 55px; display: block; margin-left: auto; margin-right: auto;width: 30%;margin-top: 5px;"
+    class="d-inline-block align-top"
+    alt=""
+    />     <div class="card-body" style="text-align: center;">
+      <h5 class="card-title" style="font-size: large">Sales</h5>
+      <p class="card-text">Report containing sales data with relation to TDO subscriptions and courses</p>
+
+    </div>
+  </div>
+
+  
+</div>
+ 
+
+
+ <!--FOOTER-->
+  
   <footer style="position:absolute;
                  bottom: 0;
                  width: 100%;
