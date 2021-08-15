@@ -48,9 +48,8 @@
                     <tr *ngFor="let item of contentList | filter: search">
                         <td>{{item.title}}</td>
                         <td>{{item.module.moduleCode}}</td>
-                       
                         <td>{{item.date}}</td>
-                        <td><button class="btn btn-success" (click)="navigateToSpecificSession(item.id)"> Content </button> </td>  
+                        <td><button class="btn btn-success" (click)="navigateToSpecificSession(item)"> Content </button> </td>  
                     </tr>
                 </tbody>
             </table>

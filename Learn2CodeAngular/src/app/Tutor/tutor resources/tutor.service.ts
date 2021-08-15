@@ -29,8 +29,9 @@ export class TutorService {
   updatedContent: any = {};
   oldContent: any;
   bookingIdToSend: any;
- // typeList: any = [];
  SessionTitle:any;
+ content:any;
+ bookinginstance:any;
 
 
   constructor(private http: HttpClient) {}
@@ -103,6 +104,11 @@ deleteContent(id) {
 
 editContent(formdata): Observable<any> {
   return this.http.put(this.apiUrl + 'EditSessionContent', formdata);
+}
+
+getContentForSession(id){ 
+  return this.http.get(this.apiUrl + 'GetSessionContent/' + id);
+
 }
 
   //#endregion

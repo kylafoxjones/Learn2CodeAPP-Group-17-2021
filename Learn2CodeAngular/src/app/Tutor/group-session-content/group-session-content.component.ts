@@ -29,9 +29,12 @@ export class GroupSessionContentComponent implements OnInit {
   }
 
     
-  navigateToSpecificSession(id:number){
-    this.service.bookingIdToSend=id;
-//this.service.SessionTitle= ;
+  navigateToSpecificSession(obj){
+this.service.SessionTitle=obj.title;
+this.service.bookinginstance=obj;
+console.log("Booking instance",this.service.bookinginstance);
+console.log(this.service.bookinginstance.id);
     this.router.navigateByUrl('/specificsession');
+   
   }
 }

@@ -32,7 +32,7 @@
 </nav>
 
 <div style="padding-top: 2rem; padding-bottom: 1rem">
-  <div class="header">Session Content</div>
+  <div class="header">{{title}} Session Content</div>
 </div>
 
 <br />
@@ -52,7 +52,7 @@
       "
     >
       <br />
-      <h1 style="text-align: center">Category: {{ sessioncat }}</h1>
+      <h1 style="text-align: center">Category: {{category.sessionContentCategoryName}}</h1>
       <div class="row">
         <div div class="col-sm-6">
           <div
@@ -82,12 +82,8 @@
 
             <div style="text-align: center; padding-top: 1.9rem">
               <div>
-                <h6 style="color: white">Price: R</h6>
-                <p style="color: white">
-                  blaaaaahhh
-                  <br />
-                  <br />
-                </p>
+                <p style="color: white">{{content[0].recordingName}}</p>
+              
               </div>
               <div style="margin-top: 2.3rem">
                 <button class="btn btn-outline-info">
@@ -127,12 +123,9 @@
 
             <div style="text-align: center; padding-top: 1.9rem">
               <div>
-                <h6 style="color: white">Price: R</h6>
-                <p style="color: white">
-                  blaaaaahhh
-                  <br />
-                  <br />
-                </p>
+                <p style="color: white">{{content[0].notesName}}</p>
+            
+             
               </div>
               <div style="margin-top: 2.3rem">
                 <button class="btn btn-outline-info">
@@ -146,10 +139,10 @@
 <br/>
 
       <div style="position: relative; left: 45%;">
-      <button style="align-content: center;margin-right: 10px;" class="btn btn-primary">
+      <button  (click)="openEdit()" style="align-content: center;margin-right: 10px;" class="btn btn-primary">
         <i class="fa fa-pencil" aria-hidden="true"></i>Edit
       </button> 
-      <button (click)= "delete(item.id)" style="align-content: center" class="btn btn-danger">
+      <button (click)= "delete(content[0])" style="align-content: center" class="btn btn-danger">
         <i class="fa fa-trash" aria-hidden="true"></i>Delete
       </button>
     </div>
@@ -158,11 +151,18 @@
     <div style="padding: 0.4rem; margin-left: 3rem">
       <button
         style="margin-left: 8rem; width: 11.5rem"
-        (click)="SessionContent()"
+        (click)="openAdd()"
         class="btn btn-info"
       >
         Add Session Content
       </button>
+      <button
+      style="margin-left: 8rem; width: 11.5rem"
+      [routerLink]="['/sessioncontent']"
+      class="btn btn-info"
+    >
+      Back to list of sessions
+    </button>
     </div>
   </nb-layout-column>
 </nb-layout>
