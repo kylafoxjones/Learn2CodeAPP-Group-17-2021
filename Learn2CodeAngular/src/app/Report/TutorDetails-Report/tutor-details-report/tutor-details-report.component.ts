@@ -5,6 +5,8 @@ import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 import { Router } from '@angular/router';
 
+
+
 @Component({
   selector: 'app-tutor-details-report',
   templateUrl: './tutor-details-report.component.html',
@@ -58,4 +60,5 @@ tutorList: any = [];
   public RedirectReportHome(){
     this.router.navigateByUrl('/report-home');
   }
+
 }

@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
+import { Router } from '@angular/router';
+import { ReportingService } from '../../Report resources/reporting.service';
 
 
 @Component({
@@ -9,9 +13,14 @@ import Swal from 'sweetalert2';
 })
 export class TotalStudentsReportComponent implements OnInit {
 
-  constructor() { }
+  studentList:any= [];
 
-  ngOnInit(): void {
+  constructor(  
+    private reportService: ReportingService,
+    private router: Router ) { }
+
+  ngOnInit(){
+    this.getStudentDetails();
   }
   x(){
     Swal.fire(
@@ -20,5 +29,42 @@ export class TotalStudentsReportComponent implements OnInit {
       'success'
     )
   }
+
+  getStudentDetails() {
+    this.reportService.getTotalStudents().subscribe((result) => {
+      this.studentList = result; 
+      console.log(this.studentList);
+    });
+  }
+
+
+
+  public DownloadPDF():void {
+    let data = document.getElementById('TutorDetailsData');
+      
+    html2canvas(data).then(canvas => {
+        
+        let fileWidth = 240;
+        let fileHeight = canvas.height * fileWidth / canvas.width;
+        
+        const FILEURI = canvas.toDataURL('image/png')
+        let PDF = new jsPDF('p', 'mm', 'a4');
+        let position = 0;
+        PDF.addImage(FILEURI, 'PNG', 0, position, fileWidth, fileHeight)
+        
+        PDF.save('TutorDetailsReport.pdf');
+    });     
+  }
+
+  public RedirectReportHome(){
+    this.router.navigateByUrl('/report-home');
+  }
+
+
+
+
+
+
+
 
 }

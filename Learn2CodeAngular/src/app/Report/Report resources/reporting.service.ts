@@ -16,5 +16,13 @@ export class ReportingService {
       return this.http.get(this.apiUrl + 'TutorDetails');
 
         //#endregion
-}
+
+        //#region StudentDetails
+     }
+
+
+     getTotalStudents(){
+      return this.http.get(this.apiUrl + 'StudentDetails');
+      }
+      //#endregion
 }
