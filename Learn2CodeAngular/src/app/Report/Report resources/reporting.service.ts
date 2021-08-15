@@ -25,4 +25,13 @@ export class ReportingService {
       return this.http.get(this.apiUrl + 'StudentDetails');
       }
       //#endregion
+
+      //region Attendance
+      getSessionDropdown(){
+        return this.http.get(this.apiUrl + 'AttendacSession');
+      }
+
+
+
+      //endregion
 }

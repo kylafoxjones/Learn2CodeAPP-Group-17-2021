@@ -16,6 +16,9 @@ import { NbLayoutModule } from '@nebular/theme';
 import { FormsModule } from '@angular/forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
 
 
 
@@ -42,7 +45,11 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     NbLayoutModule,
     FormsModule,
     MatDatepickerModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    BrowserAnimationsModule,
+    MatInputModule,
+    MatSelectModule
+    
     
   
     

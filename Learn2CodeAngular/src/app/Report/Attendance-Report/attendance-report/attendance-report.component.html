@@ -28,24 +28,13 @@
   <nb-layout-column>
 <br>
 <div class="row">
-    <div class="col-md-12">
-        <mat-form-field appearance="outline" style="margin-left: 8rem;">
-        <mat-label>Module</mat-label>
-        <select matNativeControl required>
-          <option value="volvo">INF354</option>
-          <option value="saab">Saab</option>
-          <option value="mercedes">Mercedes</option>
-          <option value="audi">Audi</option>
-        </select>
-      </mat-form-field>
-      <mat-form-field appearance="outline" style="margin-left: 0.5rem;">
-        <mat-label>Session</mat-label>
-        <select matNativeControl required>
-          <option value="volvo">Angular</option>
-          <option value="saab">Saab</option>
-          <option value="mercedes">Mercedes</option>
-          <option value="audi">Audi</option>
-        </select>
+    <div class="col-md-6" style="left: 135px;">
+      
+      <mat-form-field appearance="outline" style="margin-left: 0.5rem;margin-right: 1rem;width: 250px; align-content: center;" >
+        <mat-label style="text-align: center;">Session</mat-label>
+        <mat-select placeholder="Session title">
+          <mat-option *ngFor="let item of SessionList" value="Angular" >{{item.title}}</mat-option>
+        </mat-select>
       </mat-form-field> <span>  <button style="height: 3.2rem;margin-bottom: 0.7rem;width: 3rem;"  matTooltip="My tooltip"  class="btn btn-primary"> <i class="fa fa-search"></i></button></span>
    
     </div>
@@ -72,28 +61,14 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
+            <tr *ngFor="let item of SessionList">
               <td>lucas</td>
               <td>mitchel</td>
               <td>LM@gmail.com</td>
               <td>INF354</td>
               <td>Angular</td>
             
-            </tr>
-            <tr>
-                <td>Shane</td>
-              <td>smithers</td>
-              <td>sM@gmail.com</td>
-              <td>INF354</td>
-              <td>Angular</td>
-            </tr>
-            <tr>
-                <td>Josh</td>
-              <td>lupa</td>
-              <td>Josh@gmail.com</td>
-              <td>INF354</td>
-              <td>Angular</td>
-            </tr>
+           
            
           </tbody>
         </table>
