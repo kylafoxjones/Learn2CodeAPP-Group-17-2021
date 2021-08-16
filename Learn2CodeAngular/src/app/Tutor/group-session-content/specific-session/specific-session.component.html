@@ -41,6 +41,9 @@
   <nb-layout-column>
     <br />
 
+
+<!-- start of ngif -->
+<div *ngIf="hasContentTs">
     <div
       style="
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
@@ -147,6 +150,27 @@
       </button>
     </div>
     </div>
+  </div>
+
+  <div *ngIf="!hasContentTs">
+  <div
+      style="
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
+          0 6px 6px rgba(0, 0, 0, 0.23);
+        width: 80%;
+        margin: auto;
+        border-radius: 15px;
+        align-items: center;
+      "
+    >
+    <br />
+
+<h5 style="text-align: center">No content for this session</h5>
+
+  </div>
+</div>
+
+    <!-- end of ngif -->
     <br/>
     <div style="padding: 0.4rem; margin-left: 3rem">
       <button
@@ -161,7 +185,7 @@
       [routerLink]="['/sessioncontent']"
       class="btn btn-info"
     >
-      Back to list of sessions
+      Back to sessions
     </button>
     </div>
   </nb-layout-column>
