@@ -3,6 +3,7 @@ import Swal from 'sweetalert2';
 import { MatDialog } from '@angular/material/dialog';
 import { TutorService } from '../../tutor resources/tutor.service';
 import { AddGroupSessionContentComponent } from '../add-group-session-content/add-group-session-content.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-specific-session',
@@ -17,7 +18,10 @@ content:any=[];
 categoryList:any=[];
 category:any;
 
-  constructor(public dialog: MatDialog, private service: TutorService) { }
+hasContentTs:any=this.service.hasContent;
+
+
+  constructor(public dialog: MatDialog, private service: TutorService, private router: Router) { }
 
   ngOnInit(){
   
@@ -31,8 +35,8 @@ this.content=result;
 console.log("content for session that was chosen",this.content);
 this.getCategory();
   });
-
 }
+
 getCategory(){
   this.service.getSessionContentType().subscribe((result)=>{
 this.categoryList=result;
@@ -41,8 +45,13 @@ this.category = this.categoryList.find(obj => {
   return obj.id === this.content[0].sessionContentCategoryId
 })
 console.log("category for content ",this.category);
+if (this.category != {})
+{
+  this.hasContentTs=true;
+}
+console.log("has Content ",this.hasContentTs);
   });
- // this.category = this.categoryList.find((x) => x.id === this.content[0].sessionContentCategoryId);
+
 
 }
 delete(obj){
@@ -58,9 +67,13 @@ console.log("for delete",obj);
   }).then((result) => {
     if (result.isConfirmed) {
      this.service.deleteContent(obj.id).subscribe((result) => {
-       // this.getAllModules();
+       this.hasContentTs=false;
+       this.category= {};
+    
+       //this.getCategory();
       });
       Swal.fire('Successful Deletion', '', 'success');
+      this.router.navigate(["/specificsession"]);
     }
   });
 }
@@ -74,7 +87,7 @@ openAdd(){
     width: '350px',
   });
   dialogRef.afterClosed().subscribe((result) => {
-   // this.getAllSessionContent();
+    this.getSessionContent();
   });
 }
 
@@ -91,7 +104,7 @@ openEdit(obj){
     width: '350px',
   });
   dialogRef.afterClosed().subscribe((result) => {
-   // this.getAllSessionContent();
+   
   });
 }
 }

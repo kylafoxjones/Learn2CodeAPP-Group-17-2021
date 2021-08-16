@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import Swal from 'sweetalert2';
 import { MatDialogRef } from '@angular/material/dialog';
 import { TutorService } from '../../tutor resources/tutor.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-add-group-session-content',
   templateUrl: './add-group-session-content.component.html',
@@ -17,6 +18,7 @@ export class AddGroupSessionContentComponent implements OnInit {
   popupTitle = this.service.title;
   constructor(  private service: TutorService,
     public dialog: MatDialog,
+    private router: Router,
     private dialogRef: MatDialogRef<AddGroupSessionContentComponent>) { }
 
   ngOnInit(){
@@ -63,17 +65,23 @@ export class AddGroupSessionContentComponent implements OnInit {
           confirmButtonText: 'Yes',
         }).then((result) => {
           if (result.isConfirmed) {
+            let bookId= this.service.bookinginstance.id;
+            console.log("book id is: ",bookId);
       let data = new FormData();
       console.log('cat id',this.typeChosen);
       data.append('sessionContentCategoryId', this.typeChosen);
-      data.append('BookingInstanceId',this.service.bookingIdToSend  );
+      data.append('BookingInstanceId',bookId );
       data.append('Notes', this.notes);
       data.append('Recording', this.recording);
       this.service.posttFile(data).subscribe((res) => {
+        this.service.hasContent=true;
+        this.router.onSameUrlNavigation = 'reload';
         console.log(res);
         this.data = res;
         this.dialogRef.close();
         Swal.fire('Session content has been uploaded!', this.data.message, 'success');
+        //this.router.navigate(["/specificsession"]);
+  
       });
     }
   });
@@ -89,12 +97,13 @@ export class AddGroupSessionContentComponent implements OnInit {
       }).then((result) => {
         if (result.isConfirmed) {
       let editIdd= (this.service.editId);
-    //  let bookId= this.service.bookingIdToSend;
+      let bookId= this.service.bookinginstance.id;
+      console.log(bookId);
         console.log(this.service.editId);
         console.log(editIdd);
       let formdata = new FormData();
       formdata.append('sessionContentCategoryId', this.typeChosen);
-      formdata.append('BookingInstanceId',this.service.bookingIdToSend );
+      formdata.append('BookingInstanceId',bookId );
       formdata.append('Notes', this.notes);
       formdata.append('Recording', this.recording);
       formdata.append('id',editIdd.toString());

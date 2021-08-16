@@ -33,7 +33,7 @@ export class TutorService {
  content:any;
  bookinginstance:any;
  editCont:any;
-
+ hasContent:any=false;
   constructor(private http: HttpClient) {}
 //#region resource cats
   getResourceCategories() {
