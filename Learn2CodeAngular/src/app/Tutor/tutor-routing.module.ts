@@ -15,7 +15,7 @@ const routes: Routes = [
       path: '',
       component: TutorComponent,
       children: [
-        // every child component of admin needs routing here
+        // every child component of student needs routing here
         {
           path: 'tutorhome',
           component: HomeComponent,

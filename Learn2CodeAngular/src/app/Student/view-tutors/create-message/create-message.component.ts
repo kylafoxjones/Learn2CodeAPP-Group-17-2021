@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { TutorService } from '../../tutor resources/tutor.service';
+import { StudentService } from '../../Student resources/student.service';
 import { MatDialogRef } from '@angular/material/dialog';
 import Swal from 'sweetalert2';
 
@@ -11,40 +11,41 @@ import Swal from 'sweetalert2';
   styleUrls: ['./create-message.component.scss'],
 })
 export class CreateMessageComponent implements OnInit {
-  student: any;
+  tutor: any;
   data: any = {};
   messageObj: any = {};
 
   // these wont need to exist below when there is proper functionality to get the tutor thats signed in
   senderId: any;
-  tutorId: any;
+  studentId: any;
 
   constructor(
     private router: Router,
     private dialogRef: MatDialogRef<CreateMessageComponent>,
-    private service: TutorService
+    private service: StudentService
   ) {}
 
   ngOnInit() {
-    this.student = this.service.studentObj;
-    this.getSenderInfo();
+    this.tutor = this.service.tutorObj;
+    this.getStudentInfo();
   }
 
-  getSenderInfo() {
-    //need to get the userId of the tutor that is logged in
-    //it will then be used in the funx below as "SenderId" to send to api
-    //maybe get the entire object of tutor
-    this.senderId = '52a9547b-4255-4152-8cd0-a9fae9e71746';
-    this.tutorId = 6;
+  getStudentInfo() {
+    //need to get the userId of the student that is logged in
+    //it will then be used in the funx below as "SenderId" to send messages
+    //it will also be used as recieverId to look at recieved messages
+    //maybe get the entire object of student
+    this.senderId = '02174cf0–9412–4cfe - afbf - 59f706d72cf6';
+    this.studentId = 2;
   }
 
   sendMessage() {
     this.messageObj = {
       SenderId: this.senderId,
-      ReceiverId: this.service.studentObj.userId,
+      ReceiverId: this.service.tutorObj.userId,
       MessageSent: this.data.Message,
-      StudentId: this.service.studentObj.id,
-      TutorId: this.tutorId,
+      TutorId: this.service.tutorObj.id,
+      StudentId: this.studentId,
     };
     console.log('the message dto sent', this.messageObj);
     this.service.createMessages(this.messageObj).subscribe((result) => {

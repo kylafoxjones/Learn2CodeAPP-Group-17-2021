@@ -35,7 +35,7 @@ export class TutorService {
  editCont:any;
 
   constructor(private http: HttpClient) {}
-
+//#region resource cats
   getResourceCategories() {
     return this.http.get(this.apiUrl + 'GetAllResourceCategories');
   }
@@ -60,6 +60,7 @@ export class TutorService {
   }
   //#endregion
 
+  //#region messages 
   getStudents() {
     return this.http.get(this.apiUrl + 'GetAllStudents');
   }
@@ -75,6 +76,10 @@ export class TutorService {
   getSentMessagesForTutor(id) {
     return this.http.get(this.apiUrl + 'GetSentMessages/' + id);
   }
+  getRecievedMessagesForTutor(id){
+    return this.http.get(this.apiUrl + 'GetRecievedMessages/' + id);
+  }
+  //#endregion
 //#group-session-content region
 // getSessionContentCategory() {
 //   return this.http.get(

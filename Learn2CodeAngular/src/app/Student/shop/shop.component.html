@@ -1,0 +1,250 @@
+<nav class="navbar navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">
+    <img
+      src="../.././assets/pics/HD logo.png"
+      width="40"
+      height="40"
+      class="d-inline-block align-top"
+      alt=""
+    />
+  </a>
+  <span class="TDO" style="color: rgb(0, 156, 158); margin-right: auto"
+    >TutorDevOps</span
+  >
+  <div class="right" style="margin-left: 2rem">
+    <span style="color: whitesmoke"
+      ><i
+        [matMenuTriggerFor]="menu"
+        style="color: whitesmoke; font-size: large"
+        class="fa fa-shopping-cart"
+        aria-hidden="true"
+      ></i>
+      ({{ finalCart.length }})
+    </span>
+
+    <span [routerLink]="['/studenthomepage/studenthome']" style="color: whitesmoke; margin-right: 2rem; padding-left: 1.5rem"
+      >Home</span
+    >
+  </div>
+  <div class="topnav-right">
+    <div class="dot">Z</div>
+  </div>
+</nav>
+
+<mat-menu class="my-class" xPosition="after" #menu="matMenu">
+  <h4 style="margin-left: 0.5rem; text-align: center">Shopping Cart</h4>
+  <hr />
+
+  <h6 style="margin-left: 0.5rem; text-decoration: underline">Subscriptions</h6>
+  <!-- <h6 style="margin-left: 0.5rem; text-decoration: underline">Items in your cart: </h6> -->
+  <ul *ngFor="let item of subscriptionCartItems">
+    <li>
+      {{ item.subscriptionName }} R{{ item.price }}
+      <i
+        (click)="removeItemFromSubscriptionCart(item)"
+        style="float: right; margin-right: 1rem"
+        class="fa fa-times"
+        aria-hidden="true"
+      ></i>
+    </li>
+  </ul>
+  <h6 style="margin-left: 0.5rem; text-decoration: underline">Short Courses</h6>
+
+  <ul  *ngFor="let item of courseCartItems">
+    <li>
+      {{ item.courseSubCategoryName }} R{{ item.price }}
+      <i 
+      (click)= "removeItemFromCourseCart(item)"
+        style="float: right; margin-right: 1rem"
+        class="fa fa-times"
+        aria-hidden="true"
+      ></i>
+    </li>
+  </ul>
+  <h6 style="margin-left: 0.5rem; text-decoration: underline">
+    Total: R{{ runningTotal }}
+  </h6>
+  <br />
+  <button
+    (click)="checkout()"
+    class="btn btn-info"
+    style="width: 100%; position: bottom"
+  >
+    Checkout
+  </button>
+</mat-menu>
+
+<div style="padding-top: 2rem; padding-bottom: 1rem; margin-left: 3.5rem">
+  <div class="header" style="height: 2.5rem">Shop</div>
+</div>
+
+<nb-layout>
+  <nb-layout-column>
+    <div>
+      <h3 style="text-decoration: underline">Subscriptions</h3>
+      <span>
+        <div class="input-group rounded" style="width: 30%; padding-left: 6rem">
+          <input
+            [(ngModel)]="search"
+            type="search"
+            class="form-control rounded"
+            placeholder="Search"
+            aria-label="Search"
+            aria-describedby="search-addon"
+          />
+          <span>
+            <button class="btn btn-primary">
+              <i class="fa fa-search"></i>
+            </button>
+          </span>
+        </div>
+      </span>
+    </div>
+
+    <div class="row">
+      <div
+        class="col-md-4"
+        *ngFor="let item of listOfSubscriptions | filter: search"
+      >
+        <div
+          style="
+            margin-top: 3rem;
+            border-radius: 25px;
+            background-color: rgb(44, 51, 54);
+            width: 16rem;
+            margin-left: 20%;
+            height: 19rem;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
+              0 6px 6px rgba(0, 0, 0, 0.23);
+          "
+        >
+          <br />
+          <div
+            style="
+              text-align: center;
+              width: 12rem;
+              height: 2rem;
+              margin-left: 0.5rem;
+            "
+          >
+            <h5 style="margin-left: 2.5rem; color: white">
+              {{ item.subscriptionName }}
+            </h5>
+            <hr style="width: 125%; color: white" />
+          </div>
+
+          <div style="text-align: center; padding-top: 1.9rem">
+            <div>
+              <h6 style="color: white">Price: R {{ item.price }}</h6>
+              <p style="color: white">
+                This subscription will last for: <br />
+                {{ item.duration }} months
+                <br />
+                <br />
+                It includes: {{ item.subscriptionTutorSession[0].quantity }}x
+                {{
+                  item.subscriptionTutorSession[0].tutorSession.sessionType
+                    .sessionTypeName
+                }}
+                session tickets
+              </p>
+            </div>
+            <div style="margin-top: 2.3rem">
+              <button
+                (click)="addToSubscriptCart(item)"
+                style="width: 7rem"
+                class="btn btn-outline-info"
+              >
+                Buy
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="padding-top: 2.5rem">
+      <h3 style="text-decoration: underline">Short Courses</h3>
+      <span>
+        <mat-form-field appearance="outline">
+          <mat-label>Course Type:</mat-label>
+          <mat-select (valueChange)="selectType($event)">
+            <mat-option
+              *ngFor="let type of listOfCourseTypes"
+              [value]="type.id"
+            >
+              {{ type.courseFolderName }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </span>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4" *ngFor="let item of listOfCourses | filter: search">
+        <div
+          style="
+            margin-top: 2rem;
+            border-radius: 25px;
+            background-color: rgb(44, 51, 54);
+            width: 16rem;
+            margin-left: 20%;
+            height: 19rem;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
+              0 6px 6px rgba(0, 0, 0, 0.23);
+          "
+        >
+          <br />
+          <div
+            style="
+              text-align: center;
+              width: 12rem;
+              height: 2rem;
+              margin-left: 0.5rem;
+            "
+          >
+            <h5 style="margin-left: 2.5rem; color: white">
+              {{ item.courseSubCategoryName }}
+            </h5>
+            <hr style="width: 125%; color: white" />
+            <br />
+          </div>
+
+          <div style="text-align: center; padding-top: 1.9rem">
+            <div>
+              <h6 style="color: white">Price: R {{ item.price }}</h6>
+              <p style="color: white">
+                {{ item.description }}.
+                <br />
+                <br />
+                Includes: a video and notes.
+              </p>
+            </div>
+            <div style="margin-top: 2.3rem">
+              <button
+                (click)="addToCourseCart(item)"
+                style="width: 7rem"
+                class="btn btn-outline-info"
+              >
+                Buy
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nb-layout-column>
+</nb-layout>
+
+<footer style="width: 100%">
+  <nav id="foot" class="navbar">
+    <a class="navbar-brand" href="#"> </a>
+    <span class="TDO" style="margin-right: auto"> &lt; TDO &gt;</span>
+    <div class="topnav-right">
+      <a href="#"> <i class="fa fa-facebook"></i> </a>
+      <a href="#"> <i class="fa fa-instagram"></i> </a>
+      <a href="#"> <i class="fa fa-twitter"></i> </a>
+      <a>TutorDevOps@gmail.com</a>
+    </div>
+  </nav>
+</footer>

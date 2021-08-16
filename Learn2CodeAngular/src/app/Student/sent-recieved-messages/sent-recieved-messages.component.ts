@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
-import { TutorService } from '../tutor resources/tutor.service';
+import { StudentService } from '../Student resources/student.service';
 
 @Component({
   selector: 'app-sent-recieved-messages',
@@ -13,47 +13,48 @@ export class SentRecievedMessagesComponent implements OnInit {
   search;
   MessagesSent: any;
   MessagesRecieved: any;
+  studentID: any;
   recieverID: any;
-  tutorID: any;
-  data: any;
-
+  data: any = {};
   constructor(
     private router: Router,
     public dialog: MatDialog,
-    private service: TutorService
+    private service: StudentService
   ) {}
 
   ngOnInit() {
-    this.getTutorId();
+    this.getStudentId();
     this.getMessagesSent();
     this.getRecievedMessages();
   }
 
-  getTutorId() {
-    // this fux gets the id of the tutor that is logged in
+  getStudentId() {
+    // this fux gets the id of the student that is logged in
     //it is needed so the api knows whos messages it should pull from the db
     //right now we hard coding this
-    this.tutorID = '52a9547b-4255-4152-8cd0-a9fae9e71746';
-    this.recieverID = '52a9547b-4255-4152-8cd0-a9fae9e71746';
+    this.studentID = '02174cf0–9412–4cfe - afbf - 59f706d72cf6';
+    this.recieverID = '02174cf0–9412–4cfe - afbf - 59f706d72cf6';
   }
 
   getMessagesSent() {
-    this.service.getSentMessagesForTutor(this.tutorID).subscribe((result) => {
-      this.MessagesSent = result;
-      console.log(
-        'these are the messages sent from the tutor logged in',
-        this.MessagesSent
-      );
-    });
+    this.service
+      .getSentMessagesForStudent(this.studentID)
+      .subscribe((result) => {
+        this.MessagesSent = result;
+        console.log(
+          'these are the messages sent from the student logged in',
+          this.MessagesSent
+        );
+      });
   }
 
-  viewMessage(messageObj) {
+  viewSentMessage(messageObj) {
     Swal.fire({
       title:
         'The message you sent to ' +
-        messageObj.student.studentName +
+        messageObj.tutor.tutorName +
         ' ' +
-        messageObj.student.studentSurname +
+        messageObj.tutor.tutorSurname +
         ':',
       text: messageObj.messageSent,
     });
@@ -63,9 +64,9 @@ export class SentRecievedMessagesComponent implements OnInit {
     Swal.fire({
       title:
         'Message from ' +
-        messageObj.student.studentName +
+        messageObj.tutor.tutorName +
         ' ' +
-        messageObj.student.studentSurname +
+        messageObj.tutor.tutorSurname +
         ': ',
       text: messageObj.messageSent,
     });
@@ -73,11 +74,11 @@ export class SentRecievedMessagesComponent implements OnInit {
 
   getRecievedMessages() {
     this.service
-      .getRecievedMessagesForTutor(this.recieverID)
+      .getRecievedMessagesForStudent(this.recieverID)
       .subscribe((result) => {
         this.MessagesRecieved = result;
         console.log(
-          'these are the recieved messages for the tutor logged in',
+          'these are the recieved messages for the student logged in',
           this.MessagesRecieved
         );
       });

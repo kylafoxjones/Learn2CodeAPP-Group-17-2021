@@ -1,4 +1,4 @@
-<nav id="adminnav" class="navbar navbar-dark bg-dark">
+<nav class="navbar navbar-dark bg-dark">
   <a class="navbar-brand" href="#">
     <img
       src="../.././assets/pics/HD logo.png"
@@ -11,25 +11,26 @@
   <span class="TDO" style="color: rgb(0, 156, 158); margin-right: auto"
     >TutorDevOps</span
   >
-  <div class="right">
-    <a routerLink="/adminhome" style="color: whitesmoke; margin-right: 3rem">Home</a>
+  <div [routerLink]="['/studenthomepage/studenthome']" class="topnav-right">
+    <a >Home</a>
   </div>
-  <div class="topnav-right">
-    <div class="topnav-right">
-      <div class="dot">A</div>
-    </div>
+  <div class="topnav-right" style="margin-right: 0.5rem">
+    <img
+      src="../../../assets/pics/circle-cropped.png"
+      width="50"
+      height="50"
+      style="border-radius: 55px"
+      class="d-inline-block align-top"
+      alt=""
+    />
   </div>
 </nav>
 
 <nb-layout>
   <nb-layout-column>
     <div style="padding-top: 2rem; padding-bottom: 2rem">
-      <div class="header">List of Modules</div>
+      <div class="header">Tutors:</div>
     </div>
-
-    <button routerLink="/degree" style="margin-left: 8rem" class="btn btn-info">
-      Degrees
-    </button>
 
     <div
       style="
@@ -41,9 +42,10 @@
       "
     >
       <br />
-      <div class="input-group rounded" style="width: 30%; padding-left: 6rem">
+
+      <div class="input-group rounded" style="width: 20%; padding-left: 0.5rem">
         <input
-        [(ngModel)]="search"
+          [(ngModel)]="search"
           type="search"
           class="form-control rounded"
           placeholder="Search"
@@ -51,39 +53,41 @@
           aria-describedby="search-addon"
         />
         <span>
-          <button class="btn btn-primary">
-            <i class="fa fa-search"></i>
-          </button>
+          <button class="btn btn-primary"><i class="fa fa-search"></i></button>
         </span>
       </div>
+
       <br />
+
       <table
         class="table table-hover"
-        style="width: 80%; margin: auto; padding-top: 2rem"
+        style="width: 80%; margin: auto; padding-top: 3.5rem"
       >
         <thead>
           <tr>
-            <th scope="col">Module</th>
-            <th scope="col"></th>
-            <th scope="col"></th>
+            <th scope="col">Tutor name:</th>
+            <th scope="col">Tutor surname:</th>
+            <th scope="col">Email:</th>
+            <th scope="col">Message:</th>
           </tr>
         </thead>
         <tbody>
-          <tr  *ngFor="let item of moduleList | filter: search">
-            <td>{{item.moduleCode}}</td>
-            <td>
-              <button (click)="openEditDialog(item)" class="btn btn-primary">
-                <i class="fa fa-pencil"></i>
-              </button>
+          <tr *ngFor="let item of tutorList | filter: search">
+            <td>{{ item.tutorName }}</td>
+            <td>{{ item.tutorSurname }}</td>
+            <td>{{ item.tutorEmail}}</td>
+            <td (click)="createMessage(item)">
+              <i
+                style="font-size: x-large"
+                class="fa fa-envelope-o"
+                aria-hidden="true"
+              ></i>
             </td>
-            <td>
-              <button (click)="delete(item.id)" class="btn btn-danger">
-                <i class="fa fa-trash"></i>
-              </button>
-            </td>
+            
           </tr>
         </tbody>
       </table>
+
       <br />
       <nav
         aria-label="Page navigation example "
@@ -109,22 +113,18 @@
       </nav>
     </div>
     <br />
-    <button (click)="openAddDialog()" style="margin-left: 8rem" class="btn btn-info">
-    Create Module
-  </button>
-</nb-layout-column>
+  </nb-layout-column>
 </nb-layout>
-    <footer style="bottom: 0; position: absolute; width: 100%">
-      <nav id="foot" class="navbar">
-        <a class="navbar-brand" href="#"> </a>
-        <span class="TDO" style="margin-right: auto"> &lt; TDO &gt;</span>
-        <div class="topnav-right">
-          <a href="#"> <i class="fa fa-facebook"></i> </a>
-          <a href="#"> <i class="fa fa-instagram"></i> </a>
-          <a href="#"> <i class="fa fa-twitter"></i> </a>
-          <a>TutorDevOps@gmail.com</a>
-        </div>
-      </nav>
-    </footer>
 
-
+<footer style="width: 100%; position: absolute; bottom: 0">
+  <nav id="foot" class="navbar">
+    <a class="navbar-brand" href="#"> </a>
+    <span class="TDO" style="margin-right: auto"> &lt; TDO &gt;</span>
+    <div class="topnav-right">
+      <a href="#"> <i class="fa fa-facebook"></i> </a>
+      <a href="#"> <i class="fa fa-instagram"></i> </a>
+      <a href="#"> <i class="fa fa-twitter"></i> </a>
+      <a>TutorDevOps@gmail.com</a>
+    </div>
+  </nav>
+</footer>

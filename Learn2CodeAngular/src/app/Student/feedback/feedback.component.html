@@ -11,29 +11,37 @@
   <span class="TDO" style="color: rgb(0, 156, 158); margin-right: auto"
     >TutorDevOps</span
   >
-  <div class="topnav-right">
-    <a>Home</a>
+  <div class="right" style="margin-left: 2rem">
+    <span style="color: whitesmoke"
+      ><i style="color: whitesmoke" class="fa fa-ticket" aria-hidden="true"></i
+      ><i style="color: whitesmoke" class="fa fa-ticket" aria-hidden="true"></i>
+      x4
+      <i
+        style="color: whitesmoke; margin-left: 1rem"
+        class="fa fa-ticket"
+        aria-hidden="true"
+      >
+      </i>
+      x3</span
+    >
+
+    <span [routerLink]="['/studenthomepage/studenthome']" style="color: whitesmoke; margin-right: 2rem; padding-left: 1.5rem"
+      >Home</span
+    >
   </div>
-  <div class="topnav-right" style="margin-right: 0.5rem">
-    <img
-      src="../../../assets/pics/circle-cropped.png"
-      width="50"
-      height="50"
-      style="border-radius: 55px"
-      class="d-inline-block align-top"
-      alt=""
-    />
+  <div class="topnav-right">
+    <div class="dot">Z</div>
   </div>
 </nav>
 
 <div style="padding-top: 2rem; padding-bottom: 1rem">
-  <div class="header">My Messages</div>
+  <div class="header">Past Session Feedback</div>
 </div>
 
 <nb-layout style="width: 10rem">
   <nb-layout-column style="width: 10rem">
-    <nb-tabset style="width: 67rem; margin-left: 4rem" fullWidth>
-      <nb-tab tabTitle="Sent">
+    <nb-tabset style="width: 125rem; margin-left: 4rem" fullWidth>
+      <nb-tab tabTitle="Past Session">
         <div
           style="
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
@@ -50,7 +58,6 @@
             style="width: 20%; padding-left: 0.5rem; margin-left: 5rem"
           >
             <input
-              [(ngModel)]="search"
               type="search"
               class="form-control rounded"
               placeholder="Search"
@@ -58,11 +65,13 @@
               aria-describedby="search-addon"
             />
             <span>
-              <button class="btn btn-primary">
+              <button (click)="search()" class="btn btn-primary">
                 <i class="fa fa-search"></i>
               </button>
             </span>
           </div>
+
+          <br />
 
           <table
             class="table table-hover"
@@ -70,40 +79,29 @@
           >
             <thead>
               <tr>
-                <th scope="col">Student name:</th>
-                <th scope="col">Surname:</th>
-                <th scope="col">Email:</th>
-                <th scope="col">Time:</th>
-                <th scope="col">Message:</th>
-
-                <th scope="col"></th>
+                <th scope="col">Session Date</th>
+                <th scope="col">Title</th>
+                <th scope="col">Tutor Name</th>
+                <th scope="col">Tutor Surname</th>
                 <th scope="col"></th>
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let item of MessagesSent | filter: search">
-                <td>{{ item.student.studentName }}</td>
-                <td>{{ item.student.studentSurname }}</td>
-                <td>{{ item.student.identity.email }}</td>
-                <td>{{ item.timeStamp }}</td>
-                <td (click)="viewMessage(item)">
-                  <i
-                    style="font-size: x-large"
-                    class="fa fa-envelope-o"
-                    aria-hidden="true"
-                  ></i>
-                </td>
-                <td (click)="deleteSentMessage(item.id)">
-                  <button class="btn btn-danger">
-                    <i class="fa fa-trash" aria-hidden="true"></i>
+              <tr>
+                <td>11/02/2021</td>
+                <td>HTML</td>
+                <td>Bea</td>
+                <td>Scheepers</td>
+                <td>
+                  <button (click)="openDialog()" class="btn btn-info">
+                    <i class="fa fa-plus-square" aria-hidden="true"></i>
                   </button>
                 </td>
               </tr>
+           
             </tbody>
           </table>
           <br />
-          <br />
-
           <nav
             aria-label="Page navigation example "
             style="margin-left: 75%; padding-bottom: 0.5rem"
@@ -126,21 +124,11 @@
               </li>
             </ul>
           </nav>
-        </div>
-
-        <div style="padding: 1rem; margin-left: 19rem">
-          <button
-            [routerLink]="['/students']"
-            style="margin-left: 80%"
-            class="btn btn-info"
-          >
-            New message
-          </button>
         </div>
         <br />
       </nb-tab>
 
-      <nb-tab tabTitle="Received">
+      <nb-tab tabTitle="My Feedback">
         <div
           style="
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
@@ -157,7 +145,6 @@
             style="width: 20%; padding-left: 0.5rem; margin-left: 5rem"
           >
             <input
-              [(ngModel)]="search"
               type="search"
               class="form-control rounded"
               placeholder="Search"
@@ -165,11 +152,13 @@
               aria-describedby="search-addon"
             />
             <span>
-              <button class="btn btn-primary">
+              <button (click)="search()" class="btn btn-primary">
                 <i class="fa fa-search"></i>
               </button>
             </span>
           </div>
+
+          <br />
 
           <table
             class="table table-hover"
@@ -177,40 +166,54 @@
           >
             <thead>
               <tr>
-                <th scope="col">Student name:</th>
-                <th scope="col">Surname:</th>
-                <th scope="col">Email:</th>
-                <th scope="col">Time:</th>
-                <th scope="col">Message:</th>
-
-                <th scope="col"></th>
+                <th scope="col">Session Date</th>
+                <th scope="col">Title</th>
+                <th scope="col">Tutor Name</th>
+                <th scope="col">Tutor Surname</th>
+                <th scope="col">Rating</th>
                 <th scope="col"></th>
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let item of MessagesRecieved | filter: search">
-                <td>{{ item.student.studentName }}</td>
-                <td>{{ item.student.studentSurname }}</td>
-                <td>{{ item.student.identity.email }}</td>
-                <td>{{ item.timeStamp }}</td>
-                <td (click)="viewReceivedMessage(item)">
-                  <i
-                    style="font-size: x-large"
-                    class="fa fa-envelope-o"
-                    aria-hidden="true"
-                  ></i>
-                </td>
-                <td (click)="deleteSentMessage(item.id)">
+              <tr>
+                <td>11/02/2021</td>
+                <td>HTML</td>
+                <td>Roberto</td>
+                <td>Adinolfi</td>
+                <td>9</td>
+                <th>
                   <button class="btn btn-danger">
-                    <i class="fa fa-trash" aria-hidden="true"></i>
+                    <i class="fa fa-trash"></i>
                   </button>
-                </td>
+                </th>
+              </tr>
+              <tr>
+                <td>2/02/2021</td>
+                <td>Razor</td>
+                <td>John</td>
+                <td>Adi</td>
+                <td>5</td>
+                <th>
+                  <button class="btn btn-danger" (click)="delete()">
+                    <i class="fa fa-trash"></i>
+                  </button>
+                </th>
+              </tr>
+              <tr>
+                <td>11/02/2021</td>
+                <td>MVC</td>
+                <td>Roberto</td>
+                <td>Adinolfi</td>
+                <td>9</td>
+                <th>
+                  <button class="btn btn-danger">
+                    <i class="fa fa-trash"></i>
+                  </button>
+                </th>
               </tr>
             </tbody>
           </table>
           <br />
-          <br />
-
           <nav
             aria-label="Page navigation example "
             style="margin-left: 75%; padding-bottom: 0.5rem"
@@ -233,16 +236,6 @@
               </li>
             </ul>
           </nav>
-        </div>
-
-        <div style="padding: 1rem; margin-left: 19rem">
-          <button
-            [routerLink]="['/students']"
-            style="margin-left: 80%"
-            class="btn btn-info"
-          >
-            New message
-          </button>
         </div>
         <br />
       </nb-tab>
@@ -253,7 +246,7 @@
 <br />
 
 <footer>
-  <nav id="foot" class="navbar" style="width: 100%; bottom: 0">
+  <nav id="foot" class="navbar" style="width: 100%">
     <a class="navbar-brand" href="#"> </a>
     <span class="TDO" style="margin-right: auto"> &lt; TDO &gt;</span>
     <div class="topnav-right">
