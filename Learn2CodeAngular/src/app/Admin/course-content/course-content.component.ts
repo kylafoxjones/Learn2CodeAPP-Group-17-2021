@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { AddCourseContentComponent } from './add-course-content/add-course-content.component';
 import { AdminService } from '../admin resources/admin.service';
 
+
 @Component({
   selector: 'app-course-content',
   templateUrl: './course-content.component.html',
@@ -36,21 +37,15 @@ export class CourseContentComponent implements OnInit {
          
         });
         Swal.fire('Successful Deletion', '', 'success');
-        
       }
-   
     });
-
   }
-
   getAllCourseContent() {
     this.service.getCourseContent().subscribe((result) => {
       this.contentList = result;
-      console.log('list of content for category cosen', this.contentList);
+      console.log('list of content for category chosen', this.contentList);
     });
   }
-
-
 
   openEditDialog(obj) {
     this.service.edit = true;
@@ -67,7 +62,6 @@ export class CourseContentComponent implements OnInit {
       this.getAllCourseContent();
     });
   }
-
 
   openDialog() {
     this.service.edit = false;

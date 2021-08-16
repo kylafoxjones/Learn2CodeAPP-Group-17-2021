@@ -13,12 +13,11 @@ export class AddCourseContentComponent implements OnInit {
   data: any;
   typeChosen: any;
   typeList: any = [];
-  //newContent: any = <any>{};
   popupTitle = this.service.title;
-  // get the placeholder object below
-  placeholder = this.service.editCont;
   oldContent: any;
-  image:any;
+  file:any;
+   // get the placeholder object below
+   placeholder = this.service.editCont;
 
   constructor(
     private service: AdminService,
@@ -29,8 +28,8 @@ export class AddCourseContentComponent implements OnInit {
   ngOnInit() {
      this.getTypeList();
    
-     //this.data.SubscriptionName = this.placeholder.subscriptionName;
-     //this.data.Duration = this.placeholder.duration;
+    // this.data.ContentTypeId = this.placeholder.contentTypeId;
+    // this.data.Content = this.placeholder.content;
   }
 
     getTypeList() {
@@ -40,30 +39,49 @@ export class AddCourseContentComponent implements OnInit {
     });
   }
 
-  public Test() {
+  public onSubmit() {
     console.log(this.typeChosen);
     if (this.service.editId==0){
       console.log(this.service.editId);
+      Swal.fire({
+        title: 'Are you sure you want to add the course content?',
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes',
+      }).then((result) => {
+        if (result.isConfirmed) {
     let data = new FormData();
     data.append('courseSubCategoryId', this.service.courseContentCat.id);
     data.append('contentTypeId',this.typeChosen );
-    data.append('content', this.image);
-    this.service.test(data).subscribe((res) => {
+    data.append('content', this.file);
+    this.service.posttFile(data).subscribe((res) => {
       console.log(res);
       this.data = res;
-    //  Swal.fire({title:'Course content has been upload!' , icon:'success'});
       this.dialogRef.close();
-      Swal.fire('Course content has been upload!', this.data.message, 'success');
+      Swal.fire('Course content has been uploaded!', this.data.message, 'success');
     });
   }
+});
+  }
   else{
+    Swal.fire({
+      title: 'Are you sure you want to edit the course content?',
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes',
+    }).then((result) => {
+      if (result.isConfirmed) {
     let editIdd= (this.service.editId);
       console.log(this.service.editId);
       console.log(editIdd);
     let formdata = new FormData();
     formdata.append('courseSubCategoryId', this.service.courseContentCat.id);
     formdata.append('contentTypeId',this.typeChosen );
-    formdata.append('content', this.image);
+    formdata.append('content', this.file);
     formdata.append('id',editIdd.toString());
     console.log('the data sent through for edit',formdata)
     this.service.editContent(formdata).subscribe((res) => {
@@ -71,101 +89,24 @@ export class AddCourseContentComponent implements OnInit {
       this.data = res;
        this.dialogRef.close();
        Swal.fire('Course content has been updated!', this.data.message, 'success');
-
-          });
-         
+          });      
+        }
+      });
   }
-  
   }
 
-  ApplicationImage(event) {
+  CourseContent(event) {
     console.log(event.target.files[0]);
-    this.image = event.target.files[0];
-    console.log(this.image);
+    this.file = event.target.files[0];
+    console.log(this.file);
   }
-
-
-  // content(event) {
-  //   //create
-  //   if (this.service.editId==0) {
-  //     let data = new FormData();
-  //     data.append('courseSubCategoryId', this.service.courseContentCat.id);
-  //     data.append('contentTypeId', this.typeChosen);
-  //     data.append('content', event.target.files[0]);
-  //     console.log('the data sent through for create',data)
-  //     this.service.posttfile(data).subscribe((res) => {
-  //       console.log(res);
-  //     });
-  //   }
-  //   else {
-  //     //edit
-  //     let editIdd= this.service.editId;
-  //     let data = new FormData();
-  //     data.append('courseSubCategoryId', this.service.courseContentCat.id);
-  //     data.append('contentTypeId', this.typeChosen);
-  //     data.append('id','editIdd');
-  //     data.append('content', event.target.files[0]);
-  //     console.log('the data sent through for edit',data)
-  //     this.service.editContent(data).subscribe((res) => {
-  //       console.log(res);
-  //     });
-  //   }
-  // }
 
   selectType($event) {
     console.log('this is the event', $event);
-    this.typeChosen = $event; //what is selected in the dropdown is sent back in this parameter to the api
+    this.typeChosen = $event; 
     console.log(this.typeChosen);
   
   }
-
-  // submitEdittedCourseContent(event) {
-  //   if (this.service.editId > 0) {
-  //     let data = new FormData();
-  //     data.append('courseSubCategoryId', this.service.courseContentCat.id);
-  //     data.append('contentTypeId', this.typeChosen);
-  //     data.append('content', event.target.files[0]);
-  //     Swal.fire({
-  //       title: 'Are you sure you want to edit the course content?',
-  //       icon: 'question',
-  //       showCancelButton: true,
-  //       confirmButtonColor: '#3085d6',
-  //       cancelButtonColor: '#d33',
-  //       confirmButtonText: 'Yes',
-  //     }).then((result) => {
-  //       if (result.isConfirmed) {
-  //         this.service.editContent(data).subscribe((res) => {
-  //           console.log(res);
-  //         });
-
-
-
-  //       //  this.service.editContent(this.data).subscribe((result) => {
-  //         //  this.data = result;
-  //            this.dialogRef.close();
-  //          Swal.fire('Update successful!', this.data.message, 'success');
-  //        // });
-  //       }
-  //     });
-  //   } else {
-  //     Swal.fire({
-  //       title: 'Are you sure you want to add course content?',
-  //       icon: 'question',
-  //       showCancelButton: true,
-  //       confirmButtonColor: '#3085d6',
-  //       cancelButtonColor: '#d33',
-  //       confirmButtonText: 'Yes',
-  //     }).then((result) => {
-  //       if (result.isConfirmed) {
-  //         this.service.createSubscription(this.data).subscribe((result) => {
-  //           this.data = result;
-  //           this.dialogRef.close();
-  //           Swal.fire('Saved!', this.data.message, 'success');
-  //         });
-  //       }
-  //     });
-  //   }
-  // }
 }
 
 

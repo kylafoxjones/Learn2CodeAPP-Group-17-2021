@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class AdminService {
   apiUrl = 'https://localhost:44393/api/Admin/';
-  urlll ='https://localhost:44393/api/Admin';
+ 
   //uni variables below
   editId = 0;
   editUni: any;
@@ -437,15 +437,10 @@ export class AdminService {
     );
   }
 
-  posttfile(obj): Observable<any> {
-    console.log(obj);
-   return this.http.post(this.apiUrl + 'CreatContent', obj);
-  }
 
-
-  test(formdata): Observable<any>{
+  posttFile(formdata): Observable<any>{
    
-    return this.http.post(this.urlll+'/CreatContent',formdata);
+    return this.http.post(this.apiUrl+'CreatContent',formdata);
   }
   getCourseContentType(){
     return this.http.get(
@@ -457,25 +452,6 @@ export class AdminService {
 
   editContent(formdata): Observable<any> {
     return this.http.put(this.apiUrl + 'EditContent', formdata);
-  // editContent(obj){
-  //   var oldObj = this.contents.find((x) => x.id === this.editId);
-  //   console.log(oldObj); //extract from array where objects are based off the model which has courseFolder
-  //   //what you get from api is based off the model
-
-  //   this.updatedContent = {
-  //     Id: oldObj.id,
-  //     Content: obj.content,
-  //     CourseSubCategoryId: this.courseContentCat.id,
-  //     ContentTypeId: this.typeChosenn,
-  
-  //   };
-  //   console.log(this.updatedContent); //this is the dto
-  //   //what you send is dtos, they are not based exactly on the models
-  //   return this.http.put(
-  //     this.apiUrl + 'EditContent',
-  //     this.updatedContent
-  //   );
-  // }
-  //#endregion
 }
+  //#endregion
 }
