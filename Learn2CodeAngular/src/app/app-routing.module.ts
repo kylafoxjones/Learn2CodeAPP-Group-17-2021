@@ -30,6 +30,12 @@ const routes: Routes = [
       import('./student/student.module').then((m) => m.StudentModule),
     // canActivate: [AuthGuard],
   },
+  {
+    path: 'loginhomepage',
+    loadChildren: () =>
+      import('./login/login.module').then((m) => m.LoginModule),
+    // canActivate: [AuthGuard],
+  },
 ];
 
 @NgModule({
