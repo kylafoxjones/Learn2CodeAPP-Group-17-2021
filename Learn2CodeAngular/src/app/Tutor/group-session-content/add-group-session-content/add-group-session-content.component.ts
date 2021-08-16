@@ -14,7 +14,7 @@ export class AddGroupSessionContentComponent implements OnInit {
   typeList: any = [];
   notes: any;
   recording: any;
-
+  popupTitle = this.service.title;
   constructor(  private service: TutorService,
     public dialog: MatDialog,
     private dialogRef: MatDialogRef<AddGroupSessionContentComponent>) { }

@@ -16,6 +16,7 @@ title=this.service.SessionTitle;
 content:any=[];
 categoryList:any=[];
 category:any;
+
   constructor(public dialog: MatDialog, private service: TutorService) { }
 
   ngOnInit(){
@@ -65,7 +66,10 @@ console.log("for delete",obj);
 }
 
 openAdd(){
-  
+  this.service.edit = false;   
+  this.service.editId = 0;
+  this.service.editCont = {};
+  this.service.title = 'Add session content';
   const dialogRef = this.dialog.open(AddGroupSessionContentComponent, {
     width: '350px',
   });
@@ -74,7 +78,20 @@ openAdd(){
   });
 }
 
-openEdit(){
-
+openEdit(obj){
+  this.service.edit = true;
+  this.service.editCont = obj;
+ // this.service.oldContName = obj.moduleCode;
+ // this.service.contents = this.service.contentList;
+  this.service.editId = obj.id;
+  console.log(this.service.editId);
+  this.service.title = 'Edit session content';
+  console.log(this.service.title);
+  const dialogRef = this.dialog.open(AddGroupSessionContentComponent, {
+    width: '350px',
+  });
+  dialogRef.afterClosed().subscribe((result) => {
+   // this.getAllSessionContent();
+  });
 }
 }

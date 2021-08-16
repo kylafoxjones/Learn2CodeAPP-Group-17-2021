@@ -32,7 +32,7 @@ export class TutorService {
  SessionTitle:any;
  content:any;
  bookinginstance:any;
-
+ editCont:any;
 
   constructor(private http: HttpClient) {}
 
