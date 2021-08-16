@@ -22,7 +22,7 @@
       ({{ finalCart.length }})
     </span>
 
-    <span style="color: whitesmoke; margin-right: 2rem; padding-left: 1.5rem"
+    <span [routerLink]="['/studenthomepage/studenthome']" style="color: whitesmoke; margin-right: 2rem; padding-left: 1.5rem"
       >Home</span
     >
   </div>
@@ -41,7 +41,7 @@
     <li>
       {{ item.subscriptionName }} R{{ item.price }}
       <i
-        (click)="removeItemFromCart(item)"
+        (click)="removeItemFromSubscriptionCart(item)"
         style="float: right; margin-right: 1rem"
         class="fa fa-times"
         aria-hidden="true"
@@ -53,7 +53,8 @@
   <ul  *ngFor="let item of courseCartItems">
     <li>
       {{ item.courseSubCategoryName }} R{{ item.price }}
-      <i
+      <i 
+      (click)= "removeItemFromCourseCart(item)"
         style="float: right; margin-right: 1rem"
         class="fa fa-times"
         aria-hidden="true"
@@ -82,23 +83,21 @@
     <div>
       <h3 style="text-decoration: underline">Subscriptions</h3>
       <span>
-        <!-- <div class="input-group" style="width: 12.5rem">
-          <select class="custom-select" id="inputGroupSelect04">
-            <option selected>Module</option>
-            <option value="1">INF272</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
-          </select>
-          <div class="input-group-append">
-             <button
-              (click)="search()"
-              matTooltip="My tooltip"
-              class="btn btn-primary"
-            >
+        <div class="input-group rounded" style="width: 30%; padding-left: 6rem">
+          <input
+            [(ngModel)]="search"
+            type="search"
+            class="form-control rounded"
+            placeholder="Search"
+            aria-label="Search"
+            aria-describedby="search-addon"
+          />
+          <span>
+            <button class="btn btn-primary">
               <i class="fa fa-search"></i>
-            </button> 
-          </div>
-        </div> -->
+            </button>
+          </span>
+        </div>
       </span>
     </div>
 
