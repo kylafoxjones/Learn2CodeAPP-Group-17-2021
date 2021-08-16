@@ -21,6 +21,8 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { StudentHomeComponent } from './student-home/student-home.component';
 import {MatMenuModule} from '@angular/material/menu';
 import { ShopComponent } from './shop/shop.component';
+import { FeedbackComponent } from './feedback/feedback.component';
+import { CreateFeedbackComponent } from './feedback/create-feedback/create-feedback.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { ShopComponent } from './shop/shop.component';
     SentRecievedMessagesComponent,
     CreateMessageComponent,
     StudentHomeComponent,
-    ShopComponent
+    ShopComponent,
+    FeedbackComponent,
+    CreateFeedbackComponent
   ],
   imports: [
     CommonModule,

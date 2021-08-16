@@ -5,6 +5,7 @@ import { ViewTutorsComponent } from './view-tutors/view-tutors.component';
 import { StudentComponent } from './student.component';
 import { StudentHomeComponent } from './student-home/student-home.component';
 import { ShopComponent } from './shop/shop.component';
+import { FeedbackComponent } from './feedback/feedback.component';
 
 const routes: Routes =  [
   
@@ -28,6 +29,10 @@ const routes: Routes =  [
       {
         path: 'shop',
         component: ShopComponent,
+      },
+      {
+        path: 'feedback',
+        component: FeedbackComponent,
       },
     ],
   },

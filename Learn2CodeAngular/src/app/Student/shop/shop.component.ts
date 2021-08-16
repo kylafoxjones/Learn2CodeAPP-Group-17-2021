@@ -16,9 +16,10 @@ export class ShopComponent implements OnInit {
   listOfSubscriptions: any;
   listOfCourses: any;
   typeChosen: any;
-  search;
+  search: string;
 
-  subscriptionCartItems$: Observable<any[]> = this.service.GetSubscriptionCartItems;
+  subscriptionCartItems$: Observable<any[]> =
+    this.service.GetSubscriptionCartItems;
   subscriptionCartItems: any[] = [];
 
   courseCartItems$: Observable<any[]> = this.service.GetCourseCartItems;
@@ -90,14 +91,14 @@ export class ShopComponent implements OnInit {
     });
   }
 
-  // Funx for adding items to the cart
+  // Funx for adding items to the sub cart
   addToSubscriptCart(newCartProduct: any): void {
     //called in the html
     // takes in the item you picked as 'newCartProduct and sends it to the
     //addToCartItems function in the service
     this.service.addToCartItems(newCartProduct);
   }
-  // Funx for adding items to the cart
+  // Funx for adding items to the course cart
   addToCourseCart(newCartProduct: any): void {
     //called in the html
     // takes in the item you picked as 'newCartProduct and sends it to the
@@ -106,6 +107,9 @@ export class ShopComponent implements OnInit {
   }
 
   checkout() {
+    //final cart holds every item (both subscription + course)
+    //running total has the overall price for checkout
+
     Swal.fire({
       title: 'Are you sure you want to checkout?',
       icon: 'question',
@@ -120,16 +124,47 @@ export class ShopComponent implements OnInit {
     });
   }
 
-  removeItemFromCart(obj) {
+  removeItemFromSubscriptionCart(obj) {
     let amountToRemove = obj.price;
     this.subscriptionCartItems.forEach((element, index) => {
       if (element == obj) {
         // remove item from cart
         this.subscriptionCartItems.splice(index, 1);
-        console.log('updated cart list', this.subscriptionCartItems);
+        console.log(
+          'updated subscription cart list',
+          this.subscriptionCartItems
+        );
         // reduce running total
         this.runningTotal = this.runningTotal - amountToRemove;
         console.log('updated running total', this.runningTotal);
+      }
+    });
+    //reduce final cart
+    this.finalCart.forEach((element, index) => {
+      if (element == obj) {
+        this.finalCart.splice(index, 1);
+        console.log('updated final cart list', this.finalCart);
+      }
+    });
+  }
+
+  removeItemFromCourseCart(obj) {
+    let amountToRemove = obj.price;
+    this.courseCartItems.forEach((element, index) => {
+      if (element == obj) {
+        // remove item from cart
+        this.courseCartItems.splice(index, 1);
+        console.log('updated course cart list', this.courseCartItems);
+        // reduce running total
+        this.runningTotal = this.runningTotal - amountToRemove;
+        console.log('updated running total', this.runningTotal);
+      }
+    });
+    //reduce final cart
+    this.finalCart.forEach((element, index) => {
+      if (element == obj) {
+        this.finalCart.splice(index, 1);
+        console.log('updated final cart list', this.finalCart);
       }
     });
   }
