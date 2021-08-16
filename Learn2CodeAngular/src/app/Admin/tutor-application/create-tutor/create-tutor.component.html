@@ -22,13 +22,60 @@
 <mat-dialog-content>
   <mat-form-field class="example-full-width">
     <mat-label>Username:</mat-label>
-
-    <input [(ngModel)]="data.UserName" matInput />
+    <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert">
+      <div *ngIf="name.errors?.required" style="font-size: smaller; color: red">
+        Name is required.
+      </div>
+      <div
+        *ngIf="name.errors?.minlength"
+        style="font-size: smaller; color: red"
+      >
+        Name must be at least 8 characters long.
+      </div>
+    </div>
+    <input
+      [(ngModel)]="data.UserName"
+      matInput
+      #name="ngModel"
+      type="text"
+      id="name"
+      name="name"
+      class="form-control"
+      required
+      minlength="5"
+    />
   </mat-form-field>
   <mat-form-field class="example-full-width">
     <mat-label>Password:</mat-label>
-
-    <input type="password" [(ngModel)]="data.Password" matInput />
+    <div
+      *ngIf="password.invalid && (password.dirty || password.touched)"
+      class="alert"
+    >
+      <div
+        *ngIf="password.errors?.required"
+        style="font-size: smaller; color: red"
+      >
+        Name is required.
+      </div>
+      <div
+        *ngIf="password.errors?.minlength"
+        style="font-size: smaller; color: red"
+      >
+        Name must be at least 8 characters long.
+      </div>
+    </div>
+    <input
+      type="password"
+      [(ngModel)]="data.Password"
+      matInput
+      #password="ngModel"
+      type="text"
+      id="password"
+      name="password"
+      class="form-control"
+      required
+      minlength="12"
+    />
   </mat-form-field>
 </mat-dialog-content>
 
@@ -45,6 +92,7 @@
     [mat-dialog-close]
     style="margin-left: 2rem; width: 6rem"
     class="btn btn-danger"
+    [disabled]="name.invalid || password.invalid"
   >
     Cancel
   </button>
