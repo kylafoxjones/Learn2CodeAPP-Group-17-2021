@@ -17,6 +17,9 @@ export class ShopComponent implements OnInit {
   listOfCourses: any;
   typeChosen: any;
   search: string;
+  moduleList: any;
+  moduleChosen: any;
+  basketForStudentLoggedIn: any ={};
 
   subscriptionCartItems$: Observable<any[]> =
     this.service.GetSubscriptionCartItems;
@@ -40,6 +43,8 @@ export class ShopComponent implements OnInit {
   ngOnInit() {
     this.getAllSubscriptions();
     this.getAllCourses();
+    this.getModules();
+    this.getBasketForStudent();
 
     this.subscriptionCartItems$.subscribe((res) => {
       this.subscriptionCartItems = res;
@@ -55,6 +60,18 @@ export class ShopComponent implements OnInit {
 
     this.finalCartItems$.subscribe((res) => {
       this.finalCart = res;
+    });
+  }
+
+  getBasketForStudent() {
+    //student ID hard coded for now
+    let studentId=3;
+    this.service.getBasket(studentId).subscribe((result) => {
+      this.basketForStudentLoggedIn = result;
+      console.log(
+        'basket for student logged in',
+        this.basketForStudentLoggedIn
+      );
     });
   }
 
@@ -91,19 +108,42 @@ export class ShopComponent implements OnInit {
     });
   }
 
-  // Funx for adding items to the sub cart
-  addToSubscriptCart(newCartProduct: any): void {
-    //called in the html
-    // takes in the item you picked as 'newCartProduct and sends it to the
-    //addToCartItems function in the service
-    this.service.addToCartItems(newCartProduct);
+  getModules() {
+    this.service.getModules().subscribe((result) => {
+      this.moduleList = result;
+      console.log('modules to pick from', this.moduleList);
+    });
   }
-  // Funx for adding items to the course cart
-  addToCourseCart(newCartProduct: any): void {
-    //called in the html
-    // takes in the item you picked as 'newCartProduct and sends it to the
-    //addToCourseCartItems function in the service
-    this.service.addToCourseCartItems(newCartProduct);
+  selectModule($event) {
+    //get the module as input from user in dropdown
+    this.moduleChosen = $event;
+    console.log('module chosen', this.moduleChosen);
+  }
+
+  // Funx for adding subscription to basket
+  addToSubscriptCart(newCartProduct: any){
+    let subscritionObjToSendToDB ={
+      BasketId: this.basketForStudentLoggedIn.id,
+      SubscriptionId: newCartProduct.id,
+      ModuleId: this.moduleChosen,
+     }
+     console.log('the dto sending through for subscription',subscritionObjToSendToDB);
+      this.service.addToCartItems(subscritionObjToSendToDB).subscribe((result) => {
+        this.getBasketForStudent();
+      });
+  }
+
+  // Funx for adding course to basket
+  addToCourseCart(newCartProduct: any){
+   let courseObjToSendToDB ={
+    BasketId: this.basketForStudentLoggedIn.id,
+    CourseSubCategoryId: newCartProduct.id,
+   }
+   console.log('the dto sending through for course',courseObjToSendToDB);
+    this.service.addToCourseCartItems(courseObjToSendToDB).subscribe((result) => {
+      this.getBasketForStudent();
+    });
+
   }
 
   checkout() {

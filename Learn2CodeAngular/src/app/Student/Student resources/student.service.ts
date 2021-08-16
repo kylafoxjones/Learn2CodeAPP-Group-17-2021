@@ -65,38 +65,19 @@ export class StudentService {
     return this.total.asObservable(); // it returns the BS as an observable
   }
 
-  addToCartItems(newProduct: any): void {
-    // add SUBSCRIPTIONS items to cart funx (use array restructoring)
-    let subCart = [...this.subscriptionCart.getValue(), newProduct]; // get the value of the cart and add the new item to it
-    this.subscriptionCart.next(subCart); //replace the BS with the latest value i.e subCart
-    console.log('array of subscription cart items', subCart);
-
-    let final = [...this.finalCart.getValue(), newProduct]; // get the value of the cart and add the new item to it
-    this.finalCart.next(final); //replace the BS with the latest value i.e final
-    console.log('array of final cart items', final);
-
-    let amount = this.total.getValue() + newProduct.price;
-    this.total.next(amount); //replace the BS with the latest value i.e amount
-    console.log('running total of items in cart', amount);
+  addToCartItems(newProduct) {
+    return this.http.post(this.apiUrl + 'AddSubscriptiontoBasket', newProduct);
   }
 
-  addToCourseCartItems(newProduct: any): void {
-    // add SUBSCRIPTIONS items to cart funx (use array restructoring)
-    let courseCart = [...this.courseCart.getValue(), newProduct]; // get the value of the cart and add the new item to it
-    this.courseCart.next(courseCart); //replace the BS with the latest value i.e courseCart
-    console.log('array of course cart items', courseCart);
-
-    let final = [...this.finalCart.getValue(), newProduct]; // get the value of the cart and add the new item to it
-    this.finalCart.next(final); //replace the BS with the latest value i.e final
-    console.log('array of final cart items', final);
-
-    let amount = this.total.getValue() + newProduct.price;
-    this.total.next(amount); //replace the BS with the latest value i.e amount
-    console.log('running total of items in cart', amount);
+  addToCourseCartItems(newProduct) {
+    return this.http.post(this.apiUrl + 'AddCoursetoBasket', newProduct);
   }
 
   getCourseTypes() {
     return this.http.get(this.apiUrl + 'GetCourseFolder');
+  }
+  getModules() {
+    return this.http.get(this.apiUrl + 'GetModule');
   }
 
   getCoursesByID(id) {
@@ -105,6 +86,10 @@ export class StudentService {
 
   getSubscriptions() {
     return this.http.get(this.apiUrl + 'GetSubscription');
+  }
+
+  getBasket(id){
+    return this.http.get(this.apiUrl + 'GetBasket/' + id);
   }
   //#endregion
 }
