@@ -116,5 +116,19 @@ getContentForSession(id){
 
 }
 
+// getVideo(id){ 
+//   return this.http.get(this.apiUrl + 'WatchVideo/' + id);
+
+// }
+getVideo(id){
+  return this.http.get(this.apiUrl+'WatchVideo/'+ id, { responseType:'blob' });
+}
+// getNotes(id){ 
+//   return this.http.get(this.apiUrl + 'DownloadNotes/' + id);
+
+// }
+getNotes(id){
+  return this.http.get(this.apiUrl+'DownloadNotes/'+ id, {responseType: 'blob'});
+}
   //#endregion
 }

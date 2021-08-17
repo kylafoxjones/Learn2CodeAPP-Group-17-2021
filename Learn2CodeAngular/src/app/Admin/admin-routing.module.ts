@@ -1,6 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+//import { AuthGuard } from '../Login/auth.guard';
 import { AdminComponent } from './admin.component';
+import { 
+  AuthGuard as AuthGuard 
+} from '../Login/auth.guard';
 import { CourseContentCategoryComponent } from './course-content-category/course-content-category.component';
 import { CourseContentComponent } from './course-content/course-content.component';
 import { AddEditCourseComponent } from './course/add-edit-course/add-edit-course.component';
@@ -19,6 +23,7 @@ import { TutorApplicationComponent } from './tutor-application/tutor-application
 import { TutorComponent } from './tutor/tutor.component';
 import { AddEditUniversityComponent } from './university/add-edit-university/add-edit-university.component';
 import { UniversityComponent } from './university/university.component';
+import { AdminGuard } from './admin resources/guards/admin.guard';
 
 const routes: Routes = [
   {
@@ -33,50 +38,65 @@ const routes: Routes = [
       {
         path: 'university',
         component: UniversityComponent,
+        canActivate: [AuthGuard, AdminGuard]
       },
       {
         path: 'degree',
         component: DegreeComponent,
+        canActivate: [AuthGuard, AdminGuard]
+        
       },
       {
         path: 'module',
         component: ModuleComponent,
+        canActivate: [AuthGuard, AdminGuard]
+
       },
       {
         path: 'course',
         component: CourseComponent,
+        canActivate: [AuthGuard, AdminGuard]
       },
       {
         path: 'sessioncontentcategory',
         component: SessionContentCategoryComponent,
+        canActivate: [AuthGuard, AdminGuard]
       },
       {
         path: 'coursecontentcategory',
         component: CourseContentCategoryComponent,
+        canActivate: [AuthGuard, AdminGuard]
+   
       },
       {
         path: 'student',
         component: StudentComponent,
+        canActivate: [AuthGuard, AdminGuard]    
       },
       {
         path: 'tutor',
         component: TutorComponent,
+        canActivate: [AuthGuard, AdminGuard]
       },
       {
         path: 'subscription',
         component: SubscriptionComponent,
+        canActivate: [AuthGuard, AdminGuard]
       },
       {
         path: 'applications',
         component: TutorApplicationComponent,
+        canActivate: [AuthGuard, AdminGuard]
       },
       {
         path: 'payments',
         component: PaymentsComponent,
+        canActivate: [AuthGuard, AdminGuard]
       },
       {
         path: 'coursecontent',
         component: CourseContentComponent,
+        canActivate: [AuthGuard, AdminGuard]
       },
       //I dont know if the addEdit path though stand alone or have soemthing before it e.g admin/univers
       {

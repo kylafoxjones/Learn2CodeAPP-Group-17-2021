@@ -4,6 +4,11 @@ import { MatDialog } from '@angular/material/dialog';
 import { TutorService } from '../../tutor resources/tutor.service';
 import { AddGroupSessionContentComponent } from '../add-group-session-content/add-group-session-content.component';
 import { Router } from '@angular/router';
+import { DomSanitizer } from '@angular/platform-browser';
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
+import { saveAs } from 'file-saver';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-specific-session',
@@ -16,12 +21,14 @@ sessioncat = this.service.sessionContentCat;
 title=this.service.SessionTitle;
 content:any=[];
 categoryList:any=[];
+data:any;
 category:any;
-
+prev_url:any;
 hasContentTs:any=this.service.hasContent;
+ showVid:any=false;
 
 
-  constructor(public dialog: MatDialog, private service: TutorService, private router: Router) { }
+  constructor(public dialog: MatDialog, private service: TutorService, private router: Router, private sanitizer: DomSanitizer) { }
 
   ngOnInit(){
   
@@ -107,4 +114,29 @@ openEdit(obj){
    
   });
 }
+
+
+video(){
+  this.showVid=true;
+  this.service.getVideo(this.content[0].id).subscribe((res) => {
+    console.log(res);
+    var URL = window.URL;
+    this.prev_url = this.sanitizer.bypassSecurityTrustUrl(URL.createObjectURL(res));
+  });
+}
+
+DownloadPDF() {
+  console.log("content id is: ",this.content[0].id);
+  let vidId= this.content[0].id;
+   this.service.getNotes(vidId).subscribe((blob) => {
+     console.log("this is blob: ",blob);
+   saveAs(blob, this.content[0].notesName);
+   
+ 
+  });     
+
+
+
+}
+
 }

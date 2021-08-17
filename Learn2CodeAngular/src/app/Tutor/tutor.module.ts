@@ -27,6 +27,10 @@ import { SentRecievedMessagesComponent } from './sent-recieved-messages/sent-rec
 import { GroupSessionContentComponent } from './group-session-content/group-session-content.component';
 import { AddGroupSessionContentComponent } from './group-session-content/add-group-session-content/add-group-session-content.component';
 import { SpecificSessionComponent } from './group-session-content/specific-session/specific-session.component';
+import { ResourceComponent } from './resource/resource.component';
+import { AddEditResourceComponent } from './resource-category/add-edit-resource/add-edit-resource.component';
+import { SpecificResourceComponent } from './resource-category/specific-resource/specific-resource.component';
+
 
 
 @NgModule({
@@ -42,6 +46,10 @@ import { SpecificSessionComponent } from './group-session-content/specific-sessi
     GroupSessionContentComponent,
     AddGroupSessionContentComponent,
     SpecificSessionComponent,
+    ResourceComponent,
+    AddEditResourceComponent,
+    SpecificResourceComponent,
+    
  
   ],
   imports: [
