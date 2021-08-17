@@ -19,20 +19,10 @@ export class ShopComponent implements OnInit {
   search: string;
   moduleList: any;
   moduleChosen: any;
-  basketForStudentLoggedIn: any ={};
 
-  subscriptionCartItems$: Observable<any[]> =
-    this.service.GetSubscriptionCartItems;
-  subscriptionCartItems: any[] = [];
-
-  courseCartItems$: Observable<any[]> = this.service.GetCourseCartItems;
-  courseCartItems: any[] = [];
-
-  finalCartItems$: Observable<any[]> = this.service.GetFinalCart;
-  finalCart: any[] = [];
-
-  runningTotal$: Observable<any> = this.service.GetRunningTotal;
-  runningTotal: any;
+  basketForStudentLoggedIn: any = {};
+  courseBasketList: any = [];
+  subscriptionBasketList: any = [];
 
   constructor(
     public dialog: MatDialog,
@@ -45,34 +35,38 @@ export class ShopComponent implements OnInit {
     this.getAllCourses();
     this.getModules();
     this.getBasketForStudent();
-
-    this.subscriptionCartItems$.subscribe((res) => {
-      this.subscriptionCartItems = res;
-    });
-
-    this.runningTotal$.subscribe((res) => {
-      this.runningTotal = res;
-    });
-
-    this.courseCartItems$.subscribe((res) => {
-      this.courseCartItems = res;
-    });
-
-    this.finalCartItems$.subscribe((res) => {
-      this.finalCart = res;
-    });
   }
 
   getBasketForStudent() {
     //student ID hard coded for now
-    let studentId=3;
+    let studentId = 3;
     this.service.getBasket(studentId).subscribe((result) => {
       this.basketForStudentLoggedIn = result;
       console.log(
         'basket for student logged in',
         this.basketForStudentLoggedIn
       );
+      this.getCourseBasket();
+      this.getSubscriptionBasket();
     });
+  }
+
+  getCourseBasket() {
+    this.service
+      .getCourseBasket(this.basketForStudentLoggedIn.id)
+      .subscribe((result) => {
+        this.courseBasketList = result;
+        console.log('course basket', this.courseBasketList);
+      });
+  }
+
+  getSubscriptionBasket() {
+    this.service
+      .getSubscriptionBasket(this.basketForStudentLoggedIn.id)
+      .subscribe((result) => {
+        this.subscriptionBasketList = result;
+        console.log('subscription basket', this.subscriptionBasketList);
+      });
   }
 
   getAllSubscriptions() {
@@ -109,11 +103,13 @@ export class ShopComponent implements OnInit {
   }
 
   getModules() {
+    // pick a module from the drop down in shoppp
     this.service.getModules().subscribe((result) => {
       this.moduleList = result;
       console.log('modules to pick from', this.moduleList);
     });
   }
+
   selectModule($event) {
     //get the module as input from user in dropdown
     this.moduleChosen = $event;
@@ -121,29 +117,35 @@ export class ShopComponent implements OnInit {
   }
 
   // Funx for adding subscription to basket
-  addToSubscriptCart(newCartProduct: any){
-    let subscritionObjToSendToDB ={
+  addToSubscriptCart(newCartProduct: any) {
+    let subscritionObjToSendToDB = {
       BasketId: this.basketForStudentLoggedIn.id,
       SubscriptionId: newCartProduct.id,
       ModuleId: this.moduleChosen,
-     }
-     console.log('the dto sending through for subscription',subscritionObjToSendToDB);
-      this.service.addToCartItems(subscritionObjToSendToDB).subscribe((result) => {
+    };
+    console.log(
+      'the dto sending through for subscription',
+      subscritionObjToSendToDB
+    );
+    this.service
+      .addToCartItems(subscritionObjToSendToDB)
+      .subscribe((result) => {
         this.getBasketForStudent();
       });
   }
 
   // Funx for adding course to basket
-  addToCourseCart(newCartProduct: any){
-   let courseObjToSendToDB ={
-    BasketId: this.basketForStudentLoggedIn.id,
-    CourseSubCategoryId: newCartProduct.id,
-   }
-   console.log('the dto sending through for course',courseObjToSendToDB);
-    this.service.addToCourseCartItems(courseObjToSendToDB).subscribe((result) => {
-      this.getBasketForStudent();
-    });
-
+  addToCourseCart(newCartProduct: any) {
+    let courseObjToSendToDB = {
+      BasketId: this.basketForStudentLoggedIn.id,
+      CourseSubCategoryId: newCartProduct.id,
+    };
+    console.log('the dto sending through for course', courseObjToSendToDB);
+    this.service
+      .addToCourseCartItems(courseObjToSendToDB)
+      .subscribe((result) => {
+        this.getBasketForStudent();
+      });
   }
 
   checkout() {
@@ -165,55 +167,19 @@ export class ShopComponent implements OnInit {
   }
 
   removeItemFromSubscriptionCart(obj) {
-    let amountToRemove = obj.price;
-    this.subscriptionCartItems.forEach((element, index) => {
-      if (element == obj) {
-        // remove item from cart
-        this.subscriptionCartItems.splice(index, 1);
-        console.log(
-          'updated subscription cart list',
-          this.subscriptionCartItems
-        );
-        // reduce running total
-        this.runningTotal = this.runningTotal - amountToRemove;
-        console.log('updated running total', this.runningTotal);
-      }
-    });
-    //reduce final cart
-    this.finalCart.forEach((element, index) => {
-      if (element == obj) {
-        this.finalCart.splice(index, 1);
-        console.log('updated final cart list', this.finalCart);
-      }
-    });
+    this.service.removeItemFromSubscriptionBasket(obj.id)
+      .subscribe((result) => {
+      this.getSubscriptionBasket();
+      this.getBasketForStudent();
+      });
   }
 
   removeItemFromCourseCart(obj) {
-    let amountToRemove = obj.price;
-    this.courseCartItems.forEach((element, index) => {
-      if (element == obj) {
-        // remove item from cart
-        this.courseCartItems.splice(index, 1);
-        console.log('updated course cart list', this.courseCartItems);
-        // reduce running total
-        this.runningTotal = this.runningTotal - amountToRemove;
-        console.log('updated running total', this.runningTotal);
-      }
-    });
-    //reduce final cart
-    this.finalCart.forEach((element, index) => {
-      if (element == obj) {
-        this.finalCart.splice(index, 1);
-        console.log('updated final cart list', this.finalCart);
-      }
-    });
+    this.service.removeItemFromCourseBasket(obj.id)
+      .subscribe((result) => {
+      this.getCourseBasket();
+      this.getBasketForStudent();
+      });
   }
 
-  // search() {
-  //   Swal.fire({
-  //     icon: 'error',
-  //     title: 'Unable to find',
-  //     confirmButtonText: 'Ok',
-  //   });
-  // }
 }

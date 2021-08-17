@@ -37,9 +37,9 @@
 
   <h6 style="margin-left: 0.5rem; text-decoration: underline">Subscriptions</h6>
   <!-- <h6 style="margin-left: 0.5rem; text-decoration: underline">Items in your cart: </h6> -->
-  <ul *ngFor="let item of subscriptionCartItems">
+  <ul *ngFor="let item of subscriptionBasketList">
     <li>
-      {{ item.subscriptionName }} R{{ item.price }}
+      {{ item.subscription.subscriptionName }} R{{ item.subscription.price }}
       <i
         (click)="removeItemFromSubscriptionCart(item)"
         style="float: right; margin-right: 1rem"
@@ -50,9 +50,9 @@
   </ul>
   <h6 style="margin-left: 0.5rem; text-decoration: underline">Short Courses</h6>
 
-  <ul  *ngFor="let item of courseCartItems">
+  <ul  *ngFor="let item of courseBasketList">
     <li>
-      {{ item.courseSubCategoryName }} R{{ item.price }}
+      {{ item.courseSubCategory.courseSubCategoryName }} R{{ item.courseSubCategory.price }}
       <i 
       (click)= "removeItemFromCourseCart(item)"
         style="float: right; margin-right: 1rem"

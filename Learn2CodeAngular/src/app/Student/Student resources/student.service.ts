@@ -38,33 +38,6 @@ export class StudentService {
   //#endregion
 
   //#region shop
-  // BEHAVIOUR SUBJECT for subscription cart
-  private subscriptionCart = new BehaviorSubject<any>([]);
-  //bs for course cart
-  private courseCart = new BehaviorSubject<any>([]);
-  // final cart = course cart + sub cart
-  private finalCart = new BehaviorSubject<any>([]);
-  //running total price
-  private total = new BehaviorSubject(0);
-
-  get GetSubscriptionCartItems(): Observable<any[]> {
-    //this is what is subscribed to by other components
-    return this.subscriptionCart.asObservable(); // it returns the BS as an observable
-  }
-  get GetCourseCartItems(): Observable<any[]> {
-    //this is what is subscribed to by other components
-    return this.courseCart.asObservable(); // it returns the BS as an observable
-  }
-  get GetFinalCart(): Observable<any[]> {
-    //this is what is subscribed to by other components
-    return this.finalCart.asObservable(); // it returns the BS as an observable
-  }
-
-  get GetRunningTotal(): Observable<any> {
-    //this is what is subscribed to by other components
-    return this.total.asObservable(); // it returns the BS as an observable
-  }
-
   addToCartItems(newProduct) {
     return this.http.post(this.apiUrl + 'AddSubscriptiontoBasket', newProduct);
   }
@@ -90,6 +63,21 @@ export class StudentService {
 
   getBasket(id){
     return this.http.get(this.apiUrl + 'GetBasket/' + id);
+  }
+
+  getCourseBasket(BasketId){
+    return this.http.get(this.apiUrl + 'GetBasketCourses/' + BasketId);
+  }
+
+  getSubscriptionBasket(BasketId){
+    return this.http.get(this.apiUrl + 'GetBasketSubscriptions/' + BasketId);
+  }
+
+  removeItemFromCourseBasket(CourseBasketLineId){
+    return this.http.delete(this.apiUrl + 'RemoveCourse/' + CourseBasketLineId);
+  }
+  removeItemFromSubscriptionBasket(SubScriptionBasketLineId){
+    return this.http.delete(this.apiUrl + 'RemoveSubscription/' + SubScriptionBasketLineId);
   }
   //#endregion
 }
