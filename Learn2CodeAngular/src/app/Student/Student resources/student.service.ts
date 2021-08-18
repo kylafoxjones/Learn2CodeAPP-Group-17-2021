@@ -14,6 +14,7 @@ export class StudentService {
   tutorObj: any = {};
   //#endregion
 
+  studentId=3;
   constructor(private http: HttpClient) {}
   //#region messaging
   getTutorss() {
@@ -38,6 +39,7 @@ export class StudentService {
   //#endregion
 
   //#region shop
+
   addToCartItems(newProduct) {
     return this.http.post(this.apiUrl + 'AddSubscriptiontoBasket', newProduct);
   }
@@ -61,23 +63,40 @@ export class StudentService {
     return this.http.get(this.apiUrl + 'GetSubscription');
   }
 
-  getBasket(id){
+  getBasket(id) {
     return this.http.get(this.apiUrl + 'GetBasket/' + id);
   }
 
-  getCourseBasket(BasketId){
+  getCourseBasket(BasketId) {
     return this.http.get(this.apiUrl + 'GetBasketCourses/' + BasketId);
   }
 
-  getSubscriptionBasket(BasketId){
+  getSubscriptionBasket(BasketId) {
     return this.http.get(this.apiUrl + 'GetBasketSubscriptions/' + BasketId);
   }
 
-  removeItemFromCourseBasket(CourseBasketLineId){
+  removeItemFromCourseBasket(CourseBasketLineId) {
     return this.http.delete(this.apiUrl + 'RemoveCourse/' + CourseBasketLineId);
   }
-  removeItemFromSubscriptionBasket(SubScriptionBasketLineId){
-    return this.http.delete(this.apiUrl + 'RemoveSubscription/' + SubScriptionBasketLineId);
+  removeItemFromSubscriptionBasket(SubScriptionBasketLineId) {
+    return this.http.delete(
+      this.apiUrl + 'RemoveSubscription/' + SubScriptionBasketLineId
+    );
+  }
+  //#endregion
+
+  //#region feedback
+  
+  createFeedbackForSession(feedback) {
+    return this.http.post(this.apiUrl + 'CreateFeedback', feedback);
+  }
+
+  getMyFeedback(StudentId){
+    return this.http.get(this.apiUrl + 'GetMyFeedback/'+StudentId);
+  }
+
+  deleteFeedback(StudentId,BookingInstanceId){
+    return this.http.delete(this.apiUrl + 'DeleteMyFeedback/' + StudentId +'/'+ BookingInstanceId);
   }
   //#endregion
 }
