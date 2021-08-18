@@ -34,6 +34,25 @@ export class TutorService {
  bookinginstance:any;
  editCont:any;
  hasContent:any=false;
+
+ //resource variables
+// editId = 0;
+  newResource: any;
+  resources: any = [];
+  updatedReso: any = {};
+ // title: any;
+  oldResoName: any;
+ // newReso:any;
+  resourceIdToSend:any;
+  ResourceToSave: any = {};
+ // edit: boolean = true;
+ typeChosen:any;
+ notes:any;
+ moduleIdToSend:any;
+ specificList: any = [];
+   Resourcecontent: any=[];
+    editResourceCat: any;
+
   constructor(private http: HttpClient) {}
 //#region resource cats
   getResourceCategories() {
@@ -116,19 +135,41 @@ getContentForSession(id){
 
 }
 
-// getVideo(id){ 
-//   return this.http.get(this.apiUrl + 'WatchVideo/' + id);
-
-// }
 getVideo(id){
   return this.http.get(this.apiUrl+'WatchVideo/'+ id, { responseType:'blob' });
 }
-// getNotes(id){ 
-//   return this.http.get(this.apiUrl + 'DownloadNotes/' + id);
 
-// }
 getNotes(id){
   return this.http.get(this.apiUrl+'DownloadNotes/'+ id, {responseType: 'blob'});
 }
   //#endregion
+
+
+
+  //#begin resource region
+  getCategoryTypes(){
+      return this.http.get(this.apiUrl + 'GetAllResourceCategories');
+    
+  }
+  getModuleResources(id){ 
+    return this.http.get(this.apiUrl + 'GetModuleResources/' + id);
+  
+  }
+ 
+  createResources(formdata): Observable<any> {
+    return this.http.post(this.apiUrl + 'CreateResource', formdata);
+  }
+editResources(data): Observable<any> {
+  return this.http.put(this.apiUrl + 'EditResource', data);
+}
+
+  deleteResources(id: number) {
+    return this.http.delete(this.apiUrl + 'DeleteResource/' + id); //needs ResourceId
+  }
+getModules(){
+        return this.http.get(this.apiUrl + 'GetAllModules');
+    
+}
+
+  //#end resource region
 }

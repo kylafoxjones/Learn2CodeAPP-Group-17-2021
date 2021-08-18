@@ -18,7 +18,8 @@ export class ResourceCategoryComponent implements OnInit {
   categoryList: any = [];
   category: any;
   search;
-  
+  listOfResources:any=[];
+
 
   constructor(
     private router: Router,
@@ -27,7 +28,9 @@ export class ResourceCategoryComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.getModules();
     this.getAllResourceCategories();
+this.getModuleReso();
 
   }
 
@@ -85,9 +88,29 @@ export class ResourceCategoryComponent implements OnInit {
       this.categoryList = result; 
     });
   }
+  specificResource(obj){
+    console.log(obj);
+    this.service.moduleIdToSend=3;
+    
+      this.router.navigateByUrl('/specificresource');
+  }
+ 
+getModuleReso(){
+ // console.log("the module id ",this.service.moduleIdToSend);
+  this.service.getModuleResources(this.service.moduleIdToSend).subscribe((result)=> {
+this.service.Resourcecontent=result;
+console.log("content for resource that was chosen",this.service.Resourcecontent);
+//this.getCategory();
+  });
+}
 
-  // navigateToDegree(id:number){
-  //   this.service.universityIdToSend=id;
-  //   this.router.navigateByUrl('/degree');
-  // }
+getModules(){
+  this.service.getModules().subscribe((result)=> {
+this.listOfResources=result;
+console.log("list of modules ",this.listOfResources);
+
+});
+}
+
+
 }

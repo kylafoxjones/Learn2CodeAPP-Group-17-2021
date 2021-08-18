@@ -1,1 +1,46 @@
-<p>add-edit-resource works!</p>
+<h5 style="text-align: center">{{ popupTitle }}</h5>
+<hr />
+<mat-dialog-content>
+    <div>
+        <label for="formFile" class="form-label">Upload file:</label>
+        <input  class="form-control" type="file" #file placeholder="Choose file" (change)="SessionFile($event)" >
+    </div>
+<br/>
+
+
+    <mat-form-field appearance="outline">
+        <mat-label>Category:</mat-label>
+        <mat-select (valueChange)="selectType($event)">
+          <mat-option *ngFor="let type of typeList" [value]="type.id">
+      
+            {{ type.resourceCategoryName }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+<br/>
+  <mat-form-field class="form-label">
+    <mat-label>Description:</mat-label>
+ 
+      <input
+        [(ngModel)]="data.resourceDescription"
+        matInput
+ 
+      />
+  
+  </mat-form-field>
+</mat-dialog-content>
+
+
+<h1>{{ data.id }}</h1>
+<div style="margin: auto; padding-top: 1rem; text-align: center">
+  <button (click)="onSubmit()" style="width: 6rem" class="btn btn-info">
+    Submit
+  </button>
+  <button
+    [mat-dialog-close]
+    style="margin-left: 2rem; width: 6rem"
+    class="btn btn-danger"
+  >
+    Cancel
+  </button>
+</div>

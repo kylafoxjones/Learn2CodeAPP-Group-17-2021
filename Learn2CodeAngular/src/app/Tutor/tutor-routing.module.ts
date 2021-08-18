@@ -6,6 +6,7 @@ import { HomeComponent } from './home/home.component';
 import { MaintainComponent } from './maintain/maintain.component';
 import { MessagesComponent } from './messages/messages.component';
 import { ResourceCategoryComponent } from './resource-category/resource-category.component';
+import { SpecificResourceComponent } from './resource-category/specific-resource/specific-resource.component';
 
 import { SentRecievedMessagesComponent } from './sent-recieved-messages/sent-recieved-messages.component';
 import { TutorComponent } from './tutor.component';
@@ -44,6 +45,10 @@ const routes: Routes = [
         {
           path: 'specificsession',
           component: SpecificSessionComponent,
+        },
+        {
+          path: 'specificresource',
+          component: SpecificResourceComponent,
         },
       
       ],
