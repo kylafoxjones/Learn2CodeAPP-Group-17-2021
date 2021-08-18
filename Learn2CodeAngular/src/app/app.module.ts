@@ -33,6 +33,7 @@ import { ChartsModule } from 'ng2-charts';
     NbSidebarModule.forRoot(),
     NbEvaIconsModule,
     
+    
   ],
   providers: [],
   bootstrap: [AppComponent],

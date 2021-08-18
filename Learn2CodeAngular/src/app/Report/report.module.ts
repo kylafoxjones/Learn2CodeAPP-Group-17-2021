@@ -19,6 +19,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 
 
@@ -48,7 +49,8 @@ import { MatSelectModule } from '@angular/material/select';
     MatFormFieldModule,
     BrowserAnimationsModule,
     MatInputModule,
-    MatSelectModule
+    MatSelectModule,
+    NgxChartsModule
     
     
   

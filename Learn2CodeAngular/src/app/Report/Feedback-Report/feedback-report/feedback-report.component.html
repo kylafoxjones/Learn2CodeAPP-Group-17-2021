@@ -29,24 +29,16 @@
 <br>
 <div class="row">
     <div class="col-md-12">
-        <mat-form-field appearance="outline" style="margin-left: 5rem;">
-        <mat-label>Module</mat-label>
-        <select matNativeControl required>
-          <option value="volvo">INF354</option>
-          <option value="saab">Saab</option>
-          <option value="mercedes">Mercedes</option>
-          <option value="audi">Audi</option>
-        </select>
-      </mat-form-field>
-      <mat-form-field appearance="outline" style="margin-left: 0.5rem;">
-        <mat-label>Session</mat-label>
-        <select matNativeControl required>
-          <option value="volvo">Angular</option>
-          <option value="saab">Saab</option>
-          <option value="mercedes">Mercedes</option>
-          <option value="audi">Audi</option>
-        </select>
-      </mat-form-field> <span>  <button style="height: 3.2rem;margin-bottom: 0.7rem;width: 3rem;"  matTooltip="My tooltip"  class="btn btn-primary"> <i class="fa fa-search"></i></button></span>
+     
+      <mat-form-field appearance="outline" style="margin-left: 4.9rem;margin-right: 1rem;width: 250px; align-content: center;" >
+        <mat-label style="text-align: center;">Session</mat-label>
+        <mat-select placeholder="Session title" (selectionChange)="changeSession($event.value)">
+          <mat-option *ngFor="let item of SessionList" [value]="[item.id, item.tutorId]" >
+          {{item.title}}
+        </mat-option>
+        </mat-select>
+      </mat-form-field> <span>  
+        <button style="height: 3.2rem;margin-bottom: 0.7rem;width: 3rem;" (click)="getFeedbackList();"   matTooltip="My tooltip"  class="btn btn-primary"> <i class="fa fa-search"></i></button></span>
    
     </div>
     
@@ -55,24 +47,30 @@
   
 </div>
 <br>
-<div class="row">
+<div class="row" id="Feedback">
     <div class="col-md-12">
-<label style="font-size: x-large; margin-left: 5rem;">Tutor: Hermone Granger</label>
-<label  style="font-size: x-large; margin-left: 3rem;">Date: 12/05/2021</label>
+<label style="font-size: x-large; margin-left: 5rem;" id="TutorName">Tutor: {{TutorName}}</label>
+<label  style="font-size: x-large; margin-left: 3rem;" id="Date">Date: {{Date}}</label>
+
     </div>
     
-</div>
-  
+
+  <br>
 <div class="row">
+  
     <div class="col-md-6">
-        <div style="margin-left: 5rem;">
-            <img
-            src="../../../assets/pics/feedbackchart.png"
-            width="500"
-            height="300"
-            class="d-inline-block align-top"
-            alt=""
-          />
+        <div style="margin-left: 5rem;" >
+
+          <canvas baseChart class="chart"
+          [datasets]="barChartData"
+          [labels]="barChartLabels"
+          [options]="barChartOptions"
+          [plugins]="barChartPlugins"
+          [legend]="barChartLegend"
+          [chartType]="barChartType">
+        </canvas>
+         
+        
         </div>
         
     </div>
@@ -88,26 +86,10 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>Lucas</td>
-                <td>Great tutor super helpful</td>
-               
-              
-              </tr>
-              <tr>
-                <td>Jack</td>
-                <td>Excellent must speak louder</td>
-               
-              
-              </tr>
-              <tr>
-                <td>hannah</td>
-                <td>okay not fast enough</td>
-               
-              
-              </tr>
-              
-             
+           <tr *ngFor="let item of FeedbackList">
+              <td>{{item.student.studentName}}</td>
+              <td>{{item.description}}</td>
+          </tr>
             </tbody>
           </table>
           <br>
@@ -133,12 +115,12 @@
 
     </div>
 </div>
-
+</div>
  
   <br>
   <div style="padding:0.4rem">
-  <button  style="margin-left: 6rem;width: 10rem;"  class="btn btn-info">Generate PDF</button>
-  <button (click)="x()" style="margin-left: 1rem;width: 8rem;"  class="btn btn-primary">Report Home</button>
+  <button  (click)="DownloadPDF();x()" style="margin-left: 6rem;width: 10rem;"  class="btn btn-info">Generate PDF</button>
+  <button (click)="RedirectReportHome()" style="margin-left: 1rem;width: 8rem;"  class="btn btn-primary">Report Home</button>
 </div>
 <div>
 

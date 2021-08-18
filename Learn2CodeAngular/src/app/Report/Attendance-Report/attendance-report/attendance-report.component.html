@@ -61,12 +61,12 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let item of SessionList">
-              <td>lucas</td>
-              <td>mitchel</td>
-              <td>LM@gmail.com</td>
-              <td>INF354</td>
-              <td>Angular</td>
+            <tr *ngFor="let item of AttendedList">
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
             
            
            
@@ -97,8 +97,8 @@
   </div>
   <br>
   <div style="padding:0.4rem">
-  <button  style="margin-left: 8rem;width: 10rem;"  class="btn btn-info">Generate PDF</button>
-  <button (click)="x()" style="margin-left: 1rem;width: 8rem;"  class="btn btn-primary">Report Home</button>
+  <button (click)="DownloadPDF();x()" style="margin-left: 8rem;width: 10rem;"  class="btn btn-info">Generate PDF</button>
+  <button (click)="RedirectReportHome()" style="margin-left: 1rem;width: 8rem;"  class="btn btn-primary">Report Home</button>
 </div>
 </nb-layout-column>
 </nb-layout>

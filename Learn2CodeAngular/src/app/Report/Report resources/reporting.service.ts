@@ -7,6 +7,9 @@ import { Observable } from 'rxjs';
 })
 export class ReportingService {
 
+
+
+
   constructor(private http: HttpClient) { }
   apiUrl = 'https://localhost:44393/api/Reporting/';
 
@@ -31,7 +34,31 @@ export class ReportingService {
         return this.http.get(this.apiUrl + 'AttendacSession');
       }
 
-
+      getAttendedList(){
+        return this.http.get(this.apiUrl + 'SessionAttendanceReport/');
+      }
 
       //endregion
+
+
+      //#region Feedback
+      getFeedbackSessionDropdown(){
+        return this.http.get(this.apiUrl + 'GetSessions');
+      }
+
+      getSessionDetails(id:number){
+        return this.http.get(this.apiUrl + 'GetSessionDetails/' + id);
+      }
+
+      getFeedbackList(id:number){
+        return this.http.get(this.apiUrl + 'GetSessionsFeedback/' + id);
+      }
+
+      getSessionFeedbackScore(id:number){
+        return this.http.get(this.apiUrl + 'GetSessionsFeedbackScore/' + id);
+      }
+
+
+
+      //#endregion
 }

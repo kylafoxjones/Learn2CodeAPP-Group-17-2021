@@ -7,6 +7,8 @@ import { MatInputModule } from '@angular/material/input';
 import { ReportingService } from '../../Report resources/reporting.service';
 import { Router } from '@angular/router';
 import { MatSelectModule } from '@angular/material/select';
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
 
 
 @Component({
@@ -17,6 +19,7 @@ import { MatSelectModule } from '@angular/material/select';
 export class AttendanceReportComponent implements OnInit {
 
   SessionList:any = [];
+  AttendedList:any = [];
 
 
   constructor(
@@ -25,7 +28,9 @@ export class AttendanceReportComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.SessionDropdown()
+    this.SessionDropdown(),
+    this.AttendanceList()
+  
   }
   x(){
     Swal.fire(
@@ -42,5 +47,34 @@ export class AttendanceReportComponent implements OnInit {
     console.log(this.SessionList);
   });
  }
+
+ AttendanceList(){
+  this.reportService.getAttendedList().subscribe((result) => {
+    this.AttendedList = result; 
+    console.log(this.AttendedList);
+   })
+ }
+
+ 
+ public RedirectReportHome(){
+  this.router.navigateByUrl('/report-home');
+}
+
+public DownloadPDF():void {
+  let data = document.getElementById('TutorDetailsData');
+    
+  html2canvas(data).then(canvas => {
+      
+      let fileWidth = 240;
+      let fileHeight = canvas.height * fileWidth / canvas.width;
+      
+      const FILEURI = canvas.toDataURL('image/png')
+      let PDF = new jsPDF('p', 'mm', 'a4');
+      let position = 0;
+      PDF.addImage(FILEURI, 'PNG', 0, position, fileWidth, fileHeight)
+      
+      PDF.save('TutorDetailsReport.pdf');
+  });     
+}
 
 }
