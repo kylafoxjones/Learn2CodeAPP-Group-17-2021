@@ -87,7 +87,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
+              <tr >
                 <td>11/02/2021</td>
                 <td>HTML</td>
                 <td>Bea</td>
@@ -175,42 +175,19 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>11/02/2021</td>
-                <td>HTML</td>
-                <td>Roberto</td>
-                <td>Adinolfi</td>
-                <td>9</td>
-                <th>
-                  <button class="btn btn-danger">
+              <tr *ngFor="let item of myFeedbackList">
+                <td>{{item.bookingInstance.date}}</td>
+                <td>{{item.bookingInstance.title}}</td>
+                <td>{{item.bookingInstance.tutor.tutorName}}</td>
+                <td>{{item.bookingInstance.tutor.tutorSurname}}</td>
+                <td></td>
+                <td>
+                  <button (click)= "delete(item)" class="btn btn-danger">
                     <i class="fa fa-trash"></i>
                   </button>
-                </th>
+                </td>
               </tr>
-              <tr>
-                <td>2/02/2021</td>
-                <td>Razor</td>
-                <td>John</td>
-                <td>Adi</td>
-                <td>5</td>
-                <th>
-                  <button class="btn btn-danger" (click)="delete()">
-                    <i class="fa fa-trash"></i>
-                  </button>
-                </th>
-              </tr>
-              <tr>
-                <td>11/02/2021</td>
-                <td>MVC</td>
-                <td>Roberto</td>
-                <td>Adinolfi</td>
-                <td>9</td>
-                <th>
-                  <button class="btn btn-danger">
-                    <i class="fa fa-trash"></i>
-                  </button>
-                </th>
-              </tr>
+            
             </tbody>
           </table>
           <br />

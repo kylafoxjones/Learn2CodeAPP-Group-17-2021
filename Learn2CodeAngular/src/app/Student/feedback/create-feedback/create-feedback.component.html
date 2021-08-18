@@ -5,31 +5,50 @@
 >
 <p>
   <i class="fa fa-commenting-o" aria-hidden="true"></i> Please rate the session
-  the tutor provided out of 10 according to the following parameters:
+  the tutor provided out of 10 according to the parameters below:
 </p>
 
 <mat-form-field class="example-full-width">
   <mat-label>Friendliness:</mat-label>
-  <input mdInput type="number" matInput placeholder="Subscription Duration" />
+  <input
+    mdInput
+    type="number"
+    matInput
+    placeholder="Friendliness 1-10"
+    [(ngModel)]="data.Friendliness"
+  />
 </mat-form-field>
 <mat-form-field class="example-full-width">
   <mat-label>Timeliness</mat-label>
-  <input mdInput type="number" matInput placeholder="Subscription Sessions" />
+  <input
+    mdInput
+    type="number"
+    matInput
+    placeholder="Timeliness 1-10"
+    [(ngModel)]="data.Timeliness"
+    #name="ngModel"
+  />
 </mat-form-field>
 <mat-form-field class="example-full-width">
   <mat-label>Ability</mat-label>
-  <input mdInput type="number" matInput placeholder="Subscription Sessions" />
+  <input
+    mdInput
+    type="number"
+    matInput
+    placeholder="Ability 1-10"
+    [(ngModel)]="data.Ability"
+  />
 </mat-form-field>
 <mat-form-field class="example-full-width">
   <mat-label>Description:</mat-label>
-  <textarea matInput></textarea>
+  <textarea matInput [(ngModel)]="data.Description"></textarea>
 </mat-form-field>
 
 <div style="margin: auto; padding-top: 1rem">
-  <!-- <button (click)="confirmed()" style="width: 6rem" class="btn btn-info">
+  <button (click)="createFeedback()" style="width: 6rem" class="btn btn-info">
     Submit
-  </button> -->
-  <button style="margin-left: 2rem; width: 6rem" class="btn btn-danger">
+  </button>
+  <button (click)="cancel()" style="margin-left: 2rem; width: 6rem" class="btn btn-danger">
     Cancel
   </button>
 </div>

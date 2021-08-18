@@ -167,19 +167,18 @@ export class ShopComponent implements OnInit {
   }
 
   removeItemFromSubscriptionCart(obj) {
-    this.service.removeItemFromSubscriptionBasket(obj.id)
+    this.service
+      .removeItemFromSubscriptionBasket(obj.id)
       .subscribe((result) => {
-      this.getSubscriptionBasket();
-      this.getBasketForStudent();
+        this.getSubscriptionBasket();
+        this.getBasketForStudent();
       });
   }
 
   removeItemFromCourseCart(obj) {
-    this.service.removeItemFromCourseBasket(obj.id)
-      .subscribe((result) => {
+    this.service.removeItemFromCourseBasket(obj.id).subscribe((result) => {
       this.getCourseBasket();
       this.getBasketForStudent();
-      });
+    });
   }
-
 }

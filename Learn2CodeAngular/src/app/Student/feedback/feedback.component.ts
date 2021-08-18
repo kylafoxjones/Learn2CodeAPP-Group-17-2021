@@ -11,17 +11,30 @@ import { Router } from '@angular/router';
   styleUrls: ['./feedback.component.scss'],
 })
 export class FeedbackComponent implements OnInit {
+  myFeedbackList: any = [];
+  data: any;
+
   constructor(
     private router: Router,
     public dialog: MatDialog,
     private service: StudentService
   ) {}
 
-  ngOnInit(): void {}
-  delete() {
+  ngOnInit(): void {
+    this.getMyFeedback();
+  }
+
+  getSessions() {
+    // get sessions that the student has attented
+
+    this.getMyFeedback();
+  }
+
+  delete(item) {
+    console.log('feedback sent to delete', item);
+    console.log('student ID:', this.service.studentId);
     Swal.fire({
       title: 'Are you sure you want to delete the feedback',
-
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
@@ -29,7 +42,23 @@ export class FeedbackComponent implements OnInit {
       confirmButtonText: 'Yes',
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire('Unable to Delete Feedback', '', 'error');
+        this.service
+          .deleteFeedback(this.service.studentId, item.bookingInstanceId)
+          .subscribe(
+            (result) => {
+              this.data = result;
+              Swal.fire(
+                'Feedback successfully deleted!',
+                this.data.message,
+                'success'
+              );
+              this.getMyFeedback();
+            },
+            (error) => {
+              Swal.fire('Error!', error.error, 'error');
+              this.getMyFeedback();
+            }
+          );
       }
     });
   }
@@ -48,11 +77,22 @@ export class FeedbackComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      Swal.fire({
-        icon: 'error',
-        title: 'Feedback already exists for this session',
-        confirmButtonText: 'Okay',
-      });
+      //   Swal.fire({
+      //     icon: 'error',
+      //     title: 'Feedback already exists for this session',
+      //     confirmButtonText: 'Okay',
+      //   });
+    });
+    this.getSessions();
+  }
+
+  getMyFeedback() {
+    this.service.getMyFeedback(this.service.studentId).subscribe((result) => {
+      this.myFeedbackList = result;
+      console.log(
+        'Myfeedback list for the student logged in',
+        this.myFeedbackList
+      );
     });
   }
 }
