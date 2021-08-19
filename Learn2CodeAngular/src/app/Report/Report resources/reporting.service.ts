@@ -34,13 +34,17 @@ export class ReportingService {
         return this.http.get(this.apiUrl + 'AttendacSession');
       }
 
-      getAttendedList(){
-        return this.http.get(this.apiUrl + 'SessionAttendanceReport/');
+      getAttendedList(id:number){
+        return this.http.get(this.apiUrl + 'SessionAttendanceReport/' + id);
+      }
+   
+      getAttendedGraphInfo(id:number){
+        return this.http.get(this.apiUrl + 'SessionAttendanceGraph/' + id);
       }
 
+
       //endregion
-
-
+     
       //#region Feedback
       getFeedbackSessionDropdown(){
         return this.http.get(this.apiUrl + 'GetSessions');

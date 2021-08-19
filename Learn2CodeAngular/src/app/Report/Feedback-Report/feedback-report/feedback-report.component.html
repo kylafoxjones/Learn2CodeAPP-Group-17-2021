@@ -33,7 +33,7 @@
       <mat-form-field appearance="outline" style="margin-left: 4.9rem;margin-right: 1rem;width: 250px; align-content: center;" >
         <mat-label style="text-align: center;">Session</mat-label>
         <mat-select placeholder="Session title" (selectionChange)="changeSession($event.value)">
-          <mat-option *ngFor="let item of SessionList" [value]="[item.id, item.tutorId]" >
+          <mat-option *ngFor="let item of SessionList" [value]="[item.id]" >
           {{item.title}}
         </mat-option>
         </mat-select>

@@ -32,10 +32,14 @@
       
       <mat-form-field appearance="outline" style="margin-left: 0.5rem;margin-right: 1rem;width: 250px; align-content: center;" >
         <mat-label style="text-align: center;">Session</mat-label>
-        <mat-select placeholder="Session title">
-          <mat-option *ngFor="let item of SessionList" value="Angular" >{{item.title}}</mat-option>
+        <mat-select placeholder="Session title" (selectionChange)="changeSession($event.value)">
+          <mat-option *ngFor="let item of SessionList" [value]="[item.id]" >{{item.title}}</mat-option>
         </mat-select>
-      </mat-form-field> <span>  <button style="height: 3.2rem;margin-bottom: 0.7rem;width: 3rem;"  matTooltip="My tooltip"  class="btn btn-primary"> <i class="fa fa-search"></i></button></span>
+      </mat-form-field> <span>  
+        <button 
+          style="height: 3.2rem;margin-bottom: 0.7rem;width: 3rem;" 
+          matTooltip="My tooltip"  class="btn btn-primary"
+          (click)="AttendanceList()"> <i class="fa fa-search"></i></button></span>
    
     </div>
     
@@ -45,11 +49,11 @@
 </div>
 
   <div style="box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
-  0 6px 6px rgba(0, 0, 0, 0.23);width: 80%;margin: auto;border-radius: 15px;" >
+  0 6px 6px rgba(0, 0, 0, 0.23);width: 80%;margin: auto;border-radius: 15px;" id="AttendanceData">
   <br>
   
     <br>
-      <table class="table table-hover" style="width: 90%;margin: auto; padding-top: 2rem;">
+      <table class="table table-hover" style="width: 100%;margin: auto; padding-top: 2rem;">
           <thead >
             <tr>
               <th scope="col">Name</th>
@@ -62,11 +66,14 @@
           </thead>
           <tbody>
             <tr *ngFor="let item of AttendedList">
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
+              <td>{{item.student.studentName}}</td>
+              <td>{{item.student.studentSurname}}</td>
+              <td>{{item.student.identity.email}}</td>
+              <td>{{item.bookingInstance.module.moduleCode}}</td>
+              <td>{{item.bookingInstance.title}}</td>
+           
+              
+             
             
            
            
@@ -93,6 +100,24 @@
             </ul>
           </nav>
   
+
+  <div>
+    <div>
+      <div class="chart">
+                <canvas baseChart
+                  [data]="pieChartData"
+                  [labels]="pieChartLabels"
+                  [chartType]="pieChartType"
+                  [options]="pieChartOptions"
+                  [colors]="pieChartColors"
+                  [legend]="pieChartLegend"
+                  style="height: 300px;">
+                </canvas>
+                <br>
+              </div>
+            </div>
+          </div>
+          
   
   </div>
   <br>

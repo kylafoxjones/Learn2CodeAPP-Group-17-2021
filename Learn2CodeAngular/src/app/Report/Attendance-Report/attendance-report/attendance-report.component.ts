@@ -9,6 +9,10 @@ import { Router } from '@angular/router';
 import { MatSelectModule } from '@angular/material/select';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
+import { ChartOptions, ChartType } from 'chart.js';
+import { Label, SingleDataSet } from 'ng2-charts';
+
+
 
 
 @Component({
@@ -20,7 +24,13 @@ export class AttendanceReportComponent implements OnInit {
 
   SessionList:any = [];
   AttendedList:any = [];
-
+  BookingInstanceID:any[] = [];
+  ID:number = 0;
+  chartScoreList:any = [];
+  Attended: number = 0;
+  Missed: number = 0;
+  
+  
 
   constructor(
     private reportService: ReportingService,
@@ -29,7 +39,8 @@ export class AttendanceReportComponent implements OnInit {
 
   ngOnInit(): void {
     this.SessionDropdown(),
-    this.AttendanceList()
+    this.AttendanceList(),
+    this.pieChartData = [0,0];
   
   }
   x(){
@@ -40,6 +51,13 @@ export class AttendanceReportComponent implements OnInit {
     )
   }
 
+  
+  changeSession(value) {
+    
+    this.BookingInstanceID = value;
+    console.log(this.BookingInstanceID);
+    
+    }
 
  SessionDropdown(){
   this.reportService.getSessionDropdown().subscribe((result) => {
@@ -49,31 +67,80 @@ export class AttendanceReportComponent implements OnInit {
  }
 
  AttendanceList(){
-  this.reportService.getAttendedList().subscribe((result) => {
-    this.AttendedList = result; 
-    console.log(this.AttendedList);
-   })
+  this.ID = this.BookingInstanceID[0];
+ 
+  this.reportService.getAttendedList(this.ID).subscribe((result) =>{
+    this.AttendedList = result;
+   
+    
+  
+  })
+
+  //Attendance Chart
+  this.reportService.getAttendedGraphInfo(this.ID).subscribe((result) =>{
+    this.chartScoreList = result;
+    console.log(this.chartScoreList);
+    this.Attended = this.chartScoreList.attended;
+    this.Missed = this.chartScoreList.missed;
+
+    this.pieChartData = [this.Attended,this.Missed];
+  
+  })
+
  }
 
+  
+    
+    
+  
+
+ public pieChartOptions: ChartOptions = {
+  responsive: true,
+  maintainAspectRatio: false,
+  legend: {
+    position: 'top',
+  },
+  plugins: {
+    datalabels: {
+      formatter: (value, ctx) => {
+        const label = ctx.chart.data.labels[ctx.dataIndex];
+        return label;
+      },
+    },
+  }
+};
+public pieChartLabels: Label[] =['Missed', 'Attended'];
+public pieChartData: number[] = [3, 1];
+public pieChartType: ChartType = 'pie';
+public pieChartLegend = true;
+
+public pieChartColors = [
+  {
+    backgroundColor: ['rgb(0, 204, 204)','#009c9e'],
+  },
+];
  
+
+
+
  public RedirectReportHome(){
   this.router.navigateByUrl('/report-home');
 }
 
 public DownloadPDF():void {
-  let data = document.getElementById('TutorDetailsData');
+  let data = document.getElementById('AttendanceData');
     
   html2canvas(data).then(canvas => {
       
-      let fileWidth = 240;
+      let fileWidth = 300;
       let fileHeight = canvas.height * fileWidth / canvas.width;
       
       const FILEURI = canvas.toDataURL('image/png')
-      let PDF = new jsPDF('p', 'mm', 'a4');
+      let PDF = new jsPDF('l', 'mm', 'a4');
       let position = 0;
       PDF.addImage(FILEURI, 'PNG', 0, position, fileWidth, fileHeight)
       
-      PDF.save('TutorDetailsReport.pdf');
+      PDF.save('AttendanceReport.pdf');
   });     
 }
 

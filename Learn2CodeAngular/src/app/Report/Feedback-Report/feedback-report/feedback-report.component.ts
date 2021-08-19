@@ -108,7 +108,9 @@ this.reportService.getSessionFeedbackScore(this.ID).subscribe((result) =>{
                          backgroundColor:'rgb(0, 204, 204)',
                          pointBackgroundColor:'rgb(179, 240, 255)',
                          pointHoverRadius: 0,
-                         hoverBackgroundColor:'rgb(128, 229, 255)', }];})
+                         hoverBackgroundColor:'rgb(128, 229, 255)', }];
+                        
+                      })
 
 
 
@@ -182,7 +184,7 @@ public DownloadPDF():void {
       let position = 5;
       PDF.addImage(FILEURI, 'PNG', 0, position, fileWidth, fileHeight)
       
-      PDF.save('Feedback.pdf');
+      PDF.save('FeedbackReport.pdf');
   });     
 }
 
