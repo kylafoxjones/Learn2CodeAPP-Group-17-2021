@@ -10,6 +10,8 @@ import Swal from 'sweetalert2';
 import { Login } from '../models/login.model';
 import { AuthResponseDto } from '../models/auth-response-dto.model';
 import { LoginService } from '../login.service';
+import { ForgotPasswordComponent } from '../forgot-password/forgot-password.component';
+
 
 @Component({
   selector: 'app-login-comp',
@@ -45,5 +47,14 @@ export class LoginCompComponent implements OnInit {
       } else this.route.navigate(['/adminhomepage/adminhome']);
     });
   }
-  
+  openForget(){
+    const dialogRef = this.dialog.open(ForgotPasswordComponent, {
+      width: '350px',
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+   //   Swal.fire('Email sent successfully', '', 'success');
+    });
+
+  }
+
 }

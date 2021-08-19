@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { TutorService } from '../../tutor resources/tutor.service';
 import { AddEditResourceComponent } from '../add-edit-resource/add-edit-resource.component';
 import Swal from 'sweetalert2';
-
+import { saveAs } from 'file-saver';
 @Component({
   selector: 'app-specific-resource',
   templateUrl: './specific-resource.component.html',
@@ -14,7 +14,7 @@ export class SpecificResourceComponent implements OnInit {
   search;
   List=this.service.specificList;
   module= this.service.moduleNameToSend;
-
+file:any;
   constructor(    private router: Router,
     public dialog: MatDialog,
     private service: TutorService) { }
@@ -22,11 +22,20 @@ export class SpecificResourceComponent implements OnInit {
   ngOnInit() {
     this.getAllForModule();
   }
+download(obj){
+console.log("object is ",obj);
+  this.service.downloadResource(obj.id).subscribe((blob) => {
+    this.file = blob; 
+    console.log("file is ",this.file);
+    console.log( obj.resourceCategory.resourceCategoryName);
+    saveAs(blob, obj.resourceCategory.resourceCategoryName);
+  });
 
+}
   getAllForModule() {
     this.service.getModuleResources(this.service.moduleIdToSend).subscribe((result) => {
       this.List = result; 
-      console.log(this.List);
+      console.log("all for module",this.List);
     });
   }
 

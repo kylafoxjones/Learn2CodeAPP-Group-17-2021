@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Observable, Subject } from 'rxjs';
+import { ForgotpasswordDto } from './models/forgotpassword-dto.model';
+import { ResetPasswordDto } from './models/reset-password-dto.model';
 
 @Injectable({
   providedIn: 'root'
@@ -43,5 +45,17 @@ export class LoginService {
     const decodedToken = this._jwtHelper.decodeToken(token);
     const role = decodedToken['http://schemas.microsoft.com/ws/2008/06/identity/claims/role']
     return role === 'Tutor';
+  }
+
+  public forgotPassword = (route: string, body: ForgotpasswordDto) => {
+    return this.http.post(this.createCompleteRoute(route,  'https://localhost:44393'), body);
+  }
+
+  public resetPassword = (route: string, body: ResetPasswordDto) => {
+    return this.http.post(this.createCompleteRoute(route, 'https://localhost:44393'), body);
+  }
+
+  private createCompleteRoute = (route: string, envAddress: string) => {
+    return `${envAddress}/${route}`;
   }
 }

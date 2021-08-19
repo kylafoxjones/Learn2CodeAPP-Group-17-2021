@@ -39,26 +39,29 @@
             class="form-select"
             aria-label="Default select example"
             style="width: 9rem"
-            (valueChange)="selectType($event)"
-          >
-              <option *ngFor="let uni of uniList" [value]="uni.degree.university.universityId">
+           
+            (change)="selectType($event.target.value)"
+          > <option value="" selected disabled> University</option>
+              <option *ngFor="let uni of uniList" [value]="uni.id">
           
-                {{uni.degree.university.universityName}}
+                {{uni.universityName}}
               </option>
-            
-  
-       
           </select>
+
+
           <span>
-            <button class="btn btn-primary">
+            <button (click)="getUnisResource()" class="btn btn-primary">
               <i class="fa fa-search"></i>
             </button>
           </span>
         </div>
         <br />
+
+
+        <div *ngIf="hasContent">
         <div class="row">
           <div class="col-md-4" 
-          *ngFor="let item of listOfResources | filter: search">
+          *ngFor="let item of uniResoList | filter: search">
             <div style="
             margin-top: 3rem;
             border-radius: 25px;
@@ -99,7 +102,32 @@
           </div>
 
         </div>
-        </div>     
+        </div>   
+        
+        </div>
+
+
+
+        <div *ngIf="!hasContent">
+          <div
+          style="
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
+              0 6px 6px rgba(0, 0, 0, 0.23);
+            width: 80%;
+            margin: auto;
+            border-radius: 15px;
+            align-items: center;
+          "
+        >
+        <br />
+    
+    <h5 style="text-align: center">No content for this session</h5>
+    
+      </div>
+
+          </div>
+
+
       </nb-tab>
 
 

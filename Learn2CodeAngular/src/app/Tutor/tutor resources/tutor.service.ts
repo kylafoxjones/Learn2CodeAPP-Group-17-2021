@@ -176,7 +176,14 @@ getUnivForResources(id){
   return this.http.get(this.apiUrl + 'GetUniversityForResources/' + id);
 
 }
+getUnis(){
+  
+  return this.http.get(this.apiUrl + 'GetAllUniversitiesForResources');
+}
+downloadResource(id){
 
-
+  
+  return this.http.get(this.apiUrl + 'DownloadResource/' + id,  {responseType: 'blob'});
+}
   //#end resource region
 }

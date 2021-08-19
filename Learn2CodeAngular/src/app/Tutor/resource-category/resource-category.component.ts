@@ -20,6 +20,8 @@ export class ResourceCategoryComponent implements OnInit {
   search;
   listOfResources:any=[];
   uniList:any;
+  uniResoList:any;
+  hasContent:any =false;
 
   constructor(
     private router: Router,
@@ -31,15 +33,16 @@ export class ResourceCategoryComponent implements OnInit {
 
     this.getModuless();
     this.getAllResourceCategories();
-    this.getUnis();
+   // this.getUnisResource();
+    this.getUniss()
 //this.getModuleReso();
 
   }
 
   selectType($event){
-    console.log('this is the event', $event);
+   // console.log('this is the event', $event);
     this.service.typeUniChosen = $event; 
-    console.log(this.service.typeUniChosen);
+    console.log("this is the event",this.service.typeUniChosen);
   
 
   }
@@ -91,11 +94,25 @@ export class ResourceCategoryComponent implements OnInit {
       this.getAllResourceCategories();
     });
   }
-
-  getUnis(){
-    this.service.getUnivForResources(1).subscribe((result) => {
-      this.uniList = result; 
-      console.log("university list ",this.uniList);
+getUniss(){
+  this.service.getUnis().subscribe((result) => {
+    this.uniList = result; 
+    console.log("university list ",this.uniList);
+  });
+}
+  getUnisResource(){
+    console.log("type uni", this.service.typeUniChosen);
+    this.service.getUnivForResources(this.service.typeUniChosen).subscribe((result) => {
+      this.uniResoList = result; 
+      console.log("university resource list ",this.uniResoList);
+      if (this.uniResoList.length == 0)
+{
+  this.hasContent=false;
+}
+  else {
+  this.hasContent=true;
+}
+  console.log("has Content ",this.hasContent);
     });
     
   }
