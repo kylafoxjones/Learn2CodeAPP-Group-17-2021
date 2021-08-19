@@ -23,6 +23,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import { ShopComponent } from './shop/shop.component';
 import { FeedbackComponent } from './feedback/feedback.component';
 import { CreateFeedbackComponent } from './feedback/create-feedback/create-feedback.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { CreateFeedbackComponent } from './feedback/create-feedback/create-feedb
     StudentHomeComponent,
     ShopComponent,
     FeedbackComponent,
-    CreateFeedbackComponent
+    CreateFeedbackComponent,
+    RegisterComponent
   ],
   imports: [
     CommonModule,

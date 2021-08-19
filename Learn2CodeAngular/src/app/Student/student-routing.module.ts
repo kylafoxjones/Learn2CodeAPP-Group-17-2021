@@ -6,6 +6,7 @@ import { StudentComponent } from './student.component';
 import { StudentHomeComponent } from './student-home/student-home.component';
 import { ShopComponent } from './shop/shop.component';
 import { FeedbackComponent } from './feedback/feedback.component';
+import { RegisterComponent } from './register/register.component';
 
 const routes: Routes =  [
   
@@ -14,6 +15,10 @@ const routes: Routes =  [
     component: StudentComponent,
     children: [
       // every child component of student needs routing here
+      {
+        path: 'registerstudent',
+        component: RegisterComponent,
+      },
       {
         path: 'studenthome',
         component: StudentHomeComponent,
