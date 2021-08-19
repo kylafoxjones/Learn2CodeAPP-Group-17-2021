@@ -13,6 +13,7 @@ import Swal from 'sweetalert2';
 export class SpecificResourceComponent implements OnInit {
   search;
   List=this.service.specificList;
+  module= this.service.moduleNameToSend;
 
   constructor(    private router: Router,
     public dialog: MatDialog,
@@ -23,7 +24,7 @@ export class SpecificResourceComponent implements OnInit {
   }
 
   getAllForModule() {
-    this.service.getModuleResources(3).subscribe((result) => {
+    this.service.getModuleResources(this.service.moduleIdToSend).subscribe((result) => {
       this.List = result; 
       console.log(this.List);
     });

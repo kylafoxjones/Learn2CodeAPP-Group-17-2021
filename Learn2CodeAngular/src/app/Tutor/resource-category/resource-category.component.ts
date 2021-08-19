@@ -19,7 +19,7 @@ export class ResourceCategoryComponent implements OnInit {
   category: any;
   search;
   listOfResources:any=[];
-
+  uniList:any;
 
   constructor(
     private router: Router,
@@ -28,9 +28,19 @@ export class ResourceCategoryComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.getModules();
+
+    this.getModuless();
     this.getAllResourceCategories();
-this.getModuleReso();
+    this.getUnis();
+//this.getModuleReso();
+
+  }
+
+  selectType($event){
+    console.log('this is the event', $event);
+    this.service.typeUniChosen = $event; 
+    console.log(this.service.typeUniChosen);
+  
 
   }
 
@@ -69,7 +79,6 @@ this.getModuleReso();
 
   openEditDialog(obj) {
     this.service.edit = true;
-        //fill the object place holder when edit is clicked
     this.service.editCat = obj;
     this.service.oldCatName = obj.categoryName;
     this.service.categories = this.categoryList;
@@ -83,6 +92,13 @@ this.getModuleReso();
     });
   }
 
+  getUnis(){
+    this.service.getUnivForResources(1).subscribe((result) => {
+      this.uniList = result; 
+      console.log("university list ",this.uniList);
+    });
+    
+  }
   getAllResourceCategories() {
     this.service.getResourceCategories().subscribe((result) => {
       this.categoryList = result; 
@@ -90,8 +106,12 @@ this.getModuleReso();
   }
   specificResource(obj){
     console.log(obj);
-    this.service.moduleIdToSend=3;
-    
+    this.service.moduleIdToSend=obj.id;
+    this.service.moduleNameToSend=obj.moduleCode;
+    this.service.universityID=obj.degree.universityID;
+    console.log("university is: ", this.service.universityID);
+    console.log("module code is : ",this.service.moduleNameToSend);
+    console.log("module is : ",this.service.moduleIdToSend);
       this.router.navigateByUrl('/specificresource');
   }
  
@@ -104,7 +124,7 @@ console.log("content for resource that was chosen",this.service.Resourcecontent)
   });
 }
 
-getModules(){
+getModuless(){
   this.service.getModules().subscribe((result)=> {
 this.listOfResources=result;
 console.log("list of modules ",this.listOfResources);

@@ -52,7 +52,9 @@ export class TutorService {
  specificList: any = [];
    Resourcecontent: any=[];
     editResourceCat: any;
-
+    moduleNameToSend:any;
+    universityID:any;
+    typeUniChosen:any;
   constructor(private http: HttpClient) {}
 //#region resource cats
   getResourceCategories() {
@@ -167,9 +169,14 @@ editResources(data): Observable<any> {
     return this.http.delete(this.apiUrl + 'DeleteResource/' + id); //needs ResourceId
   }
 getModules(){
-        return this.http.get(this.apiUrl + 'GetAllModules');
+        return this.http.get(this.apiUrl + 'GetAllModulesForResources');
     
 }
+getUnivForResources(id){ 
+  return this.http.get(this.apiUrl + 'GetUniversityForResources/' + id);
+
+}
+
 
   //#end resource region
 }
