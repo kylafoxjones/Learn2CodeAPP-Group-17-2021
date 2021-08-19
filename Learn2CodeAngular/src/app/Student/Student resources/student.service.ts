@@ -14,6 +14,7 @@ export class StudentService {
   tutorObj: any = {};
   //#endregion
 
+  studentId=3;
   constructor(private http: HttpClient) {}
   //#region messaging
   getTutorss() {
@@ -38,65 +39,20 @@ export class StudentService {
   //#endregion
 
   //#region shop
-  // BEHAVIOUR SUBJECT for subscription cart
-  private subscriptionCart = new BehaviorSubject<any>([]);
-  //bs for course cart
-  private courseCart = new BehaviorSubject<any>([]);
-  // final cart = course cart + sub cart
-  private finalCart = new BehaviorSubject<any>([]);
-  //running total price
-  private total = new BehaviorSubject(0);
 
-  get GetSubscriptionCartItems(): Observable<any[]> {
-    //this is what is subscribed to by other components
-    return this.subscriptionCart.asObservable(); // it returns the BS as an observable
-  }
-  get GetCourseCartItems(): Observable<any[]> {
-    //this is what is subscribed to by other components
-    return this.courseCart.asObservable(); // it returns the BS as an observable
-  }
-  get GetFinalCart(): Observable<any[]> {
-    //this is what is subscribed to by other components
-    return this.finalCart.asObservable(); // it returns the BS as an observable
+  addToCartItems(newProduct) {
+    return this.http.post(this.apiUrl + 'AddSubscriptiontoBasket', newProduct);
   }
 
-  get GetRunningTotal(): Observable<any> {
-    //this is what is subscribed to by other components
-    return this.total.asObservable(); // it returns the BS as an observable
-  }
-
-  addToCartItems(newProduct: any): void {
-    // add SUBSCRIPTIONS items to cart funx (use array restructoring)
-    let subCart = [...this.subscriptionCart.getValue(), newProduct]; // get the value of the cart and add the new item to it
-    this.subscriptionCart.next(subCart); //replace the BS with the latest value i.e subCart
-    console.log('array of subscription cart items', subCart);
-
-    let final = [...this.finalCart.getValue(), newProduct]; // get the value of the cart and add the new item to it
-    this.finalCart.next(final); //replace the BS with the latest value i.e final
-    console.log('array of final cart items', final);
-
-    let amount = this.total.getValue() + newProduct.price;
-    this.total.next(amount); //replace the BS with the latest value i.e amount
-    console.log('running total of items in cart', amount);
-  }
-
-  addToCourseCartItems(newProduct: any): void {
-    // add SUBSCRIPTIONS items to cart funx (use array restructoring)
-    let courseCart = [...this.courseCart.getValue(), newProduct]; // get the value of the cart and add the new item to it
-    this.courseCart.next(courseCart); //replace the BS with the latest value i.e courseCart
-    console.log('array of course cart items', courseCart);
-
-    let final = [...this.finalCart.getValue(), newProduct]; // get the value of the cart and add the new item to it
-    this.finalCart.next(final); //replace the BS with the latest value i.e final
-    console.log('array of final cart items', final);
-
-    let amount = this.total.getValue() + newProduct.price;
-    this.total.next(amount); //replace the BS with the latest value i.e amount
-    console.log('running total of items in cart', amount);
+  addToCourseCartItems(newProduct) {
+    return this.http.post(this.apiUrl + 'AddCoursetoBasket', newProduct);
   }
 
   getCourseTypes() {
     return this.http.get(this.apiUrl + 'GetCourseFolder');
+  }
+  getModules() {
+    return this.http.get(this.apiUrl + 'GetModule');
   }
 
   getCoursesByID(id) {
@@ -105,6 +61,42 @@ export class StudentService {
 
   getSubscriptions() {
     return this.http.get(this.apiUrl + 'GetSubscription');
+  }
+
+  getBasket(id) {
+    return this.http.get(this.apiUrl + 'GetBasket/' + id);
+  }
+
+  getCourseBasket(BasketId) {
+    return this.http.get(this.apiUrl + 'GetBasketCourses/' + BasketId);
+  }
+
+  getSubscriptionBasket(BasketId) {
+    return this.http.get(this.apiUrl + 'GetBasketSubscriptions/' + BasketId);
+  }
+
+  removeItemFromCourseBasket(CourseBasketLineId) {
+    return this.http.delete(this.apiUrl + 'RemoveCourse/' + CourseBasketLineId);
+  }
+  removeItemFromSubscriptionBasket(SubScriptionBasketLineId) {
+    return this.http.delete(
+      this.apiUrl + 'RemoveSubscription/' + SubScriptionBasketLineId
+    );
+  }
+  //#endregion
+
+  //#region feedback
+  
+  createFeedbackForSession(feedback) {
+    return this.http.post(this.apiUrl + 'CreateFeedback', feedback);
+  }
+
+  getMyFeedback(StudentId){
+    return this.http.get(this.apiUrl + 'GetMyFeedback/'+StudentId);
+  }
+
+  deleteFeedback(StudentId,BookingInstanceId){
+    return this.http.delete(this.apiUrl + 'DeleteMyFeedback/' + StudentId +'/'+ BookingInstanceId);
   }
   //#endregion
 }

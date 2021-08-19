@@ -19,10 +19,12 @@
         class="fa fa-shopping-cart"
         aria-hidden="true"
       ></i>
-      ({{ finalCart.length }})
+      ({{ basketForStudentLoggedIn.quantity }})
     </span>
 
-    <span [routerLink]="['/studenthomepage/studenthome']" style="color: whitesmoke; margin-right: 2rem; padding-left: 1.5rem"
+    <span
+      [routerLink]="['/studenthomepage/studenthome']"
+      style="color: whitesmoke; margin-right: 2rem; padding-left: 1.5rem"
       >Home</span
     >
   </div>
@@ -37,9 +39,9 @@
 
   <h6 style="margin-left: 0.5rem; text-decoration: underline">Subscriptions</h6>
   <!-- <h6 style="margin-left: 0.5rem; text-decoration: underline">Items in your cart: </h6> -->
-  <ul *ngFor="let item of subscriptionCartItems">
+  <ul *ngFor="let item of subscriptionBasketList">
     <li>
-      {{ item.subscriptionName }} R{{ item.price }}
+      {{ item.subscription.subscriptionName }} R{{ item.subscription.price }}
       <i
         (click)="removeItemFromSubscriptionCart(item)"
         style="float: right; margin-right: 1rem"
@@ -50,11 +52,13 @@
   </ul>
   <h6 style="margin-left: 0.5rem; text-decoration: underline">Short Courses</h6>
 
-  <ul  *ngFor="let item of courseCartItems">
+  <ul *ngFor="let item of courseBasketList">
     <li>
-      {{ item.courseSubCategoryName }} R{{ item.price }}
-      <i 
-      (click)= "removeItemFromCourseCart(item)"
+      {{ item.courseSubCategory.courseSubCategoryName }} R{{
+        item.courseSubCategory.price
+      }}
+      <i
+        (click)="removeItemFromCourseCart(item)"
         style="float: right; margin-right: 1rem"
         class="fa fa-times"
         aria-hidden="true"
@@ -62,7 +66,7 @@
     </li>
   </ul>
   <h6 style="margin-left: 0.5rem; text-decoration: underline">
-    Total: R{{ runningTotal }}
+    Total: R {{ basketForStudentLoggedIn.totalPrice }}
   </h6>
   <br />
   <button
@@ -97,6 +101,20 @@
               <i class="fa fa-search"></i>
             </button>
           </span>
+          <br />
+          <div style="margin-right: auto">
+            <mat-form-field appearance="outline" style="margin-right: auto">
+              <mat-label>Module Code :</mat-label>
+              <mat-select (valueChange)="selectModule($event)">
+                <mat-option
+                  *ngFor="let module of moduleList"
+                  [value]="module.id"
+                >
+                  {{ module.moduleCode }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
         </div>
       </span>
     </div>

@@ -19,11 +19,13 @@ import { SessionContentCategoryComponent } from './session-content-category/sess
 import { StudentComponent } from './student/student.component';
 import { SubscriptionComponent } from './subscription/subscription.component';
 import { AcceptRejectApplicationComponent } from './tutor-application/accept-reject-application/accept-reject-application.component';
+import { CreateTutorComponent } from './tutor-application/create-tutor/create-tutor.component';
 import { TutorApplicationComponent } from './tutor-application/tutor-application.component';
 import { TutorComponent } from './tutor/tutor.component';
 import { AddEditUniversityComponent } from './university/add-edit-university/add-edit-university.component';
 import { UniversityComponent } from './university/university.component';
 import { AdminGuard } from './admin resources/guards/admin.guard';
+
 
 const routes: Routes = [
   {
@@ -119,6 +121,10 @@ const routes: Routes = [
         path: 'acceptreject',
         component: AcceptRejectApplicationComponent,
       },
+      {
+        path: 'createtutor',
+        component: CreateTutorComponent,
+      }
     ],
   },
 ];

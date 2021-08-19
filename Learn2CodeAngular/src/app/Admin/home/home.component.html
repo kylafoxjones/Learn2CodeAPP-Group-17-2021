@@ -13,19 +13,19 @@
       >TutorDevOps</span
     >
     <div class="right">
-        <a style="color: whitesmoke; margin-right: 3rem;">Home</a>
-        
+        <a routerLink="/adminhome" style="color: whitesmoke; margin-right: 3rem;">Home</a>
+
       </div>
     <div class="topnav-right" >
-      
-       
+
+
         <div [matMenuTriggerFor]="menu"  class="dot" >A</div>
     </div>
   </nav>
 
 
   <!--menu-->
-  
+
   <mat-menu #menu="matMenu" xPosition="before">
     <button mat-menu-item><i class="fa fa-user" aria-hidden="true" style="padding-right: 0.5rem;"></i>Profile</button>
     <button (click)="logout()" mat-menu-item><i class="fa fa-sign-out" aria-hidden="true" style="padding-right: 0.5rem;"></i>Logout</button>
@@ -50,17 +50,17 @@
         <a style="color: white;font-size: small;" mat-list-item href="#"><i style="font-size: medium;padding: 0.3rem;" class="fa fa-line-chart" aria-hidden="true"></i>Report</a>
         <a style="color: white;font-size: small;" mat-list-item href="#"><i style="font-size: medium;padding: 0.3rem;" class="fa fa-user-circle-o" aria-hidden="true"></i>User Roles</a>
         <a [routerLink]="['/payments']"style="color: white;font-size: small;" mat-list-item href="#"><i style="font-size: medium;padding: 0.3rem;" class="fa fa-credit-card" aria-hidden="true"></i>Payments</a>
-        
+
       </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content>
-     
+
       <!-- Add Content Here -->
     </mat-sidenav-content>
   </mat-sidenav-container>
   <nb-layout>
     <nb-layout-column>
-  
+
 <div class="row" style="padding-bottom: 4rem;padding-top: 2rem;">
     <div class="col-md-4">
         <div class="div" style="height: 160px;width: 200px;background-color: white;margin-left: 55%; box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
@@ -79,11 +79,11 @@
 
 
 
-  
+
 <div class="row" style="padding-bottom: 1rem;padding-top: 0.5rem;">
     <div class="col-md-6">
         <div style="width: 500px;height:200px;margin-left: 11rem;">
-        
+
             <canvas baseChart
             [datasets]="barChartData"
             [labels]="barChartLabels"
@@ -92,12 +92,12 @@
             [legend]="barChartLegend"
             [chartType]="barChartType">
           </canvas>
-          
+
           <div>
            <button style="float: right;" class="btn btn-info">Download</button>
           </div>
-          
-          
+
+
       </div>
     </div>
     <div class="col-md-6">
@@ -109,13 +109,13 @@
         [options]="pieChartOptions"
         [plugins]="pieChartPlugins"
         [legend]="pieChartLegend">
-        
+
       </canvas>
       <button style="float: right; margin-right: 1rem;" class="btn btn-info">Download</button>
       </div>
-      
+
     </div>
-    
+
 
 </div>
 </nb-layout-column>
@@ -123,13 +123,13 @@
 <footer>
     <nav style="height: 3rem;"  id="foot" class="navbar ">
       <a class="navbar-brand" href="#">
-       
+
       </a>
       <span class="TDO" style=" margin-right: 27%;"
         > &lt; TDO &gt;</span
       >
       <div class="topnav-right">
-        
+
         <a href="#"> <i class="fa fa-facebook"></i> </a>
         <a href="#"> <i class="fa fa-instagram"></i> </a>
         <a href="#"> <i class="fa fa-twitter"></i> </a>
