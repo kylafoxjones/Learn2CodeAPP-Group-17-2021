@@ -95,4 +95,24 @@ export class FeedbackComponent implements OnInit {
       );
     });
   }
+
+  viewMyFeedback(feedbackObj) {
+    Swal.fire({
+      title:
+        'Your feedback for ' +
+        feedbackObj.bookingInstance.tutor.tutorName +
+        ' ' +
+        feedbackObj.bookingInstance.tutor.tutorSurname +
+        ': ',
+      text:
+        "Friendliness: " +
+        feedbackObj.friendliness
+        +". Ability: " +
+        feedbackObj.ability 
+        + ". Timliness: " +
+        feedbackObj.timliness 
+        + ". Description: " +
+        feedbackObj.description,
+    });
+  }
 }
