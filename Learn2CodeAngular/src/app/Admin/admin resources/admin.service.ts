@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class AdminService {
   apiUrl = 'https://localhost:44393/api/Admin/';
- 
+
   //uni variables below
   editId = 0;
   editUni: any;
@@ -185,7 +185,7 @@ export class AdminService {
   createCourse(obj) {
     this.courseToSave = {
       AdminId: this.adminId,
-      CourseFolderName: obj.CourseName,
+      CourseFolderName: obj.CourseFolderName,
     };
     console.log(this.courseToSave);
     return this.http.post(
@@ -439,7 +439,7 @@ export class AdminService {
 
 
   posttFile(formdata): Observable<any>{
-   
+
     return this.http.post(this.apiUrl+'CreatContent',formdata);
   }
   getCourseContentType(){
