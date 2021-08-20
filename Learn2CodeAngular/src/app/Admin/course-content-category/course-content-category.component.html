@@ -27,10 +27,7 @@
       <div class="header">List of content categories</div>
     </div>
 
-    <button routerLink="/course" style="margin-left: 8rem" class="btn btn-info">
-      Courses
-    </button>
-
+ 
     <div
       style="
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
@@ -51,7 +48,7 @@
           aria-describedby="search-addon"
         />
         <span>
-          <button class="btn btn-primary">
+          <button class="btn btn-info">
             <i class="fa fa-search"></i>
           </button>
         </span>
@@ -74,7 +71,7 @@
             <td (click)= "goToContent(item)" >{{ item.courseSubCategoryName }}</td>
             <td>{{ item.price }}</td>
             <td>
-              <button (click)="openEditDialog(item)" class="btn btn-primary">
+              <button (click)="openEditDialog(item)" class="btn btn-info">
                 <i class="fa fa-pencil"></i>
               </button>
             </td>
@@ -116,8 +113,12 @@
       style="margin-left: 8rem"
       class="btn btn-info"
     >
-      Create course content category
+      Create Course Content Category
     </button>
+    <button routerLink="/course" style="margin-left: 2rem;width: 11.5rem" class="btn btn-info">
+      Back To Courses
+    </button>
+
   </nb-layout-column>
 </nb-layout>
 

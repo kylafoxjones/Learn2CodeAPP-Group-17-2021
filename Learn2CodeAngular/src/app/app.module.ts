@@ -11,8 +11,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NbThemeModule, NbLayoutModule, NbSidebarModule } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { ChartsModule } from 'ng2-charts';
+import { JwtModule } from "@auth0/angular-jwt";
 
-
+export function tokenGetter() {
+  return localStorage.getItem("token");
+}
 
 @NgModule({
   declarations: [AppComponent],
@@ -30,7 +33,15 @@ import { ChartsModule } from 'ng2-charts';
     NbThemeModule.forRoot({ name: 'default' }),
     NbLayoutModule,
     NbSidebarModule.forRoot(),
-    NbEvaIconsModule
+    NbEvaIconsModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        allowedDomains: ['localhost:4200'],
+        disallowedRoutes: [],
+        authScheme: "Bearer "
+      }
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent],

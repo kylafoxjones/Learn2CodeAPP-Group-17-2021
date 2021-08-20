@@ -11,11 +11,9 @@ import { AdminService } from '../../admin resources/admin.service';
 })
 export class AddEditCourseContentCategoryComponent implements OnInit {
   degree: any;
-  //instance of empty object
   newCourseContentCategory: any = <any>{};
   data: any = {};
   popupTitle = this.service.title;
-  
   // get the placeholder object below
   placeholder = this.service.editCourseContentCat;
   oldCourseContentCategory: any;

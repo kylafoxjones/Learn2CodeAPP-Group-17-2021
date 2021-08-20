@@ -41,7 +41,7 @@ export class CreateMessageComponent implements OnInit {
   sendMessage() {
     this.messageObj = {
       SenderId: this.senderId,
-      RecieverId: this.service.studentObj.userId,
+      ReceiverId: this.service.studentObj.userId,
       MessageSent: this.data.Message,
       StudentId: this.service.studentObj.id,
       TutorId: this.tutorId,

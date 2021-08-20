@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class AdminService {
   apiUrl = 'https://localhost:44393/api/Admin/';
+ 
   //uni variables below
   editId = 0;
   editUni: any;
@@ -79,7 +80,11 @@ export class AdminService {
 
   //#region course content variables
   courseContentCat:any;
-
+  editCont: any;
+  contents: any = [];
+  updatedContent: any = {};
+  oldContent: any;
+  //ContentTypeIdFromDropdown: any;
 
   constructor(private http: HttpClient) {}
   //#region university
@@ -432,14 +437,21 @@ export class AdminService {
     );
   }
 
-  posttfile(obj): Observable<any> {
-    return this.http.post(this.apiUrl + 'CreatContent', obj, {
-      responseType: 'text',
-    });
-  }
 
+  posttFile(formdata): Observable<any>{
+   
+    return this.http.post(this.apiUrl+'CreatContent',formdata);
+  }
+  getCourseContentType(){
+    return this.http.get(
+      this.apiUrl + 'GetContenttype');
+  }
   deleteContent(id) {
     return this.http.delete(this.apiUrl + 'DeleteContent/' + id);
   }
+
+  editContent(formdata): Observable<any> {
+    return this.http.put(this.apiUrl + 'EditContent', formdata);
+}
   //#endregion
 }

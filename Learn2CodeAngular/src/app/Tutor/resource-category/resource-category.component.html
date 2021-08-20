@@ -39,89 +39,99 @@
             class="form-select"
             aria-label="Default select example"
             style="width: 9rem"
-          >
-            <option selected>University</option>
-            <option value="1">University Of Pretoria</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
+           
+            (change)="selectType($event.target.value)"
+          > <option value="" selected disabled> University</option>
+              <option *ngFor="let uni of uniList" [value]="uni.id">
+          
+                {{uni.universityName}}
+              </option>
           </select>
+
+
           <span>
-            <button class="btn btn-primary">
+            <button (click)="getUnisResource()" class="btn btn-primary">
               <i class="fa fa-search"></i>
             </button>
           </span>
         </div>
         <br />
+
+
+        <div *ngIf="hasContent">
         <div class="row">
-          <div class="col-md-4">
-            <div class="card" style="width: 18rem">
-              <div class="card-body" style="text-align: center">
-                <h6 class="card-title">INF154</h6>
-                <p class="card-text">University Of Pretoria</p>
-                <p class="card-text">Bcom Informatics</p>
-                <button class="btn btn-info">Resource</button>
+          <div class="col-md-4" 
+          *ngFor="let item of uniResoList | filter: search">
+            <div style="
+            margin-top: 3rem;
+            border-radius: 25px;
+            background-color: rgb(6, 6, 7);
+            width: 16rem;
+            margin-left: 20%;
+            height: 19rem;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
+              0 6px 6px rgba(0, 0, 0, 0.23);
+          ">
+          <br/>
+              <div    style="
+              text-align: center;
+              width: 12rem;
+              height: 2rem;
+              margin-left: 0.5rem;
+            ">
+                <h5 style="margin-left: 2.5rem; color: white"> {{item.moduleCode}}
+                </h5>
+                <hr style="width: 125%; color: white" />
+                </div>
+                <div style="text-align: center; padding-top: 1.9rem">
+                  <div>
+                    <h6 style="color: white">{{item.degree.degreeName}}</h6>
+                    <p style="color: white">
+                      {{item.degree.university.universityName}}
+                     
+                      <br />
+                      <br />
+                   
+                    </p>
+                  </div>
+                  <div style="margin-top: 2.3rem">
+
+                <button (click)="specificResource(item)" style="width: 7rem" class="btn btn-outline-info">Resource</button>
               </div>
             </div>
           </div>
 
-          <div class="col-md-4">
-            <div class="card" style="width: 18rem" style="text-align: center">
-              <div class="card-body">
-                <h5 class="card-title">COS211</h5>
-                <p class="card-text">University Of Pretoria</p>
-                <p class="card-text">Bsc Computer Science</p>
-                <button class="btn btn-info">Resource</button>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-4">
-            <div class="card" style="width: 18rem" style="text-align: center">
-              <div class="card-body">
-                <h5 class="card-title">INF272</h5>
-                <p class="card-text">University Of Pretoria</p>
-                <p class="card-text">Bcom Informatics</p>
-                <button class="btn btn-info">Resource</button>
-              </div>
-            </div>
-          </div>
         </div>
+        </div>   
+        
+        </div>
+
+
+
+        <div *ngIf="!hasContent">
+          <div
+          style="
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
+              0 6px 6px rgba(0, 0, 0, 0.23);
+            width: 80%;
+            margin: auto;
+            border-radius: 15px;
+            align-items: center;
+          "
+        >
         <br />
-        <div class="row">
-          <div class="col-md-4">
-            <div class="card" style="width: 18rem">
-              <div class="card-body" style="text-align: center">
-                <h6 class="card-title">INF154</h6>
-                <p class="card-text">University Of Pretoria</p>
-                <p class="card-text">Bcom Informatics</p>
-                <button class="btn btn-info">Resource</button>
-              </div>
-            </div>
+    
+    <h5 style="text-align: center">No content for this session</h5>
+    
+      </div>
+
           </div>
 
-          <div class="col-md-4">
-            <div class="card" style="width: 18rem" style="text-align: center">
-              <div class="card-body">
-                <h5 class="card-title">COS211</h5>
-                <p class="card-text">University Of Pretoria</p>
-                <p class="card-text">Bsc Computer Science</p>
-                <button class="btn btn-info">Resource</button>
-              </div>
-            </div>
-          </div>
 
-          <div class="col-md-4">
-            <div class="card" style="width: 18rem" style="text-align: center">
-              <div class="card-body">
-                <h5 class="card-title">INF272</h5>
-                <p class="card-text">University Of Pretoria</p>
-                <p class="card-text">Bcom Informatics</p>
-                <button class="btn btn-info">Resource</button>
-              </div>
-            </div>
-          </div>
-        </div>
       </nb-tab>
+
+
+
 
       <nb-tab tabTitle="Resource categories">
         <div

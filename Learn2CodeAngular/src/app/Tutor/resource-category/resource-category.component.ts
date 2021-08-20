@@ -18,7 +18,10 @@ export class ResourceCategoryComponent implements OnInit {
   categoryList: any = [];
   category: any;
   search;
-  
+  listOfResources:any=[];
+  uniList:any;
+  uniResoList:any;
+  hasContent:any =false;
 
   constructor(
     private router: Router,
@@ -27,7 +30,20 @@ export class ResourceCategoryComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+
+    this.getModuless();
     this.getAllResourceCategories();
+   // this.getUnisResource();
+    this.getUniss()
+//this.getModuleReso();
+
+  }
+
+  selectType($event){
+   // console.log('this is the event', $event);
+    this.service.typeUniChosen = $event; 
+    console.log("this is the event",this.service.typeUniChosen);
+  
 
   }
 
@@ -66,7 +82,6 @@ export class ResourceCategoryComponent implements OnInit {
 
   openEditDialog(obj) {
     this.service.edit = true;
-        //fill the object place holder when edit is clicked
     this.service.editCat = obj;
     this.service.oldCatName = obj.categoryName;
     this.service.categories = this.categoryList;
@@ -79,15 +94,60 @@ export class ResourceCategoryComponent implements OnInit {
       this.getAllResourceCategories();
     });
   }
-
+getUniss(){
+  this.service.getUnis().subscribe((result) => {
+    this.uniList = result; 
+    console.log("university list ",this.uniList);
+  });
+}
+  getUnisResource(){
+    console.log("type uni", this.service.typeUniChosen);
+    this.service.getUnivForResources(this.service.typeUniChosen).subscribe((result) => {
+      this.uniResoList = result; 
+      console.log("university resource list ",this.uniResoList);
+      if (this.uniResoList.length == 0)
+{
+  this.hasContent=false;
+}
+  else {
+  this.hasContent=true;
+}
+  console.log("has Content ",this.hasContent);
+    });
+    
+  }
   getAllResourceCategories() {
     this.service.getResourceCategories().subscribe((result) => {
       this.categoryList = result; 
     });
   }
+  specificResource(obj){
+    console.log(obj);
+    this.service.moduleIdToSend=obj.id;
+    this.service.moduleNameToSend=obj.moduleCode;
+    this.service.universityID=obj.degree.universityID;
+    console.log("university is: ", this.service.universityID);
+    console.log("module code is : ",this.service.moduleNameToSend);
+    console.log("module is : ",this.service.moduleIdToSend);
+      this.router.navigateByUrl('/specificresource');
+  }
+ 
+getModuleReso(){
+ // console.log("the module id ",this.service.moduleIdToSend);
+  this.service.getModuleResources(this.service.moduleIdToSend).subscribe((result)=> {
+this.service.Resourcecontent=result;
+console.log("content for resource that was chosen",this.service.Resourcecontent);
+//this.getCategory();
+  });
+}
 
-  // navigateToDegree(id:number){
-  //   this.service.universityIdToSend=id;
-  //   this.router.navigateByUrl('/degree');
-  // }
+getModuless(){
+  this.service.getModules().subscribe((result)=> {
+this.listOfResources=result;
+console.log("list of modules ",this.listOfResources);
+
+});
+}
+
+
 }
