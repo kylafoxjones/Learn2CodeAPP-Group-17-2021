@@ -17,6 +17,7 @@ export function tokenGetter() {
   return localStorage.getItem("token");
 }
 
+
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -34,6 +35,7 @@ export function tokenGetter() {
     NbLayoutModule,
     NbSidebarModule.forRoot(),
     NbEvaIconsModule,
+
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,

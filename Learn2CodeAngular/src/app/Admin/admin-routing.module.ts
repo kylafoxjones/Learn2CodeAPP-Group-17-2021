@@ -1,6 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
 //import { AuthGuard } from '../Login/auth.guard';
+
+
+
 import { AdminComponent } from './admin.component';
 import { 
   AuthGuard as AuthGuard 
@@ -122,8 +126,10 @@ const routes: Routes = [
         component: AcceptRejectApplicationComponent,
       },
       {
+
         path: 'createtutor',
         component: CreateTutorComponent,
+
       }
     ],
   },
