@@ -7,7 +7,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 export class StudentService {
   apiUrl = 'https://localhost:44393/api/Student/';
-
+  //AdminapiUrl = 'https://localhost:44393/api/Admin/';
   //#region messaging
   title: any;
   tutorId: any;
@@ -97,6 +97,23 @@ export class StudentService {
 
   deleteFeedback(StudentId,BookingInstanceId){
     return this.http.delete(this.apiUrl + 'DeleteMyFeedback/' + StudentId +'/'+ BookingInstanceId);
+  }
+  //#endregion
+
+  //#region register
+  registerStudent(studentToRegister){
+    return this.http.post(this.apiUrl + 'Register', studentToRegister);
+  }
+  getUnis() {
+    return this.http.get(this.apiUrl + 'GetUniRegister');
+  }
+
+  getUniDegrees(UniId) {
+    return this.http.get(this.apiUrl + 'GetDegreeRegister/'+ UniId);
+  }
+
+  getUniModules(degreeID) {
+    return this.http.get(this.apiUrl + 'GetModuleRegister/'+ degreeID);
   }
   //#endregion
 }

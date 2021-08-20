@@ -25,7 +25,7 @@
 <nb-layout>
     <nb-layout-column>
 <div class="row">
-  <div class="col-md-6" style="padding-top: 2rem">
+  <div class="col-md-6" style="padding-top: 5rem">
     <div
       style="
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
@@ -75,82 +75,142 @@
         width: 78%;
         margin: auto;
         border-radius: 15px;
-        height: 47rem;
+        height: 55rem;
       "
     >
       <h1 style="text-align: center">Sign Up</h1>
       <form class="example-form">
-        <mat-form-field class="example-full-width">
-          <mat-label>First name:</mat-label>
-          <input matInput placeholder="Rob" />
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>First Name</mat-label>
+          <input
+            
+            type="text"
+            matInput
+            placeholder="John"
+            [(ngModel)]="data.name"
+            [ngModelOptions]="{standalone: true}"
+          />
         </mat-form-field>
-        <mat-form-field class="example-full-width">
-          <mat-label>Surname:</mat-label>
-          <input matInput placeholder="Zacker" />
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>Surname: </mat-label>
+          <input
+            mdInput
+            type="text"
+            matInput
+            placeholder="Doe"
+            [(ngModel)]="data.surname"
+            [ngModelOptions]="{standalone: true}"
+          />
         </mat-form-field>
-        <mat-form-field class="example-full-width">
-          <mat-label>Username:</mat-label>
-          <input matInput placeholder="Zacker" />
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>Username: </mat-label>
+          <input
+            mdInput
+            matInput
+            placeholder="JohnDoe2021"
+            [(ngModel)]="data.username"
+            [ngModelOptions]="{standalone: true}"
+          />
         </mat-form-field>
-        <mat-form-field class="example-full-width">
+        <mat-form-field class="example-full-width" appearance="outline">
           <mat-label>Email:</mat-label>
-          <input matInput placeholder="Example@gmail.com" />
+          <input
+            mdInput
+            type="email"
+            matInput
+            placeholder="JohnDoe@gmail.com"
+            [(ngModel)]="data.email"
+            [ngModelOptions]="{standalone: true}"
+          />
         </mat-form-field>
-        <mat-form-field class="example-full-width">
-          <mat-label>Phone number:</mat-label>
-          <input matInput placeholder="+27" />
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>Phone Number: </mat-label>
+          <input
+            mdInput
+            type="number"
+            matInput
+            placeholder="+27"
+            [(ngModel)]="data.cell"
+            [ngModelOptions]="{standalone: true}"
+          />
         </mat-form-field>
-        <div style="margin-left: 2rem">
-          <mat-form-field appearance="outline" style="width: 23.5rem">
-            <mat-label>University</mat-label>
-            <select matNativeControl required>
-              <option value="volvo">University Of Pretoria</option>
-              <option value="saab">Individual</option>
-            </select>
+        <div style="margin-left: 7rem">
+          <mat-form-field appearance="outline">
+            <mat-label>University:</mat-label>
+            <mat-select (valueChange)="selectUni($event)">
+              <mat-option
+                *ngFor="let uni of uniList"
+                [value]="uni.id"
+              >
+                {{ uni.universityName }}
+              </mat-option>
+            </mat-select>
           </mat-form-field>
         </div>
         <div class="row">
           <div class="col-md-4">
             <div style="margin-left: 2rem">
               <mat-form-field appearance="outline" style="width: 11rem">
-                <mat-label>Degree</mat-label>
-                <select matNativeControl required>
-                  <option value="volvo">Bcom Informatics</option>
-                  <option value="saab">Individual</option>
-                </select>
-              </mat-form-field>
+                  <mat-label>Degree:</mat-label>
+                  <mat-select (valueChange)="selectDegree($event)">
+                    <mat-option
+                      *ngFor="let degree of degreeList"
+                      [value]="degree.id"
+                    >
+                      {{ degree.degreeName }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
             </div>
           </div>
           <div class="col-md-8">
             <div style="margin-left: 4rem">
               <mat-form-field appearance="outline" style="width: 11rem">
-                <mat-label>Module</mat-label>
-                <select matNativeControl required>
-                  <option value="volvo">INF214</option>
-                  <option value="saab">Individual</option>
-                </select>
+                <mat-label>Module:</mat-label>
+                <mat-select (valueChange)="selectModule($event)">
+                  <mat-option
+                    *ngFor="let module of moduleList"
+                    [value]="module.id"
+                  >
+                    {{ module.moduleCode }}
+                  </mat-option>
+                </mat-select>
               </mat-form-field>
             </div>
           </div>
-          <mat-form-field class="example-full-width">
-            <mat-label>Password:</mat-label>
-            <input type="password" matInput placeholder="Rob" />
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Password: </mat-label>
+            <input
+              mdInput
+              type="password"
+              matInput
+              placeholder=""
+              [(ngModel)]="data.password"
+              [ngModelOptions]="{standalone: true}"
+            />
           </mat-form-field>
-          <mat-form-field class="example-full-width">
-            <mat-label>Confirm Password:</mat-label>
-            <input type="password" matInput placeholder="Rob" />
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label> Confirm Password: </mat-label>
+            <input
+              mdInput
+              type="password"
+              matInput
+              placeholder=""
+              [(ngModel)]="confirm.password"
+              [ngModelOptions]="{standalone: true}"
+            />
           </mat-form-field>
         </div>
       </form>
 <br/>
       <div style="margin-left: 33%; padding-bottom: 0.5rem">
-        <Button class="btn btn-info" (click)="delete()" style="width: 5rem"
+        <Button class="btn btn-info" (click)="tryRegister()" style="width: 5rem"
           >Submit</Button
         >
 
         <Button
           class="btn btn-danger"
-          (click)="click()"
+          (click)="backToLogin()"
           style="width: 5rem; margin-left: 1rem"
           >Back</Button
         >
