@@ -11,8 +11,8 @@
   <span class="TDO" style="color: rgb(0, 156, 158); margin-right: auto"
     >TutorDevOps</span
   >
-  <div class="topnav-right">
-    <a routerLink="/adminhome" >Home</a>
+  <div class="right" routerLink="/adminhome">
+    <a style="color: whitesmoke; margin-right: 3rem">Home</a>
   </div>
   <div class="topnav-right">
     <div class="dot">A</div>
@@ -64,9 +64,9 @@
         </thead>
         <tbody>
           <tr *ngFor="let item of contentList | filter: search">
-            <td>{{item.fileName}}</td>
-            <td>{{coursecat.courseSubCategoryName}}</td>
-            <td>{{item.contentType.contentTypeName}}</td>
+            <td>{{ item.fileName }}</td>
+            <td>{{ coursecat.courseSubCategoryName }}</td>
+            <td>{{ item.contentType.contentTypeName }}</td>
 
             <td>
               <button (click)="openEditDialog(item)" class="btn btn-primary">
