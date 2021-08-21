@@ -34,9 +34,9 @@ export class LoginCompComponent implements OnInit {
   }
 
   Log(): void {
-    console.log(this.login);
+    console.log(this.login); //it gets this
     this.service.LoginUser(this.login).subscribe((result) => {
-      localStorage.setItem('token', result.token);
+      localStorage.setItem('token', result.token); //works
       localStorage.setItem('id', result.id);
       console.log(result);
       //this._router.navigate([this._returnUrl]);

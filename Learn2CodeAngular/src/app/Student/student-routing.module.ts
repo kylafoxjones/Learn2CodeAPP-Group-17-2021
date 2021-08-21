@@ -7,6 +7,7 @@ import { StudentHomeComponent } from './student-home/student-home.component';
 import { ShopComponent } from './shop/shop.component';
 import { FeedbackComponent } from './feedback/feedback.component';
 import { RegisterComponent } from './register/register.component';
+import { ProfileComponent } from './student-home/profile/profile.component';
 
 const routes: Routes =  [
   
@@ -38,6 +39,10 @@ const routes: Routes =  [
       {
         path: 'feedback',
         component: FeedbackComponent,
+      },
+      {
+        path: 'profile',
+        component: ProfileComponent,
       },
     ],
   },
