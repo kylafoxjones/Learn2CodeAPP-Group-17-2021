@@ -40,11 +40,13 @@ export class LoginCompComponent implements OnInit {
       localStorage.setItem('id', result.id);
       console.log(result);
       //this._router.navigate([this._returnUrl]);
-      if ((result.type = 'Student')) {
+      if ((result.type == 'Student')) {
         this.route.navigate(['/studenthomepage/studenthome']);
-      } else if ((result.type = 'Tutor')) {
+      } else if ((result.type == 'Tutor')) {
         this.route.navigate(['/tutorhomepage/tutorhome']);
-      } else this.route.navigate(['/adminhomepage/adminhome']);
+      } else if ((result.type == 'Admin')) {
+        this.route.navigate(['/adminhomepage/adminhome']);
+      }
     });
   }
   openForget(){
