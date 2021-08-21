@@ -23,40 +23,38 @@ export class TutorService {
   studentObj: any = {};
 
   //group session content variables
-  sessionContentCat:any;
+  sessionContentCat: any;
   editSess: any;
   contents: any = [];
   updatedContent: any = {};
   oldContent: any;
   bookingIdToSend: any;
- SessionTitle:any;
- content:any;
- bookinginstance:any;
- editCont:any;
- hasContent:any=false;
+  SessionTitle: any;
+  content: any;
+  bookinginstance: any;
+  editCont: any;
+  hasContent: any = false;
 
- //resource variables
-// editId = 0;
+  //resource variables
+
   newResource: any;
   resources: any = [];
   updatedReso: any = {};
- // title: any;
   oldResoName: any;
- // newReso:any;
-  resourceIdToSend:any;
+  resourceIdToSend: any;
   ResourceToSave: any = {};
- // edit: boolean = true;
- typeChosen:any;
- notes:any;
- moduleIdToSend:any;
- specificList: any = [];
-   Resourcecontent: any=[];
-    editResourceCat: any;
-    moduleNameToSend:any;
-    universityID:any;
-    typeUniChosen:any;
+  typeChosen: any;
+  notes: any;
+  moduleIdToSend: any;
+  specificList: any = [];
+  Resourcecontent: any = [];
+  editResourceCat: any;
+  moduleNameToSend: any;
+  universityID: any;
+  typeUniChosen: any;
+
   constructor(private http: HttpClient) {}
-//#region resource cats
+  //#region resource cats
   getResourceCategories() {
     return this.http.get(this.apiUrl + 'GetAllResourceCategories');
   }
@@ -81,7 +79,7 @@ export class TutorService {
   }
   //#endregion
 
-  //#region messages 
+  //#region messages
   getStudents() {
     return this.http.get(this.apiUrl + 'GetAllStudents');
   }
@@ -97,93 +95,96 @@ export class TutorService {
   getSentMessagesForTutor(id) {
     return this.http.get(this.apiUrl + 'GetSentMessages/' + id);
   }
-  getRecievedMessagesForTutor(id){
+  getRecievedMessagesForTutor(id) {
     return this.http.get(this.apiUrl + 'GetRecievedMessages/' + id);
   }
   //#endregion
-//#group-session-content region
-// getSessionContentCategory() {
-//   return this.http.get(
-//     this.apiUrl + 'GetSessionContentCategory'
-//   );
-// }
-getSessionContentForInstance(id) { //get all content for an instance
-  return this.http.get(this.apiUrl + 'GetSessionContent/' + id);
-}
+  //#group-session-content region
+  // getSessionContentCategory() {
+  //   return this.http.get(
+  //     this.apiUrl + 'GetSessionContentCategory'
+  //   );
+  // }
+  getSessionContentForInstance(id) {
+    //get all content for an instance
+    return this.http.get(this.apiUrl + 'GetSessionContent/' + id);
+  }
 
-getAllTutorSessions(id){ //get specific tutor's sessions
-  return this.http.get(this.apiUrl + 'GetTutorSessions/' + id);
+  getAllTutorSessions(id) {
+    //get specific tutor's sessions
+    return this.http.get(this.apiUrl + 'GetTutorSessions/' + id);
+  }
+  posttFile(formdata): Observable<any> {
+    //create actual content
 
-}
-posttFile(formdata): Observable<any>{ //create actual content
- 
-  return this.http.post(this.apiUrl+'CreateSessionContent',formdata);
-}
+    return this.http.post(this.apiUrl + 'CreateSessionContent', formdata);
+  }
 
-getSessionContentType(){ //for dropdown options
-  return this.http.get(
-    this.apiUrl + 'GetSessionContentCategory');
-}
-deleteContent(id) {
-  return this.http.delete(this.apiUrl + 'DeleteSessionContent/' + id);
-}
+  getSessionContentType() {
+    //for dropdown options
+    return this.http.get(this.apiUrl + 'GetSessionContentCategory');
+  }
+  deleteContent(id) {
+    return this.http.delete(this.apiUrl + 'DeleteSessionContent/' + id);
+  }
 
-editContent(formdata): Observable<any> {
-  return this.http.put(this.apiUrl + 'EditSessionContent', formdata);
-}
+  editContent(formdata): Observable<any> {
+    return this.http.put(this.apiUrl + 'EditSessionContent', formdata);
+  }
 
-getContentForSession(id){ 
-  return this.http.get(this.apiUrl + 'GetSessionContent/' + id);
+  getContentForSession(id) {
+    return this.http.get(this.apiUrl + 'GetSessionContent/' + id);
+  }
 
-}
+  getVideo(id) {
+    return this.http.get(this.apiUrl + 'WatchVideo/' + id, {
+      responseType: 'blob',
+    });
+  }
 
-getVideo(id){
-  return this.http.get(this.apiUrl+'WatchVideo/'+ id, { responseType:'blob' });
-}
-
-getNotes(id){
-  return this.http.get(this.apiUrl+'DownloadNotes/'+ id, {responseType: 'blob'});
-}
+  getNotes(id) {
+    return this.http.get(this.apiUrl + 'DownloadNotes/' + id, {
+      responseType: 'blob',
+    });
+  }
   //#endregion
 
-
-
   //#begin resource region
-  getCategoryTypes(){
-      return this.http.get(this.apiUrl + 'GetAllResourceCategories');
-    
+  getCategoryTypes() {
+    return this.http.get(this.apiUrl + 'GetAllResourceCategories');
   }
-  getModuleResources(id){ 
+  getModuleResources(id) {
     return this.http.get(this.apiUrl + 'GetModuleResources/' + id);
-  
   }
- 
+
   createResources(formdata): Observable<any> {
     return this.http.post(this.apiUrl + 'CreateResource', formdata);
   }
-editResources(data): Observable<any> {
-  return this.http.put(this.apiUrl + 'EditResource', data);
-}
+  editResources(data): Observable<any> {
+    return this.http.put(this.apiUrl + 'EditResource', data);
+  }
 
   deleteResources(id: number) {
     return this.http.delete(this.apiUrl + 'DeleteResource/' + id); //needs ResourceId
   }
-getModules(){
-        return this.http.get(this.apiUrl + 'GetAllModulesForResources');
-    
-}
-getUnivForResources(id){ 
-  return this.http.get(this.apiUrl + 'GetUniversityForResources/' + id);
-
-}
-getUnis(){
-  
-  return this.http.get(this.apiUrl + 'GetAllUniversitiesForResources');
-}
-downloadResource(id){
-
-  
-  return this.http.get(this.apiUrl + 'DownloadResource/' + id,  {responseType: 'blob'});
-}
+  getModules() {
+    return this.http.get(this.apiUrl + 'GetAllModulesForResources');
+  }
+  getUnivForResources(id) {
+    return this.http.get(this.apiUrl + 'GetUniversityForResources/' + id);
+  }
+  getUnis() {
+    return this.http.get(this.apiUrl + 'GetAllUniversitiesForResources');
+  }
+  downloadResource(id) {
+    return this.http.get(this.apiUrl + 'DownloadResource/' + id, {
+      responseType: 'blob',
+    });
+  }
   //#end resource region
+
+  getTutor(id) {
+    //needs userId
+    return this.http.get(this.apiUrl + 'GetTutor/' + id);
+  }
 }

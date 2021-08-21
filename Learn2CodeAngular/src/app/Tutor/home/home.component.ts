@@ -9,6 +9,7 @@
   import * as Chart from 'chart.js';
   import { title } from 'process';
 import { MaintainComponent } from '../maintain/maintain.component';
+import { TutorService } from '../tutor resources/tutor.service';
 
   
 
@@ -18,14 +19,18 @@ import { MaintainComponent } from '../maintain/maintain.component';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+tutor:any;
+userId:any;
+
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map(result => result.matches),
       shareReplay()
     );
-  constructor(private breakpointObserver: BreakpointObserver,public dialog: MatDialog) { }
+  constructor(private breakpointObserver: BreakpointObserver,public dialog: MatDialog, private TutorService: TutorService) { }
 
-  ngOnInit(): void {
+  ngOnInit(){
+    this.getTutorr();
   }
  
   delete(){
@@ -68,4 +73,16 @@ export class HomeComponent implements OnInit {
       
     });
   }
+
+  getTutorr() {
+   this.userId = localStorage.getItem('id');
+   console.log(this.userId);
+  this.TutorService.getTutor(this.userId).subscribe((result) => {
+    this.tutor = result;
+    console.log('tutor info', this.tutor);
+  });
+
+  }
+
+ 
 }

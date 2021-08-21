@@ -185,7 +185,7 @@ export class AdminService {
   createCourse(obj) {
     this.courseToSave = {
       AdminId: this.adminId,
-      CourseFolderName: obj.CourseName,
+      CourseFolderName: obj.CourseFolderName,
     };
     console.log(this.courseToSave);
     return this.http.post(
@@ -204,7 +204,7 @@ export class AdminService {
     this.updatedCourse = {
       Id: oldObj.id,
       AdminId: this.adminId,
-      CourseFolderName: newCourseName.CourseName,
+      CourseFolderName: newCourseName.CourseFolderName,
     };
     console.log(this.adminId);
     console.log(this.updatedCourse);

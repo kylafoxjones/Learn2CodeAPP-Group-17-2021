@@ -29,7 +29,7 @@ export class AddEditCourseComponent implements OnInit {
   ngOnInit(): void {
     //this.oldCourse = this.service.oldCourseName;
     this.data.CourseFolderName=this.placeholder.courseFolderName;
-    console.log(this.data.CourseFolderName);
+    //console.log(this.data.CourseFolderName);
   }
 
   submitEdittedCourse() {
