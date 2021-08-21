@@ -204,7 +204,7 @@ export class AdminService {
     this.updatedCourse = {
       Id: oldObj.id,
       AdminId: this.adminId,
-      CourseFolderName: newCourseName.CourseName,
+      CourseFolderName: newCourseName.CourseFolderName,
     };
     console.log(this.adminId);
     console.log(this.updatedCourse);
