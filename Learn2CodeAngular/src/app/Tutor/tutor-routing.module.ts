@@ -9,7 +9,7 @@ import { ResourceCategoryComponent } from './resource-category/resource-category
 import { SpecificResourceComponent } from './resource-category/specific-resource/specific-resource.component';
 
 import { SentRecievedMessagesComponent } from './sent-recieved-messages/sent-recieved-messages.component';
-import { SessionsComponent } from './sessions/sessions.component';
+//import { SessionsComponent } from './sessions/sessions.component';
 import { TutorComponent } from './tutor.component';
 
 const routes: Routes = [
@@ -27,10 +27,10 @@ const routes: Routes = [
           path: 'maintain',
           component: MaintainComponent,
         },
-        {
-          path: 'sessions',
-          component: SessionsComponent,
-        },
+        // {
+        //   path: 'sessions',
+        //   component: SessionsComponent,
+        // },
         {
           path: 'students',
           component: MessagesComponent,

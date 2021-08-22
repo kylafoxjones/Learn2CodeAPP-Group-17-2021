@@ -13,6 +13,10 @@ import { Router } from '@angular/router';
 export class FeedbackComponent implements OnInit {
   myFeedbackList: any = [];
   data: any;
+  thisStudent:any;
+  userId:any;
+  pastSessionList:any=[];
+  //studentId:any;
 
   constructor(
     private router: Router,
@@ -20,13 +24,27 @@ export class FeedbackComponent implements OnInit {
     private service: StudentService
   ) {}
 
-  ngOnInit(): void {
+  ngOnInit(){
+  
+    this.getLoggedInUser();
     this.getMyFeedback();
+  }
+  getLoggedInUser(){
+    this.userId = localStorage.getItem('id');
+    console.log(this.userId);
+    this.thisStudent = this.service.getStudentInfo();
+    console.log("student logged in ts file",this.thisStudent);
+    this.service.studentId = this.thisStudent.id;
+    console.log('student id kept in the service',this.service.studentId);
+    this.getSessions();
   }
 
   getSessions() {
     // get sessions that the student has attented
-    this.service.getSessions((res)=> {})
+    this.service.getSessions((res)=> {
+      this.pastSessionList =res;
+      console.log('past sessions for logged in student', this.pastSessionList)
+    });
     this.getMyFeedback();
   }
 
@@ -71,7 +89,8 @@ export class FeedbackComponent implements OnInit {
     });
   }
 
-  openDialog(): void {
+  openDialog(bookingInstanceID) {
+    this.service.bookingInstanceID = bookingInstanceID;
     const dialogRef = this.dialog.open(CreateFeedbackComponent, {
       width: '350px',
     });

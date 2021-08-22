@@ -30,7 +30,7 @@ import { SpecificSessionComponent } from './group-session-content/specific-sessi
 import { ResourceComponent } from './resource/resource.component';
 import { AddEditResourceComponent } from './resource-category/add-edit-resource/add-edit-resource.component';
 import { SpecificResourceComponent } from './resource-category/specific-resource/specific-resource.component';
-import { SessionsComponent } from './sessions/sessions.component';
+//import { SessionsComponent } from './sessions/sessions.component';
 
 
 
@@ -50,7 +50,7 @@ import { SessionsComponent } from './sessions/sessions.component';
     ResourceComponent,
     AddEditResourceComponent,
     SpecificResourceComponent,
-    SessionsComponent,
+    //SessionsComponent,
     
  
   ],
