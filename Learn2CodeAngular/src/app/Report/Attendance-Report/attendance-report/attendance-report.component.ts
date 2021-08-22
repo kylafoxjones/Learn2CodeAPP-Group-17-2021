@@ -109,7 +109,7 @@ export class AttendanceReportComponent implements OnInit {
     },
   }
 };
-public pieChartLabels: Label[] =['Missed', 'Attended'];
+public pieChartLabels: Label[] =['Attended', 'Missed'];
 public pieChartData: number[] = [3, 1];
 public pieChartType: ChartType = 'pie';
 public pieChartLegend = true;
