@@ -9,6 +9,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
 import {MatDatepickerModule} from '@angular/material/datepicker';
+import { NbLayoutComponent } from '@nebular/theme';
+import { NbLayoutColumnComponent } from '@nebular/theme';
+
+
 
 import Swal from 'sweetalert2';
 
@@ -18,10 +22,26 @@ import Swal from 'sweetalert2';
   styleUrls: ['./tutor-session-report.component.scss']
 })
 export class TutorSessionReportComponent implements OnInit {
+    //
+    TutorDropdown:any = [];
+    TutorSession: any = [];
+    //object details
+    TutorID: any = 0;
+    Start:any;
+    End:any;
+    //object instance
+    ObjectToSend: any = {};
+    //count sessions
+    TutorName:any;
 
-  constructor() { }
+
+  constructor(
+   private router: Router,
+   private ReportService : ReportingService) { }
 
   ngOnInit(): void {
+    this.getTutorDropdown();
+    console.log(this.ObjectToSend);
   }
   x(){
     Swal.fire(
@@ -31,5 +51,65 @@ export class TutorSessionReportComponent implements OnInit {
     )
   }
 
+  changeSession(value) {
+    
+    this.TutorID = value;
+    
+    
+    }
+ 
+    changeStart(value) {
+    
+      this.Start = value;
+      console.log(this.Start);
+      
+      }
+
+    getTutorDropdown(){
+      this.ReportService.GetTutorsessionsTutor().subscribe((result) =>{
+          this.TutorDropdown = result;
+          console.log(this.TutorDropdown);
+      })
+    }
+
+    getTutorSessions(){
+
+      
+      this.ObjectToSend.TutorId = this.TutorID;
+      this.ObjectToSend.StartDate = this.Start;
+      this.ObjectToSend.EndDate = this.End;
+      console.log(this.ObjectToSend);
+      this.ReportService.GetTotalTutorsessions(this.ObjectToSend).subscribe((result) => {
+        
+        
+        this.TutorSession = result;
+        this.TutorName = this.TutorSession[0].tutorName;
+        console.log(this.TutorName);
+        console.log(this.TutorSession);
+
+        
+      })
+    }
+
+    public RedirectReportHome(){
+      this.router.navigateByUrl('/report-home');
+    }
+    
+    public DownloadPDF():void {
+      let data = document.getElementById('TutorsessionData');
+        
+      html2canvas(data).then(canvas => {
+          
+          let fileWidth = 300;
+          let fileHeight = canvas.height * fileWidth / canvas.width;
+          
+          const FILEURI = canvas.toDataURL('image/png')
+          let PDF = new jsPDF('l', 'mm', 'a4');
+          let position = 0;
+          PDF.addImage(FILEURI, 'PNG', 0, position, fileWidth, fileHeight)
+          
+          PDF.save('TutorSessionReport.pdf');
+      });     
+    }
 
 }

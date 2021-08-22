@@ -1,3 +1,4 @@
+
 <nav class="navbar navbar-dark bg-dark" >
     <a class="navbar-brand" href="#">
       <img
@@ -20,8 +21,10 @@
         <div class="dot" >A</div>
     </div>
   </nav>
-  
-  <div style="padding-top: 2rem;padding-bottom: 0.5rem;">
+  <nb-layout>
+    <nb-layout-column>
+ 
+     <div style="padding-top: 2rem;padding-bottom: 0.5rem;">
     <div class="header" >Tutor Session Report</div>
   </div>
 
@@ -30,36 +33,44 @@
 <div class="row">
     <div class="col-md-12">
         <div style="margin-left:12rem ;">
-            <mat-form-field style="width: 12rem;">
-                <mat-label>Tutor</mat-label>
-                <input matInput placeholder="" value="Tutor" >
-              </mat-form-field>
+          <mat-form-field appearance="outline" style="margin-left: 0.5rem;margin-right: 1rem;width: 250px; align-content: center;" >
+            <mat-label style="text-align: center;">Tutor</mat-label>
+            <mat-select placeholder="Tutor Name" (selectionChange)="changeSession($event.value)">
+              <mat-option *ngFor="let item of TutorDropdown" [value]="item.id">{{item.tutorName}}  {{item.tutorSurname}}</mat-option>
+            </mat-select>
+          </mat-form-field>
             
 
             <mat-form-field appearance="outline" style="margin-left: 1rem;">
               <mat-label>Start</mat-label>
-              <input matInput [matDatepicker]="picker">
-              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-              <mat-datepicker #picker></mat-datepicker>
+              <input matInput [matDatepicker]="picker" [(ngModel)]="Start">
+              <mat-datepicker-toggle matSuffix [for]="picker" ></mat-datepicker-toggle>
+              <mat-datepicker #picker  (selectedChanged)="changeStart($event.Start)"></mat-datepicker>
             </mat-form-field>
           
             <mat-form-field appearance="outline" style="margin-left: 1rem;">
               <mat-label>End</mat-label>
-              <input matInput [matDatepicker]="pickerr">
-              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <input matInput [matDatepicker]="pickerr" [(ngModel)]="End">
+              <mat-datepicker-toggle matSuffix [for]="pickerr"></mat-datepicker-toggle>
               <mat-datepicker #pickerr></mat-datepicker>
-            </mat-form-field><span>  <button style="height: 3.2rem;margin-bottom: 0.7rem;width: 3rem;"  matTooltip="My tooltip"  class="btn btn-primary"> <i class="fa fa-search"></i></button></span>
+            </mat-form-field><span> 
+               <button style="height: 3.2rem;margin-bottom: 0.7rem;width: 3rem;" 
+                       matTooltip="My tooltip" 
+                       class="btn btn-primary"
+                       (click)="getTutorSessions()"> <i class="fa fa-search"></i></button></span>
           </div>
     </div>
    
 </div>
-<div class="row">
+
+<div class="row" id="TutorsessionData" >
+ 
     <div class="col-md-3">
-        <div style="width: 103%;margin: auto;border-radius: 15px;margin-left: 9rem;height:100%;margin-top: 3rem;">
+        <div style="width: 103%;margin: auto;border-radius: 15px;margin-left: 2rem;height:100%;">
         <h1 style="margin-left: 3rem;">Summary:</h1>
         <div style="margin-left: 3rem;">
-            <h2>Tutor: Hermione</h2>
-            <h2>Sessions: 4</h2>
+            <h2>Tutor: {{TutorName}}</h2>
+            <h2>Sessions: {{TutorSession.length}}</h2>
         </div>
     </div>
     </div>
@@ -75,44 +86,19 @@
                     <th scope="col">Tutor Name</th>
                     <th scope="col">Surname</th>
                     <th scope="col">Email</th>
-                    <th scope="col">Session</th>
+                    <th scope="col">Module</th>
+                    <th scope="col">Session Title</th>
                   
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>Hermione</td>
-                    <td>Granger</td>
-                    <td>HP@gmail.com</td>
-                    <td>Module</td>
-                    <td>Components</td>
-                  
-                  </tr>
-                  <tr>
-                    <td>Hermione</td>
-                    <td>Granger</td>
-                    <td>HP@gmail.com</td>
-                    <td>INF354</td>
-                    <td>Sass</td>
+                  <tr *ngFor="let item of TutorSession">
+                    <td>{{item.tutorName}}</td>
+                    <td>{{item.tutorSurname}}</td>
+                    <td>{{item.tutorEmail}}</td>
+                    <td>{{item.moduleCode}}</td>
+                    <td>{{item.title}}</td>
                 
-                  </tr>
-                  <tr>
-                    <td>Hermione</td>
-                    <td>Granger</td>
-                    <td>HP@gmail.com</td>
-                    <td>INF354</td>
-                    <td>Components pt2</td>
-                  
-                  </tr>
-                  <tr>
-                    <td>Hermione</td>
-                    <td>Granger</td>
-                    <td>HP@gmail.com</td>
-                    <td>INF354</td>
-                    <td>Services</td>
-                  
-                  </tr>
-                 
                 </tbody>
               </table>
               <br>
@@ -140,12 +126,18 @@
         </div>
         <br>
     </div>
+ 
 </div>
+
+
 <div style="padding:0.4rem">
-    <button  style="margin-left: 50rem;width: 10rem;"  class="btn btn-info">Generate PDF</button>
-    <button (click)="x()" style="margin-left: 1rem;width: 8rem;"  class="btn btn-primary">Report Home</button>
+    <button (click)="DownloadPDF();x()" style="margin-left: 25rem;width: 10rem;"  class="btn btn-info">Generate PDF</button>
+    <button (click)="RedirectReportHome()" style="margin-left: 1rem;width: 8rem;"  class="btn btn-primary">Report Home</button>
   </div>
   <br>
+</nb-layout-column>
+</nb-layout>
+ 
   <footer>
     <nav  id="foot" class="navbar ">
       <a class="navbar-brand" href="#">

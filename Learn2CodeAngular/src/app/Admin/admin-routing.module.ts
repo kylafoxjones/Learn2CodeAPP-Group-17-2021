@@ -29,6 +29,7 @@ import { TutorComponent } from './tutor/tutor.component';
 import { AddEditUniversityComponent } from './university/add-edit-university/add-edit-university.component';
 import { UniversityComponent } from './university/university.component';
 import { AdminGuard } from './admin resources/guards/admin.guard';
+import { ReportHomeComponent } from '../Report/Home/report-home/report-home.component';
 
 
 const routes: Routes = [
@@ -129,6 +130,11 @@ const routes: Routes = [
 
         path: 'createtutor',
         component: CreateTutorComponent,
+
+      },
+      {
+        path: 'report-home',
+        component: ReportHomeComponent,
 
       }
     ],

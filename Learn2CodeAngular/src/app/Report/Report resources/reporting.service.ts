@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -7,7 +7,10 @@ import { Observable } from 'rxjs';
 })
 export class ReportingService {
 
-
+  TutorSessionDetails:any = {};
+  TutorId:any;
+  StartDate:Date;
+  EndDate:Date;
 
 
   constructor(private http: HttpClient) { }
@@ -65,4 +68,20 @@ export class ReportingService {
 
 
       //#endregion
+
+      //#region totaltutorsession
+
+      GetTutorsessionsTutor(){
+        return this.http.get(this.apiUrl + "GetTutorsessionsTutor");
+      }
+
+      GetTotalTutorsessions(obj){
+        
+        this.TutorSessionDetails = {
+          TutorId : obj.TutorId,
+          StartDate : obj.StartDate,
+          EndDate : obj.EndDate
+        }
+        return this.http.post(this.apiUrl + "GetTotalTutorsessions", this.TutorSessionDetails);
+      }
 }
