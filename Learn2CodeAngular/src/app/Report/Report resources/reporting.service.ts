@@ -8,9 +8,12 @@ import { Observable } from 'rxjs';
 export class ReportingService {
 
   TutorSessionDetails:any = {};
+  SalesTable:any = {};
   TutorId:any;
-  StartDate:Date;
-  EndDate:Date;
+  StartDateT:Date;
+  EndDateT:Date;
+  StartDateS:Date;
+  EndDateS:Date;
 
 
   constructor(private http: HttpClient) { }
@@ -83,5 +86,26 @@ export class ReportingService {
           EndDate : obj.EndDate
         }
         return this.http.post(this.apiUrl + "GetTotalTutorsessions", this.TutorSessionDetails);
+      }
+
+      ///#endregion
+
+      //#region SalesReport
+      GetSalesReportTable(obj){
+        
+        this.SalesTable = {
+          
+          StartDate : obj.StartDate,
+          EndDate : obj.EndDate
+        }
+        return this.http.post(this.apiUrl + "GetSalesReport", this.SalesTable);
+      }
+
+      GetSubscriptionSales(){
+        return this.http.get(this.apiUrl + "SubscriptionSales");
+      }
+
+      GetCourseSales() : Observable<any>{
+        return this.http.get(this.apiUrl + "CourseSales");
       }
 }

@@ -32,32 +32,37 @@
     <div class="col-md-7">
         <div style="margin-left:8rem ;">
 
-            <mat-form-field appearance="outline">
-              <mat-label>Start</mat-label>
-              <input matInput [matDatepicker]="picker">
-              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-              <mat-datepicker #picker></mat-datepicker>
-            </mat-form-field>
+          <mat-form-field appearance="outline" style="margin-left: 1rem;">
+            <mat-label>Start</mat-label>
+            <input matInput [matDatepicker]="picker" [(ngModel)]="Start">
+            <mat-datepicker-toggle matSuffix [for]="picker" ></mat-datepicker-toggle>
+            <mat-datepicker #picker ></mat-datepicker>
+          </mat-form-field>
           
-            <mat-form-field appearance="outline" style="margin-left: 1rem;">
-              <mat-label>End</mat-label>
-              <input matInput [matDatepicker]="pickerr">
-              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-              <mat-datepicker #pickerr></mat-datepicker>
-            </mat-form-field>
+          <mat-form-field appearance="outline" style="margin-left: 1rem;">
+            <mat-label>End</mat-label>
+            <input matInput [matDatepicker]="pickerr" [(ngModel)]="End">
+            <mat-datepicker-toggle matSuffix [for]="pickerr"></mat-datepicker-toggle>
+            <mat-datepicker #pickerr></mat-datepicker>
+          </mat-form-field><span> 
+            <button style="height: 3.2rem;margin-bottom: 0.7rem;width: 3rem;" 
+                    matTooltip="My tooltip" 
+                    class="btn btn-primary"
+                    (click)="getSubscriptionSalesTable()"> <i class="fa fa-search"></i></button></span>
           </div>
     </div>
     <div class="col-md-5">
         <div style="margin-top: 1rem;margin-right: 1rem;">
        <button (click)="DownloadPDF();x()" class="btn btn-info">Generate PDF</button>
        <button (click)="RedirectReportHome()" style="margin-left: 1rem;" class="btn btn-primary">Report Home</button>
+       <button  style="margin-left: 1rem;" class="btn btn-secondary">Export</button>
     </div>
     </div>
 </div>
 
 
   
-
+<div id="SalesData">
   <div style="box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
   0 6px 6px rgba(0, 0, 0, 0.23);width: 80%;margin: auto;border-radius: 15px;" >
   <br>
@@ -66,37 +71,21 @@
       <table class="table table-hover" style="width: 90%;margin: auto; padding-top: 2rem;">
           <thead >
             <tr>
-              <th scope="col">Name</th>
-              <th scope="col">Surname</th>
-              <th scope="col">Subscription</th>
+              <th scope="col">Full Name</th>
               <th scope="col">Date</th>
               <th scope="col">Amount</th>
             
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>Hannah</td>
-              <td>Baker</td>
-              <td>Standard</td>
-              <td>12/05/2021</td>
-              <td>R400</td>
+            <tr *ngFor="let item of SubscriptionReportTable">
+              <td>{{item.fullName}}</td>
+              <td>{{item.date}}</td>
+              <td>{{item.amount}}</td>
+             
             
             </tr>
-            <tr>
-                <td>Zack</td>
-              <td>Cody</td>
-              <td>Pro</td>
-              <td>11/05/2021</td>
-              <td>R100</td>
-            </tr>
-            <tr>
-                <td>Jasper</td>
-                <td>Axel</td>
-                <td>Standard</td>
-                <td>11/05/2021</td>
-                <td>R400</td>
-            </tr>
+           
            
           </tbody>
         </table>
@@ -125,16 +114,23 @@
   </div>
   <br>
 <div class="row">
-    <div class="col-md-6">
-        <a class="navbar-brand" href="#" style="margin-left: 7rem;">
-            <img
-            src="../../../assets/pics/chart.png"
-            width="420"
-            height="350"
-            class="d-inline-block align-top"
-            alt=""
-          />
-          </a>
+  
+    <div class="col-md-6" style="position: relative; left: 100px;">
+      <h5 style="text-align: center;">Course Sales</h5>
+      <ngx-charts-bar-vertical 
+        
+        [scheme]="colorScheme"
+        [results]="CourseGraph"
+        [gradient]="gradient"
+        [xAxis]="showXAxis"
+        [yAxis]="showYAxis"
+        [legend]="showLegend"
+        [showXAxisLabel]="showXAxisLabel"
+        [showYAxisLabel]="showYAxisLabel"
+        [xAxisLabel]="xAxisLabel"
+        [yAxisLabel]="yAxisLabel"
+        >
+</ngx-charts-bar-vertical>
     </div>
 
     <div class="col-md-6">
@@ -153,25 +149,15 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>Standard</td>
-                    <td>R15000</td>
-                   
-                  
+                  <tr *ngFor="let item of SubscriptionSummary">
+                    <td>{{item.subscription}}</td>
+                    <td>{{item.amount}}</td>
                   </tr>
-                  <tr>
-                      <td>Pro</td>
-                      <td>R25000</td>
-                    
-                  </tr>
-                  <tr>
-                      <td>Standard+</td>
-                      <td>3000</td>
-                     
-                  </tr>
+                
                  
                 </tbody>
               </table>
+            </div>
               <br>
               <nav aria-label="Page navigation example " style="margin-left: 45%;padding-bottom: 0.5rem;">
                   <ul class="pagination">

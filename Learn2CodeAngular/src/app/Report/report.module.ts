@@ -19,8 +19,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-import { NgxChartsModule } from '@swimlane/ngx-charts';
+
 import { MatNativeDateModule } from '@angular/material/core';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 
 
@@ -51,8 +52,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     BrowserAnimationsModule,
     MatInputModule,
     MatSelectModule,
-    NgxChartsModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    NgxChartsModule
     
     
   

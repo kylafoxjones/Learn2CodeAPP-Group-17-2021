@@ -22,7 +22,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./tutor-session-report.component.scss']
 })
 export class TutorSessionReportComponent implements OnInit {
-    //
+    //Lists
     TutorDropdown:any = [];
     TutorSession: any = [];
     //object details
@@ -58,12 +58,7 @@ export class TutorSessionReportComponent implements OnInit {
     
     }
  
-    changeStart(value) {
-    
-      this.Start = value;
-      console.log(this.Start);
-      
-      }
+   
 
     getTutorDropdown(){
       this.ReportService.GetTutorsessionsTutor().subscribe((result) =>{
