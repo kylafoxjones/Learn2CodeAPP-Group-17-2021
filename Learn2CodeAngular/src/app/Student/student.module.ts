@@ -24,6 +24,9 @@ import { ShopComponent } from './shop/shop.component';
 import { FeedbackComponent } from './feedback/feedback.component';
 import { CreateFeedbackComponent } from './feedback/create-feedback/create-feedback.component';
 import { RegisterComponent } from './register/register.component';
+import { ProfileComponent } from './student-home/profile/profile.component';
+
+
 
 @NgModule({
   declarations: [
@@ -35,7 +38,8 @@ import { RegisterComponent } from './register/register.component';
     ShopComponent,
     FeedbackComponent,
     CreateFeedbackComponent,
-    RegisterComponent
+    RegisterComponent,
+    ProfileComponent
   ],
   imports: [
     CommonModule,

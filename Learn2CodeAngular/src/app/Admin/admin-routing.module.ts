@@ -36,6 +36,7 @@ const routes: Routes = [
       {
         path: 'adminhome',
         component: HomeComponent,
+      //  canActivate: [AuthGuard, AdminGuard]
       },
       {
         path: 'university',
@@ -57,7 +58,7 @@ const routes: Routes = [
       {
         path: 'course',
         component: CourseComponent,
-        canActivate: [AuthGuard, AdminGuard]
+       // canActivate: [AuthGuard, AdminGuard]
       },
       {
         path: 'sessioncontentcategory',
@@ -67,7 +68,7 @@ const routes: Routes = [
       {
         path: 'coursecontentcategory',
         component: CourseContentCategoryComponent,
-        canActivate: [AuthGuard, AdminGuard]
+      //  canActivate: [AuthGuard, AdminGuard]
    
       },
       {
@@ -88,7 +89,7 @@ const routes: Routes = [
       {
         path: 'applications',
         component: TutorApplicationComponent,
-        canActivate: [AuthGuard, AdminGuard]
+       // canActivate: [AuthGuard, AdminGuard]
       },
       {
         path: 'payments',

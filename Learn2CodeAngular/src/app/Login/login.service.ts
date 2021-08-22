@@ -27,6 +27,7 @@ export class LoginService {
   
   LoginUser(obj): Observable<any>{
     return this.http.post(this.apiUrl+'Login',obj);
+    console.log(obj);
   }
   public isUserAdmin = (): boolean => {
     const token = localStorage.getItem("token");
