@@ -26,7 +26,7 @@ export class FeedbackComponent implements OnInit {
 
   getSessions() {
     // get sessions that the student has attented
-
+    this.service.getSessions((res)=> {})
     this.getMyFeedback();
   }
 

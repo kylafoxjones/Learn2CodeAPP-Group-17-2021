@@ -86,6 +86,9 @@ export class StudentService {
   //#endregion
 
   //#region feedback
+  getSessions(StudentId){
+    return this.http.get(this.apiUrl + 'GetMyRegiseredSessions/'+StudentId);
+  }
   
   createFeedbackForSession(feedback) {
     return this.http.post(this.apiUrl + 'CreateFeedback', feedback);
