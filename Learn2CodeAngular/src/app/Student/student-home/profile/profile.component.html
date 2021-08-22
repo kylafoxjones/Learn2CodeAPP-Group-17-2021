@@ -41,9 +41,9 @@
 
             <div class="col-md-6">
                 <a class="navbar-brand" style="margin-left: 6rem;margin-top: 0.5rem;">
-                    <div style="height: 10rem;width: 10rem;font-size:8rem;"class="dot">
+                    <div style="height: 10rem;width: 10rem;font-size:6rem;"class="dot">
                         
-                       <div style="margin-top: 3.5rem;">Z</div> 
+                       <div style="margin-top: 3.5rem;">{{ thissStudent.studentName[0]+ thissStudent.studentSurname[0] }}</div> 
                     </div>
                   </a>
                   <div style="margin-left: 5.5rem;padding-top: 0.5rem;"><h6>Username: {{thissStudent.identity.userName}}</h6></div>
@@ -77,7 +77,7 @@
                <br>
                <br>
                 <div style="margin-left: 2rem;">
-                    <button   class="btn btn-info" style="width: 6rem; ">
+                    <button (click) = "openEditDialog()" class="btn btn-info" style="width: 6rem; ">
                         Edit
                     </button>
 

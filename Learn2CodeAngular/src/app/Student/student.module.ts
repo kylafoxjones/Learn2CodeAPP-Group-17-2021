@@ -25,6 +25,7 @@ import { FeedbackComponent } from './feedback/feedback.component';
 import { CreateFeedbackComponent } from './feedback/create-feedback/create-feedback.component';
 import { RegisterComponent } from './register/register.component';
 import { ProfileComponent } from './student-home/profile/profile.component';
+import { MaintainStudentComponent } from './student-home/maintain-student/maintain-student.component';
 
 
 
@@ -39,7 +40,8 @@ import { ProfileComponent } from './student-home/profile/profile.component';
     FeedbackComponent,
     CreateFeedbackComponent,
     RegisterComponent,
-    ProfileComponent
+    ProfileComponent,
+    MaintainStudentComponent
   ],
   imports: [
     CommonModule,
