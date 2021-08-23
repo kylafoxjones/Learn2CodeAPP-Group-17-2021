@@ -57,6 +57,7 @@ export class TutorService {
   sessionInstance:any;
   //#endregion
   constructor(private http: HttpClient) {}
+  
   //#region resource cats
   getResourceCategories() {
     return this.http.get(this.apiUrl + 'GetAllResourceCategories');
@@ -152,7 +153,7 @@ export class TutorService {
   }
   //#endregion
 
-  //#begin resource region
+  //#region  resource
   getCategoryTypes() {
     return this.http.get(this.apiUrl + 'GetAllResourceCategories');
   }
@@ -184,7 +185,7 @@ export class TutorService {
       responseType: 'blob',
     });
   }
-  //#end resource region
+  //#end region
 
   getTutor(id) {
     //needs userId
@@ -202,6 +203,10 @@ export class TutorService {
 
   submitAttendance(list){
     return this.http.post(this.apiUrl + 'SubmitAttendance',list);
+  }
+
+  deleteAttendance(BookingInstanceId){
+    return this.http.delete(this.apiUrl + 'DeleteAttendance/' + BookingInstanceId);
   }
   //#endregion
 }
