@@ -19,11 +19,28 @@ export class CreateTutorComponent implements OnInit {
     private router: Router
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit() {}
 
   submitCreateTutor() {
-    this.service.createTutor(this.data).subscribe((result) => {
-      this.router.navigateByUrl('/tutor');
-    });
+    this.service.createTutor(this.data).subscribe(
+      (result) => {
+        this.data = result;
+        Swal.fire('Tutor created!', this.data.message, 'success');
+       
+        this.router.navigateByUrl('/applications');
+        this.dialogRef.close();
+       window.location.reload();
+       // this.dialogRef.close();
+      },
+      (error) => {
+        Swal.fire('Error!', error.error, 'error');
+        this.dialogRef.close();
+      }
+    );
+    this.dialogRef.close();
+    // });
+  }
+  cancel(){
+    this.dialogRef.close();
   }
 }

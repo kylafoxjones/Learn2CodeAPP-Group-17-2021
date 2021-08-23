@@ -17,7 +17,8 @@ student:any;
 userId:any;
 id:any;
 
-  studentId=3;
+  studentId:any;
+  bookingInstanceID:any;
   constructor(private http: HttpClient) {}
   //#region messaging
   getTutorss() {
@@ -89,6 +90,9 @@ id:any;
   //#endregion
 
   //#region feedback
+  getSessions(StudentId){
+    return this.http.get(this.apiUrl + 'GetMyRegiseredSessions/'+StudentId);
+  }
   
   createFeedbackForSession(feedback) {
     return this.http.post(this.apiUrl + 'CreateFeedback', feedback);

@@ -120,7 +120,7 @@ export class RegisterComponent implements OnInit {
       (result) => {
         this.data = result;
         Swal.fire('Registration Complete!', this.data.message, 'success');
-        this.router.navigate(['/studenthomepage/studenthome']);
+        this.router.navigate(['/loginhomepage/login']);
       },
       (error) => {
         Swal.fire('Error!', error.error, 'error');
