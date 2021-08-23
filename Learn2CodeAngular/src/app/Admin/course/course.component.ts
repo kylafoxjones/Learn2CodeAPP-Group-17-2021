@@ -88,7 +88,7 @@ export class CourseComponent implements OnInit {
 
   //function for creating adminId link
   getAdminId() {
-    this.service.adminId = 1;
+    this.service.adminId = 2;
   }
   navigateToCourseContentCategories(id: number) {
     this.service.courseFolderIdToSend = id;
