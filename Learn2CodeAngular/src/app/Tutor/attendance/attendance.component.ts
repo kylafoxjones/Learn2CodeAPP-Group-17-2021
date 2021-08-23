@@ -14,6 +14,8 @@ export class AttendanceComponent implements OnInit {
   tutorLoggedInUserID: any;
   thisTutor: any;
   attendanceList: any = [];
+  data: any;
+  search;
 
   constructor(
     public dialog: MatDialog,
@@ -43,19 +45,57 @@ export class AttendanceComponent implements OnInit {
 
   openDialog(obj) {
     this.service.sessionInstance = obj;
-    console.log('session chosen to take attendance for', this.service.sessionInstance);
-    const dialogRef = this.dialog.open(TakeAttendanceComponent, {
-      width: '900px',
-    });
-    dialogRef.afterClosed().subscribe((result) => {
-      this.getAttendanceListForTutor();
-    });
+    console.log(
+      'session chosen to take attendance for',
+      this.service.sessionInstance
+    );
+    if (this.service.sessionInstance.attendanceTaken === false) {
+      Swal.fire({
+        title:
+          'Attendance has not been taken yet for this session. Do you want to do it?',
+        text: '',
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          const dialogRef = this.dialog.open(TakeAttendanceComponent, {
+            width: '900px',
+          });
+          dialogRef.afterClosed().subscribe((result) => {
+            this.getAttendanceListForTutor();
+          });
+        }
+      });
+    } else {
+      Swal.fire({
+        title:
+          'you have already taken attendance for this session. Do you want to edit it?',
+        text: '',
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          const dialogRef = this.dialog.open(TakeAttendanceComponent, {
+            width: '900px',
+          });
+          dialogRef.afterClosed().subscribe((result) => {
+            this.getAttendanceListForTutor();
+          });
+        }
+      });
+    }
   }
 
-  delete() {
+  delete(obj) {
+    console.log('the id of the one you deleting',obj.id);
     Swal.fire({
-      title: 'Are you sure you want to delete the attendance?',
-
+      title: 'Are you sure you want to delete the attendance for this session?',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
@@ -63,26 +103,36 @@ export class AttendanceComponent implements OnInit {
       confirmButtonText: 'Yes',
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire('', 'Successfully deleted attendance', 'success');
+        this.service.deleteAttendance(obj.id).subscribe(
+          (result) => {
+            this.data = result;
+            Swal.fire('Deleted!', this.data.message, 'success');
+            this.getAttendanceListForTutor();
+          },
+          (error) => {
+            Swal.fire('Error!', error.error, 'error');
+            this.getAttendanceListForTutor();
+          }
+        );
       }
     });
   }
 
-  search() {
-    Swal.fire({
-      icon: 'warning',
-      title: 'No matches Found',
-      confirmButtonText: 'Ok',
-    });
-  }
+  // search() {
+  //   Swal.fire({
+  //     icon: 'warning',
+  //     title: 'No matches Found',
+  //     confirmButtonText: 'Ok',
+  //   });
+  // }
 
-  nottaken() {
-    Swal.fire({
-      icon: 'error',
-      title: 'The attendance for this session has not been taken yet ',
-      confirmButtonText: 'Okay',
-    });
-  }
+  // nottaken() {
+  //   Swal.fire({
+  //     icon: 'error',
+  //     title: 'The attendance for this session has not been taken yet ',
+  //     confirmButtonText: 'Okay',
+  //   });
+  // }
 
   confirmed() {
     Swal.fire({
