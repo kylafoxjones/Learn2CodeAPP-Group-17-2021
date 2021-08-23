@@ -24,8 +24,11 @@ oldStudName: any;
 edit: boolean = true;
 moduleId:any;
 userId:any;
+studentId:any;
+courseObj:any={};
 
-  studentId=3;
+
+
   constructor(private http: HttpClient) {}
   //#region messaging
   getTutorss() {
@@ -169,4 +172,31 @@ userId:any;
     return this.http.put(this.apiUrl + 'updatestudent', this.updatedStud);
   
   }
+
+  deleteStudInfo(id:number){
+      return this.http.delete(this.apiUrl + 'DeleteStudent/' + id);
+    }
+
+
+    getCourseById(id){ 
+      return this.http.get(this.apiUrl + 'Getcourseontent/' + id);
+      
+    }
+
+    getCourseContentVideoDisplay(id:number) {
+      return this.http.get(
+        this.apiUrl + 'Video/' + id, {
+          responseType: 'blob',
+        }
+      );
+    }
+ 
+    getCourseContentFileDisplay(id:number) {
+      return this.http.get(
+        this.apiUrl + 'DownloadRContentPdf/' + id, {
+          responseType: 'blob',
+        }
+      );
+    }
+   
 }

@@ -28,7 +28,8 @@ export class StudentHomeComponent implements OnInit {
   courses:any=[];
   hasCourse:any=false;
 thisStudent:any;
-
+// courseContentCat:any={};
+courseSubCatID:any;
   constructor(
     private breakpointObserver: BreakpointObserver,
     private route: Router,
@@ -41,6 +42,7 @@ thisStudent:any;
   ngOnInit(){
 
     this.getStudentt();
+  //  this.courseContentCat=this.StudentService.course;
   
   }
 
@@ -88,5 +90,12 @@ thisStudent:any;
 profile(){
   this.route.navigate(['/profile']);
 }
+// specificCourse(obj){
+//   console.log("course is", obj);
+//  this.StudentService.courseObj=obj;
+//  this.courseSubCatID=obj.courseEnrolLine[0].courseSubCategoryId;
+//  console.log("service course", this.StudentService.courseObj);
+//   this.route.navigate(['/specificcoursedisplay']);
+// }
    
 }

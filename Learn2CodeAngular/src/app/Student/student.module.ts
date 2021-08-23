@@ -26,6 +26,7 @@ import { CreateFeedbackComponent } from './feedback/create-feedback/create-feedb
 import { RegisterComponent } from './register/register.component';
 import { ProfileComponent } from './student-home/profile/profile.component';
 import { MaintainStudentComponent } from './student-home/maintain-student/maintain-student.component';
+import { DisplayCoursesComponent } from './student-home/display-courses/display-courses.component';
 
 
 
@@ -41,7 +42,8 @@ import { MaintainStudentComponent } from './student-home/maintain-student/mainta
     CreateFeedbackComponent,
     RegisterComponent,
     ProfileComponent,
-    MaintainStudentComponent
+    MaintainStudentComponent,
+    DisplayCoursesComponent
   ],
   imports: [
     CommonModule,

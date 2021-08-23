@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { StudentService } from '../../Student resources/student.service';
 import { Observable } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
+import Swal from 'sweetalert2';
 import { MaintainStudentComponent } from '../maintain-student/maintain-student.component';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -14,7 +16,7 @@ export class ProfileComponent implements OnInit {
 thissStudent:any;
 userId:any;
 id:any;
-  constructor(private StudentService: StudentService, public dialog: MatDialog) { }
+  constructor(private StudentService: StudentService, public dialog: MatDialog,    private route: Router) { }
 
   ngOnInit() {
 //this.StudentService.getStudentInfo();
@@ -51,7 +53,28 @@ this.getStudentInfo();
         width: '700px',
       });
       dialogRef.afterClosed().subscribe((result) => {
-       // location.reload();
+        this.getStudentInfo();
       });
+    }
+
+    onDelete(Id:number){
+      Swal.fire({
+        title: 'Are you sure you want to delete your information?',
+        text: '',
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.StudentService.deleteStudInfo(Id).subscribe((result) => {
+           
+            this.route.navigate(['/loginhomepage/login']);
+          });
+          Swal.fire('Successful Deletion', '', 'success');
+        }
+      });
+      
     }
 }
