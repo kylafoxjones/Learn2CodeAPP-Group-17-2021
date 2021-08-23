@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 //import { AuthGuard } from '../Login/auth.guard';
 import { AdminComponent } from './admin.component';
-import { 
-  AuthGuard as AuthGuard 
+import {
+  AuthGuard as AuthGuard
 } from '../Login/auth.guard';
 import { CourseContentCategoryComponent } from './course-content-category/course-content-category.component';
 import { CourseContentComponent } from './course-content/course-content.component';
@@ -47,7 +47,7 @@ const routes: Routes = [
         path: 'degree',
         component: DegreeComponent,
         canActivate: [AuthGuard, AdminGuard]
-        
+
       },
       {
         path: 'module',
@@ -63,28 +63,28 @@ const routes: Routes = [
       {
         path: 'sessioncontentcategory',
         component: SessionContentCategoryComponent,
-        canActivate: [AuthGuard, AdminGuard]
+        // canActivate: [AuthGuard, AdminGuard]
       },
       {
         path: 'coursecontentcategory',
         component: CourseContentCategoryComponent,
       //  canActivate: [AuthGuard, AdminGuard]
-   
+
       },
       {
         path: 'student',
         component: StudentComponent,
-        canActivate: [AuthGuard, AdminGuard]    
+        canActivate: [AuthGuard, AdminGuard]
       },
       {
         path: 'tutor',
         component: TutorComponent,
-        canActivate: [AuthGuard, AdminGuard]
+        // canActivate: [AuthGuard, AdminGuard]
       },
       {
         path: 'subscription',
         component: SubscriptionComponent,
-        canActivate: [AuthGuard, AdminGuard]
+        // canActivate: [AuthGuard, AdminGuard]
       },
       {
         path: 'applications',
@@ -94,7 +94,7 @@ const routes: Routes = [
       {
         path: 'payments',
         component: PaymentsComponent,
-        canActivate: [AuthGuard, AdminGuard]
+        // canActivate: [AuthGuard, AdminGuard]
       },
       {
         path: 'coursecontent',
