@@ -90,6 +90,7 @@ export class CourseComponent implements OnInit {
   getAdminId() {
     this.service.adminId = 2;
   }
+  
   navigateToCourseContentCategories(id: number) {
     this.service.courseFolderIdToSend = id;
     console.log(

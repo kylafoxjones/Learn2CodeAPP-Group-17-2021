@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AttendanceComponent } from './attendance/attendance.component';
 import { GroupSessionContentComponent } from './group-session-content/group-session-content.component';
 import { SpecificSessionComponent } from './group-session-content/specific-session/specific-session.component';
 import { HomeComponent } from './home/home.component';
@@ -42,6 +43,10 @@ const routes: Routes = [
         {
           path: 'messages',
           component: SentRecievedMessagesComponent,
+        },
+        {
+        path: 'attendance',
+        component: AttendanceComponent,
         },
         {
           path: 'sessioncontent',
