@@ -30,7 +30,7 @@
     >
   </div>
   <div class="topnav-right">
-    <div class="dot">Z</div>
+    <div class="dot">{{ thisStudent.studentName[0]+ thisStudent.studentSurname[0] }}</div>
   </div>
 </nav>
 
@@ -87,13 +87,13 @@
               </tr>
             </thead>
             <tbody>
-              <tr >
-                <td>11/02/2021</td>
-                <td>HTML</td>
-                <td>Bea</td>
-                <td>Scheepers</td>
+              <tr *ngFor="let item of pastSessionList">
+                <td>{{item.bookingInstance.date}}</td>
+                <td>{{item.bookingInstance.title}}</td>
+                <td>{{item.bookingInstance.tutor.tutorName}}</td>
+                <td>{{item.bookingInstance.tutor.tutorSurname}}</td>
                 <td>
-                  <button (click)="openDialog()" class="btn btn-info">
+                  <button (click)="openDialog(item.bookingInstanceId)" class="btn btn-info">
                     <i class="fa fa-plus-square" aria-hidden="true"></i>
                   </button>
                 </td>

@@ -24,6 +24,9 @@ export class ShopComponent implements OnInit {
   courseBasketList: any = [];
   subscriptionBasketList: any = [];
 
+userId:any;
+thisStudent:any;
+
   constructor(
     public dialog: MatDialog,
     private service: StudentService,
@@ -34,12 +37,22 @@ export class ShopComponent implements OnInit {
     this.getAllSubscriptions();
     this.getAllCourses();
     this.getModules();
+    this.getLoggedInUser();
+  }
+
+  getLoggedInUser(){
+    this.userId = localStorage.getItem('id');
+    console.log(this.userId);
+    this.thisStudent = this.service.getStudentInfo();
+    console.log("student logged in ts file",this.thisStudent);
+    this.service.studentId = this.thisStudent.id;
+    console.log('student id kept in the service',this.service.studentId);
     this.getBasketForStudent();
   }
 
   getBasketForStudent() {
     //student ID hard coded for now
-    let studentId = 3;
+    let studentId = this.thisStudent.id;
     this.service.getBasket(studentId).subscribe((result) => {
       this.basketForStudentLoggedIn = result;
       console.log(
@@ -149,8 +162,8 @@ export class ShopComponent implements OnInit {
   }
 
   checkout() {
-    //final cart holds every item (both subscription + course)
-    //running total has the overall price for checkout
+    //basketForStudentLoggedIn holds every item (both subscription + course)
+    //basketForStudentLoggedIn.totalPrice has the overall price for checkout
 
     Swal.fire({
       title: 'Are you sure you want to checkout?',

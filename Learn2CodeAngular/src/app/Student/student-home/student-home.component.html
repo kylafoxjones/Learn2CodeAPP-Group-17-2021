@@ -32,18 +32,18 @@
     >
   </div>
   <div class="topnav-right">
-    <div [matMenuTriggerFor]="menu" class="dot">Z</div>
+    <div [matMenuTriggerFor]="menu" class="dot">{{ thisStudent.studentName[0]+ thisStudent.studentSurname[0] }}</div>
   </div>
 </nav>
 
 <!--menu-->
 
 <mat-menu #menu="matMenu" xPosition="before">
-  <button mat-menu-item>
+  <button (click)="profile()" mat-menu-item>
     <i class="fa fa-user" aria-hidden="true" style="padding-right: 0.5rem"></i
     >Profile
   </button>
-  <button (click)= "logout" mat-menu-item>
+  <button (click)="logout()" mat-menu-item>
     <i
       class="fa fa-sign-out"
       aria-hidden="true"
@@ -156,7 +156,8 @@
     <!-- Add Content Here -->
   </mat-sidenav-content>
 </mat-sidenav-container>
-
+<nb-layout>
+  <nb-layout-column>
 <!--  <div  style=" margin-top: 3rem;
     border-radius: 25px;
     background-color: white;
@@ -176,140 +177,86 @@
        
     </div>-->
 
-<div class="row">
-  <div class="col-md-4">
-    <div
-      style="
-        margin-top: 3rem;
-        border-radius: 25px;
-        background-color: white;
-        width: 13rem;
-        margin-left: 55%;
-        height: 16rem;
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
-          0 6px 6px rgba(0, 0, 0, 0.23);
-      "
-    >
-      <br />
-      <div
-        style="
-          text-align: center;
-          width: 12rem;
-          height: 2rem;
-          margin-left: 0.5rem;
-        "
-      >
-        <h2 style="font-weight: 500; font-family: Arial, Helvetica, sans-serif">
-          Learn Components
-        </h2>
-        <hr />
-      </div>
-      <br />
 
-      <div style="text-align: center; padding-top: 0.5rem">
-        <h5
+  
+
+      <div *ngIf="hasCourse">
+    
+        <div class="row">
+          <div class="col-md-3" 
+          *ngFor="let item of courses | filter: search">
+            <div style="
+            margin-top: 3rem;
+            border-radius: 25px;
+            background-color: rgb(6, 6, 7);
+            width: 16rem;
+            margin-left: 50%;
+            height: 19rem;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
+              0 6px 6px rgba(0, 0, 0, 0.23);
+          ">
+          <br/>
+              <div    style="
+              text-align: center;
+              width: 12rem;
+              height: 2rem;
+              margin-left: 0.5rem;
+            ">
+                <h5 style="margin-left: 2.5rem; color: white">
+                  {{item.courseEnrolLine[0].courseSubCategory.courseSubCategoryName}}
+                </h5>
+                <hr style="width: 125%; color: white" />
+                </div>
+                <div style="text-align: center; padding-top: 1.9rem">
+                  <div>
+                    <h6 style="color: white">   {{item.courseEnrolLine[0].courseSubCategory.courseFolder.courseFolderName}} </h6>
+                    <p style="color: white">
+
+             {{item.courseEnrolLine[0].courseSubCategory.description}}
+                     
+                      <br />
+                      <br />
+                   
+                    </p>
+                  </div>
+                  <div style="margin-top: 2.3rem">
+
+                <button style="width: 7rem" class="btn btn-outline-info">Learn</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        </div>   
+     </div>
+
+
+
+        <div *ngIf="!hasCourse">
+          <div
           style="
-            text-decoration: underline;
-            font-family: Arial, Helvetica, sans-serif;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
+              0 6px 6px rgba(0, 0, 0, 0.23);
+            width: 80%;
+            margin: auto;
+            border-radius: 15px;
+            align-items: center;
           "
         >
-          Angular
-        </h5>
-        <p>This teaches ou the basics of using components in Angular.</p>
         <br />
-        <button class="btn btn-info">Learn</button>
+    
+    <h5 style="text-align: center">No content for this session</h5>
+    
       </div>
-    </div>
-  </div>
-  <div class="col-md-4">
-    <div
-      style="
-        margin-top: 3rem;
-        border-radius: 25px;
-        background-color: white;
-        width: 13rem;
-        margin-left: 40%;
-        height: 16rem;
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
-          0 6px 6px rgba(0, 0, 0, 0.23);
-      "
-    >
-      <br />
-      <div
-        style="
-          text-align: center;
-          width: 12rem;
-          height: 2rem;
-          margin-left: 0.5rem;
-        "
-      >
-        <h2 style="font-weight: 500; font-family: Arial, Helvetica, sans-serif">
-          Learn HTML
-        </h2>
-        <hr />
-      </div>
-      <br />
 
-      <div style="text-align: center; padding-top: 0.5rem">
-        <h5
-          style="
-            text-decoration: underline;
-            font-family: Arial, Helvetica, sans-serif;
-          "
-        >
-          HTML
-        </h5>
-        <p>This teaches you the basics of creating a web page.</p>
-        <br />
-        <button class="btn btn-info">Learn</button>
-      </div>
-    </div>
-  </div>
-  <div class="col-md-4">
-    <div
-      style="
-        margin-top: 3rem;
-        border-radius: 25px;
-        background-color: white;
-        width: 13rem;
-        margin-left: 30%;
-        height: 16rem;
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
-          0 6px 6px rgba(0, 0, 0, 0.23);
-      "
-    >
-      <br />
-      <div
-        style="
-          text-align: center;
-          width: 12rem;
-          height: 2rem;
-          margin-left: 0.5rem;
-        "
-      >
-        <h2 style="font-weight: 500; font-family: Arial, Helvetica, sans-serif">
-          Learn Controllers
-        </h2>
-        <hr />
-      </div>
-      <br />
 
-      <div style="text-align: center; padding-top: 0.5rem">
-        <h5
-          style="
-            text-decoration: underline;
-            font-family: Arial, Helvetica, sans-serif;
-          "
-        >
-          MVC
-        </h5>
-        <p>This teaches you the basics of controllers.</p>
-        <br />
-        <button class="btn btn-info">Learn</button>
-      </div>
-    </div>
-  </div>
+
 </div>
+
+
+
+</nb-layout-column>
+</nb-layout>
 
 <footer style="bottom: 0; width: 100%; position: absolute">
   <nav style="height: 3rem" id="foot" class="navbar">
