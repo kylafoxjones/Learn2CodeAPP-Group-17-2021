@@ -380,7 +380,7 @@ export class AdminService {
   }
   rejectApp() {
     this.deleteTutorr = {
-      Id: this.tutorToDelete.id,
+     Id: this.tutorToDelete.id,
       TutorName: this.tutorToDelete.tutorName,
       TutorSurname: this.tutorToDelete.tutorSurname,
       TutorCell: this.tutorToDelete.tutorCell,
@@ -389,6 +389,7 @@ export class AdminService {
       TutorEmail: this.tutorToDelete.tutorEmail,
       FileId: this.tutorToDelete.fileId,
       TutorStatusId: this.tutorToDelete.tutorStatusId,
+   //   ModuleId:this.tutorToCreate.tutorModule
     };
     console.log('dto sent to api to reject', this.deleteTutorr);
     return this.http.put(this.apiUrl + 'RejectTutor', this.deleteTutorr);
@@ -396,21 +397,23 @@ export class AdminService {
 
   createTutor(obj) {
     this.tutorToSave = {
-      TutorName: this.tutorToCreate.tutorName,
-      TutorSurname: this.tutorToCreate.tutorSurname,
-      TutorCell: this.tutorToCreate.tutorCell,
-      TutorAbout: this.tutorToCreate.tutorAbout,
-      TutorPhoto: this.tutorToCreate.tutorPhoto,
-      TutorEmail: this.tutorToCreate.tutorEmail,
-      Id: this.tutorToCreate.id,
+      TutorName: this.application.tutorName,
+      TutorSurname: this.application.tutorSurname,
+      TutorCell: this.application.tutorCell,
+      TutorAbout: this.application.tutorAbout,
+      TutorPhoto: this.application.tutorPhoto,
+      TutorEmail: this.application.tutorEmail,
+      Id: this.application.id,
       UserName: obj.UserName,
       Password: obj.Password,
-      TutorStatusId: this.tutorToCreate.tutorStatusId,
-      FileId: this.tutorToCreate.fileId,
-      UserId: this.tutorToCreate.userId,
+      TutorStatusId: this.application.tutorStatusId,
+      FileId: this.application.fileId,
+      ModuleId:this.application.tutorModule[0].moduleId,
+      UserId: this.application.userId
     };
     console.log('object sending to api:', this.tutorToSave);
     return this.http.put(this.apiUrl + 'CreateTutor', this.tutorToSave);
+
   }
   // getAllTutorApplications() {
   //   this.getTutorApplications();

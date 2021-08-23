@@ -94,7 +94,7 @@ const routes: Routes = [
       {
         path: 'payments',
         component: PaymentsComponent,
-        canActivate: [AuthGuard, AdminGuard]
+    //    canActivate: [AuthGuard, AdminGuard]
       },
       {
         path: 'coursecontent',
