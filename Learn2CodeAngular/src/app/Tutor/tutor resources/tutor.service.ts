@@ -53,6 +53,9 @@ export class TutorService {
   universityID: any;
   typeUniChosen: any;
 
+  //#region 
+  sessionInstance:any;
+  //#endregion
   constructor(private http: HttpClient) {}
   //#region resource cats
   getResourceCategories() {
@@ -187,4 +190,18 @@ export class TutorService {
     //needs userId
     return this.http.get(this.apiUrl + 'GetTutor/' + id);
   }
+
+  //#region attendance
+  getAttendanceList(TutorId) {
+    return this.http.get(this.apiUrl + 'GetSessions/'+TutorId);
+  }
+
+  getSessionList(BookingInstanceId) {
+    return this.http.get(this.apiUrl + 'GetSessionAttendance/'+BookingInstanceId);
+  }
+
+  submitAttendance(list){
+    return this.http.post(this.apiUrl + 'SubmitAttendance',list);
+  }
+  //#endregion
 }
