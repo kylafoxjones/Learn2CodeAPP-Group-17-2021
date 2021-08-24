@@ -64,17 +64,7 @@
         />
       </mat-form-field>
     </div>
-    <div class="col-md-6">
-      <label for="formFile" style="margin-left: 2rem" class="form-label"
-        >CV file:</label
-      >
-      <input
-        class="form-control"
-        type="file"
-        id="formFile"
-        style="width: 80%; margin-left: 2rem"
-      />
-    </div>
+ 
   </div>
 
   <mat-form-field
@@ -98,9 +88,14 @@
       >
         Profile picture:
       </div>
-      <button style="margin-left: 2.5rem; width: 7rem" class="btn btn-primary">
-        Upload
-      </button>
+      <label for="formFile" class="form-label">Profile Photo:</label>
+              <input
+                class="form-control"
+                type="file"
+                #file
+                placeholder="Choose a photo"
+                (change)="changePic($event)"
+              />
       <a
         class="navbar-brand"
         href="#"

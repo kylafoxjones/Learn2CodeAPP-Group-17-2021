@@ -13,6 +13,7 @@ export class MaintainTutorComponent implements OnInit {
   data = this.service.tutorToEdit;
   info: any;
   formdata = new FormData();
+  photo:any;
   // data:any;
 
   constructor(
@@ -25,6 +26,11 @@ export class MaintainTutorComponent implements OnInit {
   ngOnInit() {
     console.log('tutor we editing', this.data);
   }
+  changePic(event) {
+    console.log(event.target.files[0]);
+    this.photo = event.target.files[0];
+    console.log('the new pic', this.photo);
+  }
 
   submitEditedTutor() {
     console.log('the new tutor details', this.data);
@@ -36,7 +42,7 @@ export class MaintainTutorComponent implements OnInit {
     this.formdata.append('tutorEmail', this.data.tutorEmail);
     this.formdata.append('userName', this.data.identity.userName);
     this.formdata.append('userId', this.data.userId);
-    this.formdata.append('tutorPhoto', this.data.tutorPhoto);
+    this.formdata.append('tutorPhoto', this.photo);
     this.formdata.append('file', this.data.file);
     this.formdata.append('fileId', this.data.fileId);
 

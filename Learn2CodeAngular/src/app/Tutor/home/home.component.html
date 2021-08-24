@@ -16,7 +16,7 @@
   </div>
   <div class="topnav-right" style="margin-right: 0.5rem">
     <img
-      src="../../../assets/pics/circle-cropped.png"
+      src="data:image/gif;base64,{{ tutor.tutorPhoto }}"
       width="50"
       height="50"
       style="border-radius: 55px"
@@ -86,7 +86,11 @@
         >Messages</a
       >
       <br />
-      <a style="color: white; font-size: small" mat-list-item href="#"
+      <a
+        [routerLink]="['/attendance']"
+        style="color: white; font-size: small"
+        mat-list-item
+        href="#"
         ><i
           style="font-size: medium; padding: 0.3rem"
           class="fa fa-list"
@@ -96,6 +100,7 @@
       >
       <br />
       <a
+        [routerLink]="['/sessioncontent']"
         [routerLink]="['/sessioncontent']"
         style="color: white; font-size: small"
         mat-list-item
@@ -145,7 +150,7 @@
         <div class="col-md-6">
           <a class="navbar-brand" href="#" style="margin-left: 6rem">
             <img
-              src="../../../assets/pics/circle-cropped.png"
+              src="data:image/gif;base64,{{ tutor.tutorPhoto }}"
               width="190"
               height="190"
               style="border-radius: 55px"
@@ -154,7 +159,7 @@
             />
           </a>
           <div style="margin-left: 5.5rem; padding-top: 0.5rem">
-            <h6>Username:</h6>
+            <h6>Username: {{ tutor.identity.userName }}</h6>
           </div>
         </div>
 
@@ -174,18 +179,6 @@
             <p></p>
           </div>
 
-          <div class="form-group">
-            <label
-              style="padding-right: 1rem; font-size: larger; font-weight: bold"
-              class="control-label"
-              >CV:</label
-            >
-            <button class="btn btn-primary">
-              <span class="glyphicon glyphicon-plus-sign"
-                ><i class="fa fa-arrow-circle-down" aria-hidden="true"></i
-              ></span>
-            </button>
-          </div>
           <br />
 
           <div style="margin-left: 2rem">

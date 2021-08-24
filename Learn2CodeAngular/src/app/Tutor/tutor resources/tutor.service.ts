@@ -217,6 +217,7 @@ export class TutorService {
  }
 
  applyToBecomeTutor(formdata): Observable<any>{
+   console.log('the form data', formdata);
   return this.http.post(this.apiUrl + 'TutorApplication', formdata);
  }
 
