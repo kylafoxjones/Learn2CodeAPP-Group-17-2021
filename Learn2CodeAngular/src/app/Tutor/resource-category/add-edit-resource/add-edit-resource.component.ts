@@ -44,7 +44,7 @@ typeList:any=[];
 
   onSubmit(){
    // console.log(this.service.editReso); //gets object that you want to edit
-   console.log(this.data.resourceDescription);
+  // console.log(this.data.resourceDescription);
     if (this.service.editId > 0) {
       Swal.fire({
         title: 'Are you sure you want to edit the Resource?',
@@ -94,7 +94,7 @@ console.log(formdata);
       data.append('ResourceCategoryId', this.service.typeChosen);
       data.append('ModuleId',this.service.moduleIdToSend );
       data.append('ResoucesName', this.service.notes);
-      data.append('ResourceDescription', resource[0].resourceDescription);
+      data.append('ResourceDescription',this.data.resourceDescription);
           this.service.createResources(data).subscribe((result) => {
             this.data = result;
             this.dialogRef.close();

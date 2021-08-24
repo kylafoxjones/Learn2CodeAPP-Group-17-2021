@@ -9,6 +9,7 @@ import { FeedbackComponent } from './feedback/feedback.component';
 import { RegisterComponent } from './register/register.component';
 import { ProfileComponent } from './student-home/profile/profile.component';
 import { DisplayCoursesComponent } from './student-home/display-courses/display-courses.component';
+import { ViewResourcesComponent } from './view-resources/view-resources.component';
 
 const routes: Routes =  [
   
@@ -48,6 +49,10 @@ const routes: Routes =  [
       {
         path: 'specificcoursedisplay/:subCategoryId',
         component: DisplayCoursesComponent,
+      },
+      {
+        path: 'viewresource',
+        component: ViewResourcesComponent,
       },
     ],
   },

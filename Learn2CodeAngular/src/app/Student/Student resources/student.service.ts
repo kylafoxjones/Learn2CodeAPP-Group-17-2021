@@ -198,5 +198,26 @@ courseObj:any={};
         }
       );
     }
+
+
+    //#view resource region starts
+    getModulesForResource(){ 
+      return this.http.get(this.apiUrl + 'ViewModules' );
+      
+    }
+
+    getResourceByModule(id){
+      return this.http.get(this.apiUrl + 'ViewResources/' + id);
+      
+    }
+
+    downloadResource(id:number){
+      return this.http.get(
+        this.apiUrl + 'DownloadResource/' + id, {
+          responseType: 'blob',
+        }
+      );
+    }
+    //#end of region
    
 }

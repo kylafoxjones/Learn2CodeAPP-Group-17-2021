@@ -27,6 +27,7 @@ import { RegisterComponent } from './register/register.component';
 import { ProfileComponent } from './student-home/profile/profile.component';
 import { MaintainStudentComponent } from './student-home/maintain-student/maintain-student.component';
 import { DisplayCoursesComponent } from './student-home/display-courses/display-courses.component';
+import { ViewResourcesComponent } from './view-resources/view-resources.component';
 
 
 
@@ -43,7 +44,8 @@ import { DisplayCoursesComponent } from './student-home/display-courses/display-
     RegisterComponent,
     ProfileComponent,
     MaintainStudentComponent,
-    DisplayCoursesComponent
+    DisplayCoursesComponent,
+    ViewResourcesComponent
   ],
   imports: [
     CommonModule,
