@@ -13,12 +13,24 @@ export class StudentService {
   tutorId: any;
   tutorObj: any = {};
   //#endregion
-student:any;
+// student:any;
+// userId:any;
+// id:any;
+editId = 0;
+editStud: any;
+students: any = [];
+updatedStud: any = {};
+oldStudName: any;
+edit: boolean = true;
+moduleId:any;
 userId:any;
-id:any;
+studentId:any;
+courseObj:any={};
 
   studentId:any;
   bookingInstanceID:any;
+
+
   constructor(private http: HttpClient) {}
   //#region messaging
   getTutorss() {
@@ -134,15 +146,62 @@ id:any;
     return this.http.get(this.apiUrl + 'GetStudentCourses/' + id);
     
   }
-   getStudentInfo() { //to get the student info for the circle at the top
-    this.userId = localStorage.getItem('id');
-    console.log(this.userId);
-     this.getStudent(this.userId).subscribe((result) => {
-       this.student = result;
-       console.log('student info', this.student);
+  //  getStudentInfo() { //to get the student info for the circle at the top
+  //   this.userId = localStorage.getItem('id');
+  //   console.log(this.userId);
+  //    this.getStudent(this.userId).subscribe((result) => {
+  //      this.student = result;
+  //      console.log('student info', this.student);
 
-     });
-  return this.student;
+  //    });
+  // return this.student;
   
+  //   }
+  editStudent(newStudName){
+    console.log(this.editStud);
+
+    // var oldObj = this.students.find((x) => x.id === this.editId);
+    // console.log(oldObj);
+
+    this.updatedStud = {
+      StudentId: this.editStud.id,
+      StudentName: newStudName.StudentName,
+      StudentSurname: newStudName.StudentSurname,
+      StudentCell: newStudName.StudentCell,
+      UserName: newStudName.UserName,
+      Email: newStudName.Email,
+      UserId: this.userId,
+      ModuleId: this.moduleId,
+
+    };
+    return this.http.put(this.apiUrl + 'updatestudent', this.updatedStud);
+  
+  }
+
+  deleteStudInfo(id:number){
+      return this.http.delete(this.apiUrl + 'DeleteStudent/' + id);
     }
+
+
+    getCourseById(id){ 
+      return this.http.get(this.apiUrl + 'Getcourseontent/' + id);
+      
+    }
+
+    getCourseContentVideoDisplay(id:number) {
+      return this.http.get(
+        this.apiUrl + 'Video/' + id, {
+          responseType: 'blob',
+        }
+      );
+    }
+ 
+    getCourseContentFileDisplay(id:number) {
+      return this.http.get(
+        this.apiUrl + 'DownloadRContentPdf/' + id, {
+          responseType: 'blob',
+        }
+      );
+    }
+   
 }

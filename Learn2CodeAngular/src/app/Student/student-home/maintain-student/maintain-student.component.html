@@ -1,0 +1,127 @@
+<h5 style="text-align: center;">Edit Profile</h5>
+<hr>
+<form class="example-form" style="padding-top: 1.5rem;">
+<div class="row">
+<div class="col-md-6">
+
+</div>
+
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <mat-form-field class="example-full-width">
+            <mat-label>First name:</mat-label>
+            <input 
+            [(ngModel)]="data.StudentName"    #name="ngModel"   name="name"
+             matInput >
+          </mat-form-field>
+    </div>
+    <div class="col-md-6">
+        <mat-form-field class="example-full-width">
+            <mat-label>Surname:</mat-label>
+            <input matInput   [(ngModel)]="data.StudentSurname"     #surname="ngModel"   name="surname">
+          </mat-form-field>
+    </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <mat-form-field class="example-full-width">
+                <mat-label>Username:</mat-label>
+                <input matInput  [(ngModel)]="data.UserName"  #username="ngModel"   name="username" >
+              </mat-form-field>
+        </div>
+        <div class="col-md-6">
+            <mat-form-field class="example-full-width">
+                <mat-label>Email:</mat-label>
+                <input matInput   [(ngModel)]="data.Email"  #email="ngModel"   name="email">
+              </mat-form-field>
+        </div>
+
+        
+                
+                    
+     </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <mat-form-field class="example-full-width">
+                                <mat-label>Phone number:</mat-label>
+                                <input matInput  [(ngModel)]="data.StudentCell"  #cell="ngModel"   name="cell">
+                              </mat-form-field>
+                        </div>
+
+                    <div class="col-md-6">
+                        <mat-form-field appearance="outline">
+                            <mat-label>University:</mat-label>
+                            <mat-select (valueChange)="selectUni($event)">
+                              <mat-option
+                                *ngFor="let uni of uniList"
+                                [value]="uni.id"
+                              >
+                                {{ uni.universityName }}
+                              </mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                    </div>
+                        
+                        </div>
+
+                       
+                            
+                        <div class="row">
+                            <div class="col-md-6">
+                                <mat-form-field appearance="outline" style="width: 11rem">
+                                    <mat-label>Degree:</mat-label>
+                                    <mat-select (valueChange)="selectDegree($event)">
+                                      <mat-option
+                                        *ngFor="let degree of degreeList"
+                                        [value]="degree.id"
+                                      >
+                                        {{ degree.degreeName }}
+                                      </mat-option>
+                                    </mat-select>
+                                  </mat-form-field>
+                            </div>
+    
+                        <div class="col-md-6">
+                            <mat-form-field appearance="outline" style="width: 11rem">
+                                <mat-label>Module:</mat-label>
+                                <mat-select (valueChange)="selectModule($event)">
+                                  <mat-option
+                                    *ngFor="let module of moduleList"
+                                    [value]="module.id"
+                                  >
+                                    {{ module.moduleCode }}
+                                  </mat-option>
+                                </mat-select>
+                              </mat-form-field>
+                        </div>
+                            
+                            </div>
+    
+   
+      
+     
+   
+    
+
+     
+           
+       
+     
+      <br>
+    
+      <br>
+      <br>
+
+      <div style="margin-left: 30%;">
+          <button (click)="onSubmit()" style="width: 9rem;" class="btn btn-info">Submit</button>
+
+          <button [mat-dialog-close] class="btn btn-danger" style="margin-left: 1rem;width: 9rem;">Cancel</button>
+      </div>
+     
+     
+  </form>
+

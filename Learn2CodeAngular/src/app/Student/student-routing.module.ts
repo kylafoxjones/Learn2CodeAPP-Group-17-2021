@@ -8,6 +8,7 @@ import { ShopComponent } from './shop/shop.component';
 import { FeedbackComponent } from './feedback/feedback.component';
 import { RegisterComponent } from './register/register.component';
 import { ProfileComponent } from './student-home/profile/profile.component';
+import { DisplayCoursesComponent } from './student-home/display-courses/display-courses.component';
 
 const routes: Routes =  [
   
@@ -43,6 +44,10 @@ const routes: Routes =  [
       {
         path: 'profile',
         component: ProfileComponent,
+      },
+      {
+        path: 'specificcoursedisplay/:subCategoryId',
+        component: DisplayCoursesComponent,
       },
     ],
   },
