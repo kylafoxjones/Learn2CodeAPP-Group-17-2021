@@ -9,6 +9,7 @@ import * as Chart from 'chart.js';
 import { title } from 'process';
 import { MaintainComponent } from '../maintain/maintain.component';
 import { TutorService } from '../tutor resources/tutor.service';
+import { MaintainTutorComponent } from './maintain-tutor/maintain-tutor.component';
 
 @Component({
   selector: 'app-home',
@@ -32,7 +33,13 @@ export class HomeComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.getTutorr();
+    this.userId = localStorage.getItem('id');
+    console.log(this.userId);
+    this.TutorService.getTutor(this.userId).subscribe((result) => {
+      this.tutor = result;
+      this.TutorService.tutorToEdit = this.tutor;
+      console.log('tutor info', this.tutor);
+    });
   }
 
   delete() {
@@ -51,27 +58,20 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  openDialog(): void {
-    const dialogRef = this.dialog.open(MaintainComponent, {
+  openDialog() {
+    const dialogRef = this.dialog.open(MaintainTutorComponent, {
       width: '350px',
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      Swal.fire({
-        icon: 'error',
-        title: 'Unable to save changes',
+      // Swal.fire({
+      //   icon: 'error',
+      //   title: 'Unable to save changes',
 
-        confirmButtonText: 'Ok',
-      });
+      //   confirmButtonText: 'Ok',
+      // });
     });
   }
 
-  getTutorr() {
-    this.userId = localStorage.getItem('id');
-    console.log(this.userId);
-    this.TutorService.getTutor(this.userId).subscribe((result) => {
-      this.tutor = result;
-      console.log('tutor info', this.tutor);
-    });
-  }
+
 }

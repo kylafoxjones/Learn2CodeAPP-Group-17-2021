@@ -1,0 +1,131 @@
+<h5 style="text-align: center">Edit Profile</h5>
+<hr />
+<form class="example-form" style="padding-top: 1.5rem">
+  <div class="row">
+    <div class="col-md-6"></div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>First name:</mat-label>
+        <input
+          matInput
+          [(ngModel)]="data.tutorName"
+          #name="ngModel"
+          name="name"
+        />
+      </mat-form-field>
+    </div>
+    <div class="col-md-6">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Surname:</mat-label>
+        <input
+          matInput
+          [(ngModel)]="data.tutorSurname"
+          #surname="ngModel"
+          name="surname"
+        />
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Username:</mat-label>
+        <input
+          matInput
+          [(ngModel)]="data.identity.userName"
+          #username="ngModel"
+          name="username"
+        />
+      </mat-form-field>
+    </div>
+    <div class="col-md-6">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Email:</mat-label>
+        <input
+          matInput
+          [(ngModel)]="data.tutorEmail"
+          #email="ngModel"
+          name="email"
+        />
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Phone number:</mat-label>
+        <input
+          matInput
+          [(ngModel)]="data.tutorCell"
+          #cell="ngModel"
+          name="cell"
+        />
+      </mat-form-field>
+    </div>
+    <div class="col-md-6">
+      <label for="formFile" style="margin-left: 2rem" class="form-label"
+        >CV file:</label
+      >
+      <input
+        class="form-control"
+        type="file"
+        id="formFile"
+        style="width: 80%; margin-left: 2rem"
+      />
+    </div>
+  </div>
+
+  <mat-form-field
+    class="example-full-width"
+    style="width: 90%"
+    appearance="outline"
+  >
+    <mat-label>About you:</mat-label>
+    <input
+      matInput
+      [(ngModel)]="data.tutorAbout"
+      #about="ngModel"
+      name="about"
+    />
+  </mat-form-field>
+  <br />
+  <div class="row">
+    <div class="col-md-12">
+      <div
+        style="margin-left: 2.5rem; padding-bottom: 0.7rem; margin-top: 0.5rem"
+      >
+        Profile picture:
+      </div>
+      <button style="margin-left: 2.5rem; width: 7rem" class="btn btn-primary">
+        Upload
+      </button>
+      <a
+        class="navbar-brand"
+        href="#"
+        style="margin-left: 6rem; display: inline-block"
+      >
+        <img
+          src="../../../assets/pics/circle-cropped.png"
+          width="105"
+          height="105"
+          style="border-radius: 55px"
+          alt=""
+        />
+      </a>
+    </div>
+  </div>
+  <br />
+  <br />
+  <div style="margin-left: 30%">
+    <button (click) ="submitEditedTutor()" style="width: 9rem" class="btn btn-info">Update</button>
+    <button
+      [mat-dialog-close]
+      class="btn btn-danger"
+      style="margin-left: 1rem; width: 9rem"
+    >
+      Cancel
+    </button>
+  </div>
+</form>

@@ -1,223 +1,232 @@
-
-  <nav id="adminnav" class="navbar navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">
-      <img
-        src="../.././assets/pics/HD logo.png"
-        width="40"
-        height="40"
-        class="d-inline-block align-top"
-        alt=""
-      />
-    </a>
-    <span class="TDO" style="color: rgb(0, 156, 158); margin-right: auto"
-      >TutorDevOps</span
-    >
-    <div class="right">
-      <a style="color: whitesmoke; margin-right: 3rem">Home</a>
-    </div>
-    <div class="topnav-right" style="margin-right: 0.5rem">
-      <img
-        src="../../../assets/pics/circle-cropped.png"
-        width="50"
-        height="50"
-        style="border-radius: 55px"
-        class="d-inline-block align-top"
-        alt=""
-      />
-    </div>
-  </nav>
-
-  <!--menu-->
-
-  <div style="padding-top: 2rem; padding-bottom: 1rem; margin-left: 7rem">
-    <div class="header">Profile</div>
+<nav id="adminnav" class="navbar navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">
+    <img
+      src="../.././assets/pics/HD logo.png"
+      width="40"
+      height="40"
+      class="d-inline-block align-top"
+      alt=""
+    />
+  </a>
+  <span class="TDO" style="color: rgb(0, 156, 158); margin-right: auto"
+    >TutorDevOps</span
+  >
+  <div class="right">
+    <a style="color: whitesmoke; margin-right: 3rem">Home</a>
   </div>
+  <div class="topnav-right" style="margin-right: 0.5rem">
+    <img
+      src="../../../assets/pics/circle-cropped.png"
+      width="50"
+      height="50"
+      style="border-radius: 55px"
+      class="d-inline-block align-top"
+      alt=""
+    />
+  </div>
+</nav>
 
-  <mat-sidenav-container class="sidenav-container">
-    <mat-sidenav
-      style="width: 10rem; background-color: rgb(54, 72, 80)"
-      #drawer
-      class="sidenav"
-      fixedInViewport
-      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-      [mode]="(isHandset$ | async) ? 'over' : 'side'"
-      [opened]="(isHandset$ | async) === false"
+<!--menu-->
+
+<div style="padding-top: 2rem; padding-bottom: 1rem; margin-left: 7rem">
+  <div class="header">Profile</div>
+</div>
+
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav
+    style="width: 10rem; background-color: rgb(54, 72, 80)"
+    #drawer
+    class="sidenav"
+    fixedInViewport
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="(isHandset$ | async) === false"
+  >
+    <mat-toolbar
+      style="
+        color: white;
+        text-align: center;
+        background-color: rgb(54, 72, 80);
+      "
+      >Menu</mat-toolbar
     >
-      <mat-toolbar
-        style="
-          color: white;
-          text-align: center;
-          background-color: rgb(54, 72, 80);
-        "
-        >Menu</mat-toolbar
+    <mat-nav-list style="margin-top: 1rem">
+      <a style="color: white; font-size: small" mat-list-item href="#"
+        ><i
+          style="font-size: medium; padding: 0.3rem"
+          class="fa fa-calendar-plus-o"
+          aria-hidden="true"
+        ></i
+        >Sessions</a
       >
-      <mat-nav-list style="margin-top: 1rem">
-        <a style="color: white; font-size: small" mat-list-item href="#"
-          ><i
-            style="font-size: medium; padding: 0.3rem"
-            class="fa fa-calendar-plus-o"
-            aria-hidden="true"
-          ></i
-          >Sessions</a
-        >
-        <br />
-        <a [routerLink]="['/students']" style="color: white; font-size: small" mat-list-item href="#"
-          ><i
-            style="font-size: medium; padding: 0.3rem"
-            class="fa fa-users"
-            aria-hidden="true"
-          ></i
-          >Students</a
-        >
-        <br />
-        <a [routerLink]="['/messages']" style="color: white; font-size: small" mat-list-item href="#"
-          ><i
-            style="font-size: medium; padding: 0.3rem"
-            class="fa fa-envelope"
-            aria-hidden="true"
-          ></i
-          >Messages</a
-        >
-        <br />
-        <a style="color: white; font-size: small" mat-list-item href="#"
-          ><i
-            style="font-size: medium; padding: 0.3rem"
-            class="fa fa-list"
-            aria-hidden="true"
-          ></i
-          >Attendance</a
-        >
-        <br />
-        <a [routerLink]="['/sessioncontent']" style="color: white; font-size: small" mat-list-item href="#"
-          ><i
-            style="font-size: medium; padding: 0.3rem"
-            class="fa fa-file"
-            aria-hidden="true"
-          ></i
-          >Session Content</a
-        >
-        <br />
-        <a [routerLink]="['/resourcecategory']" style="color: white; font-size: small" mat-list-item href="#"
-          ><i
-            style="font-size: medium; padding: 0.3rem"
-            class="fa fa-users"
-            aria-hidden="true"
-          ></i
-          >Resources</a
-        >
-      </mat-nav-list>
-    </mat-sidenav>
-    <mat-sidenav-content>
-      <!-- Add Content Here -->
-    </mat-sidenav-content>
-  </mat-sidenav-container>
-
-  <nb-layout>
-    <nb-layout-column>
-      <div
-        style="
-          box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
-            0 6px 6px rgba(0, 0, 0, 0.23);
-          width: 80%;
-          margin-left: 12rem;
-          border-radius: 15px;
-          height: 55%;
-        "
+      <br />
+      <a
+        [routerLink]="['/students']"
+        style="color: white; font-size: small"
+        mat-list-item
+        href="#"
+        ><i
+          style="font-size: medium; padding: 0.3rem"
+          class="fa fa-users"
+          aria-hidden="true"
+        ></i
+        >Students</a
       >
-        <br />
+      <br />
+      <a
+        [routerLink]="['/messages']"
+        style="color: white; font-size: small"
+        mat-list-item
+        href="#"
+        ><i
+          style="font-size: medium; padding: 0.3rem"
+          class="fa fa-envelope"
+          aria-hidden="true"
+        ></i
+        >Messages</a
+      >
+      <br />
+      <a style="color: white; font-size: small" mat-list-item href="#"
+        ><i
+          style="font-size: medium; padding: 0.3rem"
+          class="fa fa-list"
+          aria-hidden="true"
+        ></i
+        >Attendance</a
+      >
+      <br />
+      <a
+        [routerLink]="['/sessioncontent']"
+        style="color: white; font-size: small"
+        mat-list-item
+        href="#"
+        ><i
+          style="font-size: medium; padding: 0.3rem"
+          class="fa fa-file"
+          aria-hidden="true"
+        ></i
+        >Session Content</a
+      >
+      <br />
+      <a
+        [routerLink]="['/resourcecategory']"
+        style="color: white; font-size: small"
+        mat-list-item
+        href="#"
+        ><i
+          style="font-size: medium; padding: 0.3rem"
+          class="fa fa-users"
+          aria-hidden="true"
+        ></i
+        >Resources</a
+      >
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <!-- Add Content Here -->
+  </mat-sidenav-content>
+</mat-sidenav-container>
 
-        <div class="row">
-          <div class="col-md-6">
-            <a class="navbar-brand" href="#" style="margin-left: 6rem">
-              <img
-                src="../../../assets/pics/circle-cropped.png"
-                width="190"
-                height="190"
-                style="border-radius: 55px"
-                class="d-inline-block align-top"
-                alt=""
-              />
-            </a>
-            <div style="margin-left: 5.5rem; padding-top: 0.5rem">
-              <h6>Username: </h6>
+<nb-layout>
+  <nb-layout-column>
+    <div
+      style="
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
+          0 6px 6px rgba(0, 0, 0, 0.23);
+        width: 80%;
+        margin-left: 12rem;
+        border-radius: 15px;
+        height: 55%;
+      "
+    >
+      <br />
+
+      <div class="row">
+        <div class="col-md-6">
+          <a class="navbar-brand" href="#" style="margin-left: 6rem">
+            <img
+              src="../../../assets/pics/circle-cropped.png"
+              width="190"
+              height="190"
+              style="border-radius: 55px"
+              class="d-inline-block align-top"
+              alt=""
+            />
+          </a>
+          <div style="margin-left: 5.5rem; padding-top: 0.5rem">
+            <h6>Username:</h6>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="row" style="margin-top: 1rem">
+            <div class="col-md-6">
+              <h6>First Name: {{ tutor.tutorName }}</h6>
+              <h6>Email: {{ tutor.tutorEmail }}</h6>
+            </div>
+            <div class="col-md-6">
+              <h6>Surname: {{ tutor.tutorSurname }}</h6>
+              <h6>Phone: {{ tutor.tutorCell }}</h6>
             </div>
           </div>
+          <div>
+            <h6>About: {{ tutor.tutorAbout }}</h6>
+            <p></p>
+          </div>
 
-          <div class="col-md-6">
-            <div class="row" style="margin-top: 1rem">
-              <div class="col-md-6">
-                <h6>First Name: {{tutor.tutorName}} </h6>
-                <h6>Email:  {{tutor.tutorEmail}}</h6>
-              </div>
-              <div class="col-md-6">
-                <h6>Surname: {{tutor.tutorSurname}}</h6>
-                <h6>Phone: {{tutor.tutorCell}} </h6>
-              </div>
-            </div>
-            <div>
-              <h6>About: {{tutor.tutorAbout}}</h6>
-              <p>
-                
-              </p>
-            </div>
+          <div class="form-group">
+            <label
+              style="padding-right: 1rem; font-size: larger; font-weight: bold"
+              class="control-label"
+              >CV:</label
+            >
+            <button class="btn btn-primary">
+              <span class="glyphicon glyphicon-plus-sign"
+                ><i class="fa fa-arrow-circle-down" aria-hidden="true"></i
+              ></span>
+            </button>
+          </div>
+          <br />
 
-            <div class="form-group">
-              <label
-                style="
-                  padding-right: 1rem;
-                  font-size: larger;
-                  font-weight: bold;
-                "
-                class="control-label"
-                >CV:</label
-              >
-              <button class="btn btn-primary">
-                <span class="glyphicon glyphicon-plus-sign"
-                  ><i class="fa fa-arrow-circle-down" aria-hidden="true"></i
-                ></span>
-              </button>
-            </div>
-            <br />
+          <div style="margin-left: 2rem">
+            <button
+              (click)="openDialog()"
+              class="btn btn-info"
+              style="width: 6rem"
+            >
+              Edit
+            </button>
 
-            <div style="margin-left: 2rem">
-              <button
-                (click)="openDialog()"
-                class="btn btn-info"
-                style="width: 6rem"
-              >
-                Edit
-              </button>
+            <button
+              class="btn btn-primary"
+              style="font-size: medium; margin-left: 1rem"
+            >
+              Change password
+            </button>
 
-              <button
-                class="btn btn-primary"
-                style="font-size: medium; margin-left: 1rem"
-              >
-                Change password
-              </button>
-
-              <button
-                class="btn btn-danger"
-                (click)="delete()"
-                style="margin-left: 1rem; width: 6rem"
-              >
-                Delete
-              </button>
-            </div>
+            <button
+              class="btn btn-danger"
+              (click)="delete()"
+              style="margin-left: 1rem; width: 6rem"
+            >
+              Delete
+            </button>
           </div>
         </div>
       </div>
-    </nb-layout-column>
-  </nb-layout>
+    </div>
+  </nb-layout-column>
+</nb-layout>
 
-  <footer style="width: 100%; bottom: 0; position: absolute">
-    <nav id="foot" class="navbar">
-      <a class="navbar-brand" href="#"> </a>
-      <span class="TDO" style="margin-right: auto"> &lt; TDO &gt;</span>
-      <div class="topnav-right">
-        <a href="#"> <i class="fa fa-facebook"></i> </a>
-        <a href="#"> <i class="fa fa-instagram"></i> </a>
-        <a href="#"> <i class="fa fa-twitter"></i> </a>
-        <a>TutorDevOps@gmail.com</a>
-      </div>
-    </nav>
-  </footer>
+<footer style="width: 100%; bottom: 0; position: absolute">
+  <nav id="foot" class="navbar">
+    <a class="navbar-brand" href="#"> </a>
+    <span class="TDO" style="margin-right: auto"> &lt; TDO &gt;</span>
+    <div class="topnav-right">
+      <a href="#"> <i class="fa fa-facebook"></i> </a>
+      <a href="#"> <i class="fa fa-instagram"></i> </a>
+      <a href="#"> <i class="fa fa-twitter"></i> </a>
+      <a>TutorDevOps@gmail.com</a>
+    </div>
+  </nav>
+</footer>

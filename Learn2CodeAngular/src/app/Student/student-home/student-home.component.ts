@@ -28,12 +28,13 @@ export class StudentHomeComponent implements OnInit {
   thisStudent: any;
 
 
-  userId:any;
-  id:any;
-  courses:any=[];
-  hasCourse:any=false;
-thisStudent:any;
+//   userId:any;
+//   id:any;
+//   courses:any=[];
+//   hasCourse:any=false;
+// thisStudent:any;
 // courseContentCat:any={};
+
 courseSubCatID:any;
   constructor(
     private breakpointObserver: BreakpointObserver,
@@ -95,4 +96,3 @@ courseSubCatID:any;
 //   this.route.navigate(['/specificcoursedisplay']);
 // }
    
-}

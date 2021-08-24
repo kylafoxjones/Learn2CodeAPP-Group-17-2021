@@ -56,6 +56,8 @@ export class TutorService {
   //#region 
   sessionInstance:any;
   //#endregion
+
+  tutorToEdit:any;
   constructor(private http: HttpClient) {}
   
   //#region resource cats
@@ -209,4 +211,18 @@ export class TutorService {
     return this.http.delete(this.apiUrl + 'DeleteAttendance/' + BookingInstanceId);
   }
   //#endregion
+
+ editTutor(formdata): Observable<any>{
+  return this.http.put(this.apiUrl + 'updateTutor', formdata);
+ }
+
+ applyToBecomeTutor(formdata): Observable<any>{
+  return this.http.post(this.apiUrl + 'TutorApplication', formdata);
+ }
+
+ getApplicationModules() {
+  //needs userId
+  return this.http.get(this.apiUrl + 'GetAllModules');
 }
+}
+

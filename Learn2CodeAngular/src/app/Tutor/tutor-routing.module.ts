@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ApplicationComponent } from './application/application.component';
 import { AttendanceComponent } from './attendance/attendance.component';
 import { GroupSessionContentComponent } from './group-session-content/group-session-content.component';
 import { SpecificSessionComponent } from './group-session-content/specific-session/specific-session.component';
@@ -27,6 +28,10 @@ const routes: Routes = [
         {
           path: 'maintain',
           component: MaintainComponent,
+        },
+        {
+          path: 'application',
+          component: ApplicationComponent,
         },
         // {
         //   path: 'sessions',
