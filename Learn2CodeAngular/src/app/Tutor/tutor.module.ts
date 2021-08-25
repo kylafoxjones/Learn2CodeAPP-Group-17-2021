@@ -39,6 +39,7 @@ import { CreateSessionComponent } from './session/create-session/create-session.
 //import { SessionsComponent } from './sessions/sessions.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MaintainSessionComponent } from './session/maintain-session/maintain-session.component';
 //import { FormsModule } from '@angular/forms';
 
 
@@ -64,6 +65,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     ApplicationComponent,
     SessionComponent,
     CreateSessionComponent,
+    MaintainSessionComponent,
     //SessionsComponent,
     
  

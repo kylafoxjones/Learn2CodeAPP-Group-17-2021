@@ -99,20 +99,20 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td><a href="#">Angular</a></td>
-                <td>INF354</td>
-                <td>11/02/2021</td>
-                <td>4pm</td>
-                <td><a href="#">https://us04web.zoom.us/j/731950</a></td>
-                <td>Ongoing</td>
+              <tr *ngFor="let item of groupSessions">
+                <td><a href="#">{{item.title}}</a></td>
+                <td>{{item.module.moduleCode}}</td>
+                <td>{{item.date}}</td>
+                <td>{{item.sessionTime.startTime}} - {{item.sessionTime.endTime}}</td>
+                <td><a href="#">{{item.link}}</a></td>
+                <td>{{item.bookingStatus.bookingStatus}}</td>
                 <th>
-                  <button class="btn btn-info">
+                  <button (click)= "editSession(item)" class="btn btn-info">
                     <i class="fa fa-pencil"></i>
                   </button>
                 </th>
                 <th>
-                  <button class="btn btn-danger">
+                  <button (click)= "deleteSession(item)" class="btn btn-danger">
                     <i class="fa fa-trash"></i>
                   </button>
                 </th>
