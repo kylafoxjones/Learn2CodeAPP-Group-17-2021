@@ -11,7 +11,8 @@ import { ResourceCategoryComponent } from './resource-category/resource-category
 import { SpecificResourceComponent } from './resource-category/specific-resource/specific-resource.component';
 
 import { SentRecievedMessagesComponent } from './sent-recieved-messages/sent-recieved-messages.component';
-//import { SessionsComponent } from './sessions/sessions.component';
+import { SessionComponent } from './session/session.component';
+
 import { TutorComponent } from './tutor.component';
 
 const routes: Routes = [
@@ -33,10 +34,10 @@ const routes: Routes = [
           path: 'application',
           component: ApplicationComponent,
         },
-        // {
-        //   path: 'sessions',
-        //   component: SessionsComponent,
-        // },
+        {
+          path: 'sessions',
+          component: SessionComponent,
+        },
         {
           path: 'students',
           component: MessagesComponent,

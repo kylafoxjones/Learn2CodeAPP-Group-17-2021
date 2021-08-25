@@ -182,11 +182,11 @@ export class StudentService {
     return this.http.get(this.apiUrl + 'Getcourseontent/' + id);
   }
 
-  getCourseContentVideoDisplay(id: number) {
-    return this.http.get(this.apiUrl + 'Video/' + id, {
-      responseType: 'blob',
-    });
-  }
+  // getCourseContentVideoDisplay(id: number) {
+  //   return this.http.get(this.apiUrl + 'Video/' + id, {
+  //     responseType: 'blob',
+  //   });
+  // }
 
     getCourseContentVideoDisplay(id:number) {
       return this.http.get(
@@ -225,9 +225,9 @@ export class StudentService {
     }
     //#end of region
    
-  getCourseContentFileDisplay(id: number) {
-    return this.http.get(this.apiUrl + 'DownloadRContentPdf/' + id, {
-      responseType: 'blob',
-    });
-  }
+  // getCourseContentFileDisplay(id: number) {
+  //   return this.http.get(this.apiUrl + 'DownloadRContentPdf/' + id, {
+  //     responseType: 'blob',
+  //   });
+  // }
 }

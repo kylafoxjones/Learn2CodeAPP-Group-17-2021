@@ -227,5 +227,25 @@ export class TutorService {
   //needs userId
   return this.http.get(this.apiUrl + 'GetAllModules');
 }
+
+
+
+getSessionTime(){
+  return this.http.get(this.apiUrl + 'GetSessionTime');
+  
+}
+
+getSessionType(){
+  return this.http.get(this.apiUrl + 'GetsessionType');
+}
+
+getModule(){
+  return this.http.get(this.apiUrl + 'GetTutorModule/' + 7);
+  
+}
+
+createSession(session){  
+  return this.http.post(this.apiUrl + 'CreateBooking', session);
+}
 }
 

@@ -34,7 +34,11 @@ import { AttendanceComponent } from './attendance/attendance.component';
 import { TakeAttendanceComponent } from './attendance/take-attendance/take-attendance.component';
 import { MaintainTutorComponent } from './home/maintain-tutor/maintain-tutor.component';
 import { ApplicationComponent } from './application/application.component';
+import { SessionComponent } from './session/session.component';
+import { CreateSessionComponent } from './session/create-session/create-session.component';
 //import { SessionsComponent } from './sessions/sessions.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 //import { FormsModule } from '@angular/forms';
 
 
@@ -58,6 +62,8 @@ import { ApplicationComponent } from './application/application.component';
     TakeAttendanceComponent,
     MaintainTutorComponent,
     ApplicationComponent,
+    SessionComponent,
+    CreateSessionComponent,
     //SessionsComponent,
     
  
@@ -66,6 +72,8 @@ import { ApplicationComponent } from './application/application.component';
     CommonModule,
     ChartsModule,
     TutorRoutingModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     NbLayoutModule,
     NbSidebarModule.forRoot(),
     NbTabsetModule,
