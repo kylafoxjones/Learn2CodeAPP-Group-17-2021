@@ -16,6 +16,9 @@ export class SubscriptionComponent implements OnInit {
   subscriptionList: any = [];
   subscription: any;
   search;
+  userID:any;
+  Admin:any;
+
   constructor(
     public dialog: MatDialog,
     private service: AdminService,
@@ -85,7 +88,14 @@ export class SubscriptionComponent implements OnInit {
   }
 
   getAdminId() {
-    this.service.adminId = 1;
+   // this.service.adminId = 1;
     //function on service using the api function
+
+    this.userID = localStorage.getItem('id');
+    console.log(this.userID);
+    
+    this.Admin = this.service.getAdminLoggedIn();
+     console.log("admin user",this.Admin);
+     this.service.adminId = this.Admin.id;
   }
 }

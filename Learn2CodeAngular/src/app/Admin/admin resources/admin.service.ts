@@ -457,4 +457,8 @@ export class AdminService {
     return this.http.put(this.apiUrl + 'EditContent', formdata);
 }
   //#endregion
+
+  getAdminLoggedIn(){
+    return this.http.get(this.apiUrl + 'GetAdmin');
+  }
 }

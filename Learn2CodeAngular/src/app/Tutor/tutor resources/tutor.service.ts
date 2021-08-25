@@ -58,6 +58,8 @@ export class TutorService {
   //#endregion
 
   tutorToEdit:any;
+
+  tutorId:any;
   constructor(private http: HttpClient) {}
   
   //#region resource cats

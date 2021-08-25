@@ -45,7 +45,6 @@ export class HomeComponent implements OnInit {
   delete() {
     Swal.fire({
       title: 'Are you sure you want to change your password',
-
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
@@ -67,11 +66,8 @@ export class HomeComponent implements OnInit {
       // Swal.fire({
       //   icon: 'error',
       //   title: 'Unable to save changes',
-
       //   confirmButtonText: 'Ok',
       // });
     });
   }
-
-
 }
