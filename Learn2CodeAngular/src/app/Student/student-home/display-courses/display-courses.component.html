@@ -102,7 +102,8 @@ Name:                        {{item.fileName}}
                   </div>
                   <div style="margin-top: 2.3rem">
 
-                <button (click)="DownloadPDF(item)" style="width: 7rem" class="btn btn-outline-info">Download</button>
+                <button (click)="DownloadPDF(item)"  class="btn btn-outline-info">
+                  <i class="fa fa-download"></i>  Download</button>
               </div>
             </div>
           </div>
@@ -132,7 +133,7 @@ Name:                        {{item.fileName}}
                 margin-left: 0.5rem;
               ">
                   <h5 style="margin-left: 2.5rem; color: white">
-                    Notes
+                    Video
                   </h5>
                   <hr style="width: 125%; color: white" />
                   </div>
@@ -141,14 +142,19 @@ Name:                        {{item.fileName}}
                       <h6 style="color: white"> {{ item.courseSubCategory.courseSubCategoryName }}  </h6>
                       <p style="color: white">
   Name:                        {{item.fileName}}
-                        <br />
-                        <br />
+      <br/>                       
                      
                       </p>
                     </div>
                     <div style="margin-top: 2.3rem">
   
-                  <button (click)="WatchVid(item)" style="width: 7rem" class="btn btn-outline-info">Download</button>
+                  <button (click)="WatchVid(item)" class="btn btn-outline-info">
+                    <i class="fa fa-play"></i> Watch</button>
+                  
+                <video *ngIf="showVid"  width="240" height="150" controls [src]="prev_url" >
+                        
+                  Your browser does not support the video tag.
+                </video>
                 </div>
               </div>
             </div>

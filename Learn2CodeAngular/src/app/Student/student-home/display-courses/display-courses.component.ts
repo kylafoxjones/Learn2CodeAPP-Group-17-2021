@@ -90,17 +90,17 @@ for (let i=0;this.course.length;i++){
 
 
   DownloadPDF(obj) {
-    
+    console.log(obj);
      this.StudentService.getCourseContentFileDisplay(obj.id).subscribe((blob) => {
        console.log("this is blob: ",blob);
-     saveAs(blob, "Notes.pdf");
+     saveAs(blob, obj.fileName);
     });   
   
   }
 
-  WatchVid(id){
+  WatchVid(obj){
     this.showVid=true;
-    this.StudentService.getCourseContentVideoDisplay(id).subscribe((res) => {
+    this.StudentService.getCourseContentVideoDisplay(obj.id).subscribe((res) => {
       console.log(res);
       var URL = window.URL;
       this.prev_url = this.sanitizer.bypassSecurityTrustUrl(URL.createObjectURL(res));
