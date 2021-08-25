@@ -44,7 +44,9 @@ export class LoginCompComponent implements OnInit {
         this.route.navigate(['/studenthomepage/studenthome']);
       } else if ((result.type == 'Tutor')) {
         this.route.navigate(['/tutorhomepage/tutorhome']);
-      } else this.route.navigate(['/adminhomepage/adminhome']);
+      } else if ((result.type == 'Admin')) {
+        this.route.navigate(['/adminhomepage/adminhome']);
+      }
     });
   }
   openForget(){

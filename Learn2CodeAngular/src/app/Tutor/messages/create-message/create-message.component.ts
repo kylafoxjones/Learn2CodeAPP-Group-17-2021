@@ -18,6 +18,7 @@ export class CreateMessageComponent implements OnInit {
   // these wont need to exist below when there is proper functionality to get the tutor thats signed in
   senderId: any;
   tutorId: any;
+  tutor: any = {};
 
   constructor(
     private router: Router,
@@ -34,8 +35,15 @@ export class CreateMessageComponent implements OnInit {
     //need to get the userId of the tutor that is logged in
     //it will then be used in the funx below as "SenderId" to send to api
     //maybe get the entire object of tutor
-    this.senderId = '52a9547b-4255-4152-8cd0-a9fae9e71746';
-    this.tutorId = 6;
+    // this.senderId = '52a9547b-4255-4152-8cd0-a9fae9e71746';
+    //this.tutorId = 6;
+    this.senderId = localStorage.getItem('id');
+    this.service.getTutor(this.senderId).subscribe((result) => {
+      this.tutor = result;
+      console.log('the tutor', this.tutor);
+      this.tutorId = this.tutor.id;
+      console.log('the tutor id', this.tutorId);
+    });
   }
 
   sendMessage() {

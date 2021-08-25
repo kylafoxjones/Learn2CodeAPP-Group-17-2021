@@ -5,7 +5,7 @@ import { map, shareReplay } from 'rxjs/operators';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { LoginService } from 'src/app/Login/login.service';
-import {MatMenuModule} from '@angular/material/menu';
+import { MatMenuModule } from '@angular/material/menu';
 import { StudentService } from '../Student resources/student.service';
 
 @Component({
@@ -21,14 +21,20 @@ export class StudentHomeComponent implements OnInit {
       shareReplay()
     );
 
+  userId: any;
+  id: any;
+  courses: any = [];
+  hasCourse: any = false;
+  thisStudent: any;
 
 
-  userId:any;
-  id:any;
-  courses:any=[];
-  hasCourse:any=false;
-thisStudent:any;
+//   userId:any;
+//   id:any;
+//   courses:any=[];
+//   hasCourse:any=false;
+// thisStudent:any;
 // courseContentCat:any={};
+
 courseSubCatID:any;
   constructor(
     private breakpointObserver: BreakpointObserver,
@@ -39,8 +45,7 @@ courseSubCatID:any;
     private StudentService: StudentService
   ) {}
 
-  ngOnInit(){
-
+  ngOnInit() {
     this.getStudentt();
   //  this.courseContentCat=this.StudentService.course;
   
@@ -52,43 +57,36 @@ courseSubCatID:any;
     this.route.navigate(['/loginhomepage/login']);
   };
 
-
-
-  
   getStudentt() {
     this.userId = localStorage.getItem('id');
     console.log(this.userId);
-     this.StudentService.getStudent(this.userId).subscribe((result) => {
-       this.thisStudent = result;
+    this.StudentService.getStudent(this.userId).subscribe((result) => {
+      this.thisStudent = result;
       // console.log('student info', this.StudentService.student);
-     //  this.thisStudent=this.StudentService.student;
-       //console.log(this.StudentService.student);
-       console.log(this.thisStudent);
-     this.id=this.thisStudent.id;
-     console.log( this.id);
+      //  this.thisStudent=this.StudentService.student;
+      //console.log(this.StudentService.student);
+      console.log(this.thisStudent);
+      this.id = this.thisStudent.id;
+      console.log(this.id);
 
-     this.StudentService.getStudentCourses(this.id).subscribe((result) => {
-      this.courses = result;
-      console.log('student courses', this.courses);
-     //console.log("test ",this.courses[0].courseFolderLine[0].courseSubCategory.description);
+      this.StudentService.getStudentCourses(this.id).subscribe((result) => {
+        this.courses = result;
+        console.log('student courses', this.courses);
+        //console.log("test ",this.courses[0].courseFolderLine[0].courseSubCategory.description);
 
-      if (this.courses.length == 0)
-      {
-        this.hasCourse=false;
-      }
-        else {
-        this.hasCourse=true;
-      }
-        console.log("has Course ",this.hasCourse);
+        if (this.courses.length == 0) {
+          this.hasCourse = false;
+        } else {
+          this.hasCourse = true;
+        }
+        console.log('has Course ', this.hasCourse);
+      });
     });
-     });
+  }
 
- 
-
-    }
-
-profile(){
-  this.route.navigate(['/profile']);
+  profile() {
+    this.route.navigate(['/profile']);
+  }
 }
 // specificCourse(obj){
 //   console.log("course is", obj);
@@ -98,4 +96,3 @@ profile(){
 //   this.route.navigate(['/specificcoursedisplay']);
 // }
    
-}

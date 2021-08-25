@@ -32,8 +32,10 @@ export class SentRecievedMessagesComponent implements OnInit {
     // this fux gets the id of the student that is logged in
     //it is needed so the api knows whos messages it should pull from the db
     //right now we hard coding this
-    this.studentID = '02174cf0–9412–4cfe - afbf - 59f706d72cf6';
-    this.recieverID = '02174cf0–9412–4cfe - afbf - 59f706d72cf6';
+    //  this.studentID = '02174cf0–9412–4cfe - afbf - 59f706d72cf6';
+    //this.recieverID = '02174cf0–9412–4cfe - afbf - 59f706d72cf6';
+    this.studentID = localStorage.getItem('id');
+    this.recieverID = localStorage.getItem('id');
   }
 
   getMessagesSent() {

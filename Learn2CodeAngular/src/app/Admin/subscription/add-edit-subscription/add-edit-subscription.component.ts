@@ -33,6 +33,7 @@ export class AddEditSubscriptionComponent implements OnInit {
   ngOnInit() {
     this.getSessionTypeList();
 
+
     console.log(this.placeholder);
     // getting the object placeholder and its values from the course ts
     this.data.SubscriptionName = this.placeholder.subscriptionName;

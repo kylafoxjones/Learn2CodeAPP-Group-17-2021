@@ -82,18 +82,21 @@
 <!-- <h1>{{ data.id }}</h1> -->
 <div style="margin: auto; padding-top: 1rem; text-align: center">
   <button
+  [disabled]="name.invalid || password.invalid"
     (click)="submitCreateTutor()"
     style="width: 6rem"
     class="btn btn-info"
   >
     Submit
   </button>
-  <button
+  <button (click)="cancel()"
     [mat-dialog-close]
     style="margin-left: 2rem; width: 6rem"
     class="btn btn-danger"
-    [disabled]="name.invalid || password.invalid"
+    
   >
     Cancel
   </button>
 </div>
+
+<!-- [disabled]="name.invalid || password.invalid" -->

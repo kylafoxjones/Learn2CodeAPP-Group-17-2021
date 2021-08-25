@@ -11,20 +11,27 @@
   <span class="TDO" style="color: rgb(0, 156, 158); margin-right: auto"
     >TutorDevOps</span
   >
-  <div class="right" routerLink="/adminhome">
-    <a style="color: whitesmoke; margin-right: 3rem">Home</a>
-  </div>
   <div class="topnav-right">
-    <div class="dot">A</div>
+    <a>Home</a>
+  </div>
+  <div class="topnav-right" style="margin-right: 0.5rem">
+    <img
+      src="../../../assets/pics/circle-cropped.png"
+      width="50"
+      height="50"
+      style="border-radius: 55px"
+      class="d-inline-block align-top"
+      alt=""
+    />
   </div>
 </nav>
 
-<div style="padding-top: 2rem; padding-bottom: 2rem">
-  <div class="header">List of course content files</div>
-</div>
-
 <nb-layout>
   <nb-layout-column>
+    <div style="padding-top: 2rem; padding-bottom: 1rem">
+      <div class="header">Attendance</div>
+    </div>
+
     <div
       style="
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
@@ -35,9 +42,10 @@
       "
     >
       <br />
+
       <div class="input-group rounded" style="width: 30%; padding-left: 6rem">
         <input
-        [(ngModel)]="search"
+          [(ngModel)]="search"
           type="search"
           class="form-control rounded"
           placeholder="Search"
@@ -45,37 +53,47 @@
           aria-describedby="search-addon"
         />
         <span>
-          <button class="btn btn-info"><i class="fa fa-search"></i></button>
+          <button class="btn btn-primary">
+            <i class="fa fa-search"></i>
+          </button>
         </span>
       </div>
+
       <br />
+      <br />
+
       <table
         class="table table-hover"
-        style="width: 80%; margin: auto; padding-top: 2rem"
+        style="width: 80%; margin: auto; padding-top: 3.5rem"
       >
         <thead>
           <tr>
-            <th scope="col">Content name</th>
-            <th scope="col">Category name</th>
-            <th scope="col">Content type</th>
+            <th scope="col">Session Title</th>
+            <th scope="col">Module</th>
+            <th scope="col">Date</th>
+            <th scope="col"></th>
             <th scope="col"></th>
             <th scope="col"></th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let item of contentList | filter: search">
-            <td>{{ item.fileName }}</td>
-            <td>{{ coursecat.courseSubCategoryName }}</td>
-            <td>{{ item.contentType.contentTypeName }}</td>
-
+          <tr *ngFor="let item of attendanceList  | filter: search">
+            <td>{{ item.title }}</td>
+            <td>{{ item.module.moduleCode }}</td>
+            <td>{{ item.date }}</td>
             <td>
-              <button (click)="openEditDialog(item)" class="btn btn-primary">
-                <i class="fa fa-pencil"></i>
+              <button (click)="openDialog(item)" class="btn btn-success">
+                <i class="fa fa-plus" aria-hidden="true"></i>
               </button>
             </td>
             <td>
-              <button (click)="delete(item.id)" class="btn btn-danger">
-                <i class="fa fa-trash"></i>
+              <button (click)="openDialog(item)" class="btn btn-primary">
+                <i class="fa fa-pencil" aria-hidden="true"></i>
+              </button>
+            </td>
+            <td>
+              <button (click)="delete(item)" class="btn btn-danger">
+                <i class="fa fa-trash" aria-hidden="true"></i>
               </button>
             </td>
           </tr>
@@ -105,29 +123,15 @@
         </ul>
       </nav>
     </div>
-    <br />
-    <div style="padding: 0.4rem; margin-left: 3rem">
-      <button
-        style="margin-left: 8rem; width: 11.5rem"
-        (click)="openDialog()"
-        class="btn btn-info"
-      >
-        Add Course Content
-      </button>
-
-      <button
-        [routerLink]="['/coursecontentcategory']"
-        style="margin-left: 2rem; width: 11.5rem"
-        class="btn btn-info"
-      >
-        Back To Categories
-      </button>
-     
-    </div>
   </nb-layout-column>
 </nb-layout>
+
 <footer>
-  <nav id="foot" class="navbar">
+  <nav
+    id="foot"
+    class="navbar"
+    style="width: 100%; position: absolute; bottom: 0"
+  >
     <a class="navbar-brand" href="#"> </a>
     <span class="TDO" style="margin-right: auto"> &lt; TDO &gt;</span>
     <div class="topnav-right">

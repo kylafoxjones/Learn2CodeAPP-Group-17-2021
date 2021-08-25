@@ -11,8 +11,8 @@
   <span class="TDO" style="color: rgb(0, 156, 158); margin-right: auto"
     >TutorDevOps</span
   >
-  <div class="right">
-    <a routerLink="/adminhome" style="color: whitesmoke; margin-right: 3rem">Home</a>
+  <div class="right" routerLink="/adminhome"  >
+    <a style="color: whitesmoke; margin-right: 3rem">Home</a>
   </div>
   <div class="topnav-right">
     <div class="topnav-right">
@@ -70,7 +70,7 @@
         </thead>
         <tbody>
           <tr *ngFor="let item of applications | filter: search">
-            <td (click)="navigateToApplication(item.id)">
+            <td (click)="navigateToApplication(item)">
               {{ item.tutorName }}
             </td>
             <td>{{ item.tutorSurname }}</td>

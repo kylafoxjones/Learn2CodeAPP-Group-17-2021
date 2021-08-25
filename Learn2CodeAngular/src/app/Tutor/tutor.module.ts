@@ -30,7 +30,12 @@ import { SpecificSessionComponent } from './group-session-content/specific-sessi
 import { ResourceComponent } from './resource/resource.component';
 import { AddEditResourceComponent } from './resource-category/add-edit-resource/add-edit-resource.component';
 import { SpecificResourceComponent } from './resource-category/specific-resource/specific-resource.component';
-
+import { AttendanceComponent } from './attendance/attendance.component';
+import { TakeAttendanceComponent } from './attendance/take-attendance/take-attendance.component';
+import { MaintainTutorComponent } from './home/maintain-tutor/maintain-tutor.component';
+import { ApplicationComponent } from './application/application.component';
+//import { SessionsComponent } from './sessions/sessions.component';
+//import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -49,6 +54,11 @@ import { SpecificResourceComponent } from './resource-category/specific-resource
     ResourceComponent,
     AddEditResourceComponent,
     SpecificResourceComponent,
+    AttendanceComponent,
+    TakeAttendanceComponent,
+    MaintainTutorComponent,
+    ApplicationComponent,
+    //SessionsComponent,
     
  
   ],

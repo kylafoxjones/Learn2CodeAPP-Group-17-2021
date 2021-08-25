@@ -21,24 +21,29 @@ export class TutorApplicationComponent implements OnInit {
   constructor(
     public dialog: MatDialog,
     private service: AdminService,
-    private router: Router
+    private router: Router,
+    
   ) {}
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.getAllTutorApplications();
   }
 
-  navigateToApplication(id: number) {
-    this.service.getTutorApplicationToLoad(id).subscribe((result) => {
-      this.service.application = result;
+  navigateToApplication(obj) {
+   // this.service.getTutorApplicationToLoad(id).subscribe((result) => {
+      this.service.application = obj;
       console.log('the applicant chosen',  this.service.application);
       const dialogRef = this.dialog.open(AcceptRejectApplicationComponent, {
         width: '350px',
       });
       dialogRef.afterClosed().subscribe((result) => {
         this.getAllTutorApplications();
+        //window.location.reload();
       });
-    });
+      this.getAllTutorApplications();
+    // });
+   // this.getAllTutorApplications();
+   // window.location.reload();
   }
 
   getAllTutorApplications() {
