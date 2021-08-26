@@ -9,6 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @Component({
   selector: 'app-feedback-report',
@@ -24,6 +25,11 @@ export class FeedbackReportComponent implements OnInit {
     this.chart.ngOnChanges({});
    }
 
+
+   //pagination
+   page1:number = 1;
+   totalLength1:any;
+   //list
   SessionList:any=[];
   FeedbackList:any=[];
   BookingInstanceID:any[] = [];
@@ -81,6 +87,7 @@ this.ID = this.BookingInstanceID[0];
 this.TutorId = this.BookingInstanceID[1];
 this.reportService.getFeedbackList(this.ID).subscribe((result) =>{
   this.FeedbackList = result;
+  this.totalLength1 = this.FeedbackList.length;
 
 })
 

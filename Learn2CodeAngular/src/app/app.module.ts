@@ -11,11 +11,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NbThemeModule, NbLayoutModule, NbSidebarModule } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { ChartsModule } from 'ng2-charts';
-import { JwtModule } from "@auth0/angular-jwt";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { JwtModule } from "@auth0/angular-jwt";
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { JwtModule } from '@auth0/angular-jwt';
 
 
 export function tokenGetter() {

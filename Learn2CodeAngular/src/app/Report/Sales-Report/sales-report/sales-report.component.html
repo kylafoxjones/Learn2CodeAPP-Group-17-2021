@@ -55,7 +55,7 @@
         <div style="margin-top: 1rem;margin-right: 1rem;">
        <button (click)="DownloadPDF();x()" class="btn btn-info">Generate PDF</button>
        <button (click)="RedirectReportHome()" style="margin-left: 1rem;" class="btn btn-primary">Report Home</button>
-       <button  style="margin-left: 1rem;" class="btn btn-secondary">Export</button>
+       <button (click)="exportExcel();" style="margin-left: 1rem;" class="btn btn-secondary">Export</button>
     </div>
     </div>
 </div>
@@ -78,7 +78,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let item of SubscriptionReportTable">
+            <tr *ngFor="let item of SubscriptionReportTable  | paginate: { itemsPerPage: 5, currentPage: page,totalItems:totalLength }">
               <td>{{item.fullName}}</td>
               <td>{{item.date}}</td>
               <td>{{item.amount}}</td>
@@ -89,26 +89,11 @@
            
           </tbody>
         </table>
+      <br>
+        <pagination-controls style=" padding-left: 0px !important; display:flex;float: right" (pageChange)="page = $event"></pagination-controls>
+       
         <br>
-        <nav aria-label="Page navigation example " style="margin-left: 75%;padding-bottom: 0.5rem;">
-            <ul class="pagination">
-              <li class="page-item">
-                <a class="page-link" href="#" aria-label="Previous">
-                  <span aria-hidden="true">&laquo;</span>
-                  <span class="sr-only">Previous</span>
-                </a>
-              </li>
-              <li class="page-item"><a class="page-link" href="#">1</a></li>
-              <li class="page-item"><a class="page-link" href="#">2</a></li>
-              <li class="page-item"><a class="page-link" href="#">3</a></li>
-              <li class="page-item">
-                <a class="page-link" href="#" aria-label="Next">
-                  <span aria-hidden="true">&raquo;</span>
-                  <span class="sr-only">Next</span>
-                </a>
-              </li>
-            </ul>
-          </nav>
+       <br>
   
   
   </div>
@@ -149,7 +134,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let item of SubscriptionSummary">
+                  <tr *ngFor="let item of SubscriptionSummary  | paginate: { itemsPerPage: 5, currentPage: page1,totalItems:totalLength1 }">
                     <td>{{item.subscription}}</td>
                     <td>{{item.amount}}</td>
                   </tr>
@@ -157,27 +142,14 @@
                  
                 </tbody>
               </table>
+              <br>
+              <pagination-controls style=" padding-left: 0px !important; display:flex;float: right" (pageChange)="page1 = $event"></pagination-controls>
+              <br>
+              <br>
             </div>
               <br>
-              <nav aria-label="Page navigation example " style="margin-left: 45%;padding-bottom: 0.5rem;">
-                  <ul class="pagination">
-                    <li class="page-item">
-                      <a class="page-link" href="#" aria-label="Previous">
-                        <span aria-hidden="true">&laquo;</span>
-                        <span class="sr-only">Previous</span>
-                      </a>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item">
-                      <a class="page-link" href="#" aria-label="Next">
-                        <span aria-hidden="true">&raquo;</span>
-                        <span class="sr-only">Next</span>
-                      </a>
-                    </li>
-                  </ul>
-                </nav>
+
+             
         
         
         </div>

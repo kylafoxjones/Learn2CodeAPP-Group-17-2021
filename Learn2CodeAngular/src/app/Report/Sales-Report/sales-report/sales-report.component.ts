@@ -14,7 +14,7 @@ import { NbLayoutColumnComponent } from '@nebular/theme';
 import Swal from 'sweetalert2';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
-import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @Component({
   selector: 'app-sales-report',
@@ -23,18 +23,22 @@ import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 })
 
 
+
 export class SalesReportComponent implements OnInit {
+
+  //pagination
+  totalLength:any;
+  page:number = 1;
+  page1:number = 1;
+  totalLength1:any;
+
 
   //object instance to send to service
   ObjectToSend: any = {};
   //object details
   Start:any;
   End:any;
-  
-
-  //graph
-  
- 
+  exportStud:any;
   
   //Lists
   SubscriptionReportTable: any = [];
@@ -47,6 +51,8 @@ export class SalesReportComponent implements OnInit {
    private ReportService : ReportingService
   ) { }
 
+
+    
 
   ngOnInit(): void {
     this.getSubscriptionSummaryData(),
@@ -71,7 +77,7 @@ export class SalesReportComponent implements OnInit {
         
         
         this.SubscriptionReportTable = result;
-       
+        this.totalLength = this.SubscriptionReportTable.length;
        
         console.log(this.SubscriptionReportTable);
 
@@ -83,6 +89,7 @@ export class SalesReportComponent implements OnInit {
     this.ReportService.GetSubscriptionSales().subscribe((result) =>{
       console.log(result);
       this.SubscriptionSummary = result;
+      this.totalLength1 = this.SubscriptionSummary.length;
       console.log(this.SubscriptionSummary);
   })
   }
@@ -94,13 +101,16 @@ export class SalesReportComponent implements OnInit {
       this.CourseGraph = result;
    
       console.log(this.CourseGraph);
-    })
-
-      
-
-   
+    })  
 }
 
+
+//Export to excel
+  exportExcel(){
+    this.ReportService.export(this.Start, this.End).subscribe((result) => {
+      saveAs(result, 'Subscription Sales'+'.xlsx');
+    })
+  }
 
   // options
   showXAxis = true;
@@ -139,3 +149,7 @@ export class SalesReportComponent implements OnInit {
     });     
   }
 }
+function saveAs(result: any, arg1: string) {
+  throw new Error('Function not implemented.');
+}
+
