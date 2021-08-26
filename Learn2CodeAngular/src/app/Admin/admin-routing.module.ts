@@ -46,13 +46,13 @@ const routes: Routes = [
       {
         path: 'degree',
         component: DegreeComponent,
-        canActivate: [AuthGuard, AdminGuard]
+        // canActivate: [AuthGuard, AdminGuard]
 
       },
       {
         path: 'module',
         component: ModuleComponent,
-        canActivate: [AuthGuard, AdminGuard]
+        // canActivate: [AuthGuard, AdminGuard]
 
       },
       {
@@ -74,7 +74,7 @@ const routes: Routes = [
       {
         path: 'student',
         component: StudentComponent,
-        canActivate: [AuthGuard, AdminGuard]
+        // canActivate: [AuthGuard, AdminGuard]
       },
       {
         path: 'tutor',
