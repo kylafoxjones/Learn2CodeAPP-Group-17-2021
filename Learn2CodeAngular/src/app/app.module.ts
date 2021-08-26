@@ -12,6 +12,8 @@ import { NbThemeModule, NbLayoutModule, NbSidebarModule } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { ChartsModule } from 'ng2-charts';
 import { JwtModule } from "@auth0/angular-jwt";
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { JwtModule } from "@auth0/angular-jwt";
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 
@@ -19,6 +21,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 export function tokenGetter() {
   return localStorage.getItem("token");
 }
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -40,6 +43,7 @@ export function tokenGetter() {
     NbLayoutModule,
     NbSidebarModule.forRoot(),
     NbEvaIconsModule,
+
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
@@ -48,6 +52,7 @@ export function tokenGetter() {
         authScheme: "Bearer "
       }
     }),
+      NgbModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

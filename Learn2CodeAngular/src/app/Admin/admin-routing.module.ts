@@ -1,6 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
 //import { AuthGuard } from '../Login/auth.guard';
+
+
+
 import { AdminComponent } from './admin.component';
 import {
   AuthGuard as AuthGuard
@@ -25,6 +29,7 @@ import { TutorComponent } from './tutor/tutor.component';
 import { AddEditUniversityComponent } from './university/add-edit-university/add-edit-university.component';
 import { UniversityComponent } from './university/university.component';
 import { AdminGuard } from './admin resources/guards/admin.guard';
+import { ReportHomeComponent } from '../Report/Home/report-home/report-home.component';
 
 
 const routes: Routes = [
@@ -124,8 +129,15 @@ const routes: Routes = [
         component: AcceptRejectApplicationComponent,
       },
       {
+
         path: 'createtutor',
         component: CreateTutorComponent,
+
+      },
+      {
+        path: 'report-home',
+        component: ReportHomeComponent,
+
       }
     ],
   },
