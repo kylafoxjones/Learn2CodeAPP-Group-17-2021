@@ -10,6 +10,7 @@ import { RegisterComponent } from './register/register.component';
 import { ProfileComponent } from './student-home/profile/profile.component';
 import { DisplayCoursesComponent } from './student-home/display-courses/display-courses.component';
 import { ViewResourcesComponent } from './view-resources/view-resources.component';
+import { ViewGroupSessionsComponent } from './view-group-sessions/view-group-sessions.component';
 
 const routes: Routes =  [
   
@@ -21,6 +22,10 @@ const routes: Routes =  [
       {
         path: 'registerstudent',
         component: RegisterComponent,
+      },
+      {
+        path: 'viewgroupsessions',
+        component: ViewGroupSessionsComponent,
       },
       {
         path: 'studenthome',

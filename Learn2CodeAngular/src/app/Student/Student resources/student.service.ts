@@ -235,5 +235,7 @@ export class StudentService {
   //   });
   // }
 
-  
+  getGroupSessions(id){
+    return this.http.get(this.apiUrl + 'GetMyGroupSessions/' + id);
+  }
 }
