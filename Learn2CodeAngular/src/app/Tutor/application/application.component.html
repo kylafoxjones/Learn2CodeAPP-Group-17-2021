@@ -1,0 +1,224 @@
+<nav class="navbar navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">
+    <img
+      src="../.././assets/pics/HD logo.png"
+      width="40"
+      height="40"
+      class="d-inline-block align-top"
+      alt=""
+    />
+  </a>
+  <span class="TDO" style="color: rgb(0, 156, 158); margin-right: auto"
+    >TutorDevOps</span
+  >
+  <div class="topnav-right">
+    <a>Home</a>
+    <a>About</a>
+    <a>Plans</a>
+    <a>Content</a>
+    <a>Online Store</a>
+    <a>Teach For TDO</a>
+  </div>
+</nav>
+<nb-layout>
+  <nb-layout-column>
+    <div class="row">
+      <div class="col-md-6" style="padding-top: 2rem">
+        <div
+          style="
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
+              0 6px 6px rgba(0, 0, 0, 0.23);
+            width: 80%;
+            margin: auto;
+            border-radius: 15px;
+            height: 55rem;
+          "
+        >
+          <h1 style="text-align: center">Process</h1>
+          <br />
+          <p style="font-size: medium; text-align: center; width: 100%">
+            Hi! We at TutordevOps are thrilled to see that you want to join our
+            team of amazing tutors. Our mission at TutorDevOps is to equip all
+            individuals with the necessary skills in order to thrive in this
+            ever changing technological world. If you believe you have the
+            expertise and passion to help us achieve this goal that is awesome!
+            <br />
+            <br />
+            <span style="text-decoration: underline">
+              The process of becoming a tutor is fairly simple.</span
+            >
+            <br />
+            <br />
+
+            1. Provide all the relevant details on the right
+            <br />
+            <br />
+            2. Make sure you upload a CV for our team to review
+            <br />
+            <br />
+            3. Sit back and relax our team will get back to you via email
+          </p>
+          <br />
+<br/>
+<br/>
+          <img
+            src="../.././assets/pics/Project_71-02.jpg"
+            style="height: 26rem; width: 28rem; margin-left: 6rem"
+            class="d-inline-block align-top"
+            alt=""
+          />
+        </div>
+      </div>
+      <div class="col-md-6" style="padding-top: 2rem">
+        <div
+          style="
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
+              0 6px 6px rgba(0, 0, 0, 0.23);
+            width: 80%;
+            margin: auto;
+            border-radius: 15px;
+            height: 55rem;
+          "
+        >
+          <h1 style="text-align: center">Application</h1>
+          <form class="example-form" style="padding-top: 1.5rem">
+            <mat-form-field class="example-full-width" appearance="outline">
+              <mat-label>First Name:</mat-label>
+              <input
+                type="text"
+                matInput
+                placeholder="John"
+                [(ngModel)]="data.name"
+                [ngModelOptions]="{ standalone: true }"
+              />
+            </mat-form-field>
+            <mat-form-field class="example-full-width" appearance="outline">
+              <mat-label>Surname: </mat-label>
+              <input
+                mdInput
+                type="text"
+                matInput
+                placeholder="Doe"
+                [(ngModel)]="data.surname"
+                [ngModelOptions]="{ standalone: true }"
+              />
+            </mat-form-field>
+            <mat-form-field class="example-full-width" appearance="outline">
+              <mat-label>Email:</mat-label>
+              <input
+                mdInput
+                type="email"
+                matInput
+                placeholder="JohnDoe@gmail.com"
+                [(ngModel)]="data.email"
+                [ngModelOptions]="{ standalone: true }"
+              />
+            </mat-form-field>
+            <mat-form-field class="example-full-width" appearance="outline">
+              <mat-label>Phone Number: </mat-label>
+              <input
+                mdInput
+                type=""
+                matInput
+                placeholder="+27"
+                [(ngModel)]="data.cell"
+                [ngModelOptions]="{ standalone: true }"
+              />
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width" appearance="outline">
+              <mat-label>About you: </mat-label>
+              <input
+                mdInput
+                type="text"
+                matInput
+                placeholder="I enjoy teaching."
+                [(ngModel)]="data.about"
+                [ngModelOptions]="{ standalone: true }"
+              />
+            </mat-form-field>
+            <div style="margin-left: 7rem">
+              <mat-form-field appearance="outline">
+                <mat-label>Module:</mat-label>
+                <mat-select (valueChange)="selectModule($event)">
+                  <mat-option *ngFor="let item of moduleList" [value]="item.id">
+                    {{ item.moduleCode }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <br />
+            <div class="row">
+              <div class="col-md-6">
+                <div
+                  style="
+                    margin-left: 2.5rem;
+                    padding-bottom: 0.7rem;
+                    margin-top: 0.5rem;
+                  "
+                ></div>
+
+                <div>
+                  <label for="formFile" class="form-label"
+                    >Profile Photo:</label
+                  >
+                  <input
+                    class="form-control"
+                    type="file"
+                    #file
+                    placeholder="Choose a photo"
+                    (change)="proPic($event)"
+                  />
+                </div>
+              </div>
+            </div>
+            <div>
+              <label for="formFile" class="form-label">CV Pdf:</label>
+              <input
+                class="form-control"
+                type="file"
+                #file
+                placeholder="Choose file"
+                (change)="CVfile($event)"
+              />
+            </div>
+          </form>
+
+          <div
+            style="
+              margin-left: 33%;
+              padding-top: 0.5rem;
+              padding-bottom: 0.5rem;
+              margin-top: 2rem;
+            "
+          >
+            <Button class="btn btn-info" (click)="submit()" style="width: 5rem"
+              >Submit</Button
+            >
+
+            <Button
+              class="btn btn-danger"
+              style="width: 5rem; margin-left: 1rem"
+              >Back</Button
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+    <br />
+    <br />
+  </nb-layout-column>
+</nb-layout>
+
+<footer style="width: 100%; bottom: 0">
+  <nav id="foot" class="navbar">
+    <a class="navbar-brand" href="#"> </a>
+    <span class="TDO" style="margin-right: auto"> &lt; TDO &gt;</span>
+    <div class="topnav-right">
+      <a href="#"> <i class="fa fa-facebook"></i> </a>
+      <a href="#"> <i class="fa fa-instagram"></i> </a>
+      <a href="#"> <i class="fa fa-twitter"></i> </a>
+      <a>TutorDevOps@gmail.com</a>
+    </div>
+  </nav>
+</footer>

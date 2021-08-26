@@ -53,7 +53,16 @@ export class TutorService {
   universityID: any;
   typeUniChosen: any;
 
+  //#region
+  sessionInstance: any;
+  //#endregion
+
+  tutorToEdit: any;
+
+  tutorId: any;
+  sessionToEdit:any ={};
   constructor(private http: HttpClient) {}
+
   //#region resource cats
   getResourceCategories() {
     return this.http.get(this.apiUrl + 'GetAllResourceCategories');
@@ -149,7 +158,7 @@ export class TutorService {
   }
   //#endregion
 
-  //#begin resource region
+  //#region  resource
   getCategoryTypes() {
     return this.http.get(this.apiUrl + 'GetAllResourceCategories');
   }
@@ -181,10 +190,79 @@ export class TutorService {
       responseType: 'blob',
     });
   }
-  //#end resource region
+  //#end region
 
   getTutor(id) {
     //needs userId
     return this.http.get(this.apiUrl + 'GetTutor/' + id);
   }
+
+  //#region attendance
+  getAttendanceList(TutorId) {
+    return this.http.get(this.apiUrl + 'GetSessions/' + TutorId);
+  }
+
+  getSessionList(BookingInstanceId) {
+    return this.http.get(
+      this.apiUrl + 'GetSessionAttendance/' + BookingInstanceId
+    );
+  }
+
+  submitAttendance(list) {
+    return this.http.post(this.apiUrl + 'SubmitAttendance', list);
+  }
+
+  deleteAttendance(BookingInstanceId) {
+    return this.http.delete(
+      this.apiUrl + 'DeleteAttendance/' + BookingInstanceId
+    );
+  }
+  //#endregion
+
+  editTutor(formdata): Observable<any> {
+    return this.http.put(this.apiUrl + 'updateTutor', formdata);
+  }
+
+  applyToBecomeTutor(formdata): Observable<any> {
+    console.log('the form data', formdata);
+    return this.http.post(this.apiUrl + 'TutorApplication', formdata);
+  }
+
+  getApplicationModules() {
+    //needs userId
+    return this.http.get(this.apiUrl + 'GetAllModules');
+  }
+
+  getSessionTime() {
+    return this.http.get(this.apiUrl + 'GetSessionTime');
+  }
+
+  getSessionType() {
+    return this.http.get(this.apiUrl + 'GetsessionType');
+  }
+
+  getModule(tutorid) {
+    return this.http.get(this.apiUrl + 'GetTutorModule/' + tutorid);
+  }
+
+  createSession(session) {
+    return this.http.post(this.apiUrl + 'CreateBooking', session);
+  }
+  updateSession(session) {
+    return this.http.put(this.apiUrl + 'EditSession', session);
+  }
+  deleteSession(SessionId){
+    return this.http.delete(
+      this.apiUrl + 'DeleteSession/' + SessionId
+    );
+  }
+
+  getMyGroupSessions(TutorId){
+    return this.http.get(this.apiUrl + 'GetGroupSessions/' + TutorId);
+  }
+  getMyIndivSessions(TutorId){
+    return this.http.get(this.apiUrl + 'GetIndividualSessions/' + TutorId);
+  }
+
+ 
 }

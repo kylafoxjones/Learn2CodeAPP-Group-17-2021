@@ -10,17 +10,21 @@ import { NbAccordionItemHeaderComponent } from '@nebular/theme';
 @Component({
   selector: 'app-session-content-category',
   templateUrl: './session-content-category.component.html',
-  styleUrls: ['./session-content-category.component.scss']
+  styleUrls: ['./session-content-category.component.scss'],
 })
 export class SessionContentCategoryComponent implements OnInit {
   //declare variables
   sessionContentCategoryList: any = [];
   sessionContentCategory: any;
   search;
+  userID: any;
+  Admin: any;
 
-  constructor( private router: Router,
+  constructor(
+    private router: Router,
     public dialog: MatDialog,
-    private service: AdminService) { }
+    private service: AdminService
+  ) {}
 
   ngOnInit() {
     this.getAllSessionContentCategories();
@@ -84,7 +88,14 @@ export class SessionContentCategoryComponent implements OnInit {
     });
   }
 
-  getAdminId(){
-    this.service.adminId=1;
+  getAdminId() {
+    //  this.service.adminId=1;
+
+    this.userID = localStorage.getItem('id');
+    console.log(this.userID);
+
+    this.Admin = this.service.getAdminLoggedIn();
+    console.log('admin user', this.Admin);
+    this.service.adminId = this.Admin.id;
   }
 }

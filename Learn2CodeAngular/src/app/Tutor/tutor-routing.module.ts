@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ApplicationComponent } from './application/application.component';
+import { AttendanceComponent } from './attendance/attendance.component';
 import { GroupSessionContentComponent } from './group-session-content/group-session-content.component';
 import { SpecificSessionComponent } from './group-session-content/specific-session/specific-session.component';
 import { HomeComponent } from './home/home.component';
@@ -9,7 +11,8 @@ import { ResourceCategoryComponent } from './resource-category/resource-category
 import { SpecificResourceComponent } from './resource-category/specific-resource/specific-resource.component';
 
 import { SentRecievedMessagesComponent } from './sent-recieved-messages/sent-recieved-messages.component';
-//import { SessionsComponent } from './sessions/sessions.component';
+import { SessionComponent } from './session/session.component';
+
 import { TutorComponent } from './tutor.component';
 
 const routes: Routes = [
@@ -27,10 +30,14 @@ const routes: Routes = [
           path: 'maintain',
           component: MaintainComponent,
         },
-        // {
-        //   path: 'sessions',
-        //   component: SessionsComponent,
-        // },
+        {
+          path: 'application',
+          component: ApplicationComponent,
+        },
+        {
+          path: 'sessions',
+          component: SessionComponent,
+        },
         {
           path: 'students',
           component: MessagesComponent,
@@ -42,6 +49,10 @@ const routes: Routes = [
         {
           path: 'messages',
           component: SentRecievedMessagesComponent,
+        },
+        {
+        path: 'attendance',
+        component: AttendanceComponent,
         },
         {
           path: 'sessioncontent',

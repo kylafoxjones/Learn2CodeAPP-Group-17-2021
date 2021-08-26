@@ -1,0 +1,259 @@
+<nav class="navbar navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">
+    <img
+      src="../.././assets/pics/HD logo.png"
+      width="40"
+      height="40"
+      class="d-inline-block align-top"
+      alt=""
+    />
+  </a>
+  <span class="TDO" style="color: rgb(0, 156, 158); margin-right: auto"
+    >TutorDevOps</span
+  >
+  <div class="topnav-right">
+    <a>Home</a>
+  </div>
+  <div class="topnav-right" style="margin-right: 0.5rem">
+    <img
+      src="../../../assets/pics/circle-cropped.png"
+      width="50"
+      height="50"
+      style="border-radius: 55px"
+      class="d-inline-block align-top"
+      alt=""
+    />
+  </div>
+</nav>
+
+<div style="padding-top: 2rem; padding-bottom: 1rem">
+  <div class="header">My Schedule</div>
+</div>
+
+<nb-layout style="width: 10rem; margin-left: 30rem">
+  <nb-layout-column style="width: 10rem">
+    <nb-tabset style="width: 105rem; margin-left: 3 rem" fullWidth>
+      <nb-tab tabTitle="Calendar"> </nb-tab>
+
+      <nb-tab tabTitle="My Sessions">
+        <div style="padding: 0.4rem; float: left">
+          <button
+            (click)="openAddDialog()" style="margin-right: 3.5rem; float: right"
+            class="btn btn-info"
+          >
+            New Session
+          </button>
+        </div>
+        <br />
+        <br />
+        <h5 style="margin-left: 29rem; text-decoration: underline">
+          Group Sessions
+        </h5>
+
+        <div
+          style="
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
+              0 6px 6px rgba(0, 0, 0, 0.23);
+            width: 101%;
+            margin: auto;
+            border-radius: 15px;
+          "
+        >
+          <br />
+
+          <div
+            class="input-group rounded"
+            style="width: 20%; padding-left: 0.5rem; margin-left: 5rem"
+          >
+            <input
+              type="search"
+              class="form-control rounded"
+              placeholder="Search"
+              aria-label="Search"
+              aria-describedby="search-addon"
+            />
+            <span>
+              <button class="btn btn-primary">
+                <i class="fa fa-search"></i>
+              </button>
+            </span>
+          </div>
+
+          <br />
+
+          <table
+            class="table table-hover"
+            style="width: 90%; margin: auto; padding-top: 3.5rem"
+          >
+            <thead>
+              <tr>
+                <th scope="col">Title</th>
+                <th scope="col">Module</th>
+                <th scope="col">Date</th>
+                <th scope="col">Time</th>
+                <th scope="col">Link</th>
+                <th scope="col">Status</th>
+                <th></th>
+                <th></th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of groupSessions">
+                <td><a href="#">{{item.title}}</a></td>
+                <td>{{item.module.moduleCode}}</td>
+                <td>{{item.date}}</td>
+                <td>{{item.sessionTime.startTime}} - {{item.sessionTime.endTime}}</td>
+                <td><a href="#">{{item.link}}</a></td>
+                <td>{{item.bookingStatus.bookingStatus}}</td>
+                <th>
+                  <button (click)= "editSession(item)" class="btn btn-info">
+                    <i class="fa fa-pencil"></i>
+                  </button>
+                </th>
+                <th>
+                  <button (click)= "deleteSession(item)" class="btn btn-danger">
+                    <i class="fa fa-trash"></i>
+                  </button>
+                </th>
+                <th><button class="btn btn-primary">Finalize</button></th>
+              </tr>
+            </tbody>
+          </table>
+          <br />
+          <nav
+            aria-label="Page navigation example "
+            style="margin-left: 75%; padding-bottom: 0.5rem"
+          >
+            <ul class="pagination">
+              <li class="page-item">
+                <a class="page-link" href="#" aria-label="Previous">
+                  <span aria-hidden="true">&laquo;</span>
+                  <span class="sr-only">Previous</span>
+                </a>
+              </li>
+              <li class="page-item"><a class="page-link" href="#">1</a></li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item">
+                <a class="page-link" href="#" aria-label="Next">
+                  <span aria-hidden="true">&raquo;</span>
+                  <span class="sr-only">Next</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+        <br />
+        <br />
+        <h5 style="margin-left: 28.5rem; text-decoration: underline">
+          Individual Sessions
+        </h5>
+
+        <div
+          style="
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
+              0 6px 6px rgba(0, 0, 0, 0.23);
+            width: 101%;
+            margin: auto;
+            border-radius: 15px;
+          "
+        >
+          <br />
+
+                     
+<!--                 
+                  <mat-form-field style="margin-left: 6rem;" appearance="outline">
+                    
+                     <input matInput [matDatepicker]="picker"  > 
+       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+
+           </mat-form-field>   -->
+          <button 
+            style="height: 3.5rem; margin-bottom: 0.5rem; width: 3.5rem"
+            class="btn btn-primary"
+          >
+            <i class="fa fa-search"></i>
+          </button>
+
+          <br />
+
+          <table
+            class="table table-hover"
+            style="width: 80%; margin: auto; padding-top: 3.5rem"
+          >
+            <thead>
+              <tr>
+                <th scope="col">Module</th>
+                <th scope="col">Date</th>
+                <th scope="col">Time</th>
+                <th scope="col">Link</th>
+                <th scope="col">Status</th>
+                <th></th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="#">COS211</a></td>
+                <td>22/02/2021</td>
+                <td>5pm</td>
+                <td><a href="#">https://us04web.zoom.us/j/731350</a></td>
+                <td>Open</td>
+                <th>
+                  <button class="btn btn-info">
+                    <i class="fa fa-pencil"></i>
+                  </button>
+                </th>
+                <th>
+                  <button class="btn btn-danger">
+                    <i class="fa fa-trash"></i>
+                  </button>
+                </th>
+              </tr>
+            </tbody>
+          </table>
+          <br />
+          <nav
+            aria-label="Page navigation example "
+            style="margin-left: 75%; padding-bottom: 0.5rem"
+          >
+            <ul class="pagination">
+              <li class="page-item">
+                <a class="page-link" href="#" aria-label="Previous">
+                  <span aria-hidden="true">&laquo;</span>
+                  <span class="sr-only">Previous</span>
+                </a>
+              </li>
+              <li class="page-item"><a class="page-link" href="#">1</a></li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item">
+                <a class="page-link" href="#" aria-label="Next">
+                  <span aria-hidden="true">&raquo;</span>
+                  <span class="sr-only">Next</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </nb-tab>
+    </nb-tabset>
+  </nb-layout-column>
+</nb-layout>
+<br />
+<br />
+
+<footer>
+  <nav id="foot" class="navbar" style="width: 100%">
+    <a class="navbar-brand" href="#"> </a>
+    <span class="TDO" style="margin-right: auto"> &lt; TDO &gt;</span>
+    <div class="topnav-right">
+      <a href="#"> <i class="fa fa-facebook"></i> </a>
+      <a href="#"> <i class="fa fa-instagram"></i> </a>
+      <a href="#"> <i class="fa fa-twitter"></i> </a>
+      <a>TutorDevOps@gmail.com</a>
+    </div>
+  </nav>
+</footer>

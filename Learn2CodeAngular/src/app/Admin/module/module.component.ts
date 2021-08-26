@@ -9,19 +9,19 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 @Component({
   selector: 'app-module',
   templateUrl: './module.component.html',
-  styleUrls: ['./module.component.scss']
+  styleUrls: ['./module.component.scss'],
 })
 export class ModuleComponent implements OnInit {
- //declare variables
- moduleList: any = [];
- module: any;
- search;
+  //declare variables
+  moduleList: any = [];
+  module: any;
+  search;
 
   constructor(
     public dialog: MatDialog,
     private service: AdminService,
     private router: Router
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.getAllModules();
@@ -79,7 +79,10 @@ export class ModuleComponent implements OnInit {
   getAllModules() {
     this.service.getModules(this.service.degreeIdToSend).subscribe((result) => {
       this.moduleList = result; //uni list is populated
-      console.log("this is the degree id, the modules for this id should be displayed",this.service.degreeIdToSend)
+      console.log(
+        'this is the degree id, the modules for this id should be displayed',
+        this.service.degreeIdToSend
+      );
     });
   }
 }
