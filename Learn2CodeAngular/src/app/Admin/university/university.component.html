@@ -70,7 +70,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let item of universityList | filter: search">
+          <tr *ngFor="let item of universityList | filter: search | paginate: { itemsPerPage: 5, currentPage: page,totalItems:totalLength, id: 'first' }">
             <td (click)="navigateToDegree(item.id)">
               {{ item.universityName }}
             </td>
@@ -87,31 +87,14 @@
           </tr>
         </tbody>
       </table>
+      <br>
+      <pagination-controls  id="first" style=" padding-left: 0px !important; display:flex;float: right" (pageChange)="page = $event"></pagination-controls>
+     
+      <br>
       <br />
 
       <br />
-      <nav
-        aria-label="Page navigation example "
-        style="margin-left: 75%; padding-bottom: 0.5rem"
-      >
-        <ul class="pagination">
-          <li class="page-item">
-            <a class="page-link" href="#" aria-label="Previous">
-              <span aria-hidden="true">&laquo;</span>
-              <span class="sr-only">Previous</span>
-            </a>
-          </li>
-          <li class="page-item"><a class="page-link" href="#">1</a></li>
-          <li class="page-item"><a class="page-link" href="#">2</a></li>
-          <li class="page-item"><a class="page-link" href="#">3</a></li>
-          <li class="page-item">
-            <a class="page-link" href="#" aria-label="Next">
-              <span aria-hidden="true">&raquo;</span>
-              <span class="sr-only">Next</span>
-            </a>
-          </li>
-        </ul>
-      </nav>
+  
     </div>
     <br />
     <button

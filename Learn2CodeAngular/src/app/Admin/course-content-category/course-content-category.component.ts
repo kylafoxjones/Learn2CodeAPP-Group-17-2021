@@ -5,6 +5,7 @@ import Swal from 'sweetalert2';
 import { MatDialog } from '@angular/material/dialog';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AdminService } from '../admin resources/admin.service';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @Component({
   selector: 'app-course-content-category',
@@ -12,6 +13,11 @@ import { AdminService } from '../admin resources/admin.service';
   styleUrls: ['./course-content-category.component.scss'],
 })
 export class CourseContentCategoryComponent implements OnInit {
+
+  //pagination
+  totalLength:any;
+  page:number = 1;
+
   //declare variables
   courseContentCategoryList: any = [];
   courseContentCategory: any;
@@ -85,6 +91,7 @@ export class CourseContentCategoryComponent implements OnInit {
   getAllCourseContentCategories() {
     this.service.getCourseContentCategories().subscribe((result) => {
       this.courseContentCategoryList = result; //uni list is populated
+      this.totalLength = this.courseContentCategoryList.length;
     });
   }
 

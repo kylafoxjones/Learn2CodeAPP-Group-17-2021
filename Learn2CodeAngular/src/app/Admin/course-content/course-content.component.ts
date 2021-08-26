@@ -3,6 +3,7 @@ import Swal from 'sweetalert2';
 import { MatDialog } from '@angular/material/dialog';
 import { AddCourseContentComponent } from './add-course-content/add-course-content.component';
 import { AdminService } from '../admin resources/admin.service';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 @Component({
@@ -11,6 +12,11 @@ import { AdminService } from '../admin resources/admin.service';
   styleUrls: ['./course-content.component.scss'],
 })
 export class CourseContentComponent implements OnInit {
+
+   //pagination
+   totalLength:any;
+   page:number = 1;
+
   contentList: any;
   coursecat = this.service.courseContentCat;
   search;
@@ -46,6 +52,7 @@ export class CourseContentComponent implements OnInit {
   getAllCourseContent() {
     this.service.getCourseContent().subscribe((result) => {
       this.contentList = result;
+      this.totalLength = this.contentList.length;
       console.log('list of content for category chosen', this.contentList);
     });
   }

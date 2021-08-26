@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AdminService } from '../admin resources/admin.service';
 import { AddEditSubscriptionComponent } from './add-edit-subscription/add-edit-subscription.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @Component({
   selector: 'app-subscription',
@@ -12,6 +13,12 @@ import { AddEditSubscriptionComponent } from './add-edit-subscription/add-edit-s
   styleUrls: ['./subscription.component.scss'],
 })
 export class SubscriptionComponent implements OnInit {
+
+  
+  //pagination
+  totalLength:any;
+  page:number = 1;
+
   //declare variables
   subscriptionList: any = [];
   subscription: any;
@@ -83,6 +90,7 @@ export class SubscriptionComponent implements OnInit {
   getAllSubscriptions() {
     this.service.getSubscriptions().subscribe((result) => {
       this.subscriptionList = result;
+      this.totalLength = this.subscriptionList.length;
       console.log('all subscriptions from api', this.subscriptionList);
     });
   }
