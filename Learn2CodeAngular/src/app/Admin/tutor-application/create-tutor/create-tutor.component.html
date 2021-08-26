@@ -75,13 +75,12 @@
       [(ngModel)]="data.Password"
       matInput
       #password="ngModel"
-      type="text"
+      type="password"
       id="password"
       name="password"
       class="form-control"
       required
       minlength="12"
-      pattern="[^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[*.!@$%^&(){}[]:;<>,.?/~_+-=|\]).{8,32}$ ]*"
     />
   </mat-form-field>
 </mat-dialog-content>
