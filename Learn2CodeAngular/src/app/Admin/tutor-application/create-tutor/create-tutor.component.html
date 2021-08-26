@@ -61,7 +61,13 @@
         *ngIf="password.errors?.minlength"
         style="font-size: smaller; color: red"
       >
-        Name must be at least 8 characters long.
+        Password must be 12 characters long.
+      </div>
+      <div
+        *ngIf="password.errors?.pattern"
+        style="font-size: smaller; color: red"
+      >
+        Password does not meet pattern.
       </div>
     </div>
     <input
@@ -75,6 +81,7 @@
       class="form-control"
       required
       minlength="12"
+      pattern="[^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[*.!@$%^&(){}[]:;<>,.?/~_+-=|\]).{8,32}$ ]*"
     />
   </mat-form-field>
 </mat-dialog-content>

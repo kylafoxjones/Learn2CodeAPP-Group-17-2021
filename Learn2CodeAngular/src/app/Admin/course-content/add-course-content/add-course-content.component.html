@@ -8,6 +8,12 @@
 <br />
 
 <mat-form-field appearance="outline">
+  <div *ngIf="select.invalid && (select.dirty || select.touched)" class="alert">
+    <div *ngIf="name.errors?.required" style="font-size: smaller; color: red">
+      Name is required.
+    </div>
+
+  </div>
   <mat-label>File Type:</mat-label>
   <mat-select
     class="form-control"

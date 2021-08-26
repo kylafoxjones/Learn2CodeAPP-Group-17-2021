@@ -4,7 +4,7 @@
   <mat-form-field class="example-full-width">
     <!--dropdown with session type names -->
     <mat-label>Session Type </mat-label>
-    <mat-select required (valueChange)="selectType($event) ">
+    <mat-select required id="type" #type (valueChange)="selectType($event) ">
       <mat-option
         *ngFor="let item of typeList"
         [value]="item.id"
@@ -121,7 +121,7 @@
     style="width: 6rem"
     class="btn btn-info"
     [disabled]="
-      name.invalid || duration.invalid || quantity.invalid || price.invalid
+       name.invalid || type.invalid || duration.invalid || quantity.invalid || price.invalid
     "
   >
     Submit
