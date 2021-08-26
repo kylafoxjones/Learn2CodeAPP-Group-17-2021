@@ -41,6 +41,9 @@ export class AcceptRejectApplicationComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result) => {
       // Swal.fire('Successful acceptance', '', 'success');
       this.dialogRef.close();
+    }, (error) => {
+      this.dialogRef.close();
+      Swal.fire('Error!', error.error, 'error');
     });
     this.dialogRef.close();
     // });

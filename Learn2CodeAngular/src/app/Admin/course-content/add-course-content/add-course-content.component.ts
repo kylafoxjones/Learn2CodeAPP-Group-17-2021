@@ -27,7 +27,7 @@ export class AddCourseContentComponent implements OnInit {
 
   ngOnInit() {
      this.getTypeList();
-   
+
     // this.data.ContentTypeId = this.placeholder.contentTypeId;
     // this.data.Content = this.placeholder.content;
   }
@@ -61,6 +61,9 @@ export class AddCourseContentComponent implements OnInit {
       this.data = res;
       this.dialogRef.close();
       Swal.fire('Course content has been uploaded!', this.data.message, 'success');
+    },(error) => {
+      this.dialogRef.close();
+      Swal.fire('Error!', error.error, 'error');
     });
   }
 });
@@ -89,7 +92,10 @@ export class AddCourseContentComponent implements OnInit {
       this.data = res;
        this.dialogRef.close();
        Swal.fire('Course content has been updated!', this.data.message, 'success');
-          });      
+          },(error) => {
+            this.dialogRef.close();
+            Swal.fire('Error!', error.error, 'error');
+          });
         }
       });
   }
@@ -103,9 +109,9 @@ export class AddCourseContentComponent implements OnInit {
 
   selectType($event) {
     console.log('this is the event', $event);
-    this.typeChosen = $event; 
+    this.typeChosen = $event;
     console.log(this.typeChosen);
-  
+
   }
 }
 

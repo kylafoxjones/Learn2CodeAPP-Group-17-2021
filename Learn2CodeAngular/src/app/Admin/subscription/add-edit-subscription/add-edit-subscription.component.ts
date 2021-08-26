@@ -5,6 +5,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { AdminService } from '../../admin resources/admin.service';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select/';
+import {FormControl, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-add-edit-subscription',
@@ -19,6 +20,8 @@ export class AddEditSubscriptionComponent implements OnInit {
   newSubscription: any = <any>{};
   data: any = {};
   popupTitle = this.service.title;
+  typecontrol = new FormControl('', Validators.required);
+  selectFormControl = new FormControl('', Validators.required);
 
   // get the placeholder object below
   placeholder = this.service.editSubscr;
@@ -59,6 +62,9 @@ export class AddEditSubscriptionComponent implements OnInit {
             Swal.fire('Update successful!', this.data.message, 'success');
           });
         }
+      },(error) => {
+        this.dialogRef.close();
+        Swal.fire('Error!', error.error, 'error');
       });
     } else {
       Swal.fire({
@@ -76,6 +82,9 @@ export class AddEditSubscriptionComponent implements OnInit {
             Swal.fire('Saved!', this.data.message, 'success');
           });
         }
+      },(error) => {
+        this.dialogRef.close();
+        Swal.fire('Error!', error.error, 'error');
       });
     }
   }
