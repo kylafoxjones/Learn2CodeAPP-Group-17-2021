@@ -24,9 +24,17 @@ export class ShopComponent implements OnInit {
   courseBasketList: any = [];
   subscriptionBasketList: any = [];
 
-userId:any;
-thisStudent:any;
+  userId: any;
+  thisStudent: any = {};
 
+  reference: string = '';
+  title: string;
+  public showEmbed: boolean;
+  // xx=this.service.PaymentStatus;
+  token = '';
+  total: any;
+  checkoutDto: any = {};
+  info: any;
   constructor(
     public dialog: MatDialog,
     private service: StudentService,
@@ -34,20 +42,27 @@ thisStudent:any;
   ) {}
 
   ngOnInit() {
+    this.reference = `ref-${Math.ceil(Math.random() * 10e13)}`;
+    this.getLoggedInUser();
     this.getAllSubscriptions();
     this.getAllCourses();
     this.getModules();
-    this.getLoggedInUser();
   }
 
-  getLoggedInUser(){
+  getLoggedInUser() {
     this.userId = localStorage.getItem('id');
     console.log(this.userId);
-    this.thisStudent = this.service.getStudentInfo();
-    console.log("student logged in ts file",this.thisStudent);
-    this.service.studentId = this.thisStudent.id;
-    console.log('student id kept in the service',this.service.studentId);
-    this.getBasketForStudent();
+    this.service.getStudent(this.userId).subscribe((res) => {
+      this.thisStudent = res;
+      console.log('student logged in ts file', this.thisStudent);
+      this.service.studentId = this.thisStudent.id;
+      console.log('student id kept in the service', this.service.studentId);
+      this.getBasketForStudent();
+    });
+    //   console.log("student logged in ts file",this.thisStudent);
+    //   this.service.studentId = this.thisStudent.id;
+    //   console.log('student id kept in the service',this.service.studentId);
+    //   this.getBasketForStudent();
   }
 
   getBasketForStudent() {
@@ -61,6 +76,7 @@ thisStudent:any;
       );
       this.getCourseBasket();
       this.getSubscriptionBasket();
+      this.total = this.basketForStudentLoggedIn.totalPrice * 100;
     });
   }
 
@@ -194,4 +210,75 @@ thisStudent:any;
       this.getBasketForStudent();
     });
   }
+
+  paymentInit() {
+    console.log('Payment initialized');
+  }
+
+  paymentDone(ref: any) {
+    this.reference = `ref-${Math.ceil(Math.random() * 10e13)}`;
+    this.title = 'Payment successfull';
+    console.log(this.title, ref);
+    if (ref.message === 'Approved') {
+      //save to database
+      this.checkoutDto.Message = 'Approved';
+      this.checkoutDto.BasketId = this.basketForStudentLoggedIn.id;
+      this.checkoutDto.StudentId = this.thisStudent.id;
+      console.log('the dto to send to api', this.checkoutDto);
+      this.service.checkout(this.checkoutDto).subscribe(
+        (result) => {
+          this.info = result;
+          Swal.fire(
+            'Checkout Complete!',
+            this.info.message,
+            'success'
+          );
+          this.getBasketForStudent();
+        },
+        (error) => {
+          Swal.fire('Error!', error.error, 'error');
+          this.getBasketForStudent();
+        }
+      );
+    }
+  }
+
+  paymentCancel() {
+    console.log('payment failed');
+  }
+
+  // paymentInit() {
+  //   console.log('Payment initialized');
+  //   // this.toggleEmbed();
+  //   this.reference = `ref-${Math.ceil(Math.random() * 10e13)}`;
+  //   console.log(this.reference);
+  // }
+
+  // paymentDone(ref: any) {
+  //   this.title = 'Payment successfull';
+  //   console.log(this.title, ref);
+  //   console.log(ref.message);
+  //  // this.service.PaymentStatus = ref.message;
+  //   if (ref.message === 'Approved') {
+  //     //save to database
+  //     //basket emptied
+  //     //products transfereed to your table
+  //     //alert("payment done")
+  //   //  this.service.PaymentStatus = ref.message;
+  //     localStorage.setItem('dataSource', ref.message);
+  //   //  console.log(this.service.PaymentStatus + 'hello');
+  //   }
+  //   //this.showEmbed= !this.showEmbed;
+
+  //   //this.Refresh();
+  // }
+
+  // paymentCancel() {
+  //   console.log('payment failed');
+  //  // this.toggleEmbed();
+  // //  this.service.getStatus();
+  //   console.log(this.showEmbed);
+  //   window.location.reload();
+  //   //this.Refresh();
+  // }
 }

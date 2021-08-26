@@ -30,17 +30,15 @@ export class GroupSessionContentComponent implements OnInit {
     //logged in tutor is hardcoded for now
     this.userID = localStorage.getItem('id');
     console.log(this.userID);
-
-    this.tutor = this.service.getTutor(this.userID);
-    console.log('tutor user', this.tutor);
-    this.service.tutorId = this.tutor.id;
-
-    this.service
-      .getAllTutorSessions(this.service.tutorId)
-      .subscribe((result) => {
-        this.contentList = result;
-        console.log('list of sessions for a specific tutor', this.contentList);
-      });
+    this.service.getTutor(this.userID).subscribe((res) => {
+      this.tutor =res;
+      console.log('tutor user', this.tutor);
+      this.service.tutorId = this.tutor.id;
+      this.service.getAllTutorSessions(this.service.tutorId).subscribe((result) => {
+          this.contentList = result;
+          console.log('list of sessions for a specific tutor', this.contentList);
+        });
+    });
   }
 
   navigateToSpecificSession(obj) {

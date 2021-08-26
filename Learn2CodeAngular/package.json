@@ -25,6 +25,7 @@
     "@nebular/eva-icons": "7.0.0",
     "@nebular/theme": "^7.0.0",
     "angular-calendar-scheduler": "^11.0.7",
+    "angular4-paystack": "^3.0.2",
     "bootstrap": "^5.0.2",
     "chart.js": "^2.9.4",
     "date-fns": "^2.23.0",
