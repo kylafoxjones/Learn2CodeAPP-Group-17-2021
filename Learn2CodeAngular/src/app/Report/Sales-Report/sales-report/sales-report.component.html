@@ -78,7 +78,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let item of SubscriptionReportTable  | paginate: { itemsPerPage: 5, currentPage: page,totalItems:totalLength }">
+            <tr *ngFor="let item of SubscriptionReportTable  | paginate: { itemsPerPage: 5, currentPage: page,totalItems:totalLength, id: 'first' }">
               <td>{{item.fullName}}</td>
               <td>{{item.date}}</td>
               <td>{{item.amount}}</td>
@@ -90,7 +90,7 @@
           </tbody>
         </table>
       <br>
-        <pagination-controls style=" padding-left: 0px !important; display:flex;float: right" (pageChange)="page = $event"></pagination-controls>
+        <pagination-controls  id="first" style=" padding-left: 0px !important; display:flex;float: right" (pageChange)="page = $event"></pagination-controls>
        
         <br>
        <br>
@@ -134,7 +134,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let item of SubscriptionSummary  | paginate: { itemsPerPage: 5, currentPage: page1,totalItems:totalLength1 }">
+                  <tr *ngFor="let item of SubscriptionSummary  | paginate: { itemsPerPage: 5, currentPage: page1,totalItems:totalLength1,id: 'second' }">
                     <td>{{item.subscription}}</td>
                     <td>{{item.amount}}</td>
                   </tr>
@@ -143,7 +143,7 @@
                 </tbody>
               </table>
               <br>
-              <pagination-controls style=" padding-left: 0px !important; display:flex;float: right" (pageChange)="page1 = $event"></pagination-controls>
+              <pagination-controls id="second" style=" padding-left: 0px !important; display:flex;float: right" (pageChange)="page1 = $event"></pagination-controls>
               <br>
               <br>
             </div>
