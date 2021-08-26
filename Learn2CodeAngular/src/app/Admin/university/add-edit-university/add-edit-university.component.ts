@@ -26,9 +26,9 @@ export class AddEditUniversityComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-  //  this.oldUni = this.service.oldUniName;
-    this.data.UniversityName=this.placeholder.universityName;
-  console.log(this.placeholder.universityName);
+    //  this.oldUni = this.service.oldUniName;
+    this.data.UniversityName = this.placeholder.universityName;
+    console.log(this.placeholder.universityName);
   }
 
   submitEdittedUni() {
@@ -47,6 +47,10 @@ export class AddEditUniversityComponent implements OnInit {
             this.data = result;
             this.dialogRef.close();
             Swal.fire('Update successful!', this.data.message, 'success');
+          },
+          (error) => {
+            this.dialogRef.close();
+            Swal.fire('Error!', error.error, 'error');
           });
         }
       });
@@ -64,6 +68,10 @@ export class AddEditUniversityComponent implements OnInit {
             this.data = result;
             this.dialogRef.close();
             Swal.fire('Saved!', this.data.message, 'success');
+          },
+          (error) => {
+            this.dialogRef.close();
+            Swal.fire('Error!', error.error, 'error');
           });
         }
       });

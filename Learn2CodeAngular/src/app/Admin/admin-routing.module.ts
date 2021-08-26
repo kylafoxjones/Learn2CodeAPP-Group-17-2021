@@ -41,7 +41,7 @@ const routes: Routes = [
       {
         path: 'university',
         component: UniversityComponent,
-        canActivate: [AuthGuard, AdminGuard]
+        // canActivate: [AuthGuard, AdminGuard]
       },
       {
         path: 'degree',
@@ -100,7 +100,7 @@ const routes: Routes = [
       {
         path: 'coursecontent',
         component: CourseContentComponent,
-        canActivate: [AuthGuard, AdminGuard]
+        // canActivate: [AuthGuard, AdminGuard]
       },
       //I dont know if the addEdit path though stand alone or have soemthing before it e.g admin/univers
       {

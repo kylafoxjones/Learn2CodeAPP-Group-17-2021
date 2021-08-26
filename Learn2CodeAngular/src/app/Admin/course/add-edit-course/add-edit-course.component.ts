@@ -49,6 +49,9 @@ export class AddEditCourseComponent implements OnInit {
             this.data = result;
             this.dialogRef.close();
             Swal.fire('Update successful!', this.data.message, 'success');
+          },(error) => {
+            this.dialogRef.close();
+            Swal.fire('Error!', error.error, 'error');
           });
         }
       });
@@ -67,6 +70,9 @@ export class AddEditCourseComponent implements OnInit {
             this.data = result;
             this.dialogRef.close();
             Swal.fire('Saved!', this.data.message, 'success');
+          }, (error) => {
+            this.dialogRef.close();
+            Swal.fire('Error!', error.error, 'error');
           });
         }
       });

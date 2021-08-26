@@ -44,6 +44,8 @@ export class CourseComponent implements OnInit {
         });
         Swal.fire('Successful Deletion', '', 'success');
       }
+    },(error) => {
+      Swal.fire('Error!', error.error, 'error');
     });
   }
 

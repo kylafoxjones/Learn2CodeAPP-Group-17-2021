@@ -23,6 +23,6 @@ export class UploadCsvFileComponent implements OnInit {
     this.service.postfile(data).subscribe((res) => {
       console.log(res);
       this.dialogRef.close();
-    });
+    },);
   }
 }

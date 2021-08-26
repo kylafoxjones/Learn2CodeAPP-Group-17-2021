@@ -43,10 +43,12 @@ export class ModuleComponent implements OnInit {
         });
         Swal.fire('Successful Deletion', '', 'success');
       }
+    },(error) => {
+      Swal.fire('Error!', error.error, 'error');
     });
   }
 
-  
+
   openAddDialog() {
     this.service.edit = false;
     this.service.editId = 0;
