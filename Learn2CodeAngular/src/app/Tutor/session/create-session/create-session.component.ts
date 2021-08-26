@@ -28,6 +28,8 @@ export class CreateSessionComponent implements OnInit {
     this.getTutor();
     this.getTime();
     this.getType();
+
+
   }
 
   getTutor() {
