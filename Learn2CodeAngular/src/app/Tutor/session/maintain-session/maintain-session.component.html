@@ -1,0 +1,63 @@
+<h5 style="text-align: center">Update Session</h5>
+<hr />
+<form class="example-form" style="padding-top: 1.5rem">
+  <div class="row">
+    <div class="col-md-6"></div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4">
+      <mat-form-field class="example-full-width">
+        <mat-label>Title:</mat-label>
+        <input [(ngModel)]="data.title" name="Title" matInput />
+      </mat-form-field>
+    </div>
+    <div class="col-md-4">
+      <mat-form-field class="example-full-width">
+        <mat-label>Link:</mat-label>
+        <input [(ngModel)]="data.link" name="Link" matInput />
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4">
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Choose a date</mat-label>
+        <input
+          [(ngModel)]="newDate"
+          name="Date"
+          matInput
+          [matDatepicker]="picker"
+        />
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <div class="col-md-4">
+      <div style="margin-left: 2rem">
+        <mat-form-field appearance="outline">
+          <mat-label>Time:</mat-label>
+          <mat-select (valueChange)="selectTime($event)">
+            <mat-option *ngFor="let type of timeList" [value]="type.id">
+              {{ type.startTime }} - {{ type.endTime }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+</form>
+
+<div style="margin-left: 33%">
+  <button (click)="onCreate()" class="btn btn-info" style="width: 8rem">
+    Create
+  </button>
+  <button
+    [mat-dialog-close]
+    style="margin-left: 1rem; width: 8rem"
+    class="btn btn-danger"
+  >
+    Cancel
+  </button>
+</div>

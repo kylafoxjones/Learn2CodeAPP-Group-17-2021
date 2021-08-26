@@ -40,11 +40,13 @@ export class TutorComponent implements OnInit {
         });
         Swal.fire('Successful Deletion', '', 'success');
       }
+    },(error) => {
+      Swal.fire('Error!', error.error, 'error');
     });
   }
   getAllTutors() {
     this.service.getTutors().subscribe((result) => {
-      this.tutorList = result; 
+      this.tutorList = result;
       console.log(this.tutorList);
     });
   }

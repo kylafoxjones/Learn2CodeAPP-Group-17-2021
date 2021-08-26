@@ -17,6 +17,8 @@ export class CourseComponent implements OnInit {
   courseList: any = [];
   course: any;
   search;
+  userID:any;
+  Admin:any;
 
   constructor(
     private router: Router,
@@ -44,6 +46,8 @@ export class CourseComponent implements OnInit {
         });
         Swal.fire('Successful Deletion', '', 'success');
       }
+    },(error) => {
+      Swal.fire('Error!', error.error, 'error');
     });
   }
 
@@ -88,8 +92,15 @@ export class CourseComponent implements OnInit {
 
   //function for creating adminId link
   getAdminId() {
-    this.service.adminId = 1;
+   // this.service.adminId = 2;
+   this.userID = localStorage.getItem('id');
+   console.log(this.userID);
+   
+   this.Admin = this.service.getAdminLoggedIn();
+    console.log("admin user",this.Admin);
+    this.service.adminId = this.Admin.id;
   }
+  
   navigateToCourseContentCategories(id: number) {
     this.service.courseFolderIdToSend = id;
     console.log(

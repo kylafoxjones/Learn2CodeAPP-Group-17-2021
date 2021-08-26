@@ -29,12 +29,12 @@ export class PaymentsComponent implements OnInit {
       width: '350px',
     });
 
-    dialogRef.afterClosed().subscribe((result) => {
-      Swal.fire({
-        icon: 'success',
-        title: 'file is uploaded',
-        confirmButtonText: 'Ok',
-      });
-    });
+    // dialogRef.afterClosed().subscribe((result) => {
+    //   Swal.fire({
+    //     icon: 'success',
+    //     title: 'file is uploaded',
+    //     confirmButtonText: 'Ok',
+    //   });
+    // });
   }
 }

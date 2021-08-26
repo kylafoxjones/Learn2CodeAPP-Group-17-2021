@@ -17,9 +17,7 @@ import { CreateTutorComponent } from '../create-tutor/create-tutor.component';
 export class AcceptRejectApplicationComponent implements OnInit {
   tutorApplicationToview: any = {};
   x: any;
-  // tutorApplicationToview={
-  //   tutorName: this.service.application.TutorName,
-  // }
+  data: any;
 
   constructor(
     public dialog: MatDialog,
@@ -32,17 +30,23 @@ export class AcceptRejectApplicationComponent implements OnInit {
     this.tutorApplicationToview = this.service.application;
   }
 
-  acceptTutorApplication(id: number) {
-    this.service.getTutorApplicationToLoad(id).subscribe((result) => {
-      this.service.tutorToCreate = result;
-      console.log('the tutor chosen to accept', this.service.tutorToCreate);
-      const dialogRef = this.dialog.open(CreateTutorComponent, {
-        width: '350px',
-      });
-      dialogRef.afterClosed().subscribe((result) => {
-        // this.getAllTutorApplications();
-      });
+  acceptTutorApplication() {
+    this.tutorApplicationToview = this.service.application;
+    //  this.service.getTutorApplicationToLoad(id).subscribe((result) => {
+    //  this.service.tutorToCreate = result;
+    console.log('the tutor chosen to accept', this.tutorApplicationToview);
+    const dialogRef = this.dialog.open(CreateTutorComponent, {
+      width: '350px',
     });
+    dialogRef.afterClosed().subscribe((result) => {
+      // Swal.fire('Successful acceptance', '', 'success');
+      this.dialogRef.close();
+    }, (error) => {
+      this.dialogRef.close();
+      Swal.fire('Error!', error.error, 'error');
+    });
+    this.dialogRef.close();
+    // });
   }
 
   rejectTutorApplication(id: number) {
@@ -59,12 +63,19 @@ export class AcceptRejectApplicationComponent implements OnInit {
         this.service.getTutorApplicationToLoad(id).subscribe((result) => {
           this.service.tutorToDelete = result;
           console.log('the tutor chosen to reject', this.service.tutorToDelete);
-          this.service.rejectApp().subscribe((result) => {
-            Swal.fire('Successful rejection', '', 'success');
-          });
+          this.service.rejectApp().subscribe(
+            (result) => {
+              this.data = result;
+              Swal.fire('Rejection complete!', this.data.message, 'success');
+              this.dialogRef.close();
+              window.location.reload();
+            },
+            (error) => {
+              Swal.fire('Error!', error.error, 'error');
+              this.dialogRef.close();
+            }
+          );
         });
-        this.dialogRef.close();
-        window.location.reload();
       }
     });
   }

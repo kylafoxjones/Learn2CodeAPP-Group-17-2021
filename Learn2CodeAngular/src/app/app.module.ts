@@ -13,6 +13,10 @@ import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { ChartsModule } from 'ng2-charts';
 import { JwtModule } from "@auth0/angular-jwt";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { JwtModule } from "@auth0/angular-jwt";
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+
 
 export function tokenGetter() {
   return localStorage.getItem("token");
@@ -30,7 +34,10 @@ export function tokenGetter() {
     ReportModule,
     StudentModule,
     ChartsModule,
+    MatNativeDateModule,
+    MatDatepickerModule,
     TutorModule,
+  
     BrowserAnimationsModule,
     NbThemeModule.forRoot({ name: 'default' }),
     NbLayoutModule,

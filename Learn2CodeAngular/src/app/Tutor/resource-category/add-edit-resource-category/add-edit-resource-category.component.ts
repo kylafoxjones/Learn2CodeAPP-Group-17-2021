@@ -7,7 +7,7 @@ import { TutorService } from '../../tutor resources/tutor.service';
 @Component({
   selector: 'app-add-edit-resource-category',
   templateUrl: './add-edit-resource-category.component.html',
-  styleUrls: ['./add-edit-resource-category.component.scss']
+  styleUrls: ['./add-edit-resource-category.component.scss'],
 })
 export class AddEditResourceCategoryComponent implements OnInit {
   category: any;
@@ -18,18 +18,17 @@ export class AddEditResourceCategoryComponent implements OnInit {
   placeholder = this.service.editCat;
   oldCat: any;
   placeHolderOrNo = this.service.edit;
-  
+
   constructor(
     public dialog: MatDialog,
     private dialogRef: MatDialogRef<AddEditResourceCategoryComponent>,
     private service: TutorService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
-    this.data.ResourceCategoryName=this.placeholder.resourceCategoryName;
+    this.data.ResourceCategoryName = this.placeholder.resourceCategoryName;
     console.log(this.placeholder.resourceCategoryName);
   }
-
 
   submitEdittedCat() {
     console.log(this.service.editCat);
@@ -60,11 +59,13 @@ export class AddEditResourceCategoryComponent implements OnInit {
         confirmButtonText: 'Yes',
       }).then((result) => {
         if (result.isConfirmed) {
-          this.service.createResourceCategories(this.data).subscribe((result) => {
-            this.data = result;
-            this.dialogRef.close();
-            Swal.fire('Saved!', this.data.message, 'success');
-          });
+          this.service
+            .createResourceCategories(this.data)
+            .subscribe((result) => {
+              this.data = result;
+              this.dialogRef.close();
+              Swal.fire('Saved!', this.data.message, 'success');
+            });
         }
       });
     }
@@ -72,5 +73,4 @@ export class AddEditResourceCategoryComponent implements OnInit {
   refreshCategoryObj() {
     this.newCategory = <any>{};
   }
-
 }

@@ -27,7 +27,8 @@ export class CreateFeedbackComponent implements OnInit {
   getInfo() {
     // you need the student id and the booking instance id to create feedback
     // this will be hrd coded for now
-    this.bookingInstaneId = 4;
+    this.bookingInstaneId = this.service.bookingInstanceID;
+    console.log('the booking instance id of the one you want to create feedback for', this.bookingInstaneId);
    
   }
 

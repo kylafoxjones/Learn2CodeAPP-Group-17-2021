@@ -15,7 +15,7 @@ export class CourseContentComponent implements OnInit {
   coursecat = this.service.courseContentCat;
   search;
   content: any;
- 
+
   constructor(public dialog: MatDialog, private service: AdminService) {}
 
   ngOnInit() {
@@ -34,10 +34,13 @@ export class CourseContentComponent implements OnInit {
       if (result.isConfirmed) {
         this.service.deleteContent(id).subscribe((result) => {
          this.getAllCourseContent();
-         
+
         });
         Swal.fire('Successful Deletion', '', 'success');
       }
+    },(error) => {
+
+      Swal.fire('Error!', error.error, 'error');
     });
   }
   getAllCourseContent() {
