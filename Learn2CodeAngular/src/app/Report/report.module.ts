@@ -22,6 +22,7 @@ import { MatSelectModule } from '@angular/material/select';
 
 import { MatNativeDateModule } from '@angular/material/core';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 
@@ -53,7 +54,8 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     MatInputModule,
     MatSelectModule,
     MatNativeDateModule,
-    NgxChartsModule
+    NgxChartsModule,
+    NgbPaginationModule
     
     
   

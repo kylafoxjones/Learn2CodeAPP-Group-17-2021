@@ -14,6 +14,7 @@ import { NbLayoutColumnComponent } from '@nebular/theme';
 import Swal from 'sweetalert2';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-sales-report',
