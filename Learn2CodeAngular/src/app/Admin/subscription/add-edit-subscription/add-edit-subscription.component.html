@@ -4,8 +4,11 @@
   <mat-form-field class="example-full-width">
     <!--dropdown with session type names -->
     <mat-label>Session Type </mat-label>
-    <mat-select (valueChange)="selectType($event)">
-      <mat-option *ngFor="let item of typeList" [value]="item.id">
+    <mat-select required id="type" #type (valueChange)="selectType($event) ">
+      <mat-option
+        *ngFor="let item of typeList"
+        [value]="item.id"
+      >
         {{ item.sessionType.sessionTypeName }}
       </mat-option>
     </mat-select>
@@ -26,15 +29,15 @@
       </div>
     </div>
     <input
-    [(ngModel)]="data.SubscriptionName"
-    #name="ngModel"
-    matInput
-    type="text"
-    id="name"
-    name="name"
-    class="form-control"
-    required
-    minlength="2"
+      [(ngModel)]="data.SubscriptionName"
+      #name="ngModel"
+      matInput
+      type="text"
+      id="name"
+      name="name"
+      class="form-control"
+      required
+      minlength="2"
     />
   </mat-form-field>
 
@@ -118,7 +121,7 @@
     style="width: 6rem"
     class="btn btn-info"
     [disabled]="
-      name.invalid || duration.invalid || quantity.invalid || price.invalid
+       name.invalid || type.invalid || duration.invalid || quantity.invalid || price.invalid
     "
   >
     Submit

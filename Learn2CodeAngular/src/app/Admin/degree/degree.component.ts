@@ -43,6 +43,9 @@ export class DegreeComponent implements OnInit {
         });
         Swal.fire('Successful Deletion', '', 'success');
       }
+    },(error) => {
+
+      Swal.fire('Error!', error.error, 'error');
     });
   }
 
@@ -79,7 +82,7 @@ export class DegreeComponent implements OnInit {
       this.degreeList = result; //uni list is populated
     });
   }
-  
+
   navigateToModule(id:number){
     this.service.degreeIdToSend=id;
     this.router.navigateByUrl('/module');

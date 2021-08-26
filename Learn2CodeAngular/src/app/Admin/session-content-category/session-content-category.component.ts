@@ -46,6 +46,8 @@ export class SessionContentCategoryComponent implements OnInit {
         });
         Swal.fire('Successful Deletion', '', 'success');
       }
+    },(error) => {
+      Swal.fire('Error!', error.error, 'error');
     });
   }
 

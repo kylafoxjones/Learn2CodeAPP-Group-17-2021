@@ -1,0 +1,160 @@
+
+<nav class="navbar navbar-dark bg-dark" >
+    <a class="navbar-brand" href="#">
+      <img
+        src="../.././assets/pics/HD logo.png"
+        width="40"
+        height="40"
+        class="d-inline-block align-top"
+        alt=""
+      />
+    </a>
+    <span class="TDO" style="color: rgb(0, 156, 158); margin-right: auto"
+      >TutorDevOps</span
+    >
+    <div class="topnav-right">
+      <a>Home</a>
+     
+    </div>
+    <div class="topnav-right">
+       
+        <div class="dot" >A</div>
+    </div>
+  </nav>
+  <nb-layout>
+    <nb-layout-column>
+ 
+     <div style="padding-top: 2rem;padding-bottom: 0.5rem;">
+    <div class="header" >Tutor Session Report</div>
+  </div>
+
+<br>
+
+<div class="row">
+    <div class="col-md-12">
+        <div style="margin-left:12rem ;">
+          <mat-form-field appearance="outline" style="margin-left: 0.5rem;margin-right: 1rem;width: 250px; align-content: center;" >
+            <mat-label style="text-align: center;">Tutor</mat-label>
+            <mat-select placeholder="Tutor Name" (selectionChange)="changeSession($event.value)">
+              <mat-option *ngFor="let item of TutorDropdown" [value]="item.id">{{item.tutorName}}  {{item.tutorSurname}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+            
+
+            <mat-form-field appearance="outline" style="margin-left: 1rem;">
+              <mat-label>Start</mat-label>
+              <input matInput [matDatepicker]="picker" [(ngModel)]="Start">
+              <mat-datepicker-toggle matSuffix [for]="picker" ></mat-datepicker-toggle>
+              <mat-datepicker #picker  ></mat-datepicker>
+            </mat-form-field>
+          
+            <mat-form-field appearance="outline" style="margin-left: 1rem;">
+              <mat-label>End</mat-label>
+              <input matInput [matDatepicker]="pickerr" [(ngModel)]="End">
+              <mat-datepicker-toggle matSuffix [for]="pickerr"></mat-datepicker-toggle>
+              <mat-datepicker #pickerr></mat-datepicker>
+            </mat-form-field><span> 
+               <button style="height: 3.2rem;margin-bottom: 0.7rem;width: 3rem;" 
+                       matTooltip="My tooltip" 
+                       class="btn btn-primary"
+                       (click)="getTutorSessions()"> <i class="fa fa-search"></i></button></span>
+          </div>
+    </div>
+   
+</div>
+
+<div class="row" id="TutorsessionData" >
+ 
+    <div class="col-md-3">
+        <div style="width: 103%;margin: auto;border-radius: 15px;margin-left: 2rem;height:100%;">
+        <h1 style="margin-left: 3rem;">Summary:</h1>
+        <div style="margin-left: 3rem;">
+            <h2>Tutor: {{TutorName}}</h2>
+            <h2>Sessions: {{TutorSession.length}}</h2>
+        </div>
+    </div>
+    </div>
+    <div class="col-md-9">
+        <div style="box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
+        0 6px 6px rgba(0, 0, 0, 0.23);width: 80%;margin: auto;border-radius: 15px;margin-right: 7rem;" >
+        <br>
+        
+          <br>
+            <table class="table table-hover" style="width: 90%;margin: auto; padding-top: 2rem;">
+                <thead >
+                  <tr>
+                    <th scope="col">Tutor Name</th>
+                    <th scope="col">Surname</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Module</th>
+                    <th scope="col">Session Title</th>
+                  
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of TutorSession">
+                    <td>{{item.tutorName}}</td>
+                    <td>{{item.tutorSurname}}</td>
+                    <td>{{item.tutorEmail}}</td>
+                    <td>{{item.moduleCode}}</td>
+                    <td>{{item.title}}</td>
+                
+                </tbody>
+              </table>
+              <br>
+              <nav aria-label="Page navigation example " style="margin-left: 75%;padding-bottom: 0.5rem;">
+                  <ul class="pagination">
+                    <li class="page-item">
+                      <a class="page-link" href="#" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                        <span class="sr-only">Previous</span>
+                      </a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                      <a class="page-link" href="#" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                        <span class="sr-only">Next</span>
+                      </a>
+                    </li>
+                  </ul>
+                </nav>
+        
+        
+        </div>
+        <br>
+    </div>
+ 
+</div>
+
+
+<div style="padding:0.4rem">
+    <button (click)="DownloadPDF();x()" style="margin-left: 25rem;width: 10rem;"  class="btn btn-info">Generate PDF</button>
+    <button (click)="RedirectReportHome()" style="margin-left: 1rem;width: 8rem;"  class="btn btn-primary">Report Home</button>
+  </div>
+  <br>
+</nb-layout-column>
+</nb-layout>
+ 
+  <footer>
+    <nav  id="foot" class="navbar ">
+      <a class="navbar-brand" href="#">
+       
+      </a>
+      <span class="TDO" style=" margin-right: auto"
+        > &lt; TDO &gt;</span
+      >
+      <div class="topnav-right">
+        
+        <a href="#"> <i class="fa fa-facebook"></i> </a>
+        <a href="#"> <i class="fa fa-instagram"></i> </a>
+        <a href="#"> <i class="fa fa-twitter"></i> </a>
+        <a>TutorDevOps@gmail.com</a>
+      </div>
+    </nav>
+  </footer>
+
+  
+
