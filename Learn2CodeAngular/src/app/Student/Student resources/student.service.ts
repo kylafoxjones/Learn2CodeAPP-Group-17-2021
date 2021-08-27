@@ -99,7 +99,7 @@ export class StudentService {
     );
   }
 
-  checkout(dto){
+  checkout(dto) {
     return this.http.post(this.apiUrl + 'Checkout', dto);
   }
   //#endregion
@@ -192,50 +192,55 @@ export class StudentService {
   //   });
   // }
 
-    getCourseContentVideoDisplay(id:number) {
-      return this.http.get(
-        this.apiUrl + 'Video/' + id, {
-          responseType: 'blob',
-        }
-      );
-    }
- 
-    getCourseContentFileDisplay(id:number) {
-      return this.http.get(
-        this.apiUrl + 'DownloadRContentPdf/' + id, {
-          responseType: 'blob',
-        }
-      );
-    }
+  getCourseContentVideoDisplay(id: number) {
+    return this.http.get(this.apiUrl + 'Video/' + id, {
+      responseType: 'blob',
+    });
+  }
 
+  getCourseContentFileDisplay(id: number) {
+    return this.http.get(this.apiUrl + 'DownloadRContentPdf/' + id, {
+      responseType: 'blob',
+    });
+  }
 
-    //#view resource region starts
-    getModulesForResource(){ 
-      return this.http.get(this.apiUrl + 'ViewModules' );
-      
-    }
+  //#view resource region starts
+  getModulesForResource() {
+    return this.http.get(this.apiUrl + 'ViewModules');
+  }
 
-    getResourceByModule(id){
-      return this.http.get(this.apiUrl + 'ViewResources/' + id);
-      
-    }
+  getResourceByModule(id) {
+    return this.http.get(this.apiUrl + 'ViewResources/' + id);
+  }
 
-    downloadResource(id:number){
-      return this.http.get(
-        this.apiUrl + 'DownloadResource/' + id, {
-          responseType: 'blob',
-        }
-      );
-    }
-    //#end of region
-   
+  downloadResource(id: number) {
+    return this.http.get(this.apiUrl + 'DownloadResource/' + id, {
+      responseType: 'blob',
+    });
+  }
+  //#end of region
+
   // getCourseContentFileDisplay(id: number) {
   //   return this.http.get(this.apiUrl + 'DownloadRContentPdf/' + id, {
   //     responseType: 'blob',
   //   });
   // }
 
-  getGroupSessions(id){
+  getGroupSessions(id) {
     return this.http.get(this.apiUrl + 'GetMyGroupSessions/' + id);
+  }
+
+  Getbookingindiv(id) {
+    return this.http.get(this.apiUrl + 'GetbookingIndividual/' + id);
+  }
+
+  Available(module, type): Observable<any> {
+    return this.http.get(
+      this.apiUrl + 'GetIndividualAvailable/' + module + '/' + type
+    );
+  }
+
+  makeBooking(obj) {
+    return this.http.post(this.apiUrl + 'CreateIndividualBooking',obj);
   }
 }
