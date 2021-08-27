@@ -12,9 +12,10 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import { NbLayoutComponent } from '@nebular/theme';
 import { NbLayoutColumnComponent } from '@nebular/theme';
 import Swal from 'sweetalert2';
+import { saveAs } from 'file-saver';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
-import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
+//import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-sales-report',
@@ -60,7 +61,11 @@ export class SalesReportComponent implements OnInit {
       'success'
     )
   }
-
+  exportpay(){
+    this.ReportService.export(this.Start, this.End).subscribe((res) => {
+      saveAs(res, 'test'+  '.xlsx');
+    });
+  }
   getSubscriptionSalesTable(){
 
     this.ObjectToSend.StartDate = this.Start;
