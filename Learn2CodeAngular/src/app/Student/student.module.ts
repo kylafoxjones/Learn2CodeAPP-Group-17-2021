@@ -30,6 +30,7 @@ import { DisplayCoursesComponent } from './student-home/display-courses/display-
 import { ViewResourcesComponent } from './view-resources/view-resources.component';
 import { Angular4PaystackModule } from 'angular4-paystack';
 import { ViewGroupSessionsComponent } from './view-group-sessions/view-group-sessions.component';
+import { SessionsComponent } from './sessions/sessions.component';
 
 
 @NgModule({
@@ -47,7 +48,8 @@ import { ViewGroupSessionsComponent } from './view-group-sessions/view-group-ses
     MaintainStudentComponent,
     DisplayCoursesComponent,
     ViewResourcesComponent,
-    ViewGroupSessionsComponent
+    ViewGroupSessionsComponent,
+    SessionsComponent
   ],
   imports: [
     Angular4PaystackModule.forRoot('pk_live_af05c857de047c4178a4ab3d32104299998199bb'),

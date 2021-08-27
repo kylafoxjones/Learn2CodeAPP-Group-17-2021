@@ -1,0 +1,165 @@
+<!-- <nav class="navbar navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">
+    <img
+      src="../.././assets/pics/HD logo.png"
+      width="40"
+      height="40"
+      class="d-inline-block align-top"
+      alt=""
+    />
+  </a>
+  <span class="TDO" style="color: rgb(0, 156, 158); margin-right: auto"
+    >TutorDevOps</span
+  >
+  <div class="right" style="margin-left: 2rem">
+    <span style="color: whitesmoke"
+      ><i style="color: whitesmoke" class="fa fa-ticket" aria-hidden="true"></i
+      ><i style="color: whitesmoke" class="fa fa-ticket" aria-hidden="true"></i>
+      x4
+      <i
+        style="color: whitesmoke; margin-left: 1rem"
+        class="fa fa-ticket"
+        aria-hidden="true"
+      >
+      </i>
+      x3</span
+    >
+
+    <span style="color: whitesmoke; margin-right: 2rem; padding-left: 1.5rem"
+      >Home</span
+    >
+  </div>
+  <div class="topnav-right">
+    <div class="dot">Z</div>
+  </div>
+</nav>
+
+<div style="padding-top: 2rem; padding-bottom: 1rem">
+  <div class="header" (click)="delete()">Group session schedule</div>
+</div>
+
+<nb-layout>
+  <nb-layout-column>
+    <div class="calendar-container" *ngIf="events">
+      <div class="row">
+        <div class="col-md-9">
+          <h3 style="margin-left: 58%" class="mt-0">
+            {{
+              viewDate
+                | calendarSchedulerDate
+                  : view + "ViewTitle"
+                  : locale
+                  : weekStartsOn
+                  : excludeDays
+                  : viewDays
+                  : startsWithToday
+            }}
+          </h3>
+        </div>
+        <div class="col-md-3 text-right">
+          <div class="row">
+            <div class="col-md-12">
+              <div
+                class="btn-group m-1"
+                role="group"
+                style="margin-right: 3 6rem"
+              >
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  mwlCalendarPreviousView
+                  [view]="view"
+                  [(viewDate)]="viewDate"
+                  [daysInWeek]="viewDays"
+                  [excludeDays]="excludeDays"
+                  [disabled]="prevBtnDisabled"
+                  (viewDateChange)="dateOrViewChanged()"
+                >
+                  <span class="valign-center">
+                    <i title="Precedente" class="material-icons md-18"
+                      >keyboard_arrow_left</i
+                    >
+                  </span>
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-light"
+                  mwlCalendarToday
+                  [(viewDate)]="viewDate"
+                  (viewDateChange)="dateOrViewChanged()"
+                >
+                  <span class="valign-center">
+                    <i title="Oggi" class="material-icons md-18">today</i>
+                  </span>
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  mwlCalendarNextView
+                  [view]="view"
+                  [(viewDate)]="viewDate"
+                  [daysInWeek]="viewDays"
+                  [excludeDays]="excludeDays"
+                  [disabled]="nextBtnDisabled"
+                  (viewDateChange)="dateOrViewChanged()"
+                >
+                  <span class="valign-center">
+                    <i title="Successivo" class="material-icons md-18"
+                      >keyboard_arrow_right</i
+                    >
+                  </span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
+      <div [ngSwitch]="view">
+        <calendar-scheduler-view
+          *ngSwitchCase="CalendarView.Week"
+          style="margin-top: 1rem"
+          [viewDays]="viewDays"
+          [viewDate]="viewDate"
+          [events]="events"
+          [locale]="locale"
+          [responsive]="false"
+          [weekStartsOn]="weekStartsOn"
+          [excludeDays]="excludeDays"
+          [startsWithToday]="startsWithToday"
+          [hourSegments]="hourSegments"
+          [dayStartHour]="dayStartHour"
+          [dayEndHour]="dayEndHour"
+          [dayModifier]="dayModifier"
+          [hourModifier]="hourModifier"
+          [segmentModifier]="segmentModifier"
+          [eventModifier]="eventModifier"
+          [showEventActions]="true"
+          [showSegmentHour]="true"
+          [zoomEventOnHover]="true"
+          (viewDaysChanged)="viewDaysChanged($event)"
+          (dayHeaderClicked)="dayHeaderClicked($event.day)"
+          (hourClicked)="hourClicked($event.hour)"
+          (segmentClicked)="segmentClicked('Clicked', $event.segment)"
+          (eventClicked)="openDialog()"
+          (eventTimesChanged)="eventTimesChanged($event)"
+          [refresh]="refresh"
+        >
+        </calendar-scheduler-view>
+      </div>
+    </div>
+  </nb-layout-column>
+</nb-layout>
+
+<footer>
+  <nav id="foot" class="navbar" style="width: 100%">
+    <a class="navbar-brand" href="#"> </a>
+    <span class="TDO" style="margin-right: auto"> &lt; TDO &gt;</span>
+    <div class="topnav-right">
+      <a href="#"> <i class="fa fa-facebook"></i> </a>
+      <a href="#"> <i class="fa fa-instagram"></i> </a>
+      <a href="#"> <i class="fa fa-twitter"></i> </a>
+      <a>TutorDevOps@gmail.com</a>
+    </div>
+  </nav>
+</footer> -->
