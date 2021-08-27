@@ -4,12 +4,25 @@
 <mat-dialog-content>
   <mat-form-field class="example-full-width">
     <mat-label>Message: </mat-label>
-    <input [(ngModel)]="data.Message" matInput />
+    <div *ngIf="msg.invalid && (msg.dirty || msg.touched)" class="alert">
+      <div *ngIf="msg.errors?.required" style="font-size: smaller; color: red;">
+        Message is required.</div>
+      <div *ngIf="msg.errors?.minlength" style="font-size: smaller; color: red;">
+        Message must be at least 2 characters long.
+      </div>
+    </div>
+    <input [(ngModel)]="data.Message" matInput
+    type="text"
+      id="msg"
+      #msg="ngModel"
+      required
+      minlength="2"
+       />
   </mat-form-field>
 </mat-dialog-content>
 <h1>{{ data.id }}</h1>
 <div style="margin: auto; padding-top: 1rem; text-align: center">
-  <button (click)="sendMessage()" style="width: 6rem" class="btn btn-info">
+  <button (click)="sendMessage()" [disabled]="msg.invalid" style="width: 6rem" class="btn btn-info">
     Send
   </button>
   <button
