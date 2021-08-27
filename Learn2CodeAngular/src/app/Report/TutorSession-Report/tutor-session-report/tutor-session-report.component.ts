@@ -11,7 +11,7 @@ import { BaseChartDirective } from 'ng2-charts';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { NbLayoutComponent } from '@nebular/theme';
 import { NbLayoutColumnComponent } from '@nebular/theme';
-
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 import Swal from 'sweetalert2';
@@ -22,6 +22,10 @@ import Swal from 'sweetalert2';
   styleUrls: ['./tutor-session-report.component.scss']
 })
 export class TutorSessionReportComponent implements OnInit {
+   
+    //pagination
+    page1:number = 1;
+    totalLength1:any;
     //Lists
     TutorDropdown:any = [];
     TutorSession: any = [];
@@ -79,6 +83,7 @@ export class TutorSessionReportComponent implements OnInit {
         
         this.TutorSession = result;
         this.TutorName = this.TutorSession[0].tutorName;
+        this.totalLength1 = this.TutorSession.length;
         console.log(this.TutorName);
         console.log(this.TutorSession);
 

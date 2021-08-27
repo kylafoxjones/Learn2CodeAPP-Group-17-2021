@@ -4,6 +4,7 @@ import { ReportingService } from '../../Report resources/reporting.service';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 import { Router } from '@angular/router';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 
@@ -13,6 +14,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./tutor-details-report.component.scss']
 })
 export class TutorDetailsReportComponent implements OnInit {
+
+  //Pagination
+  page1:number = 1;
+  totalLength1:any;
 
 tutorList: any = [];
 
@@ -36,6 +41,7 @@ tutorList: any = [];
   getTutorDetails() {
     this.reportService.getTutorDetails().subscribe((result) => {
       this.tutorList = result; 
+      this.totalLength1 = this.tutorList.length;
       console.log(this.tutorList);
     });
   }

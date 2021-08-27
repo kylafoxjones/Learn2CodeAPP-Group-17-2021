@@ -41,6 +41,7 @@ import { UploadCsvFileComponent } from './payments/upload-csv-file/upload-csv-fi
 import { CourseContentComponent } from './course-content/course-content.component';
 import { AddCourseContentComponent } from './course-content/add-course-content/add-course-content.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -89,7 +90,8 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     MatMenuModule,
     MatCardModule,
     ChartsModule,
-    NgxChartsModule
+    NgxChartsModule,
+    NgxPaginationModule
     
     
   ],

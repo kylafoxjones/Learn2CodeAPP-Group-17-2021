@@ -4,7 +4,7 @@ import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 import { Router } from '@angular/router';
 import { ReportingService } from '../../Report resources/reporting.service';
-
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @Component({
   selector: 'app-total-students-report',
@@ -13,6 +13,8 @@ import { ReportingService } from '../../Report resources/reporting.service';
 })
 export class TotalStudentsReportComponent implements OnInit {
 
+  totalLength:any;
+  page:number = 1;
   studentList:any= [];
 
   constructor(  
@@ -33,6 +35,7 @@ export class TotalStudentsReportComponent implements OnInit {
   getStudentDetails() {
     this.reportService.getTotalStudents().subscribe((result) => {
       this.studentList = result; 
+      this.totalLength = this.studentList.length;
       console.log(this.studentList);
     });
   }

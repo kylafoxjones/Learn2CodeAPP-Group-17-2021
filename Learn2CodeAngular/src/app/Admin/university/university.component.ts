@@ -6,6 +6,7 @@ import { AddEditUniversityComponent } from './add-edit-university/add-edit-unive
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AdminService } from '../admin resources/admin.service';
 import { NbAccordionItemHeaderComponent } from '@nebular/theme';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @Component({
   selector: 'app-university',
@@ -13,6 +14,10 @@ import { NbAccordionItemHeaderComponent } from '@nebular/theme';
   styleUrls: ['./university.component.scss'],
 })
 export class UniversityComponent implements OnInit {
+
+  //pagination
+  totalLength:any;
+  page:number = 1;
   //declare variables
   universityList: any = [];
   university: any;
@@ -80,6 +85,7 @@ export class UniversityComponent implements OnInit {
   getAllUniversities() {
     this.service.getUniversities().subscribe((result) => {
       this.universityList = result; //uni list is populated
+      this.totalLength = this.universityList.length;
     });
   }
 

@@ -98,6 +98,10 @@ export class StudentService {
       this.apiUrl + 'RemoveSubscription/' + SubScriptionBasketLineId
     );
   }
+
+  checkout(dto){
+    return this.http.post(this.apiUrl + 'Checkout', dto);
+  }
   //#endregion
 
   //#region feedback
@@ -230,4 +234,8 @@ export class StudentService {
   //     responseType: 'blob',
   //   });
   // }
+
+  getGroupSessions(id){
+    return this.http.get(this.apiUrl + 'GetMyGroupSessions/' + id);
+  }
 }

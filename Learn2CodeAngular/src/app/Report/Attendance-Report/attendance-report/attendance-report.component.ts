@@ -11,7 +11,7 @@ import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 import { ChartOptions, ChartType } from 'chart.js';
 import { Label, SingleDataSet } from 'ng2-charts';
-
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 
@@ -22,6 +22,11 @@ import { Label, SingleDataSet } from 'ng2-charts';
 })
 export class AttendanceReportComponent implements OnInit {
 
+
+  //pagination
+  page1:number = 1;
+  totalLength1:any;
+  //Lists
   SessionList:any = [];
   AttendedList:any = [];
   BookingInstanceID:any[] = [];
@@ -71,9 +76,8 @@ export class AttendanceReportComponent implements OnInit {
  
   this.reportService.getAttendedList(this.ID).subscribe((result) =>{
     this.AttendedList = result;
+    this.totalLength1 = this.AttendedList.length;
    
-    
-  
   })
 
   //Attendance Chart
