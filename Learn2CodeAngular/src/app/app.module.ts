@@ -16,10 +16,11 @@ import { ChartsModule } from 'ng2-charts';
 import { JwtModule } from "@auth0/angular-jwt";
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
-
+import { Angular4PaystackModule } from 'angular4-paystack';
+import { JwtModule } from '@auth0/angular-jwt';
 
 export function tokenGetter() {
-  return localStorage.getItem("token");
+  return localStorage.getItem('token');
 }
 
 
@@ -37,7 +38,7 @@ export function tokenGetter() {
     MatNativeDateModule,
     MatDatepickerModule,
     TutorModule,
-  
+    Angular4PaystackModule.forRoot('pk_live_af05c857de047c4178a4ab3d32104299998199bb'),
     BrowserAnimationsModule,
     NbThemeModule.forRoot({ name: 'default' }),
     NbLayoutModule,
@@ -49,8 +50,8 @@ export function tokenGetter() {
         tokenGetter: tokenGetter,
         allowedDomains: ['localhost:4200'],
         disallowedRoutes: [],
-        authScheme: "Bearer "
-      }
+        authScheme: 'Bearer ',
+      },
     }),
     //  NgbModule,
   ],

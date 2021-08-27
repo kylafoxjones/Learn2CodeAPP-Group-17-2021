@@ -6,6 +6,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AdminService } from '../admin resources/admin.service';
 import { AcceptRejectApplicationComponent } from './accept-reject-application/accept-reject-application.component';
 import { MatCardModule } from '@angular/material/card';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @Component({
   selector: 'app-tutor-application',
@@ -13,6 +14,11 @@ import { MatCardModule } from '@angular/material/card';
   styleUrls: ['./tutor-application.component.scss'],
 })
 export class TutorApplicationComponent implements OnInit {
+
+   //pagination
+   totalLength:any;
+   page:number = 1;
+
  // applicationList: any = [];
   applications; any =[];
   application: any;
@@ -50,6 +56,10 @@ export class TutorApplicationComponent implements OnInit {
     this.service.getTutorApplications().subscribe((result) => {
       this.service.applicationList = result;
       this.applications = this.service.applicationList;
+
+      //pagination 
+      this.totalLength = this.applications.length;
+
       console.log('all applications from api', this.applications);
     });
   }

@@ -69,12 +69,27 @@
     Total: R {{ basketForStudentLoggedIn.totalPrice }}
   </h6>
   <br />
-  <button
+  <!-- <button
     (click)="checkout()"
     class="btn btn-info"
     style="width: 100%; position: bottom"
   >
     Checkout
+  </button> -->
+  <script src="https://js.paystack.co/v1/inline.js"></script>
+  <button
+  angular4-paystack
+  [key]="'pk_live_af05c857de047c4178a4ab3d32104299998199bb'"
+  [email]="'mailexample@mail.com'"
+  [amount]= total
+  [ref]="reference"
+  [currency]="'ZAR'"
+  [class]="'btn btn-primary'"
+    (paymentInit)="paymentInit()"
+    (onClose)="paymentCancel()"
+    (callback)="paymentDone($event)"
+  >
+  Pay with Paystack
   </button>
 </mat-menu>
 
@@ -266,3 +281,8 @@
     </div>
   </nav>
 </footer>
+
+<!-- 
+(paymentInit)="paymentInit()"
+(onClose)="paymentCancel()"
+(callback)="paymentDone($event)" -->

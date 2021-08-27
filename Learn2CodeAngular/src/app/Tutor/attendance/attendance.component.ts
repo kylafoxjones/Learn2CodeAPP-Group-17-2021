@@ -93,7 +93,7 @@ export class AttendanceComponent implements OnInit {
   }
 
   delete(obj) {
-    console.log('the id of the one you deleting',obj.id);
+    console.log('the id of the one you deleting', obj.id);
     Swal.fire({
       title: 'Are you sure you want to delete the attendance for this session?',
       icon: 'warning',

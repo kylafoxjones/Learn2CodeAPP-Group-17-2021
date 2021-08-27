@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { AdminService } from '../admin resources/admin.service';
 import Swal from 'sweetalert2';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @Component({
   selector: 'app-student',
@@ -11,6 +12,11 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   styleUrls: ['./student.component.scss']
 })
 export class StudentComponent implements OnInit {
+
+  //pagination
+  totalLength:any;
+  page:number = 1;
+
   //declare variables
   studentList: any = [];
   student: any;
@@ -47,6 +53,7 @@ export class StudentComponent implements OnInit {
   getAllStudents() {
     this.service.getStudents().subscribe((result) => {
       this.studentList = result; 
+      this.totalLength = this.studentList.length;
       console.log(this.studentList);
     });
   }
