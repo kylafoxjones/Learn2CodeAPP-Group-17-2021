@@ -1,0 +1,167 @@
+
+
+
+<nav id="adminnav" class="navbar navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">
+    <img
+      src="../.././assets/pics/HD logo.png"
+      width="40"
+      height="40"
+      class="d-inline-block align-top"
+      alt=""
+    />
+  </a>
+  <span class="TDO" style="color: rgb(0, 156, 158); margin-right: auto"
+    >TutorDevOps</span
+  >
+  <div class="right" routerLink="/adminhome"  >
+    <a style="color: whitesmoke; margin-right: 3rem">Home</a>
+  </div>
+  <div class="topnav-right" >
+
+
+      <div [matMenuTriggerFor]="menu"  class="dot" >A</div>
+  </div>
+</nav>
+
+
+<!--menu-->
+
+<mat-menu #menu="matMenu" xPosition="before">
+  <button mat-menu-item><i class="fa fa-user" aria-hidden="true" style="padding-right: 0.5rem;"></i>Profile</button>
+  <button (click)="logout()" mat-menu-item><i class="fa fa-sign-out" aria-hidden="true" style="padding-right: 0.5rem;"></i>Logout</button>
+</mat-menu>
+
+<span flex></span>
+
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav  style="width: 10rem;background-color: rgb(54, 72, 80);" #drawer class="sidenav" fixedInViewport
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === false">
+    <mat-toolbar style="color: white;text-align: center;background-color: rgb(54, 72, 80)">Menu</mat-toolbar>
+    <mat-nav-list >
+    <a [routerLink]="['/applications']" style="color: white;font-size: small;" mat-list-item href="#"><i  style="font-size: medium;padding: 0.3rem;" class="fa fa-id-card-o" aria-hidden="true"></i>Tutor Application</a>
+      <a [routerLink]="['/tutor']" style="color: white;font-size: small;" mat-list-item href="#"><i  style="font-size: medium;padding: 0.3rem;" class="fa fa-user" aria-hidden="true"></i>Tutors</a>
+      <a [routerLink]="['/university']" style="color: white;font-size: small;" mat-list-item href="#"><i  style="font-size: medium;padding: 0.3rem;" class="fa fa-university" aria-hidden="true"></i>Universities </a>
+      <a [routerLink]="['/course']" style="color: white;font-size: small;" mat-list-item href="#"><i  style="font-size: medium;padding: 0.3rem;" class="fa fa-folder-open" aria-hidden="true"></i>Courses</a>
+      <a [routerLink]="['/subscription']" style="color: white;font-size: small;" mat-list-item href="#"><i  style="font-size: medium;padding: 0.3rem;" class="fa fa-file" aria-hidden="true"></i>Subscription</a>
+      <a [routerLink]="['/student']" style="color: white;font-size: small;" mat-list-item href="#"><i  style="font-size: medium;padding: 0.3rem;" class="fa fa-users" aria-hidden="true"></i>Students</a>
+      <a style="color: white;font-size: small;" mat-list-item href="#"><i style="font-size: medium;padding: 0.3rem;" class="fa fa-folder-open" aria-hidden="true"></i>Session Content</a>
+      <a [routerLink]="['/report-home']" style="color: white;font-size: small;" mat-list-item href="#"><i style="font-size: medium;padding: 0.3rem;" class="fa fa-line-chart" aria-hidden="true"></i>Report</a>
+     
+      <a [routerLink]="['/payments']"style="color: white;font-size: small;" mat-list-item href="#"><i style="font-size: medium;padding: 0.3rem;" class="fa fa-credit-card" aria-hidden="true"></i>Payments</a>
+
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+
+    <!-- Add Content Here -->
+  </mat-sidenav-content>
+</mat-sidenav-container>
+<nb-layout>
+  <nb-layout-column>
+
+<div class="row" style="padding-bottom: 4rem;">
+  <div class="col-md-4">
+      <div class="div" style="height: 160px;width: 200px;background-color: white;margin-left: 55%; box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
+      0 6px 6px rgba(0, 0, 0, 0.23);border-radius: 15%;">
+      <h5 style="text-align: center;color:black  ;padding-top: 0.5rem;">Total Students</h5><br>
+      <span [(ngModel)]="numOfStudents" style="font-size:xx-large;margin-left: 3.5rem;">{{numOfStudents}} <i class="fa fa-users" aria-hidden="true"></i></span></div>
+  </div>
+  <div class="col-md-4">
+      <div class="div"style="height: 160px;width: 200px;background-color: white;margin-left: 50%; box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
+      0 6px 6px rgba(0, 0, 0, 0.23);border-radius: 15%;">
+      <h5 style="text-align: center;color:black ;padding-top: 0.5rem;">Total Tutors</h5> 
+      <br><span [(ngModel)]="numOfTutors" style="font-size:xx-large;margin-left: 4rem;">{{numOfTutors}}<i class="fa fa-user" aria-hidden="true"></i></span></div>
+  </div>
+  <div class="col-md-4">
+      <div class="div"style="height: 160px;width: 200px;background-color: white;margin-left: 45%; box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
+      0 6px 6px rgba(0, 0, 0, 0.23);border-radius: 15%;"><h6 style="text-align: center;color:black ;padding-top: 0.5rem;">
+      <i style="font-size: medium;padding: 0.3rem;" class="fa fa-university" aria-hidden="true" [(ngModel)]="numOfUniversities"></i>Universities: {{numOfUniversities}}</h6><br>
+      <h6 style="text-align: center;color:black ;margin-right: 0.9rem;">
+        <i style="font-size: medium;padding: 0.3rem;" class="fa fa-graduation-cap" aria-hidden="true" [(ngModel)]="numOfDegrees">
+      </i>Degrees: {{numOfDegrees}}</h6><br><h6 style="text-align: center;color:black ;margin-right: 0.5rem;">
+        <i style="font-size: medium;padding: 0.3rem;" class="fa fa-pencil-square-o" aria-hidden="true" [(ngModel)]="numOfModules">
+        </i>Modules: {{numOfModules}}</h6> </div>
+  </div>
+
+</div>
+
+
+
+
+<div class="row" style="padding-bottom: 1rem;padding-top: 0.5rem;">
+  <div class="col-md-6" >
+    <h5 style="position: relative; left: 250px;bottom: 30px;">Students at Universities</h5>
+      <div id="StudentOfUniData" style="width: 500px;height:200px;margin-left: 9rem;">
+
+      
+        <ngx-charts-bar-vertical 
+      
+        [scheme]="colorScheme"
+        [results]="StudentUniData"
+        [gradient]="gradient"
+        [xAxis]="showXAxis"
+        [yAxis]="showYAxis"
+        [legend]="showLegend"
+        [showXAxisLabel]="showXAxisLabel"
+        [showYAxisLabel]="showYAxisLabel"
+        [xAxisLabel]="xAxisLabel"
+        [yAxisLabel]="yAxisLabel"
+        >
+      </ngx-charts-bar-vertical>
+
+      <div>
+        <button style="margin-left: 11.7rem;margin-top: 1.5rem;" class="btn btn-info" (click)="DownloadUniPDF();x()">Download</button>
+       </div>
+      </div>
+    
+
+  </div>
+  <div class="col-md-6" >
+    <h5 style="position: relative;left: 230px;bottom: 30px;">Courses Sold</h5>
+      <div id="CourseData" class="chart-wrapper" style="width: 700px;
+                                                       height:280px;
+                                                       position: relative;
+                                                       bottom: 60px;
+                                                       right: 50px;">
+                                                       
+        <ngx-charts-pie-chart
+        
+        [scheme]="colorScheme1"
+        [results]="CourseData"
+        [gradient]="gradient1"
+        [legend]="showLegend1"
+        [legendPosition]="legendPosition"
+        [labels]="showLabels"
+        [doughnut]="isDoughnut"
+       
+        >
+      </ngx-charts-pie-chart>
+    <button style=" margin-left: 18.5rem;" class="btn btn-info" (click)="DownloadCoursePDF();x()">Download</button>
+    </div>
+
+  </div>
+
+
+</div>
+</nb-layout-column>
+</nb-layout>
+<footer>
+  <nav style="height: 3rem;"  id="foot" class="navbar ">
+    <a class="navbar-brand" href="#">
+
+    </a>
+    <span class="TDO" style=" margin-right: 27%;"
+      > &lt; TDO &gt;</span
+    >
+    <div class="topnav-right">
+
+      <a href="#"> <i class="fa fa-facebook"></i> </a>
+      <a href="#"> <i class="fa fa-instagram"></i> </a>
+      <a href="#"> <i class="fa fa-twitter"></i> </a>
+      <a>TutorDevOps@gmail.com</a>
+    </div>
+  </nav>
+</footer>

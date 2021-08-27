@@ -1,0 +1,46 @@
+<h5 style="text-align: center">{{ popupTitle }}</h5>
+<hr />
+<mat-dialog-content>
+  <mat-form-field class="example-full-width">
+    <mat-label>Name:</mat-label>
+    <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert">
+      <div *ngIf="name.errors?.required" style="font-size: smaller; color: red">
+        Name is required.
+      </div>
+      <div
+        *ngIf="name.errors?.minlength"
+        style="font-size: smaller; color: red"
+      >
+        Name must be at least 4 characters long.
+      </div>
+    </div>
+    <input
+      matInput
+      id="name"
+      name="name"
+      class="form-control"
+      required
+      minlength="4"
+      [(ngModel)]="data.CourseFolderName"
+      #name="ngModel"
+    />
+  </mat-form-field>
+</mat-dialog-content>
+<h1>{{ data.id }}</h1>
+<div style="margin: auto; padding-top: 1rem; text-align: center">
+  <button
+    (click)="submitEdittedCourse()"
+    style="width: 6rem"
+    class="btn btn-info"
+    [disabled]="name.invalid"
+  >
+    Submit
+  </button>
+  <button
+    [mat-dialog-close]
+    style="margin-left: 2rem; width: 6rem"
+    class="btn btn-danger"
+  >
+    Cancel
+  </button>
+</div>

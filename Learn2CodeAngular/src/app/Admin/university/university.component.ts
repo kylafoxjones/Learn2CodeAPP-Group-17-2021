@@ -5,7 +5,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { AddEditUniversityComponent } from './add-edit-university/add-edit-university.component';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AdminService } from '../admin resources/admin.service';
-import { University } from '../admin resources/university';
+import { NbAccordionItemHeaderComponent } from '@nebular/theme';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @Component({
   selector: 'app-university',
@@ -13,10 +14,14 @@ import { University } from '../admin resources/university';
   styleUrls: ['./university.component.scss'],
 })
 export class UniversityComponent implements OnInit {
+
+  //pagination
+  totalLength:any;
+  page:number = 1;
   //declare variables
-  universityList: any;
+  universityList: any = [];
   university: any;
-  
+  search;
 
   constructor(
     private router: Router,
@@ -24,9 +29,11 @@ export class UniversityComponent implements OnInit {
     private service: AdminService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit() {
+    this.getAllUniversities();
+  }
 
-  delete() {
+  delete(id: number) {
     Swal.fire({
       title: 'Are you sure you want to delete the University?',
       text: '',
@@ -37,23 +44,53 @@ export class UniversityComponent implements OnInit {
       confirmButtonText: 'Yes',
     }).then((result) => {
       if (result.isConfirmed) {
+        this.service.deleteUniversity(id).subscribe((result) => {
+          this.getAllUniversities();
+        });
         Swal.fire('Successful Deletion', '', 'success');
       }
     });
   }
 
-  openDialog() {
-    //this.service.editId = 0;
+  openAddDialog() {
+    this.service.edit = false;
+    this.service.editId = 0;
+    //fill a object place holder when add is clicked with nothing
+    this.service.editUni = {};
+    this.service.title = 'Create University';
     const dialogRef = this.dialog.open(AddEditUniversityComponent, {
       width: '350px',
     });
     dialogRef.afterClosed().subscribe((result) => {
+      this.getAllUniversities();
+    });
+  }
+
+  openEditDialog(obj) {
+    this.service.edit = true;
+    //fill the object place holder when edit is clicked
+    this.service.editUni = obj;
+    this.service.oldUniName = obj.universityName;
+    this.service.unis = this.universityList;
+    this.service.editId = obj.id;
+    this.service.title = 'Edit University';
+    const dialogRef = this.dialog.open(AddEditUniversityComponent, {
+      width: '350px',
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+      this.getAllUniversities();
     });
   }
 
   getAllUniversities() {
     this.service.getUniversities().subscribe((result) => {
       this.universityList = result; //uni list is populated
+      this.totalLength = this.universityList.length;
     });
+  }
+
+  navigateToDegree(id: number) {
+    this.service.universityIdToSend = id;
+    this.router.navigateByUrl('/degree');
   }
 }

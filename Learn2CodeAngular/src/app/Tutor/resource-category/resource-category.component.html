@@ -1,0 +1,254 @@
+<nav class="navbar navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">
+    <img
+      src="../.././assets/pics/HD logo.png"
+      width="40"
+      height="40"
+      class="d-inline-block align-top"
+      alt=""
+    />
+  </a>
+  <span class="TDO" style="color: rgb(0, 156, 158); margin-right: auto"
+    >TutorDevOps</span
+  >
+  <div class="topnav-right">
+    <a>Home</a>
+  </div>
+  <div class="topnav-right" style="margin-right: 0.5rem">
+    <img
+      src="../../../assets/pics/circle-cropped.png"
+      width="50"
+      height="50"
+      style="border-radius: 55px"
+      class="d-inline-block align-top"
+      alt=""
+    />
+  </div>
+</nav>
+
+<div style="padding-top: 2rem; padding-bottom: 1rem">
+  <div class="header">Resources</div>
+</div>
+
+<nb-layout style="width: 10rem">
+  <nb-layout-column style="width: 10rem">
+    <nb-tabset style="width: 67rem; margin-left: 4rem" fullWidth>
+      <nb-tab tabTitle="Resources">
+        <div class="input-group rounded" style="width: 20%">
+          <select
+            class="form-select"
+            aria-label="Default select example"
+            style="width: 9rem"
+           
+            (change)="selectType($event.target.value)"
+          > <option value="" selected disabled> University</option>
+              <option *ngFor="let uni of uniList" [value]="uni.id">
+          
+                {{uni.universityName}}
+              </option>
+          </select>
+
+
+          <span>
+            <button (click)="getUnisResource()" class="btn btn-primary">
+              <i class="fa fa-search"></i>
+            </button>
+          </span>
+        </div>
+        <br />
+
+
+        <div *ngIf="hasContent">
+        <div class="row">
+          <div class="col-md-4" 
+          *ngFor="let item of uniResoList | filter: search">
+            <div style="
+            margin-top: 3rem;
+            border-radius: 25px;
+            background-color: rgb(6, 6, 7);
+            width: 16rem;
+            margin-left: 20%;
+            height: 19rem;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
+              0 6px 6px rgba(0, 0, 0, 0.23);
+          ">
+          <br/>
+              <div    style="
+              text-align: center;
+              width: 12rem;
+              height: 2rem;
+              margin-left: 0.5rem;
+            ">
+                <h5 style="margin-left: 2.5rem; color: white"> {{item.moduleCode}}
+                </h5>
+                <hr style="width: 125%; color: white" />
+                </div>
+                <div style="text-align: center; padding-top: 1.9rem">
+                  <div>
+                    <h6 style="color: white">{{item.degree.degreeName}}</h6>
+                    <p style="color: white">
+                      {{item.degree.university.universityName}}
+                     
+                      <br />
+                      <br />
+                   
+                    </p>
+                  </div>
+                  <div style="margin-top: 2.3rem">
+
+                <button (click)="specificResource(item)" style="width: 7rem" class="btn btn-outline-info">Resource</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        </div>   
+        
+        </div>
+
+
+
+        <div *ngIf="!hasContent">
+          <div
+          style="
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
+              0 6px 6px rgba(0, 0, 0, 0.23);
+            width: 80%;
+            margin: auto;
+            border-radius: 15px;
+            align-items: center;
+          "
+        >
+        <br />
+    
+    <h5 style="text-align: center">No content for this session</h5>
+    
+      </div>
+
+          </div>
+
+
+      </nb-tab>
+
+
+
+
+      <nb-tab tabTitle="Resource categories">
+        <div
+          style="
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
+              0 6px 6px rgba(0, 0, 0, 0.23);
+            width: 101%;
+            margin: auto;
+            border-radius: 15px;
+          "
+        >
+          <br />
+
+          <div
+            class="input-group rounded"
+            style="width: 20%; padding-left: 0.5rem; margin-left: 5rem"
+          >
+            <input
+              [(ngModel)]="search"
+              type="search"
+              class="form-control rounded"
+              placeholder="Search"
+              aria-label="Search"
+              aria-describedby="search-addon"
+            />
+            <span>
+              <button class="btn btn-primary">
+                <i class="fa fa-search"></i>
+              </button>
+            </span>
+          </div>
+
+          <br />
+
+          <table
+            class="table table-hover"
+            style="width: 80%; margin: auto; padding-top: 3.5rem"
+          >
+            <thead>
+              <tr>
+                <th scope="col">Category name</th>
+
+                <th scope="col"></th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of categoryList | filter: search">
+                <td>{{ item.resourceCategoryName }}</td>
+                <td>
+                  <button
+                    (click)="openEditDialog(item)"
+                    class="btn btn-primary"
+                  >
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                  </button>
+                </td>
+                <td>
+                  <button (click)="delete(item.id)" class="btn btn-danger">
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <br />
+          <nav
+            aria-label="Page navigation example "
+            style="margin-left: 75%; padding-bottom: 0.5rem"
+          >
+            <ul class="pagination">
+              <li class="page-item">
+                <a class="page-link" href="#" aria-label="Previous">
+                  <span aria-hidden="true">&laquo;</span>
+                  <span class="sr-only">Previous</span>
+                </a>
+              </li>
+              <li class="page-item"><a class="page-link" href="#">1</a></li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item">
+                <a class="page-link" href="#" aria-label="Next">
+                  <span aria-hidden="true">&raquo;</span>
+                  <span class="sr-only">Next</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+
+        <div style="padding: 1rem; margin-left: 19rem">
+          <button
+            (click)="openAddDialog()"
+            style="margin-left: 80%"
+            class="btn btn-info"
+          >
+            Add Category
+          </button>
+        </div>
+        <br />
+        <br />
+      </nb-tab>
+    </nb-tabset>
+  </nb-layout-column>
+</nb-layout>
+<br />
+<br />
+
+<footer>
+  <nav id="foot" class="navbar" style="width: 100%; bottom: 0">
+    <a class="navbar-brand" href="#"> </a>
+    <span class="TDO" style="margin-right: auto"> &lt; TDO &gt;</span>
+    <div class="topnav-right">
+      <a href="#"> <i class="fa fa-facebook"></i> </a>
+      <a href="#"> <i class="fa fa-instagram"></i> </a>
+      <a href="#"> <i class="fa fa-twitter"></i> </a>
+      <a>TutorDevOps@gmail.com</a>
+    </div>
+  </nav>
+</footer>

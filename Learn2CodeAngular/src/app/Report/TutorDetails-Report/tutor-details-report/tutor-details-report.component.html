@@ -1,0 +1,96 @@
+<style>
+  .NoPointer {
+  
+  pointer-events: none;
+}
+</style>
+
+
+<nav class="navbar navbar-dark bg-dark" >
+    <a class="navbar-brand" href="#">
+      <img
+        src="../.././assets/pics/HD logo.png"
+        width="40"
+        height="40"
+        class="d-inline-block align-top"
+        alt=""
+      />
+    </a>
+    <span class="TDO" style="color: rgb(0, 156, 158); margin-right: auto"
+      >TutorDevOps</span
+    >
+    <div class="topnav-right">
+      <a class="NoPointer" (click)="RedirectReportHome()">Home</a>
+     
+    </div>
+    <div class="topnav-right">
+       
+        <div class="dot" >A</div>
+    </div>
+  </nav>
+  
+  <div style="padding-top: 2rem;padding-bottom: 0.5rem;">
+    <div class="header" >Tutor Details Report</div>
+  </div>
+  <nb-layout>
+  <nb-layout-column>
+<br>
+<br>
+  <div style="box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
+  0 6px 6px rgba(0, 0, 0, 0.23);width: 80%;margin: auto;border-radius: 15px;" >
+  <br>
+  
+    <br>
+      <table class="table table-hover" id="TutorDetailsData" style="width: 90%;margin: auto; padding-top: 2rem;">
+      
+        <thead>
+          <tr>
+            <th scope="col">Tutor Name</th>
+            <th scope="col">Tutor Surname</th>
+            <th scope="col">Tutor Cellhpone</th>
+            <th scope="col">Tutor Email</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of tutorList | paginate: { itemsPerPage: 5, currentPage: page1,totalItems:totalLength1 }">
+            <td>{{ item.tutorName }}</td>
+            <td>{{ item.tutorSurname }}</td>
+            <td>{{ item.tutorCell }}</td>
+            <td>{{ item.tutorEmail }}</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <br>
+      <pagination-controls style=" padding-left: 0px !important; display:flex;float: right" (pageChange)="page1 = $event"></pagination-controls>
+      <br>
+      <br>
+
+      
+  </div>
+  <br>
+  <div style="padding:0.4rem;position: relative;left: 50px;">
+  <button  (click)="DownloadPDF();x()" style="margin-left: 8rem;width: 10rem;"  class="btn btn-info">Generate PDF</button>
+  <button (click)="RedirectReportHome()" style="margin-left: 1rem;width: 8rem;"  class="btn btn-primary">Report Home</button>
+</div>
+</nb-layout-column>
+</nb-layout>
+<footer>
+    <nav  id="foot" class="navbar ">
+      <a class="navbar-brand" href="#">
+       
+      </a>
+      <span class="TDO" style=" margin-right: auto"
+        > &lt; TDO &gt;</span
+      >
+      <div class="topnav-right">
+        
+        <a href="#"> <i class="fa fa-facebook"></i> </a>
+        <a href="#"> <i class="fa fa-instagram"></i> </a>
+        <a href="#"> <i class="fa fa-twitter"></i> </a>
+        <a>TutorDevOps@gmail.com</a>
+      </div>
+    </nav>
+  </footer>
+
+  

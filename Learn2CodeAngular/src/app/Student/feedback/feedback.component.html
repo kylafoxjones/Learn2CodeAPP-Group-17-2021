@@ -1,0 +1,236 @@
+<nav class="navbar navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">
+    <img
+      src="../.././assets/pics/HD logo.png"
+      width="40"
+      height="40"
+      class="d-inline-block align-top"
+      alt=""
+    />
+  </a>
+  <span class="TDO" style="color: rgb(0, 156, 158); margin-right: auto"
+    >TutorDevOps</span
+  >
+  <div class="right" style="margin-left: 2rem">
+    <span style="color: whitesmoke"
+      ><i style="color: whitesmoke" class="fa fa-ticket" aria-hidden="true"></i
+      ><i style="color: whitesmoke" class="fa fa-ticket" aria-hidden="true"></i>
+      x4
+      <i
+        style="color: whitesmoke; margin-left: 1rem"
+        class="fa fa-ticket"
+        aria-hidden="true"
+      >
+      </i>
+      x3</span
+    >
+
+    <span [routerLink]="['/studenthomepage/studenthome']" style="color: whitesmoke; margin-right: 2rem; padding-left: 1.5rem"
+      >Home</span
+    >
+  </div>
+  <div class="topnav-right">
+    <div class="dot">{{ thisStudent.studentName[0]+ thisStudent.studentSurname[0] }}</div>
+  </div>
+</nav>
+
+<div style="padding-top: 2rem; padding-bottom: 1rem">
+  <div class="header">Past Session Feedback</div>
+</div>
+
+<nb-layout style="width: 10rem">
+  <nb-layout-column style="width: 10rem">
+    <nb-tabset style="width: 125rem; margin-left: 4rem" fullWidth>
+      <nb-tab tabTitle="Past Session">
+        <div
+          style="
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
+              0 6px 6px rgba(0, 0, 0, 0.23);
+            width: 101%;
+            margin: auto;
+            border-radius: 15px;
+          "
+        >
+          <br />
+
+          <div
+            class="input-group rounded"
+            style="width: 20%; padding-left: 0.5rem; margin-left: 5rem"
+          >
+            <input
+              type="search"
+              class="form-control rounded"
+              placeholder="Search"
+              aria-label="Search"
+              aria-describedby="search-addon"
+            />
+            <span>
+              <button (click)="search()" class="btn btn-primary">
+                <i class="fa fa-search"></i>
+              </button>
+            </span>
+          </div>
+
+          <br />
+
+          <table
+            class="table table-hover"
+            style="width: 80%; margin: auto; padding-top: 3.5rem"
+          >
+            <thead>
+              <tr>
+                <th scope="col">Session Date</th>
+                <th scope="col">Title</th>
+                <th scope="col">Tutor Name</th>
+                <th scope="col">Tutor Surname</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of pastSessionList">
+                <td>{{item.bookingInstance.date}}</td>
+                <td>{{item.bookingInstance.title}}</td>
+                <td>{{item.bookingInstance.tutor.tutorName}}</td>
+                <td>{{item.bookingInstance.tutor.tutorSurname}}</td>
+                <td>
+                  <button (click)="openDialog(item.bookingInstanceId)" class="btn btn-info">
+                    <i class="fa fa-plus-square" aria-hidden="true"></i>
+                  </button>
+                </td>
+              </tr>
+           
+            </tbody>
+          </table>
+          <br />
+          <nav
+            aria-label="Page navigation example "
+            style="margin-left: 75%; padding-bottom: 0.5rem"
+          >
+            <ul class="pagination">
+              <li class="page-item">
+                <a class="page-link" href="#" aria-label="Previous">
+                  <span aria-hidden="true">&laquo;</span>
+                  <span class="sr-only">Previous</span>
+                </a>
+              </li>
+              <li class="page-item"><a class="page-link" href="#">1</a></li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item">
+                <a class="page-link" href="#" aria-label="Next">
+                  <span aria-hidden="true">&raquo;</span>
+                  <span class="sr-only">Next</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+        <br />
+      </nb-tab>
+
+      <nb-tab tabTitle="My Feedback">
+        <div
+          style="
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
+              0 6px 6px rgba(0, 0, 0, 0.23);
+            width: 101%;
+            margin: auto;
+            border-radius: 15px;
+          "
+        >
+          <br />
+
+          <div
+            class="input-group rounded"
+            style="width: 20%; padding-left: 0.5rem; margin-left: 5rem"
+          >
+            <input
+              type="search"
+              class="form-control rounded"
+              placeholder="Search"
+              aria-label="Search"
+              aria-describedby="search-addon"
+            />
+            <span>
+              <button (click)="search()" class="btn btn-primary">
+                <i class="fa fa-search"></i>
+              </button>
+            </span>
+          </div>
+
+          <br />
+
+          <table
+            class="table table-hover"
+            style="width: 80%; margin: auto; padding-top: 3.5rem"
+          >
+            <thead>
+              <tr>
+                <th scope="col">Session Date</th>
+                <th scope="col">Title</th>
+                <th scope="col">Tutor Name</th>
+                <th scope="col">Tutor Surname</th>
+                <th scope="col">Rating</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of myFeedbackList">
+                <td (click) ="viewMyFeedback(item)">{{item.bookingInstance.date}}</td>
+                <td>{{item.bookingInstance.title}}</td>
+                <td>{{item.bookingInstance.tutor.tutorName}}</td>
+                <td>{{item.bookingInstance.tutor.tutorSurname}}</td>
+                <td></td>
+                <td>
+                  <button (click)= "delete(item)" class="btn btn-danger">
+                    <i class="fa fa-trash"></i>
+                  </button>
+                </td>
+              </tr>
+            
+            </tbody>
+          </table>
+          <br />
+          <nav
+            aria-label="Page navigation example "
+            style="margin-left: 75%; padding-bottom: 0.5rem"
+          >
+            <ul class="pagination">
+              <li class="page-item">
+                <a class="page-link" href="#" aria-label="Previous">
+                  <span aria-hidden="true">&laquo;</span>
+                  <span class="sr-only">Previous</span>
+                </a>
+              </li>
+              <li class="page-item"><a class="page-link" href="#">1</a></li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item">
+                <a class="page-link" href="#" aria-label="Next">
+                  <span aria-hidden="true">&raquo;</span>
+                  <span class="sr-only">Next</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+        <br />
+      </nb-tab>
+    </nb-tabset>
+  </nb-layout-column>
+</nb-layout>
+<br />
+<br />
+
+<footer>
+  <nav id="foot" class="navbar" style="width: 100%">
+    <a class="navbar-brand" href="#"> </a>
+    <span class="TDO" style="margin-right: auto"> &lt; TDO &gt;</span>
+    <div class="topnav-right">
+      <a href="#"> <i class="fa fa-facebook"></i> </a>
+      <a href="#"> <i class="fa fa-instagram"></i> </a>
+      <a href="#"> <i class="fa fa-twitter"></i> </a>
+      <a>TutorDevOps@gmail.com</a>
+    </div>
+  </nav>
+</footer>

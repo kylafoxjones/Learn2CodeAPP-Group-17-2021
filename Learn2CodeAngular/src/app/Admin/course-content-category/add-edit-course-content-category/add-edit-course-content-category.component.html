@@ -1,0 +1,107 @@
+<h5 style="text-align: center">{{ popupTitle }}</h5>
+<hr />
+<mat-dialog-content>
+  <mat-form-field class="example-full-width">
+    <mat-label>Name:</mat-label>
+    <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert">
+      <div *ngIf="name.errors?.required" style="font-size: smaller; color: red">
+        Name is required.
+      </div>
+      <div
+        *ngIf="name.errors?.minlength"
+        style="font-size: smaller; color: red"
+      >
+        Name must be at least 2 characters long.
+      </div>
+    </div>
+    <input
+      [(ngModel)]="data.CourseSubCategoryName"
+      #name="ngModel"
+      matInput
+      type="text"
+      id="name"
+      name="name"
+      class="form-control"
+      required
+      minlength="2"
+    />
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>Description:</mat-label>
+    <div
+      *ngIf="descrip.invalid && (descrip.dirty || descrip.touched)"
+      class="alert"
+    >
+      <div
+        *ngIf="descrip.errors?.required"
+        style="font-size: smaller; color: red"
+      >
+        Description is required.
+      </div>
+      <div
+        *ngIf="descrip.errors?.minlength"
+        style="font-size: smaller; color: red"
+      >
+        Name must be at least 10 characters long.
+      </div>
+    </div>
+    <input
+      [(ngModel)]="data.Description"
+      #descrip="ngModel"
+      matInput
+      type="text"
+      id="descrip"
+      name="descrip"
+      class="form-control"
+      required
+      minlength="10"
+    />
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>Price:</mat-label>
+    <div
+      *ngIf="price.invalid && (price.dirty || price.touched)"
+      class="alert"
+    >
+      <div
+        *ngIf="duration.errors?.required"
+        style="font-size: smaller; color: red"
+      >
+        Price is required.
+      </div>
+    </div>
+    <input
+      [(ngModel)]="data.price"
+      #price="ngModel"
+      matInput
+      type="number"
+      id="price"
+      name="price"
+      class="form-control"
+      required
+    />
+  </mat-form-field>
+</mat-dialog-content>
+
+<h1>{{ data.id }}</h1>
+<div style="margin: auto; padding-top: 1rem; text-align: center">
+  <button
+    (click)="submitEdittedCourseContentCategory()"
+    style="width: 6rem"
+    class="btn btn-info"
+    [disabled]="
+      name.invalid || descrip.invalid || price.invalid
+    "
+  >
+    Submit
+  </button>
+  <button
+    [mat-dialog-close]
+    style="margin-left: 2rem; width: 6rem"
+    class="btn btn-danger"
+  >
+    Cancel
+  </button>
+</div>

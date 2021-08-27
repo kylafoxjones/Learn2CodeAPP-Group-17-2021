@@ -1,0 +1,136 @@
+<h5 style="text-align: center">{{ popupTitle }}</h5>
+<hr />
+<mat-dialog-content>
+  <mat-form-field class="example-full-width">
+    <!--dropdown with session type names -->
+    <mat-label>Session Type </mat-label>
+    <mat-select required id="type" #type (valueChange)="selectType($event) ">
+      <mat-option
+        *ngFor="let item of typeList"
+        [value]="item.id"
+      >
+        {{ item.sessionType.sessionTypeName }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <!-- subscription name -->
+  <mat-form-field class="example-full-width">
+    <mat-label>Name:</mat-label>
+    <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert">
+      <div *ngIf="name.errors?.required" style="font-size: smaller; color: red">
+        Name is required.
+      </div>
+      <div
+        *ngIf="name.errors?.minlength"
+        style="font-size: smaller; color: red"
+      >
+        Name must be at least 2 characters long.
+      </div>
+    </div>
+    <input
+      [(ngModel)]="data.SubscriptionName"
+      #name="ngModel"
+      matInput
+      type="text"
+      id="name"
+      name="name"
+      class="form-control"
+      required
+      minlength="2"
+    />
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>Duration:</mat-label>
+    <div
+      *ngIf="duration.invalid && (duration.dirty || duration.touched)"
+      class="alert"
+    >
+      <div
+        *ngIf="duration.errors?.required"
+        style="font-size: smaller; color: red"
+      >
+        Duration is required.
+      </div>
+    </div>
+    <input
+      [(ngModel)]="data.Duration"
+      #duration="ngModel"
+      matInput
+      type="number"
+      id="duration"
+      name="Duration"
+      class="form-control"
+      required
+    />
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>Quantity:</mat-label>
+    <div
+      *ngIf="quantity.invalid && (quantity.dirty || quantity.touched)"
+      class="alert"
+    >
+      <div
+        *ngIf="quantity.errors?.required"
+        style="font-size: smaller; color: red"
+      >
+        Quantity is required.
+      </div>
+    </div>
+    <input
+      [(ngModel)]="data.Quantity"
+      #quantity="ngModel"
+      matInput
+      type="number"
+      id="quantity"
+      name="quantity"
+      class="form-control"
+      required
+    />
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>Price:</mat-label>
+    <div *ngIf="price.invalid && (price.dirty || price.touched)" class="alert">
+      <div
+        *ngIf="price.errors?.required"
+        style="font-size: smaller; color: red"
+      >
+        Price is required.
+      </div>
+    </div>
+    <input
+      [(ngModel)]="data.price"
+      #price="ngModel"
+      matInput
+      type="number"
+      id="price"
+      name="price"
+      class="form-control"
+      required
+    />
+  </mat-form-field>
+</mat-dialog-content>
+
+<h1>{{ data.id }}</h1>
+<div style="margin: auto; padding-top: 1rem; text-align: center">
+  <button
+    (click)="submitEdittedSubscription()"
+    style="width: 6rem"
+    class="btn btn-info"
+    [disabled]="
+       name.invalid || type.invalid || duration.invalid || quantity.invalid || price.invalid
+    "
+  >
+    Submit
+  </button>
+  <button
+    [mat-dialog-close]
+    style="margin-left: 2rem; width: 6rem"
+    class="btn btn-danger"
+  >
+    Cancel
+  </button>
+</div>

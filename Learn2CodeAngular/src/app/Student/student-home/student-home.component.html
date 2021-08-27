@@ -1,0 +1,273 @@
+<nav id="adminnav" class="navbar navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">
+    <img
+      src="../.././assets/pics/HD logo.png"
+      width="40"
+      height="40"
+      class="d-inline-block align-top"
+      alt=""
+    />
+  </a>
+  <span class="TDO" style="color: rgb(0, 156, 158); margin-right: auto"
+    >TutorDevOps</span
+  >
+  <div class="right"></div>
+
+  <div class="right" style="margin-left: 2rem">
+    <span style="color: whitesmoke"
+      ><i style="color: whitesmoke" class="fa fa-ticket" aria-hidden="true"></i
+      ><i style="color: whitesmoke" class="fa fa-ticket" aria-hidden="true"></i>
+      x4
+      <i
+        style="color: whitesmoke; margin-left: 1rem"
+        class="fa fa-ticket"
+        aria-hidden="true"
+      >
+      </i>
+      x3</span
+    >
+
+    <span [routerLink]="['/studenthomepage/studenthome']" style="color: whitesmoke; margin-right: 2rem; padding-left: 1.5rem"
+      >Home</span
+    >
+  </div>
+  <div class="topnav-right">
+    <div [matMenuTriggerFor]="menu" class="dot">{{ thisStudent.studentName[0]+ thisStudent.studentSurname[0] }}</div>
+  </div>
+</nav>
+
+<!--menu-->
+
+<mat-menu #menu="matMenu" xPosition="before">
+  <button (click)="profile()" mat-menu-item>
+    <i class="fa fa-user" aria-hidden="true" style="padding-right: 0.5rem"></i
+    >Profile
+  </button>
+  <button (click)="logout()" mat-menu-item>
+    <i
+      class="fa fa-sign-out"
+      aria-hidden="true"
+      style="padding-right: 0.5rem"
+    ></i
+    >Logout
+  </button>
+</mat-menu>
+
+<span flex></span>
+
+<div style="padding-top: 2rem; padding-bottom: 2rem; margin-left: 7.5rem">
+  <div class="header" style="height: 2.5rem">Your Courses</div>
+</div>
+
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav
+    style="width: 10rem; background-color: rgb(54, 72, 80)"
+    #drawer
+    class="sidenav"
+    fixedInViewport
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="(isHandset$ | async) === false"
+  >
+    <mat-toolbar
+      style="
+        color: white;
+        text-align: center;
+        background-color: rgb(54, 72, 80);
+      "
+      >Menu</mat-toolbar
+    >
+    <mat-nav-list style="margin-top: 0.5rem">
+      <a [routerLink]="['/shop']" style="color: white; font-size: small" mat-list-item href="#"
+        ><i
+          style="font-size: medium; padding: 0.3rem"
+          class="fa fa-shopping-cart"
+          aria-hidden="true"
+        ></i
+        >Shop</a
+      >
+      <a style="color: white; font-size: small" mat-list-item href="#"
+        ><i
+          style="font-size: medium; padding: 0.3rem"
+          class="fa fa-user"
+          aria-hidden="true"
+        ></i
+        >Individual Session</a
+      >
+      <a style="color: white; font-size: small" mat-list-item href="#"
+        ><i
+          style="font-size: medium; padding: 0.3rem"
+          class="fa fa-users"
+          aria-hidden="true"
+        ></i
+        >Group Session</a
+      >
+      <a style="color: white; font-size: small" mat-list-item href="#"
+        ><i
+          style="font-size: medium; padding: 0.3rem"
+          class="fa fa-folder-open"
+          aria-hidden="true"
+        ></i
+        >My Subscriptions</a
+      >
+      <a  [routerLink]="['/studentmessages']" style="color: white; font-size: small" mat-list-item href="#"
+        ><i
+          style="font-size: medium; padding: 0.3rem"
+          class="fa fa-envelope"
+          aria-hidden="true"
+        ></i
+        >Messages</a
+      >
+      <a   [routerLink]="['/feedback']" style="color: white; font-size: small" mat-list-item href="#"
+        ><i
+          style="font-size: medium; padding: 0.3rem"
+          class="fa fa-star"
+          aria-hidden="true"
+        ></i
+        >Feedback</a
+      >
+      <a style="color: white; font-size: small" mat-list-item href="#"
+        ><i
+          style="font-size: medium; padding: 0.3rem"
+          class="fa fa-graduation-cap"
+          aria-hidden="true"
+        ></i
+        >Resources</a
+      >
+      <a style="color: white; font-size: small" mat-list-item href="#"
+        ><i
+          style="font-size: medium; padding: 0.3rem"
+          class="fa fa-video-camera"
+          aria-hidden="true"
+        ></i
+        >Session Content</a
+      >
+      <a [routerLink]="['/viewtutors']" style="color: white; font-size: small" mat-list-item href="#"
+        ><i
+          style="font-size: medium; padding: 0.3rem"
+          class="fa fa-user"
+          aria-hidden="true"
+        ></i
+        >Tutors</a
+      >
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <!-- Add Content Here -->
+  </mat-sidenav-content>
+</mat-sidenav-container>
+<nb-layout>
+  <nb-layout-column>
+<!--  <div  style=" margin-top: 3rem;
+    border-radius: 25px;
+    background-color: white;
+    width: 23.5rem;
+    margin-left: 40%;
+    height: 10rem;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
+      0 6px 6px rgba(0, 0, 0, 0.23);
+    
+  ">
+  <div style="text-align: center;">
+      <br>
+      <h2 style="margin-top: 1rem;">You have no courses</h2> 
+      
+      <button class="btn btn-info"> Shop</button> 
+  </div> 
+       
+    </div>-->
+
+
+  
+
+      <div *ngIf="hasCourse">
+    
+        <div class="row">
+          <div class="col-md-3" 
+          *ngFor="let item of courses | filter: search">
+            <div style="
+            margin-top: 3rem;
+            border-radius: 25px;
+            background-color: rgb(6, 6, 7);
+            width: 16rem;
+            margin-left: 50%;
+            height: 19rem;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
+              0 6px 6px rgba(0, 0, 0, 0.23);
+          ">
+          <br/>
+              <div    style="
+              text-align: center;
+              width: 12rem;
+              height: 2rem;
+              margin-left: 0.5rem;
+            ">
+                <h5 style="margin-left: 2.5rem; color: white">
+                  {{item.courseEnrolLine[0].courseSubCategory.courseSubCategoryName}}
+                </h5>
+                <hr style="width: 125%; color: white" />
+                </div>
+                <div style="text-align: center; padding-top: 1.9rem">
+                  <div>
+                    <h6 style="color: white">   {{item.courseEnrolLine[0].courseSubCategory.courseFolder.courseFolderName}} </h6>
+                    <p style="color: white">
+
+             {{item.courseEnrolLine[0].courseSubCategory.description}}
+                     
+                      <br />
+                      <br />
+                   
+                    </p>
+                  </div>
+                  <div style="margin-top: 2.3rem">
+
+                <button [routerLink] = "['/specificcoursedisplay'
+                , item.courseEnrolLine[0].courseSubCategoryId]" style="width: 7rem" class="btn btn-outline-info">Learn</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        </div>   
+     </div>
+
+
+
+        <div *ngIf="!hasCourse">
+          <div
+          style="
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
+              0 6px 6px rgba(0, 0, 0, 0.23);
+            width: 80%;
+            margin: auto;
+            border-radius: 15px;
+            align-items: center;
+          "
+        >
+        <br />
+    
+    <h5 style="text-align: center">No content for this session</h5>
+    
+      </div>
+
+
+
+</div>
+
+
+
+</nb-layout-column>
+</nb-layout>
+
+<footer style="bottom: 0; width: 100%; position: absolute">
+  <nav style="height: 3rem" id="foot" class="navbar">
+    <a class="navbar-brand" href="#"> </a>
+    <span class="TDO" style="margin-right: 27%"> &lt; TDO &gt;</span>
+    <div class="topnav-right">
+      <a href="#"> <i class="fa fa-facebook"></i> </a>
+      <a href="#"> <i class="fa fa-instagram"></i> </a>
+      <a href="#"> <i class="fa fa-twitter"></i> </a>
+      <a>TutorDevOps@gmail.com</a>
+    </div>
+  </nav>
+</footer>

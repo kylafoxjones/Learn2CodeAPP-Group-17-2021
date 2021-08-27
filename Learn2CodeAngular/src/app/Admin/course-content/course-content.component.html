@@ -1,0 +1,122 @@
+<nav class="navbar navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">
+    <img
+      src="../.././assets/pics/HD logo.png"
+      width="40"
+      height="40"
+      class="d-inline-block align-top"
+      alt=""
+    />
+  </a>
+  <span class="TDO" style="color: rgb(0, 156, 158); margin-right: auto"
+    >TutorDevOps</span
+  >
+  <div class="right" routerLink="/adminhome">
+    <a style="color: whitesmoke; margin-right: 3rem">Home</a>
+  </div>
+  <div class="topnav-right">
+    <div class="dot">A</div>
+  </div>
+</nav>
+
+<div style="padding-top: 2rem; padding-bottom: 2rem">
+  <div class="header">List of course content files</div>
+</div>
+
+<nb-layout>
+  <nb-layout-column>
+    <div
+      style="
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
+          0 6px 6px rgba(0, 0, 0, 0.23);
+        width: 80%;
+        margin: auto;
+        border-radius: 15px;
+      "
+    >
+      <br />
+      <div class="input-group rounded" style="width: 30%; padding-left: 6rem">
+        <input
+        [(ngModel)]="search"
+          type="search"
+          class="form-control rounded"
+          placeholder="Search"
+          aria-label="Search"
+          aria-describedby="search-addon"
+        />
+        <span>
+          <button class="btn btn-info"><i class="fa fa-search"></i></button>
+        </span>
+      </div>
+      <br />
+      <table
+        class="table table-hover"
+        style="width: 80%; margin: auto; padding-top: 2rem"
+      >
+        <thead>
+          <tr>
+            <th scope="col">Content name</th>
+            <th scope="col">Category name</th>
+            <th scope="col">Content type</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of contentList | filter: search | paginate: { itemsPerPage: 5, currentPage: page,totalItems:totalLength, id: 'first' }">
+            <td>{{ item.fileName }}</td>
+            <td>{{ coursecat.courseSubCategoryName }}</td>
+            <td>{{ item.contentType.contentTypeName }}</td>
+
+            <td>
+              <button (click)="openEditDialog(item)" class="btn btn-primary">
+                <i class="fa fa-pencil"></i>
+              </button>
+            </td>
+            <td>
+              <button (click)="delete(item.id)" class="btn btn-danger">
+                <i class="fa fa-trash"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <br />
+      <pagination-controls  id="first" style=" padding-left: 0px !important; display:flex;float: right" (pageChange)="page = $event"></pagination-controls>
+       
+        <br>
+       <br>
+    </div>
+    <br />
+    <div style="padding: 0.4rem; margin-left: 3rem">
+      <button
+        style="margin-left: 8rem; width: 11.5rem"
+        (click)="openDialog()"
+        class="btn btn-info"
+      >
+        Add Course Content
+      </button>
+
+      <button
+        [routerLink]="['/coursecontentcategory']"
+        style="margin-left: 2rem; width: 11.5rem"
+        class="btn btn-info"
+      >
+        Back To Categories
+      </button>
+     
+    </div>
+  </nb-layout-column>
+</nb-layout>
+<footer>
+  <nav id="foot" class="navbar">
+    <a class="navbar-brand" href="#"> </a>
+    <span class="TDO" style="margin-right: auto"> &lt; TDO &gt;</span>
+    <div class="topnav-right">
+      <a href="#"> <i class="fa fa-facebook"></i> </a>
+      <a href="#"> <i class="fa fa-instagram"></i> </a>
+      <a href="#"> <i class="fa fa-twitter"></i> </a>
+      <a>TutorDevOps@gmail.com</a>
+    </div>
+  </nav>
+</footer>

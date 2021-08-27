@@ -1,0 +1,28 @@
+<h5 style="text-align: center">{{ tutorApplicationToview.tutorName + " " + tutorApplicationToview.tutorSurname}}</h5>
+<hr />
+
+    <p><strong>About:</strong>  {{ tutorApplicationToview.tutorAbout }}</p>
+   
+    <p><strong>Cellphone:</strong> {{ tutorApplicationToview.tutorCell }}</p>
+    <p><strong>Email:</strong> {{ tutorApplicationToview.tutorEmail }}</p>
+   
+
+
+<div style="margin: auto; padding-top: 1rem; text-align: center">
+  <button
+    (click)="acceptTutorApplication()"
+    style="width: 6rem"
+    class="btn btn-info"
+  >
+    Accept
+  </button>
+  <button
+    [mat-dialog-close]
+    (click)="rejectTutorApplication(tutorApplicationToview.id)"
+    style="margin-left: 2rem; width: 6rem"
+    class="btn btn-danger"
+  >
+    Reject
+  </button>
+</div>
+

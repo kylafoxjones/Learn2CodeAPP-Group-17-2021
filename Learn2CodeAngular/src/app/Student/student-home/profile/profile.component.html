@@ -1,0 +1,125 @@
+<nav class="navbar navbar-dark bg-dark" >
+    <a class="navbar-brand" href="#">
+      <img
+        src="../.././assets/pics/HD logo.png"
+        width="40"
+        height="40"
+        class="d-inline-block align-top"
+        alt=""
+      />
+    </a>
+    <span class="TDO" style="color: rgb(0, 156, 158); margin-right: auto"
+      >TutorDevOps</span
+    >
+    <div class="right" style="margin-left: 2rem;">
+        <span  style="color: whitesmoke;"><i style="color: whitesmoke;" class="fa fa-ticket" aria-hidden="true"></i><i style="color: whitesmoke;" class="fa fa-ticket" aria-hidden="true"></i> x4  <i style="color: whitesmoke;margin-left: 1rem;" class="fa fa-ticket" aria-hidden="true"> </i> x3</span>
+        
+       
+        <span style="color: whitesmoke; margin-right: 2rem;padding-left: 1.5rem;">Home</span>
+        
+      </div>
+      <div class="topnav-right" >
+      
+        <div class="dot">{{ thissStudent.studentName[0]+ thissStudent.studentSurname[0] }}</div>
+    </div>
+  </nav>
+
+ 
+  <div style="padding-top: 2rem;padding-bottom: 2rem;margin-left: 3.5rem;">
+    <div class="header" style="height:2.5rem" >Profile</div>
+  </div>
+
+<nb-layout>
+
+    <nb-layout-column>
+
+        <div style="box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
+          0 6px 6px rgba(0, 0, 0, 0.23);width: 80%;margin-left: 8rem;border-radius: 15px;height:55%;"  >
+          <br>
+
+          <div class="row">
+
+            <div class="col-md-6">
+                <a class="navbar-brand" style="margin-left: 6rem;margin-top: 0.5rem;">
+                    <div style="height: 10rem;width: 10rem;font-size:6rem;"class="dot">
+                        
+                       <div style="margin-top: 3.5rem;">{{ thissStudent.studentName[0]+ thissStudent.studentSurname[0] }}</div> 
+                    </div>
+                  </a>
+                  <div style="margin-left: 5.5rem;padding-top: 0.5rem;"><h6>Username: {{thissStudent.identity.userName}}</h6></div>
+
+                </div>
+
+
+            <div class="col-md-6">
+                <div class="row" style="margin-top: 1rem;">
+                    <div class="col-md-6">
+                         <h6>First Name: {{thissStudent.studentName}}</h6>
+                         <h6>Email: {{thissStudent.identity.email}}</h6>
+
+                    
+                    </div>
+                    <div class="col-md-6"> 
+                        <h6>Surname: {{thissStudent.studentSurname}} </h6>
+                        <h6>Phone: {{thissStudent.studentCell}} </h6>
+                    </div>
+                 
+                </div> 
+               
+               <div class="row">
+                   <div class="col-md-6"> <h6>University: {{thissStudent.studentModule[0].module.degree.university.universityName}}</h6></div>
+                   <div class="col-md-6"><h6>Degree:  {{thissStudent.studentModule[0].module.degree.degreeName}}</h6></div>
+               </div>
+               <div>
+                   <h6>Module: {{thissStudent.studentModule[0].module.moduleCode}}</h6>
+               </div>
+                <br>
+               <br>
+               <br>
+                <div style="margin-left: 2rem;">
+                    <button (click) = "openEditDialog()" class="btn btn-info" style="width: 6rem; ">
+                        Edit
+                    </button>
+
+                    <button class="btn btn-primary" style="font-size: medium;margin-left: 1rem;">
+                      Change password
+                  </button>
+
+                    <button (click)="onDelete(thissStudent.id)" class="btn btn-danger"  style="margin-left: 1rem;width: 6rem;">
+                        Delete
+                    </button>
+                </div>
+
+        
+            </div>
+
+
+          </div>        
+                
+          
+          </div>
+
+
+    </nb-layout-column>
+
+  </nb-layout>
+
+  <footer style="width:100%; bottom: 0;position: absolute;">
+    <nav  id="foot" class="navbar ">
+      <a class="navbar-brand" href="#">
+       
+      </a>
+      <span class="TDO" style=" margin-right: auto"
+        > &lt; TDO &gt;</span
+      >
+      <div class="topnav-right">
+        
+        <a href="#"> <i class="fa fa-facebook"></i> </a>
+        <a href="#"> <i class="fa fa-instagram"></i> </a>
+        <a href="#"> <i class="fa fa-twitter"></i> </a>
+        <a>TutorDevOps@gmail.com</a>
+      </div>
+    </nav>
+  </footer>
+  
+
