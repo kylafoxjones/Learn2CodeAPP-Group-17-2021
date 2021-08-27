@@ -102,25 +102,10 @@ export class ReportingService {
     return this.http.get(this.apiUrl + 'CourseSales');
   }
 
-  // export(start, end): Observable<any> {
-  //   return this.http.get(
-  //     this.apiUrl + 'ExportSalesReport/' + start + '/' + end,
-  //     { responseType: 'blob' }
-  //   );
-  // }
-
-      GetSubscriptionSales(){
-        return this.http.get(this.apiUrl + "SubscriptionSales");
-      }
-
-      GetCourseSales() : Observable<any>{
-        return this.http.get(this.apiUrl + "CourseSales");
-      }
-      export(start, end): Observable<any>{
+ 
+      export(obj): Observable<any>{
    
-        return this.http.get(this.apiUrl+'ExportSalesReport/'+start+'/' + end, { responseType:'blob' });
+        return this.http.post(this.apiUrl+'ExportSalesReport',obj, { responseType:'blob' });
       }
-  export(start, end): Observable<any>{
-    return this.http.get(this.apiUrl+'ExportSalesReport/'+start+'/' + end, { responseType:'blob' });
-  }
+ 
 }

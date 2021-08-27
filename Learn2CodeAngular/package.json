@@ -12,7 +12,7 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "^11.2.14",
-    "@angular/cdk": "^11.2.13",
+    "@angular/cdk": "^11.0.0",
     "@angular/common": "~11.2.10",
     "@angular/compiler": "~11.2.10",
     "@angular/core": "~11.2.10",
@@ -37,12 +37,12 @@
     "eva-icons": "^1.1.2",
     "file-saver": "^2.0.5",
     "jspdf": "^2.3.1",
-    "ng2-charts": "^2.4.2",
+    "ng2-charts": "^2.4.3",
     "ng2-search-filter": "^0.5.1",
     "ngx-pagination": "^5.1.1",
     "rxjs": "~6.6.0",
     "sweetalert": "^2.1.2",
-    "sweetalert2": "^11.0.20",
+    "sweetalert2": "^11.1.4",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.3"
   },

@@ -16,7 +16,7 @@ import { saveAs } from 'file-saver';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { NgxPaginationModule } from 'ngx-pagination';
-import { saveAs } from 'file-saver';
+
 
 @Component({
   selector: 'app-sales-report',
@@ -55,11 +55,13 @@ export class SalesReportComponent implements OnInit {
     Swal.fire('', 'Successfully downloaded report', 'success');
   }
   exportpay(){
-    this.ReportService.export(this.Start, this.End).subscribe((res) => {
+    this.ObjectToSend.StartDate = this.Start;
+    this.ObjectToSend.EndDate = this.End;
+    this.ReportService.export(this.ObjectToSend).subscribe((res) => {
       saveAs(res, 'test'+  '.xlsx');
     });
   }
-  getSubscriptionSalesTable(){
+ 
 
 
   getSubscriptionSalesTable() {
@@ -94,12 +96,7 @@ export class SalesReportComponent implements OnInit {
     });
   }
 
-  //Export to excel
-  exportExcel() {
-    this.ReportService.export(this.Start, this.End).subscribe((result) => {
-      saveAs(result, 'Subscription Sales' + '.xlsx');
-    });
-  }
+  
 
   // options
   showXAxis = true;
@@ -133,13 +130,7 @@ export class SalesReportComponent implements OnInit {
     });
   }
 
-  exportpay() {
-    this.ReportService.export(this.Start, this.End).subscribe((res) => {
-      saveAs(res, 'test' + '.xlsx');
-    });
-  }
+  
 }
 
-// function saveAs(result: any, arg1: string) {
-//   throw new Error('Function not implemented.');
-// }
+

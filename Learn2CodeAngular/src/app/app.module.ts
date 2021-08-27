@@ -17,7 +17,7 @@ import { JwtModule } from "@auth0/angular-jwt";
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { Angular4PaystackModule } from 'angular4-paystack';
-import { JwtModule } from '@auth0/angular-jwt';
+
 
 export function tokenGetter() {
   return localStorage.getItem('token');
