@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-report',
@@ -11,5 +12,11 @@ export class ReportComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+x(){
+  Swal.fire(
+    '',
+    'Successfully downloaded report',
+    'success'
+  )
+}
 }

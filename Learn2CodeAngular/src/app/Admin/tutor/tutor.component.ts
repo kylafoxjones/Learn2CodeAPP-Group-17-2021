@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { AdminService } from '../admin resources/admin.service';
 import Swal from 'sweetalert2';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @Component({
   selector: 'app-tutor',
@@ -10,6 +11,9 @@ import Swal from 'sweetalert2';
   styleUrls: ['./tutor.component.scss']
 })
 export class TutorComponent implements OnInit {
+  //pagination
+  page1:number = 1;
+  totalLength1:any;
  //declare variables
  tutorList: any = [];
  tutor: any;
@@ -40,11 +44,14 @@ export class TutorComponent implements OnInit {
         });
         Swal.fire('Successful Deletion', '', 'success');
       }
+    },(error) => {
+      Swal.fire('Error!', error.error, 'error');
     });
   }
   getAllTutors() {
     this.service.getTutors().subscribe((result) => {
-      this.tutorList = result; 
+      this.tutorList = result;
+      this.totalLength1 = this.tutorList.length;
       console.log(this.tutorList);
     });
   }

@@ -6,6 +6,7 @@ import { AddEditSessionContentCategoryComponent } from './add-edit-session-conte
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AdminService } from '../admin resources/admin.service';
 import { NbAccordionItemHeaderComponent } from '@nebular/theme';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @Component({
   selector: 'app-session-content-category',
@@ -13,6 +14,11 @@ import { NbAccordionItemHeaderComponent } from '@nebular/theme';
   styleUrls: ['./session-content-category.component.scss'],
 })
 export class SessionContentCategoryComponent implements OnInit {
+
+  //pagination
+  totalLength:any;
+  page:number = 1;
+
   //declare variables
   sessionContentCategoryList: any = [];
   sessionContentCategory: any;
@@ -46,6 +52,8 @@ export class SessionContentCategoryComponent implements OnInit {
         });
         Swal.fire('Successful Deletion', '', 'success');
       }
+    },(error) => {
+      Swal.fire('Error!', error.error, 'error');
     });
   }
 
@@ -83,6 +91,7 @@ export class SessionContentCategoryComponent implements OnInit {
   getAllSessionContentCategories() {
     this.service.getSessionContentCategories().subscribe((result) => {
       this.sessionContentCategoryList = result; //uni list is populated
+      this.totalLength = this.sessionContentCategoryList.length;
     });
   }
 

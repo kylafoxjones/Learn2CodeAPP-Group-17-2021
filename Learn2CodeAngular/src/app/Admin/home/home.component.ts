@@ -15,6 +15,10 @@ import { map, shareReplay } from 'rxjs/operators';
 import * as Chart from 'chart.js';
 import { title } from 'process';
 import { Router } from '@angular/router';
+import { ReportingService } from 'src/app/Report/Report resources/reporting.service';
+import { AdminService } from '../admin resources/admin.service';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+
 
 @Component({
   selector: 'app-home',
@@ -22,6 +26,142 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
+  
+  //variables
+  numOfStudents:any;
+  numOfTutors: any;
+  numOfUniversities:any;
+  numOfModules:any;
+  numOfDegrees:any;
+  StudentUniData: any[] = [];
+  CourseData: any[] = [];
+
+  //functions
+  TotalStudents(){
+    this.adminService.getTotalStudents().subscribe((result) => {
+      this.numOfStudents = result;
+      console.log(this.numOfStudents);
+    })
+  }
+
+  TotalTutors(){
+    this.adminService.getTotalTutors().subscribe((result) => {
+      this.numOfTutors = result;
+      console.log(this.numOfTutors);
+    })
+  }
+
+  
+  TotalUniversities(){
+    this.adminService.getTotalUniversities().subscribe((result) => {
+      this.numOfUniversities = result;
+      console.log(this.numOfUniversities);
+    })
+  }
+
+  TotalDegrees(){
+    this.adminService.getTotalDegrees().subscribe((result) => {
+      this.numOfDegrees = result;
+      console.log(this.numOfDegrees);
+    })
+  }
+
+  TotalModules(){
+    this.adminService.getTotalModules().subscribe((result) => {
+      this.numOfModules = result;
+      console.log(this.numOfModules);
+    })
+  }
+
+  StudentUniGraph(){
+    this.adminService.getStudentUniGraphData().subscribe((result) => {
+      this.StudentUniData = result;
+      console.log(this.StudentUniData);
+    })
+  }
+
+  CoursePieGraphData(){
+    this.adminService.getCoursePieGraphData().subscribe((result) => {
+      this.CourseData = result;
+      console.log(this.CourseData);
+    })
+  }
+
+    //Student Uni Bar chart options
+    showXAxis = true;
+    showYAxis = true;
+    gradient = false;
+    showLegend = true;
+    showXAxisLabel = true;
+    xAxisLabel = 'University Name';
+    showYAxisLabel = true;
+    yAxisLabel = 'Number of students';
+  
+    colorScheme = {
+      domain: ['#096E94', '#3CC0F2', '#606664', '#0F926A', '#834111']
+    };
+  
+   
+
+  // CourseCHart options
+  
+  gradient1: boolean = true;
+  showLegend1: boolean = false;
+  showLabels: boolean = true;
+  isDoughnut: boolean = true;
+  legendPosition: string = 'right';
+
+  colorScheme1 = {
+    domain: ['#7E3D27', '#7A7E27', '#277E5A', '#53277E','#7E273C','#50277E']
+  };
+
+
+  public DownloadUniPDF():void {
+    let data = document.getElementById('StudentOfUniData');
+      
+    html2canvas(data).then(canvas => {
+        
+        let fileWidth = 220;
+        let fileHeight = canvas.height * fileWidth / canvas.width;
+        
+        const FILEURI = canvas.toDataURL('image/png')
+        let PDF = new jsPDF('l', 'mm', 'a4');
+        let position = 0;
+        PDF.addImage(FILEURI, 'PNG', 50, 50, fileWidth, fileHeight)
+        
+        PDF.save('StudentsOfUniversities.pdf');
+    });     
+
+    
+  }
+
+  public DownloadCoursePDF():void {
+    let data = document.getElementById('CourseData');
+      
+    html2canvas(data).then(canvas => {
+        
+        let fileWidth = 200;
+        let fileHeight = canvas.height * fileWidth / canvas.width;
+        
+        const FILEURI = canvas.toDataURL('image/png')
+        let PDF = new jsPDF('p', 'mm', 'a4');
+        let position = 0;
+        PDF.addImage(FILEURI, 'PNG', 5, 50, fileWidth, fileHeight)
+        
+        PDF.save('StudentsOfUniversities.pdf');
+    });     
+
+    
+  }
+
+  x(){
+    Swal.fire(
+      '',
+      'Successfully downloaded report',
+      'success'
+    )
+  }
+
   isHandset$: Observable<boolean> = this.breakpointObserver
     .observe(Breakpoints.Handset)
     .pipe(
@@ -29,68 +169,27 @@ export class HomeComponent implements OnInit {
       shareReplay()
     );
 
-  barChartOptions: ChartOptions = {
-    responsive: true,
-    title: {
-      display: true,
-      text: '# of students at each university',
-    },
-    scales: {
-      yAxes: [
-        {
-          scaleLabel: {
-            display: true,
-            labelString: 'Students',
-          },
-        },
-      ],
-      xAxes: [
-        {
-          scaleLabel: {
-            display: true,
-            labelString: 'University Of',
-          },
-        },
-      ],
-    },
-  };
-  barChartLabels: Label[] = [
-    'Pretoria',
-    'Johannesburg',
-    'Cape Town',
-    'Witwaterstrand',
-    'Limpopo',
-  ];
-  barChartType: Chart.ChartType = 'bar';
-  barChartLegend = true;
-  barChartPlugins = [];
-
-  barChartData: Chart.ChartDataSets[] = [
-    { data: [95, 38, 50, 50, 45], label: 'Students' },
-  ];
-
-  public pieChartOptions: ChartOptions = {
-    responsive: true,
-    title: {
-      display: true,
-      text: '# of courses sold',
-    },
-  };
-  public pieChartLabels: Label[] = [['Angular'], ['MVC'], ['CSS']];
-  public pieChartData: SingleDataSet = [30, 50, 20];
-  public pieChartType: ChartType = 'pie';
-  public pieChartLegend = true;
-  public pieChartPlugins = [];
+  
 
   constructor(
     private breakpointObserver: BreakpointObserver,
-    private route: Router
+    private route: Router,
+    private adminService : AdminService
   ) {
     monkeyPatchChartJsTooltip();
     monkeyPatchChartJsLegend();
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.TotalStudents();
+    this.TotalTutors();
+    this.TotalUniversities();
+    this.TotalModules();
+    this.TotalDegrees();
+    this.StudentUniGraph();
+    this.CoursePieGraphData();
+
+  }
 
   public logout = () => {
     localStorage.removeItem('token');

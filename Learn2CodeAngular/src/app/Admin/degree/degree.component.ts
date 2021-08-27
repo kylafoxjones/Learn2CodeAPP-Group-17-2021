@@ -5,6 +5,7 @@ import Swal from 'sweetalert2';
 import { MatDialog } from '@angular/material/dialog';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AdminService } from '../admin resources/admin.service';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @Component({
   selector: 'app-degree',
@@ -12,6 +13,9 @@ import { AdminService } from '../admin resources/admin.service';
   styleUrls: ['./degree.component.scss'],
 })
 export class DegreeComponent implements OnInit {
+  //pagination
+  totalLength:any;
+  page:number = 1;
   //declare variables
   degreeList: any = [];
   degree: any;
@@ -43,6 +47,9 @@ export class DegreeComponent implements OnInit {
         });
         Swal.fire('Successful Deletion', '', 'success');
       }
+    },(error) => {
+
+      Swal.fire('Error!', error.error, 'error');
     });
   }
 
@@ -77,9 +84,10 @@ export class DegreeComponent implements OnInit {
   getAllDegrees() {
     this.service.getDegrees(this.service.universityIdToSend).subscribe((result) => {
       this.degreeList = result; //uni list is populated
+      this.totalLength = this.degreeList.length;
     });
   }
-  
+
   navigateToModule(id:number){
     this.service.degreeIdToSend=id;
     this.router.navigateByUrl('/module');

@@ -1,34 +1,70 @@
-<h2 style="text-align: center">{{popupTitle}}</h2>
+<h2 style="text-align: center">{{ popupTitle }}</h2>
 <hr />
 
 <!-- <input type="file" #file placeholder="Choose file" accept="application/pdf" change="ApplicationImage($event)" /> -->
 
 <!-- <video width="320" height="240" controls [src]="prev_url" >
 </video> -->
-<br/>
+<br />
 
 <mat-form-field appearance="outline">
-  <mat-label>File Type:</mat-label>
-  <mat-select (valueChange)="selectType($event)">
-    <mat-option *ngFor="let type of typeList" [value]="type.id">
+  <div *ngIf="select.invalid && (select.dirty || select.touched)" class="alert">
+    <div *ngIf="name.errors?.required" style="font-size: smaller; color: red">
+      Name is required.
+    </div>
 
+  </div>
+  <mat-label>File Type:</mat-label>
+  <mat-select
+    class="form-control"
+    type="select"
+    #select
+    required
+    (valueChange)="selectType($event)"
+  >
+    <mat-option *ngFor="let type of typeList" [value]="type.id">
       {{ type.contentTypeName }}
     </mat-option>
   </mat-select>
 </mat-form-field>
-<br/>
-<div *ngIf="typeChosen==2">
+<br />
+<div *ngIf="typeChosen == 2">
   <label for="formFile" class="form-label">Course content file:</label>
-  <input  class="form-control" type="file" #file placeholder="Choose file" (change)="CourseContent($event)" >
-  </div>
-  <div *ngIf="typeChosen==1">
+  <input
+    required
+    class="form-control"
+    type="file"
+    #file
+    placeholder="Choose file"
+    (change)="CourseContent($event)"
+  />
+</div>
+<div *ngIf="typeChosen == 1">
   <label for="formFile" class="form-label">Course content recording:</label>
-  <input class="form-control" type="file" #file placeholder="Choose recording" (change)="CourseContent($event)" >
-  </div>
+  <input
+    required
+    class="form-control"
+    type="file"
+    #file
+    placeholder="Choose recording"
+    (change)="CourseContent($event)"
+  />
+</div>
 <div style="margin-left: 2.5rem">
   <div style="margin: auto; padding-top: 1rem">
-    <button (click) = "onSubmit()" style="width: 6rem" class="btn btn-info">Submit</button>
-    <button  [mat-dialog-close] style="margin-left: 2rem; width: 6rem" class="btn btn-danger">
+    <button
+      (click)="onSubmit()"
+      style="width: 6rem"
+      class="btn btn-info"
+      [disabled]="select.invalid"
+    >
+      Submit
+    </button>
+    <button
+      [mat-dialog-close]
+      style="margin-left: 2rem; width: 6rem"
+      class="btn btn-danger"
+    >
       Cancel
     </button>
   </div>

@@ -6,6 +6,7 @@ import { AddEditCourseComponent } from './add-edit-course/add-edit-course.compon
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AdminService } from '../admin resources/admin.service';
 import { NbAccordionItemHeaderComponent } from '@nebular/theme';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @Component({
   selector: 'app-course',
@@ -13,6 +14,11 @@ import { NbAccordionItemHeaderComponent } from '@nebular/theme';
   styleUrls: ['./course.component.scss'],
 })
 export class CourseComponent implements OnInit {
+
+    //pagination
+    totalLength:any;
+    page:number = 1;
+
   //declare variables
   courseList: any = [];
   course: any;
@@ -46,6 +52,8 @@ export class CourseComponent implements OnInit {
         });
         Swal.fire('Successful Deletion', '', 'success');
       }
+    },(error) => {
+      Swal.fire('Error!', error.error, 'error');
     });
   }
 
@@ -85,6 +93,7 @@ export class CourseComponent implements OnInit {
   getAllCourses() {
     this.service.getCourses().subscribe((result) => {
       this.courseList = result; //uni list is populated
+      this.totalLength = this.courseList.length;
     });
   }
 

@@ -5,13 +5,18 @@ import Swal from 'sweetalert2';
 import { AdminService } from '../admin resources/admin.service';
 import { AddEditModuleComponent } from './add-edit-module/add-edit-module.component';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @Component({
   selector: 'app-module',
   templateUrl: './module.component.html',
   styleUrls: ['./module.component.scss'],
 })
-export class ModuleComponent implements OnInit {
+export class ModuleComponent implements OnInit { 
+
+  //pagination
+  totalLength:any;
+  page:number = 1;
   //declare variables
   moduleList: any = [];
   module: any;
@@ -43,8 +48,11 @@ export class ModuleComponent implements OnInit {
         });
         Swal.fire('Successful Deletion', '', 'success');
       }
+    },(error) => {
+      Swal.fire('Error!', error.error, 'error');
     });
   }
+
 
   openAddDialog() {
     this.service.edit = false;
@@ -76,6 +84,8 @@ export class ModuleComponent implements OnInit {
   getAllModules() {
     this.service.getModules(this.service.degreeIdToSend).subscribe((result) => {
       this.moduleList = result; //uni list is populated
+
+      this.totalLength = this.moduleList.length;
       console.log(
         'this is the degree id, the modules for this id should be displayed',
         this.service.degreeIdToSend
