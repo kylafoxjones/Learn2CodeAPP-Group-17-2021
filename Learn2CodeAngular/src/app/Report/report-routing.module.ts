@@ -8,17 +8,18 @@ import { TotalStudentsReportComponent } from './TotalStudents-Report/total-stude
 import { TutorDetailsReportComponent } from './TutorDetails-Report/tutor-details-report/tutor-details-report.component';
 import { TutorSessionReportComponent } from './TutorSession-Report/tutor-session-report/tutor-session-report.component';
 
-const routes: Routes = 
-[ {path:'Report',component:ReportComponent},
-{path:'TutorDetails-Report',component:TutorDetailsReportComponent},
-{path:'Sales-Report',component:SalesReportComponent},
-{path:'Attendance-Report',component:AttendanceReportComponent},
-{path:'Feedback-Report',component:FeedbackReportComponent},
-{path:'TotalStudents-Report',component:TotalStudentsReportComponent},
-{path:'TutorSession-Report',component:TutorSessionReportComponent}];
+const routes: Routes = [
+  { path: 'Report', component: ReportComponent },
+  { path: 'TutorDetails-Report', component: TutorDetailsReportComponent },
+  { path: 'Sales-Report', component: SalesReportComponent },
+  { path: 'Attendance-Report', component: AttendanceReportComponent },
+  { path: 'Feedback-Report', component: FeedbackReportComponent },
+  { path: 'TotalStudents-Report', component: TotalStudentsReportComponent },
+  { path: 'TutorSession-Report', component: TutorSessionReportComponent },
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class ReportRoutingModule { }
+export class ReportRoutingModule {}

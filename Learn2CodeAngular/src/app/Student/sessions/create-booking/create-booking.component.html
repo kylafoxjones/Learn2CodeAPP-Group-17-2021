@@ -1,0 +1,30 @@
+<h5 style="text-align: center">Create Booking</h5>
+<hr />
+<mat-dialog-content>
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>What do you want cover?</mat-label>
+        <textarea matInput placeholder="Content..."
+        [(ngModel)]="data.Description"
+        #name="ngModel"
+        ></textarea>
+      </mat-form-field>
+</mat-dialog-content>
+<h1>{{ data.id }}</h1>
+<div style="margin: auto; padding-top: 1rem; text-align: center">
+  <button
+    (click)="book()"
+    style="width: 6rem"
+    class="btn btn-info"
+    
+  >
+    Submit
+  </button>
+  <button
+    [mat-dialog-close]
+    style="margin-left: 2rem; width: 6rem"
+    class="btn btn-danger"
+  >
+    Cancel
+  </button>
+</div>
+

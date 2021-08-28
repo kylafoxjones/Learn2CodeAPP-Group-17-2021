@@ -13,9 +13,9 @@ import { Router } from '@angular/router';
 export class FeedbackComponent implements OnInit {
   myFeedbackList: any = [];
   data: any;
-  thisStudent:any;
-  userId:any;
-  pastSessionList:any=[];
+  thisStudent: any;
+  userId: any;
+  pastSessionList: any = [];
   //studentId:any;
 
   constructor(
@@ -24,26 +24,27 @@ export class FeedbackComponent implements OnInit {
     private service: StudentService
   ) {}
 
-  ngOnInit(){
-  
+  ngOnInit() {
     this.getLoggedInUser();
     this.getMyFeedback();
   }
-  getLoggedInUser(){
+  getLoggedInUser() {
     this.userId = localStorage.getItem('id');
     console.log(this.userId);
-    this.thisStudent = this.service.getStudentInfo();
-    console.log("student logged in ts file",this.thisStudent);
-    this.service.studentId = this.thisStudent.id;
-    console.log('student id kept in the service',this.service.studentId);
-    this.getSessions();
+    this.service.getStudent(this.userId).subscribe((res) => {
+      this.thisStudent = res;
+      console.log('student logged in ts file', this.thisStudent);
+      this.service.studentId = this.thisStudent.id;
+      console.log('student id kept in the service', this.service.studentId);
+      this.getSessions();
+    });
   }
 
   getSessions() {
     // get sessions that the student has attented
-    this.service.getSessions((res)=> {
-      this.pastSessionList =res;
-      console.log('past sessions for logged in student', this.pastSessionList)
+    this.service.getSessions(this.thisStudent.id).subscribe((res) => {
+      this.pastSessionList = res;
+      console.log('past sessions for logged in student', this.pastSessionList);
     });
     this.getMyFeedback();
   }
@@ -106,7 +107,7 @@ export class FeedbackComponent implements OnInit {
   }
 
   getMyFeedback() {
-    this.service.getMyFeedback(this.service.studentId).subscribe((result) => {
+    this.service.getMyFeedback(this.thisStudent.id).subscribe((result) => {
       this.myFeedbackList = result;
       console.log(
         'Myfeedback list for the student logged in',
@@ -124,13 +125,13 @@ export class FeedbackComponent implements OnInit {
         feedbackObj.bookingInstance.tutor.tutorSurname +
         ': ',
       text:
-        "Friendliness: " +
-        feedbackObj.friendliness
-        +". Ability: " +
-        feedbackObj.ability 
-        + ". Timliness: " +
-        feedbackObj.timliness 
-        + ". Description: " +
+        'Friendliness: ' +
+        feedbackObj.friendliness +
+        '. Ability: ' +
+        feedbackObj.ability +
+        '. Timliness: ' +
+        feedbackObj.timliness +
+        '. Description: ' +
         feedbackObj.description,
     });
   }

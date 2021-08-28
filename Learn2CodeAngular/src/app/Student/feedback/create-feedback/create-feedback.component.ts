@@ -11,7 +11,6 @@ import { StudentService } from '../../Student resources/student.service';
 export class CreateFeedbackComponent implements OnInit {
   bookingInstaneId: any;
   data: any = {};
-  
 
   constructor(
     public dialog: MatDialog,
@@ -21,15 +20,16 @@ export class CreateFeedbackComponent implements OnInit {
 
   ngOnInit() {
     this.getInfo();
-   
   }
 
   getInfo() {
     // you need the student id and the booking instance id to create feedback
     // this will be hrd coded for now
     this.bookingInstaneId = this.service.bookingInstanceID;
-    console.log('the booking instance id of the one you want to create feedback for', this.bookingInstaneId);
-   
+    console.log(
+      'the booking instance id of the one you want to create feedback for',
+      this.bookingInstaneId
+    );
   }
 
   createFeedback() {
@@ -66,7 +66,6 @@ export class CreateFeedbackComponent implements OnInit {
       }
     });
   }
-
 
   cancel() {
     this.dialogRef.close();

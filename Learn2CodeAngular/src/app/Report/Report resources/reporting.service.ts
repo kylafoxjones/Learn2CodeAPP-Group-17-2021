@@ -3,9 +3,16 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ReportingService {
+  TutorSessionDetails: any = {};
+  SalesTable: any = {};
+  TutorId: any;
+  StartDateT: Date;
+  EndDateT: Date;
+  StartDateS: Date;
+  EndDateS: Date;
 
   TutorSessionDetails:any = {};
   SalesTable:any = {};
@@ -20,87 +27,97 @@ export class ReportingService {
   constructor(private http: HttpClient) { }
   apiUrl = 'https://localhost:44393/api/Reporting/';
 
+  //#region TutorDetails
+  getTutorDetails() {
+    return this.http.get(this.apiUrl + 'TutorDetails');
 
-    //#region TutorDetails
-    getTutorDetails() {
-      return this.http.get(this.apiUrl + 'TutorDetails');
+    //#endregion
 
-        //#endregion
+    //#region StudentDetails
+  }
 
-        //#region StudentDetails
-     }
+  getTotalStudents() {
+    return this.http.get(this.apiUrl + 'StudentDetails');
+  }
+  //#endregion
 
+  //region Attendance
+  getSessionDropdown() {
+    return this.http.get(this.apiUrl + 'AttendacSession');
+  }
 
-     getTotalStudents(){
-      return this.http.get(this.apiUrl + 'StudentDetails');
-      }
-      //#endregion
+  getAttendedList(id: number) {
+    return this.http.get(this.apiUrl + 'SessionAttendanceReport/' + id);
+  }
 
-      //region Attendance
-      getSessionDropdown(){
-        return this.http.get(this.apiUrl + 'AttendacSession');
-      }
+  getAttendedGraphInfo(id: number) {
+    return this.http.get(this.apiUrl + 'SessionAttendanceGraph/' + id);
+  }
 
-      getAttendedList(id:number){
-        return this.http.get(this.apiUrl + 'SessionAttendanceReport/' + id);
-      }
-   
-      getAttendedGraphInfo(id:number){
-        return this.http.get(this.apiUrl + 'SessionAttendanceGraph/' + id);
-      }
+  //endregion
 
+  //#region Feedback
+  getFeedbackSessionDropdown() {
+    return this.http.get(this.apiUrl + 'GetSessions');
+  }
 
-      //endregion
-     
-      //#region Feedback
-      getFeedbackSessionDropdown(){
-        return this.http.get(this.apiUrl + 'GetSessions');
-      }
+  getSessionDetails(id: number) {
+    return this.http.get(this.apiUrl + 'GetSessionDetails/' + id);
+  }
 
-      getSessionDetails(id:number){
-        return this.http.get(this.apiUrl + 'GetSessionDetails/' + id);
-      }
+  getFeedbackList(id: number) {
+    return this.http.get(this.apiUrl + 'GetSessionsFeedback/' + id);
+  }
 
-      getFeedbackList(id:number){
-        return this.http.get(this.apiUrl + 'GetSessionsFeedback/' + id);
-      }
+  getSessionFeedbackScore(id: number) {
+    return this.http.get(this.apiUrl + 'GetSessionsFeedbackScore/' + id);
+  }
 
-      getSessionFeedbackScore(id:number){
-        return this.http.get(this.apiUrl + 'GetSessionsFeedbackScore/' + id);
-      }
+  //#endregion
 
+  //#region totaltutorsession
 
+  GetTutorsessionsTutor() {
+    return this.http.get(this.apiUrl + 'GetTutorsessionsTutor');
+  }
 
-      //#endregion
+  GetTotalTutorsessions(obj) {
+    this.TutorSessionDetails = {
+      TutorId: obj.TutorId,
+      StartDate: obj.StartDate,
+      EndDate: obj.EndDate,
+    };
+    return this.http.post(
+      this.apiUrl + 'GetTotalTutorsessions',
+      this.TutorSessionDetails
+    );
+  }
 
-      //#region totaltutorsession
+  ///#endregion
 
-      GetTutorsessionsTutor(){
-        return this.http.get(this.apiUrl + "GetTutorsessionsTutor");
-      }
+  //#region SalesReport
+  GetSalesReportTable(obj) {
+    this.SalesTable = {
+      StartDate: obj.StartDate,
+      EndDate: obj.EndDate,
+    };
+    return this.http.post(this.apiUrl + 'GetSalesReport', this.SalesTable);
+  }
 
-      GetTotalTutorsessions(obj){
-        
-        this.TutorSessionDetails = {
-          TutorId : obj.TutorId,
-          StartDate : obj.StartDate,
-          EndDate : obj.EndDate
-        }
-        return this.http.post(this.apiUrl + "GetTotalTutorsessions", this.TutorSessionDetails);
-      }
+  GetSubscriptionSales() {
+    return this.http.get(this.apiUrl + 'SubscriptionSales');
+  }
 
-      ///#endregion
+  GetCourseSales(): Observable<any> {
+    return this.http.get(this.apiUrl + 'CourseSales');
+  }
 
-      //#region SalesReport
-      GetSalesReportTable(obj){
-        
-        this.SalesTable = {
-          
-          StartDate : obj.StartDate,
-          EndDate : obj.EndDate
-        }
-        return this.http.post(this.apiUrl + "GetSalesReport", this.SalesTable);
-      }
+  // export(start, end): Observable<any> {
+  //   return this.http.get(
+  //     this.apiUrl + 'ExportSalesReport/' + start + '/' + end,
+  //     { responseType: 'blob' }
+  //   );
+  // }
 
       GetSubscriptionSales(){
         return this.http.get(this.apiUrl + "SubscriptionSales");
@@ -118,6 +135,7 @@ export class ReportingService {
         }
         return this.http.get(this.apiUrl + "Export", this.exportObject);
       }
-
-     
+  export(start, end): Observable<any>{
+    return this.http.get(this.apiUrl+'ExportSalesReport/'+start+'/' + end, { responseType:'blob' });
+  }
 }

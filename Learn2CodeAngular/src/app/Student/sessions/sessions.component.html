@@ -1,0 +1,224 @@
+<nav class="navbar navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">
+    <img
+      src="../.././assets/pics/HD logo.png"
+      width="40"
+      height="40"
+      class="d-inline-block align-top"
+      alt=""
+    />
+  </a>
+  <span class="TDO" style="color: rgb(0, 156, 158); margin-right: auto"
+    >TutorDevOps</span
+  >
+  <div class="right" style="margin-left: 2rem">
+    <span style="color: whitesmoke"
+      ><i style="color: whitesmoke" class="fa fa-ticket" aria-hidden="true"></i
+      ><i style="color: whitesmoke" class="fa fa-ticket" aria-hidden="true"></i>
+      x4
+      <i
+        style="color: whitesmoke; margin-left: 1rem"
+        class="fa fa-ticket"
+        aria-hidden="true"
+      >
+      </i>
+      x3</span
+    >
+
+    <span style="color: whitesmoke; margin-right: 2rem; padding-left: 1.5rem"
+      >Home</span
+    >
+  </div>
+  <div class="topnav-right">
+    <div class="dot">{{ thisStudent.studentName[0]+ thisStudent.studentSurname[0] }}</div>
+  </div>
+</nav>
+
+<div style="padding-top: 2rem; margin-right: 1.5rem">
+  <div class="header" style="height: 2.5rem">Individual Sessions</div>
+</div>
+
+<nb-layout style="width: 120rem">
+  <nb-layout-column style="width: 120rem">
+    <nb-tabset style="width: 125rem; margin-left: 3 rem" fullWidth>
+      <nb-tab tabTitle="Schedule">
+
+        <div style="margin-right: auto">
+          <mat-form-field appearance="outline" style="margin-right: auto">
+            <mat-label>Module Code :</mat-label>
+            <mat-select (valueChange)="selectmodule($event)">
+              
+              <mat-option
+                *ngFor="let item of moduleList"
+                value="{{ item.moduleId }},{{ item.tutorSessionId }}"
+              >
+                {{ item.module.moduleCode }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <button (click)="avail()" class= "btn btn-primary"> Search </button>
+        </div>
+
+        <table
+        class="table table-hover"
+        style="width: 80%; margin: auto; padding-top: 3.5rem"
+      >
+        <thead>
+          <tr>
+            <th scope="col">Title:</th>
+            <th scope="col">Session Time:</th>
+            <th scope="col">Date:</th>
+            <th scope="col">Tutor:</th>
+            <th scope="col">Module:</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of bookings | filter: search">
+            <td>{{ item.title }}</td>
+            <td>{{ item.sessionTime.startTime }}- {{ item.sessionTime.endTime }}</td>
+            <td>{{ item.date }}</td>
+            <td>{{ item.tutor.tutorName }}  {{ item.tutor.tutorSurname }}</td>
+            <td>{{ item.module.moduleCode }}</td>
+            <td> <button (click)="openPopUp(item.id)" class="btn btn-primary">
+              <!-- <i class="fa fa-pencil"></i> -->
+              Book
+            </button><td>
+            
+            <!-- <td>{{ item.tutorEmail}}</td> -->
+            <!-- <td (click)="createMessage(item)">
+              <i
+                style="font-size: x-large"
+                class="fa fa-envelope-o"
+                aria-hidden="true"
+              ></i>
+            </td> -->
+            
+          </tr>
+        </tbody>
+      </table>
+      </nb-tab>
+
+      <nb-tab tabTitle="My Bookings">
+        <div
+          style="
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
+              0 6px 6px rgba(0, 0, 0, 0.23);
+            width: 90%;
+            margin: auto;
+            border-radius: 15px;
+          "
+        >
+          <br />
+
+          <div
+            class="input-group rounded"
+            style="width: 20%; padding-left: 0.5rem; margin-left: 5rem"
+          >
+            <input
+              type="search"
+              class="form-control rounded"
+              placeholder="Search"
+              aria-label="Search"
+              aria-describedby="search-addon"
+            />
+            <span>
+              <button matTooltip="My tooltip" class="btn btn-primary">
+                <i class="fa fa-search"></i>
+              </button>
+            </span>
+          </div>
+          <table
+          class="table table-hover"
+          style="width: 80%; margin: auto; padding-top: 2rem"
+        >
+          <thead>
+            <tr>
+              <th scope="col">Tutor name:</th>
+              <th scope="col">Module:</th>
+              <th scope="col">Date:</th>
+              <th scope="col">Time:</th>
+              <th scope="col">Link:</th>
+              <th scope="col"></th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of myBookingList | filter: search ">
+              <td >
+                {{item.tutor.tutorName}}
+              </td>
+              <td >
+                {{item.module.moduleCode}}
+              </td>
+              <td >
+                {{item.date}}
+              </td>
+              <td >
+                {{ item.sessionTime.startTime }}- {{ item.sessionTime.endTime }}
+              </td>
+              <td >
+                {{ item.link }}
+              </td>
+
+              <td>
+                <button (click)="open(item)" class="btn btn-primary">
+                  <i class="fa fa-pencil"></i>
+                </button>
+              </td>
+              <td>
+                <button (click)="delete(item)" class="btn btn-danger">
+                  <i class="fa fa-trash"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+          <br />
+
+
+          <br />
+          <nav
+            aria-label="Page navigation example "
+            style="margin-left: 75%; padding-bottom: 0.5rem"
+          >
+            <ul class="pagination">
+              <li class="page-item">
+                <a class="page-link" href="#" aria-label="Previous">
+                  <span aria-hidden="true">&laquo;</span>
+                  <span class="sr-only">Previous</span>
+                </a>
+              </li>
+              <li class="page-item"><a class="page-link" href="#">1</a></li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item">
+                <a class="page-link" href="#" aria-label="Next">
+                  <span aria-hidden="true">&raquo;</span>
+                  <span class="sr-only">Next</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+        <br />
+        <br />
+      </nb-tab>
+    </nb-tabset>
+  </nb-layout-column>
+</nb-layout>
+<br />
+<br />
+
+<footer>
+  <nav id="foot" class="navbar" style="width: 100%">
+    <a class="navbar-brand" href="#"> </a>
+    <span class="TDO" style="margin-right: auto"> &lt; TDO &gt;</span>
+    <div class="topnav-right">
+      <a href="#"> <i class="fa fa-facebook"></i> </a>
+      <a href="#"> <i class="fa fa-instagram"></i> </a>
+      <a href="#"> <i class="fa fa-twitter"></i> </a>
+      <a>TutorDevOps@gmail.com</a>
+    </div>
+  </nav>
+</footer>
