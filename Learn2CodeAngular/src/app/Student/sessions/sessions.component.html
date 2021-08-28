@@ -40,7 +40,7 @@
 
 <nb-layout style="width: 120rem">
   <nb-layout-column style="width: 120rem">
-    <nb-tabset style="width: 120rem; margin-left: 3 rem" fullWidth>
+    <nb-tabset style="width: 125rem; margin-left: 3 rem" fullWidth>
       <nb-tab tabTitle="Schedule">
 
         <div style="margin-right: auto">
@@ -80,7 +80,7 @@
             <td>{{ item.date }}</td>
             <td>{{ item.tutor.tutorName }}  {{ item.tutor.tutorSurname }}</td>
             <td>{{ item.module.moduleCode }}</td>
-            <td> <button (click)="book(item.id)" class="btn btn-primary">
+            <td> <button (click)="openPopUp(item.id)" class="btn btn-primary">
               <!-- <i class="fa fa-pencil"></i> -->
               Book
             </button><td>
@@ -104,7 +104,7 @@
           style="
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
               0 6px 6px rgba(0, 0, 0, 0.23);
-            width: 102%;
+            width: 90%;
             margin: auto;
             border-radius: 15px;
           "
@@ -128,7 +128,52 @@
               </button>
             </span>
           </div>
+          <table
+          class="table table-hover"
+          style="width: 80%; margin: auto; padding-top: 2rem"
+        >
+          <thead>
+            <tr>
+              <th scope="col">Tutor name:</th>
+              <th scope="col">Module:</th>
+              <th scope="col">Date:</th>
+              <th scope="col">Time:</th>
+              <th scope="col">Link:</th>
+              <th scope="col"></th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of myBookingList | filter: search ">
+              <td >
+                {{item.tutor.tutorName}}
+              </td>
+              <td >
+                {{item.module.moduleCode}}
+              </td>
+              <td >
+                {{item.date}}
+              </td>
+              <td >
+                {{ item.sessionTime.startTime }}- {{ item.sessionTime.endTime }}
+              </td>
+              <td >
+                {{ item.link }}
+              </td>
 
+              <td>
+                <button (click)="open(item)" class="btn btn-primary">
+                  <i class="fa fa-pencil"></i>
+                </button>
+              </td>
+              <td>
+                <button (click)="delete(item)" class="btn btn-danger">
+                  <i class="fa fa-trash"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
           <br />
 
 
