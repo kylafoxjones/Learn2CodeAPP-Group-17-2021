@@ -31,6 +31,10 @@ import { ViewResourcesComponent } from './view-resources/view-resources.componen
 import { Angular4PaystackModule } from 'angular4-paystack';
 import { ViewGroupSessionsComponent } from './view-group-sessions/view-group-sessions.component';
 import { SessionsComponent } from './sessions/sessions.component';
+import { CreateBookingComponent } from './sessions/create-booking/create-booking.component';
+import { EditBookingComponent } from './sessions/edit-booking/edit-booking.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 
 @NgModule({
@@ -49,7 +53,9 @@ import { SessionsComponent } from './sessions/sessions.component';
     DisplayCoursesComponent,
     ViewResourcesComponent,
     ViewGroupSessionsComponent,
-    SessionsComponent
+    SessionsComponent,
+    CreateBookingComponent,
+    EditBookingComponent
   ],
   imports: [
     Angular4PaystackModule.forRoot('pk_live_af05c857de047c4178a4ab3d32104299998199bb'),
@@ -70,7 +76,9 @@ import { SessionsComponent } from './sessions/sessions.component';
     MatSidenavModule,
     ChartsModule,
     Ng2SearchPipeModule,
-    MatMenuModule
+    MatMenuModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ]
 })
 export class StudentModule { }

@@ -29,6 +29,10 @@ export class StudentService {
 
   // studentId:any;
   bookingInstanceID: any;
+  studentIdBooking: any;
+  bookingID: any;
+  moduleID: any;
+  bookingToEdit: any = {};
 
   constructor(private http: HttpClient) {}
   //#region messaging
@@ -241,6 +245,18 @@ export class StudentService {
   }
 
   makeBooking(obj) {
-    return this.http.post(this.apiUrl + 'CreateIndividualBooking',obj);
+    return this.http.post(this.apiUrl + 'CreateIndividualBooking', obj);
+  }
+
+  getMyBookings(id) {
+    return this.http.get(this.apiUrl + 'GetMyBookings/' + id);
+  }
+
+  editBooking(obj) {
+    return this.http.post(this.apiUrl + 'BookingChangeRequest', obj);
+  }
+
+  deletePastBooking(id) {
+    return this.http.get(this.apiUrl + 'CancelMyBooking/' + id);
   }
 }
