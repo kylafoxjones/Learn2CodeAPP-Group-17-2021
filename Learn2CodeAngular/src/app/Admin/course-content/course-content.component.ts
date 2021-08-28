@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { AddCourseContentComponent } from './add-course-content/add-course-content.component';
 import { AdminService } from '../admin resources/admin.service';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -22,7 +23,7 @@ export class CourseContentComponent implements OnInit {
   search;
   content: any;
 
-  constructor(public dialog: MatDialog, private service: AdminService) {}
+  constructor(public dialog: MatDialog, private service: AdminService, private router: Router) {}
 
   ngOnInit() {
     this.getAllCourseContent();
@@ -56,6 +57,12 @@ export class CourseContentComponent implements OnInit {
       console.log('list of content for category chosen', this.contentList);
     });
   }
+
+  public logout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('id');
+    this.router.navigate(['/loginhomepage/login']);
+  };
 
   openEditDialog(obj) {
     this.service.edit = true;

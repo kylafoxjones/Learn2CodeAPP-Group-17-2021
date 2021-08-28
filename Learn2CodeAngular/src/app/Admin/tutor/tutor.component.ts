@@ -55,4 +55,10 @@ export class TutorComponent implements OnInit {
       console.log(this.tutorList);
     });
   }
+
+  public logout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('id');
+    this.router.navigate(['/loginhomepage/login']);
+  };
 }

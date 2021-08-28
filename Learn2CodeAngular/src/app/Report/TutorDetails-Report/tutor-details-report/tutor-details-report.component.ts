@@ -38,6 +38,12 @@ tutorList: any = [];
     )
   }
 
+  public logout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('id');
+    this.router.navigate(['/loginhomepage/login']);
+  };
+
   getTutorDetails() {
     this.reportService.getTutorDetails().subscribe((result) => {
       this.tutorList = result; 

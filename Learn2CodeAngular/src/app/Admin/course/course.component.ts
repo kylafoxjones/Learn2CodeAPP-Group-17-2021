@@ -36,6 +36,12 @@ export class CourseComponent implements OnInit {
     this.getAllCourses();
   }
 
+  public logout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('id');
+    this.router.navigate(['/loginhomepage/login']);
+  };
+
   delete(id: number) {
     Swal.fire({
       title: 'Are you sure you want to delete the Course?',

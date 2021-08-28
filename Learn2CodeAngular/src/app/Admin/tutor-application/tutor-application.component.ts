@@ -52,6 +52,12 @@ export class TutorApplicationComponent implements OnInit {
    // window.location.reload();
   }
 
+  public logout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('id');
+    this.router.navigate(['/loginhomepage/login']);
+  };
+
   getAllTutorApplications() {
     this.service.getTutorApplications().subscribe((result) => {
       this.service.applicationList = result;

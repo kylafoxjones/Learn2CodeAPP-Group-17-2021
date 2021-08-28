@@ -52,6 +52,12 @@ export class UniversityComponent implements OnInit {
     });
   }
 
+  public logout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('id');
+    this.router.navigate(['/loginhomepage/login']);
+  };
+
   openAddDialog() {
     this.service.edit = false;
     this.service.editId = 0;
