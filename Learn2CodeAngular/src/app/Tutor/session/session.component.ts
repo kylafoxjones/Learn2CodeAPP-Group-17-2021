@@ -33,7 +33,11 @@ export class SessionComponent implements OnInit {
     const dialogRef = this.dialog.open(CreateSessionComponent, {
       width: '900px',
     });
-    dialogRef.afterClosed().subscribe((result) => {});
+    dialogRef.afterClosed().subscribe((result) => {
+      this.getMyGroupSessions();
+      this.getMyIndivSessions();
+    });
+    
   }
 
   getMyIndivSessions() {
@@ -56,7 +60,10 @@ export class SessionComponent implements OnInit {
     const dialogRef = this.dialog.open(MaintainSessionComponent, {
       width: '900px',
     });
-    dialogRef.afterClosed().subscribe((result) => {});
+    dialogRef.afterClosed().subscribe((result) => {
+      this.getMyGroupSessions();
+      this.getMyIndivSessions();
+    });
   }
 
   deleteSession(obj) {

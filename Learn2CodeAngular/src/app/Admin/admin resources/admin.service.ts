@@ -7,6 +7,8 @@ import { Observable } from 'rxjs';
 })
 export class AdminService {
   apiUrl = 'https://localhost:44393/api/Admin/';
+  reportUrl = 'https://localhost:44393/api/Reporting/';
+ 
 
   //uni variables below
   editId = 0;
@@ -456,6 +458,38 @@ export class AdminService {
   editContent(formdata): Observable<any> {
     return this.http.put(this.apiUrl + 'EditContent', formdata);
 }
+  //#endregion
+
+   //#region AdminHome
+    getTotalStudents(){
+      return this.http.get(this.reportUrl + 'TotalStudents');
+    }
+
+    getTotalTutors(){
+      return this.http.get(this.reportUrl + 'TotalTutors');
+    }
+
+
+    getTotalUniversities(){
+      return this.http.get(this.reportUrl + 'TotalUniversities');
+    }
+
+    getTotalDegrees(){
+      return this.http.get(this.reportUrl + 'TotalDegrees');
+    }
+
+    getTotalModules(){
+      return this.http.get(this.reportUrl + 'TotalDegrees');
+    }
+
+    getStudentUniGraphData():Observable<any>{
+      return this.http.get(this.reportUrl + 'StudentsAtUniversity');
+    }
+
+    getCoursePieGraphData():Observable<any>{
+      return this.http.get(this.reportUrl + 'CoursePieChart');
+    }
+
   //#endregion
 
   getAdminLoggedIn(){

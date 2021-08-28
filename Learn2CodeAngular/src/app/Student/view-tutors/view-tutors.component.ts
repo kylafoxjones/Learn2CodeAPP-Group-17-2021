@@ -24,7 +24,7 @@ export class ViewTutorsComponent implements OnInit {
     private service: StudentService
   ) {}
 
-  ngOnInit():void{
+  ngOnInit(){
     this.getAllTutors();
   }
 

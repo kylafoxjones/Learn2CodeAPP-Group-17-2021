@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import Swal from 'sweetalert2';
 import { AdminService } from '../admin resources/admin.service';
 import { UploadCsvFileComponent } from './upload-csv-file/upload-csv-file.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @Component({
   selector: 'app-payments',
@@ -10,6 +11,11 @@ import { UploadCsvFileComponent } from './upload-csv-file/upload-csv-file.compon
   styleUrls: ['./payments.component.scss'],
 })
 export class PaymentsComponent implements OnInit {
+
+  //pagination
+  totalLength:any;
+  page:number = 1;
+
   payments: any;
   search;
   constructor(public dialog: MatDialog, private service: AdminService) {}
@@ -21,6 +27,7 @@ export class PaymentsComponent implements OnInit {
   getPaymentList(){
     this.service.getPayments().subscribe((result) => {
       this.payments = result;
+      this.totalLength = this.payments.length;
     });
   }
 
@@ -29,12 +36,14 @@ export class PaymentsComponent implements OnInit {
       width: '350px',
     });
 
-    // dialogRef.afterClosed().subscribe((result) => {
-    //   Swal.fire({
-    //     icon: 'success',
-    //     title: 'file is uploaded',
-    //     confirmButtonText: 'Ok',
-    //   });
-    // });
+    dialogRef.afterClosed().subscribe((result) => {
+
+      Swal.fire({
+        icon: 'success',
+        title: 'file is uploaded',
+        confirmButtonText: 'Ok',
+      });
+      this.getPaymentList();
+    });
   }
 }

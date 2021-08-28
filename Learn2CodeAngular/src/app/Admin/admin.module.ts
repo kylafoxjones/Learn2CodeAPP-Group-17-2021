@@ -40,6 +40,8 @@ import { PaymentsComponent } from './payments/payments.component';
 import { UploadCsvFileComponent } from './payments/upload-csv-file/upload-csv-file.component';
 import { CourseContentComponent } from './course-content/course-content.component';
 import { AddCourseContentComponent } from './course-content/add-course-content/add-course-content.component';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -87,7 +89,10 @@ import { AddCourseContentComponent } from './course-content/add-course-content/a
     MatSelectModule,
     MatMenuModule,
     MatCardModule,
-    ChartsModule
+    ChartsModule,
+    NgxChartsModule,
+    NgxPaginationModule
+    
     
   ],
 })
