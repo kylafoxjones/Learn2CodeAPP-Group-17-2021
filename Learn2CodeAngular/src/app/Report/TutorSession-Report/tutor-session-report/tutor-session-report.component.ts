@@ -62,7 +62,11 @@ export class TutorSessionReportComponent implements OnInit {
     
     }
  
-   
+    public logout = () => {
+      localStorage.removeItem('token');
+      localStorage.removeItem('id');
+      this.router.navigate(['/loginhomepage/login']);
+    };
 
     getTutorDropdown(){
       this.ReportService.GetTutorsessionsTutor().subscribe((result) =>{

@@ -9,6 +9,7 @@ export class ReportingService {
 
   TutorSessionDetails:any = {};
   SalesTable:any = {};
+  exportObject:any = {};
   TutorId:any;
   StartDateT:Date;
   EndDateT:Date;
@@ -109,8 +110,13 @@ export class ReportingService {
         return this.http.get(this.apiUrl + "CourseSales");
       }
 
-      export(start,end) : Observable<any>{
-        return this.http.get(this.apiUrl + "ExportSalesReport/" + start + "/" + end, {responseType:'blob'});
+      export(obj) : Observable<any>{
+        this.exportObject = {
+          
+          StartDate : obj.StartDate,
+          EndDate : obj.EndDate
+        }
+        return this.http.get(this.apiUrl + "Export", this.exportObject);
       }
 
      

@@ -52,7 +52,11 @@ export class SalesReportComponent implements OnInit {
   ) { }
 
 
-    
+  public logout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('id');
+    this.router.navigate(['/loginhomepage/login']);
+  };
 
   ngOnInit(): void {
     this.getSubscriptionSummaryData(),
@@ -107,8 +111,15 @@ export class SalesReportComponent implements OnInit {
 
 //Export to excel
   exportExcel(){
-    this.ReportService.export(this.Start, this.End).subscribe((result) => {
-      saveAs(result, 'Subscription Sales'+'.xlsx');
+    
+    this.ObjectToSend.StartDate = this.Start;
+    this.ObjectToSend.EndDate = this.End;
+
+    this.ReportService.export(this.ObjectToSend).subscribe((result) => {
+
+
+      console.log(result);
+      saveAs(result, 'SubscriptionSales'+'.xlsx');
     })
   }
 
