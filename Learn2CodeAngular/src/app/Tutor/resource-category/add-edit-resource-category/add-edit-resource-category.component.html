@@ -3,18 +3,29 @@
 <mat-dialog-content>
   <mat-form-field class="example-full-width">
     <mat-label>Category Name:</mat-label>
-  
+    <div *ngIf="cat.invalid && (cat.dirty || cat.touched)" class="alert">
+      <div *ngIf="cat.errors?.required" style="font-size: smaller; color: red;">
+        Name is required.</div>
+      <div *ngIf="cat.errors?.minlength" style="font-size: smaller; color: red;">
+        Name must be at least 4 characters long.
+      </div>
+    </div>
       <input
         [(ngModel)]="data.ResourceCategoryName"
         matInput
- 
+        type="text"
+      id="cat"
+      #cat="ngModel"
+      required
+      minlength="4"
+
       />
-  
+
   </mat-form-field>
 </mat-dialog-content>
 <h1>{{ data.id }}</h1>
 <div style="margin: auto; padding-top: 1rem; text-align: center">
-  <button (click)="submitEdittedCat()" style="width: 6rem" class="btn btn-info">
+  <button (click)="submitEdittedCat()" [disabled]="cat.invalid" style="width: 6rem" class="btn btn-info">
     Submit
   </button>
   <button

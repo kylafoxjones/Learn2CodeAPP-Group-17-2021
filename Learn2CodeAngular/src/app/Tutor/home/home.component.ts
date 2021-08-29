@@ -7,7 +7,7 @@ import { ChartType, ChartOptions } from 'chart.js';
 import Swal from 'sweetalert2';
 import * as Chart from 'chart.js';
 import { title } from 'process';
-import { MaintainComponent } from '../maintain/maintain.component';
+// import { MaintainComponent } from '../maintain/maintain.component';
 import { TutorService } from '../tutor resources/tutor.service';
 import { MaintainTutorComponent } from './maintain-tutor/maintain-tutor.component';
 
@@ -59,7 +59,7 @@ export class HomeComponent implements OnInit {
 
   openDialog() {
     const dialogRef = this.dialog.open(MaintainTutorComponent, {
-      width: '350px',
+      width: '750px',
     });
 
     dialogRef.afterClosed().subscribe((result) => {

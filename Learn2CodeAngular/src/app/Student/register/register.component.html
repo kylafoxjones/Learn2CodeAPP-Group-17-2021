@@ -101,7 +101,6 @@
               </div>
               <input
                 id="name"
-
                 type="text"
                 matInput
                 placeholder="John"
@@ -122,13 +121,13 @@
                   *ngIf="surname.errors?.required"
                   style="font-size: smaller; color: red"
                 >
-                Surname is required.
+                  Surname is required.
                 </div>
                 <div
                   *ngIf="surname.errors?.minlength"
                   style="font-size: smaller; color: red"
                 >
-                Surname must be at least 2 characters long.
+                  Surname must be at least 2 characters long.
                 </div>
               </div>
               <input
@@ -147,22 +146,22 @@
             <mat-form-field class="example-full-width" appearance="outline">
               <mat-label>Username: </mat-label>
               <div
-              *ngIf="username.invalid && (username.dirty || username.touched)"
-              class="alert"
-            >
-              <div
-                *ngIf="username.errors?.required"
-                style="font-size: smaller; color: red"
+                *ngIf="username.invalid && (username.dirty || username.touched)"
+                class="alert"
               >
-              Username is required.
+                <div
+                  *ngIf="username.errors?.required"
+                  style="font-size: smaller; color: red"
+                >
+                  Username is required.
+                </div>
+                <div
+                  *ngIf="username.errors?.minlength"
+                  style="font-size: smaller; color: red"
+                >
+                  Username must be at least 4 characters long.
+                </div>
               </div>
-              <div
-                *ngIf="username.errors?.minlength"
-                style="font-size: smaller; color: red"
-              >
-              Username must be at least 4 characters long.
-              </div>
-            </div>
               <input
                 mdInput
                 matInput
@@ -177,22 +176,22 @@
             </mat-form-field>
             <mat-form-field class="example-full-width" appearance="outline">
               <div
-              *ngIf="email.invalid && (email.dirty || email.touched)"
-              class="alert"
-            >
-              <div
-                *ngIf="email.errors?.required"
-                style="font-size: smaller; color: red"
+                *ngIf="email.invalid && (email.dirty || email.touched)"
+                class="alert"
               >
-              Email is required.
+                <div
+                  *ngIf="email.errors?.required"
+                  style="font-size: smaller; color: red"
+                >
+                  Email is required.
+                </div>
+                <div
+                  *ngIf="email.errors?.minlength"
+                  style="font-size: smaller; color: red"
+                >
+                  Email must be at least 8 characters long.
+                </div>
               </div>
-              <div
-                *ngIf="email.errors?.minlength"
-                style="font-size: smaller; color: red"
-              >
-              Email must be at least 8 characters long.
-              </div>
-            </div>
               <mat-label>Email:</mat-label>
               <input
                 mdInput
@@ -207,24 +206,24 @@
                 [ngModelOptions]="{ standalone: true }"
               />
             </mat-form-field>
-            <mat-form-field class="example-full-width" appearance="outline" >
+            <mat-form-field class="example-full-width" appearance="outline">
               <div
-              *ngIf="tel.invalid && (tel.dirty || tel.touched)"
-              class="alert"
-            >
-              <div
-                *ngIf="tel.errors?.required"
-                style="font-size: smaller; color: red"
+                *ngIf="tel.invalid && (tel.dirty || tel.touched)"
+                class="alert"
               >
-              Number is required.
+                <div
+                  *ngIf="tel.errors?.required"
+                  style="font-size: smaller; color: red"
+                >
+                  Number is required.
+                </div>
+                <div
+                  *ngIf="tel.errors?.minlength"
+                  style="font-size: smaller; color: red"
+                >
+                  Number must be 10 characters long.
+                </div>
               </div>
-              <div
-                *ngIf="tel.errors?.minlength"
-                style="font-size: smaller; color: red"
-              >
-              Number must be 10 characters long.
-              </div>
-            </div>
               <mat-label>Phone Number: </mat-label>
               <input
                 mdInput
@@ -240,28 +239,43 @@
               />
             </mat-form-field>
             <div style="margin-left: 2rem">
-              <mat-form-field appearance="outline"  style="width: 25rem" class="form-group">
-              <div
-                *ngIf="uni.invalid && (uni.dirty || uni.touched)"
+              <mat-form-field
+                appearance="outline"
+                style="width: 25rem"
+                class="form-group"
+              >
+                <div
+                *ngIf="selectcontrol.invalid && (selectcontrol.dirty || selectcontrol.touched)"
                 class="alert"
               >
                 <div
-                  *ngIf="uni.errors?.required"
+                  *ngIf="selectcontrol.errors?.required"
                   style="font-size: smaller; color: red"
                 >
-                uni is required.
+                University is required.
                 </div>
 
               </div>
                 <mat-label>University:</mat-label>
-                <mat-select name="uni" required [(ngModel)]="selectUni"  #uni="ngModel"  (valueChange)="selectUni($event)" >
-                  <mat-option required *ngFor="let univ of uniList" [value]="uni.id">
-                    {{ univ.universityName }}
+                <mat-select
+                  required
+                  name="select"
+                  #selectcontrol="ngModel"
+                  [(ngModel)]="uniChosen"
+                  (valueChange)="selectUni($event)"
+                >
+                  <mat-option *ngFor="let uni of uniList" [value]="uni.id">
+                    {{ uni.universityName }}
                   </mat-option>
                 </mat-select>
+                <!-- <span
+                  style="font-size: smaller; color: red"
+                  class="help-block"
+                  **ngIf="selectcontrol.invalid && selectcontrol.touched"
+                  >University is required</span
+                > -->
               </mat-form-field>
             </div>
-
 
             <div class="row">
               <div class="col-md-4">
@@ -294,7 +308,11 @@
                   </mat-form-field>
                 </div>
               </div>
-              <mat-form-field class="example-full-width" appearance="outline">
+              <mat-form-field
+                class="example-full-width"
+                appearance="outline"
+                style="width: auto"
+              >
                 <mat-label>Password: </mat-label>
                 <input
                   mdInput
@@ -305,7 +323,11 @@
                   [ngModelOptions]="{ standalone: true }"
                 />
               </mat-form-field>
-              <mat-form-field class="example-full-width" appearance="outline">
+              <mat-form-field
+                class="example-full-width"
+                appearance="outline"
+                style="width: auto"
+              >
                 <mat-label> Confirm Password: </mat-label>
                 <input
                   mdInput
@@ -321,10 +343,17 @@
           <br />
           <div style="margin-left: 33%; padding-bottom: 0.5rem">
             <button
-            class="btn btn-info"
+              class="btn btn-info"
               (click)="tryRegister()"
               style="width: 5rem"
-              [disabled]="name.invalid || surname.invalid || username.invalid || email.invalid || tel.invalid || uni.invalid "
+              [disabled]="
+                name.invalid ||
+                surname.invalid ||
+                username.invalid ||
+                email.invalid ||
+                tel.invalid ||
+                selectcontrol.invalid
+              "
             >
               Submit
             </button>
@@ -333,10 +362,9 @@
               class="btn btn-danger"
               (click)="backToLogin()"
               style="width: 5rem; margin-left: 1rem"
-              >
-              Back
-              </Button
             >
+              Back
+            </Button>
           </div>
         </div>
       </div>
