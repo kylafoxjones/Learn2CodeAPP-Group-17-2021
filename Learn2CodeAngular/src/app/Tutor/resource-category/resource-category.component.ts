@@ -6,6 +6,7 @@ import { AddEditResourceCategoryComponent } from './add-edit-resource-category/a
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { TutorService } from '../tutor resources/tutor.service';
 import { NbAccordionItemHeaderComponent } from '@nebular/theme';
+import { MatMenuModule } from '@angular/material/menu';
 
 @Component({
   selector: 'app-resource-category',
@@ -22,6 +23,13 @@ export class ResourceCategoryComponent implements OnInit {
   uniList: any;
   uniResoList: any;
   hasContent: any = false;
+  tutor: any;
+  userId: any;
+  
+   //pagination
+   page1:number = 1;
+   totalLength1:any;
+
 
   constructor(
     private router: Router,
@@ -30,6 +38,11 @@ export class ResourceCategoryComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.userId = localStorage.getItem('id');
+    console.log(this.userId);
+    this.service.getTutor(this.userId).subscribe((result) => {
+      this.tutor = result;});
+
     this.getModuless();
     this.getAllResourceCategories();
     // this.getUnisResource();
@@ -37,6 +50,12 @@ export class ResourceCategoryComponent implements OnInit {
     //this.getModuleReso();
   }
 
+  public logout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('id');
+    this.router.navigate(['/loginhomepage/login']);
+  };
+  
   selectType($event) {
     // console.log('this is the event', $event);
     this.service.typeUniChosen = $event;

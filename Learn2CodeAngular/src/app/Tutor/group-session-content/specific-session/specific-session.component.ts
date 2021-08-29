@@ -9,6 +9,9 @@ import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 import { saveAs } from 'file-saver';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { MatMenuModule } from '@angular/material/menu';
+import { NbLayoutModule } from '@nebular/theme';
+
 
 @Component({
   selector: 'app-specific-session',
@@ -26,6 +29,8 @@ export class SpecificSessionComponent implements OnInit {
   prev_url: any;
   hasContentTs: any = this.service.hasContent;
   showVid: any = false;
+  tutor: any;
+  userId: any;
 
   constructor(
     public dialog: MatDialog,
@@ -34,7 +39,17 @@ export class SpecificSessionComponent implements OnInit {
     private sanitizer: DomSanitizer
   ) {}
 
+  public logout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('id');
+    this.router.navigate(['/loginhomepage/login']);
+  };
+  
   ngOnInit() {
+    this.userId = localStorage.getItem('id');
+    console.log(this.userId);
+    this.service.getTutor(this.userId).subscribe((result) => {
+      this.tutor = result;});
     this.getSessionContent();
   }
 

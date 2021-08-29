@@ -12,7 +12,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { NbLayoutComponent } from '@nebular/theme';
 import { NbLayoutColumnComponent } from '@nebular/theme';
 import Swal from 'sweetalert2';
-import { saveAs } from 'file-saver';
+
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { NgxPaginationModule } from 'ngx-pagination';
@@ -61,12 +61,8 @@ export class SalesReportComponent implements OnInit {
   x() {
     Swal.fire('', 'Successfully downloaded report', 'success');
   }
-  exportpay(){
-    this.ReportService.export(this.Start, this.End).subscribe((res) => {
-      saveAs(res, 'test'+  '.xlsx');
-    });
-  }
-  getSubscriptionSalesTable(){
+
+  
 
 
   getSubscriptionSalesTable() {
@@ -84,7 +80,7 @@ export class SalesReportComponent implements OnInit {
     );
   }
 
-  getSubscriptionSummaryData() {
+    getSubscriptionSummaryData() {
     this.ReportService.GetSubscriptionSales().subscribe((result) => {
       console.log(result);
       this.SubscriptionSummary = result;
@@ -102,19 +98,7 @@ export class SalesReportComponent implements OnInit {
   }
 
 
-//Export to excel
-  exportExcel(){
-    
-    this.ObjectToSend.StartDate = this.Start;
-    this.ObjectToSend.EndDate = this.End;
 
-    this.ReportService.export(this.ObjectToSend).subscribe((result) => {
-
-
-      console.log(result);
-      saveAs(result, 'SubscriptionSales'+'.xlsx');
-    })
-  }
 
   // options
   showXAxis = true;

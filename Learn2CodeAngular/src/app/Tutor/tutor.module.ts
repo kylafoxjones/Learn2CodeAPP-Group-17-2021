@@ -40,6 +40,8 @@ import { CreateSessionComponent } from './session/create-session/create-session.
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MaintainSessionComponent } from './session/maintain-session/maintain-session.component';
+import { MatMenuModule } from '@angular/material/menu';
+import { NgxPaginationModule } from 'ngx-pagination';
 //import { FormsModule } from '@angular/forms';
 
 
@@ -89,7 +91,9 @@ import { MaintainSessionComponent } from './session/maintain-session/maintain-se
     MatListModule,
     MatCardModule,
     MatToolbarModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatMenuModule,
+    NgxPaginationModule
   ]
 })
 export class TutorModule { }
