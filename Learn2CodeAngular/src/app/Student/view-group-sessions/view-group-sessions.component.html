@@ -14,17 +14,24 @@
   <div [routerLink]="['/studenthomepage/studenthome']" class="topnav-right">
     <a>Home</a>
   </div>
-  <div class="topnav-right" style="margin-right: 0.5rem">
-    <img
-      src="../../../assets/pics/circle-cropped.png"
-      width="50"
-      height="50"
-      style="border-radius: 55px"
-      class="d-inline-block align-top"
-      alt=""
-    />
+  <div class="topnav-right">
+    <div   [matMenuTriggerFor]="menu" class="dot">{{ student.studentName[0]+ student.studentSurname[0] }}</div>
   </div>
 </nav>
+
+
+
+<mat-menu #menu="matMenu" xPosition="before">
+  <button [routerLink]="['/profile']" mat-menu-item><i class="fa fa-user" aria-hidden="true" style="padding-right: 0.5rem;"></i>Profile</button>
+  <button (click)="logout()" mat-menu-item>
+    <i
+      class="fa fa-sign-out"
+      aria-hidden="true"
+      style="padding-right: 0.5rem"
+    ></i
+    >Logout
+  </button>
+</mat-menu>
 
 <nb-layout>
   <nb-layout-column>

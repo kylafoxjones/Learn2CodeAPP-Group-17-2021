@@ -28,7 +28,7 @@
 <!--menu-->
 
 <mat-menu #menu="matMenu" xPosition="before">
-  <button mat-menu-item><i class="fa fa-user" aria-hidden="true" style="padding-right: 0.5rem;"></i>Profile</button>
+  <button [routerLink]="['/profile']" mat-menu-item><i class="fa fa-user" aria-hidden="true" style="padding-right: 0.5rem;"></i>Profile</button>
   <button (click)="logout()" mat-menu-item><i class="fa fa-sign-out" aria-hidden="true" style="padding-right: 0.5rem;"></i>Logout</button>
 </mat-menu>
 

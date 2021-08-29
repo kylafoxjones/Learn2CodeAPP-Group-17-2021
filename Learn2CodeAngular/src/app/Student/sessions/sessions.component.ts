@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
 import { StudentService } from '../Student resources/student.service';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-sessions',
   templateUrl: './sessions.component.html',
@@ -20,11 +20,16 @@ export class SessionsComponent implements OnInit {
   desc = '';
   data: any;
 
-  constructor(private service: StudentService) {}
+  constructor(private service: StudentService,  private router: Router) {}
 
   ngOnInit() {
     this.getLoggedInUser();
   }
+  public logout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('id');
+    this.router.navigate(['/loginhomepage/login']);
+  };
 
   getLoggedInUser() {
     this.userId = localStorage.getItem('id');

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { StudentService } from '../Student resources/student.service';
 import { saveAs } from 'file-saver';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-view-resources',
@@ -19,14 +20,19 @@ export class ViewResourcesComponent implements OnInit {
   resourceList: any = [];
   constructor(
     private StudentService: StudentService,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
     this.getStudentInfo();
     this.getModule();
   }
-
+  public logout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('id');
+    this.router.navigate(['/loginhomepage/login']);
+  };
   getStudentInfo() {
     //to get the student info for the circle at the top
     this.userId = localStorage.getItem('id');

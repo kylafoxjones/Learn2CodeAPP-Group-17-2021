@@ -12,27 +12,33 @@
     >TutorDevOps</span
   >
   <div class="right" style="margin-left: 2rem">
-    <span style="color: whitesmoke"
-      ><i style="color: whitesmoke" class="fa fa-ticket" aria-hidden="true"></i
-      ><i style="color: whitesmoke" class="fa fa-ticket" aria-hidden="true"></i>
-      x4
-      <i
-        style="color: whitesmoke; margin-left: 1rem"
-        class="fa fa-ticket"
-        aria-hidden="true"
-      >
-      </i>
-      x3</span
-    >
+ 
 
     <span [routerLink]="['/studenthomepage/studenthome']" style="color: whitesmoke; margin-right: 2rem; padding-left: 1.5rem"
       >Home</span
     >
   </div>
   <div class="topnav-right">
-    <div class="dot">{{ thisStudent.studentName[0]+ thisStudent.studentSurname[0] }}</div>
+    <div   [matMenuTriggerFor]="menu" class="dot">{{ thisStudent.studentName[0]+ thisStudent.studentSurname[0] }}</div>
   </div>
 </nav>
+
+<mat-menu #menu="matMenu" xPosition="before">
+
+  <button [routerLink]="['/profile']" mat-menu-item><i class="fa fa-user" aria-hidden="true" style="padding-right: 0.5rem;"></i>Profile</button>
+  <button (click)="logout()" mat-menu-item>
+    <i
+      class="fa fa-sign-out"
+      aria-hidden="true"
+      style="padding-right: 0.5rem"
+    ></i
+    >Logout
+  </button>
+</mat-menu>
+
+
+
+
 
 <div style="padding-top: 2rem; padding-bottom: 1rem">
   <div class="header">Past Session Feedback</div>
