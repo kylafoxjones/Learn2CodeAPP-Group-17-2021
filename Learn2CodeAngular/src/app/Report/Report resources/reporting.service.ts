@@ -14,14 +14,9 @@ export class ReportingService {
   StartDateS: Date;
   EndDateS: Date;
 
-  TutorSessionDetails:any = {};
-  SalesTable:any = {};
+ 
   exportObject:any = {};
-  TutorId:any;
-  StartDateT:Date;
-  EndDateT:Date;
-  StartDateS:Date;
-  EndDateS:Date;
+ 
 
 
   constructor(private http: HttpClient) { }
@@ -104,13 +99,9 @@ export class ReportingService {
     return this.http.post(this.apiUrl + 'GetSalesReport', this.SalesTable);
   }
 
-  GetSubscriptionSales() {
-    return this.http.get(this.apiUrl + 'SubscriptionSales');
-  }
+  
 
-  GetCourseSales(): Observable<any> {
-    return this.http.get(this.apiUrl + 'CourseSales');
-  }
+ 
 
   // export(start, end): Observable<any> {
   //   return this.http.get(
@@ -127,14 +118,7 @@ export class ReportingService {
         return this.http.get(this.apiUrl + "CourseSales");
       }
 
-      export(obj) : Observable<any>{
-        this.exportObject = {
-          
-          StartDate : obj.StartDate,
-          EndDate : obj.EndDate
-        }
-        return this.http.get(this.apiUrl + "Export", this.exportObject);
-      }
+    
   export(start, end): Observable<any>{
     return this.http.get(this.apiUrl+'ExportSalesReport/'+start+'/' + end, { responseType:'blob' });
   }
