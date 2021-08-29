@@ -79,7 +79,7 @@
           "
         >
           <h1 style="text-align: center; padding-top: 1rem">Sign Up</h1>
-          <form class="example-form">
+          <form class="example-form" style="margin-left: 2rem;">
             <mat-form-field class="example-full-width" appearance="outline">
               <mat-label>First Name</mat-label>
               <div
@@ -245,11 +245,11 @@
                 [ngModelOptions]="{ standalone: true }"
               />
             </mat-form-field>
-            <div style="margin-left: 2rem">
+            <div style="margin-left: 2.5rem">
               <mat-form-field
                 appearance="outline"
-                style="width: 25rem"
-                class="form-group"
+                style="width: 23.5rem"
+
               >
                 <div
                   *ngIf="
@@ -282,7 +282,7 @@
 
             <div class="row">
               <div class="col-md-4">
-                <div style="margin-left: 2rem">
+                <div style="margin-left: 2.5rem">
                   <mat-form-field appearance="outline" style="width: 11rem">
                     <mat-label>Degree:</mat-label>
                     <div
@@ -352,9 +352,10 @@
                 </div>
               </div>
               <mat-form-field
-                class="example-full-width"
-                appearance="outline"
-                style="width: auto"
+              appearance="outline"
+              style="width: 25rem; margin-left: 2.5rem"
+
+
               >
                 <mat-label>Password: </mat-label>
                 <div
@@ -400,7 +401,7 @@
               <mat-form-field
                 class="example-full-width"
                 appearance="outline"
-                style="width: auto"
+                style="width: 25rem; margin-left: 2.5rem"
               >
                 <mat-label> Confirm Password: </mat-label>
                 <div
@@ -430,11 +431,13 @@
                 </div>
                 <input
                   mdInput
-                  type="passwordb"
+                  type="password"
+                  name="passwordb"
                   matInput
                   placeholder=""
                   [(ngModel)]="confirm.password"
                   [ngModelOptions]="{ standalone: true }"
+                  #passwordb="ngModel"
                   required
                   minlength="12"
                   pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$@!%&*?])[A-Za-z\d#$@!%&*?]{12,30}$"
@@ -457,7 +460,9 @@
                 tel.invalid ||
                 selectuniv.invalid ||
                 selectdeg.invalid ||
-                selectmod.invalid
+                selectmod.invalid ||
+                passworda.invalid ||
+                passwordb.invalid
               "
             >
               Submit
