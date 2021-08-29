@@ -152,7 +152,7 @@
         width: 80%;
         margin-left: 12rem;
         border-radius: 15px;
-        height: 55%;
+        height: auto;
       "
     >
       <br />
@@ -170,29 +170,32 @@
             />
           </a>
           <div style="margin-left: 5.5rem; padding-top: 0.5rem">
-            <h6>Username: {{ tutor.identity.userName }}</h6>
+            <p><b>Username: </b>{{ tutor.identity.userName }}</p>
+
           </div>
         </div>
 
-        <div class="col-md-6">
+        <div class="col-md-6" style="margin-top: 2rem;">
           <div class="row" style="margin-top: 1rem">
             <div class="col-md-6">
-              <h6>First Name: {{ tutor.tutorName }}</h6>
-              <h6>Email: {{ tutor.tutorEmail }}</h6>
+              <p><b>First Name:</b> {{ tutor.tutorName }}</p>
+              <p><b>Email:</b> {{ tutor.tutorEmail }}</p>
+
             </div>
             <div class="col-md-6">
-              <h6>Surname: {{ tutor.tutorSurname }}</h6>
-              <h6>Phone: {{ tutor.tutorCell }}</h6>
+              <p><b>Surname:</b> {{ tutor.tutorSurname }}</p>
+              <p><b>Phone:</b> {{ tutor.tutorCell }}</p>
+
             </div>
           </div>
-          <div>
-            <h6>About: {{ tutor.tutorAbout }}</h6>
-            <p></p>
+          <div style="margin-bottom: 2rem;">
+
+            <p><b>About: </b>{{ tutor.tutorAbout }}</p>
           </div>
 
           <br />
 
-          <div style="margin-left: 2rem">
+          <div style="margin-left: 2rem; margin-bottom: 5rem;">
             <button
               (click)="openDialog()"
               class="btn btn-info"

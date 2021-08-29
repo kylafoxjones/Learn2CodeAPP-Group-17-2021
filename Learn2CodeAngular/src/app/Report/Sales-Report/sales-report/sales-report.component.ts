@@ -17,6 +17,7 @@ import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { NgxPaginationModule } from 'ngx-pagination';
 
+
 @Component({
   selector: 'app-sales-report',
   templateUrl: './sales-report.component.html',
@@ -102,6 +103,12 @@ export class SalesReportComponent implements OnInit {
     });
   }
 
+  //Export to excel
+  // exportExcel() {
+  //   this.ReportService.export(this.Start, this.End).subscribe((result) => {
+  //     saveAs(result, 'Subscription Sales' + '.xlsx');
+  //   });
+  // }
 
 
 
@@ -138,9 +145,9 @@ export class SalesReportComponent implements OnInit {
   }
 
   exportpay() {
-    this.ReportService.export(this.Start, this.End).subscribe((res) => {
-      saveAs(res, 'test' + '.xlsx');
-    });
+    // this.ReportService.export(this.Start, this.End).subscribe((res) => {
+    //   saveAs(res, 'test' + '.xlsx');
+    // });
   }
 }
 

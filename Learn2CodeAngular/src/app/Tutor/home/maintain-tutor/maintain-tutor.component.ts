@@ -14,6 +14,7 @@ export class MaintainTutorComponent implements OnInit {
   info: any;
   formdata = new FormData();
   photo:any;
+  picture:any;
   // data:any;
 
   constructor(

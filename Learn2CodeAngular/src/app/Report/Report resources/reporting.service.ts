@@ -110,9 +110,9 @@ export class ReportingService {
   //   );
   // }
 
-      GetSubscriptionSales(){
-        return this.http.get(this.apiUrl + "SubscriptionSales");
-      }
+  //     GetSubscriptionSales(){
+  //       return this.http.get(this.apiUrl + "SubscriptionSales");
+  //     }
 
       GetCourseSales() : Observable<any>{
         return this.http.get(this.apiUrl + "CourseSales");

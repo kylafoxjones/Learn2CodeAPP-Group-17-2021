@@ -18,6 +18,9 @@ export class MaintainStudentComponent implements OnInit {
   uniChosen: any;
   degreeChosen: any;
   moduleChosen: any;
+  unixv: any;
+  degreexv: any;
+  modulexv: any;
 
   constructor(
     private StudentService: StudentService,

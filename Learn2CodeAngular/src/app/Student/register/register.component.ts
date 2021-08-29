@@ -19,6 +19,9 @@ export class RegisterComponent implements OnInit {
   moduleChosen: any;
   passwordsMatch = false;
   dtoToSendThrough: any = {};
+  unixv: any;
+  degreexv: any;
+  modulexv: any;
 
   constructor(private service: StudentService, private router: Router) {}
 

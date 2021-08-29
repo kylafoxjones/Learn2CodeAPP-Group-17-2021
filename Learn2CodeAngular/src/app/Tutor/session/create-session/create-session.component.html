@@ -1,80 +1,206 @@
-<h5 style="text-align: center;">Create Session</h5>
-<hr>
-<form class="example-form" style="padding-top: 1.5rem;">
-<div class="row">
-<div class="col-md-6">
-
-</div>
-
-</div>
-
-<div class="row">
-    <div class="col-md-4">
-        <mat-form-field appearance="outline">
-            <mat-label>Session Type:</mat-label>
-            <mat-select (valueChange)="selectType($event)">
-              <mat-option *ngFor="let type of typeList" [value]="type.id">
-            {{type.sessionType.sessionTypeName}}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-    </div>
-    <div class="col-md-4">
-        <mat-form-field class="example-full-width" >
-            <mat-label>Title:</mat-label>
-            <input  [(ngModel)]="data.Title" name='Title' matInput >
-          </mat-form-field>
-    </div>
-    <div class="col-md-4">
-        <mat-form-field class="example-full-width">
-            <mat-label>Link:</mat-label>
-            <input  [(ngModel)]="data.Link" name='Link' matInput  >
-          </mat-form-field>
-    </div>
-    </div>
-
-    <div class="row">
-        <div class="col-md-4">
-            <div  style="margin-left: 2rem;">
-                <mat-form-field appearance="outline">
-                    <mat-label>Module:</mat-label>
-                    <mat-select (valueChange)="selectModule($event)">
-                      <mat-option *ngFor="let type of moduleList" [value]="type.moduleId">
-                    {{type.module.moduleCode}}
-                      </mat-option>
-                    </mat-select>
-                  </mat-form-field>
-            </div>
-        </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-4">
-              <mat-form-field class="example-full-width" appearance="fill">
-                <mat-label>Choose a date</mat-label>
-                <input  [(ngModel)]="data.Date" name='Date' matInput  [matDatepicker]="picker">
-                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-datepicker #picker></mat-datepicker>
-              </mat-form-field>
-            </div>
-            <div class="col-md-4">
-                <div  style="margin-left: 2rem;">
-                    <mat-form-field appearance="outline">
-                        <mat-label>Time:</mat-label>
-                        <mat-select (valueChange)="selectTime($event)">
-                          <mat-option *ngFor="let type of timeList" [value]="type.id">
-                         {{type.startTime}} - {{type.endTime}}
-                          </mat-option>
-                        </mat-select>
-                      </mat-form-field>
-                </div>
-            </div>
-        </div>
-     
-  </form>
-
-  <div style="margin-left: 33%;">
-      <button (click)="onCreate()" class="btn btn-info" style="width: 8rem;">Create</button>
-       <button [mat-dialog-close] style="margin-left:1rem;width: 8rem;" class="btn btn-danger">Cancel</button>
+<h5 style="text-align: center">Create Session</h5>
+<hr />
+<form class="example-form" style="padding-top: 1.5rem">
+  <div class="row">
+    <div class="col-md-6"></div>
   </div>
 
+  <div class="row">
+    <div class="col-md-4">
+      <mat-form-field appearance="outline">
+        <mat-label>Session Type:</mat-label>
+        <div *ngIf="sess.invalid && (sess.dirty || sess.touched)" class="alert">
+          <div
+            *ngIf="sess.errors?.required"
+            style="font-size: smaller; color: red"
+          >
+            Session Type is required.
+          </div>
+        </div>
+        <mat-select
+          at-select
+          required
+          name="selectmod"
+          #sess="ngModel"
+          [(ngModel)]="sessionxv"
+          (valueChange)="selectType($event)"
+        >
+          <mat-option *ngFor="let type of typeList" [value]="type.id">
+            {{ type.sessionType.sessionTypeName }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="col-md-4">
+      <mat-form-field class="example-full-width">
+        <mat-label>Title:</mat-label>
+        <div
+          *ngIf="Title.invalid && (Title.dirty || Title.touched)"
+          class="alert"
+        >
+          <div
+            *ngIf="Title.errors?.required"
+            style="font-size: smaller; color: red"
+          >
+            Title is required.
+          </div>
+          <div
+            *ngIf="Title.errors?.minlength"
+            style="font-size: smaller; color: red"
+          >
+            Title must be at least 2 characters long.
+          </div>
+        </div>
+        <input
+          [(ngModel)]="data.Title"
+          name="Title"
+          matInput
+          required
+          minlength="2"
+          id="Title"
+          #Title="ngModel"
+        />
+      </mat-form-field>
+    </div>
+    <div class="col-md-4">
+      <mat-form-field class="example-full-width">
+        <mat-label>Link:</mat-label>
+        <div *ngIf="Link.invalid && (Link.dirty || Link.touched)" class="alert">
+          <div
+            *ngIf="Link.errors?.required"
+            style="font-size: smaller; color: red"
+          >
+            Link is required.
+          </div>
+          <div
+            *ngIf="Link.errors?.minlength"
+            style="font-size: smaller; color: red"
+          >
+            Link must be at least 2 characters long.
+          </div>
+        </div>
+        <input
+          [(ngModel)]="data.Link"
+          name="Link"
+          matInput
+          required
+          minlength="2"
+          id="Link"
+          #Link="ngModel"
+        />
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4">
+      <div style="margin-left: 2rem">
+        <mat-form-field appearance="outline">
+          <mat-label>Module:</mat-label>
+          <div
+            *ngIf="selectmod.invalid && (selectmod.dirty || selectmod.touched)"
+            class="alert"
+          >
+            <div
+              *ngIf="selectmod.errors?.required"
+              style="font-size: smaller; color: red"
+            >
+              Module is required.
+            </div>
+          </div>
+          <mat-select
+            required
+            name="selectmod"
+            #selectmod="ngModel"
+            [(ngModel)]="modulexv"
+            (valueChange)="selectModule($event)"
+          >
+            <mat-option *ngFor="let type of moduleList" [value]="type.moduleId">
+              {{ type.module.moduleCode }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4">
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Choose a date</mat-label>
+        <div *ngIf="date.invalid && (date.dirty || date.touched)" class="alert">
+          <div
+            *ngIf="date.errors?.required"
+            style="font-size: smaller; color: red"
+          >
+            Date is required.
+          </div>
+        </div>
+        <input
+          required
+          #date="ngModel"
+          [(ngModel)]="data.Date"
+          name="date"
+          matInput
+          [matDatepicker]="picker"
+        />
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <div class="col-md-4">
+      <div style="margin-left: 2rem">
+        <mat-form-field appearance="outline">
+          <mat-label>Time:</mat-label>
+          <div
+            *ngIf="seltime.invalid && (seltime.dirty || seltime.touched)"
+            class="alert"
+          >
+            <div
+              *ngIf="seltime.errors?.required"
+              style="font-size: smaller; color: red"
+            >
+              Time is required.
+            </div>
+          </div>
+          <mat-select
+            required
+            name="seltime"
+            #seltime="ngModel"
+            [(ngModel)]="timex"
+            (valueChange)="selectTime($event)"
+          >
+            <mat-option *ngFor="let type of timeList" [value]="type.id">
+              {{ type.startTime }} - {{ type.endTime }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+</form>
+
+<div style="margin-left: 33%">
+  <button
+    (click)="onCreate()"
+    class="btn btn-info"
+    style="width: 8rem"
+    [disabled]="
+      Link.invalid ||
+      Title.invalid ||
+      date.invalid ||
+      timex.invalid ||
+      selectmod.invalid ||
+      sess.invalid
+    "
+  >
+    Create
+  </button>
+  <button
+    [mat-dialog-close]
+    style="margin-left: 1rem; width: 8rem"
+    class="btn btn-danger"
+  >
+    Cancel
+  </button>
+</div>
