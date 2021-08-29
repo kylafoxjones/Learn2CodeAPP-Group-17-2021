@@ -117,9 +117,9 @@ export class ReportingService {
       GetCourseSales() : Observable<any>{
         return this.http.get(this.apiUrl + "CourseSales");
       }
-
-    
-  export(start, end): Observable<any>{
-    return this.http.get(this.apiUrl+'ExportSalesReport/'+start+'/' + end, { responseType:'blob' });
-  }
+      export(start, end): Observable<any>{
+   
+        return this.http.get(this.apiUrl+'ExportSalesReport/'+start+'/' + end, { responseType:'blob' });
+      }
+  
 }

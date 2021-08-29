@@ -29,9 +29,21 @@
     >
   </div>
   <div class="topnav-right">
-    <div class="dot">{{ thisStudent.studentName[0]+ thisStudent.studentSurname[0] }}</div>
+    <div  [matMenuTriggerFor]="menu1" class="dot">{{ thisStudent.studentName[0]+ thisStudent.studentSurname[0] }}</div>
   </div>
 </nav>
+
+<mat-menu #menu1="matMenu" xPosition="before">
+  <button [routerLink]="['/profile']" mat-menu-item><i class="fa fa-user" aria-hidden="true" style="padding-right: 0.5rem;"></i>Profile</button>
+  <button (click)="logout()" mat-menu-item>
+    <i
+      class="fa fa-sign-out"
+      aria-hidden="true"
+      style="padding-right: 0.5rem"
+    ></i
+    >Logout
+  </button>
+</mat-menu>
 
 <mat-menu class="my-class" xPosition="after" #menu="matMenu">
   <h4 style="margin-left: 0.5rem; text-align: center">Shopping Cart</h4>

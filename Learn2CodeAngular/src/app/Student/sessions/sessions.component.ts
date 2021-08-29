@@ -6,6 +6,7 @@ import { StudentService } from '../Student resources/student.service';
 import { CreateBookingComponent } from './create-booking/create-booking.component';
 import { EditBookingComponent } from './edit-booking/edit-booking.component';
 
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-sessions',
   templateUrl: './sessions.component.html',
@@ -29,6 +30,7 @@ export class SessionsComponent implements OnInit {
 
    page:number = 1;
    totalLength:any;
+  constructor(private service: StudentService,  private router: Router) {}
 
   constructor(
     private service: StudentService,
@@ -40,6 +42,11 @@ export class SessionsComponent implements OnInit {
     this.getLoggedInUser();
     this.getMyBookingList();
   }
+  public logout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('id');
+    this.router.navigate(['/loginhomepage/login']);
+  };
 
   getLoggedInUser() {
     this.userId = localStorage.getItem('id');

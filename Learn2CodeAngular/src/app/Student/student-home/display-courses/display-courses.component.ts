@@ -4,7 +4,7 @@ import { StudentService } from '../../Student resources/student.service';
 import { saveAs } from 'file-saver';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-display-courses',
   templateUrl: './display-courses.component.html',
@@ -27,7 +27,7 @@ hasNotes:any=false;
 search;
 hasVid:any=false;
 
-  constructor(private StudentService: StudentService, private sanitizer: DomSanitizer, private route: ActivatedRoute) { }
+  constructor(private StudentService: StudentService,  private router: Router,private sanitizer: DomSanitizer, private route: ActivatedRoute) { }
 
   ngOnInit(){
   
@@ -44,6 +44,13 @@ if (CourseSubID){
    }
 
   }
+
+
+  public logout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('id');
+    this.router.navigate(['/loginhomepage/login']);
+  };
 
   splitList(){
 for (let i=0;this.course.length;i++){

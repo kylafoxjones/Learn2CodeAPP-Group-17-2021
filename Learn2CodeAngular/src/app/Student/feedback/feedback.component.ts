@@ -43,6 +43,11 @@ export class FeedbackComponent implements OnInit {
     });
   }
 
+  public logout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('id');
+    this.router.navigate(['/loginhomepage/login']);
+  };
   getSessions() {
     // get sessions that the student has attented
     this.service.getSessions(this.thisStudent.id).subscribe((res) => {
