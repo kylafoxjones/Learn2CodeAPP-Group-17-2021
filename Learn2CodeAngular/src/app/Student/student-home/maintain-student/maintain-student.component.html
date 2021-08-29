@@ -120,6 +120,12 @@
           >
             Email must be at least 8 characters long.
           </div>
+          <div
+            *ngIf="email.errors?.pattern"
+            style="font-size: smaller; color: red"
+          >
+            Please enter a valid email.
+          </div>
         </div>
         <input
           matInput
@@ -130,6 +136,7 @@
           class="form-control"
           required
           minlength="8"
+          pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$"
         />
       </mat-form-field>
     </div>
@@ -164,7 +171,7 @@
           [(ngModel)]="data.StudentCell"
           #cell="ngModel"
           name="cell"
-          type="tel"
+          type="number"
           class="form-control"
           required
           minlength="10"
@@ -177,7 +184,24 @@
       <div style="margin-left: 2rem">
         <mat-form-field appearance="outline">
           <mat-label>University:</mat-label>
-          <mat-select required (valueChange)="selectUni($event)">
+          <div
+          *ngIf="
+            selectuniv.invalid &&
+            (selectuniv.dirty || selectuniv.touched)
+          "
+          class="alert"
+        >
+          <div
+            *ngIf="selectuniv.errors?.required"
+            style="font-size: smaller; color: red"
+          >
+            University is required.
+          </div>
+        </div>
+          <mat-select required
+          name="selectuniv"
+          #selectuniv="ngModel"
+          [(ngModel)]="unixv" (valueChange)="selectUni($event)">
             <mat-option *ngFor="let uni of uniList" [value]="uni.id">
               {{ uni.universityName }}
             </mat-option>
@@ -192,7 +216,24 @@
       <div style="margin-left: 2rem">
         <mat-form-field appearance="outline">
           <mat-label>Degree:</mat-label>
-          <mat-select required (valueChange)="selectDegree($event)">
+          <div
+                      *ngIf="
+                        selectdeg.invalid &&
+                        (selectdeg.dirty || selectdeg.touched)
+                      "
+                      class="alert"
+                    >
+                      <div
+                        *ngIf="selectdeg.errors?.required"
+                        style="font-size: smaller; color: red"
+                      >
+                        Degree is required.
+                      </div>
+                    </div>
+          <mat-select required
+          name="selectdeg"
+          #selectdeg="ngModel"
+          [(ngModel)]="degreexv" (valueChange)="selectDegree($event)">
             <mat-option *ngFor="let degree of degreeList" [value]="degree.id">
               {{ degree.degreeName }}
             </mat-option>
@@ -205,7 +246,24 @@
       <div style="margin-left: 2rem">
         <mat-form-field appearance="outline">
           <mat-label>Module:</mat-label>
-          <mat-select required (valueChange)="selectModule($event)">
+          <div
+          *ngIf="
+            selectmod.invalid &&
+            (selectmod.dirty || selectmod.touched)
+          "
+          class="alert"
+        >
+          <div
+            *ngIf="selectmod.errors?.required"
+            style="font-size: smaller; color: red"
+          >
+            Module is required.
+          </div>
+        </div>
+          <mat-select required
+          name="selectmod"
+          #selectmod="ngModel"
+          [(ngModel)]="modulexv" (valueChange)="selectModule($event)">
             <mat-option *ngFor="let module of moduleList" [value]="module.id">
               {{ module.moduleCode }}
             </mat-option>
@@ -221,8 +279,18 @@
   <br />
 
   <div style="margin-left: 30%">
-    <button (click)="onSubmit()" style="width: 9rem" class="btn btn-info">
+    <button (click)="onSubmit()" style="width: 9rem" class="btn btn-info" [disabled]="
+    name.invalid ||
+    surname.invalid ||
+    username.invalid ||
+    email.invalid ||
+    cell.invalid ||
+    selectuniv.invalid ||
+    selectdeg.invalid ||
+    selectmod.invalid
+  ">
       Submit
+
     </button>
 
     <button

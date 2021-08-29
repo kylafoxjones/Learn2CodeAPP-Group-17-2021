@@ -11,8 +11,8 @@
   <span class="TDO" style="color: rgb(0, 156, 158); margin-right: auto"
     >TutorDevOps</span
   >
-  <div class="topnav-right">
-    <a>Home</a>
+  <div class="topnav-right" routerLink="/tutorhome">
+    <a >Home</a>
   </div>
   <div class="topnav-right" style="margin-right: 0.5rem">
     <img
@@ -39,11 +39,11 @@
             class="form-select"
             aria-label="Default select example"
             style="width: 9rem"
-           
+
             (change)="selectType($event.target.value)"
           > <option value="" selected disabled> University</option>
               <option *ngFor="let uni of uniList" [value]="uni.id">
-          
+
                 {{uni.universityName}}
               </option>
           </select>
@@ -60,7 +60,7 @@
 
         <div *ngIf="hasContent">
         <div class="row">
-          <div class="col-md-4" 
+          <div class="col-md-4"
           *ngFor="let item of uniResoList | filter: search">
             <div style="
             margin-top: 3rem;
@@ -88,10 +88,10 @@
                     <h6 style="color: white">{{item.degree.degreeName}}</h6>
                     <p style="color: white">
                       {{item.degree.university.universityName}}
-                     
+
                       <br />
                       <br />
-                   
+
                     </p>
                   </div>
                   <div style="margin-top: 2.3rem">
@@ -102,8 +102,8 @@
           </div>
 
         </div>
-        </div>   
-        
+        </div>
+
         </div>
 
 
@@ -120,9 +120,9 @@
           "
         >
         <br />
-    
+
     <h5 style="text-align: center">No content for this session</h5>
-    
+
       </div>
 
           </div>

@@ -18,6 +18,10 @@ export class CreateSessionComponent implements OnInit {
   userId: any;
   tutor: any = {};
   tutorID: any;
+  modulexv: any;
+  sessionxv: any;
+  timex: any;
+
 
   constructor(
     private service: TutorService,

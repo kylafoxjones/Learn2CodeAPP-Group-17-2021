@@ -71,22 +71,22 @@
       <mat-form-field class="example-full-width" appearance="outline">
         <mat-label>Username:</mat-label>
         <div
-        *ngIf="username.invalid && (username.dirty || username.touched)"
-        class="alert"
-      >
-        <div
-          *ngIf="username.errors?.required"
-          style="font-size: smaller; color: red"
+          *ngIf="username.invalid && (username.dirty || username.touched)"
+          class="alert"
         >
-          Username is required.
+          <div
+            *ngIf="username.errors?.required"
+            style="font-size: smaller; color: red"
+          >
+            Username is required.
+          </div>
+          <div
+            *ngIf="username.errors?.minlength"
+            style="font-size: smaller; color: red"
+          >
+            Username must be at least 2 characters long.
+          </div>
         </div>
-        <div
-          *ngIf="username.errors?.minlength"
-          style="font-size: smaller; color: red"
-        >
-          Username must be at least 2 characters long.
-        </div>
-      </div>
         <input
           matInput
           [(ngModel)]="data.identity.userName"
@@ -183,17 +183,14 @@
   >
     <mat-label>About you:</mat-label>
     <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert">
-      <div
-        *ngIf="name.errors?.required"
-        style="font-size: smaller; color: red"
-      >
-      About is required.
+      <div *ngIf="name.errors?.required" style="font-size: smaller; color: red">
+        About is required.
       </div>
       <div
         *ngIf="name.errors?.minlength"
         style="font-size: smaller; color: red"
       >
-      About must be at least 50 characters long.
+        About must be at least 50 characters long.
       </div>
     </div>
     <input
@@ -202,8 +199,8 @@
       #about="ngModel"
       name="about"
       required
-          minlength="50"
-          type="text"
+      minlength="50"
+      type="text"
     />
   </mat-form-field>
   <br />
@@ -213,11 +210,26 @@
         style="margin-left: 2.5rem; padding-bottom: 0.7rem; margin-top: 0.5rem"
       ></div>
       <label for="formFile" class="form-label">Profile Photo:</label>
+      <div
+        *ngIf="apppic.invalid && (apppic.dirty || apppic.touched)"
+        class="alert"
+      >
+        <div
+          *ngIf="apppic.errors?.required"
+          style="font-size: small; color: red"
+        >
+          Profile Picture is required.
+        </div>
+      </div>
       <input
         class="form-control"
         type="file"
         #file
         placeholder="Choose a photo"
+        required
+        name="apppic"
+        #apppic="ngModel"
+        [(ngModel)]="picture"
         (change)="changePic($event)"
       />
       <a
@@ -242,6 +254,13 @@
       (click)="submitEditedTutor()"
       style="width: 9rem"
       class="btn btn-info"
+      [disabled]="
+                name.invalid ||
+                surname.invalid ||
+                email.invalid ||
+                cell.invalid  ||
+                apppic.invalid
+              "
     >
       Update
     </button>
