@@ -22,6 +22,7 @@ export class AddEditSubscriptionComponent implements OnInit {
   popupTitle = this.service.title;
   typecontrol = new FormControl('', Validators.required);
   selectFormControl = new FormControl('', Validators.required);
+  Admin:any = <any>{};
 
   // get the placeholder object below
   placeholder = this.service.editSubscr;
@@ -35,7 +36,8 @@ export class AddEditSubscriptionComponent implements OnInit {
 
   ngOnInit() {
     this.getSessionTypeList();
-
+   this.getadmin();
+    console.log(this.Admin);
 
     console.log(this.placeholder);
     // getting the object placeholder and its values from the course ts
@@ -43,6 +45,7 @@ export class AddEditSubscriptionComponent implements OnInit {
     this.data.Duration = this.placeholder.duration;
     this.data.price = this.placeholder.price;
     this.data.Quantity = this.placeholder.subscriptionTutorSession[0].quantity;
+    console.log("sss")
     //this.data.TutorSessionId= this.placeholder.tutorSessionId
   }
   submitEdittedSubscription() {
@@ -56,6 +59,7 @@ export class AddEditSubscriptionComponent implements OnInit {
         confirmButtonText: 'Yes',
       }).then((result) => {
         if (result.isConfirmed) {
+          this.data.AdminId = this.Admin.id;
           this.service.editSubscription(this.data).subscribe((result) => {
             this.data = result;
             this.dialogRef.close();
@@ -76,6 +80,8 @@ export class AddEditSubscriptionComponent implements OnInit {
         confirmButtonText: 'Yes',
       }).then((result) => {
         if (result.isConfirmed) {
+          this.data.AdminId = this.Admin.id;
+          console.log(this.data)
           this.service.createSubscription(this.data).subscribe((result) => {
             this.data = result;
             this.dialogRef.close();
@@ -96,6 +102,15 @@ export class AddEditSubscriptionComponent implements OnInit {
     this.service.getSessionTypes().subscribe((result) => {
       this.typeList = result; //typelist list is populated
       console.log('session types from api', this.typeList);
+    });
+  }
+
+  getadmin(){
+    this.service.getAdminLoggedIn().subscribe((res)=> {
+      this.Admin = res;
+      this.data.AdminId = this.Admin.id;
+      console.log(this.Admin);
+      console.log(this.data.AdminId);
     });
   }
 

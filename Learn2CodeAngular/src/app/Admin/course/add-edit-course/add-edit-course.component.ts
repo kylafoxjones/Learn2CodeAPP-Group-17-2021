@@ -19,6 +19,7 @@ export class AddEditCourseComponent implements OnInit {
   placeholder = this.service.editCrs;
   oldCourse: any;
   placeHolderOrNo = this.service.edit;
+  Admin:any;
 
   constructor(
     public dialog: MatDialog,
@@ -30,6 +31,7 @@ export class AddEditCourseComponent implements OnInit {
     //this.oldCourse = this.service.oldCourseName;
     this.data.CourseFolderName=this.placeholder.courseFolderName;
     //console.log(this.data.CourseFolderName);
+    this.getadmin();
   }
 
   submitEdittedCourse() {
@@ -44,6 +46,7 @@ export class AddEditCourseComponent implements OnInit {
         confirmButtonText: 'Yes',
       }).then((result) => {
         if (result.isConfirmed) {
+          this.data.AdminId = this.Admin.id;
           this.service.editCourse(this.data).subscribe((result) => {
             console.log(this.data);
             this.data = result;
@@ -65,6 +68,7 @@ export class AddEditCourseComponent implements OnInit {
         confirmButtonText: 'Yes',
       }).then((result) => {
         if (result.isConfirmed) {
+          this.data.AdminId = this.Admin.id;
           this.service.createCourse(this.data).subscribe((result) => {
             console.log(this.data);
             this.data = result;
@@ -80,5 +84,13 @@ export class AddEditCourseComponent implements OnInit {
   }
   refreshCourseObj() {
     this.newCourse = <any>{};
+  }
+  getadmin(){
+    this.service.getAdminLoggedIn().subscribe((res)=> {
+      this.Admin = res;
+      this.data.AdminId = this.Admin.id;
+      console.log(this.Admin);
+      console.log(this.data.AdminId);
+    });
   }
 }
