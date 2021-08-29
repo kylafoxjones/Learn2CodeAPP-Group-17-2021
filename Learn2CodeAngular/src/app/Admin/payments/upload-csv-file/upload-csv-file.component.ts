@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import Swal from 'sweetalert2';
 import { AdminService } from '../../admin resources/admin.service';
 
 @Component({
@@ -8,7 +9,8 @@ import { AdminService } from '../../admin resources/admin.service';
   styleUrls: ['./upload-csv-file.component.scss'],
 })
 export class UploadCsvFileComponent implements OnInit {
-
+csv:any;
+data:any;
   constructor(
     public dialog: MatDialog,
     private dialogRef: MatDialogRef<UploadCsvFileComponent>,
@@ -18,11 +20,26 @@ export class UploadCsvFileComponent implements OnInit {
   ngOnInit(): void {}
 
   content(event) {
+   this.csv = event.target.files[0] 
+  }
+
+  upload() {
     let data = new FormData();
-    data.append('file', event.target.files[0]);
+    data.append('file', this.csv);
     this.service.postfile(data).subscribe((res) => {
-      console.log(res);
+      this.data = res;
+      console.log(res.message);
       this.dialogRef.close();
-    },);
+      Swal.fire('Success!','File uploaded','success').then((result) => {
+        this.dialogRef.close();
+        window.location.reload();
+      });
+      
+    }, (error) => {
+      Swal.fire('Error!','Something went wrong', 'error');
+      this.dialogRef.close();
+    }
+    
+    );
   }
 }
