@@ -23,6 +23,12 @@ export class SessionsComponent implements OnInit {
   myBookingList: any = [];
 
   data: any;
+   //pagination
+   page1:number = 1;
+   totalLength1:any;
+
+   page:number = 1;
+   totalLength:any;
 
   constructor(
     private service: StudentService,

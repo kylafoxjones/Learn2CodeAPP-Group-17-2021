@@ -81,7 +81,7 @@
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let item of MessagesSent | filter: search">
+                <tr *ngFor="let item of MessagesSent | filter: search | paginate: { itemsPerPage: 5, currentPage: page,totalItems:totalLength, id: 'first' }">
                   <td>{{ item.tutor.tutorName }}</td>
                   <td>{{ item.tutor.tutorSurname }}</td>
                   <td>{{ item.tutor.tutorEmail }}</td>
@@ -104,28 +104,10 @@
             <br />
             <br />
   
-            <nav
-              aria-label="Page navigation example "
-              style="margin-left: 75%; padding-bottom: 0.5rem"
-            >
-              <ul class="pagination">
-                <li class="page-item">
-                  <a class="page-link" href="#" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span>
-                    <span class="sr-only">Previous</span>
-                  </a>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item">
-                  <a class="page-link" href="#" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
-                    <span class="sr-only">Next</span>
-                  </a>
-                </li>
-              </ul>
-            </nav>
+            <pagination-controls  id="first" style=" padding-left: 0px !important; display:flex;float: right" (pageChange)="page = $event"></pagination-controls>
+       
+            <br>
+           <br>
           </div>
   
           <div style="padding: 1rem; margin-left: 19rem">
@@ -188,7 +170,7 @@
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let item of MessagesRecieved | filter: search">
+                <tr *ngFor="let item of MessagesRecieved | filter: search | paginate: { itemsPerPage: 5, currentPage: page1,totalItems:totalLength1,id: 'second' }">
                   <td>{{ item.tutor.tutorName }}</td>
                   <td>{{ item.tutor.tutorSurname }}</td>
                   <td>{{ item.tutor.tutorEmail }}</td>
@@ -211,28 +193,9 @@
             <br />
             <br />
   
-            <nav
-              aria-label="Page navigation example "
-              style="margin-left: 75%; padding-bottom: 0.5rem"
-            >
-              <ul class="pagination">
-                <li class="page-item">
-                  <a class="page-link" href="#" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span>
-                    <span class="sr-only">Previous</span>
-                  </a>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item">
-                  <a class="page-link" href="#" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
-                    <span class="sr-only">Next</span>
-                  </a>
-                </li>
-              </ul>
-            </nav>
+            <pagination-controls id="second" style=" padding-left: 0px !important; display:flex;float: right" (pageChange)="page1 = $event"></pagination-controls>
+              <br>
+              <br>
           </div>
   
           <div style="padding: 1rem; margin-left: 19rem">

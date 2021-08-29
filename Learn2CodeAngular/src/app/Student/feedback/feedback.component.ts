@@ -17,7 +17,10 @@ export class FeedbackComponent implements OnInit {
   userId: any;
   pastSessionList: any = [];
   //studentId:any;
-
+ //pagination
+ page1:number = 1;
+ totalLength1:any;
+ 
   constructor(
     private router: Router,
     public dialog: MatDialog,

@@ -35,6 +35,7 @@ import { CreateBookingComponent } from './sessions/create-booking/create-booking
 import { EditBookingComponent } from './sessions/edit-booking/edit-booking.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 @NgModule({
@@ -78,7 +79,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     Ng2SearchPipeModule,
     MatMenuModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    NgxPaginationModule
   ]
 })
 export class StudentModule { }

@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { StudentService } from '../Student resources/student.service';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @Component({
   selector: 'app-sent-recieved-messages',
@@ -16,6 +17,15 @@ export class SentRecievedMessagesComponent implements OnInit {
   studentID: any;
   recieverID: any;
   data: any = {};
+  
+   //pagination
+   page1:number = 1;
+   totalLength1:any;
+
+   page:number = 1;
+   totalLength:any;
+   
+
   constructor(
     private router: Router,
     public dialog: MatDialog,
