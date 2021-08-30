@@ -11,18 +11,18 @@
     <span class="TDO" style="color: rgb(0, 156, 158); margin-right: auto"
       >TutorDevOps</span
     >
-    <span class="right" [routerLink]="['/adminhome']"> 
+    <span class="right" [routerLink]="['/adminhome']">
       <a style=" color:whitesmoke; margin-right: 3rem;" >Home</a>
     </span>
     <div class="topnav-right">
-       
+
       <div [matMenuTriggerFor]="menu"  class="dot" >A</div>
     </div>
-  </nav>
-  
+
+
 <!--Menu-->
   <mat-menu #menu="matMenu" xPosition="before">
-  
+
     <button (click)="logout()" mat-menu-item><i class="fa fa-sign-out" aria-hidden="true" style="padding-right: 0.5rem;"></i>Logout</button>
   </mat-menu>
 

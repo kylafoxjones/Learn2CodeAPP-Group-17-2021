@@ -12,15 +12,15 @@ export class ViewGroupSessionsComponent implements OnInit {
   student: any = {};
   search
   constructor(private service: StudentService,  private router: Router) {}
-  
+
    //pagination
    page1:number = 1;
    totalLength1:any;
 
    page:number = 1;
    totalLength:any;
-   
-  constructor(private service: StudentService) {}
+
+  // constructor(private service: StudentService) {}
 
   ngOnInit() {
     this.getStudentLoggedIn();
