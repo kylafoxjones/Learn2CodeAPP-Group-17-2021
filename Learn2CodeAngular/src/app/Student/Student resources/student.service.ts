@@ -26,9 +26,10 @@ export class StudentService {
   userId: any;
   studentId: any;
   courseObj: any = {};
-
+  SessionTitle:any;
   // studentId:any;
   bookingInstanceID: any;
+  bookinginstance:any={};
 
   constructor(private http: HttpClient) {}
   //#region messaging
@@ -242,5 +243,24 @@ export class StudentService {
 
   makeBooking(obj) {
     return this.http.post(this.apiUrl + 'CreateIndividualBooking',obj);
+  }
+  getGroupSessionsContent(id) {
+    return this.http.get(this.apiUrl + 'GetMyGroupSessionsContent/' + id);
+  }
+
+  getContentForSelectedSessions(id) {
+    return this.http.get(this.apiUrl + 'GetMyGroupContent/' + id);
+  }
+
+  downloadContentFile(id: number) {
+    return this.http.get(this.apiUrl + 'DownloadRContentPdfGroup/' + id, {
+      responseType: 'blob',
+    });
+  }
+
+  getContentVideoDisplay(id: number) {
+    return this.http.get(this.apiUrl + 'VideoGroup/' + id, {
+      responseType: 'blob',
+    });
   }
 }

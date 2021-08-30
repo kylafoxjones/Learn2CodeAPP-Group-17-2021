@@ -31,6 +31,8 @@ import { ViewResourcesComponent } from './view-resources/view-resources.componen
 import { Angular4PaystackModule } from 'angular4-paystack';
 import { ViewGroupSessionsComponent } from './view-group-sessions/view-group-sessions.component';
 import { SessionsComponent } from './sessions/sessions.component';
+import { ViewSessionContentComponent } from './view-session-content/view-session-content.component';
+import { SpecificSessionContentComponent } from './view-session-content/specific-session-content/specific-session-content.component';
 
 
 @NgModule({
@@ -49,7 +51,9 @@ import { SessionsComponent } from './sessions/sessions.component';
     DisplayCoursesComponent,
     ViewResourcesComponent,
     ViewGroupSessionsComponent,
-    SessionsComponent
+    SessionsComponent,
+    ViewSessionContentComponent,
+    SpecificSessionContentComponent
   ],
   imports: [
     Angular4PaystackModule.forRoot('pk_live_af05c857de047c4178a4ab3d32104299998199bb'),

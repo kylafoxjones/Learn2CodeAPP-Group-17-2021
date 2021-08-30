@@ -1,0 +1,206 @@
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+/>
+
+<nav class="navbar navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">
+    <img
+      src="../.././assets/pics/HD logo.png"
+      width="40"
+      height="40"
+      class="d-inline-block align-top"
+      alt=""
+    />
+  </a>
+  <span class="TDO" style="color: rgb(0, 156, 158); margin-right: auto"
+    >TutorDevOps</span
+  >
+  <div class="topnav-right">
+    <a>Home</a>
+  </div>
+  <div class="topnav-right">
+    <div   [matMenuTriggerFor]="menu" class="dot">{{ thissStudent.studentName[0]+ thissStudent.studentSurname[0] }}</div>
+  </div>
+</nav>
+
+
+<mat-menu #menu="matMenu" xPosition="before">
+    <button [routerLink]="['/profile']" mat-menu-item><i class="fa fa-user" aria-hidden="true" style="padding-right: 0.5rem;"></i>Profile</button>
+    <button  (click)="logout()" mat-menu-item><i class="fa fa-sign-out" aria-hidden="true" style="padding-right: 0.5rem;"></i>Logout</button>
+  </mat-menu>
+
+
+
+
+<div style="padding-top: 2rem; padding-bottom: 1rem">
+  <div class="header">{{title}} Session Content</div>
+</div>
+
+<br />
+
+<nb-layout>
+  <nb-layout-column>
+    <br />
+
+
+<!-- start of ngif -->
+<div *ngIf="hasContent">
+    <div
+      style="
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
+          0 6px 6px rgba(0, 0, 0, 0.23);
+        width: 80%;
+        margin: auto;
+        border-radius: 15px;
+        align-items: center;
+      "
+    >
+      <br />
+      <h1 style="text-align: center">Category: {{content.sessionContentCategory.sessionContentCategoryName}}</h1>
+      <div class="row">
+        <div div class="col-sm-6">
+          <div
+            style="
+              margin-top: 3rem;
+              border-radius: 25px;
+              background-color: rgb(44, 51, 54);
+              width: 20rem;
+              margin-left: 20%;
+              height: 23rem;
+              box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
+                0 6px 6px rgba(0, 0, 0, 0.23);
+            "
+          >
+            <br />
+            <div
+              style="
+                text-align: center;
+                width: 12rem;
+                height: 2rem;
+                margin-left: 0.5rem;
+              "
+            >
+              <h5 style="margin-left: 3rem; color: white">Video:</h5>
+              <hr style="width: 125%; color: white" />
+            </div>
+
+            <div style="text-align: center; padding-top: 1.9rem">
+              <div>
+                <p style="color: white">{{content.recordingName}}</p>
+              
+              </div>
+              <div style="margin-top: 2.3rem">
+                <button (click)="video()" class="btn btn-outline-info">
+                  <i class="fa fa-play"></i>
+                  Watch
+                </button>
+<br/>
+<br/>
+     
+                <video *ngIf="showVid"  width="240" height="150" controls [src]="prev_url" >
+                        
+                  Your browser does not support the video tag.
+                </video>
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+     
+        <div div class="col-sm-6">
+          <div
+            style="
+              margin-top: 3rem;
+              border-radius: 25px;
+              background-color: rgb(44, 51, 54);
+              width: 20rem;
+              margin-left: 20%;
+              height: 23rem;
+              box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
+                0 6px 6px rgba(0, 0, 0, 0.23);
+            "
+          >
+            <br />
+            <div
+              style="
+                text-align: center;
+                width: 12rem;
+                height: 2rem;
+                margin-left: 0.5rem;
+              "
+            >
+              <h5 style="margin-left: 3rem; color: white">Notes:</h5>
+              <hr style="width: 125%; color: white" />
+            </div>
+
+            <div style="text-align: center; padding-top: 1.9rem">
+              <div>
+                <p style="color: white">{{content.notesName}}</p>
+            
+             
+              </div>
+              <div style="margin-top: 2.3rem">
+                <button (click)="DownloadPDF()" class="btn btn-outline-info">
+                  <i class="fa fa-download"></i> Download
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+<br/>
+
+    
+    </div>
+  </div> -->
+
+   <div *ngIf="!hasContent">
+  <div
+      style="
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
+          0 6px 6px rgba(0, 0, 0, 0.23);
+        width: 80%;
+        margin: auto;
+        border-radius: 15px;
+        align-items: center;
+      "
+    >
+    <br />
+
+<h5 style="text-align: center">No content for this session</h5>
+
+  </div>
+</div>
+
+    <!-- end of ngif -->
+    <br/>
+    <div style="padding: 0.4rem; margin-left: 3rem">
+      
+      <button
+      style="margin-left: 8rem; width: 11.5rem"
+      [routerLink]="['/viewsessioncontent']"
+      class="btn btn-info"
+    >
+      Back to sessions
+    </button>
+    </div>
+  </nb-layout-column>
+</nb-layout>
+<footer>
+  <nav
+    id="foot"
+    class="navbar"
+    style="width: 100%; position: absolute; bottom: 0"
+  >
+    <a class="navbar-brand" href="#"> </a>
+    <span class="TDO" style="margin-right: auto"> &lt; TDO &gt;</span>
+    <div class="topnav-right">
+      <a href="#"> <i class="fa fa-facebook"></i> </a>
+      <a href="#"> <i class="fa fa-instagram"></i> </a>
+      <a href="#"> <i class="fa fa-twitter"></i> </a>
+      <a>TutorDevOps@gmail.com</a>
+    </div>
+  </nav>
+</footer>
