@@ -76,6 +76,15 @@ export class ReportingService {
     return this.http.get(this.apiUrl + 'GetTutorsessionsTutor');
   }
 
+  GetSubscriptionSales(){
+    return this.http.get(this.apiUrl + "SubscriptionSales");
+  }
+
+  GetCourseSales(): Observable<any>{
+    return this.http.get(this.apiUrl + "CourseSales");
+  }
+
+
   GetTotalTutorsessions(obj) {
     this.TutorSessionDetails = {
       TutorId: obj.TutorId,
@@ -101,10 +110,10 @@ export class ReportingService {
 
 
 
- 
+
       export(obj): Observable<any>{
-   
+
         return this.http.post(this.apiUrl+'ExportSalesReport',obj, { responseType:'blob' });
       }
- 
+
 }

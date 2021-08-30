@@ -23,7 +23,7 @@
     <span class="right" routerLink="/application"  >
       <a style="color: whitesmoke; margin-right: 3rem">Teach For TDO</a>
     </span>
-  
+
     <!-- <a [routerLink]="['/application']" >Teach For TDO</a> -->
   </div>
 </nav>
@@ -60,7 +60,7 @@
         <br />
         <br />
           With the ever changing and fast paced world we at TDO make sure you recieve
-          an experience that you will never forget, with our amazing tutors you can recieve group sessions 
+          an experience that you will never forget, with our amazing tutors you can recieve group sessions
           that will take your skills to the next level or if you would prefer some one on one tutoring that TutorDevOpsis available.
         <br />
         <br />
@@ -94,15 +94,18 @@
         <mat-form-field class="example-full-width" appearance="outline">
           <mat-label>First Name</mat-label>
           <input
-            
+
             type="text"
             matInput
             placeholder="John"
             [(ngModel)]="data.name"
             [ngModelOptions]="{standalone: true}"
           />
-        </div>
-      </div>
+        </mat-form-field>
+      </form>
+    </div>
+  </div>
+
       <div class="col-md-6" style="padding-top: 2rem">
         <div
           style="
@@ -511,13 +514,15 @@
             >
               Back
             </Button>
-          </div>
+
         </div>
       </div>
     </div>
+  </div>
     <br />
     <br />
-  </nb-layout-column>
+
+    </nb-layout-column>
 </nb-layout>
 
 <footer style="width: 100%; bottom: 0">

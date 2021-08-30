@@ -59,10 +59,10 @@ import { ViewSubscriptionsComponent } from './view-subscriptions/view-subscripti
     ViewGroupSessionsComponent,
     SessionsComponent,
     ViewSessionContentComponent,
-    SpecificSessionContentComponent
+    SpecificSessionContentComponent,
     SessionsComponent,
     CreateBookingComponent,
-    EditBookingComponent
+    EditBookingComponent,
     SessionsComponent,
     ViewSubscriptionsComponent
   ],

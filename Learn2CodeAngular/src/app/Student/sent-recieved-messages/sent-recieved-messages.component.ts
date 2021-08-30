@@ -18,18 +18,18 @@ export class SentRecievedMessagesComponent implements OnInit {
   studentID: any;
   recieverID: any;
   data: any = {};
-  
+
    //pagination
    page1:number = 1;
    totalLength1:any;
 
    page:number = 1;
    totalLength:any;
-   
+
 
   userId:any;
   thisStudent:any;
-  userId:any;
+
   student:any ={};
 
   constructor(
@@ -39,7 +39,7 @@ export class SentRecievedMessagesComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.getLoggedInUser();
+    // this.getLoggedInUser();
     this.getStudentId();
     this.getStudentLoggedIn();
     this.getMessagesSent();
@@ -57,14 +57,10 @@ export class SentRecievedMessagesComponent implements OnInit {
     this.service.getStudent(this.userId).subscribe((result) => {
       this.student = result;
       console.log('the student logged in', this.student);
-      
+
     });
   }
-  public logout = () => {
-    localStorage.removeItem('token');
-    localStorage.removeItem('id');
-    this.router.navigate(['/loginhomepage/login']);
-  };
+
 
   profile() {
     this.router.navigate(['/profile']);

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { StudentService } from '../Student resources/student.service';
-import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-view-group-sessions',
   templateUrl: './view-group-sessions.component.html',
@@ -47,11 +47,11 @@ export class ViewGroupSessionsComponent implements OnInit {
       console.log('the group session list',this.groupSessionList);
     });
   }
-  public logout = () => {
-    localStorage.removeItem('token');
-    localStorage.removeItem('id');
-    this.router.navigate(['/loginhomepage/login']);
-  };
+  // public logout = () => {
+  //   localStorage.removeItem('token');
+  //   localStorage.removeItem('id');
+  //   this.router.navigate(['/loginhomepage/login']);
+  // };
 
   profile() {
     this.router.navigate(['/profile']);
