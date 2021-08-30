@@ -38,6 +38,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ViewSessionContentComponent } from './view-session-content/view-session-content.component';
 import { SpecificSessionContentComponent } from './view-session-content/specific-session-content/specific-session-content.component';
+import { ViewSubscriptionsComponent } from './view-subscriptions/view-subscriptions.component';
 
 
 @NgModule({
@@ -62,6 +63,8 @@ import { SpecificSessionContentComponent } from './view-session-content/specific
     SessionsComponent,
     CreateBookingComponent,
     EditBookingComponent
+    SessionsComponent,
+    ViewSubscriptionsComponent
   ],
   imports: [
     Angular4PaystackModule.forRoot('pk_live_af05c857de047c4178a4ab3d32104299998199bb'),

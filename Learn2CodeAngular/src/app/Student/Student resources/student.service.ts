@@ -279,4 +279,8 @@ export class StudentService {
       responseType: 'blob',
     });
   }
+
+  getBoughtSubscriptions(StudentId) {
+    return this.http.get(this.apiUrl + 'GetMySubscriptions/' + StudentId);
+  }
 }

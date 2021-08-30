@@ -14,6 +14,7 @@ import { ViewGroupSessionsComponent } from './view-group-sessions/view-group-ses
 import { SessionsComponent } from './sessions/sessions.component';
 import { ViewSessionContentComponent } from './view-session-content/view-session-content.component';
 import { SpecificSessionContentComponent } from './view-session-content/specific-session-content/specific-session-content.component';
+import { ViewSubscriptionsComponent } from './view-subscriptions/view-subscriptions.component';
 
 const routes: Routes =  [
   
@@ -75,6 +76,10 @@ const routes: Routes =  [
         component: SpecificSessionContentComponent,
       },
       
+      {
+        path: 'viewresubscriptions',
+        component: ViewSubscriptionsComponent,
+      },
     ],
   },
 ];
