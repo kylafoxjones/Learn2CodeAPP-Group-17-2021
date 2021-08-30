@@ -12,6 +12,7 @@ import { DisplayCoursesComponent } from './student-home/display-courses/display-
 import { ViewResourcesComponent } from './view-resources/view-resources.component';
 import { ViewGroupSessionsComponent } from './view-group-sessions/view-group-sessions.component';
 import { SessionsComponent } from './sessions/sessions.component';
+import { ViewSubscriptionsComponent } from './view-subscriptions/view-subscriptions.component';
 
 const routes: Routes =  [
   
@@ -63,6 +64,10 @@ const routes: Routes =  [
       {
         path: 'viewresource',
         component: ViewResourcesComponent,
+      },
+      {
+        path: 'viewresubscriptions',
+        component: ViewSubscriptionsComponent,
       },
     ],
   },

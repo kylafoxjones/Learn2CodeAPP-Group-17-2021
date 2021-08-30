@@ -243,4 +243,8 @@ export class StudentService {
   makeBooking(obj) {
     return this.http.post(this.apiUrl + 'CreateIndividualBooking',obj);
   }
+
+  getBoughtSubscriptions(StudentId) {
+    return this.http.get(this.apiUrl + 'GetMySubscriptions/' + StudentId);
+  }
 }

@@ -1,4 +1,4 @@
-<nav class="navbar navbar-dark bg-dark">
+<nav id="adminnav" class="navbar navbar-dark bg-dark">
   <a class="navbar-brand" href="#">
     <img
       src="../.././assets/pics/HD logo.png"
@@ -11,20 +11,49 @@
   <span class="TDO" style="color: rgb(0, 156, 158); margin-right: auto"
     >TutorDevOps</span
   >
-  <div [routerLink]="['/studenthomepage/studenthome']" class="topnav-right">
-    <a>Home</a>
+  <div class="right"></div>
+
+  <div class="right" style="margin-left: 2rem">
+    <span style="color: whitesmoke"
+      ><i style="color: whitesmoke" class="fa fa-ticket" aria-hidden="true"></i
+      ><i style="color: whitesmoke" class="fa fa-ticket" aria-hidden="true"></i>
+      x4
+      <i
+        style="color: whitesmoke; margin-left: 1rem"
+        class="fa fa-ticket"
+        aria-hidden="true"
+      >
+      </i>
+      x3</span
+    >
+
+    <span [routerLink]="['/studenthomepage/studenthome']" style="color: whitesmoke; margin-right: 2rem; padding-left: 1.5rem"
+      >Home</span
+    >
   </div>
-  <div class="topnav-right" style="margin-right: 0.5rem">
-    <img
-      src="../../../assets/pics/circle-cropped.png"
-      width="50"
-      height="50"
-      style="border-radius: 55px"
-      class="d-inline-block align-top"
-      alt=""
-    />
+  <div class="topnav-right">
+    <div [matMenuTriggerFor]="menu" class="dot">{{ student.studentName[0]+ student.studentSurname[0] }}</div>
   </div>
 </nav>
+
+<!--menu-->
+
+<mat-menu #menu="matMenu" xPosition="before">
+  <button (click)="profile()" mat-menu-item>
+    <i class="fa fa-user" aria-hidden="true" style="padding-right: 0.5rem"></i
+    >Profile
+  </button>
+  <button (click)="logout()" mat-menu-item>
+    <i
+      class="fa fa-sign-out"
+      aria-hidden="true"
+      style="padding-right: 0.5rem"
+    ></i
+    >Logout
+  </button>
+</mat-menu>
+
+<span flex></span>
 
 <nb-layout>
   <nb-layout-column>

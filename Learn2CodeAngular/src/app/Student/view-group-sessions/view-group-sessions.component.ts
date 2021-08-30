@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { StudentService } from '../Student resources/student.service';
 
 @Component({
@@ -11,7 +12,7 @@ export class ViewGroupSessionsComponent implements OnInit {
   userId: any;
   student: any = {};
   search
-  constructor(private service: StudentService) {}
+  constructor(private service: StudentService,private router: Router,) {}
 
   ngOnInit() {
     this.getStudentLoggedIn();
@@ -32,5 +33,14 @@ export class ViewGroupSessionsComponent implements OnInit {
       this.groupSessionList = res;
       console.log('the group session list',this.groupSessionList);
     });
+  }
+  public logout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('id');
+    this.router.navigate(['/loginhomepage/login']);
+  };
+
+  profile() {
+    this.router.navigate(['/profile']);
   }
 }
