@@ -8,7 +8,7 @@ import { AdminService } from '../../admin resources/admin.service';
   styleUrls: ['./upload-csv-file.component.scss'],
 })
 export class UploadCsvFileComponent implements OnInit {
-
+  csvxv:any;
   constructor(
     public dialog: MatDialog,
     private dialogRef: MatDialogRef<UploadCsvFileComponent>,

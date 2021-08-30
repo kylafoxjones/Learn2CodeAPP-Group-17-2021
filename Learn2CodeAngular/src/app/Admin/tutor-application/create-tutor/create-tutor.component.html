@@ -64,11 +64,12 @@
         Password must be 12 characters long.
       </div>
       <div
-        *ngIf="password.errors?.pattern"
-        style="font-size: smaller; color: red"
-      >
-        Password does not meet pattern.
-      </div>
+      *ngIf="password.errors?.pattern"
+      style="font-size: smaller; color: red"
+    >
+      Password must contain atleast a lowercase and an uppercase
+      letter, a number and a special character.
+    </div>
     </div>
     <input
       type="password"
@@ -81,6 +82,7 @@
       class="form-control"
       required
       minlength="12"
+      pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$@!%&*?])[A-Za-z\d#$@!%&*?]{12,30}$"
     />
   </mat-form-field>
 </mat-dialog-content>
