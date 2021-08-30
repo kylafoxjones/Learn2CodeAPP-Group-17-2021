@@ -16,10 +16,18 @@
   </div>
   <div class="topnav-right">
     <div class="topnav-right">
-      <div class="dot">A</div>
+      <div [matMenuTriggerFor]="menu"  class="dot" >A</div>
     </div>
   </div>
 </nav>
+
+<!--menu-->
+
+<mat-menu #menu="matMenu" xPosition="before">
+  
+  <button (click)="logout()" mat-menu-item><i class="fa fa-sign-out" aria-hidden="true" style="padding-right: 0.5rem;"></i>Logout</button>
+</mat-menu>
+
 
 <nb-layout>
   <nb-layout-column>

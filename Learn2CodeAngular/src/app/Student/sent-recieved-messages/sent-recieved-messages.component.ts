@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { StudentService } from '../Student resources/student.service';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @Component({
   selector: 'app-sent-recieved-messages',
@@ -16,6 +17,17 @@ export class SentRecievedMessagesComponent implements OnInit {
   studentID: any;
   recieverID: any;
   data: any = {};
+  
+   //pagination
+   page1:number = 1;
+   totalLength1:any;
+
+   page:number = 1;
+   totalLength:any;
+   
+
+  userId:any;
+  thisStudent:any;
   constructor(
     private router: Router,
     public dialog: MatDialog,
@@ -23,11 +35,27 @@ export class SentRecievedMessagesComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.getLoggedInUser();
     this.getStudentId();
     this.getMessagesSent();
     this.getRecievedMessages();
   }
+  public logout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('id');
+    this.router.navigate(['/loginhomepage/login']);
+  };
 
+  getLoggedInUser() {
+    this.userId = localStorage.getItem('id');
+    console.log(this.userId);
+    this.service.getStudent(this.userId).subscribe((res) => {
+      this.thisStudent = res;
+      console.log('student logged in ts file', this.thisStudent);
+     
+     
+    });
+  }
   getStudentId() {
     // this fux gets the id of the student that is logged in
     //it is needed so the api knows whos messages it should pull from the db

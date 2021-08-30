@@ -6,6 +6,9 @@ import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { TutorService } from '../tutor resources/tutor.service';
 import { NbAccordionItemHeaderComponent } from '@nebular/theme';
+import { MatMenuModule } from '@angular/material/menu';
+import { NbLayoutModule } from '@nebular/theme';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @Component({
   selector: 'app-messages',
@@ -17,6 +20,11 @@ export class MessagesComponent implements OnInit {
   studentList: any = [];
   messages: any;
   search;
+  tutor: any;
+  userId: any;
+   //pagination
+   page1:number = 1;
+   totalLength1:any;
 
   constructor(
     private router: Router,
@@ -24,7 +32,17 @@ export class MessagesComponent implements OnInit {
     private service: TutorService
   ) {}
 
+  public logout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('id');
+    this.router.navigate(['/loginhomepage/login']);
+  };
+  
   ngOnInit(): void {
+    this.userId = localStorage.getItem('id');
+    console.log(this.userId);
+    this.service.getTutor(this.userId).subscribe((result) => {
+      this.tutor = result;});
     this.getAllStudents();
   }
 

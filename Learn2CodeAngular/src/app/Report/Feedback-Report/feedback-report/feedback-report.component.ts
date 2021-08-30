@@ -65,7 +65,11 @@ export class FeedbackReportComponent implements OnInit {
     )
   }
 
-
+  public logout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('id');
+    this.router.navigate(['/loginhomepage/login']);
+  };
 
 
   getSessionDropdown(){

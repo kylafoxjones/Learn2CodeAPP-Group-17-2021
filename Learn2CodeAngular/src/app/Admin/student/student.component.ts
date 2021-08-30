@@ -57,4 +57,10 @@ export class StudentComponent implements OnInit {
       console.log(this.studentList);
     });
   }
+
+  public logout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('id');
+    this.router.navigate(['/loginhomepage/login']);
+  };
 }

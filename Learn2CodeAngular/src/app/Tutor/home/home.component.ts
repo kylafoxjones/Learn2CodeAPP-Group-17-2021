@@ -10,6 +10,7 @@ import { title } from 'process';
 // import { MaintainComponent } from '../maintain/maintain.component';
 import { TutorService } from '../tutor resources/tutor.service';
 import { MaintainTutorComponent } from './maintain-tutor/maintain-tutor.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -29,7 +30,8 @@ export class HomeComponent implements OnInit {
   constructor(
     private breakpointObserver: BreakpointObserver,
     public dialog: MatDialog,
-    private TutorService: TutorService
+    private TutorService: TutorService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -41,6 +43,12 @@ export class HomeComponent implements OnInit {
       console.log('tutor info', this.tutor);
     });
   }
+
+  public logout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('id');
+    this.router.navigate(['/loginhomepage/login']);
+  };
 
   delete() {
     Swal.fire({

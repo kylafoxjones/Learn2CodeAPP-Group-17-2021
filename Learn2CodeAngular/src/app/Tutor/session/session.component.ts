@@ -4,6 +4,9 @@ import { MatDialog } from '@angular/material/dialog';
 import { TutorService } from '../tutor resources/tutor.service';
 import { MaintainSessionComponent } from './maintain-session/maintain-session.component';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
+import { NgxPaginationModule } from 'ngx-pagination';
+
 @Component({
   selector: 'app-session',
   templateUrl: './session.component.html',
@@ -15,7 +18,13 @@ export class SessionComponent implements OnInit {
   userId: any;
   tutor: any = {};
   data: any;
-  constructor(public dialog: MatDialog, private service: TutorService) {}
+//pagination
+totalLength: any;
+page: number = 1;
+page1: number = 1;
+totalLength1: any;
+
+  constructor(public dialog: MatDialog, private service: TutorService, private router: Router) {}
 
   ngOnInit() {
     this.userId = localStorage.getItem('id');
@@ -39,6 +48,13 @@ export class SessionComponent implements OnInit {
     });
     
   }
+
+  public logout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('id');
+    this.router.navigate(['/loginhomepage/login']);
+  };
+
 
   getMyIndivSessions() {
     this.service.getMyIndivSessions(this.tutor.id).subscribe((res) => {

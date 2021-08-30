@@ -57,6 +57,12 @@ export class SessionContentCategoryComponent implements OnInit {
     });
   }
 
+  public logout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('id');
+    this.router.navigate(['/loginhomepage/login']);
+  };
+
   openAddDialog() {
     this.getAdminId();
     this.service.edit = false;

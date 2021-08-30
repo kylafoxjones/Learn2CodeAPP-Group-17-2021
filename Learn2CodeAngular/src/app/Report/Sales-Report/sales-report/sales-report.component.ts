@@ -3,16 +3,16 @@ import { ReportingService } from '../../Report resources/reporting.service';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 import { Router } from '@angular/router';
-import { ChartsModule, Color, Label } from 'ng2-charts';
+import { ChartsModule, Color, Label, BaseChartDirective} from 'ng2-charts';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
-import { BaseChartDirective } from 'ng2-charts';
+//import { BaseChartDirective } from 'ng2-charts';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { NbLayoutComponent } from '@nebular/theme';
 import { NbLayoutColumnComponent } from '@nebular/theme';
 import Swal from 'sweetalert2';
-import { saveAs } from 'file-saver';
+
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { NgxPaginationModule } from 'ngx-pagination';
@@ -47,6 +47,13 @@ export class SalesReportComponent implements OnInit {
     private ReportService: ReportingService
   ) {}
 
+
+  public logout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('id');
+    this.router.navigate(['/loginhomepage/login']);
+  };
+
   ngOnInit(): void {
     this.getSubscriptionSummaryData(), this.getCourseGraphData();
   }
@@ -54,13 +61,14 @@ export class SalesReportComponent implements OnInit {
   x() {
     Swal.fire('', 'Successfully downloaded report', 'success');
   }
-
   // exportpay(){
   //   this.ReportService.export(this.Start, this.End).subscribe((res) => {
   //     saveAs(res, 'test'+  '.xlsx');
   //   });
   // }
+ // getSubscriptionSalesTable(){
 
+  
 
 
   getSubscriptionSalesTable() {
@@ -78,7 +86,7 @@ export class SalesReportComponent implements OnInit {
     );
   }
 
-  getSubscriptionSummaryData() {
+    getSubscriptionSummaryData() {
     this.ReportService.GetSubscriptionSales().subscribe((result) => {
       console.log(result);
       this.SubscriptionSummary = result;
@@ -101,6 +109,8 @@ export class SalesReportComponent implements OnInit {
   //     saveAs(result, 'Subscription Sales' + '.xlsx');
   //   });
   // }
+
+
 
   // options
   showXAxis = true;

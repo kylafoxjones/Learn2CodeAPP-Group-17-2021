@@ -5,6 +5,8 @@ import { TutorService } from '../../tutor resources/tutor.service';
 import { AddEditResourceComponent } from '../add-edit-resource/add-edit-resource.component';
 import Swal from 'sweetalert2';
 import { saveAs } from 'file-saver';
+import { MatMenuModule } from '@angular/material/menu';
+
 @Component({
   selector: 'app-specific-resource',
   templateUrl: './specific-resource.component.html',
@@ -15,6 +17,13 @@ export class SpecificResourceComponent implements OnInit {
   List = this.service.specificList;
   module = this.service.moduleNameToSend;
   file: any;
+  tutor: any;
+  userId: any;
+
+   //pagination
+   page1:number = 1;
+   totalLength1:any;
+   
   constructor(
     private router: Router,
     public dialog: MatDialog,
@@ -22,8 +31,19 @@ export class SpecificResourceComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.userId = localStorage.getItem('id');
+    console.log(this.userId);
+    this.service.getTutor(this.userId).subscribe((result) => {
+      this.tutor = result;});
     this.getAllForModule();
   }
+
+   public logout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('id');
+    this.router.navigate(['/loginhomepage/login']);
+  };
+  
   download(obj) {
     console.log('object is ', obj);
     this.service.downloadResource(obj.id).subscribe((blob) => {

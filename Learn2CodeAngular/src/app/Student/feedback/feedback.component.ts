@@ -17,7 +17,10 @@ export class FeedbackComponent implements OnInit {
   userId: any;
   pastSessionList: any = [];
   //studentId:any;
-
+ //pagination
+ page1:number = 1;
+ totalLength1:any;
+ 
   constructor(
     private router: Router,
     public dialog: MatDialog,
@@ -40,6 +43,11 @@ export class FeedbackComponent implements OnInit {
     });
   }
 
+  public logout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('id');
+    this.router.navigate(['/loginhomepage/login']);
+  };
   getSessions() {
     // get sessions that the student has attented
     this.service.getSessions(this.thisStudent.id).subscribe((res) => {

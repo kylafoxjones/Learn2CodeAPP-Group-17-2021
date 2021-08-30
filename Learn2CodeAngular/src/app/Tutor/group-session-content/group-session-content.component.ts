@@ -4,6 +4,9 @@ import Swal from 'sweetalert2';
 import { MatDialog } from '@angular/material/dialog';
 import { TutorService } from '../tutor resources/tutor.service';
 import { Router } from '@angular/router';
+import { MatMenuModule } from '@angular/material/menu';
+import { NbLayoutModule } from '@nebular/theme';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @Component({
   selector: 'app-group-session-content',
@@ -16,6 +19,15 @@ export class GroupSessionContentComponent implements OnInit {
   contentList: any;
   userID: any;
   tutor: any;
+ //pagination
+ page1:number = 1;
+ totalLength1:any;
+
+
+
+
+
+
   constructor(
     public dialog: MatDialog,
     private service: TutorService,
@@ -23,9 +35,21 @@ export class GroupSessionContentComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.userID = localStorage.getItem('id');
+    console.log(this.userID);
+    this.service.getTutor(this.userID).subscribe((result) => {
+      this.tutor = result; });
     this.getAllSessionContent();
+
+   
   }
 
+  public logout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('id');
+    this.router.navigate(['/loginhomepage/login']);
+  };
+  
   getAllSessionContent() {
     //logged in tutor is hardcoded for now
     this.userID = localStorage.getItem('id');

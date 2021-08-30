@@ -7,7 +7,6 @@
 }
 </style>
 
-
 <!--TOP NAV BAR-->
 <nav class="navbar navbar-dark bg-dark" >
     <a class="navbar-brand" href="#">
@@ -22,16 +21,27 @@
     <span class="TDO" style="color: rgb(0, 156, 158); margin-right: auto"
       >TutorDevOps</span
     >
-    <div class="topnav-right">
-      <a [routerLink]="['/adminhome']">Home</a>
-     
-    </div>
-    <div  class="topnav-right">
-       
-        <div class="dot" >A</div>
-    </div>
+   <span class="right" [routerLink]="['/adminhome']"> 
+      <a style=" color:whitesmoke; margin-right: 3rem;" >Home</a>
+    </span>
+    
+    <div class="topnav-right" >
+
+
+      <div [matMenuTriggerFor]="menu"  class="dot" >A</div>
+  </div>
   </nav>
+
+  <nb-layout>
+    <nb-layout-column>
+<!--menu-->
+
+<mat-menu #menu="matMenu" xPosition="before">
   
+  <button (click)="logout()" mat-menu-item><i class="fa fa-sign-out" aria-hidden="true" style="padding-right: 0.5rem;"></i>Logout</button>
+</mat-menu>
+
+<span flex></span>
   <div style="padding-top: 2rem;padding-bottom: 0.5rem;">
     <div class="header" >Reports</div>
   </div>
@@ -39,7 +49,6 @@
   <br>
   
 
-  
  <!--REPORT DIV CARD BOXES COME HERE-->
 
  <div class="card-deck" style="margin-bottom: 30px; margin-left: 50px; margin-right: 50px;">
@@ -151,7 +160,9 @@
   
 </div>
  
-
+  
+</nb-layout-column>
+</nb-layout>
 
  <!--FOOTER-->
   
@@ -175,6 +186,4 @@
       </div>
     </nav>
   </footer>
-  
-  
   

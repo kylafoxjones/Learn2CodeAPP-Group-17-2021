@@ -56,6 +56,12 @@ export class AttendanceReportComponent implements OnInit {
       'success'
     )
   }
+  public logout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('id');
+    this.router.navigate(['/loginhomepage/login']);
+  };
+  
 
 
   changeSession(value) {

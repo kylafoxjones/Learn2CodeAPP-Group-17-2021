@@ -71,6 +71,13 @@ export class SubscriptionComponent implements OnInit {
     });
   }
 
+  public logout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('id');
+    this.router.navigate(['/loginhomepage/login']);
+  };
+
+
   openEditDialog(obj) {
     this.service.edit = true;
     //fill the object place holder when edit is clicked

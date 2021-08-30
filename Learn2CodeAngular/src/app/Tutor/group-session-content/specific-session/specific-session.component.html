@@ -16,20 +16,36 @@
   <span class="TDO" style="color: rgb(0, 156, 158); margin-right: auto"
     >TutorDevOps</span
   >
-  <div class="topnav-right">
-    <a>Home</a>
-  </div>
-  <div class="topnav-right" style="margin-right: 0.5rem">
+    <!--use this for tutorhome link-->
+    <span class="right" [routerLink]="['/tutorhome']"> 
+      <a style=" color:whitesmoke; margin-right: 3rem;" >Home</a>
+    </span>
+    <!--end-->
+
+   <!--use this for tutorphoto and dropdown-->
+  <div [matMenuTriggerFor]="menu"   class="dot" class="topnav-right" style="margin-right: 0.5rem">
     <img
-      src="../../../assets/pics/circle-cropped.png"
+      src="data:image/gif;base64,{{ tutor.tutorPhoto }}"
       width="50"
       height="50"
       style="border-radius: 55px"
       class="d-inline-block align-top"
       alt=""
+      
     />
   </div>
+
+
+  <!--end-->
 </nav>
+ <!--menu-->
+
+ <mat-menu #menu="matMenu" xPosition="before">
+  
+  <button (click)="logout()" mat-menu-item><i class="fa fa-sign-out" aria-hidden="true" style="padding-right: 0.5rem;"></i>Logout</button>
+</mat-menu>
+<!--end-->
+
 
 <div style="padding-top: 2rem; padding-bottom: 1rem">
   <div class="header">{{title}} Session Content</div>

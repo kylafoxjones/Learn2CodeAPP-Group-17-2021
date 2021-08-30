@@ -11,10 +11,16 @@
   <span class="TDO" style="color: rgb(0, 156, 158); margin-right: auto"
     >TutorDevOps</span
   >
-  <div class="right">
-    <a style="color: whitesmoke; margin-right: 3rem">Home</a>
-  </div>
-  <div class="topnav-right" style="margin-right: 0.5rem">
+
+  
+  <!--use this for tutorhome link-->
+  <span class="right" [routerLink]="['/tutorhome']"> 
+    <a style=" color:whitesmoke; margin-right: 3rem;" >Home</a>
+  </span>
+  <!--end-->
+  
+  <!--use this for tutorphoto and dropdown-->
+  <div [matMenuTriggerFor]="menu"   class="dot" class="topnav-right" style="margin-right: 0.5rem">
     <img
       src="data:image/gif;base64,{{ tutor.tutorPhoto }}"
       width="50"
@@ -22,16 +28,21 @@
       style="border-radius: 55px"
       class="d-inline-block align-top"
       alt=""
+      
     />
   </div>
+
+
+  <!--end-->
 </nav>
+  <!--menu-->
 
-<!--menu-->
-
-<div style="padding-top: 2rem; padding-bottom: 1rem; margin-left: 7rem">
-  <div class="header">Profile</div>
-</div>
-
+  <mat-menu #menu="matMenu" xPosition="before">
+  
+    <button (click)="logout()" mat-menu-item><i class="fa fa-sign-out" aria-hidden="true" style="padding-right: 0.5rem;"></i>Logout</button>
+  </mat-menu>
+  <!--end-->
+  
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav
     style="width: 10rem; background-color: rgb(54, 72, 80)"

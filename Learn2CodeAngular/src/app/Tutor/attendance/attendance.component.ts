@@ -4,6 +4,9 @@ import { MatDialog } from '@angular/material/dialog';
 import { TakeAttendanceComponent } from './take-attendance/take-attendance.component';
 import { TutorService } from '../tutor resources/tutor.service';
 import { Router } from '@angular/router';
+import { MatMenuModule } from '@angular/material/menu';
+import { NbLayoutModule } from '@nebular/theme';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @Component({
   selector: 'app-attendance',
@@ -16,12 +19,22 @@ export class AttendanceComponent implements OnInit {
   attendanceList: any = [];
   data: any;
   search;
+  
+   //pagination
+   page1:number = 1;
+   totalLength1:any;
 
   constructor(
     public dialog: MatDialog,
     private service: TutorService,
     private router: Router
   ) {}
+
+  public logout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('id');
+    this.router.navigate(['/loginhomepage/login']);
+  };
 
   ngOnInit() {
     this.tutorLoggedInUserID = localStorage.getItem('id');
@@ -148,4 +161,6 @@ export class AttendanceComponent implements OnInit {
       }
     });
   }
+
+  
 }

@@ -12,12 +12,19 @@
     >TutorDevOps</span
   >
   <div class="topnav-right">
-    <a>Home</a>
+    <!-- <a  [routerLink]="['/studenthomepage/studenthome']" >Home</a> -->
+    <span class="right" routerLink='/studenthomepage/studenthome'  >
+      <a style="color: whitesmoke; margin-right: 3rem">Home</a>
+   </span>
     <a>About</a>
     <a>Plans</a>
     <a>Content</a>
     <a>Online Store</a>
-    <a>Teach For TDO</a>
+    <span class="right" routerLink="/application"  >
+      <a style="color: whitesmoke; margin-right: 3rem">Teach For TDO</a>
+    </span>
+  
+    <!-- <a [routerLink]="['/application']" >Teach For TDO</a> -->
   </div>
 </nav>
 
