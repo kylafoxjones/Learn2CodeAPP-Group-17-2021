@@ -1,4 +1,5 @@
 <nav class="navbar navbar-dark bg-dark">
+  <!-- hello vraj -->
   <a class="navbar-brand" href="#">
     <img
       src="../.././assets/pics/HD logo.png"
@@ -23,7 +24,7 @@
     <span class="right" routerLink="/application"  >
       <a style="color: whitesmoke; margin-right: 3rem">Teach For TDO</a>
     </span>
-  
+
     <!-- <a [routerLink]="['/application']" >Teach For TDO</a> -->
   </div>
 </nav>
@@ -39,7 +40,7 @@
         width: 80%;
         margin: auto;
         border-radius: 15px;
-        height: 55rem;
+        height: 55.8rem;
       "
     >
       <h1 style="text-align: center">Process</h1>
@@ -60,7 +61,7 @@
         <br />
         <br />
           With the ever changing and fast paced world we at TDO make sure you recieve
-          an experience that you will never forget, with our amazing tutors you can recieve group sessions 
+          an experience that you will never forget, with our amazing tutors you can recieve group sessions
           that will take your skills to the next level or if you would prefer some one on one tutoring that TutorDevOpsis available.
         <br />
         <br />
@@ -78,31 +79,8 @@
       />
     </div>
   </div>
-  <div class="col-md-6" style="padding-top: 2rem">
-    <div
-      style="
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
-          0 6px 6px rgba(0, 0, 0, 0.23);
-        width: 78%;
-        margin: auto;
-        border-radius: 15px;
-        height: 55rem;
-      "
-    >
-      <h1 style="text-align: center">Sign Up</h1>
-      <form class="example-form">
-        <mat-form-field class="example-full-width" appearance="outline">
-          <mat-label>First Name</mat-label>
-          <input
-            
-            type="text"
-            matInput
-            placeholder="John"
-            [(ngModel)]="data.name"
-            [ngModelOptions]="{standalone: true}"
-          />
-        </div>
-      </div>
+ 
+
       <div class="col-md-6" style="padding-top: 2rem">
         <div
           style="
@@ -111,7 +89,7 @@
             width: 80%;
             margin: auto;
             border-radius: 15px;
-            height: auto;
+            height: 55;
           "
         >
           <h1 style="text-align: center; padding-top: 1rem">Sign Up</h1>
@@ -284,7 +262,7 @@
             <div style="margin-left: 2.5rem">
               <mat-form-field
                 appearance="outline"
-                style="width: 23.5rem"
+                style="width: 20.5rem"
 
               >
                 <div
@@ -318,7 +296,7 @@
 
             <div class="row">
               <div class="col-md-4">
-                <div style="margin-left: 2.5rem">
+                <div style="margin-left: 1rem">
                   <mat-form-field appearance="outline" style="width: 11rem">
                     <mat-label>Degree:</mat-label>
                     <div
@@ -389,7 +367,7 @@
               </div>
               <mat-form-field
               appearance="outline"
-              style="width: 25rem; margin-left: 2.5rem"
+              style="width: 22rem; margin-left: 2.5rem"
 
 
               >
@@ -430,14 +408,14 @@
                   [ngModelOptions]="{ standalone: true }"
                   minlength="12"
                   required
-                  pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$@!%&*?])[A-Za-z\d#$@!%&*?]{12,30}$"
+                  pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$@!%&?])[A-Za-z\d#$@!%&*?]{12,30}$"
 
                 />
               </mat-form-field>
               <mat-form-field
                 class="example-full-width"
                 appearance="outline"
-                style="width: 25rem; margin-left: 2.5rem"
+                style="width: 22rem; margin-left: 2.5rem"
               >
                 <mat-label> Confirm Password: </mat-label>
                 <div
@@ -476,7 +454,7 @@
                   #passwordb="ngModel"
                   required
                   minlength="12"
-                  pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$@!%&*?])[A-Za-z\d#$@!%&*?]{12,30}$"
+                  pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$@!%&?])[A-Za-z\d#$@!%&*?]{12,30}$"
 
                 />
               </mat-form-field>
@@ -511,13 +489,15 @@
             >
               Back
             </Button>
-          </div>
+
         </div>
       </div>
     </div>
+  </div>
     <br />
     <br />
-  </nb-layout-column>
+
+    </nb-layout-column>
 </nb-layout>
 
 <footer style="width: 100%; bottom: 0">

@@ -14,21 +14,23 @@
   <div class="right"></div>
 
   <div class="right" style="margin-left: 2rem">
-  
-
-    <span [routerLink]="['/studenthomepage/studenthome']" style="color: whitesmoke; margin-right: 2rem; padding-left: 1.5rem"
+    <span
+      [routerLink]="['/studenthomepage/studenthome']"
+      style="color: whitesmoke; margin-right: 2rem; padding-left: 1.5rem"
       >Home</span
     >
   </div>
   <div class="topnav-right">
-    <div [matMenuTriggerFor]="menu" class="dot">{{ thisStudent.studentName[0]+ thisStudent.studentSurname[0] }}</div>
+    <div [matMenuTriggerFor]="menu" class="dot">
+      {{ thisStudent.studentName[0] + thisStudent.studentSurname[0] }}
+    </div>
   </div>
 </nav>
 
 <!--menu-->
 
 <mat-menu #menu="matMenu" xPosition="before">
-  <button  (click)="profile()" mat-menu-item>
+  <button (click)="profile()" mat-menu-item>
     <i class="fa fa-user" aria-hidden="true" style="padding-right: 0.5rem"></i
     >Profile
   </button>
@@ -67,7 +69,11 @@
       >Menu</mat-toolbar
     >
     <mat-nav-list style="margin-top: 0.5rem">
-      <a [routerLink]="['/shop']" style="color: white; font-size: small" mat-list-item href="#"
+      <a
+        [routerLink]="['/shop']"
+        style="color: white; font-size: small"
+        mat-list-item
+        href="#"
         ><i
           style="font-size: medium; padding: 0.3rem"
           class="fa fa-shopping-cart"
@@ -75,7 +81,11 @@
         ></i
         >Shop</a
       >
-      <a  [routerLink]="['/studentSessions']"  style="color: white; font-size: small" mat-list-item href="#"
+      <a
+        [routerLink]="['/studentSessions']"
+        style="color: white; font-size: small"
+        mat-list-item
+        href="#"
         ><i
           style="font-size: medium; padding: 0.3rem"
           class="fa fa-user"
@@ -83,7 +93,11 @@
         ></i
         >Individual Session</a
       >
-      <a  [routerLink]="['/viewgroupsessions']" style="color: white; font-size: small" mat-list-item href="#"
+      <a
+        [routerLink]="['/viewgroupsessions']"
+        style="color: white; font-size: small"
+        mat-list-item
+        href="#"
         ><i
           style="font-size: medium; padding: 0.3rem"
           class="fa fa-users"
@@ -91,7 +105,8 @@
         ></i
         >Group Session</a
       >
-      <a  style="color: white; font-size: small" mat-list-item href="#"
+      <a   [routerLink]="['/viewresubscriptions']"
+      style="color: white; font-size: small" mat-list-item href="#"
         ><i
           style="font-size: medium; padding: 0.3rem"
           class="fa fa-folder-open"
@@ -99,7 +114,11 @@
         ></i
         >My Subscriptions</a
       >
-      <a  [routerLink]="['/studentmessages']" style="color: white; font-size: small" mat-list-item href="#"
+      <a
+        [routerLink]="['/studentmessages']"
+        style="color: white; font-size: small"
+        mat-list-item
+        href="#"
         ><i
           style="font-size: medium; padding: 0.3rem"
           class="fa fa-envelope"
@@ -107,7 +126,11 @@
         ></i
         >Messages</a
       >
-      <a   [routerLink]="['/feedback']" style="color: white; font-size: small" mat-list-item href="#"
+      <a
+        [routerLink]="['/feedback']"
+        style="color: white; font-size: small"
+        mat-list-item
+        href="#"
         ><i
           style="font-size: medium; padding: 0.3rem"
           class="fa fa-star"
@@ -115,7 +138,11 @@
         ></i
         >Feedback</a
       >
-      <a [routerLink]="['/viewresource']" style="color: white; font-size: small" mat-list-item href="#"
+      <a
+        [routerLink]="['/viewresource']"
+        style="color: white; font-size: small"
+        mat-list-item
+        href="#"
         ><i
           style="font-size: medium; padding: 0.3rem"
           class="fa fa-graduation-cap"
@@ -123,7 +150,11 @@
         ></i
         >Resources</a
       >
-      <a [routerLink]="['/viewsessioncontent']"  style="color: white; font-size: small" mat-list-item href="#"
+      <a
+        [routerLink]="['/viewsessioncontent']"
+        style="color: white; font-size: small"
+        mat-list-item
+        href="#"
         ><i
           style="font-size: medium; padding: 0.3rem"
           class="fa fa-video-camera"
@@ -131,7 +162,11 @@
         ></i
         >Session Content</a
       >
-      <a [routerLink]="['/viewtutors']" style="color: white; font-size: small" mat-list-item href="#"
+      <a
+        [routerLink]="['/viewtutors']"
+        style="color: white; font-size: small"
+        mat-list-item
+        href="#"
         ><i
           style="font-size: medium; padding: 0.3rem"
           class="fa fa-user"
@@ -147,7 +182,7 @@
 </mat-sidenav-container>
 <nb-layout>
   <nb-layout-column>
-<!--  <div  style=" margin-top: 3rem;
+    <!--  <div  style=" margin-top: 3rem;
     border-radius: 25px;
     background-color: white;
     width: 23.5rem;
@@ -166,88 +201,90 @@
        
     </div>-->
 
+    <div *ngIf="hasCourse">
+      <div class="row">
+        <div class="col-md-3" *ngFor="let item of courses | filter: search">
+          <div
+            style="
+              margin-top: 3rem;
+              border-radius: 25px;
+              background-color: rgb(6, 6, 7);
+              width: 16rem;
+              margin-left: 50%;
+              height: 19rem;
+              box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
+                0 6px 6px rgba(0, 0, 0, 0.23);
+            "
+          >
+            <br />
+            <div
+              style="
+                text-align: center;
+                width: 12rem;
+                height: 2rem;
+                margin-left: 0.5rem;
+              "
+            >
+              <h5 style="margin-left: 2.5rem; color: white">
+                {{
+                  item.courseEnrolLine[0].courseSubCategory
+                    .courseSubCategoryName
+                }}
+              </h5>
+              <hr style="width: 125%; color: white" />
+            </div>
+            <div style="text-align: center; padding-top: 1.9rem">
+              <div>
+                <h6 style="color: white">
+                  {{
+                    item.courseEnrolLine[0].courseSubCategory.courseFolder
+                      .courseFolderName
+                  }}
+                </h6>
+                <p style="color: white">
+                  {{ item.courseEnrolLine[0].courseSubCategory.description }}
 
-  
-
-      <div *ngIf="hasCourse">
-    
-        <div class="row">
-          <div class="col-md-3" 
-          *ngFor="let item of courses | filter: search">
-            <div style="
-            margin-top: 3rem;
-            border-radius: 25px;
-            background-color: rgb(6, 6, 7);
-            width: 16rem;
-            margin-left: 50%;
-            height: 19rem;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
-              0 6px 6px rgba(0, 0, 0, 0.23);
-          ">
-          <br/>
-              <div    style="
-              text-align: center;
-              width: 12rem;
-              height: 2rem;
-              margin-left: 0.5rem;
-            ">
-                <h5 style="margin-left: 2.5rem; color: white">
-                  {{item.courseEnrolLine[0].courseSubCategory.courseSubCategoryName}}
-                </h5>
-                <hr style="width: 125%; color: white" />
-                </div>
-                <div style="text-align: center; padding-top: 1.9rem">
-                  <div>
-                    <h6 style="color: white">   {{item.courseEnrolLine[0].courseSubCategory.courseFolder.courseFolderName}} </h6>
-                    <p style="color: white">
-
-             {{item.courseEnrolLine[0].courseSubCategory.description}}
-                     
-                      <br />
-                      <br />
-                   
-                    </p>
-                  </div>
-                  <div style="margin-top: 2.3rem">
-
-                <button [routerLink] = "['/specificcoursedisplay'
-                , item.courseEnrolLine[0].courseSubCategoryId]" style="width: 7rem" class="btn btn-outline-info">Learn</button>
+                  <br />
+                  <br />
+                </p>
+              </div>
+              <div style="margin-top: 2.3rem">
+                <button
+                  [routerLink]="[
+                    '/specificcoursedisplay',
+                    item.courseEnrolLine[0].courseSubCategoryId
+                  ]"
+                  style="width: 7rem"
+                  class="btn btn-outline-info"
+                >
+                  Learn
+                </button>
               </div>
             </div>
           </div>
-
         </div>
-        </div>   
-     </div>
-
-
-
-        <div *ngIf="!hasCourse">
-          <div
-          style="
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
-              0 6px 6px rgba(0, 0, 0, 0.23);
-            width: 80%;
-            height: 5rem;
-            margin: auto;
-            border-radius: 15px;
-            align-items: center;
-            margin-left: 12rem;
-          "
-        >
-        <br />
-    
-    <h5 style="text-align: center">You have no courses</h5>
-    
       </div>
+    </div>
 
+    <div *ngIf="!hasCourse">
+      <div
+        style="
+          box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
+            0 6px 6px rgba(0, 0, 0, 0.23);
+          width: 80%;
+          height: 5rem;
+          margin: auto;
+          border-radius: 15px;
+          align-items: center;
+          margin-left: 12rem;
+        "
+      >
+        <br />
 
-
-</div>
-
-
-
-</nb-layout-column>
+        <h5 style="text-align: center">You have no courses</h5>
+      </div>
+    </div>
+  </nb-layout-column>
 </nb-layout>
 
 <footer style="bottom: 0; width: 100%; position: absolute">

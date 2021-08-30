@@ -29,7 +29,6 @@ export class SentRecievedMessagesComponent implements OnInit {
 
   userId:any;
   thisStudent:any;
-  userId:any;
   student:any ={};
 
   constructor(
@@ -39,7 +38,7 @@ export class SentRecievedMessagesComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.getLoggedInUser();
+    this.getStudentLoggedIn();
     this.getStudentId();
     this.getStudentLoggedIn();
     this.getMessagesSent();
@@ -60,11 +59,7 @@ export class SentRecievedMessagesComponent implements OnInit {
       
     });
   }
-  public logout = () => {
-    localStorage.removeItem('token');
-    localStorage.removeItem('id');
-    this.router.navigate(['/loginhomepage/login']);
-  };
+  
 
   profile() {
     this.router.navigate(['/profile']);

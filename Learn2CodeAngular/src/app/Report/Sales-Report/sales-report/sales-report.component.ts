@@ -12,7 +12,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { NbLayoutComponent } from '@nebular/theme';
 import { NbLayoutColumnComponent } from '@nebular/theme';
 import Swal from 'sweetalert2';
-
+import { saveAs } from 'file-saver';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { NgxPaginationModule } from 'ngx-pagination';

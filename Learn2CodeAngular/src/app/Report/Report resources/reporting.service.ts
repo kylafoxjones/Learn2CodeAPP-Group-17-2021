@@ -14,12 +14,9 @@ export class ReportingService {
   StartDateS: Date;
   EndDateS: Date;
 
+  exportObject: any = {};
 
-  exportObject:any = {};
-
-
-
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
   apiUrl = 'https://localhost:44393/api/Reporting/';
 
   //#region TutorDetails
@@ -99,12 +96,17 @@ export class ReportingService {
     return this.http.post(this.apiUrl + 'GetSalesReport', this.SalesTable);
   }
 
+  GetSubscriptionSales() {
+    return this.http.get(this.apiUrl + 'SubscriptionSales');
+  }
 
+  GetCourseSales(): Observable<any> {
+    return this.http.get(this.apiUrl + 'CourseSales');
+  }
 
- 
-      export(obj): Observable<any>{
-   
-        return this.http.post(this.apiUrl+'ExportSalesReport',obj, { responseType:'blob' });
-      }
- 
+  export(obj): Observable<any> {
+    return this.http.post(this.apiUrl + 'ExportSalesReport', obj, {
+      responseType: 'blob',
+    });
+  }
 }

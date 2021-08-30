@@ -16,25 +16,35 @@
   <span class="TDO" style="color: rgb(0, 156, 158); margin-right: auto"
     >TutorDevOps</span
   >
+  <span
+    [routerLink]="['/studenthomepage/studenthome']"
+    style="color: whitesmoke; margin-right: 2rem; padding-left: 1.5rem"
+    >Home</span
+  >
   <div class="topnav-right">
-    <a>Home</a>
-  </div>
-  <div class="topnav-right">
-    <div   [matMenuTriggerFor]="menu" class="dot">{{ thissStudent.studentName[0]+ thissStudent.studentSurname[0] }}</div>
+    <div [matMenuTriggerFor]="menu" class="dot">
+      {{ thissStudent.studentName[0] + thissStudent.studentSurname[0] }}
+    </div>
   </div>
 </nav>
 
-
 <mat-menu #menu="matMenu" xPosition="before">
-    <button [routerLink]="['/profile']" mat-menu-item><i class="fa fa-user" aria-hidden="true" style="padding-right: 0.5rem;"></i>Profile</button>
-    <button  (click)="logout()" mat-menu-item><i class="fa fa-sign-out" aria-hidden="true" style="padding-right: 0.5rem;"></i>Logout</button>
-  </mat-menu>
-
-
-
+  <button [routerLink]="['/profile']" mat-menu-item>
+    <i class="fa fa-user" aria-hidden="true" style="padding-right: 0.5rem"></i
+    >Profile
+  </button>
+  <button (click)="logout()" mat-menu-item>
+    <i
+      class="fa fa-sign-out"
+      aria-hidden="true"
+      style="padding-right: 0.5rem"
+    ></i
+    >Logout
+  </button>
+</mat-menu>
 
 <div style="padding-top: 2rem; padding-bottom: 1rem">
-  <div class="header">{{title}} Session Content</div>
+  <div class="header">{{ title }} Session Content</div>
 </div>
 
 <br />
@@ -43,148 +53,147 @@
   <nb-layout-column>
     <br />
 
-
-<!-- start of ngif -->
-<div *ngIf="hasContent">
-    <div
-      style="
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
-          0 6px 6px rgba(0, 0, 0, 0.23);
-        width: 80%;
-        margin: auto;
-        border-radius: 15px;
-        align-items: center;
-      "
-    >
-      <br />
-      <h1 style="text-align: center">Category: {{content.sessionContentCategory.sessionContentCategoryName}}</h1>
-      <div class="row">
-        <div div class="col-sm-6">
-          <div
-            style="
-              margin-top: 3rem;
-              border-radius: 25px;
-              background-color: rgb(44, 51, 54);
-              width: 20rem;
-              margin-left: 20%;
-              height: 23rem;
-              box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
-                0 6px 6px rgba(0, 0, 0, 0.23);
-            "
-          >
-            <br />
+    <!-- start of ngif -->
+    <div  *ngIf="(content | json) == '{}'">
+      <div
+        style="
+          box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
+            0 6px 6px rgba(0, 0, 0, 0.23);
+          width: 80%;
+          margin: auto;
+          border-radius: 15px;
+          align-items: center;
+        "
+      >
+        <br />
+        <h1 style="text-align: center; ">
+          Category:
+          {{ content.sessionContentCategory.sessionContentCategoryName }}
+        </h1>
+        <div class="row">
+          <div div class="col-sm-6">
             <div
               style="
-                text-align: center;
-                width: 12rem;
-                height: 2rem;
-                margin-left: 0.5rem;
+                margin-top: 3rem;
+                border-radius: 25px;
+                background-color: rgb(44, 51, 54);
+                width: 20rem;
+                margin-left: 20%;
+                height: 23rem;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
+                  0 6px 6px rgba(0, 0, 0, 0.23);
               "
             >
-              <h5 style="margin-left: 3rem; color: white">Video:</h5>
-              <hr style="width: 125%; color: white" />
-            </div>
-
-            <div style="text-align: center; padding-top: 1.9rem">
-              <div>
-                <p style="color: white">{{content.recordingName}}</p>
-              
+              <br />
+              <div
+                style="
+                  text-align: center;
+                  width: 12rem;
+                  height: 2rem;
+                  margin-left: 0.5rem;
+                "
+              >
+                <h5 style="margin-left: 7rem; color: white">Video:</h5>
+                <hr style="width: 125%;margin-left: 2rem; color: white" />
               </div>
-              <div style="margin-top: 2.3rem">
-                <button (click)="video()" class="btn btn-outline-info">
-                  <i class="fa fa-play"></i>
-                  Watch
-                </button>
-<br/>
-<br/>
-     
-                <video *ngIf="showVid"  width="240" height="150" controls [src]="prev_url" >
-                        
-                  Your browser does not support the video tag.
-                </video>
 
+              <div style="text-align: center; padding-top: 1.9rem">
+                <div>
+                  <p style="color: white">{{ content.recordingName }}</p>
+                </div>
+                <div style="margin-top: 2.3rem">
+                  <button (click)="video()" class="btn btn-outline-info">
+                    <i class="fa fa-play"></i>
+                    Watch
+                  </button>
+                  <br />
+                  <br />
 
+                  <video
+                    *ngIf="showVid"
+                    width="240"
+                    height="150"
+                    controls
+                    [src]="prev_url"
+                  >
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div div class="col-sm-6">
+            <div
+              style="
+                margin-top: 3rem;
+                border-radius: 25px;
+                background-color: rgb(44, 51, 54);
+                width: 20rem;
+                margin-left: 20%;
+                height: 23rem;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
+                  0 6px 6px rgba(0, 0, 0, 0.23);
+              "
+            >
+              <br />
+              <div
+                style="
+                  text-align: center;
+                  width: 12rem;
+                  height: 2rem;
+                  margin-left: 0.5rem;
+                "
+              >
+                <h5 style="margin-left: 7rem; color: white">Notes:</h5>
+                <hr style="width: 125%;margin-left: 2rem; color: white" />
+              </div>
+
+              <div style="text-align: center; padding-top: 1.9rem">
+                <div>
+                  <p style="color: white">{{ content.notesName }}</p>
+                </div>
+                <div style="margin-top: 2.3rem">
+                  <button (click)="DownloadPDF()" class="btn btn-outline-info">
+                    <i class="fa fa-download"></i> Download
+                  </button>
+                </div>
               </div>
             </div>
           </div>
         </div>
-     
-        <div div class="col-sm-6">
-          <div
-            style="
-              margin-top: 3rem;
-              border-radius: 25px;
-              background-color: rgb(44, 51, 54);
-              width: 20rem;
-              margin-left: 20%;
-              height: 23rem;
-              box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
-                0 6px 6px rgba(0, 0, 0, 0.23);
-            "
-          >
-            <br />
-            <div
-              style="
-                text-align: center;
-                width: 12rem;
-                height: 2rem;
-                margin-left: 0.5rem;
-              "
-            >
-              <h5 style="margin-left: 3rem; color: white">Notes:</h5>
-              <hr style="width: 125%; color: white" />
-            </div>
-
-            <div style="text-align: center; padding-top: 1.9rem">
-              <div>
-                <p style="color: white">{{content.notesName}}</p>
-            
-             
-              </div>
-              <div style="margin-top: 2.3rem">
-                <button (click)="DownloadPDF()" class="btn btn-outline-info">
-                  <i class="fa fa-download"></i> Download
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
+        <br />
       </div>
-<br/>
-
-    
     </div>
-  </div> -->
+    
 
-   <div *ngIf="!hasContent">
-  <div
-      style="
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
-          0 6px 6px rgba(0, 0, 0, 0.23);
-        width: 80%;
-        margin: auto;
-        border-radius: 15px;
-        align-items: center;
-      "
-    >
-    <br />
+    <div *ngIf="(content | json) != '{}'">
+      <div
+        style="
+          box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
+            0 6px 6px rgba(0, 0, 0, 0.23);
+          width: 80%;
+          margin: auto;
+          border-radius: 15px;
+          align-items: center;
+        "
+      >
+        <br />
 
-<h5 style="text-align: center">No content for this session</h5>
-
-  </div>
-</div>
+        <h5 style="text-align: center">No content for this session</h5>
+      </div>
+    </div>
 
     <!-- end of ngif -->
-    <br/>
+    <br />
     <div style="padding: 0.4rem; margin-left: 3rem">
-      
       <button
-      style="margin-left: 8rem; width: 11.5rem"
-      [routerLink]="['/viewsessioncontent']"
-      class="btn btn-info"
-    >
-      Back to sessions
-    </button>
+        style="margin-left: 8rem; width: 11.5rem"
+        [routerLink]="['/viewsessioncontent']"
+        class="btn btn-info"
+      >
+        Back to sessions
+      </button>
     </div>
   </nb-layout-column>
 </nb-layout>

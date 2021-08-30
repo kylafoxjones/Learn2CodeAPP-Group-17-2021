@@ -17,6 +17,8 @@ import { ChartsModule } from 'ng2-charts';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { Angular4PaystackModule } from 'angular4-paystack';
+import { RouterModule } from '@angular/router';
+import { JwtModule } from '@auth0/angular-jwt';
 
 
 export function tokenGetter() {
@@ -29,6 +31,7 @@ export function tokenGetter() {
   imports: [
     BrowserModule,
     AppRoutingModule,
+    RouterModule ,
     // all seperate modules imported for the subsystems below
     AdminModule,
     LoginModule,

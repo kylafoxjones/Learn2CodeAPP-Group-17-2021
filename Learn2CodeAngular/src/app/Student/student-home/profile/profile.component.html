@@ -12,53 +12,27 @@
     >TutorDevOps</span
   >
   <div class="right" style="margin-left: 2rem">
-    <span style="color: whitesmoke"
-      ><i style="color: whitesmoke" class="fa fa-ticket" aria-hidden="true"></i
-      ><i style="color: whitesmoke" class="fa fa-ticket" aria-hidden="true"></i>
-      x4
-      <i
-        style="color: whitesmoke; margin-left: 1rem"
-        class="fa fa-ticket"
-        aria-hidden="true"
-      >
-      </i>
-      x3</span
-    >
-    <div class="right" style="margin-left: 2rem;">
+    <span [routerLink]="['/studenthomepage/studenthome']" style="color: whitesmoke; margin-right: 2rem; padding-left: 1.5rem"
+    >Home</span
+  ></div>
 
-
-
-        <span [routerLink]="['/studenthomepage/studenthome']" style="color: whitesmoke; margin-right: 2rem;padding-left: 1.5rem;">Home</span>
-
+    <div class="topnav-right">
+      <div [matMenuTriggerFor]="menu" class="dot">
+        {{ thissStudent.studentName[0] + thissStudent.studentSurname[0] }}
       </div>
-      <div class="topnav-right" >
-
-        <div  [matMenuTriggerFor]="menu" class="dot">{{ thissStudent.studentName[0]+ thissStudent.studentSurname[0] }}</div>
     </div>
-
-
-  <mat-menu #menu="matMenu" xPosition="before">
-
-    <button (click)="logout()" mat-menu-item>
-      <i
-        class="fa fa-sign-out"
-        aria-hidden="true"
-        style="padding-right: 0.5rem"
-      ></i
-      >Logout
-    </button>
-  </mat-menu>
-
-  <div style="padding-top: 2rem;padding-bottom: 2rem;margin-left: 3.5rem;">
-    <div class="header" style="height:2.5rem" >Profile</div>
-  </div>
-  <div class="topnav-right">
-    <div class="dot">
-      {{ thissStudent.studentName[0] + thissStudent.studentSurname[0] }}
-    </div>
-  </div>
-  </div>
+  
 </nav>
+<mat-menu #menu="matMenu" xPosition="before">
+  <button (click)="logout()" mat-menu-item>
+    <i
+      class="fa fa-sign-out"
+      aria-hidden="true"
+      style="padding-right: 0.5rem"
+    ></i
+    >Logout
+  </button>
+</mat-menu>
 
 <div style="padding-top: 2rem; padding-bottom: 2rem; margin-left: 3.5rem">
   <div class="header" style="height: 2.5rem">Profile</div>
@@ -81,117 +55,79 @@
       <div class="row">
         <div class="col-md-6">
           <a class="navbar-brand" style="margin-left: 6rem; margin-top: 0.5rem">
-            <div
-              style="height: 10rem; width: 10rem; "
-              class="dot"
-            >
-             <h1 style="margin-top: 3.2rem; margin-left: 00.2rem; font-size: 70px;color: whitesmoke;">{{ thissStudent.studentName[0] + thissStudent.studentSurname[0] }}</h1>
+            <div style="height: 10rem; width: 10rem" class="dot">
+              <h1
+                style="
+                  margin-top: 3.2rem;
+                  margin-left: 00.2rem;
+                  font-size: 70px;
+                  color: whitesmoke;
+                "
+              >
+                {{
+                  thissStudent.studentName[0] + thissStudent.studentSurname[0]
+                }}
+              </h1>
             </div>
           </a>
-          <div style="margin-left: 5.5rem; padding-top: 0.5rem">
+          <div style="margin-left: 7.5rem; padding-top: 0.5rem">
             <p><b>Username: </b>{{ thissStudent.identity.userName }}</p>
-            <p></p>
+            
           </div>
         </div>
 
         <div class="col-md-6">
-          <div class="row" style="margin-top: 2rem; margin-left: 1rem;">
-            <div class="col-md-6">
+          <div class="row" style="margin-top: 2rem; ">
+            <div class="col-md-7">
               <p><b>First Name:</b> {{ thissStudent.studentName }}</p>
-              <p><b>Email:</b> {{ thissStudent.identity.email }}</p>
+              <p style="margin-right: 9rem;"><b>Email:</b> {{ thissStudent.identity.email }}</p>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-5">
               <p><b>Surname:</b> {{ thissStudent.studentSurname }}</p>
               <p><b>Phone:</b> {{ thissStudent.studentCell }}</p>
             </div>
           </div>
-
-          <div class="row" style=" margin-left: 1rem;">
-            <div class="col-md-6">
-              <p>
-                <b>University:</b>
-
-                {{
-                  thissStudent.studentModule[0].module.degree.university
-                    .universityName
-                }}
-              </p>
+          <div class="row">
+            <div class="col-md-7">
+              <p><b>University:</b> {{thissStudent.studentModule[0].module.degree.university.universityName}}</p>
+              <p style="margin-right: 9rem;"><b>Degree:</b>  {{thissStudent.studentModule[0].module.degree.degreeName}}</p>
             </div>
-            <div class="col-md-6">
-              <p>
-                <b>Degree:</b>
-
-                    
-                    </div>
-                    <div class="col-md-6"> 
-                        <h6>Surname: {{thissStudent.studentSurname}} </h6>
-                        <h6>Phone: {{thissStudent.studentCell}} </h6>
-                    </div>
-                 
-                </div> 
-               
-               <div class="row">
-                   <div class="col-md-6"> <h6>University: {{thissStudent.studentModule[0].module.degree.university.universityName}}</h6></div>
-                   <div class="col-md-6"><h6>Degree:  {{thissStudent.studentModule[0].module.degree.degreeName}}</h6></div>
-               </div>
-               <div>
-                   <h6>Module: {{thissStudent.studentModule[0].module.moduleCode}}</h6>
-               </div>
-                <br>
-               <br>
-               <br>
-                <div style="margin-left: 2rem;">
-                    <button (click) = "openEditDialog()" class="btn btn-info" style="width: 6rem; ">
-                        Edit
-                    </button>
-
-                    <button [routerLink]="['/resetpassword']"  class="btn btn-primary" style="font-size: medium;margin-left: 1rem;">
-                      Change password
-                  </button>
-
-                    <button (click)="onDelete(thissStudent.id)" class="btn btn-danger"  style="margin-left: 1rem;width: 6rem;">
-                        Delete
-                    </button>
-                </div>
-
-        
+            <div class="col-md-5">
+              <p><b>Module:</b> {{thissStudent.studentModule[0].module.moduleCode}}</p>
+             
             </div>
-            <div style="margin-left: 0.2rem;">
-              <p>
-                <b>Module:</b>
-                {{ thissStudent.studentModule[0].module.moduleCode }}
-              </p>
-            </div>
-          </div>
-
-          <br />
-          <br />
-          <br />
-          <div style="margin-left: 2rem">
-            <button
-              (click)="openEditDialog()"
-              class="btn btn-info"
-              style="width: 6rem"
-            >
-              Edit
-            </button>
-
-            <button
-              class="btn btn-primary"
-              style="font-size: medium; margin-left: 1rem"
-            >
-              Change password
-            </button>
-
-            <button
-              (click)="onDelete(thissStudent.id)"
-              class="btn btn-danger"
-              style="margin-left: 1rem; width: 6rem"
-            >
-              Delete
-            </button>
           </div>
         </div>
+        
+      </div>
+     
+
+      <br />
+      <br />
+      <div style="margin-left: 2rem">
+        <button
+          (click)="openEditDialog()"
+          class="btn btn-info"
+          style="width: 6rem"
+        >
+          Edit
+        </button>
+
+        <button
+          [routerLink]="['/resetpassword']"
+          class="btn btn-primary"
+          style="font-size: medium; margin-left: 1rem"
+        >
+          Change password
+        </button>
+
+        <button
+          (click)="onDelete(thissStudent.id)"
+          class="btn btn-danger"
+          style="margin-left: 1rem; width: 6rem"
+        >
+          Delete
+        </button>
       </div>
     </div>
   </nb-layout-column>
