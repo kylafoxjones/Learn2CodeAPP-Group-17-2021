@@ -7,6 +7,7 @@ import { AdminService } from '../admin resources/admin.service';
 import { AcceptRejectApplicationComponent } from './accept-reject-application/accept-reject-application.component';
 import { MatCardModule } from '@angular/material/card';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { saveAs } from 'file-saver';
 
 @Component({
   selector: 'app-tutor-application',
@@ -51,6 +52,23 @@ export class TutorApplicationComponent implements OnInit {
    // this.getAllTutorApplications();
    // window.location.reload();
   }
+ 
+
+
+  download(obj) {
+    console.log(obj);
+    console.log(obj.fileId);
+    this.service.downloadCv(obj.fileId).subscribe((blob) => {
+      console.log('this is blob: ', blob);
+      saveAs(blob, "CV.pdf");
+    });
+  }
+
+  public logout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('id');
+    this.router.navigate(['/loginhomepage/login']);
+  };
 
   getAllTutorApplications() {
     this.service.getTutorApplications().subscribe((result) => {

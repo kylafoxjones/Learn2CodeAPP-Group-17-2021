@@ -9,22 +9,61 @@
     <div class="col-md-6">
       <mat-form-field class="example-full-width">
         <mat-label>First name:</mat-label>
+        <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert">
+          <div
+            *ngIf="name.errors?.required"
+            style="font-size: smaller; color: red"
+          >
+            Name is required.
+          </div>
+          <div
+            *ngIf="name.errors?.minlength"
+            style="font-size: smaller; color: red"
+          >
+            Name must be at least 2 characters long.
+          </div>
+        </div>
         <input
           [(ngModel)]="data.StudentName"
           #name="ngModel"
           name="name"
           matInput
+          class="form-control"
+          required
+          minlength="2"
+          type="text"
         />
       </mat-form-field>
     </div>
     <div class="col-md-6">
       <mat-form-field class="example-full-width">
         <mat-label>Surname:</mat-label>
+        <div
+          *ngIf="surname.invalid && (surname.dirty || surname.touched)"
+          class="alert"
+        >
+          <div
+            *ngIf="surname.errors?.required"
+            style="font-size: smaller; color: red"
+          >
+            Surname is required.
+          </div>
+          <div
+            *ngIf="surname.errors?.minlength"
+            style="font-size: smaller; color: red"
+          >
+            Surname must be at least 2 characters long.
+          </div>
+        </div>
         <input
           matInput
           [(ngModel)]="data.StudentSurname"
           #surname="ngModel"
           name="surname"
+          class="form-control"
+          required
+          minlength="2"
+          type="text"
         />
       </mat-form-field>
     </div>
@@ -34,22 +73,70 @@
     <div class="col-md-6">
       <mat-form-field class="example-full-width">
         <mat-label>Username:</mat-label>
+        <div
+          *ngIf="username.invalid && (username.dirty || username.touched)"
+          class="alert"
+        >
+          <div
+            *ngIf="username.errors?.required"
+            style="font-size: smaller; color: red"
+          >
+            Username is required.
+          </div>
+          <div
+            *ngIf="username.errors?.minlength"
+            style="font-size: smaller; color: red"
+          >
+            Username must be at least 2 characters long.
+          </div>
+        </div>
         <input
           matInput
           [(ngModel)]="data.UserName"
           #username="ngModel"
           name="username"
+          class="form-control"
+          required
+          minlength="2"
         />
       </mat-form-field>
     </div>
     <div class="col-md-6">
       <mat-form-field class="example-full-width">
         <mat-label>Email:</mat-label>
+        <div
+          *ngIf="email.invalid && (email.dirty || email.touched)"
+          class="alert"
+        >
+          <div
+            *ngIf="email.errors?.required"
+            style="font-size: smaller; color: red"
+          >
+            Email is required.
+          </div>
+          <div
+            *ngIf="email.errors?.minlength"
+            style="font-size: smaller; color: red"
+          >
+            Email must be at least 8 characters long.
+          </div>
+          <div
+            *ngIf="email.errors?.pattern"
+            style="font-size: smaller; color: red"
+          >
+            Please enter a valid email.
+          </div>
+        </div>
         <input
           matInput
           [(ngModel)]="data.Email"
           #email="ngModel"
           name="email"
+          type="email"
+          class="form-control"
+          required
+          minlength="8"
+          pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$"
         />
       </mat-form-field>
     </div>
@@ -59,48 +146,130 @@
     <div class="col-md-6">
       <mat-form-field class="example-full-width">
         <mat-label>Phone number:</mat-label>
+        <div *ngIf="cell.invalid && (cell.dirty || cell.touched)" class="alert">
+          <div
+            *ngIf="cell.errors?.required"
+            style="font-size: smaller; color: red"
+          >
+            Phone number is required.
+          </div>
+          <div
+            *ngIf="cell.errors?.minlength"
+            style="font-size: smaller; color: red"
+          >
+            Phone number must be 10 characters long.
+          </div>
+          <div
+            *ngIf="cell.errors?.maxlength"
+            style="font-size: smaller; color: red"
+          >
+            Phone number must be 10 characters long.
+          </div>
+        </div>
         <input
           matInput
           [(ngModel)]="data.StudentCell"
           #cell="ngModel"
           name="cell"
+          type="number"
+          class="form-control"
+          required
+          minlength="10"
+          maxlength="10"
         />
       </mat-form-field>
     </div>
 
     <div class="col-md-6">
-      <mat-form-field appearance="outline"  style="width: 11rem;margin-left:2.3rem">
-        <mat-label>University:</mat-label>
-        <mat-select (valueChange)="selectUni($event)">
-          <mat-option *ngFor="let uni of uniList" [value]="uni.id">
-            {{ uni.universityName }}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
+      <div style="margin-left: 2rem">
+        <mat-form-field appearance="outline">
+          <mat-label>University:</mat-label>
+          <div
+          *ngIf="
+            selectuniv.invalid &&
+            (selectuniv.dirty || selectuniv.touched)
+          "
+          class="alert"
+        >
+          <div
+            *ngIf="selectuniv.errors?.required"
+            style="font-size: smaller; color: red"
+          >
+            University is required.
+          </div>
+        </div>
+          <mat-select required
+          name="selectuniv"
+          #selectuniv="ngModel"
+          [(ngModel)]="unixv" (valueChange)="selectUni($event)">
+            <mat-option *ngFor="let uni of uniList" [value]="uni.id">
+              {{ uni.universityName }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
     </div>
   </div>
 
   <div class="row">
     <div class="col-md-6">
-      <mat-form-field appearance="outline" style="width: 11rem;margin-left:2.3rem">
-        <mat-label>Degree:</mat-label>
-        <mat-select (valueChange)="selectDegree($event)">
-          <mat-option *ngFor="let degree of degreeList" [value]="degree.id">
-            {{ degree.degreeName }}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
+      <div style="margin-left: 2rem">
+        <mat-form-field appearance="outline">
+          <mat-label>Degree:</mat-label>
+          <div
+                      *ngIf="
+                        selectdeg.invalid &&
+                        (selectdeg.dirty || selectdeg.touched)
+                      "
+                      class="alert"
+                    >
+                      <div
+                        *ngIf="selectdeg.errors?.required"
+                        style="font-size: smaller; color: red"
+                      >
+                        Degree is required.
+                      </div>
+                    </div>
+          <mat-select required
+          name="selectdeg"
+          #selectdeg="ngModel"
+          [(ngModel)]="degreexv" (valueChange)="selectDegree($event)">
+            <mat-option *ngFor="let degree of degreeList" [value]="degree.id">
+              {{ degree.degreeName }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
     </div>
 
     <div class="col-md-6">
-      <mat-form-field appearance="outline" style="width: 11rem;margin-left:2.3rem">
-        <mat-label>Module:</mat-label>
-        <mat-select (valueChange)="selectModule($event)">
-          <mat-option *ngFor="let module of moduleList" [value]="module.id">
-            {{ module.moduleCode }}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
+      <div style="margin-left: 2rem">
+        <mat-form-field appearance="outline">
+          <mat-label>Module:</mat-label>
+          <div
+          *ngIf="
+            selectmod.invalid &&
+            (selectmod.dirty || selectmod.touched)
+          "
+          class="alert"
+        >
+          <div
+            *ngIf="selectmod.errors?.required"
+            style="font-size: smaller; color: red"
+          >
+            Module is required.
+          </div>
+        </div>
+          <mat-select required
+          name="selectmod"
+          #selectmod="ngModel"
+          [(ngModel)]="modulexv" (valueChange)="selectModule($event)">
+            <mat-option *ngFor="let module of moduleList" [value]="module.id">
+              {{ module.moduleCode }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
     </div>
   </div>
 
@@ -110,8 +279,18 @@
   <br />
 
   <div style="margin-left: 30%">
-    <button (click)="onSubmit()" style="width: 9rem" class="btn btn-info">
+    <button (click)="onSubmit()" style="width: 9rem" class="btn btn-info" [disabled]="
+    name.invalid ||
+    surname.invalid ||
+    username.invalid ||
+    email.invalid ||
+    cell.invalid ||
+    selectuniv.invalid ||
+    selectdeg.invalid ||
+    selectmod.invalid
+  ">
       Submit
+
     </button>
 
     <button

@@ -31,6 +31,13 @@ import { ViewResourcesComponent } from './view-resources/view-resources.componen
 import { Angular4PaystackModule } from 'angular4-paystack';
 import { ViewGroupSessionsComponent } from './view-group-sessions/view-group-sessions.component';
 import { SessionsComponent } from './sessions/sessions.component';
+import { CreateBookingComponent } from './sessions/create-booking/create-booking.component';
+import { EditBookingComponent } from './sessions/edit-booking/edit-booking.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { ViewSessionContentComponent } from './view-session-content/view-session-content.component';
+import { SpecificSessionContentComponent } from './view-session-content/specific-session-content/specific-session-content.component';
 import { ViewSubscriptionsComponent } from './view-subscriptions/view-subscriptions.component';
 
 
@@ -50,6 +57,12 @@ import { ViewSubscriptionsComponent } from './view-subscriptions/view-subscripti
     DisplayCoursesComponent,
     ViewResourcesComponent,
     ViewGroupSessionsComponent,
+    SessionsComponent,
+    ViewSessionContentComponent,
+    SpecificSessionContentComponent
+    SessionsComponent,
+    CreateBookingComponent,
+    EditBookingComponent
     SessionsComponent,
     ViewSubscriptionsComponent
   ],
@@ -72,7 +85,10 @@ import { ViewSubscriptionsComponent } from './view-subscriptions/view-subscripti
     MatSidenavModule,
     ChartsModule,
     Ng2SearchPipeModule,
-    MatMenuModule
+    MatMenuModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    NgxPaginationModule
   ]
 })
 export class StudentModule { }

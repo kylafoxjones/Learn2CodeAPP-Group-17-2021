@@ -34,8 +34,9 @@ export class AttendanceReportComponent implements OnInit {
   chartScoreList:any = [];
   Attended: number = 0;
   Missed: number = 0;
-  
-  
+  sessionxv: any;
+
+
 
   constructor(
     private reportService: ReportingService,
@@ -46,7 +47,7 @@ export class AttendanceReportComponent implements OnInit {
     this.SessionDropdown(),
     this.AttendanceList(),
     this.pieChartData = [0,0];
-  
+
   }
   x(){
     Swal.fire(
@@ -55,29 +56,35 @@ export class AttendanceReportComponent implements OnInit {
       'success'
     )
   }
-
+  public logout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('id');
+    this.router.navigate(['/loginhomepage/login']);
+  };
   
+
+
   changeSession(value) {
-    
+
     this.BookingInstanceID = value;
     console.log(this.BookingInstanceID);
-    
+
     }
 
  SessionDropdown(){
   this.reportService.getSessionDropdown().subscribe((result) => {
-    this.SessionList = result; 
+    this.SessionList = result;
     console.log(this.SessionList);
   });
  }
 
  AttendanceList(){
   this.ID = this.BookingInstanceID[0];
- 
+
   this.reportService.getAttendedList(this.ID).subscribe((result) =>{
     this.AttendedList = result;
     this.totalLength1 = this.AttendedList.length;
-   
+
   })
 
   //Attendance Chart
@@ -88,15 +95,15 @@ export class AttendanceReportComponent implements OnInit {
     this.Missed = this.chartScoreList.missed;
 
     this.pieChartData = [this.Attended,this.Missed];
-  
+
   })
 
  }
 
-  
-    
-    
-  
+
+
+
+
 
  public pieChartOptions: ChartOptions = {
   responsive: true,
@@ -123,7 +130,7 @@ public pieChartColors = [
     backgroundColor: ['rgb(0, 204, 204)','#009c9e'],
   },
 ];
- 
+
 
 
 
@@ -133,19 +140,19 @@ public pieChartColors = [
 
 public DownloadPDF():void {
   let data = document.getElementById('AttendanceData');
-    
+
   html2canvas(data).then(canvas => {
-      
+
       let fileWidth = 300;
       let fileHeight = canvas.height * fileWidth / canvas.width;
-      
+
       const FILEURI = canvas.toDataURL('image/png')
       let PDF = new jsPDF('l', 'mm', 'a4');
       let position = 0;
       PDF.addImage(FILEURI, 'PNG', 0, position, fileWidth, fileHeight)
-      
+
       PDF.save('AttendanceReport.pdf');
-  });     
+  });
 }
 
 }

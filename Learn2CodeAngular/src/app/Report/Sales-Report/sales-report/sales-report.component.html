@@ -11,20 +11,35 @@
     <span class="TDO" style="color: rgb(0, 156, 158); margin-right: auto"
       >TutorDevOps</span
     >
+    <span class="right" [routerLink]="['/adminhome']">
+      <a style=" color:whitesmoke; margin-right: 3rem;" >Home</a>
+    </span>
     <div class="topnav-right">
-      <a>Home</a>
-     
+
+      <div [matMenuTriggerFor]="menu"  class="dot" >A</div>
     </div>
-    <div class="topnav-right">
-       
-        <div class="dot" >A</div>
-    </div>
-  </nav>
-  
+
+
+
+  <!--menu-->
+
+<mat-menu #menu="matMenu" xPosition="before">
+
+  <button (click)="logout()" mat-menu-item><i class="fa fa-sign-out" aria-hidden="true" style="padding-right: 0.5rem;"></i>Logout</button>
+</mat-menu>
+
   <div style="padding-top: 2rem;padding-bottom: 0.5rem;">
     <div class="header" >Sales Report</div>
   </div>
-  <nb-layout>
+  <div class="topnav-right">
+    <div class="dot">A</div>
+  </div>
+</nav>
+
+<div style="padding-top: 2rem; padding-bottom: 0.5rem">
+  <div class="header">Sales Report</div>
+</div>
+<nb-layout>
   <nb-layout-column>
 <br>
 <h4 style="margin-left: 8rem;">Period Sales</h4>
@@ -34,146 +49,237 @@
 
           <mat-form-field appearance="outline" style="margin-left: 1rem;">
             <mat-label>Start</mat-label>
-            <input matInput [matDatepicker]="picker" [(ngModel)]="Start">
-            <mat-datepicker-toggle matSuffix [for]="picker" ></mat-datepicker-toggle>
-            <mat-datepicker #picker ></mat-datepicker>
+            <div
+              *ngIf="
+                selectstart.invalid &&
+                (selectstart.dirty || selectstart.touched)
+              "
+              class="alert"
+            >
+              <div
+                *ngIf="selectstart.errors?.required"
+                style="font-size: smaller; color: red"
+              >
+                Start Date is required.
+              </div>
+            </div>
+            <input
+              required
+              name="selectstart"
+              #selectstart="ngModel"
+              matInput
+              matInput
+              [matDatepicker]="picker"
+              [(ngModel)]="Start"
+            />
+            <mat-datepicker-toggle
+              matSuffix
+              [for]="picker"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
           </mat-form-field>
-          
-          <mat-form-field appearance="outline" style="margin-left: 1rem;">
+
+          <mat-form-field appearance="outline" style="margin-left: 1rem">
             <mat-label>End</mat-label>
-            <input matInput [matDatepicker]="pickerr" [(ngModel)]="End">
-            <mat-datepicker-toggle matSuffix [for]="pickerr"></mat-datepicker-toggle>
-            <mat-datepicker #pickerr></mat-datepicker>
-          </mat-form-field><span> 
-            <button style="height: 3.2rem;margin-bottom: 0.7rem;width: 3rem;" 
-                    matTooltip="My tooltip" 
-                    class="btn btn-primary"
-                    (click)="getSubscriptionSalesTable()"> <i class="fa fa-search"></i></button></span>
-          </div>
+            <div
+              *ngIf="
+                selectend.invalid && (selectend.dirty || selectend.touched)
+              "
+              class="alert"
+            >
+              <div
+                *ngIf="selectend.errors?.required"
+                style="font-size: smaller; color: red"
+              >
+                End Date is required.
+              </div>
+            </div>
+            <input
+              required
+              name="selectend"
+              #selectend="ngModel"
+              matInput
+              [matDatepicker]="pickerr"
+              [(ngModel)]="End"
+            />
+            <mat-datepicker-toggle
+              matSuffix
+              [for]="pickerr"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #pickerr></mat-datepicker> </mat-form-field
+          ><span>
+            <button
+              style="height: 3.2rem; margin-bottom: 0.7rem; width: 3rem"
+              matTooltip="My tooltip"
+              class="btn btn-primary"
+              [disabled]="selectstart.invalid || selectend.invalid"
+              (click)="getSubscriptionSalesTable()"
+            >
+              <i class="fa fa-search"></i></button
+          ></span>
+        </div>
+      </div>
+      <div class="col-md-5">
+        <div style="margin-top: 1rem; margin-right: 1rem">
+          <button (click)="DownloadPDF(); x()" class="btn btn-info">
+            Generate PDF
+          </button>
+          <button
+            (click)="RedirectReportHome()"
+            style="margin-left: 1rem"
+            class="btn btn-primary"
+          >
+            Report Home
+          </button>
+          <button
+            (click)="exportpay()"
+            style="margin-left: 1rem"
+            class="btn btn-secondary"
+          >
+            Export
+          </button>
+        </div>
+      </div>
     </div>
-    <div class="col-md-5">
-        <div style="margin-top: 1rem;margin-right: 1rem;">
-       <button (click)="DownloadPDF();x()" class="btn btn-info">Generate PDF</button>
-       <button (click)="RedirectReportHome()" style="margin-left: 1rem;" class="btn btn-primary">Report Home</button>
-       <button (click)="exportpay()" style="margin-left: 1rem;" class="btn btn-secondary">Export</button>
-    </div>
-    </div>
-</div>
 
+    <div id="SalesData">
+      <div
+        style="
+          box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
+            0 6px 6px rgba(0, 0, 0, 0.23);
+          width: 80%;
+          margin: auto;
+          border-radius: 15px;
+        "
+      >
+        <br />
 
-  
-<div id="SalesData">
-  <div style="box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
-  0 6px 6px rgba(0, 0, 0, 0.23);width: 80%;margin: auto;border-radius: 15px;" >
-  <br>
-  
-    <br>
-      <table class="table table-hover" style="width: 90%;margin: auto; padding-top: 2rem;">
-          <thead >
+        <br />
+        <table
+          class="table table-hover"
+          style="width: 90%; margin: auto; padding-top: 2rem"
+        >
+          <thead>
             <tr>
               <th scope="col">Full Name</th>
               <th scope="col">Date</th>
               <th scope="col">Amount</th>
-            
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let item of SubscriptionReportTable  | paginate: { itemsPerPage: 5, currentPage: page,totalItems:totalLength, id: 'first' }">
-              <td>{{item.fullName}}</td>
-              <td>{{item.date}}</td>
-              <td>{{item.amount}}</td>
-             
-            
+            <tr
+              *ngFor="
+                let item of SubscriptionReportTable
+                  | paginate
+                    : {
+                        itemsPerPage: 5,
+                        currentPage: page,
+                        totalItems: totalLength,
+                        id: 'first'
+                      }
+              "
+            >
+              <td>{{ item.fullName }}</td>
+              <td>{{ item.date }}</td>
+              <td>{{ item.amount }}</td>
             </tr>
-           
-           
           </tbody>
         </table>
-      <br>
-        <pagination-controls  id="first" style=" padding-left: 0px !important; display:flex;float: right" (pageChange)="page = $event"></pagination-controls>
-       
-        <br>
-       <br>
-  
-  
-  </div>
-  <br>
-<div class="row">
-  
-    <div class="col-md-6" style="position: relative; left: 100px;">
-      <h5 style="text-align: center;">Course Sales</h5>
-      <ngx-charts-bar-vertical 
-        
-        [scheme]="colorScheme"
-        [results]="CourseGraph"
-        [gradient]="gradient"
-        [xAxis]="showXAxis"
-        [yAxis]="showYAxis"
-        [legend]="showLegend"
-        [showXAxisLabel]="showXAxisLabel"
-        [showYAxisLabel]="showYAxisLabel"
-        [xAxisLabel]="xAxisLabel"
-        [yAxisLabel]="yAxisLabel"
-        >
-</ngx-charts-bar-vertical>
-    </div>
+        <br />
+        <pagination-controls
+          id="first"
+          style="padding-left: 0px !important; display: flex; float: right"
+          (pageChange)="page = $event"
+        ></pagination-controls>
 
-    <div class="col-md-6">
-        <div style="box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
-        0 6px 6px rgba(0, 0, 0, 0.23);width: 60%;margin: auto;border-radius: 15px;margin-top: 0.5rem;" >
-        <br>
-        <h6 style="text-align: center;">Subscription Summary</h6>
-          <br>
-            <table class="table table-hover" style="width: 90%;margin: auto; padding-top: 2rem;">
-                <thead >
-                  <tr>
-                    <th scope="col">Subscription</th>
-                    <th scope="col">Amount</th>
-                    
-                  
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr *ngFor="let item of SubscriptionSummary  | paginate: { itemsPerPage: 5, currentPage: page1,totalItems:totalLength1,id: 'second' }">
-                    <td>{{item.subscription}}</td>
-                    <td>{{item.amount}}</td>
-                  </tr>
-                
-                 
-                </tbody>
-              </table>
-              <br>
-              <pagination-controls id="second" style=" padding-left: 0px !important; display:flex;float: right" (pageChange)="page1 = $event"></pagination-controls>
-              <br>
-              <br>
-            </div>
-              <br>
-
-             
-        
-        
+        <br />
+        <br />
+      </div>
+      <br />
+      <div class="row">
+        <div class="col-md-6" style="position: relative; left: 100px">
+          <h5 style="text-align: center">Course Sales</h5>
+          <ngx-charts-bar-vertical
+            [scheme]="colorScheme"
+            [results]="CourseGraph"
+            [gradient]="gradient"
+            [xAxis]="showXAxis"
+            [yAxis]="showYAxis"
+            [legend]="showLegend"
+            [showXAxisLabel]="showXAxisLabel"
+            [showYAxisLabel]="showYAxisLabel"
+            [xAxisLabel]="xAxisLabel"
+            [yAxisLabel]="yAxisLabel"
+          >
+          </ngx-charts-bar-vertical>
         </div>
-    </div>
-</div>
-  <br>
- 
 
-</nb-layout-column>
+        <div class="col-md-6">
+          <div
+            style="
+              box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
+                0 6px 6px rgba(0, 0, 0, 0.23);
+              width: 60%;
+              margin: auto;
+              border-radius: 15px;
+              margin-top: 0.5rem;
+            "
+          >
+            <br />
+            <h6 style="text-align: center">Subscription Summary</h6>
+            <br />
+            <table
+              class="table table-hover"
+              style="width: 90%; margin: auto; padding-top: 2rem"
+            >
+              <thead>
+                <tr>
+                  <th scope="col">Subscription</th>
+                  <th scope="col">Amount</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr
+                  *ngFor="
+                    let item of SubscriptionSummary
+                      | paginate
+                        : {
+                            itemsPerPage: 5,
+                            currentPage: page1,
+                            totalItems: totalLength1,
+                            id: 'second'
+                          }
+                  "
+                >
+                  <td>{{ item.subscription }}</td>
+                  <td>{{ item.amount }}</td>
+                </tr>
+              </tbody>
+            </table>
+            <br />
+            <pagination-controls
+              id="second"
+              style="padding-left: 0px !important; display: flex; float: right"
+              (pageChange)="page1 = $event"
+            ></pagination-controls>
+            <br />
+            <br />
+          </div>
+          <br />
+        </div>
+      </div>
+    </div>
+    <br />
+  </nb-layout-column>
 </nb-layout>
 <footer>
-    <nav  id="foot" class="navbar ">
-    
-      <span class="TDO" style=" margin-right: auto"
-        > &lt; TDO &gt;</span
-      >
-      <div class="topnav-right">
-        
-        <a href="#"> <i class="fa fa-facebook"></i> </a>
-        <a href="#"> <i class="fa fa-instagram"></i> </a>
-        <a href="#"> <i class="fa fa-twitter"></i> </a>
-        <a>TutorDevOps@gmail.com</a>
-      </div>
-    </nav>
-  </footer>
-
-  
+  <nav id="foot" class="navbar">
+    <span class="TDO" style="margin-right: auto"> &lt; TDO &gt;</span>
+    <div class="topnav-right">
+      <a href="#"> <i class="fa fa-facebook"></i> </a>
+      <a href="#"> <i class="fa fa-instagram"></i> </a>
+      <a href="#"> <i class="fa fa-twitter"></i> </a>
+      <a>TutorDevOps@gmail.com</a>
+    </div>
+  </nav>
+</footer>

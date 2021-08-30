@@ -31,12 +31,19 @@
             width: 80%;
             margin: auto;
             border-radius: 15px;
-            height: 55rem;
+            height: 54rem;
           "
         >
-          <h1 style="text-align: center">Process</h1>
+          <h1 style="text-align: center; padding-top: 1rem">Process</h1>
           <br />
-          <p style="font-size: medium; text-align: center; width: 100%">
+          <p
+            style="
+              font-size: medium;
+              text-align: center;
+              width: 90%;
+              margin-left: 1.5rem;
+            "
+          >
             Hi! We at TutordevOps are thrilled to see that you want to join our
             team of amazing tutors. Our mission at TutorDevOps is to equip all
             individuals with the necessary skills in order to thrive in this
@@ -59,11 +66,10 @@
             3. Sit back and relax our team will get back to you via email
           </p>
           <br />
-<br/>
-<br/>
+          <br />
           <img
             src="../.././assets/pics/Project_71-02.jpg"
-            style="height: 26rem; width: 28rem; margin-left: 6rem"
+            style="height: 26rem; width: 27rem; margin-left: 3rem"
             class="d-inline-block align-top"
             alt=""
           />
@@ -77,23 +83,61 @@
             width: 80%;
             margin: auto;
             border-radius: 15px;
-            height: 55rem;
+            height: auto;
           "
         >
-          <h1 style="text-align: center">Application</h1>
+          <h1 style="text-align: center; padding-top: 1rem">Application</h1>
           <form class="example-form" style="padding-top: 1.5rem">
             <mat-form-field class="example-full-width" appearance="outline">
               <mat-label>First Name:</mat-label>
+              <div
+                *ngIf="name.invalid && (name.dirty || name.touched)"
+                class="alert"
+              >
+                <div
+                  *ngIf="name.errors?.required"
+                  style="font-size: smaller; color: red"
+                >
+                  Name is required.
+                </div>
+                <div
+                  *ngIf="name.errors?.minlength"
+                  style="font-size: smaller; color: red"
+                >
+                  Name must be at least 2 characters long.
+                </div>
+              </div>
               <input
                 type="text"
                 matInput
                 placeholder="John"
                 [(ngModel)]="data.name"
                 [ngModelOptions]="{ standalone: true }"
+                required
+                minlength="2"
+                id="name"
+                #name="ngModel"
               />
             </mat-form-field>
             <mat-form-field class="example-full-width" appearance="outline">
               <mat-label>Surname: </mat-label>
+              <div
+                *ngIf="surname.invalid && (surname.dirty || surname.touched)"
+                class="alert"
+              >
+                <div
+                  *ngIf="surname.errors?.required"
+                  style="font-size: smaller; color: red"
+                >
+                  Surname is required.
+                </div>
+                <div
+                  *ngIf="surname.errors?.minlength"
+                  style="font-size: smaller; color: red"
+                >
+                  Surname must be at least 2 characters long.
+                </div>
+              </div>
               <input
                 mdInput
                 type="text"
@@ -101,10 +145,37 @@
                 placeholder="Doe"
                 [(ngModel)]="data.surname"
                 [ngModelOptions]="{ standalone: true }"
+                required
+                minlength="2"
+                id="surname"
+                #surname="ngModel"
               />
             </mat-form-field>
             <mat-form-field class="example-full-width" appearance="outline">
               <mat-label>Email:</mat-label>
+              <div
+                *ngIf="email.invalid && (email.dirty || email.touched)"
+                class="alert"
+              >
+                <div
+                  *ngIf="email.errors?.required"
+                  style="font-size: smaller; color: red"
+                >
+                  Email is required.
+                </div>
+                <div
+                  *ngIf="email.errors?.minlength"
+                  style="font-size: smaller; color: red"
+                >
+                  Email must be at least 8 characters long.
+                </div>
+                <div
+                  *ngIf="email.errors?.pattern"
+                  style="font-size: smaller; color: red"
+                >
+                  Please enter a valid email.
+                </div>
+              </div>
               <input
                 mdInput
                 type="email"
@@ -112,15 +183,42 @@
                 placeholder="JohnDoe@gmail.com"
                 [(ngModel)]="data.email"
                 [ngModelOptions]="{ standalone: true }"
+                required
+                minlength="8"
+                id="email"
+                #email="ngModel"
+                pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$"
               />
             </mat-form-field>
             <mat-form-field class="example-full-width" appearance="outline">
               <mat-label>Phone Number: </mat-label>
+              <div
+                *ngIf="tel.invalid && (tel.dirty || tel.touched)"
+                class="alert"
+              >
+                <div
+                  *ngIf="tel.errors?.required"
+                  style="font-size: smaller; color: red"
+                >
+                  Number is required.
+                </div>
+                <div
+                  *ngIf="tel.errors?.minlength"
+                  style="font-size: smaller; color: red"
+                >
+                  Number must be 10 characters long.
+                </div>
+              </div>
               <input
                 mdInput
-                type=""
+                type="number"
                 matInput
                 placeholder="+27"
+                required
+                minlength="10"
+                maxlength="10"
+                id="tel"
+                #tel="ngModel"
                 [(ngModel)]="data.cell"
                 [ngModelOptions]="{ standalone: true }"
               />
@@ -128,26 +226,66 @@
 
             <mat-form-field class="example-full-width" appearance="outline">
               <mat-label>About you: </mat-label>
+              <div
+                *ngIf="about.invalid && (about.dirty || about.touched)"
+                class="alert"
+              >
+                <div
+                  *ngIf="about.errors?.required"
+                  style="font-size: smaller; color: red"
+                >
+                  About is required.
+                </div>
+                <div
+                  *ngIf="about.errors?.minlength"
+                  style="font-size: smaller; color: red"
+                >
+                  About must be 50 characters long.
+                </div>
+              </div>
               <input
                 mdInput
                 type="text"
                 matInput
+                required
+                minlength="50"
+                id="about"
+                #about="ngModel"
                 placeholder="I enjoy teaching."
                 [(ngModel)]="data.about"
                 [ngModelOptions]="{ standalone: true }"
               />
             </mat-form-field>
-            <div style="margin-left: 7rem">
-              <mat-form-field appearance="outline">
+            <div style="margin-left: 2.5rem">
+              <mat-form-field appearance="outline" style="width: 25rem">
                 <mat-label>Module:</mat-label>
-                <mat-select (valueChange)="selectModule($event)">
+                <div
+                  *ngIf="
+                    selectmod.invalid && (selectmod.dirty || selectmod.touched)
+                  "
+                  class="alert"
+                >
+                  <div
+                    *ngIf="selectmod.errors?.required"
+                    style="font-size: smaller; color: red"
+                  >
+                    Module is required.
+                  </div>
+                </div>
+                <mat-select
+                  required
+                  name="selectmod"
+                  #selectmod="ngModel"
+                  [(ngModel)]="modulexv"
+                  (valueChange)="selectModule($event)"
+                >
                   <mat-option *ngFor="let item of moduleList" [value]="item.id">
                     {{ item.moduleCode }}
                   </mat-option>
                 </mat-select>
               </mat-form-field>
             </div>
-            <br />
+
             <div class="row">
               <div class="col-md-6">
                 <div
@@ -158,27 +296,60 @@
                   "
                 ></div>
 
-                <div>
+                <div style="margin-left: 2.5rem">
                   <label for="formFile" class="form-label"
                     >Profile Photo:</label
                   >
+                  <div
+                    *ngIf="apppic.invalid && (apppic.dirty || apppic.touched)"
+                    class="alert"
+                  >
+                    <div
+                      *ngIf="apppic.errors?.required"
+                      style="font-size: small; color: red"
+                    >
+                      Profile Picture is required.
+                    </div>
+                  </div>
                   <input
                     class="form-control"
                     type="file"
+                    style="width: 25rem"
                     #file
                     placeholder="Choose a photo"
+                    required
+                    name="apppic"
+                    #apppic="ngModel"
+                    [(ngModel)]="picture"
                     (change)="proPic($event)"
                   />
                 </div>
               </div>
             </div>
-            <div>
+            <br />
+            <div style="margin-left: 2.5rem">
               <label for="formFile" class="form-label">CV Pdf:</label>
+              <div
+                *ngIf="appcv.invalid && (appcv.dirty || appcv.touched)"
+                class="alert"
+              >
+                <div
+                  *ngIf="appcv.errors?.required"
+                  style="font-size: small; color: red"
+                >
+                  Your CV is required.
+                </div>
+              </div>
               <input
+                style="width: 25rem"
                 class="form-control"
                 type="file"
                 #file
                 placeholder="Choose file"
+                required
+                name="appcv"
+                #appcv="ngModel"
+                [(ngModel)]="cv"
                 (change)="CVfile($event)"
               />
             </div>
@@ -192,7 +363,19 @@
               margin-top: 2rem;
             "
           >
-            <Button class="btn btn-info" (click)="submit()" style="width: 5rem"
+            <Button
+              class="btn btn-info"
+              (click)="submit()"
+              style="width: 5rem"
+              [disabled]="
+                name.invalid ||
+                surname.invalid ||
+                email.invalid ||
+                tel.invalid ||
+                appcv.invalid ||
+                apppic.invalid ||
+                selectmod.invalid
+              "
               >Submit</Button
             >
 

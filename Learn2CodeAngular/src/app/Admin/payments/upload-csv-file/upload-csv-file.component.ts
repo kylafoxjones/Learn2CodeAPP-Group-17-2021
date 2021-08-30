@@ -9,6 +9,7 @@ import { AdminService } from '../../admin resources/admin.service';
   styleUrls: ['./upload-csv-file.component.scss'],
 })
 export class UploadCsvFileComponent implements OnInit {
+  csvxv:any;
 csv:any;
 data:any;
   constructor(

@@ -11,20 +11,35 @@
   <span class="TDO" style="color: rgb(0, 156, 158); margin-right: auto"
     >TutorDevOps</span
   >
-  <div class="topnav-right">
-    <a>Home</a>
-  </div>
-  <div class="topnav-right" style="margin-right: 0.5rem">
-    <img
-      src="../../../assets/pics/circle-cropped.png"
-      width="50"
-      height="50"
-      style="border-radius: 55px"
-      class="d-inline-block align-top"
-      alt=""
-    />
-  </div>
+   <!--use this for tutorhome link-->
+  <span class="right" [routerLink]="['/tutorhome']"> 
+    <a style=" color:whitesmoke; margin-right: 3rem;" >Home</a>
+  </span>
+  <!--end-->
+ <!--use this for tutorphoto and dropdown-->
+ <div [matMenuTriggerFor]="menu"   class="dot" class="topnav-right" style="margin-right: 0.5rem">
+  <img
+    src="data:image/gif;base64,{{ tutor.tutorPhoto }}"
+    width="50"
+    height="50"
+    style="border-radius: 55px"
+    class="d-inline-block align-top"
+    alt=""
+    
+  />
+</div>
+
+
+<!--end-->
 </nav>
+ <!--menu-->
+
+ <mat-menu #menu="matMenu" xPosition="before">
+  
+  <button (click)="logout()" mat-menu-item><i class="fa fa-sign-out" aria-hidden="true" style="padding-right: 0.5rem;"></i>Logout</button>
+</mat-menu>
+<!--end-->
+
 
 <div style="padding-top: 2rem; padding-bottom: 1rem">
   <div class="header">My Schedule</div>
@@ -99,7 +114,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let item of groupSessions">
+              <tr *ngFor="let item of groupSessions | paginate: { itemsPerPage: 5, currentPage: page,totalItems:totalLength, id: 'first' }">
                 <td><a href="#">{{item.title}}</a></td>
                 <td>{{item.module.moduleCode}}</td>
                 <td>{{item.date}}</td>
@@ -121,28 +136,10 @@
             </tbody>
           </table>
           <br />
-          <nav
-            aria-label="Page navigation example "
-            style="margin-left: 75%; padding-bottom: 0.5rem"
-          >
-            <ul class="pagination">
-              <li class="page-item">
-                <a class="page-link" href="#" aria-label="Previous">
-                  <span aria-hidden="true">&laquo;</span>
-                  <span class="sr-only">Previous</span>
-                </a>
-              </li>
-              <li class="page-item"><a class="page-link" href="#">1</a></li>
-              <li class="page-item"><a class="page-link" href="#">2</a></li>
-              <li class="page-item"><a class="page-link" href="#">3</a></li>
-              <li class="page-item">
-                <a class="page-link" href="#" aria-label="Next">
-                  <span aria-hidden="true">&raquo;</span>
-                  <span class="sr-only">Next</span>
-                </a>
-              </li>
-            </ul>
-          </nav>
+          <pagination-controls  id="first" style=" padding-left: 0px !important; display:flex;float: right" (pageChange)="page = $event"></pagination-controls>
+       
+        <br>
+       <br>
         </div>
         <br />
         <br />
@@ -206,7 +203,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr  *ngFor="let item of indivSessions">
+              <tr  *ngFor="let item of indivSessions | paginate: { itemsPerPage: 5, currentPage: page1,totalItems:totalLength1,id: 'second' }">
                 <td><a href="#">{{item.module.moduleCode}}</a></td>
                 <td>{{item.date}}</td>
                 <td>{{item.sessionTime.startTime}} - {{item.sessionTime.endTime}}</td>
@@ -226,28 +223,9 @@
             </tbody>
           </table>
           <br />
-          <nav
-            aria-label="Page navigation example "
-            style="margin-left: 75%; padding-bottom: 0.5rem"
-          >
-            <ul class="pagination">
-              <li class="page-item">
-                <a class="page-link" href="#" aria-label="Previous">
-                  <span aria-hidden="true">&laquo;</span>
-                  <span class="sr-only">Previous</span>
-                </a>
-              </li>
-              <li class="page-item"><a class="page-link" href="#">1</a></li>
-              <li class="page-item"><a class="page-link" href="#">2</a></li>
-              <li class="page-item"><a class="page-link" href="#">3</a></li>
-              <li class="page-item">
-                <a class="page-link" href="#" aria-label="Next">
-                  <span aria-hidden="true">&raquo;</span>
-                  <span class="sr-only">Next</span>
-                </a>
-              </li>
-            </ul>
-          </nav>
+          <pagination-controls id="second" style=" padding-left: 0px !important; display:flex;float: right" (pageChange)="page1 = $event"></pagination-controls>
+          <br>
+          <br>
         </div>
       </nb-tab>
     </nb-tabset>

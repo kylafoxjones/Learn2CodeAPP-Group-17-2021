@@ -3,6 +3,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { TutorService } from '../../tutor resources/tutor.service';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @Component({
   selector: 'app-take-attendance',
@@ -12,6 +13,9 @@ import { TutorService } from '../../tutor resources/tutor.service';
 export class TakeAttendanceComponent implements OnInit {
   students: any = [];
   data: any;
+  //pagination
+  page1:number = 1;
+  totalLength1:any;
 
   constructor(
     private router: Router,

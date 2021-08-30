@@ -11,16 +11,21 @@
     <span class="TDO" style="color: rgb(0, 156, 158); margin-right: auto"
       >TutorDevOps</span
     >
-    <div class="topnav-right">
-      <a>Home</a>
-     
-    </div>
+    <span class="right" [routerLink]="['/adminhome']"> 
+      <a style=" color:whitesmoke; margin-right: 3rem;" >Home</a>
+    </span>
     <div class="topnav-right">
        
-        <div class="dot" >A</div>
+      <div [matMenuTriggerFor]="menu"  class="dot" >A</div>
     </div>
   </nav>
+  <!--menu-->
+
+<mat-menu #menu="matMenu" xPosition="before">
   
+  <button (click)="logout()" mat-menu-item><i class="fa fa-sign-out" aria-hidden="true" style="padding-right: 0.5rem;"></i>Logout</button>
+</mat-menu>
+
   <div style="padding-top: 2rem;padding-bottom: 0.5rem;">
     <div class="header" >Monthly Feedback Report</div>
   </div>
@@ -29,22 +34,36 @@
 <br>
 <div class="row">
     <div class="col-md-12">
-     
+
       <mat-form-field appearance="outline" style="margin-left: 4.9rem;margin-right: 1rem;width: 250px; align-content: center;" >
         <mat-label style="text-align: center;">Session</mat-label>
-        <mat-select placeholder="Session title" (selectionChange)="changeSession($event.value)">
+        <div
+            *ngIf="selectses.invalid && (selectses.dirty || selectses.touched)"
+            class="alert"
+          >
+            <div
+              *ngIf="selectses.errors?.required"
+              style="font-size: smaller; color: red"
+            >
+              Session is required.
+            </div>
+          </div>
+        <mat-select required
+        name="selectses"
+        #selectses="ngModel"
+        [(ngModel)]="sessionxv" placeholder="Session title" (selectionChange)="changeSession($event.value)">
           <mat-option *ngFor="let item of SessionList" [value]="[item.id]" >
           {{item.title}}
         </mat-option>
         </mat-select>
-      </mat-form-field> <span>  
-        <button style="height: 3.2rem;margin-bottom: 0.7rem;width: 3rem;" (click)="getFeedbackList();"   matTooltip="My tooltip"  class="btn btn-primary"> <i class="fa fa-search"></i></button></span>
-   
-    </div>
-    
+      </mat-form-field> <span>
+        <button style="height: 3.2rem;margin-bottom: 0.7rem;width: 3rem;" (click)="getFeedbackList();"   matTooltip="My tooltip" [disabled]="selectses.invalid" class="btn btn-primary"> <i class="fa fa-search"></i></button></span>
 
-  
-  
+    </div>
+
+
+
+
 </div>
 <br>
 <div class="row" id="Feedback">
@@ -53,11 +72,11 @@
 <label  style="font-size: x-large; margin-left: 3rem;" id="Date">Date: {{Date}}</label>
 
     </div>
-    
+
 
   <br>
 <div class="row">
-  
+
     <div class="col-md-6">
         <div style="margin-left: 5rem;" >
 
@@ -69,10 +88,10 @@
           [legend]="barChartLegend"
           [chartType]="barChartType">
         </canvas>
-         
-        
+
+
         </div>
-        
+
     </div>
 
     <div class="col-md 6">
@@ -81,8 +100,8 @@
               <tr>
                 <th scope="col">Student</th>
                 <th scope="col">Description</th>
-               
-              
+
+
               </tr>
             </thead>
             <tbody>
@@ -92,7 +111,7 @@
           </tr>
             </tbody>
           </table>
-          
+
           <br>
               <pagination-controls style=" padding-left: 0px !important; display:flex;float: right" (pageChange)="page1 = $event"></pagination-controls>
               <br>
@@ -101,7 +120,7 @@
     </div>
 </div>
 </div>
- 
+
   <br>
   <div style="padding:0.4rem">
   <button  (click)="DownloadPDF();x()" style="margin-left: 6rem;width: 10rem;"  class="btn btn-info">Generate PDF</button>
@@ -115,13 +134,13 @@
 <footer>
     <nav  id="foot" class="navbar ">
       <a class="navbar-brand" href="#">
-       
+
       </a>
       <span class="TDO" style=" margin-right: auto"
         > &lt; TDO &gt;</span
       >
       <div class="topnav-right">
-        
+
         <a href="#"> <i class="fa fa-facebook"></i> </a>
         <a href="#"> <i class="fa fa-instagram"></i> </a>
         <a href="#"> <i class="fa fa-twitter"></i> </a>
@@ -130,4 +149,4 @@
     </nav>
   </footer>
 
-  
+

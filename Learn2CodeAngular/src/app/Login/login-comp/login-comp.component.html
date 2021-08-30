@@ -68,7 +68,7 @@
             border-radius: 25px;
             background-color: white;
             width: 23rem;
-            height: 24.5rem;
+            height: auto;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
               0 6px 6px rgba(0, 0, 0, 0.23);
             margin-left: 8rem;
@@ -86,22 +86,76 @@
             <form class="example-form" style="padding-top: 1rem">
               <mat-form-field class="example-full-width">
                 <mat-label>Email:</mat-label>
+                <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert">
+                  <div
+                    *ngIf="email.errors?.required"
+                    style="font-size: smaller; color: red"
+                  >
+                    Email is required.
+                  </div>
+                  <div
+                    *ngIf="email.errors?.minlength"
+                    style="font-size: smaller; color: red"
+                  >
+                    Email must be at least 8 characters long.
+                  </div>
+                  <div *ngIf="email.errors?.pattern" style="font-size: smaller; color: red">
+                    Please enter a valid email.
+                  </div>
+                </div>
                 <input
                   [(ngModel)]="login.email"
+                  #email="ngModel"
+                  pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$"
+                  placeholder="Example@gmail.com"
+                  type="email"
                   name="email"
                   matInput
-                  placeholder="Example@gmail.com"
+                  required
+                  minlength="8"
+                  id="email"
+
                 />
               </mat-form-field>
 
               <mat-form-field class="example-full-width" id="z">
                 <mat-label>Password:</mat-label>
+                <div
+                  *ngIf="
+                    password.invalid && (password.dirty || password.touched)
+                  "
+                  class="alert"
+                >
+                  <div
+                    *ngIf="password.errors?.required"
+                    style="font-size: smaller; color: red"
+                  >
+                    Password is required.
+                  </div>
+                  <div
+                    *ngIf="password.errors?.minlength"
+                    style="font-size: smaller; color: red"
+                  >
+                    Password must be 12 characters.
+                  </div>
+                  <div
+                    *ngIf="password.errors?.pattern"
+                    style="font-size: smaller; color: red"
+                  >
+                    Password must contain atleast a lowercase and an uppercase
+                    letter, a number and a special character.
+                  </div>
+                </div>
                 <input
                   [(ngModel)]="login.password"
                   name="password"
                   matInput
                   placeholder="Password"
                   type="password"
+                  #password="ngModel"
+                  required
+                  minlength="12"
+                  pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$@!%&*?])[A-Za-z\d#$@!%&*?]{12,30}$"
                 />
               </mat-form-field>
             </form>
@@ -111,6 +165,7 @@
                 <button
                   (click)="Log()"
                   type="button"
+                  [disabled]="email.invalid || password.invalid"
                   class="btn btn-outline-secondary"
                   style="
                     border-color: rgb(0, 156, 158);
@@ -121,7 +176,8 @@
                   Login
                 </button>
               </span>
-              <button [routerLink]="['/studenthomepage/registerstudent']"
+              <button
+                [routerLink]="['/studenthomepage/registerstudent']"
                 type="button"
                 class="btn btn-secondary"
                 style="
@@ -136,7 +192,9 @@
             <hr />
             <div style="text-align: center">
               <label for="#z">
-                <a (click)="openForget()" style="font-size: medium; text-align: center; color: blue"
+                <a
+                  (click)="openForget()"
+                  style="font-size: medium; text-align: center; color: blue"
                   >Forgot Password?</a
                 ></label
               >

@@ -12,6 +12,8 @@ import { DisplayCoursesComponent } from './student-home/display-courses/display-
 import { ViewResourcesComponent } from './view-resources/view-resources.component';
 import { ViewGroupSessionsComponent } from './view-group-sessions/view-group-sessions.component';
 import { SessionsComponent } from './sessions/sessions.component';
+import { ViewSessionContentComponent } from './view-session-content/view-session-content.component';
+import { SpecificSessionContentComponent } from './view-session-content/specific-session-content/specific-session-content.component';
 import { ViewSubscriptionsComponent } from './view-subscriptions/view-subscriptions.component';
 
 const routes: Routes =  [
@@ -34,7 +36,7 @@ const routes: Routes =  [
         component: StudentHomeComponent,
       },
       {
-        path: 'studentSessions',
+        path: 'studentSessions', 
         component: SessionsComponent,
       },
       {
@@ -65,6 +67,15 @@ const routes: Routes =  [
         path: 'viewresource',
         component: ViewResourcesComponent,
       },
+      {
+        path: 'viewsessioncontent',
+        component: ViewSessionContentComponent,
+      },
+      {
+        path: 'specificsessioncontent',
+        component: SpecificSessionContentComponent,
+      },
+      
       {
         path: 'viewresubscriptions',
         component: ViewSubscriptionsComponent,

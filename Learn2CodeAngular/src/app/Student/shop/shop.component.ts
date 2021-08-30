@@ -64,7 +64,11 @@ export class ShopComponent implements OnInit {
     //   console.log('student id kept in the service',this.service.studentId);
     //   this.getBasketForStudent();
   }
-
+  public logout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('id');
+    this.router.navigate(['/loginhomepage/login']);
+  };
   getBasketForStudent() {
     //student ID hard coded for now
     let studentId = this.thisStudent.id;

@@ -17,6 +17,14 @@ export class ViewTutorsComponent implements OnInit {
   tutorList: any = [];
   messages: any;
   search;
+  //pagination
+  page1:number = 1;
+  totalLength1:any;
+  thisStudent:any={};
+  userId:any;
+
+  page:number = 1;
+  totalLength:any;
 
   constructor(
     private router: Router,
@@ -26,6 +34,22 @@ export class ViewTutorsComponent implements OnInit {
 
   ngOnInit(){
     this.getAllTutors();
+    this.getLoggedInUser();
+  }
+  public logout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('id');
+    this.router.navigate(['/loginhomepage/login']);
+  };
+  getLoggedInUser() {
+    this.userId = localStorage.getItem('id');
+    console.log(this.userId);
+    this.service.getStudent(this.userId).subscribe((res) => {
+      this.thisStudent = res;
+      console.log('student logged in ts file', this.thisStudent);
+     
+     
+    });
   }
 
   createMessage(obj) {

@@ -496,4 +496,14 @@ export class AdminService {
   getAdminLoggedIn(){
     return this.http.get(this.apiUrl + 'GetAdmin');
   }
+
+
+  downloadCv(id) {
+    console.log(id);
+    return this.http.get(this.apiUrl + 'DownTutorApplication/' + id, {
+      responseType: 'blob',
+    });
+  }
+  
+
 }

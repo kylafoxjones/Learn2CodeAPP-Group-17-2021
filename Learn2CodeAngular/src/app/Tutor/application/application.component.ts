@@ -17,6 +17,9 @@ export class ApplicationComponent implements OnInit {
   formdata = new FormData();
   moduleList: any = [];
   info: any;
+  modulexv: any;
+  picture: any;
+  cv:any;
 
   constructor(private router: Router, private service: TutorService) {}
 

@@ -17,7 +17,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
   styleUrls: ['./feedback-report.component.scss']
 })
 export class FeedbackReportComponent implements OnInit {
-  
+
   @ViewChild(BaseChartDirective) chart: BaseChartDirective;
 
   private updateChart(){
@@ -43,7 +43,8 @@ export class FeedbackReportComponent implements OnInit {
   SessionDetailsList:any = [];
   TutorName:any;
   Date:any;
-  
+  sessionxv: any;
+
 
 
   constructor(
@@ -54,7 +55,7 @@ export class FeedbackReportComponent implements OnInit {
   ngOnInit(): void {
     this.getSessionDropdown();
     this.barChartData = [{ data: [0,0,0], label: 'Session Feedback Score' }, ];
-                         
+
   }
   x(){
     Swal.fire(
@@ -64,12 +65,16 @@ export class FeedbackReportComponent implements OnInit {
     )
   }
 
-
+  public logout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('id');
+    this.router.navigate(['/loginhomepage/login']);
+  };
 
 
   getSessionDropdown(){
     this.reportService.getFeedbackSessionDropdown().subscribe((result) => {
-      this.SessionList = result; 
+      this.SessionList = result;
       console.log(this.SessionList);
     });
    }
@@ -77,9 +82,9 @@ export class FeedbackReportComponent implements OnInit {
 
 
    changeSession(value) {
-    
+
   this.BookingInstanceID = value;
-  
+
   }
 
 getFeedbackList(){
@@ -111,12 +116,12 @@ this.reportService.getSessionFeedbackScore(this.ID).subscribe((result) =>{
 
 
   this.barChartData = [{ data: [this.Friendliness,this.Timeliness,this.Ability],
-                         label: 'Session Feedback Score',  
+                         label: 'Session Feedback Score',
                          backgroundColor:'rgb(0, 204, 204)',
                          pointBackgroundColor:'rgb(179, 240, 255)',
                          pointHoverRadius: 0,
                          hoverBackgroundColor:'rgb(128, 229, 255)', }];
-                        
+
                       })
 
 
@@ -137,7 +142,7 @@ public barChartOptions: ChartOptions = {
   },
  legend: {
    labels:{
-     boxWidth:60 
+     boxWidth:60
    }
  },
   scales: {
@@ -157,7 +162,7 @@ public barChartType: ChartType = 'bar';
 public barChartLegend = true;
 public barChartPlugins = [];
 public barChartData: ChartDataSets[] = [
-  { data: [0,0,0], label: 'Session Feedback Score',  
+  { data: [0,0,0], label: 'Session Feedback Score',
   backgroundColor:'rgb(0, 204, 204)',
   pointBackgroundColor:'rgb(179, 240, 255)',
   pointHoverRadius: 0,
@@ -165,8 +170,8 @@ public barChartData: ChartDataSets[] = [
    }
 ]
 
- 
-  
+
+
 public chartHovered({ event, active }: { event: MouseEvent, active: {}[] }): void {
   console.log(event, active);
 }
@@ -180,19 +185,19 @@ public RedirectReportHome(){
 
 public DownloadPDF():void {
   let data = document.getElementById('Feedback');
-    
+
   html2canvas(data).then(canvas => {
-      
+
       let fileWidth = 300;
       let fileHeight = canvas.height * fileWidth / canvas.width;
-      
+
       const FILEURI = canvas.toDataURL('image/png')
       let PDF = new jsPDF('l', 'mm', 'a4');
       let position = 5;
       PDF.addImage(FILEURI, 'PNG', 0, position, fileWidth, fileHeight)
-      
+
       PDF.save('FeedbackReport.pdf');
-  });     
+  });
 }
 
 

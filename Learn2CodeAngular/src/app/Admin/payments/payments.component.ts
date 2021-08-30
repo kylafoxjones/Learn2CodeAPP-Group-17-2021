@@ -4,6 +4,7 @@ import Swal from 'sweetalert2';
 import { AdminService } from '../admin resources/admin.service';
 import { UploadCsvFileComponent } from './upload-csv-file/upload-csv-file.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-payments',
@@ -18,7 +19,7 @@ export class PaymentsComponent implements OnInit {
 
   payments: any;
   search;
-  constructor(public dialog: MatDialog, private service: AdminService) {}
+  constructor(public dialog: MatDialog, private service: AdminService, private router: Router) {}
 
   ngOnInit() {
    this.getPaymentList();
@@ -30,6 +31,13 @@ export class PaymentsComponent implements OnInit {
       this.totalLength = this.payments.length;
     });
   }
+
+
+  public logout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('id');
+    this.router.navigate(['/loginhomepage/login']);
+  };
 
   openPopUpUpload(): void {
     const dialogRef = this.dialog.open(UploadCsvFileComponent, {

@@ -29,7 +29,11 @@ export class ProfileComponent implements OnInit {
 
     this.getStudentInfo();
   }
-
+  public logout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('id');
+    this.route.navigate(['/loginhomepage/login']);
+  };
   getStudentInfo() {
     //to get the student info for the circle at the top
     this.userId = localStorage.getItem('id');

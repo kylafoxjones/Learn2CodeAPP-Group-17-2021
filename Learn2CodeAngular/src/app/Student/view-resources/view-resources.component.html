@@ -1,41 +1,29 @@
-
-<nav id="adminnav" class="navbar navbar-dark bg-dark">
-    <a class="navbar-brand" href="#" style="margin-right: 12rem;">
-      <img
-        src="../.././assets/pics/HD logo.png"
-        width="40"
-        height="40"
-        class="d-inline-block align-top"
-        alt=""
-      />
-    </a>
-    <span class="TDO" style="color: rgb(0, 156, 158); margin-right: auto;margin-right: 6rem;"
-      >TutorDevOps</span
-    >
-    <div class="right" >
-        
-    </div>
-   
-        
-    <div class="right" style="margin-left: 2rem;">
-        <span  style="color: whitesmoke;"><i style="color: whitesmoke;" class="fa fa-ticket" aria-hidden="true"></i><i style="color: whitesmoke;" class="fa fa-ticket" aria-hidden="true"></i> x4  <i style="color: whitesmoke;margin-left: 1rem;" class="fa fa-ticket" aria-hidden="true"> </i> x3</span>
-        
-       
-        <span style="color: whitesmoke; margin-right: 2rem;padding-left: 1.5rem;">Home</span>
-        
-      </div>
-    <div class="topnav-right" >
-      
-       
-        <div [matMenuTriggerFor]="menu" class="dot">{{ thissStudent.studentName[0]+ thissStudent.studentSurname[0] }}</div>
-    </div>
-  </nav>
+<nav class="navbar navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">
+    <img
+      src="../.././assets/pics/HD logo.png"
+      width="40"
+      height="40"
+      class="d-inline-block align-top"
+      alt=""
+    />
+  </a>
+  <span class="TDO" style="color: rgb(0, 156, 158); margin-right: auto"
+    >TutorDevOps</span
+  >
+  <div [routerLink]="['/studenthomepage/studenthome']" class="topnav-right">
+    <a >Home</a>
+  </div>
+  <div class="topnav-right">
+    <div   [matMenuTriggerFor]="menu" class="dot">{{ thissStudent.studentName[0]+ thissStudent.studentSurname[0] }}</div>
+  </div>
+</nav>
 
   <!--menu-->
   
   <mat-menu #menu="matMenu" xPosition="before">
-    <button mat-menu-item><i class="fa fa-user" aria-hidden="true" style="padding-right: 0.5rem;"></i>Profile</button>
-    <button  mat-menu-item><i class="fa fa-sign-out" aria-hidden="true" style="padding-right: 0.5rem;"></i>Logout</button>
+    <button [routerLink]="['/profile']" mat-menu-item><i class="fa fa-user" aria-hidden="true" style="padding-right: 0.5rem;"></i>Profile</button>
+    <button  (click)="logout()" mat-menu-item><i class="fa fa-sign-out" aria-hidden="true" style="padding-right: 0.5rem;"></i>Logout</button>
   </mat-menu>
 
   <span flex></span>

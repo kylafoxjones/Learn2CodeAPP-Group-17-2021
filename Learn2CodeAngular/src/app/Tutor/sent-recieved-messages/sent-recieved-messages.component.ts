@@ -3,6 +3,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { TutorService } from '../tutor resources/tutor.service';
+import { MatMenuModule } from '@angular/material/menu';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @Component({
   selector: 'app-sent-recieved-messages',
@@ -16,6 +18,14 @@ export class SentRecievedMessagesComponent implements OnInit {
   recieverID: any;
   tutorID: any;
   data: any;
+  tutor: any;
+  userId: any;
+   //pagination
+   totalLength: any;
+   page: number = 1;
+   page1: number = 1;
+   totalLength1: any;
+
 
   constructor(
     private router: Router,
@@ -24,10 +34,20 @@ export class SentRecievedMessagesComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.userId = localStorage.getItem('id');
+    console.log(this.userId);
+    this.service.getTutor(this.userId).subscribe((result) => {
+      this.tutor = result;});
     this.getTutorId();
     this.getMessagesSent();
     this.getRecievedMessages();
   }
+  
+  public logout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('id');
+    this.router.navigate(['/loginhomepage/login']);
+  };
 
   getTutorId() {
     // this fux gets the id of the tutor that is logged in

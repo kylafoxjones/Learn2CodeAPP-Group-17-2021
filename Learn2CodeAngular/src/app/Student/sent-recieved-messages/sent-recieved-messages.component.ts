@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { AmdDependency } from 'typescript';
 import { StudentService } from '../Student resources/student.service';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @Component({
   selector: 'app-sent-recieved-messages',
@@ -17,6 +18,17 @@ export class SentRecievedMessagesComponent implements OnInit {
   studentID: any;
   recieverID: any;
   data: any = {};
+  
+   //pagination
+   page1:number = 1;
+   totalLength1:any;
+
+   page:number = 1;
+   totalLength:any;
+   
+
+  userId:any;
+  thisStudent:any;
   userId:any;
   student:any ={};
 
@@ -27,11 +39,17 @@ export class SentRecievedMessagesComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.getLoggedInUser();
     this.getStudentId();
     this.getStudentLoggedIn();
     this.getMessagesSent();
     this.getRecievedMessages();
   }
+  public logout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('id');
+    this.router.navigate(['/loginhomepage/login']);
+  };
 
   getStudentLoggedIn() {
     this.userId = localStorage.getItem('id');

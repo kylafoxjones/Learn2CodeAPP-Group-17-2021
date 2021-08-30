@@ -32,7 +32,14 @@ export class TotalStudentsReportComponent implements OnInit {
     )
   }
 
+  public logout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('id');
+    this.router.navigate(['/loginhomepage/login']);
+  };
+
   getStudentDetails() {
+    
     this.reportService.getTotalStudents().subscribe((result) => {
       this.studentList = result; 
       this.totalLength = this.studentList.length;
