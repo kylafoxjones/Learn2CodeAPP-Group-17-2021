@@ -99,6 +99,7 @@
             >
               <thead>
                 <tr>
+                  <th></th>
                   <th scope="col">Tutor name:</th>
                   <th scope="col">Surname:</th>
                   <th scope="col">Email:</th>
@@ -111,18 +112,25 @@
               </thead>
               <tbody>
                 <tr *ngFor="let item of MessagesSent | filter: search">
-                  <td>{{ item.tutor.tutorName }}</td>
-                  <td>{{ item.tutor.tutorSurname }}</td>
-                  <td>{{ item.tutor.tutorEmail }}</td>
-                  <td>{{ item.timeStamp }}</td>
-                  <td (click)="viewSentMessage(item)">
+                  <td> <img
+                    width="50"
+                    height="50"
+                    style="border-radius: 55px;"
+                    class="d-inline-block align-top"
+                    src="data:image/gif;base64,{{item.tutor?.tutorPhoto}}"
+                  /></td>
+                  <td  style="vertical-align:middle;">{{ item.tutor.tutorName }}</td>
+                  <td  style="vertical-align:middle;">{{ item.tutor.tutorSurname }}</td>
+                  <td  style="vertical-align:middle;">{{ item.tutor.tutorEmail }}</td>
+                  <td  style="vertical-align:middle;">{{ item.timeStamp }}</td>
+                  <td  style="vertical-align:middle;" (click)="viewSentMessage(item)">
                     <i
                       style="font-size: x-large"
                       class="fa fa-envelope-o"
                       aria-hidden="true"
                     ></i>
                   </td>
-                  <td (click)="deleteSentMessage(item.id)">
+                  <td  style="vertical-align:middle;" (click)="deleteSentMessage(item.id)">
                     <button class="btn btn-danger">
                       <i class="fa fa-trash" aria-hidden="true"></i>
                     </button>
@@ -206,6 +214,7 @@
             >
               <thead>
                 <tr>
+                <th scope="col"></th>
                   <th scope="col">Tutor name:</th>
                   <th scope="col">Surname:</th>
                   <th scope="col">Email:</th>
@@ -213,27 +222,30 @@
                   <th scope="col">Message:</th>
   
                   <th scope="col"></th>
-                  <th scope="col"></th>
+                  
                 </tr>
               </thead>
               <tbody>
                 <tr *ngFor="let item of MessagesRecieved | filter: search">
-                  <td>{{ item.tutor.tutorName }}</td>
-                  <td>{{ item.tutor.tutorSurname }}</td>
-                  <td>{{ item.tutor.tutorEmail }}</td>
-                  <td>{{ item.timeStamp }}</td>
-                  <td (click)="viewReceivedMessage(item)">
+                  <td> <img
+                    width="50"
+                    height="50"
+                    style="border-radius: 55px;"
+                    class="d-inline-block align-top"
+                    src="data:image/gif;base64,{{item.tutor?.tutorPhoto}}"
+                  /></td>
+                  <td  style="vertical-align:middle;">{{ item.tutor.tutorName }}</td>
+                  <td  style="vertical-align:middle;">{{ item.tutor.tutorSurname }}</td>
+                  <td  style="vertical-align:middle;">{{ item.tutor.tutorEmail }}</td>
+                  <td  style="vertical-align:middle;">{{ item.timeStamp }}</td>
+                  <td  style="vertical-align:middle;" (click)="viewReceivedMessage(item)">
                     <i
                       style="font-size: x-large"
                       class="fa fa-envelope-o"
                       aria-hidden="true"
                     ></i>
                   </td>
-                  <td (click)="deleteSentMessage(item.id)">
-                    <button class="btn btn-danger">
-                      <i class="fa fa-trash" aria-hidden="true"></i>
-                    </button>
-                  </td>
+                 
                 </tr>
               </tbody>
             </table>

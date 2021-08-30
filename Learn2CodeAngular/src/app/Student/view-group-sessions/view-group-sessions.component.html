@@ -65,7 +65,7 @@
       style="
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
           0 6px 6px rgba(0, 0, 0, 0.23);
-        width: 80%;
+        width: 85%;
         margin: auto;
         border-radius: 15px;
       "
@@ -95,6 +95,7 @@
         <thead>
           <tr>
             <th scope="col">Tutor name:</th>
+            <th scope="col">Title:</th>
             <th scope="col">Date:</th>
             <th scope="col">Time:</th>
             <th scope="col">Module:</th>
@@ -107,10 +108,11 @@
               {{ item.bookingInstance.tutor.tutorName }}
               {{ item.bookingInstance.tutor.tutorSurname }}
             </td>
+            <td>{{ item.bookingInstance.title }}</td>
             <td>{{ item.bookingInstance.date }}</td>
             <td>{{ item.bookingInstance.sessionTime.startTime }} - {{ item.bookingInstance.sessionTime.endTime }}</td>
             <td>{{ item.bookingInstance.module.moduleCode }}</td>
-            <td>{{ item.bookingInstance.link}}</td>
+            <td> <a href="{{ item.bookingInstance.link}}">{{ item.bookingInstance.link}}</a></td>
             <!-- <td (click)="createMessage(item)">
                 <i
                   style="font-size: x-large"

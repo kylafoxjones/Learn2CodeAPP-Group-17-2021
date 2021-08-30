@@ -10,7 +10,8 @@
 
 <div class="row">
     <div class="col-md-4">
-        <mat-form-field appearance="outline">
+      <div style="margin-left: 2rem;">
+        <mat-form-field appearance="outline" >
             <mat-label>Session Type:</mat-label>
             <mat-select (valueChange)="selectType($event)">
               <mat-option *ngFor="let type of typeList" [value]="type.id">
@@ -18,6 +19,7 @@
               </mat-option>
             </mat-select>
           </mat-form-field>
+        </div>
     </div>
     <div class="col-md-4">
         <mat-form-field class="example-full-width" >
@@ -46,31 +48,30 @@
                   </mat-form-field>
             </div>
         </div>
+        <div class="col-md-4">
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Choose a date</mat-label>
+            <input  [(ngModel)]="data.Date" name='Date' matInput  [matDatepicker]="picker">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </div>
+        <div class="col-md-4">
+          <div  style="margin-left: 2rem;">
+              <mat-form-field appearance="outline">
+                  <mat-label>Time:</mat-label>
+                  <mat-select (valueChange)="selectTime($event)">
+                    <mat-option *ngFor="let type of timeList" [value]="type.id">
+                   {{type.startTime}} - {{type.endTime}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+          </div>
+      </div>
+        
         </div>
 
-        <div class="row">
-            <div class="col-md-4">
-              <mat-form-field class="example-full-width" appearance="fill">
-                <mat-label>Choose a date</mat-label>
-                <input  [(ngModel)]="data.Date" name='Date' matInput  [matDatepicker]="picker">
-                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-datepicker #picker></mat-datepicker>
-              </mat-form-field>
-            </div>
-            <div class="col-md-4">
-                <div  style="margin-left: 2rem;">
-                    <mat-form-field appearance="outline">
-                        <mat-label>Time:</mat-label>
-                        <mat-select (valueChange)="selectTime($event)">
-                          <mat-option *ngFor="let type of timeList" [value]="type.id">
-                         {{type.startTime}} - {{type.endTime}}
-                          </mat-option>
-                        </mat-select>
-                      </mat-form-field>
-                </div>
-            </div>
-        </div>
-     
+        
   </form>
 
   <div style="margin-left: 33%;">
