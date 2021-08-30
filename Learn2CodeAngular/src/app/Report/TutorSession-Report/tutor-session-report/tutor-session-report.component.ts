@@ -22,7 +22,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./tutor-session-report.component.scss']
 })
 export class TutorSessionReportComponent implements OnInit {
-   
+
     //pagination
     page1:number = 1;
     totalLength1:any;
@@ -37,6 +37,7 @@ export class TutorSessionReportComponent implements OnInit {
     ObjectToSend: any = {};
     //count sessions
     TutorName:any;
+    tutorxv: any;
 
 
   constructor(
@@ -56,13 +57,13 @@ export class TutorSessionReportComponent implements OnInit {
   }
 
   changeSession(value) {
-    
+
     this.TutorID = value;
-    
-    
+
+
     }
- 
-   
+
+
 
     getTutorDropdown(){
       this.ReportService.GetTutorsessionsTutor().subscribe((result) =>{
@@ -73,43 +74,43 @@ export class TutorSessionReportComponent implements OnInit {
 
     getTutorSessions(){
 
-      
+
       this.ObjectToSend.TutorId = this.TutorID;
       this.ObjectToSend.StartDate = this.Start;
       this.ObjectToSend.EndDate = this.End;
       console.log(this.ObjectToSend);
       this.ReportService.GetTotalTutorsessions(this.ObjectToSend).subscribe((result) => {
-        
-        
+
+
         this.TutorSession = result;
         this.TutorName = this.TutorSession[0].tutorName;
         this.totalLength1 = this.TutorSession.length;
         console.log(this.TutorName);
         console.log(this.TutorSession);
 
-        
+
       })
     }
 
     public RedirectReportHome(){
       this.router.navigateByUrl('/report-home');
     }
-    
+
     public DownloadPDF():void {
       let data = document.getElementById('TutorsessionData');
-        
+
       html2canvas(data).then(canvas => {
-          
+
           let fileWidth = 300;
           let fileHeight = canvas.height * fileWidth / canvas.width;
-          
+
           const FILEURI = canvas.toDataURL('image/png')
           let PDF = new jsPDF('l', 'mm', 'a4');
           let position = 0;
           PDF.addImage(FILEURI, 'PNG', 0, position, fileWidth, fileHeight)
-          
+
           PDF.save('TutorSessionReport.pdf');
-      });     
+      });
     }
 
 }
