@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { AmdDependency } from 'typescript';
 import { StudentService } from '../Student resources/student.service';
 import { NgxPaginationModule } from 'ngx-pagination';
 
@@ -28,6 +29,9 @@ export class SentRecievedMessagesComponent implements OnInit {
 
   userId:any;
   thisStudent:any;
+  userId:any;
+  student:any ={};
+
   constructor(
     private router: Router,
     public dialog: MatDialog,
@@ -37,6 +41,7 @@ export class SentRecievedMessagesComponent implements OnInit {
   ngOnInit() {
     this.getLoggedInUser();
     this.getStudentId();
+    this.getStudentLoggedIn();
     this.getMessagesSent();
     this.getRecievedMessages();
   }
@@ -46,16 +51,25 @@ export class SentRecievedMessagesComponent implements OnInit {
     this.router.navigate(['/loginhomepage/login']);
   };
 
-  getLoggedInUser() {
+  getStudentLoggedIn() {
     this.userId = localStorage.getItem('id');
     console.log(this.userId);
-    this.service.getStudent(this.userId).subscribe((res) => {
-      this.thisStudent = res;
-      console.log('student logged in ts file', this.thisStudent);
-     
-     
+    this.service.getStudent(this.userId).subscribe((result) => {
+      this.student = result;
+      console.log('the student logged in', this.student);
+      
     });
   }
+  public logout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('id');
+    this.router.navigate(['/loginhomepage/login']);
+  };
+
+  profile() {
+    this.router.navigate(['/profile']);
+  }
+
   getStudentId() {
     // this fux gets the id of the student that is logged in
     //it is needed so the api knows whos messages it should pull from the db

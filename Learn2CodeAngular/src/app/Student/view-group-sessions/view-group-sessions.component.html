@@ -1,4 +1,4 @@
-<nav class="navbar navbar-dark bg-dark">
+<nav id="adminnav" class="navbar navbar-dark bg-dark">
   <a class="navbar-brand" href="#">
     <img
       src="../.././assets/pics/HD logo.png"
@@ -11,8 +11,25 @@
   <span class="TDO" style="color: rgb(0, 156, 158); margin-right: auto"
     >TutorDevOps</span
   >
-  <div [routerLink]="['/studenthomepage/studenthome']" class="topnav-right">
-    <a>Home</a>
+  <div class="right"></div>
+
+  <div class="right" style="margin-left: 2rem">
+    <span style="color: whitesmoke"
+      ><i style="color: whitesmoke" class="fa fa-ticket" aria-hidden="true"></i
+      ><i style="color: whitesmoke" class="fa fa-ticket" aria-hidden="true"></i>
+      x4
+      <i
+        style="color: whitesmoke; margin-left: 1rem"
+        class="fa fa-ticket"
+        aria-hidden="true"
+      >
+      </i>
+      x3</span
+    >
+
+    <span [routerLink]="['/studenthomepage/studenthome']" style="color: whitesmoke; margin-right: 2rem; padding-left: 1.5rem"
+      >Home</span
+    >
   </div>
   <div class="topnav-right">
     <div   [matMenuTriggerFor]="menu" class="dot">{{ student.studentName[0]+ student.studentSurname[0] }}</div>
@@ -43,7 +60,7 @@
       style="
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
           0 6px 6px rgba(0, 0, 0, 0.23);
-        width: 80%;
+        width: 85%;
         margin: auto;
         border-radius: 15px;
       "
@@ -73,6 +90,7 @@
         <thead>
           <tr>
             <th scope="col">Tutor name:</th>
+            <th scope="col">Title:</th>
             <th scope="col">Date:</th>
             <th scope="col">Time:</th>
             <th scope="col">Module:</th>
@@ -85,10 +103,11 @@
               {{ item.bookingInstance.tutor.tutorName }}
               {{ item.bookingInstance.tutor.tutorSurname }}
             </td>
+            <td>{{ item.bookingInstance.title }}</td>
             <td>{{ item.bookingInstance.date }}</td>
             <td>{{ item.bookingInstance.sessionTime.startTime }} - {{ item.bookingInstance.sessionTime.endTime }}</td>
             <td>{{ item.bookingInstance.module.moduleCode }}</td>
-            <td>{{ item.bookingInstance.link}}</td>
+            <td> <a href="{{ item.bookingInstance.link}}">{{ item.bookingInstance.link}}</a></td>
             <!-- <td (click)="createMessage(item)">
                 <i
                   style="font-size: x-large"

@@ -70,6 +70,7 @@
       >
         <thead>
           <tr>
+            <th></th>
             <th scope="col">Tutor name:</th>
             <th scope="col">Tutor surname:</th>
             <th scope="col">Email:</th>
@@ -77,11 +78,18 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let item of tutorList | filter: search | paginate: { itemsPerPage: 5, currentPage: page,totalItems:totalLength, id: 'first' }">
-            <td>{{ item.tutorName }}</td>
-            <td>{{ item.tutorSurname }}</td>
-            <td>{{ item.tutorEmail}}</td>
-            <td (click)="createMessage(item)">
+          <tr *ngFor="let item of tutorList | filter: search">
+            <td> <img
+              width="50"
+              height="50"
+              style="border-radius: 55px;"
+              class="d-inline-block align-top"
+              src="data:image/gif;base64,{{item.tutorPhoto}}"
+            /></td>
+            <td style="vertical-align:middle;">{{ item.tutorName }}</td>
+            <td  style="vertical-align:middle;">{{ item.tutorSurname }}</td>
+            <td  style="vertical-align:middle;">{{ item.tutorEmail}}</td>
+            <td  style="vertical-align:middle;" (click)="createMessage(item)">
               <i
                 style="font-size: x-large"
                 class="fa fa-envelope-o"

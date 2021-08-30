@@ -1,0 +1,102 @@
+<nav class="navbar navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">
+        <img src="../.././assets/pics/HD logo.png" width="40" height="40" class="d-inline-block align-top" alt="" />
+    </a>
+    <span class="TDO" style="color: rgb(0, 156, 158); margin-right: auto">TutorDevOps</span>
+    <div class="topnav-right">
+        <a>Home</a>
+
+    </div>
+    <div class="topnav-right">
+        <div   [matMenuTriggerFor]="menu" class="dot">{{ thissStudent.studentName[0]+ thissStudent.studentSurname[0] }}</div>
+      </div>
+</nav>
+
+
+
+<mat-menu #menu="matMenu" xPosition="before">
+    <button [routerLink]="['/profile']" mat-menu-item><i class="fa fa-user" aria-hidden="true" style="padding-right: 0.5rem;"></i>Profile</button>
+    <button  (click)="logout()" mat-menu-item><i class="fa fa-sign-out" aria-hidden="true" style="padding-right: 0.5rem;"></i>Logout</button>
+  </mat-menu>
+
+
+
+
+        <div style="padding-top: 2rem;padding-bottom: 1rem;">
+            <div class="header">Session Content</div>
+        </div>
+        <nb-layout>
+            <nb-layout-column>
+        <div style="box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
+              0 6px 6px rgba(0, 0, 0, 0.23);width: 80%;margin: auto;border-radius: 15px;">
+            <br>
+        
+            <div class="input-group rounded" style="width: 30%;padding-left: 6rem;">
+                <input 
+                [(ngModel)]="search"
+                type="search" class="form-control rounded"
+                 placeholder="Search" aria-label="Search"
+                    aria-describedby="search-addon" />
+                <span>
+                    <button class="btn btn-primary"> <i class="fa fa-search"></i></button>
+                </span>
+            </div>
+            <br>
+        
+            <table class="table table-hover " style="width: 80%;margin: auto; padding-top: 3.5rem;">
+                <thead>
+                    <tr>
+                        <th scope="col">Session Title</th>
+                        <th scope="col">Module</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Content</th>
+                    </tr>
+                </thead>
+                <tbody>
+        
+                    <tr *ngFor="let item of contentList | filter: search">
+                        <td>{{item.bookingInstance.title}}</td>
+                        <td>{{item.bookingInstance.module.moduleCode}}</td>
+                        <td>{{item.bookingInstance.date}}</td>
+                        <td><button class="btn btn-success" (click)="navigateToSpecificSession(item)"> Content </button> </td>  
+                    </tr>
+                </tbody>
+            </table>
+            <br>
+            <nav aria-label="Page navigation example " style="margin-left: 75%;padding-bottom: 0.5rem;">
+                <ul class="pagination">
+                    <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </nb-layout-column>
+</nb-layout>
+<footer>
+    <nav id="foot" class="navbar  " style="width: 100%; position: absolute; bottom: 0;">
+        <a class="navbar-brand" href="#">
+
+        </a>
+        <span class="TDO" style=" margin-right: auto"> &lt; TDO &gt;</span>
+        <div class="topnav-right">
+
+            <a href="#"> <i class="fa fa-facebook"></i> </a>
+            <a href="#"> <i class="fa fa-instagram"></i> </a>
+            <a href="#"> <i class="fa fa-twitter"></i> </a>
+            <a>TutorDevOps@gmail.com</a>
+        </div>
+    </nav>
+</footer>

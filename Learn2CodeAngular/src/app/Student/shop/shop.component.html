@@ -89,7 +89,7 @@
     Checkout
   </button> -->
   <script src="https://js.paystack.co/v1/inline.js"></script>
-  <button
+  <button class="btn btn-info" style="width: 100%;bottom: 0;margin-top: 1rem;"
   angular4-paystack
   [key]="'pk_live_af05c857de047c4178a4ab3d32104299998199bb'"
   [email]="'mailexample@mail.com'"
@@ -101,7 +101,7 @@
     (onClose)="paymentCancel()"
     (callback)="paymentDone($event)"
   >
-  Pay with Paystack
+  Checkout
   </button>
 </mat-menu>
 

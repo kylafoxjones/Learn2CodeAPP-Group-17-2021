@@ -67,6 +67,14 @@ export class SalesReportComponent implements OnInit {
   //   });
   // }
  // getSubscriptionSalesTable(){
+  exportpay(){
+    this.ObjectToSend.StartDate = this.Start;
+    this.ObjectToSend.EndDate = this.End;
+    this.ReportService.export(this.ObjectToSend).subscribe((res) => {
+      saveAs(res, 'test'+  '.xlsx');
+    });
+  }
+ 
 
   
 
@@ -144,13 +152,7 @@ export class SalesReportComponent implements OnInit {
     });
   }
 
-  exportpay() {
-    // this.ReportService.export(this.Start, this.End).subscribe((res) => {
-    //   saveAs(res, 'test' + '.xlsx');
-    // });
-  }
+  
 }
 
-// function saveAs(result: any, arg1: string) {
-//   throw new Error('Function not implemented.');
-// }
+

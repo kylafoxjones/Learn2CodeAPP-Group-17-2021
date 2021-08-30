@@ -18,6 +18,7 @@ export class AddEditSessionContentCategoryComponent implements OnInit {
   placeholder = this.service.editSessionContentCat;
   oldSessionContentCategory: any;
   placeHolderOrNo = this.service.edit;
+  Admin:any;
 
   constructor(  public dialog: MatDialog,
     private dialogRef: MatDialogRef<AddEditSessionContentCategoryComponent>,
@@ -25,6 +26,7 @@ export class AddEditSessionContentCategoryComponent implements OnInit {
 
   ngOnInit(): void {
     this.data.SessionContentCategoryName = this.placeholder.sessionContentCategoryName;
+    this.getadmin();
   }
   submitEdittedSessionContentCategory() {
     if (this.service.editId > 0) {
@@ -59,6 +61,8 @@ export class AddEditSessionContentCategoryComponent implements OnInit {
         confirmButtonText: 'Yes',
       }).then((result) => {
         if (result.isConfirmed) {
+          this.data.AdminId = this.Admin.id;
+          console.log(this.data.AdminId)
           this.service.createSessionContentCategory(this.data).subscribe((result) => {
             console.log(this.data);
             this.data = result;
@@ -74,5 +78,14 @@ export class AddEditSessionContentCategoryComponent implements OnInit {
   }
   refreshCourseObj() {
     this.newSessonContentCategory = <any>{};
+  }
+
+  getadmin(){
+    this.service.getAdminLoggedIn().subscribe((res)=> {
+      this.Admin = res;
+      this.data.AdminId = this.Admin.id;
+      console.log(this.Admin);
+      console.log(this.data.AdminId);
+    });
   }
 }

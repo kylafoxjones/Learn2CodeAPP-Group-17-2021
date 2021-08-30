@@ -46,11 +46,7 @@ export class PaymentsComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result) => {
 
-      Swal.fire({
-        icon: 'success',
-        title: 'file is uploaded',
-        confirmButtonText: 'Ok',
-      });
+    
       this.getPaymentList();
     });
   }

@@ -20,6 +20,7 @@ export class AddEditCourseContentCategoryComponent implements OnInit {
   oldDescription: any;
   oldPrice: any;
   placeHolderOrNo = this.service.edit;
+  Admin:any;
 
   constructor(
     public dialog: MatDialog,
@@ -33,6 +34,7 @@ export class AddEditCourseContentCategoryComponent implements OnInit {
     this.data.CourseSubCategoryName = this.placeholder.courseSubCategoryName;
     this.data.Description = this.placeholder.description;
     this.data.price = this.placeholder.price;
+    this.getadmin();
   }
   submitEdittedCourseContentCategory() {
     console.log(
@@ -49,6 +51,7 @@ export class AddEditCourseContentCategoryComponent implements OnInit {
         confirmButtonText: 'Yes',
       }).then((result) => {
         if (result.isConfirmed) {
+          this.data.AdminId = this.Admin.id;
           this.service
             .editCourseContentCategory(this.data)
             .subscribe((result) => {
@@ -71,6 +74,7 @@ export class AddEditCourseContentCategoryComponent implements OnInit {
         confirmButtonText: 'Yes',
       }).then((result) => {
         if (result.isConfirmed) {
+          this.data.AdminId = this.Admin.id;
           this.service
             .createCourseContentCategory(this.data)
             .subscribe((result) => {
@@ -87,5 +91,14 @@ export class AddEditCourseContentCategoryComponent implements OnInit {
   }
   refreshDegreeObj() {
     this.newCourseContentCategory = <any>{};
+  }
+
+  getadmin(){
+    this.service.getAdminLoggedIn().subscribe((res)=> {
+      this.Admin = res;
+      this.data.AdminId = this.Admin.id;
+      console.log(this.Admin);
+      console.log(this.data.AdminId);
+    });
   }
 }

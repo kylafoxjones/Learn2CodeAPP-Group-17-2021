@@ -186,7 +186,7 @@ export class AdminService {
 
   createCourse(obj) {
     this.courseToSave = {
-      AdminId: this.adminId,
+      AdminId: obj.AdminId,
       CourseFolderName: obj.CourseFolderName,
     };
     console.log(this.courseToSave);
@@ -205,7 +205,7 @@ export class AdminService {
     console.log(oldObj);
     this.updatedCourse = {
       Id: oldObj.id,
-      AdminId: this.adminId,
+      AdminId:newCourseName.AdminId,
       CourseFolderName: newCourseName.CourseFolderName,
     };
     console.log(this.adminId);
@@ -265,8 +265,9 @@ export class AdminService {
   }
 
   createSessionContentCategory(obj) {
+    console.log(obj);
     this.sessionContentCategoryToSave = {
-      AdminId: this.adminId,
+      AdminId: obj.AdminId,
       SessionContentCategoryName: obj.SessionContentCategoryName,
     };
     console.log(this.sessionContentCategoryToSave);
@@ -287,7 +288,7 @@ export class AdminService {
     console.log(oldObj);
     this.updatedSessionContentCategory = {
       Id: oldObj.id,
-      AdminId: this.adminId,
+      AdminId: newSessionContentCategoryName.AdminId,
       SessionContentCategoryName:
         newSessionContentCategoryName.SessionContentCategoryName,
     };
@@ -326,7 +327,7 @@ export class AdminService {
 
   createSubscription(obj) {
     this.subscriptionToSave = {
-      AdminId: this.adminId,
+      AdminId: obj.AdminId,
       SubscriptionName: obj.SubscriptionName,
       Duration: obj.Duration,
       price: obj.price,
@@ -351,7 +352,7 @@ export class AdminService {
 
     this.updatedSubscription = {
       Id: oldObj.id,
-      AdminId: this.adminId,
+      AdminId: newSubscription.AdminId,
       SubscriptionName: newSubscription.SubscriptionName,
       Duration: newSubscription.Duration,
       price: newSubscription.price,

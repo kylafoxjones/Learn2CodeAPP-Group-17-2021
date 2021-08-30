@@ -66,9 +66,12 @@ export class AcceptRejectApplicationComponent implements OnInit {
           this.service.rejectApp().subscribe(
             (result) => {
               this.data = result;
-              Swal.fire('Rejection complete!', this.data.message, 'success');
-              this.dialogRef.close();
-              window.location.reload();
+              Swal.fire('Rejection complete!', this.data.message, 'success').then((result) => {
+                this.dialogRef.close();
+                window.location.reload();
+              });
+              
+             
             },
             (error) => {
               Swal.fire('Error!', error.error, 'error');
@@ -78,5 +81,6 @@ export class AcceptRejectApplicationComponent implements OnInit {
         });
       }
     });
+    
   }
 }

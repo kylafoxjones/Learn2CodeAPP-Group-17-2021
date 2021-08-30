@@ -45,7 +45,7 @@
   
   <span flex></span>
   
-  <div style="padding-top: 2rem; padding-bottom: 2rem; margin-left: 7.5rem">
+  <div style="padding-top: 2rem; padding-bottom: 2rem; margin-left: 3.5rem">
     <div class="header" style="height: 2.5rem">{{ course[0].courseSubCategory.courseSubCategoryName }}</div>
   </div>
   
@@ -111,7 +111,7 @@ Name:                        {{item.fileName}}
               background-color: rgb(6, 6, 7);
               width: 17rem;
               margin-left: 20%;
-              height: 27rem;
+              height: 25rem;
               box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
                 0 6px 6px rgba(0, 0, 0, 0.23);
             ">
@@ -122,14 +122,14 @@ Name:                        {{item.fileName}}
                 height: 2rem;
                 margin-left: 0.5rem;
               ">
-                  <h5 style="margin-left: 2.5rem; color: white">
+                  <h5 style="margin-left: 4rem; color: white">
                     Video
                   </h5>
                   <hr style="width: 125%; color: white" />
                   </div>
                   <div style="text-align: center; padding-top: 1.9rem">
                     <div>
-                      <h6 style="color: white"> {{ item.courseSubCategory.courseSubCategoryName }}  </h6>
+                      <h6  style="color: white;text-align: center;"> {{ item.courseSubCategory.courseSubCategoryName }}  </h6>
                       <p style="color: white">
   Name:                        {{item.fileName}}
       <br/>                       
@@ -141,7 +141,7 @@ Name:                        {{item.fileName}}
                   <button (click)="WatchVid(item)" class="btn btn-outline-info">
                     <i class="fa fa-play"></i> Watch</button>
                   
-                <video *ngIf="showVid"  width="240" height="150" controls [src]="prev_url" >
+                <video style="margin-top: 1rem;" *ngIf="showVid"  width="240" height="150" controls [src]="prev_url" >
                         
                   Your browser does not support the video tag.
                 </video>
@@ -158,7 +158,7 @@ Name:                        {{item.fileName}}
   </nb-layout-column>
   </nb-layout>
   
-  <footer style="bottom: 0; width: 100%; position: absolute">
+  <footer style="bottom: 0; width: 100%; ">
     <nav style="height: 3rem" id="foot" class="navbar">
       <a class="navbar-brand" href="#"> </a>
       <span class="TDO" style="margin-right: 27%"> &lt; TDO &gt;</span>
