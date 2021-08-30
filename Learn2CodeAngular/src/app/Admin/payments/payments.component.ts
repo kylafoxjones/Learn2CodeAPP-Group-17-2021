@@ -32,7 +32,7 @@ export class PaymentsComponent implements OnInit {
     });
   }
 
-  
+
   public logout = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('id');
