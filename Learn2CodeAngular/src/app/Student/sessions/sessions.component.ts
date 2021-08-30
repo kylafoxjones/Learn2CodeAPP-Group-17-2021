@@ -6,7 +6,7 @@ import { StudentService } from '../Student resources/student.service';
 import { CreateBookingComponent } from './create-booking/create-booking.component';
 import { EditBookingComponent } from './edit-booking/edit-booking.component';
 
-import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-sessions',
   templateUrl: './sessions.component.html',
@@ -30,7 +30,6 @@ export class SessionsComponent implements OnInit {
 
    page:number = 1;
    totalLength:any;
-  constructor(private service: StudentService,  private router: Router) {}
 
   constructor(
     private service: StudentService,
