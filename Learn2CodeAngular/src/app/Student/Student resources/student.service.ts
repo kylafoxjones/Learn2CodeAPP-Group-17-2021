@@ -7,6 +7,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 export class StudentService {
   apiUrl = 'https://localhost:44393/api/Student/';
+  apiUrlLogin = 'https://localhost:44393/api/Login/';
   //AdminapiUrl = 'https://localhost:44393/api/Admin/';
   //#region messaging
   title: any;
@@ -283,4 +284,9 @@ export class StudentService {
   getBoughtSubscriptions(StudentId) {
     return this.http.get(this.apiUrl + 'GetMySubscriptions/' + StudentId);
   }
+  
+  changePassword(newPasswordInfo){
+    return this.http.put(this.apiUrlLogin + 'ChangePassword', newPasswordInfo);
+  }
+
 }

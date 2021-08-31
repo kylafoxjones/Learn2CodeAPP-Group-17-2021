@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import Swal from 'sweetalert2';
 import { MaintainStudentComponent } from '../maintain-student/maintain-student.component';
 import { Router } from '@angular/router';
+import { ChangeStudentPasswordComponent } from '../change-student-password/change-student-password.component';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -79,4 +80,25 @@ export class ProfileComponent implements OnInit {
       }
     });
   }
+  changePassword(){
+    Swal.fire({
+      title:
+        'Are you sure you want to chnage your password?',
+      text: '',
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const dialogRef = this.dialog.open(ChangeStudentPasswordComponent, {
+          width: '900px',
+        });
+        dialogRef.afterClosed().subscribe((result) => {
+          this.getStudentInfo();
+        });
+      }
+    });
+}
 }
