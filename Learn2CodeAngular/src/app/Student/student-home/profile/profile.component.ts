@@ -93,7 +93,7 @@ export class ProfileComponent implements OnInit {
     }).then((result) => {
       if (result.isConfirmed) {
         const dialogRef = this.dialog.open(ChangeStudentPasswordComponent, {
-          width: '900px',
+          width: '500px',
         });
         dialogRef.afterClosed().subscribe((result) => {
           this.getStudentInfo();

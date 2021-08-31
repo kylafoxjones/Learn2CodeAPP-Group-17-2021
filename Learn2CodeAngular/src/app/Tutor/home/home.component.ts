@@ -98,7 +98,7 @@ export class HomeComponent implements OnInit {
       }).then((result) => {
         if (result.isConfirmed) {
           const dialogRef = this.dialog.open(ChangePasswordComponent, {
-            width: '900px',
+            width: '500px',
           });
           dialogRef.afterClosed().subscribe((result) => {
             this.getLoggedinInfo();

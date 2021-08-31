@@ -1,173 +1,177 @@
 <nav id="adminnav" class="navbar navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">
-      <img
-        src="../.././assets/pics/HD logo.png"
-        width="40"
-        height="40"
-        class="d-inline-block align-top"
-        alt=""
-      />
-    </a>
-    <span class="TDO" style="color: rgb(0, 156, 158); margin-right: auto"
-      >TutorDevOps</span
-    >
-    <div class="right"></div>
-  
-    <div class="right" style="margin-left: 2rem">
-   
-  
-      <span [routerLink]="['/studenthomepage/studenthome']" style="color: whitesmoke; margin-right: 2rem; padding-left: 1.5rem"
-        >Home</span
-      >
-    </div>
-    <div class="topnav-right">
-      <div [matMenuTriggerFor]="menu" class="dot">{{ thissStudent.studentName[0]+ thissStudent.studentSurname[0] }}</div>
-    </div>
-  </nav>
-  
-  <!--menu-->
-  
-  <mat-menu #menu="matMenu" xPosition="before">
-    <button  [routerLink]="['/profile']" mat-menu-item>
-      <i class="fa fa-user" aria-hidden="true" style="padding-right: 0.5rem"></i
-      >Profile
-    </button>
-    <button  mat-menu-item>
-      <i
-      (click)="logout()"
-        class="fa fa-sign-out"
-        aria-hidden="true"
-        style="padding-right: 0.5rem"
-      ></i
-      >Logout
-    </button>
-  </mat-menu>
-  
-  <span flex></span>
-  
-  <div style="padding-top: 2rem; padding-bottom: 2rem; margin-left: 3.5rem">
-    <div class="header" style="height: 2.5rem">{{ course[0].courseSubCategory.courseSubCategoryName }}</div>
-  </div>
-  
- 
-  <nb-layout>
-    <nb-layout-column>
+  <a class="navbar-brand" href="#">
+    <img
+      src="../.././assets/pics/HD logo.png"
+      width="40"
+      height="40"
+      class="d-inline-block align-top"
+      alt=""
+    />
+  </a>
+  <span class="TDO" style="color: rgb(0, 156, 158); margin-right: auto"
+    >TutorDevOps</span
+  >
+  <div class="right"></div>
 
-    
-     
-          <div class="row">         
-          <div class="col-md-5" 
-          *ngFor="let item of noteList | filter: search">
-            <div style="
+  <div class="right" style="margin-left: 2rem">
+    <span
+      [routerLink]="['/studenthomepage/studenthome']"
+      style="color: whitesmoke; margin-right: 2rem; padding-left: 1.5rem"
+      >Home</span
+    >
+  </div>
+  <div class="topnav-right">
+    <div [matMenuTriggerFor]="menu" class="dot">
+      {{ thissStudent.studentName[0] + thissStudent.studentSurname[0] }}
+    </div>
+  </div>
+</nav>
+
+<!--menu-->
+
+<mat-menu #menu="matMenu" xPosition="before">
+  <button [routerLink]="['/profile']" mat-menu-item>
+    <i class="fa fa-user" aria-hidden="true" style="padding-right: 0.5rem"></i
+    >Profile
+  </button>
+  <button mat-menu-item>
+    <i
+      (click)="logout()"
+      class="fa fa-sign-out"
+      aria-hidden="true"
+      style="padding-right: 0.5rem"
+    ></i
+    >Logout
+  </button>
+</mat-menu>
+
+<span flex></span>
+
+<div style="padding-top: 2rem; padding-bottom: 2rem; margin-left: 3.5rem">
+  <div class="header" style="height: 2.5rem">
+    {{ course[0].courseSubCategory.courseSubCategoryName }}
+  </div>
+</div>
+
+<nb-layout>
+  <nb-layout-column>
+    <div class="row">
+      <div class="col-md-4" *ngFor="let item of noteList | filter: search">
+        <div
+          style="
             margin-top: 3rem;
             border-radius: 25px;
             background-color: rgb(6, 6, 7);
             width: 17rem;
             margin-left: 20%;
-            height: 20rem;
+            height: 25rem;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
               0 6px 6px rgba(0, 0, 0, 0.23);
-          ">
-          <br/>
-              <div    style="
+          "
+        >
+          <br />
+          <div
+            style="
               text-align: center;
               width: 12rem;
               height: 2rem;
               margin-left: 0.5rem;
-            ">
-                <h5 style="margin-left: 2.5rem; color: white">
-                  Notes
-                </h5>
-                <hr style="width: 125%; color: white" />
-                </div>
-                <div style="text-align: center; padding-top: 1.9rem">
-                  <div>
-                    <h6 style="color: white"> {{ item.courseSubCategory.courseSubCategoryName }}  </h6>
-                    <p style="color: white">
-Name:                        {{item.fileName}}
-                      <br />
-                      <br />
-                   
-                    </p>
-                  </div>
-                  <div style="margin-top: 2.3rem">
-
-                <button (click)="DownloadPDF(item)"  class="btn btn-outline-info">
-                  <i class="fa fa-download"></i>  Download</button>
-              </div>
+            "
+          >
+            <h5 style="margin-left: 2.5rem; color: white">Notes</h5>
+            <hr style="width: 125%; color: white" />
+          </div>
+          <div style="text-align: center; padding-top: 1.9rem">
+            <div>
+              <h6 style="color: white">
+                {{ item.courseSubCategory.courseSubCategoryName }}
+              </h6>
+              <p style="color: white">
+                Name: {{ item.fileName }}
+                <br />
+                <br />
+              </p>
+            </div>
+            <div style="margin-top: 1rem">
+              <button (click)="DownloadPDF(item)" class="btn btn-outline-info">
+                <i class="fa fa-download"></i> Download
+              </button>
             </div>
           </div>
-</div>
-        
-          </div>   
-     
-   
-          <div class="row">         
-            <div class="col-md-5" 
-            *ngFor="let item of videoList | filter: search">
-              <div style="
-              margin-top: 3rem;
-              border-radius: 25px;
-              background-color: rgb(6, 6, 7);
-              width: 17rem;
-              margin-left: 20%;
-              height: 25rem;
-              box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
-                0 6px 6px rgba(0, 0, 0, 0.23);
-            ">
-            <br/>
-                <div    style="
-                text-align: center;
-                width: 12rem;
-                height: 2rem;
-                margin-left: 0.5rem;
-              ">
-                  <h5 style="margin-left: 4rem; color: white">
-                    Video
-                  </h5>
-                  <hr style="width: 125%; color: white" />
-                  </div>
-                  <div style="text-align: center; padding-top: 1.9rem">
-                    <div>
-                      <h6  style="color: white;text-align: center;"> {{ item.courseSubCategory.courseSubCategoryName }}  </h6>
-                      <p style="color: white">
-  Name:                        {{item.fileName}}
-      <br/>                       
-                     
-                      </p>
-                    </div>
-                    <div style="margin-top: 2.3rem">
-  
-                  <button (click)="WatchVid(item)" class="btn btn-outline-info">
-                    <i class="fa fa-play"></i> Watch</button>
-                  
-                <video style="margin-top: 1rem;" *ngIf="showVid"  width="240" height="150" controls [src]="prev_url" >
-                        
-                  Your browser does not support the video tag.
-                </video>
-                </div>
-              </div>
-            </div>
-  </div>
-          
-            </div>   
-  
-  
-  
-  
-  </nb-layout-column>
-  </nb-layout>
-  
-  <footer style="bottom: 0; width: 100%; ">
-    <nav style="height: 3rem" id="foot" class="navbar">
-      <a class="navbar-brand" href="#"> </a>
-      <span class="TDO" style="margin-right: 27%"> &lt; TDO &gt;</span>
-      <div class="topnav-right">
-        <a href="#"> <i class="fa fa-facebook"></i> </a>
-        <a href="#"> <i class="fa fa-instagram"></i> </a>
-        <a href="#"> <i class="fa fa-twitter"></i> </a>
-        <a>TutorDevOps@gmail.com</a>
+        </div>
       </div>
-    </nav>
-  </footer>
-  
+      <div class="col-md-4" *ngFor="let item of videoList | filter: search">
+        <div
+          style="
+            margin-top: 3rem;
+            border-radius: 25px;
+            background-color: rgb(6, 6, 7);
+            width: 17rem;
+            margin-left: 20%;
+            height: 25rem;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
+              0 6px 6px rgba(0, 0, 0, 0.23);
+          "
+        >
+          <br />
+          <div
+            style="
+              text-align: center;
+              width: 12rem;
+              height: 2rem;
+              margin-left: 0.5rem;
+            "
+          >
+            <h5 style="margin-left: 4rem; color: white">Video</h5>
+            <hr style="width: 125%; color: white" />
+          </div>
+          <div style="text-align: center; padding-top: 1.9rem">
+            <div>
+              <h6 style="color: white; text-align: center">
+                {{ item.courseSubCategory.courseSubCategoryName }}
+              </h6>
+              <p style="color: white">
+                Name: {{ item.fileName }}
+                <br />
+              </p>
+            </div>
+            <div style="margin-top: 2.3rem">
+              <button (click)="WatchVid(item)" class="btn btn-outline-info">
+                <i class="fa fa-play"></i> Watch
+              </button>
+
+              <video
+                style="margin-top: 1rem"
+                *ngIf="showVid"
+                width="240"
+                height="150"
+                controls
+                [src]="prev_url"
+              >
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row">
+     
+    </div>
+  </nb-layout-column>
+</nb-layout>
+
+<footer style="bottom: 0; width: 100%">
+  <nav style="height: 3rem" id="foot" class="navbar">
+    <a class="navbar-brand" href="#"> </a>
+    <span class="TDO" style="margin-right: 27%"> &lt; TDO &gt;</span>
+    <div class="topnav-right">
+      <a href="#"> <i class="fa fa-facebook"></i> </a>
+      <a href="#"> <i class="fa fa-instagram"></i> </a>
+      <a href="#"> <i class="fa fa-twitter"></i> </a>
+      <a>TutorDevOps@gmail.com</a>
+    </div>
+  </nav>
+</footer>

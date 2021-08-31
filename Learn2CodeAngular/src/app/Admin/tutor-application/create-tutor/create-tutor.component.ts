@@ -25,12 +25,14 @@ export class CreateTutorComponent implements OnInit {
     this.service.createTutor(this.data).subscribe(
       (result) => {
         this.data = result;
-        Swal.fire('Tutor created!', this.data.message, 'success');
-       
-        this.router.navigateByUrl('/applications').then((result) => {
-          this.dialogRef.close();
-          window.location.reload();
+        Swal.fire('Tutor created!', this.data.message, 'success').then((result) => {
+          this.router.navigateByUrl('/applications').then((result) => {
+            this.dialogRef.close();
+            window.location.reload();
+          });
         });
+       
+       
        
        // this.dialogRef.close();
       },

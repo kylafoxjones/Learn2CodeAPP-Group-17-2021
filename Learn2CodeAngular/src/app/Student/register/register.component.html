@@ -14,7 +14,7 @@
   >
   <div class="topnav-right">
     <!-- <a  [routerLink]="['/studenthomepage/studenthome']" >Home</a> -->
-    <span class="right" routerLink='/studenthomepage/studenthome'  >
+    <span class="right" [routerLink]="['/loginhomepage/login']"  >
       <a style="color: whitesmoke; margin-right: 3rem">Home</a>
    </span>
     <a>About</a>
@@ -248,7 +248,7 @@
               <mat-label>Phone Number: </mat-label>
               <input
                 mdInput
-                type="number"
+                type="tel"
                 matInput
                 required
                 minlength="10"

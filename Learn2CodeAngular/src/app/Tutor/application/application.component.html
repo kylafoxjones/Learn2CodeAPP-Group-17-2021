@@ -12,12 +12,12 @@
     >TutorDevOps</span
   >
   <div class="topnav-right">
-    <a>Home</a>
+    <a style="color: white;text-decoration: none"  [routerLink]="['/loginhomepage/login']">Home</a>
     <a>About</a>
     <a>Plans</a>
     <a>Content</a>
     <a>Online Store</a>
-    <a>Teach For TDO</a>
+    <a style="color: white;text-decoration: none" [routerLink]="['/tutorhomepage/application']">Teach For TDO</a>
   </div>
 </nav>
 <nb-layout>
@@ -31,7 +31,7 @@
             width: 80%;
             margin: auto;
             border-radius: 15px;
-            height: 54rem;
+            height: 53.5rem;
           "
         >
           <h1 style="text-align: center; padding-top: 1rem">Process</h1>
@@ -69,7 +69,7 @@
           <br />
           <img
             src="../.././assets/pics/Project_71-02.jpg"
-            style="height: 26rem; width: 27rem; margin-left: 3rem"
+            style="height: 24rem; width: 27rem; margin-left: 1rem"
             class="d-inline-block align-top"
             alt=""
           />
@@ -257,7 +257,7 @@
               />
             </mat-form-field>
             <div style="margin-left: 2.5rem">
-              <mat-form-field appearance="outline" style="width: 25rem">
+              <mat-form-field appearance="outline" style="width: 22rem">
                 <mat-label>Module:</mat-label>
                 <div
                   *ngIf="
@@ -292,7 +292,7 @@
                   style="
                     margin-left: 2.5rem;
                     padding-bottom: 0.7rem;
-                    margin-top: 0.5rem;
+                    margin-top: 0.1rem;
                   "
                 ></div>
 
@@ -314,7 +314,7 @@
                   <input
                     class="form-control"
                     type="file"
-                    style="width: 25rem"
+                    style="width: 22rem"
                     #file
                     placeholder="Choose a photo"
                     required
@@ -341,7 +341,7 @@
                 </div>
               </div>
               <input
-                style="width: 25rem"
+                style="width: 22rem"
                 class="form-control"
                 type="file"
                 #file

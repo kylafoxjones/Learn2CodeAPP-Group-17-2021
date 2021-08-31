@@ -1,5 +1,6 @@
 <h5 style="text-align: center">{{ popupTitle }}</h5>
 <hr />
+<form #userform="ngForm">
 <mat-dialog-content>
   <mat-form-field class="example-full-width">
     <!--dropdown with session type names -->
@@ -42,7 +43,7 @@
   </mat-form-field>
 
   <mat-form-field class="example-full-width">
-    <mat-label>Duration:</mat-label>
+    <mat-label>Duration(Months):</mat-label>
     <div
       *ngIf="duration.invalid && (duration.dirty || duration.touched)"
       class="alert"

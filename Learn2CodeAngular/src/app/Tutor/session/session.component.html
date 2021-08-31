@@ -115,7 +115,7 @@
             </thead>
             <tbody>
               <tr *ngFor="let item of groupSessions | paginate: { itemsPerPage: 5, currentPage: page,totalItems:totalLength, id: 'first' }">
-                <td><a href="#">{{item.title}}</a></td>
+                <td>{{item.title}}</td>
                 <td>{{item.module.moduleCode}}</td>
                 <td>{{item.date}}</td>
                 <td>{{item.sessionTime.startTime}} - {{item.sessionTime.endTime}}</td>
@@ -204,18 +204,18 @@
             </thead>
             <tbody>
               <tr  *ngFor="let item of indivSessions | paginate: { itemsPerPage: 5, currentPage: page1,totalItems:totalLength1,id: 'second' }">
-                <td><a href="#">{{item.module.moduleCode}}</a></td>
+                <td>{{item.module.moduleCode}}</td>
                 <td>{{item.date}}</td>
                 <td>{{item.sessionTime.startTime}} - {{item.sessionTime.endTime}}</td>
                 <td><a href="#">{{item.link}}</a></td>
                 <td>{{item.bookingStatus.bookingStatus}}</td>
                 <th>
-                  <button class="btn btn-info">
+                  <button (click)= "editSession(item)" class="btn btn-info">
                     <i class="fa fa-pencil"></i>
                   </button>
                 </th>
                 <th>
-                  <button class="btn btn-danger">
+                  <button (click)= "deleteSession(item)" class="btn btn-danger">
                     <i class="fa fa-trash"></i>
                   </button>
                 </th>
@@ -227,15 +227,16 @@
           <br>
           <br>
         </div>
+        <br>
+          <br>
       </nb-tab>
     </nb-tabset>
   </nb-layout-column>
 </nb-layout>
-<br />
-<br />
+
 
 <footer>
-  <nav id="foot" class="navbar" style="width: 100%">
+  <nav id="foot" class="navbar" style="width: 100%; bottom: 0">
     <a class="navbar-brand" href="#"> </a>
     <span class="TDO" style="margin-right: auto"> &lt; TDO &gt;</span>
     <div class="topnav-right">

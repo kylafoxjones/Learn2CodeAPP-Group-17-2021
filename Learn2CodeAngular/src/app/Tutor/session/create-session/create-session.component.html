@@ -7,7 +7,7 @@
 
   <div class="row">
     <div class="col-md-4">
-      <mat-form-field appearance="outline">
+      <mat-form-field appearance="outline" style="margin-left: 2rem;">
         <mat-label>Session Type:</mat-label>
         <div *ngIf="sess.invalid && (sess.dirty || sess.touched)" class="alert">
           <div
@@ -122,9 +122,7 @@
         </mat-form-field>
       </div>
     </div>
-  </div>
 
-  <div class="row">
     <div class="col-md-4">
       <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>Choose a date</mat-label>
@@ -178,6 +176,8 @@
       </div>
     </div>
   </div>
+
+  
 </form>
 
 <div style="margin-left: 33%">

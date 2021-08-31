@@ -85,7 +85,7 @@ totalLength1: any;
     this.service.sessionToEdit = obj;
     console.log('the session to edit', this.service.sessionToEdit);
     const dialogRef = this.dialog.open(MaintainSessionComponent, {
-      width: '900px',
+      width: '600px',
     });
     dialogRef.afterClosed().subscribe((result) => {
       this.getMyGroupSessions();

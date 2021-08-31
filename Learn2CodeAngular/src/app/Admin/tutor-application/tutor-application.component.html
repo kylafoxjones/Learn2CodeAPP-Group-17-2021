@@ -75,7 +75,7 @@
         </thead>
         <tbody>
           <tr *ngFor="let item of applications | filter: search  | paginate: { itemsPerPage: 5, currentPage: page,totalItems:totalLength }">
-            <td (click)="navigateToApplication(item)">
+            <td style="cursor:pointer" (click)="navigateToApplication(item)">
               {{ item.tutorName }}
             </td>
             <td>{{ item.tutorSurname }}</td>

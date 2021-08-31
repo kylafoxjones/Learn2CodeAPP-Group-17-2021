@@ -86,12 +86,14 @@ export class AddEditSubscriptionComponent implements OnInit {
             this.data = result;
             this.dialogRef.close();
             Swal.fire('Saved!', this.data.message, 'success');
+          },(error) => {
+            this.dialogRef.close();
+            Swal.fire('Error!', error.error, 'error');
           });
+          
         }
-      },(error) => {
-        this.dialogRef.close();
-        Swal.fire('Error!', error.error, 'error');
       });
+       
     }
   }
   refreshSubscriptionObj() {
