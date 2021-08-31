@@ -11,6 +11,7 @@ import { title } from 'process';
 import { TutorService } from '../tutor resources/tutor.service';
 import { MaintainTutorComponent } from './maintain-tutor/maintain-tutor.component';
 import { Router } from '@angular/router';
+import { ChangePasswordComponent } from './change-password/change-password.component';
 
 @Component({
   selector: 'app-home',
@@ -35,6 +36,10 @@ export class HomeComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+   this.getLoggedinInfo();
+  }
+
+  getLoggedinInfo(){
     this.userId = localStorage.getItem('id');
     console.log(this.userId);
     this.TutorService.getTutor(this.userId).subscribe((result) => {
@@ -71,11 +76,34 @@ export class HomeComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
+      this. getLoggedinInfo();
       // Swal.fire({
       //   icon: 'error',
       //   title: 'Unable to save changes',
       //   confirmButtonText: 'Ok',
       // });
     });
+  }
+
+  changePassword(){
+      Swal.fire({
+        title:
+          'Are you sure you want to chnage your password?',
+        text: '',
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          const dialogRef = this.dialog.open(ChangePasswordComponent, {
+            width: '900px',
+          });
+          dialogRef.afterClosed().subscribe((result) => {
+            this.getLoggedinInfo();
+          });
+        }
+      });
   }
 }

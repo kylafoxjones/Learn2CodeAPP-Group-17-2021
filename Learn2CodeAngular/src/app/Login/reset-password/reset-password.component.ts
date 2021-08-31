@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ResetPasswordDto } from '../models/reset-password-dto.model';
 import { LoginService } from '../login.service';
 
@@ -13,7 +13,7 @@ export class ResetPasswordComponent implements OnInit {
   private _email: string;
   form: ResetPasswordDto = <ResetPasswordDto>{};
 
-  constructor( private _route: ActivatedRoute, private LoginService : LoginService) { }
+  constructor( private _route: ActivatedRoute, private LoginService : LoginService, private route: Router) { }
 
   ngOnInit(): void {
     this._token = this._route.snapshot.queryParams['token'];

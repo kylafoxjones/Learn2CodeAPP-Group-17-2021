@@ -42,6 +42,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MaintainSessionComponent } from './session/maintain-session/maintain-session.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { ChangePasswordComponent } from './home/change-password/change-password.component';
 //import { FormsModule } from '@angular/forms';
 
 
@@ -68,6 +69,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     SessionComponent,
     CreateSessionComponent,
     MaintainSessionComponent,
+    ChangePasswordComponent,
     //SessionsComponent,
     
  

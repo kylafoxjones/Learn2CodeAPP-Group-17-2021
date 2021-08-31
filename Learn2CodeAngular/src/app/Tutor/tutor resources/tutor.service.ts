@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 })
 export class TutorService {
   apiUrl = 'https://localhost:44393/api/Tutor/';
+  apiUrlLogin = 'https://localhost:44393/api/Login/';
 
   //resource category variables below
   editId = 0;
@@ -262,6 +263,10 @@ export class TutorService {
   }
   getMyIndivSessions(TutorId){
     return this.http.get(this.apiUrl + 'GetIndividualSessions/' + TutorId);
+  }
+
+  changePassword(newPasswordInfo){
+    return this.http.put(this.apiUrlLogin + 'ChangePassword', newPasswordInfo);
   }
 
  
