@@ -6,6 +6,7 @@ import { MaintainSessionComponent } from './maintain-session/maintain-session.co
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { FinalizeComponent } from './finalize/finalize.component';
 
 @Component({
   selector: 'app-session',
@@ -47,6 +48,16 @@ totalLength1: any;
       this.getMyIndivSessions();
     });
     
+  }
+  openFinalize(obj){
+    this.service.sessionToFinalize = obj;
+    const dialogRef = this.dialog.open(FinalizeComponent, {
+      width: '900px',
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+      this.getMyGroupSessions();
+      this.getMyIndivSessions();
+    });
   }
 
   public logout = () => {

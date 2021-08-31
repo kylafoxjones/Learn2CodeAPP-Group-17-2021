@@ -11,6 +11,7 @@ import { ResourceCategoryComponent } from './resource-category/resource-category
 import { SpecificResourceComponent } from './resource-category/specific-resource/specific-resource.component';
 
 import { SentRecievedMessagesComponent } from './sent-recieved-messages/sent-recieved-messages.component';
+import { FinalizeComponent } from './session/finalize/finalize.component';
 import { SessionComponent } from './session/session.component';
 
 import { TutorComponent } from './tutor.component';
@@ -65,6 +66,10 @@ const routes: Routes = [
         {
           path: 'specificresource',
           component: SpecificResourceComponent,
+        },
+        {
+          path: 'finalize',
+          component: FinalizeComponent,
         },
       
       ],

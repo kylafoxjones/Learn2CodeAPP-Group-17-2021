@@ -19,14 +19,9 @@ export class GroupSessionContentComponent implements OnInit {
   contentList: any;
   userID: any;
   tutor: any;
- //pagination
- page1:number = 1;
- totalLength1:any;
-
-
-
-
-
+  //pagination
+  page1: number = 1;
+  totalLength1: any;
 
   constructor(
     public dialog: MatDialog,
@@ -38,10 +33,9 @@ export class GroupSessionContentComponent implements OnInit {
     this.userID = localStorage.getItem('id');
     console.log(this.userID);
     this.service.getTutor(this.userID).subscribe((result) => {
-      this.tutor = result; });
+      this.tutor = result;
+    });
     this.getAllSessionContent();
-
-   
   }
 
   public logout = () => {
@@ -49,18 +43,23 @@ export class GroupSessionContentComponent implements OnInit {
     localStorage.removeItem('id');
     this.router.navigate(['/loginhomepage/login']);
   };
-  
+
   getAllSessionContent() {
     //logged in tutor is hardcoded for now
     this.userID = localStorage.getItem('id');
     console.log(this.userID);
     this.service.getTutor(this.userID).subscribe((res) => {
-      this.tutor =res;
+      this.tutor = res;
       console.log('tutor user', this.tutor);
       this.service.tutorId = this.tutor.id;
-      this.service.getAllTutorSessions(this.service.tutorId).subscribe((result) => {
+      this.service
+        .getAllTutorSessions(this.service.tutorId)
+        .subscribe((result) => {
           this.contentList = result;
-          console.log('list of sessions for a specific tutor', this.contentList);
+          console.log(
+            'list of sessions for a specific tutor',
+            this.contentList
+          );
         });
     });
   }

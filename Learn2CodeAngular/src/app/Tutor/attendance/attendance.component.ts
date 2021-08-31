@@ -158,8 +158,11 @@ export class AttendanceComponent implements OnInit {
     }).then((result) => {
       if (result.isConfirmed) {
         Swal.fire('', 'Successfully submitted attendance', 'success');
+     //   this.router.navigate(['/finalize'])
       }
+      this.router.navigate(['/finalize']);
     });
+   // this.router.navigate(['/finalize']);
   }
 
   
