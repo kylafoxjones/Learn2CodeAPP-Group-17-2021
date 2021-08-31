@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ResetPasswordDto } from '../models/reset-password-dto.model';
 import { LoginService } from '../login.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-reset-password',
@@ -22,12 +23,13 @@ export class ResetPasswordComponent implements OnInit {
   public resetPassword() {
   this.form.token=this._token;
   this.form.email=this._email;
-  
+
     this.LoginService.resetPassword('api/Login/ResetPassword', this.form)
     .subscribe(_ => {
    console.log("success");
     },
     error => {
+      Swal.fire('Error!', error.error, 'error');
       console.log("error");
     })
   }

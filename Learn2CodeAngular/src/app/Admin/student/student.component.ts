@@ -48,11 +48,14 @@ export class StudentComponent implements OnInit {
         });
         Swal.fire('Successful Deletion', '', 'success');
       }
+      },(error) => {
+
+        Swal.fire('Error!', error.error, 'error');
     });
   }
   getAllStudents() {
     this.service.getStudents().subscribe((result) => {
-      this.studentList = result; 
+      this.studentList = result;
       this.totalLength = this.studentList.length;
       console.log(this.studentList);
     });
