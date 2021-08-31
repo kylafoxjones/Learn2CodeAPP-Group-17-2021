@@ -62,6 +62,8 @@ export class TutorService {
 
   tutorId: any;
   sessionToEdit:any ={};
+
+  sessionToFinalize: any ={};
   constructor(private http: HttpClient) {}
 
   //#region resource cats
@@ -267,6 +269,10 @@ export class TutorService {
 
   changePassword(newPasswordInfo){
     return this.http.put(this.apiUrlLogin + 'ChangePassword', newPasswordInfo);
+  }
+
+  FinalizeSession(BookingInstanceId){
+    return this.http.get(this.apiUrl + 'FinalizeSession/' + BookingInstanceId);
   }
 
  

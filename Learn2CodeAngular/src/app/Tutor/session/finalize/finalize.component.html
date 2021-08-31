@@ -1,0 +1,27 @@
+<h5 style="text-align: center">Finalize Session:</h5>
+<hr />
+<mat-dialog-content>
+  <p>In order to finalize a session, you as the tutor must complete two tasks. Attendance must be taken and content for the group session must be uploaded. Once this is complete the finalize button will be enabled.</p>
+ <button [routerLink]="['/attendance']" class="btn btn-primary">Take Attendance</button>
+ <br>
+ <button [routerLink]="['/sessioncontent']" class="btn btn-primary">Upload Content</button>
+</mat-dialog-content>
+<!-- <h1>{{ data.id }}</h1> -->
+<div style="margin: auto; padding-top: 1rem; text-align: center">
+  <button
+    (click)="confirmFinalize()"
+    style="width: 6rem"
+    class="btn btn-info"
+    
+  >
+    Finalize
+  </button>
+  <button
+    [mat-dialog-close]
+    style="margin-left: 2rem; width: 6rem"
+    class="btn btn-danger"
+  >
+    Cancel
+  </button>
+</div>
+

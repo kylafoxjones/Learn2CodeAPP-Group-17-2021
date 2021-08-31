@@ -43,6 +43,7 @@ import { MaintainSessionComponent } from './session/maintain-session/maintain-se
 import { MatMenuModule } from '@angular/material/menu';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ChangePasswordComponent } from './home/change-password/change-password.component';
+import { FinalizeComponent } from './session/finalize/finalize.component';
 //import { FormsModule } from '@angular/forms';
 
 
@@ -70,6 +71,7 @@ import { ChangePasswordComponent } from './home/change-password/change-password.
     CreateSessionComponent,
     MaintainSessionComponent,
     ChangePasswordComponent,
+    FinalizeComponent,
     //SessionsComponent,
     
  
