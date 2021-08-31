@@ -2,7 +2,7 @@
 <hr />
 
 <label for="formFile" class="form-label">CSV file:</label>
-<div *ngIf="csvu.invalid && (csvu.dirty || csvu.touched)" class="alert">
+<div *ngIf="csvu.invalid && (csvu.dirty)" class="alert">
   <div *ngIf="csvu.errors?.required" style="font-size: small; color: red">
     CSV File is required.
   </div>
@@ -22,8 +22,8 @@
 <div style="margin-left: 2.5rem">
   <div style="margin: auto; padding-top: 1rem">
     <button [disabled]="
-    csvu.invalid" style="width: 6rem" class="btn btn-info">Submit</button>
-    <button style="margin-left: 2rem; width: 6rem" class="btn btn-danger">
+    csvu.invalid" (click)="upload()" style="width: 6rem" class="btn btn-info">Submit</button>
+    <button [mat-dialog-close] style="margin-left: 2rem; width: 6rem" class="btn btn-danger">
       cancel
     </button>
   </div>
