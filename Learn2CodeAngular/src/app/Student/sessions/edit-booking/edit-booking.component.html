@@ -3,20 +3,44 @@
 <mat-dialog-content>
   <mat-form-field class="example-full-width" appearance="fill">
     <mat-label>Message to tutor:</mat-label>
+    <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert">
+      <div *ngIf="name.errors?.required" style="font-size: smaller; color: red">
+        Message is required.
+      </div>
+      <div
+        *ngIf="Link.errors?.minlength"
+        style="font-size: smaller; color: red"
+      >
+        Message must be at least 10 characters long.
+      </div>
+    </div>
     <textarea
       matInput
       placeholder="Message..."
       [(ngModel)]="data.Message"
       #name="ngModel"
+      required
+      minlength="2"
+      id="name"
     ></textarea>
   </mat-form-field>
   <div class="row">
     <div class="col-md-4">
       <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>Choose a date</mat-label>
+        <div *ngIf="date.invalid && (date.dirty || date.touched)" class="alert">
+          <div
+            *ngIf="date.errors?.required"
+            style="font-size: smaller; color: red"
+          >
+            Date is required.
+          </div>
+        </div>
         <input
+          required
+          #date="ngModel"
           [(ngModel)]="data.Date"
-          name="Date"
+          name="date"
           matInput
           [matDatepicker]="picker"
         />
@@ -28,7 +52,24 @@
       <div style="margin-left: 2rem">
         <mat-form-field appearance="outline">
           <mat-label>Time:</mat-label>
-          <mat-select (valueChange)="selectTime($event)">
+          <div
+            *ngIf="seltime.invalid && (seltime.dirty || seltime.touched)"
+            class="alert"
+          >
+            <div
+              *ngIf="seltime.errors?.required"
+              style="font-size: smaller; color: red"
+            >
+              Time is required.
+            </div>
+          </div>
+          <mat-select
+            required
+            name="seltime"
+            #seltime="ngModel"
+            [(ngModel)]="timex"
+            (valueChange)="selectTime($event)"
+          >
             <mat-option *ngFor="let type of timeList" [value]="type.id">
               {{ type.startTime }} - {{ type.endTime }}
             </mat-option>
@@ -40,7 +81,12 @@
 </mat-dialog-content>
 
 <div style="margin: auto; padding-top: 1rem; text-align: center">
-  <button (click)="editBooking()" style="width: 6rem" class="btn btn-info">
+  <button
+    [disabled]="name.invalid || date.invalid || timex.invalid"
+    (click)="editBooking()"
+    style="width: 6rem"
+    class="btn btn-info"
+  >
     Submit
   </button>
   <button

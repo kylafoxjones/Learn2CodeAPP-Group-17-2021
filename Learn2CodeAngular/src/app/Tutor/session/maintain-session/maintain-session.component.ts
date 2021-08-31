@@ -21,6 +21,7 @@ export class MaintainSessionComponent implements OnInit {
   moduleChosen: any;
   tutorID: any;
   newDate:any;
+  timex: any;
 
   constructor(
     private service: TutorService,

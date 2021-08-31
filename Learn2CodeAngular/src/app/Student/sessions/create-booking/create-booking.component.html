@@ -1,22 +1,33 @@
 <h5 style="text-align: center">Create Booking</h5>
 <hr />
 <mat-dialog-content>
-    <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>What do you want cover?</mat-label>
-        <textarea matInput placeholder="Content..."
-        [(ngModel)]="data.Description"
-        #name="ngModel"
-        ></textarea>
-      </mat-form-field>
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>What do you want cover?</mat-label>
+    <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert">
+      <div *ngIf="name.errors?.required" style="font-size: smaller; color: red">
+        Message is required.
+      </div>
+      <div
+        *ngIf="Link.errors?.minlength"
+        style="font-size: smaller; color: red"
+      >
+        Message must be at least 10 characters long.
+      </div>
+    </div>
+    <textarea
+      matInput
+      placeholder="Content..."
+      [(ngModel)]="data.Description"
+      #name="ngModel"
+      required
+      minlength="2"
+      id="name"
+    ></textarea>
+  </mat-form-field>
 </mat-dialog-content>
 <h1>{{ data.id }}</h1>
 <div style="margin: auto; padding-top: 1rem; text-align: center">
-  <button
-    (click)="book()"
-    style="width: 6rem"
-    class="btn btn-info"
-    
-  >
+  <button  [disabled]="name.invalid" (click)="book()" style="width: 6rem" class="btn btn-info">
     Submit
   </button>
   <button
@@ -27,4 +38,3 @@
     Cancel
   </button>
 </div>
-

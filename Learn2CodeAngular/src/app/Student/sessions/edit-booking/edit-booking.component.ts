@@ -18,6 +18,7 @@ export class EditBookingComponent implements OnInit {
   timeList: any = [];
   timeChosen: any;
   editedBooking: any = {};
+  timex: any;
 
   constructor(
     private service: StudentService,

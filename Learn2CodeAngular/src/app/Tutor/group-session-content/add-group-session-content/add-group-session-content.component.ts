@@ -15,6 +15,9 @@ export class AddGroupSessionContentComponent implements OnInit {
   typeList: any = [];
   notes: any;
   recording: any;
+  catxv: any;
+  filecontent: any;
+  reccontent: any;
   popupTitle = this.service.title;
   constructor(
     private service: TutorService,

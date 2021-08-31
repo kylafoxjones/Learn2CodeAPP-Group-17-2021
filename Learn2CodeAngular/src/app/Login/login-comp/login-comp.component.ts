@@ -47,7 +47,9 @@ export class LoginCompComponent implements OnInit {
       } else if ((result.type == 'Admin')) {
         this.route.navigate(['/adminhomepage/adminhome']);
       }
-    });
+    }, (error) => {
+
+      Swal.fire('Error!', error.error, 'error');});
   }
   openForget(){
     const dialogRef = this.dialog.open(ForgotPasswordComponent, {
