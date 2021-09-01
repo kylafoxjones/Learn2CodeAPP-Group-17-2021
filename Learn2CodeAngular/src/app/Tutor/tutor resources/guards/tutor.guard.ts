@@ -6,16 +6,15 @@ import { LoginService } from '../../../Login/login.service';
 @Injectable({
   providedIn: 'root'
 })
-export class AdminGuard implements CanActivate {
-
+export class TutorGuard implements CanActivate {
+  
   constructor(private _authService: LoginService, private _router: Router) {}
 
-  canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    if(this._authService.isUserAdmin())
+ canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+    if(this._authService.isUserTutor())
       return true;
     this._router.navigate(['/loginhomepage/login'], { queryParams: { returnUrl: state.url }});
     return false;
   }
   
 }
-

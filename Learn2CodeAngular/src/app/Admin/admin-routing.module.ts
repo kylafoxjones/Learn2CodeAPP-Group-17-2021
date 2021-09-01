@@ -41,65 +41,65 @@ const routes: Routes = [
       {
         path: 'adminhome',
         component: HomeComponent,
-      //  canActivate: [AuthGuard, AdminGuard]
+        canActivate: [AuthGuard, AdminGuard]
       },
       {
         path: 'university',
         component: UniversityComponent,
-        // canActivate: [AuthGuard, AdminGuard]
+         canActivate: [AuthGuard, AdminGuard]
       },
       {
         path: 'degree',
         component: DegreeComponent,
-        // canActivate: [AuthGuard, AdminGuard]
+         canActivate: [AuthGuard, AdminGuard]
 
       },
       {
         path: 'module',
         component: ModuleComponent,
-        // canActivate: [AuthGuard, AdminGuard]
+        canActivate: [AuthGuard, AdminGuard]
 
       },
       {
         path: 'course',
         component: CourseComponent,
-       // canActivate: [AuthGuard, AdminGuard]
+       canActivate: [AuthGuard, AdminGuard]
       },
       {
         path: 'sessioncontentcategory',
         component: SessionContentCategoryComponent,
-        // canActivate: [AuthGuard, AdminGuard]
+       canActivate: [AuthGuard, AdminGuard]
       },
       {
         path: 'coursecontentcategory',
         component: CourseContentCategoryComponent,
-      //  canActivate: [AuthGuard, AdminGuard]
+      canActivate: [AuthGuard, AdminGuard]
 
       },
       {
         path: 'student',
         component: StudentComponent,
-        // canActivate: [AuthGuard, AdminGuard]
+   canActivate: [AuthGuard, AdminGuard]
       },
       {
         path: 'tutor',
         component: TutorComponent,
-        // canActivate: [AuthGuard, AdminGuard]
+       canActivate: [AuthGuard, AdminGuard]
       },
       {
         path: 'subscription',
         component: SubscriptionComponent,
-        // canActivate: [AuthGuard, AdminGuard]
+     canActivate: [AuthGuard, AdminGuard]
       },
       {
         path: 'applications',
         component: TutorApplicationComponent,
-       // canActivate: [AuthGuard, AdminGuard]
+   canActivate: [AuthGuard, AdminGuard]
       },
       {
         path: 'payments',
         component: PaymentsComponent,
-        // canActivate: [AuthGuard, AdminGuard]
+        canActivate: [AuthGuard, AdminGuard]
     //    canActivate: [AuthGuard, AdminGuard]
       },
       {
@@ -127,16 +127,19 @@ const routes: Routes = [
       {
         path: 'acceptreject',
         component: AcceptRejectApplicationComponent,
+        canActivate: [AuthGuard, AdminGuard]
       },
       {
 
         path: 'createtutor',
         component: CreateTutorComponent,
+        canActivate: [AuthGuard, AdminGuard]
 
       },
       {
         path: 'report-home',
         component: ReportHomeComponent,
+        canActivate: [AuthGuard, AdminGuard]
 
       }
     ],

@@ -57,7 +57,7 @@ export class HomeComponent implements OnInit {
 
   delete(id) {
     Swal.fire({
-      title: 'Are you sure you want to add a subscription?',
+      title: 'Are you sure you want to delete your profile?',
       icon: 'question',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
@@ -101,7 +101,7 @@ export class HomeComponent implements OnInit {
 
   changePassword() {
     Swal.fire({
-      title: 'Are you sure you want to chnage your password?',
+      title: 'Are you sure you want to change your password?',
       text: '',
       icon: 'question',
       showCancelButton: true,

@@ -13,7 +13,10 @@ import { SpecificResourceComponent } from './resource-category/specific-resource
 import { SentRecievedMessagesComponent } from './sent-recieved-messages/sent-recieved-messages.component';
 import { FinalizeComponent } from './session/finalize/finalize.component';
 import { SessionComponent } from './session/session.component';
-
+import {
+  AuthGuard as AuthGuard
+} from '../Login/auth.guard';
+import { TutorGuard } from './tutor resources/guards/tutor.guard';
 import { TutorComponent } from './tutor.component';
 
 const routes: Routes = [
@@ -26,30 +29,37 @@ const routes: Routes = [
         {
           path: 'tutorhome',
           component: HomeComponent,
+          canActivate: [AuthGuard, TutorGuard]
         },
         {
           path: 'maintain',
           component: MaintainComponent,
+
         },
         {
           path: 'application',
           component: ApplicationComponent,
+          canActivate: [AuthGuard, TutorGuard]
         },
         {
           path: 'sessions',
           component: SessionComponent,
+          canActivate: [AuthGuard, TutorGuard]
         },
         {
           path: 'students',
           component: MessagesComponent,
+          canActivate: [AuthGuard, TutorGuard]
         },
         {
           path: 'resourcecategory',
           component: ResourceCategoryComponent,
+          canActivate: [AuthGuard, TutorGuard]
         },
         {
           path: 'messages',
           component: SentRecievedMessagesComponent,
+          canActivate: [AuthGuard, TutorGuard]
         },
         {
         path: 'attendance',
@@ -58,14 +68,17 @@ const routes: Routes = [
         {
           path: 'sessioncontent',
           component: GroupSessionContentComponent,
+          canActivate: [AuthGuard, TutorGuard]
         },
         {
           path: 'specificsession',
           component: SpecificSessionComponent,
+          canActivate: [AuthGuard, TutorGuard]
         },
         {
           path: 'specificresource',
           component: SpecificResourceComponent,
+          canActivate: [AuthGuard, TutorGuard]
         },
         {
           path: 'finalize',
