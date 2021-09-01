@@ -29,7 +29,7 @@ const routes: Routes =  [
       {
         path: 'registerstudent',
         component: RegisterComponent,
-        canActivate: [AuthGuard, StudentGuard]
+       
       },
       {
         path: 'viewgroupsessions',

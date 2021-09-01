@@ -39,7 +39,7 @@ const routes: Routes = [
         {
           path: 'application',
           component: ApplicationComponent,
-          canActivate: [AuthGuard, TutorGuard]
+          
         },
         {
           path: 'sessions',
