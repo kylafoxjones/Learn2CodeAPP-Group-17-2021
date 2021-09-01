@@ -10,6 +10,8 @@ import { TutorService } from '../../tutor resources/tutor.service';
 })
 export class FinalizeComponent implements OnInit {
   SessionWeFinalizing = this.service.sessionToFinalize;
+  contentupload:boolean = this.SessionWeFinalizing.contentUploaded;
+  attendance:boolean = this.SessionWeFinalizing.attendanceTaken;
   info: any = {};
 
   constructor(
@@ -19,6 +21,7 @@ export class FinalizeComponent implements OnInit {
 
   ngOnInit() {
     console.log('the session', this.SessionWeFinalizing);
+    console.log('the sffffn', this.contentupload);
   }
 
   confirmFinalize() {

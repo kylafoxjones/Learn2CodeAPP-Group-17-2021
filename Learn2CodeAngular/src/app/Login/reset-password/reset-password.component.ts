@@ -13,6 +13,7 @@ export class ResetPasswordComponent implements OnInit {
   private _token: string;
   private _email: string;
   form: ResetPasswordDto = <ResetPasswordDto>{};
+  confirmpassword:string;
 
   constructor( private _route: ActivatedRoute, private LoginService : LoginService, private route: Router) { }
 
@@ -26,7 +27,9 @@ export class ResetPasswordComponent implements OnInit {
 
     this.LoginService.resetPassword('api/Login/ResetPassword', this.form)
     .subscribe(_ => {
-   console.log("success");
+      Swal.fire('Reset Passowrd ','Successful','success').then(function() {
+       
+    });
     },
     error => {
       Swal.fire('Error!', error.error, 'error');

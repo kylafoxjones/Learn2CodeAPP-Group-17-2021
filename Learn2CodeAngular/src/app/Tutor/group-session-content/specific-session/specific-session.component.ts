@@ -93,11 +93,14 @@ export class SpecificSessionComponent implements OnInit {
         this.service.deleteContent(obj.id).subscribe((result) => {
           this.hasContentTs = false;
           this.category = {};
-
+          this.getSessionContent()
           //this.getCategory();
         });
-        Swal.fire('Successful Deletion', '', 'success');
-        this.router.navigate(['/specificsession']);
+        Swal.fire('Successful Deletion', '', 'success').then(function() {
+          location.reload();
+      });;
+        //this.router.navigate(['/sessioncontent']);
+        
       }
     });
   }
@@ -127,7 +130,9 @@ export class SpecificSessionComponent implements OnInit {
     const dialogRef = this.dialog.open(AddGroupSessionContentComponent, {
       width: '350px',
     });
-    dialogRef.afterClosed().subscribe((result) => {});
+    dialogRef.afterClosed().subscribe((result) => {
+      this.getSessionContent()
+    });
   }
 
   video() {

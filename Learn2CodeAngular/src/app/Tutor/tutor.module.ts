@@ -97,7 +97,9 @@ import { FinalizeComponent } from './session/finalize/finalize.component';
     MatToolbarModule,
     MatSidenavModule,
     MatMenuModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ]
 })
 export class TutorModule { }

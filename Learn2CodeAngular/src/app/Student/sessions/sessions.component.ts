@@ -103,7 +103,7 @@ export class SessionsComponent implements OnInit {
   open(obj) {
     this.service.bookingToEdit = obj;
     const dialogRef = this.dialog.open(EditBookingComponent, {
-      width: '350px',
+      width: '550px',
     });
     dialogRef.afterClosed().subscribe((result) => {
       this.getMyBookingList();

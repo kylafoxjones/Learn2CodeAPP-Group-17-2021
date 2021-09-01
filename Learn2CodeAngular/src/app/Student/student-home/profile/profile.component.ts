@@ -74,9 +74,14 @@ export class ProfileComponent implements OnInit {
     }).then((result) => {
       if (result.isConfirmed) {
         this.StudentService.deleteStudInfo(Id).subscribe((result) => {
-          this.route.navigate(['/loginhomepage/login']);
+          Swal.fire('Successful Deletion', '', 'success').then(function(){localStorage.removeItem('token');
+          localStorage.removeItem('id');
+          this.router.navigate(['/loginhomepage/login']);});
+        },(error) => {
+          
+          Swal.fire('Error!', error.error, 'error');
         });
-        Swal.fire('Successful Deletion', '', 'success');
+        
       }
     });
   }

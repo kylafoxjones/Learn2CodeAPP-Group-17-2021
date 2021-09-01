@@ -88,6 +88,9 @@ export class AddGroupSessionContentComponent implements OnInit {
               'success'
             );
             //this.router.navigate(["/specificsession"]);
+          },(error) => {
+
+            Swal.fire('Error!', error.error, 'error');
           });
         }
       });
@@ -122,6 +125,9 @@ export class AddGroupSessionContentComponent implements OnInit {
               this.data.message,
               'success'
             );
+          },(error) => {
+
+            Swal.fire('Error!', error.error, 'error');
           });
         }
       });

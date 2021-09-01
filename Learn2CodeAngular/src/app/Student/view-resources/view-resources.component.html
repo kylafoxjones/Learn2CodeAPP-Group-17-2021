@@ -62,7 +62,7 @@
           style="width: 20%; padding-left: 0.5rem; margin-left: 1rem"
         >
           <mat-form-field appearance="outline">
-            <mat-label>Category:</mat-label>
+            <mat-label>Module:</mat-label>
             <mat-select (valueChange)="selectType($event)">
               <mat-option *ngFor="let type of moduleList" [value]="type.id">
                 {{ type.moduleCode }}

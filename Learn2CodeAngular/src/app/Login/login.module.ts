@@ -20,13 +20,15 @@ import { ChartsModule } from 'ng2-charts';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
   declarations: [
     LoginComponent,
     LoginCompComponent,
     ForgotPasswordComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
+    AboutComponent
   ],
   imports: [
     CommonModule,

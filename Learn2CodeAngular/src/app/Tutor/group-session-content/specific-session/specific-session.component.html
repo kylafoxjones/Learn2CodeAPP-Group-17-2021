@@ -47,8 +47,8 @@
 <!--end-->
 
 
-<div style="padding-top: 2rem; padding-bottom: 1rem">
-  <div class="header">{{title}} Session Content</div>
+<div style="padding-top: 2rem; ">
+  <div class="header">{{title}} Content</div>
 </div>
 
 <br />
@@ -68,6 +68,7 @@
         margin: auto;
         border-radius: 15px;
         align-items: center;
+        height:90%
       "
     >
       <br />
@@ -95,8 +96,8 @@
                 margin-left: 0.5rem;
               "
             >
-              <h5 style="margin-left: 3rem; color: white">Video:</h5>
-              <hr style="width: 125%; color: white" />
+              <h5 style="margin-left: 7rem; color: white">Video:</h5>
+              <hr style="width: 125%; color: white;margin-left: 2rem;" />
             </div>
 
             <div style="text-align: center; padding-top: 1.9rem">
@@ -145,8 +146,8 @@
                 margin-left: 0.5rem;
               "
             >
-              <h5 style="margin-left: 3rem; color: white">Notes:</h5>
-              <hr style="width: 125%; color: white" />
+              <h5 style="margin-left: 7rem; color: white">Notes:</h5>
+              <hr style="width: 125%; color: white;margin-left: 2rem;" />
             </div>
 
             <div style="text-align: center; padding-top: 1.9rem">
@@ -197,7 +198,7 @@
 
     <!-- end of ngif -->
     <br/>
-    <div style="padding: 0.4rem; margin-left: 3rem">
+    <div style="padding: 0.4rem; margin-left: 3rem padd">
       <button
         style="margin-left: 8rem; width: 11.5rem"
         (click)="openAdd()"
@@ -213,13 +214,19 @@
       Back to sessions
     </button>
     </div>
+    <br>
+      <br>
+    
   </nb-layout-column>
 </nb-layout>
 <footer>
+ 
+
   <nav
     id="foot"
     class="navbar"
-    style="width: 100%; position: absolute; bottom: 0"
+    style="width: 100%; 
+     bottom: 0"
   >
     <a class="navbar-brand" href="#"> </a>
     <span class="TDO" style="margin-right: auto"> &lt; TDO &gt;</span>

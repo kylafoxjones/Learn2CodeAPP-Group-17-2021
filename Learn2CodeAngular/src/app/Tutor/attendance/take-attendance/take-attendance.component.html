@@ -31,7 +31,7 @@
     <button (click)="confirmed()" style="width: 6rem" class="btn btn-info"  [routerLink]="['/sessions']">
       Submit
     </button>
-    <button style="margin-left: 2rem; width: 6rem" class="btn btn-danger">
+    <button  [mat-dialog-close] style="margin-left: 2rem; width: 6rem" class="btn btn-danger">
       Cancel
     </button>
   </div>

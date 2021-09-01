@@ -45,13 +45,14 @@ export class StudentComponent implements OnInit {
       if (result.isConfirmed) {
         this.service.deleteStudent(id).subscribe((result) => {
           this.getAllStudents();
-        });
-        Swal.fire('Successful Deletion', '', 'success');
-      }
-      },(error) => {
+          Swal.fire('Successful Deletion', '', 'success');
+        },(error) => {
 
-        Swal.fire('Error!', error.error, 'error');
-    });
+          Swal.fire('Error!', error.error, 'error');
+      });
+        
+      }
+      });
   }
   getAllStudents() {
     this.service.getStudents().subscribe((result) => {

@@ -41,11 +41,12 @@ export class TutorComponent implements OnInit {
       if (result.isConfirmed) {
         this.service.deleteTutor(id).subscribe((result) => {
           this.getAllTutors();
+          Swal.fire('Successful Deletion', '', 'success');
+        },(error) => {
+          Swal.fire('Error!', error.error, 'error');
         });
-        Swal.fire('Successful Deletion', '', 'success');
+       
       }
-    },(error) => {
-      Swal.fire('Error!', error.error, 'error');
     });
   }
   getAllTutors() {

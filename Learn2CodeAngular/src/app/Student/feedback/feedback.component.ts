@@ -110,8 +110,11 @@ export class FeedbackComponent implements OnInit {
       //     title: 'Feedback already exists for this session',
       //     confirmButtonText: 'Okay',
       //   });
+      this.getSessions();
+    this.getMyFeedback();
     });
     this.getSessions();
+    this.getMyFeedback();
   }
 
   getMyFeedback() {

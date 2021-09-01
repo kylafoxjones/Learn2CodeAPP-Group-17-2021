@@ -12,7 +12,7 @@ import Swal from 'sweetalert2';
 export class ForgotPasswordComponent implements OnInit {
 form: ForgotpasswordDto = <ForgotpasswordDto>{};
 
-  constructor(private LoginService: LoginService) { }
+  constructor(private LoginService: LoginService,private dialogRef: MatDialog) { }
 
   ngOnInit(): void {
   }
@@ -24,6 +24,8 @@ form: ForgotpasswordDto = <ForgotpasswordDto>{};
     this.LoginService.forgotPassword('api/Login/ForgotPassword', this.form)
     .subscribe(_ => {
     console.log("SUCCESS");
+    Swal.fire('Success', 'Please check your email', 'success');
+    this.dialogRef.closeAll();
     },
     err => {
       Swal.fire('Error!', err.error, 'error');

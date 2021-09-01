@@ -4,7 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'admin',
+    redirectTo: 'loginhomepage/login',
     pathMatch: 'full',
   },
   // {
@@ -36,6 +36,7 @@ const routes: Routes = [
       import('./login/login.module').then((m) => m.LoginModule),
     // canActivate: [AuthGuard],
   },
+  
 ];
 
 @NgModule({

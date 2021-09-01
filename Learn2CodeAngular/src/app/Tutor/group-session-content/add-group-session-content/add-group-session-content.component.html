@@ -1,5 +1,6 @@
 <h5 style="text-align: center">{{ popupTitle }}</h5>
 <hr />
+<form #userform="ngForm">
 <mat-form-field appearance="outline">
   <mat-label>Category:</mat-label>
   <!-- <div
@@ -66,14 +67,10 @@
     (change)="SessionVid($event)"
   />
 </div>
-
-<div style="margin: auto; padding-top: 1rem">
+</form>
+<div style="margin: auto; padding-top: 1rem;margin-left: 2rem;">
   <button
-    [disabled]="
-
-      selectcat.invalid
-
-    "
+  [disabled]="userform.invalid"
     (click)="onSubmit()"
     style="width: 6rem"
     class="btn btn-info"

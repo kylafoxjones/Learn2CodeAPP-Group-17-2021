@@ -1,54 +1,59 @@
 <h5 style="text-align: center">Provide Feedback</h5>
 <hr />
+<form #userform="ngForm">
 <label style="font: bolder"
   >Provide feedback on the tutor for the session:</label
 >
-<p>
+<p style="margin-left: 1.5rem;">
   <i class="fa fa-commenting-o" aria-hidden="true"></i> Please rate the session
   the tutor provided out of 10 according to the parameters below:
 </p>
 
 <mat-form-field class="example-full-width">
   <mat-label>Friendliness:</mat-label>
-  <input
+  <input  name="name" #namecontrol="ngModel" required
     mdInput
     type="number"
     matInput
     placeholder="Friendliness 1-10"
     [(ngModel)]="data.Friendliness"
+    max="10"
   />
 </mat-form-field>
 <mat-form-field class="example-full-width">
   <mat-label>Timeliness</mat-label>
-  <input
+  <input  name="names" #namecontrols="ngModel" required
     mdInput
     type="number"
     matInput
     placeholder="Timeliness 1-10"
     [(ngModel)]="data.Timeliness"
     #name="ngModel"
+    max="10"
   />
 </mat-form-field>
 <mat-form-field class="example-full-width">
   <mat-label>Ability</mat-label>
-  <input
+  <input  name="named" #namecontrold="ngModel" required
     mdInput
     type="number"
     matInput
     placeholder="Ability 1-10"
     [(ngModel)]="data.Ability"
+    max="10"
   />
 </mat-form-field>
 <mat-form-field class="example-full-width">
   <mat-label>Description:</mat-label>
-  <textarea matInput [(ngModel)]="data.Description"></textarea>
+  <textarea  name="namek" #namecontrokl="ngModel" required matInput [(ngModel)]="data.Description"></textarea>
 </mat-form-field>
 
-<div style="margin: auto; padding-top: 1rem">
-  <button (click)="createFeedback()" style="width: 6rem" class="btn btn-info">
+<div style="margin: auto; padding-top: 1rem; margin-left: 2.6rem;">
+  <button  [disabled]="userform.invalid" (click)="createFeedback()" style="width: 6rem" class="btn btn-info">
     Submit
   </button>
   <button (click)="cancel()" style="margin-left: 2rem; width: 6rem" class="btn btn-danger">
     Cancel
   </button>
 </div>
+</form>

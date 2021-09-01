@@ -275,5 +275,8 @@ export class TutorService {
     return this.http.get(this.apiUrl + 'FinalizeSession/' + BookingInstanceId);
   }
 
+  deletetutor(id: number) {
+    return this.http.delete(this.apiUrl + 'DeleteTutor/' + id); 
+  }
  
 }

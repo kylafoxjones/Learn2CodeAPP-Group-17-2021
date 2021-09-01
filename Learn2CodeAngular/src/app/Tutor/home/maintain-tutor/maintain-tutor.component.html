@@ -174,8 +174,34 @@
         />
       </mat-form-field>
     </div>
+    
+    <div class="col-md-6">
+      <label for="formFile" class="form-label">Profile Photo:</label>
+      <input
+      class="form-control"
+      type="file"
+      #file
+      placeholder="Choose a photo"
+      required
+      name="apppic"
+      #apppic="ngModel"
+      [(ngModel)]="picture"
+      (change)="changePic($event)"
+    />
+    </div>
+    <div
+    *ngIf="apppic.invalid && (apppic.dirty || apppic.touched)"
+    class="alert"
+  >
+    <div
+      *ngIf="apppic.errors?.required"
+      style="font-size: small; color: red"
+    >
+      Profile Picture is required.
+    </div>
   </div>
-
+  </div>
+ 
   <mat-form-field
     class="example-full-width"
     style="width: 90%"
@@ -204,49 +230,7 @@
     />
   </mat-form-field>
   <br />
-  <div class="row">
-    <div class="col-md-12">
-      <div
-        style="margin-left: 2.5rem; padding-bottom: 0.7rem; margin-top: 0.5rem"
-      ></div>
-      <label for="formFile" class="form-label">Profile Photo:</label>
-      <div
-        *ngIf="apppic.invalid && (apppic.dirty || apppic.touched)"
-        class="alert"
-      >
-        <div
-          *ngIf="apppic.errors?.required"
-          style="font-size: small; color: red"
-        >
-          Profile Picture is required.
-        </div>
-      </div>
-      <input
-        class="form-control"
-        type="file"
-        #file
-        placeholder="Choose a photo"
-        required
-        name="apppic"
-        #apppic="ngModel"
-        [(ngModel)]="picture"
-        (change)="changePic($event)"
-      />
-      <a
-        class="navbar-brand"
-        href="#"
-        style="margin-left: 6rem; display: inline-block"
-      >
-        <img
-          src="../../../assets/pics/circle-cropped.png"
-          width="105"
-          height="105"
-          style="border-radius: 55px"
-          alt=""
-        />
-      </a>
-    </div>
-  </div>
+  
   <br />
   <br />
   <div style="margin-left: 30%">

@@ -168,7 +168,7 @@
                 <td>{{item.bookingInstance.title}}</td>
                 <td>{{item.bookingInstance.tutor.tutorName}}</td>
                 <td>{{item.bookingInstance.tutor.tutorSurname}}</td>
-                <td></td>
+                <td>{{(item.friendliness+ item.timliness + item.ability)/3 | number : '1.0-0'}}</td>
                 <td>
                   <button (click)= "delete(item)" class="btn btn-danger">
                     <i class="fa fa-trash"></i>

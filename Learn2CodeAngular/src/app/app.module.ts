@@ -58,7 +58,7 @@ export function tokenGetter() {
     }),
     //  NgbModule,
   ],
-  providers: [],
+  providers: [ MatDatepickerModule],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

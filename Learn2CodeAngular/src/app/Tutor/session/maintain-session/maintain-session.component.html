@@ -1,7 +1,7 @@
 <div >
 <h5 style="text-align: center">Update Session</h5>
 <hr />
-<form class="example-form" style="padding-top: 1.5rem">
+<form  #userform="ngForm" style="padding-top: 1.5rem">
   <div class="row">
     <div class="col-md-6"></div>
   </div>
@@ -71,44 +71,38 @@
 
   <div class="row">
     <div class="col-md-6">
+        
       <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>Choose a date</mat-label>
-        <!-- <div *ngIf="date.invalid && (date.dirty || date.touched)" class="alert">
-          <div
-            *ngIf="date.errors?.required"
-            style="font-size: smaller; color: red"
-          >
-            Date is required.
-          </div>
-        </div> -->
+      
         <input
           [(ngModel)]="newDate"
           name="Date"
           matInput
+          #date="ngModel"
           [matDatepicker]="picker"
           required
          
         />
-        <!-- #date="ngModel" -->
+        <!--  -->
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
+      <div *ngIf="date.invalid && (date.dirty || date.touched)" class="alert">
+        <div
+          *ngIf="date.errors?.required"
+          style="font-size: smaller; color: red"
+        >
+          Date is required.
+        </div>
+      </div> 
     </div>
     <div class="col-md-6">
+    
       <div style="margin-left: 2rem">
         <mat-form-field appearance="outline">
           <mat-label>Time:</mat-label>
-          <div
-            *ngIf="seltime.invalid && (seltime.dirty || seltime.touched)"
-            class="alert"
-          >
-            <div
-              *ngIf="seltime.errors?.required"
-              style="font-size: smaller; color: red"
-            >
-              Time is required.
-            </div>
-          </div>
+        
           <mat-select
             required
             name="seltime"
@@ -121,18 +115,27 @@
             </mat-option>
           </mat-select>
         </mat-form-field>
+        <div
+        *ngIf="seltime.invalid && (seltime.dirty || seltime.touched)"
+        class="alert"
+      >
+        <div
+          *ngIf="seltime.errors?.required"
+          style="font-size: smaller; color: red"
+        >
+          Time is required.
+        </div>
+      </div>
       </div>
     </div>
   </div>
 </form>
 <!-- date.invalid ||
   timex.invalid -->
-<div style="margin-left: 33%">
-  <button [disabled]="
-  Link.invalid ||
-  Title.invalid 
+<div style="margin-left: 25%">
+  <button  [disabled]="userform.invalid
   
-" (click)="onCreate()" class="btn btn-info" style="width: 8rem">
+" (click)="onCreate()" class="btn btn-info" style="width: 8rem;">
     Create
   </button>
   <button
