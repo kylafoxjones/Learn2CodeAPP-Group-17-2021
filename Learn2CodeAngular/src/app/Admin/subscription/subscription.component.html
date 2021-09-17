@@ -63,14 +63,14 @@
         <br />
         <table
           class="table table-hover"
-          style="width: 80%; margin: auto; padding-top: 2rem"
+          style="width: 80%; margin: auto; padding-top: 2rem; text-align: center;"
         >
           <thead>
             <tr>
               <th scope="col">Subscription</th>
               <th scope="col">Duration</th>
               <th scope="col">Price</th>
-              <th scope="col">Quantity</th>
+              <th scope="col">Number of tickets</th>
               <th scope="col"></th>
               <th scope="col"></th>
             </tr>
@@ -79,7 +79,7 @@
             <tr *ngFor="let item of subscriptionList | filter: search  | paginate: { itemsPerPage: 5, currentPage: page,totalItems:totalLength, id: 'first' }">
               <td>{{ item.subscriptionName }}</td>
               <td>{{ item.duration }}</td>
-              <td>{{ item.price }}</td>
+              <td>R {{ item.price }}</td>
               <td>{{ item.subscriptionTutorSession[0].quantity }}</td>
               <td>
                 <button (click)="openEditDialog(item)" class="btn btn-primary">

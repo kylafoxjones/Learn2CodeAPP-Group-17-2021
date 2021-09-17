@@ -289,4 +289,12 @@ export class StudentService {
     return this.http.put(this.apiUrlLogin + 'ChangePassword', newPasswordInfo);
   }
 
+  //course price
+  couurseprice(id) {
+    return this.http.get(this.apiUrl + 'GetCouesePrice/' + id);
+  }
+  subscriptionprice(id) {
+    return this.http.get(this.apiUrl + 'GetsubPrice/' + id);
+  }
+
 }

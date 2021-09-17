@@ -10,6 +10,7 @@ import { TutorService } from '../tutor resources/tutor.service';
   styleUrls: ['./application.component.scss'],
 })
 export class ApplicationComponent implements OnInit {
+  imageURL: string;
   data: any = {};
   file: any;
   photo: any;
@@ -20,6 +21,7 @@ export class ApplicationComponent implements OnInit {
   modulexv: any;
   picture: any;
   cv:any;
+  url:any;
 
   constructor(private router: Router, private service: TutorService) {}
 
@@ -45,7 +47,24 @@ export class ApplicationComponent implements OnInit {
   proPic(event) {
     console.log(event.target.files[0]);
     this.photo = event.target.files[0];
+    
     console.log('the cv file', this.file);
+    const files = event.target.files;
+    if (files.length === 0)
+        return;
+
+    const mimeType = files[0].type;
+    if (mimeType.match(/image\/*/) == null) {
+      
+        return;
+    }
+
+    const reader = new FileReader();
+    this.imageURL = files;
+    reader.readAsDataURL(files[0]); 
+    reader.onload = (_event) => { 
+        this.url = reader.result; 
+    }
   }
 
   submit() {

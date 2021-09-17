@@ -324,6 +324,10 @@
                     (change)="proPic($event)"
                   />
                 </div>
+                <div style="margin-left: 10.5rem;padding-top: 1rem;">
+                  <img *ngIf="url" style=" border-radius: 75px; width:8rem;height:8rem;" src={{url}}>
+                </div>
+                
               </div>
             </div>
             <br />
@@ -388,6 +392,7 @@
         </div>
       </div>
     </div>
+   
     <br />
     <br />
   </nb-layout-column>

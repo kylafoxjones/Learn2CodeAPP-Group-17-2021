@@ -49,11 +49,11 @@
   <h4 style="margin-left: 0.5rem; text-align: center">Shopping Cart</h4>
   <hr />
 
-  <h6 style="margin-left: 0.5rem; text-decoration: underline">Subscriptions</h6>
+  <h6 style="margin-left: 0.5rem; text-decoration: underline">Subscriptions: R {{subscriptionsum | number}}</h6>
   <!-- <h6 style="margin-left: 0.5rem; text-decoration: underline">Items in your cart: </h6> -->
   <ul *ngFor="let item of subscriptionBasketList">
     <li>
-      {{ item.subscription.subscriptionName }} R{{ item.subscription.price }}
+      {{ item.subscription.subscriptionName }} R {{ item.subscription.price }}
       <i
         (click)="removeItemFromSubscriptionCart(item)"
         style="float: right; margin-right: 1rem"
@@ -62,7 +62,7 @@
       ></i>
     </li>
   </ul>
-  <h6 style="margin-left: 0.5rem; text-decoration: underline">Short Courses</h6>
+  <h6 style="margin-left: 0.5rem; text-decoration: underline">Short Courses: R {{coursesum  | number}}</h6>
 
   <ul *ngFor="let item of courseBasketList">
     <li>
@@ -78,7 +78,7 @@
     </li>
   </ul>
   <h6 style="margin-left: 0.5rem; text-decoration: underline">
-    Total: R {{ basketForStudentLoggedIn.totalPrice }}
+    Total: R {{ basketForStudentLoggedIn.totalPrice  | number }}
   </h6>
   <br />
   <!-- <button

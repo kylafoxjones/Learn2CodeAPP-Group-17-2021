@@ -19,7 +19,8 @@ export class ShopComponent implements OnInit {
   search: string;
   moduleList: any;
   moduleChosen: any;
-
+  coursesum:any;
+  subscriptionsum:any;
   basketForStudentLoggedIn: any = {};
   courseBasketList: any = [];
   subscriptionBasketList: any = [];
@@ -47,7 +48,11 @@ export class ShopComponent implements OnInit {
     this.getAllSubscriptions();
     this.getAllCourses();
     this.getModules();
+    
   }
+
+
+  
 
   getLoggedInUser() {
     this.userId = localStorage.getItem('id');
@@ -78,17 +83,35 @@ export class ShopComponent implements OnInit {
         'basket for student logged in',
         this.basketForStudentLoggedIn
       );
+     
       this.getCourseBasket();
+      
       this.getSubscriptionBasket();
       this.total = this.basketForStudentLoggedIn.totalPrice * 100;
     });
   }
 
+  getCourseprice(){
+    this.service.couurseprice(this.basketForStudentLoggedIn.id).subscribe((result) => {
+     this.coursesum = result;
+    });
+  }
+
+  getSubscriptioPrice(){
+    this.service.subscriptionprice(this.basketForStudentLoggedIn.id).subscribe((result) => {
+     this.subscriptionsum = result;
+     this.subscriptionsum.spl
+    });
+  }
+  
+
   getCourseBasket() {
     this.service
       .getCourseBasket(this.basketForStudentLoggedIn.id)
       .subscribe((result) => {
+       
         this.courseBasketList = result;
+        this.getCourseprice();
         console.log('course basket', this.courseBasketList);
       });
   }
@@ -98,6 +121,7 @@ export class ShopComponent implements OnInit {
       .getSubscriptionBasket(this.basketForStudentLoggedIn.id)
       .subscribe((result) => {
         this.subscriptionBasketList = result;
+        this.getSubscriptioPrice();
         console.log('subscription basket', this.subscriptionBasketList);
       });
   }
@@ -164,6 +188,11 @@ export class ShopComponent implements OnInit {
       .addToCartItems(subscritionObjToSendToDB)
       .subscribe((result) => {
         this.getBasketForStudent();
+      }
+      ,
+      (error) => {
+        
+        Swal.fire('Error!', error.error, 'error');
       });
   }
 
@@ -178,7 +207,12 @@ export class ShopComponent implements OnInit {
       .addToCourseCartItems(courseObjToSendToDB)
       .subscribe((result) => {
         this.getBasketForStudent();
-      });
+      },
+      (error) => {
+        
+        Swal.fire('Error!', error.error, 'error');
+      }
+      );
   }
 
   checkout() {
