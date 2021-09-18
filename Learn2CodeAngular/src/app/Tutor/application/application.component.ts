@@ -81,12 +81,22 @@ export class ApplicationComponent implements OnInit {
     //this.xx = this.xx.filter(zz => zz.item_text === item.item_text);
     console.log("test",this.xx);
 
-    
   }
 
 
   onSelectAll(items: any) {
+    this.xx = [];
     console.log(items);
+    for(  let i =0; i<items.length; i++ ){
+      this.xx.push(items[i].id)
+    }
+   ;
+    console.log("selectall", this.xx);
+  }
+  deselectall(){
+    console.log("de")
+    this.xx =[]
+    console.log("de",this.xx)
   }
   
   selectModule($event) {
