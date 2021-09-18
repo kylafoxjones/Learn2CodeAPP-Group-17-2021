@@ -257,7 +257,24 @@
               />
             </mat-form-field>
             <div style="margin-left: 2.5rem">
-              <mat-form-field appearance="outline" style="width: 22rem">
+              <!-- <mat-form-field appearance="outline" style="width: 22rem">
+                <mat-label>Module:</mat-label>
+                <div
+                  *ngIf="
+                    selectmod.invalid && (selectmod.dirty || selectmod.touched)
+                  "
+                  class="alert"
+                >
+                  <div
+                    *ngIf="selectmod.errors?.required"
+                    style="font-size: smaller; color: red"
+                  >
+                    Module is required.
+                  </div>
+                </div>
+                <button class="btn btn-primary" (click)="pickModules()">Pick Moudule(s)</button>
+              </mat-form-field> -->
+                      <mat-form-field appearance="outline" style="width: 22rem">
                 <mat-label>Module:</mat-label>
                 <div
                   *ngIf="
@@ -283,6 +300,15 @@
                     {{ item.moduleCode }}
                   </mat-option>
                 </mat-select>
+                <!-- <ng-multiselect-dropdown
+                  [placeholder]="'custom placeholder'"
+                  [settings]="dropdownSettings"
+                  [data]="dropdownList"
+                  [(ngModel)]="selectedItems"
+                  (onSelect)="onItemSelect($event)"
+                  (onSelectAll)="onSelectAll($event)"
+                >
+                </ng-multiselect-dropdown> -->
               </mat-form-field>
             </div>
 
@@ -377,8 +403,8 @@
                 email.invalid ||
                 tel.invalid ||
                 appcv.invalid ||
-                apppic.invalid ||
-                selectmod.invalid
+                apppic.invalid 
+               
               "
               >Submit</Button
             >

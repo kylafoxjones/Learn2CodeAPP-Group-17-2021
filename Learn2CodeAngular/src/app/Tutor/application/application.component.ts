@@ -1,9 +1,12 @@
 import { formatDate } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import Swal from 'sweetalert2';
 import { TutorService } from '../tutor resources/tutor.service';
-
+import { PickModulesComponent } from './pick-modules/pick-modules.component';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 @Component({
   selector: 'app-application',
   templateUrl: './application.component.html',
@@ -23,15 +26,47 @@ export class ApplicationComponent implements OnInit {
   cv:any;
   url:any;
 
-  constructor(private router: Router, private service: TutorService) {}
+  dropdownList = [];
+  selectedItems = [];
+  dropdownSettings: IDropdownSettings = {};
+
+  constructor(private router: Router, private service: TutorService,public dialog: MatDialog) {}
 
   ngOnInit() {
     this.service.getApplicationModules().subscribe((res) => {
       this.moduleList = res;
       console.log('all the modules', this.moduleList);
     });
+    
+     this.dropdownList = [
+      { item_id: 1, item_text: 'Mumbai' },
+      { item_id: 2, item_text: 'Bangaluru' },
+      { item_id: 3, item_text: 'Pune' },
+      { item_id: 4, item_text: 'Navsari' },
+      { item_id: 5, item_text: 'New Delhi' }
+    ];
+    this.selectedItems = [
+      { item_id: 3, item_text: 'Pune' },
+      { item_id: 4, item_text: 'Navsari' }
+    ];
+    this.dropdownSettings = {
+      singleSelection: false,
+      idField: 'item_id',
+      textField: 'item_text',
+      selectAllText: 'Select All',
+      unSelectAllText: 'UnSelect All',
+      itemsShowLimit: 3,
+      allowSearchFilter: true
+    };
   }
 
+  onItemSelect(item: any) {
+    console.log(item);
+  }
+  onSelectAll(items: any) {
+    console.log(items);
+  }
+  
   selectModule($event) {
     //get module chosen as input from user in dropdown
     this.moduleChosen = $event;
@@ -65,6 +100,15 @@ export class ApplicationComponent implements OnInit {
     reader.onload = (_event) => { 
         this.url = reader.result; 
     }
+  }
+
+  pickModules(){
+    const dialogRef = this.dialog.open(PickModulesComponent, {
+      width: '900px',
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+     
+    });
   }
 
   submit() {

@@ -44,6 +44,8 @@ import { MatMenuModule } from '@angular/material/menu';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ChangePasswordComponent } from './home/change-password/change-password.component';
 import { FinalizeComponent } from './session/finalize/finalize.component';
+import { PickModulesComponent } from './application/pick-modules/pick-modules.component';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 //import { FormsModule } from '@angular/forms';
 
 
@@ -72,6 +74,7 @@ import { FinalizeComponent } from './session/finalize/finalize.component';
     MaintainSessionComponent,
     ChangePasswordComponent,
     FinalizeComponent,
+    PickModulesComponent,
     //SessionsComponent,
     
  
@@ -99,7 +102,8 @@ import { FinalizeComponent } from './session/finalize/finalize.component';
     MatMenuModule,
     NgxPaginationModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    NgMultiSelectDropDownModule
   ]
 })
 export class TutorModule { }

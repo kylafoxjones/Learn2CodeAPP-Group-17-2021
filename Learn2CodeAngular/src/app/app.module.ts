@@ -11,6 +11,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NbThemeModule, NbLayoutModule, NbSidebarModule } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { ChartsModule } from 'ng2-charts';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 
 //import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
@@ -30,6 +31,7 @@ export function tokenGetter() {
   declarations: [AppComponent],
   imports: [
     BrowserModule,
+    NgMultiSelectDropDownModule.forRoot(),
     AppRoutingModule,
     RouterModule ,
     // all seperate modules imported for the subsystems below
