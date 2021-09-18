@@ -274,7 +274,7 @@
                 </div>
                 <button class="btn btn-primary" (click)="pickModules()">Pick Moudule(s)</button>
               </mat-form-field> -->
-                      <mat-form-field appearance="outline" style="width: 22rem">
+                      <!-- <mat-form-field appearance="outline" style="width: 22rem">
                 <mat-label>Module:</mat-label>
                 <div
                   *ngIf="
@@ -300,16 +300,21 @@
                     {{ item.moduleCode }}
                   </mat-option>
                 </mat-select>
-                <!-- <ng-multiselect-dropdown
-                  [placeholder]="'custom placeholder'"
+                
+              </mat-form-field> -->
+              <div style=" width: 22rem;">
+                <mat-label>Modules: </mat-label>
+               <ng-multiselect-dropdown
+               
+                  [placeholder]="'Select Modules'"
                   [settings]="dropdownSettings"
-                  [data]="dropdownList"
+                  [data]="moduleList"
                   [(ngModel)]="selectedItems"
                   (onSelect)="onItemSelect($event)"
-                  (onSelectAll)="onSelectAll($event)"
+                  (onDeSelect) ="unselect($event)"
                 >
-                </ng-multiselect-dropdown> -->
-              </mat-form-field>
+                </ng-multiselect-dropdown> 
+              </div>
             </div>
 
             <div class="row">

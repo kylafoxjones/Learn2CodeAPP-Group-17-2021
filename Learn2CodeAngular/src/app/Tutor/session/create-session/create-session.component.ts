@@ -106,6 +106,11 @@ export class CreateSessionComponent implements OnInit {
           this.data = result;
           this.dialogRef.close();
           Swal.fire('Session has been created!', this.data.message, 'success');
+        },
+        (error) => {
+          
+          Swal.fire('Error!', error.error, 'error');
+        
         });
       }
     });

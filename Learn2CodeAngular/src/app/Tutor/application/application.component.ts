@@ -28,6 +28,7 @@ export class ApplicationComponent implements OnInit {
 
   dropdownList = [];
   selectedItems = [];
+  xx =[];
   dropdownSettings: IDropdownSettings = {};
 
   constructor(private router: Router, private service: TutorService,public dialog: MatDialog) {}
@@ -51,18 +52,39 @@ export class ApplicationComponent implements OnInit {
     ];
     this.dropdownSettings = {
       singleSelection: false,
-      idField: 'item_id',
-      textField: 'item_text',
+      idField: 'id',
+      textField: 'moduleCode',
       selectAllText: 'Select All',
       unSelectAllText: 'UnSelect All',
       itemsShowLimit: 3,
-      allowSearchFilter: true
+      allowSearchFilter: false
     };
   }
 
   onItemSelect(item: any) {
     console.log(item);
+    
+    this.xx.push(item.id);
+    console.log(this.xx);
   }
+
+  unselect(it: any){
+    //console.log("this array",this.xx);
+    //console.log("splice",it);
+
+    this.xx.forEach((element, index) => {
+      console.log("element",element)
+      if (element === it.id) this.xx.splice(index, 1);
+   });
+
+    //this.xx.splice( this.xx.findIndex(e => e.item_text === it.item_text),2);
+    //this.xx = this.xx.filter(zz => zz.item_text === item.item_text);
+    console.log("test",this.xx);
+
+    
+  }
+
+
   onSelectAll(items: any) {
     console.log(items);
   }
@@ -120,7 +142,12 @@ export class ApplicationComponent implements OnInit {
     X.append('tutorPhoto', this.photo);
     X.append('file', this.file);
     X.append('tutorEmail', this.data.email);
-    X.append('moduleId', this.moduleChosen);
+    for (const index in this.xx) 
+{
+    // instead of passing this.arrayValues.toString() iterate for each item and append it to form.
+    X.append(`moduleId[${index}]`,this.xx[index].toString());
+}
+  
     Swal.fire({
       title: 'Are you sure you want to apply?',
       icon: 'warning',
