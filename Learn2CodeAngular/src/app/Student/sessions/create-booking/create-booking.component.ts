@@ -51,6 +51,12 @@ ticketobj: any ={};
           this.data = result;
           Swal.fire('Successful Booking', '', 'success');
         this.dialogRef.close();
+        }
+        ,
+        (error) => {
+          
+          Swal.fire('Error!', error.error, 'error');
+        
         });
        
       }

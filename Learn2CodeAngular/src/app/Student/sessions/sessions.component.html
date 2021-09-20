@@ -82,10 +82,10 @@
         <tbody>
           <tr *ngFor="let item of bookings | filter: search | paginate: { itemsPerPage: 5, currentPage: page,totalItems:totalLength, id: 'first' }">
             <td>{{ item.title }}</td>
-            <td>{{ item.sessionTime.startTime }}- {{ item.sessionTime.endTime }}</td>
-            <td>{{ item.date }}</td>
-            <td>{{ item.tutor.tutorName }}  {{ item.tutor.tutorSurname }}</td>
-            <td>{{ item.module.moduleCode }}</td>
+            <td>{{ item.startTime }}- {{ item.endTime }}</td>
+            <td>{{ item.date  | date: 'dd/MM/yyyy' }}</td>
+            <td>{{ item.tutorName }}  {{ item.tutorSurname }}</td>
+            <td>{{ item.moduleCode }}</td>
             <td> <button (click)="openPopUp(item.id)" class="btn btn-primary">
               <!-- <i class="fa fa-pencil"></i> -->
               Book
@@ -156,16 +156,16 @@
           <tbody>
             <tr *ngFor="let item of myBookingList | filter: search | paginate: { itemsPerPage: 5, currentPage: page1,totalItems:totalLength1,id: 'second' } ">
               <td >
-                {{item.tutor.tutorName}}
+                {{item.tutorName}}
               </td>
               <td >
-                {{item.module.moduleCode}}
+                {{item.moduleCode}}
               </td>
               <td >
-                {{item.date}}
+                {{item.date  | date: 'dd/MM/yyyy'}}
               </td>
               <td >
-                {{ item.sessionTime.startTime }}- {{ item.sessionTime.endTime }}
+                {{ item.startTime }}- {{ item.endTime }}
               </td>
               <td >
                 {{ item.link }}

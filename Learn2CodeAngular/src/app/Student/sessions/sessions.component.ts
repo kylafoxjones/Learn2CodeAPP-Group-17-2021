@@ -86,6 +86,10 @@ export class SessionsComponent implements OnInit {
         console.log(res);
         this.bookings = res;
       });
+      this.service.Ticketsleft(this.studentId,this.nameArr[0]).subscribe((result) => {
+        this.service.ticketsleft = result;
+      console.log( this.service.ticketsleft)
+      });
   }
 
   openPopUp(id) {
