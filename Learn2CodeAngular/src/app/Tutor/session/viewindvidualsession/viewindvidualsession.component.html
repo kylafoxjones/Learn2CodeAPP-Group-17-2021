@@ -1,0 +1,46 @@
+<button class="close" mat-button (click)="cancel()" >x</button>
+<h3 style="text-align: center;">Booking details</h3>
+<br>
+<div class="row">
+    <div class="col-md-4">
+        <label>Date: {{booking.date}} </label>
+    </div>
+    <div class="col-md-4">
+        <label>Link: {{booking.link}} </label>
+    </div>
+    
+    <div class="col-md-4" >
+        <h1 *ngif="booking.booking === undefined ">sss</h1>
+        <label >Booking Status: {{booking.bookingStatus.bookingStatus}} </label>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        
+        <div *ngIf="booking.booking !== undefined ">
+            <label>Student name: {{booking.booking.student.studentName}} </label>
+        </div>
+        
+    </div>
+    <div class="col-md-4">
+        <div *ngIf="booking.booking !== undefined ">
+            <label>Student Surname: {{booking.booking.student.studentSurname}} </label>
+        </div>
+        
+    </div>
+    
+    <div class="col-md-4">
+        <div *ngIf="booking.booking !== undefined ">
+            <label>Email: {{booking.booking.student.identity.email}} </label>
+        </div>
+       
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div *ngIf="booking.booking !== undefined ">
+            <label>Description: {{booking.description}} </label>
+        </div>
+    </div>
+</div>

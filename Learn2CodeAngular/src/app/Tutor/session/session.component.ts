@@ -9,6 +9,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { FinalizeComponent } from './finalize/finalize.component';
 import { ViewgroupSessionComponent } from './viewgroup-session/viewgroup-session.component';
 import { DatePipe } from '@angular/common';
+import { ViewindvidualsessionComponent } from './viewindvidualsession/viewindvidualsession.component';
 
 @Component({
   selector: 'app-session',
@@ -138,6 +139,19 @@ today = new Date();
     //this.service.sessionToFinalize = obj;
     const dialogRef = this.dialog.open(ViewgroupSessionComponent, {
       width: '800px',
+      data: ID
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+      this.getMyGroupSessions();
+      this.getMyIndivSessions();
+    });
+  }
+
+  viewindreg(ID){
+    console.log(ID)
+    //this.service.sessionToFinalize = obj;
+    const dialogRef = this.dialog.open(ViewindvidualsessionComponent, {
+      width: '900px',
       data: ID
     });
     dialogRef.afterClosed().subscribe((result) => {

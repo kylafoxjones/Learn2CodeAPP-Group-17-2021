@@ -11,15 +11,19 @@ import { StudentService } from '../../Student resources/student.service';
 })
 export class CreateBookingComponent implements OnInit {
 data:any ={};
+ticketsleft:any =0;
 
 bookingObj: any = {};
-
+ticketobj: any ={};
   constructor(private service: StudentService,
     private router: Router,
     public dialog: MatDialog,
     private dialogRef: MatDialogRef<CreateBookingComponent>) { }
 
   ngOnInit(): void {
+    console.log( this.service.ticketsleft)
+    this.ticketsleft = this.service.ticketsleft;
+    console.log(this.ticketsleft)
   }
 
   book() {
@@ -29,17 +33,37 @@ bookingObj: any = {};
       ModuleId: this.service.moduleID,
       Description: this.data.Description,
     };
-    this.service.makeBooking(this.bookingObj).subscribe(
-      (result) => {
-        this.data = result;
-        Swal.fire('Booked!', this.data.message, 'success');
+   
+
+  
+
+    Swal.fire({
+      title: 'Are you sure you want to make the booking?',
+      text: 'you have '+ this.ticketsleft+ ' tickets remaining for this module',
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.service.makeBooking(this.bookingObj).subscribe((result) => {
+          this.data = result;
+          Swal.fire('Successful Booking', '', 'success');
         this.dialogRef.close();
-      },
+        });
+       
+      }
+    },
+
       (error) => {
         Swal.fire('Error!', error.error, 'error');
         this.dialogRef.close();
       }
     );
+
+
+    
   }
 
 }

@@ -280,6 +280,10 @@ export class TutorService {
     return this.http.get(this.apiUrl + 'GetRegStudent/' + BookingInstanceId);
   }
 
+  Getindreg(BookingInstanceId){
+    return this.http.get(this.apiUrl + 'GetBookedStudent/' + BookingInstanceId);
+  }
+
   deletetutor(id: number) {
     return this.http.delete(this.apiUrl + 'DeleteTutor/' + id); 
   }

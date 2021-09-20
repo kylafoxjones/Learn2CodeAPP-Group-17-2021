@@ -46,12 +46,14 @@
   <div class="header">My Schedule</div>
 </div>
 
-<nb-layout style="width: 10rem; margin-left: 30rem">
-  <nb-layout-column style="width: 10rem">
-    <nb-tabset style="width: 75rem; margin-left: 3 rem" fullWidth>
+<nb-layout >
+  <nb-layout-column >
+    <nb-tabset style="width: 75rem;;
+    overflow-y:hidden;" fullWidth>
       <nb-tab tabTitle="Calendar"> </nb-tab>
 
-      <nb-tab tabTitle="My Sessions">
+      <nb-tab style=" overflow-x:hidden;
+      overflow-y:hidden;" tabTitle="My Sessions">
         <div style="padding: 0.4rem; float: left">
           <button
             (click)="openAddDialog()" style="margin-right: 3.5rem; float: right"
@@ -206,7 +208,7 @@
             </thead>
             <tbody>
               <tr  *ngFor="let item of indivSessions | paginate: { itemsPerPage: 5, currentPage: page1,totalItems:totalLength1,id: 'second' }">
-                <td>{{item.module.moduleCode}}</td>
+                <td (click)="viewindreg(item.id)">{{item.module.moduleCode}}</td>
                 <td>{{item.date}}</td>
                 <td>{{item.sessionTime.startTime}} - {{item.sessionTime.endTime}}</td>
                 <td><a href="#">{{item.link}}</a></td>

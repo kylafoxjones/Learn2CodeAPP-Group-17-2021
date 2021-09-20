@@ -35,6 +35,7 @@ export class StudentService {
   bookingID: any;
   moduleID: any;
   bookingToEdit: any = {};
+  ticketsleft:any;
 
   constructor(private http: HttpClient) {}
   //#region messaging
@@ -299,6 +300,12 @@ export class StudentService {
   }
   subscriptionprice(id) {
     return this.http.get(this.apiUrl + 'GetsubPrice/' + id);
+  }
+
+  Ticketsleft(StudentId, ModuleId) {
+    return this.http.get(
+      this.apiUrl + 'Ticketsleft/' + ModuleId + '/' +StudentId 
+    );
   }
 
 }

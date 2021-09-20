@@ -50,6 +50,7 @@ import { ViewgroupSessionComponent } from './session/viewgroup-session/viewgroup
 //import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MatTooltipModule} from '@angular/material/tooltip';
+import { ViewindvidualsessionComponent } from './session/viewindvidualsession/viewindvidualsession.component';
 
 
 
@@ -80,6 +81,7 @@ import { MatTooltipModule} from '@angular/material/tooltip';
     FinalizeComponent,
     PickModulesComponent,
     ViewgroupSessionComponent,
+    ViewindvidualsessionComponent,
     //SessionsComponent,
     
  

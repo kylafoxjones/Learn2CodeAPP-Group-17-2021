@@ -71,6 +71,12 @@ export class SessionsComponent implements OnInit {
     this.nameArr = event.split(',');
     this.service.moduleID = this.nameArr[0];
     console.log(this.nameArr);
+    console.log("please");
+    console.log(this.studentId);
+    this.service.Ticketsleft(this.studentId,this.nameArr[0]).subscribe((result) => {
+      this.service.ticketsleft = result;
+    console.log( this.service.ticketsleft)
+    });
   }
 
   avail() {
