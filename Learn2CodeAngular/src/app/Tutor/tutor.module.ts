@@ -46,7 +46,11 @@ import { ChangePasswordComponent } from './home/change-password/change-password.
 import { FinalizeComponent } from './session/finalize/finalize.component';
 import { PickModulesComponent } from './application/pick-modules/pick-modules.component';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { ViewgroupSessionComponent } from './session/viewgroup-session/viewgroup-session.component';
 //import { FormsModule } from '@angular/forms';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MatTooltipModule} from '@angular/material/tooltip';
+
 
 
 @NgModule({
@@ -75,11 +79,14 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
     ChangePasswordComponent,
     FinalizeComponent,
     PickModulesComponent,
+    ViewgroupSessionComponent,
     //SessionsComponent,
     
  
   ],
   imports: [
+    NgbModule,
+    MatTooltipModule,
     CommonModule,
     ChartsModule,
     TutorRoutingModule,

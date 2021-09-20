@@ -13,6 +13,7 @@ export class ViewSubscriptionsComponent implements OnInit {
   student: any = {};
   search;
   subscriptionList: any = [];
+  indsubscriptionList: any = [];
 
   constructor(
     private service: StudentService,
@@ -31,6 +32,7 @@ export class ViewSubscriptionsComponent implements OnInit {
       this.student = result;
       console.log('the student logged in', this.student);
       this.getSubscriptions();
+      this.indgetSubscriptions();
     });
   }
 
@@ -47,6 +49,13 @@ export class ViewSubscriptionsComponent implements OnInit {
     this.service.getBoughtSubscriptions(this.student.id).subscribe((res) => {
       this.subscriptionList = res;
       console.log('the subscription list', this.subscriptionList);
+    });
+  }
+
+  indgetSubscriptions() {
+    this.service.getBoughtindividualSubscriptions(this.student.id).subscribe((res) => {
+      this.indsubscriptionList = res;
+      console.log('the indsubscription list', this.subscriptionList);
     });
   }
 }

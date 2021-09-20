@@ -1,0 +1,32 @@
+<button class="close" mat-button (click)="cancel()" >x</button>
+
+<H3 style="text-align: center;">Registered Students</H3>
+
+<table
+class="table table-hover center"
+style="width: 80%; margin: auto; padding-top: 1.5rem"
+>
+<thead>
+  <tr style="text-align: center;" >
+    <th scope="col">Name</th>
+    <th scope="col">Surname</th>
+    <th scope="col">Cell</th>
+    <th scope="col">Email</th>
+   
+    
+  </tr>
+
+</thead>
+<tbody>
+  <tr style="text-align: center;"  *ngFor="let item of List | paginate: { itemsPerPage: 5, currentPage: page,totalItems:totalLength, id: 'first' }">
+    <td>{{item.student.studentName}}</td>
+    <td>{{item.student.studentSurname}}</td>
+    <td>{{item.student.studentCell}}</td>
+    <td>{{item.student.identity.email}}</td>
+   
+  
+  </tr>
+</tbody>
+</table>
+<br />
+<pagination-controls  id="first" style=" padding-left: 0px !important; display:flex;float: right" (pageChange)="page = $event"></pagination-controls>

@@ -1,3 +1,4 @@
+
 <nav class="navbar navbar-dark bg-dark">
   <a class="navbar-brand" href="#">
     <img
@@ -114,10 +115,10 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let item of groupSessions | paginate: { itemsPerPage: 5, currentPage: page,totalItems:totalLength, id: 'first' }">
-                <td>{{item.title}}</td>
+              <tr  *ngFor="let item of groupSessions | paginate: { itemsPerPage: 5, currentPage: page,totalItems:totalLength, id: 'first' }">
+                <td (click)="viewgroupreg(item.id)">{{item.title}}</td>
                 <td>{{item.module.moduleCode}}</td>
-                <td>{{item.date}}</td>
+                <td>{{item.date}} </td>
                 <td>{{item.sessionTime.startTime}} - {{item.sessionTime.endTime}}</td>
                 <td><a href="#">{{item.link}}</a></td>
                 <td>{{item.bookingStatus.bookingStatus}}</td>
@@ -131,7 +132,8 @@
                     <i class="fa fa-trash"></i>
                   </button>
                 </th>
-                <th><button (click)="openFinalize(item)" class="btn btn-primary">Finalize</button></th>
+                <th><span  matTooltip="Button will be enabled when the session date has passed"><button  [disabled]="(item.date | date: 'yMMdd') >= (today | date: 'yMMdd')" 
+                    (click)="openFinalize(item)" class="btn btn-primary">Finalize</button></span></th>
               </tr>
             </tbody>
           </table>
@@ -225,6 +227,7 @@
           <br />
           <pagination-controls id="second" style=" padding-left: 0px !important; display:flex;float: right" (pageChange)="page1 = $event"></pagination-controls>
           <br>
+       
           <br>
         </div>
         <br>

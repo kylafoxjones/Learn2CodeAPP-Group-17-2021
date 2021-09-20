@@ -54,6 +54,7 @@ export class TutorService {
   universityID: any;
   typeUniChosen: any;
 
+
   //#region
   sessionInstance: any;
   //#endregion
@@ -273,6 +274,10 @@ export class TutorService {
 
   FinalizeSession(BookingInstanceId){
     return this.http.get(this.apiUrl + 'FinalizeSession/' + BookingInstanceId);
+  }
+
+  Getgroupreg(BookingInstanceId){
+    return this.http.get(this.apiUrl + 'GetRegStudent/' + BookingInstanceId);
   }
 
   deletetutor(id: number) {

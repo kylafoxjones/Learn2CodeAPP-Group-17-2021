@@ -12,6 +12,7 @@ import { NbThemeModule, NbLayoutModule, NbSidebarModule } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { ChartsModule } from 'ng2-charts';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 //import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
@@ -47,6 +48,7 @@ export function tokenGetter() {
     BrowserAnimationsModule,
     NbThemeModule.forRoot({ name: 'default' }),
     NbLayoutModule,
+    MatTooltipModule,
     NbSidebarModule.forRoot(),
     NbEvaIconsModule,
 

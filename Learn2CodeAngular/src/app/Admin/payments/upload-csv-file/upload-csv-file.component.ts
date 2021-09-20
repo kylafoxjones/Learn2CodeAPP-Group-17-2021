@@ -37,7 +37,7 @@ data:any;
       });
       
     }, (error) => {
-      Swal.fire('Error!','Something went wrong', 'error');
+      Swal.fire('Error!', error.error, 'error');
       this.dialogRef.close();
     }
     

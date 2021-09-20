@@ -7,12 +7,16 @@ import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { FinalizeComponent } from './finalize/finalize.component';
+import { ViewgroupSessionComponent } from './viewgroup-session/viewgroup-session.component';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-session',
   templateUrl: './session.component.html',
   styleUrls: ['./session.component.scss'],
+  providers: [DatePipe]
 })
+
 export class SessionComponent implements OnInit {
   indivSessions: any = [];
   groupSessions: any = [];
@@ -25,9 +29,13 @@ page: number = 1;
 page1: number = 1;
 totalLength1: any;
 
-  constructor(public dialog: MatDialog, private service: TutorService, private router: Router) {}
+
+today = new Date();
+  constructor(private datePipe: DatePipe,public dialog: MatDialog, private service: TutorService, private router: Router) {}
 
   ngOnInit() {
+   
+   console.log(this.datePipe)
     this.userId = localStorage.getItem('id');
     console.log(this.userId);
     this.service.getTutor(this.userId).subscribe((result) => {
@@ -122,6 +130,19 @@ totalLength1: any;
           }
         );
       }
+    });
+  }
+
+  viewgroupreg(ID){
+    console.log(ID)
+    //this.service.sessionToFinalize = obj;
+    const dialogRef = this.dialog.open(ViewgroupSessionComponent, {
+      width: '800px',
+      data: ID
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+      this.getMyGroupSessions();
+      this.getMyIndivSessions();
     });
   }
 }

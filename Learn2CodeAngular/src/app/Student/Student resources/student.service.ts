@@ -284,6 +284,10 @@ export class StudentService {
   getBoughtSubscriptions(StudentId) {
     return this.http.get(this.apiUrl + 'GetMySubscriptions/' + StudentId);
   }
+
+  getBoughtindividualSubscriptions(StudentId) {
+    return this.http.get(this.apiUrl + 'GetMyIndividualSubscriptions/' + StudentId);
+  }
   
   changePassword(newPasswordInfo){
     return this.http.put(this.apiUrlLogin + 'ChangePassword', newPasswordInfo);
