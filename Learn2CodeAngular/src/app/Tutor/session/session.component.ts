@@ -10,7 +10,7 @@ import { FinalizeComponent } from './finalize/finalize.component';
 import { ViewgroupSessionComponent } from './viewgroup-session/viewgroup-session.component';
 import { DatePipe } from '@angular/common';
 import { ViewindvidualsessionComponent } from './viewindvidualsession/viewindvidualsession.component';
-import { CalendarOptions,FullCalendarComponent } from '@fullcalendar/angular'; // useful for typechecking
+import { Calendar, CalendarOptions,FullCalendarComponent } from '@fullcalendar/angular'; // useful for typechecking
 
 
 
@@ -79,7 +79,7 @@ today = new Date();
              events: this.Events
 
             };
-         },3);
+         },1000);
      
     });
     
@@ -158,10 +158,20 @@ today = new Date();
     });
     dialogRef.afterClosed().subscribe((result) => {
       this.getMyGroupSessions();
-      this.getcalendarSessions();
+      
       this.getMyIndivSessions();
-      this.someMethod();
+      
+      
+      this.service.getcalendarSessions(this.tutor.id).subscribe((res) => {
+     
+        this.Events = res;
+         console.log("yes", this.Events);
+         this.calendarOptions.events = this.Events;
+         this.someMethod()
+         
+       });
     });
+
   }
 
   deleteSession(obj) {
@@ -184,8 +194,16 @@ today = new Date();
               'success'
             );
             this.getMyGroupSessions();
-            this.getcalendarSessions();
+           
             this.getMyIndivSessions();
+            this.service.getcalendarSessions(this.tutor.id).subscribe((res) => {
+     
+              this.Events = res;
+               console.log("yes", this.Events);
+               this.calendarOptions.events = this.Events;
+               this.someMethod()
+               
+             });
           },
           (error) => {
             Swal.fire('Error!', error.error, 'error');
@@ -228,10 +246,21 @@ today = new Date();
     let calendarApi = this.calendarComponent.getApi();
    
     setTimeout( function() {
-      window.dispatchEvent(new Event('resize'))
-      calendarApi.render();
-  }, 1)
+      //window.dispatchEvent(new Event('resize'))
+      
+      calendarApi.addEvent(this.Event);
+      
+      
+  }, 8)
+
+  
+      
+      
+    }
+
+
+  
     
-  }
+  
  
 }
