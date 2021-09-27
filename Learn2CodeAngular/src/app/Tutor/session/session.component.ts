@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild,ElementRef } from '@angular/core';
 import { CreateSessionComponent } from './create-session/create-session.component';
 import { MatDialog } from '@angular/material/dialog';
 import { TutorService } from '../tutor resources/tutor.service';
@@ -10,6 +10,12 @@ import { FinalizeComponent } from './finalize/finalize.component';
 import { ViewgroupSessionComponent } from './viewgroup-session/viewgroup-session.component';
 import { DatePipe } from '@angular/common';
 import { ViewindvidualsessionComponent } from './viewindvidualsession/viewindvidualsession.component';
+import { CalendarOptions,FullCalendarComponent } from '@fullcalendar/angular'; // useful for typechecking
+
+
+
+
+
 
 @Component({
   selector: 'app-session',
@@ -19,6 +25,8 @@ import { ViewindvidualsessionComponent } from './viewindvidualsession/viewindvid
 })
 
 export class SessionComponent implements OnInit {
+  
+  @ViewChild('calendar') calendarComponent: FullCalendarComponent;
   indivSessions: any = [];
   groupSessions: any = [];
   userId: any;
@@ -29,6 +37,12 @@ totalLength: any;
 page: number = 1;
 page1: number = 1;
 totalLength1: any;
+Events:any = [];
+calendarOptions: CalendarOptions;
+changes:boolean=true;
+
+
+fullCalendarEvents:boolean=true;
 
 
 today = new Date();
@@ -41,20 +55,58 @@ today = new Date();
     console.log(this.userId);
     this.service.getTutor(this.userId).subscribe((result) => {
       this.tutor = result;
+      this.getcalendarSessions();
       console.log('tutor info', this.tutor);
       console.log('tutor id', this.tutor.id);
       this.getMyIndivSessions();
       this.getMyGroupSessions();
+      setTimeout(() => {
+        window.dispatchEvent(new Event('resize'))
+        //full calendar setting and event binding
+         this.calendarOptions = {
+             initialView: 'dayGridMonth',
+             height:650,
+             eventClick:function(arg){
+              
+              Swal.fire({
+               
+                title: ' Session details',
+                text: arg.event.title,
+                
+              })
+            },
+            
+             events: this.Events
+
+            };
+         },3);
+     
     });
+    
+    
+     
   }
+
+  
 
   openAddDialog() {
     const dialogRef = this.dialog.open(CreateSessionComponent, {
       width: '900px',
     });
     dialogRef.afterClosed().subscribe((result) => {
-      this.getMyGroupSessions();
+     
+      this.getcalendarSessions();
       this.getMyIndivSessions();
+     
+      this.service.getcalendarSessions(this.tutor.id).subscribe((res) => {
+     
+        this.Events = res;
+         console.log("yes", this.Events);
+         this.calendarOptions.events = this.Events;
+         this.someMethod()
+         
+       });
+      
     });
     
   }
@@ -90,6 +142,14 @@ today = new Date();
     });
   }
 
+  getcalendarSessions() {
+    this.service.getcalendarSessions(this.tutor.id).subscribe((res) => {
+     
+     this.Events = res;
+      console.log( this.Events);
+    });
+  }
+
   editSession(obj) {
     this.service.sessionToEdit = obj;
     console.log('the session to edit', this.service.sessionToEdit);
@@ -98,7 +158,9 @@ today = new Date();
     });
     dialogRef.afterClosed().subscribe((result) => {
       this.getMyGroupSessions();
+      this.getcalendarSessions();
       this.getMyIndivSessions();
+      this.someMethod();
     });
   }
 
@@ -122,6 +184,7 @@ today = new Date();
               'success'
             );
             this.getMyGroupSessions();
+            this.getcalendarSessions();
             this.getMyIndivSessions();
           },
           (error) => {
@@ -157,6 +220,18 @@ today = new Date();
     dialogRef.afterClosed().subscribe((result) => {
       this.getMyGroupSessions();
       this.getMyIndivSessions();
+     
     });
   }
+
+  someMethod() {
+    let calendarApi = this.calendarComponent.getApi();
+   
+    setTimeout( function() {
+      window.dispatchEvent(new Event('resize'))
+      calendarApi.render();
+  }, 1)
+    
+  }
+ 
 }

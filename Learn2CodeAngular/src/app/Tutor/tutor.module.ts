@@ -51,7 +51,14 @@ import { ViewgroupSessionComponent } from './session/viewgroup-session/viewgroup
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MatTooltipModule} from '@angular/material/tooltip';
 import { ViewindvidualsessionComponent } from './session/viewindvidualsession/viewindvidualsession.component';
+import { FullCalendarModule } from '@fullcalendar/angular';
+import dayGridPlugin from '@fullcalendar/daygrid';
+import interactionPlugin from '@fullcalendar/interaction'; 
 
+FullCalendarModule.registerPlugins([ // register FullCalendar plugins
+  dayGridPlugin,
+  interactionPlugin
+]);
 
 
 @NgModule({
@@ -88,6 +95,7 @@ import { ViewindvidualsessionComponent } from './session/viewindvidualsession/vi
   ],
   imports: [
     NgbModule,
+    FullCalendarModule,
     MatTooltipModule,
     CommonModule,
     ChartsModule,

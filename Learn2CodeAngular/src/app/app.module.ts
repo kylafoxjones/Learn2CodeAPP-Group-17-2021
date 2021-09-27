@@ -13,7 +13,9 @@ import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { ChartsModule } from 'ng2-charts';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import {MatTooltipModule} from '@angular/material/tooltip';
-
+import { FullCalendarModule } from '@fullcalendar/angular';
+import dayGridPlugin from '@fullcalendar/daygrid';
+import interactionPlugin from '@fullcalendar/interaction'; 
 //import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import {MatDatepickerModule} from '@angular/material/datepicker';
@@ -21,7 +23,13 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { Angular4PaystackModule } from 'angular4-paystack';
 import { RouterModule } from '@angular/router';
 import { JwtModule } from '@auth0/angular-jwt';
+import * as $ from 'jquery';
+import { ajax, css } from "jquery";
 
+FullCalendarModule.registerPlugins([ // register FullCalendar plugins
+  dayGridPlugin,
+  interactionPlugin
+]);
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -32,6 +40,7 @@ export function tokenGetter() {
   declarations: [AppComponent],
   imports: [
     BrowserModule,
+    FullCalendarModule,
     NgMultiSelectDropDownModule.forRoot(),
     AppRoutingModule,
     RouterModule ,

@@ -50,8 +50,15 @@
   <nb-layout-column >
     <nb-tabset style="width: 75rem;;
     overflow-y:hidden;" fullWidth>
-      <nb-tab tabTitle="Calendar"> </nb-tab>
+    
+      <nb-tab tabTitle="Calendar" > 
+        <div class="container"  id="myCalendar"  >
+          <full-calendar #calendar deepChangeDetection="true" [options]="calendarOptions"></full-calendar>
+      </div>
+       
 
+      </nb-tab>
+    
       <nb-tab style=" overflow-x:hidden;
       overflow-y:hidden;" tabTitle="My Sessions">
         <div style="padding: 0.4rem; float: left">
