@@ -71,7 +71,7 @@ export class SalesReportComponent implements OnInit {
     this.ObjectToSend.StartDate = this.Start;
     this.ObjectToSend.EndDate = this.End;
     this.ReportService.export(this.ObjectToSend).subscribe((res) => {
-      saveAs(res, 'test'+  '.xlsx');
+      saveAs(res, 'sales report excel'+  '.xlsx');
     });
   }
  
