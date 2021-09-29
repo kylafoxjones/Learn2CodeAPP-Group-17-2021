@@ -234,7 +234,7 @@ export class StudentService {
   // }
 
   getGroupSessions(id) {
-    return this.http.get(this.apiUrl + 'GetMyGroupSessions/' + id);
+    return this.http.get(this.apiUrl + 'GetMyGroupSessionsIonic/' + id);
   }
 
   Getbookingindiv(id) {
