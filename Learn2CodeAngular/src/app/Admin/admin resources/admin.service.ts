@@ -313,7 +313,7 @@ export class AdminService {
 
   //#region Tutors
   getTutors() {
-    return this.http.get(this.apiUrl + 'GetAllTutors');
+    return this.http.get(this.apiUrl + 'GetAllTutorsfast');
   }
   deleteTutor(id: string) {
     return this.http.delete(this.apiUrl + 'DeleteTutor/' + id);

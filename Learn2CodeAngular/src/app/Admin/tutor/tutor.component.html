@@ -74,7 +74,7 @@
             <tr *ngFor="let item of tutorList | filter: search  | paginate: { itemsPerPage: 5, currentPage: page1,totalItems:totalLength1,id: 'second' }">
               <td>{{ item.tutorName }}</td>
               <td>{{ item.tutorSurname }}</td>
-              <td>{{ item.tutorEmail }}</td>
+              <td>{{ item.email }}</td>
               <td>
                 <button (click)="delete(item.userId)" class="btn btn-danger">
                   <i class="fa fa-trash"></i>
@@ -95,7 +95,7 @@
     </nb-layout-column>
   </nb-layout>
 
-  <footer style="bottom: 0; position: absolute; width: 100%">
+  <footer style="bottom: 0;  width: 100%">
     <nav id="foot" class="navbar">
       <a class="navbar-brand" href="#"> </a>
       <span class="TDO" style="margin-right: auto"> &lt; TDO &gt;</span>

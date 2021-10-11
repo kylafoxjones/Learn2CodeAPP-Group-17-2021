@@ -11,6 +11,7 @@ export class HelpComponent implements OnInit {
   constructor(private _vps: ViewportScroller) { }
 
   ngOnInit(): void {
+    
   }
   scrollFn(): void{
   	this._vps.scrollToAnchor(this.searchTerm)
