@@ -30,6 +30,7 @@ import { AddEditUniversityComponent } from './university/add-edit-university/add
 import { UniversityComponent } from './university/university.component';
 import { AdminGuard } from './admin resources/guards/admin.guard';
 import { ReportHomeComponent } from '../Report/Home/report-home/report-home.component';
+import { HelpComponent } from './help/help.component';
 
 
 const routes: Routes = [
@@ -95,6 +96,11 @@ const routes: Routes = [
         path: 'applications',
         component: TutorApplicationComponent,
    canActivate: [AuthGuard, AdminGuard]
+      },
+      {
+        path: 'AdminHelp',
+        component: HelpComponent,
+   
       },
       {
         path: 'payments',

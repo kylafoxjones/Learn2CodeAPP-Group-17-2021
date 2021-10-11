@@ -1,0 +1,1475 @@
+<nav class="navbar navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">
+    <img
+      src="../.././assets/pics/HD logo.png"
+      width="40"
+      height="40"
+      class="d-inline-block align-top"
+      alt=""
+    />
+  </a>
+  <span class="TDO" style="color: rgb(0, 156, 158); margin-right: auto"
+    >TutorDevOps</span
+  >
+  <div class="topnav-right">
+    <span
+      [routerLink]="['/studenthomepage/studenthome']"
+      style="color: whitesmoke; margin-right: 2rem; padding-left: 1.5rem"
+      >Home</span
+    >
+  </div>
+</nav>
+<div style="background-color: rgb(0, 156, 158); height: 15rem">
+  <h1
+    style="
+      text-align: center;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+        Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      font-size: 3rem;
+      padding-top: 3rem;
+      color: white;
+    "
+  >
+    Hi, how can we help?
+  </h1>
+  <div
+    class="input-group"
+    style="width: 30rem; margin-left: 25rem; padding-top: 1rem"
+  >
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Enter search term here..."
+      style="width: 6rem"
+      [(ngModel)]="searchTerm"
+    />
+    <div class="input-group-append">
+      <button class="btn btn-info" type="button"  (click)="scrollFn()">
+        <i class="fa fa-search"></i>
+      </button>
+    </div>
+  </div>
+</div>
+<br />
+<br />
+<div class="row">
+    <div class="col-md-4" id="profile">
+        <div
+          style="
+            border: solid rgb(226, 224, 224);
+            height: 15rem;
+            width: 22rem;
+            margin-left: 2rem;
+          "
+        >
+          <div class="row">
+            <div class="col-md-2">
+              <div
+                style="
+                  border-radius: 10rem;
+                  background-color: whitesmoke;
+                  height: 3rem;
+                  width: 3rem;
+                  margin-top: 0.3rem;
+                  margin-left: 0.3rem;
+                "
+              >
+                <i
+                  class="fa fa-user"
+                  aria-hidden="true"
+                  style="
+                    color: rgb(0, 156, 158);
+                    font-size: 2rem;
+                    margin-left: 0.8rem;
+                    margin-top: 0.5rem;
+                  "
+                ></i>
+              </div>
+            </div>
+            <div class="col-md-10" id="view profile">
+              <h1
+                style="
+                  margin-top: 0.8rem;
+                  margin-right: 1rem;
+                  text-decoration: underline;
+                "
+              >
+                View your profile?
+              </h1>
+            </div>
+          </div>
+          <p style="width: 20rem; margin-left: 0.5rem">
+            <u>Purpose</u>: To View the profile of the student who is logged in.
+          </p>
+          <p style="width: 20rem; margin-left: 0.5rem">
+            <u>How to</u>: Log in to the system,
+             proceed to the navigation bar at the top of the screen and click the circle with your initial in it. 
+             A drop down will apear with two options "logout" and "profile", select the profile option. The system will display your Profile
+          </p>
+        </div>
+      </div>
+
+  <div class="col-md-4">
+    <div
+      style="
+        border: solid rgb(226, 224, 224);
+        height: 15rem;
+        width: 22rem;
+        margin-left: 2rem;
+      "
+    >
+      <div class="row">
+        <div class="col-md-2">
+          <div
+            style="
+              border-radius: 10rem;
+              background-color: whitesmoke;
+              height: 3rem;
+              width: 3rem;
+              margin-top: 0.3rem;
+              margin-left: 0.3rem;
+            "
+          >
+            <i
+              class="fa fa-user"
+              aria-hidden="true"
+              style="
+                color: rgb(0, 156, 158);
+                font-size: 2rem;
+                margin-left: 0.8rem;
+                margin-top: 0.5rem;
+              "
+            ></i>
+          </div>
+        </div>
+        <div class="col-md-10" id="edit profile">
+          <h1
+            style="
+              margin-top: 0.8rem;
+              margin-right: 1rem;
+              text-decoration: underline;
+            "
+          >
+            Edit your profile?
+          </h1>
+        </div>
+      </div>
+      <p style="width: 20rem; margin-left: 0.5rem">
+        <u>Purpose</u>: To edit the profile of the student who is logged in.
+      </p>
+      <p style="width: 20rem; margin-left: 0.5rem">
+        <u>How to</u>: navigate to your profile by using the
+        navigation bar. Then proceed to click the "edit" button. A pop up will display asking for the edited details, 
+        provide all the required details and click the "update" button.
+        The system will then prompt for confirmation. 
+      </p>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div
+      style="
+        border: solid rgb(226, 224, 224);
+        height: 15rem;
+        width: 22rem;
+        margin-left: 2rem;
+      "
+    >
+      <div class="row">
+        <div class="col-md-2">
+          <div
+            style="
+              border-radius: 10rem;
+              background-color: whitesmoke;
+              height: 3rem;
+              width: 3rem;
+              margin-top: 0.3rem;
+              margin-left: 0.3rem;
+            "
+          >
+            <i
+              class="fa fa-user"
+              aria-hidden="true"
+              style="
+                color: rgb(0, 156, 158);
+                font-size: 2rem;
+                margin-left: 0.8rem;
+                margin-top: 0.5rem;
+              "
+            ></i>
+          </div>
+        </div>
+        <div class="col-md-10" id="delete profile">
+          <h1
+            style="
+              margin-top: 0.8rem;
+              margin-right: 1rem;
+              text-decoration: underline;
+            "
+          >
+            Delete your profile?
+          </h1>
+        </div>
+      </div>
+      <p style="width: 20rem; margin-left: 0.5rem">
+        <u>Purpose</u>: To remove the students profile from the Learn2Code system.
+      </p>
+      <p style="width: 20rem; margin-left: 0.5rem">
+        <u>How to</u>: Navigate to your profile by using the navigation bar. Proceed to click the "delete" button on the profile page. The system will then prompt for confirmation.If you wish to confirm click the "ok" button in the confirmation otherwise click the "cancel" button.
+      </p>
+    </div>
+  </div>
+ 
+</div>
+<br>
+
+
+<div class="row">
+    <div class="col-md-4" id="message">
+        <div id="messages"
+          style="
+            border: solid rgb(226, 224, 224);
+            height: 15rem;
+            width: 22rem;
+            margin-left: 2rem;
+          "
+        >
+          <div class="row">
+            <div class="col-md-2">
+              <div
+                style="
+                  border-radius: 10rem;
+                  background-color: whitesmoke;
+                  height: 3rem;
+                  width: 3rem;
+                  margin-top: 0.3rem;
+                  margin-left: 0.3rem;
+                "
+              >
+                <i
+                  class="fa fa-comment"
+                  aria-hidden="true"
+                  style="
+                    color: rgb(0, 156, 158);
+                    font-size: 2rem;
+                    margin-left: 0.6rem;
+                    margin-top: 0.5rem;
+                  "
+                ></i>
+              </div>
+            </div>
+            <div class="col-md-10" id="send message">
+              <h1
+                style="
+                  margin-top: 0.8rem;
+                  margin-right: 1rem;
+                  text-decoration: underline;
+                "
+              >
+                Sending a message?
+              </h1>
+            </div>
+          </div>
+          <p style="width: 20rem; margin-left: 0.5rem">
+            <u>Purpose</u>: To send a message to a specific tutor.
+          </p>
+          <p style="width: 20rem; margin-left: 0.5rem">
+            <u>How to</u>: Navigate to the home page and clcik on the tutors icon on the sidebar. The system will display all the tutors, simply click on the message icon 
+             relating to the tutor you wish to send a message to on the tutors screen. A pop up will display asking for your message, provide the message and click send. The system will prompt a confirmation.
+
+
+          </p>
+        </div>
+      </div>
+
+  <div class="col-md-4">
+    <div
+      style="
+        border: solid rgb(226, 224, 224);
+        height: 15rem;
+        width: 22rem;
+        margin-left: 2rem;
+      "
+    >
+      <div class="row">
+        <div class="col-md-2">
+          <div
+            style="
+              border-radius: 10rem;
+              background-color: whitesmoke;
+              height: 3rem;
+              width: 3rem;
+              margin-top: 0.3rem;
+              margin-left: 0.3rem;
+            "
+          >
+          <i
+          class="fa fa-comment"
+          aria-hidden="true"
+          style="
+            color: rgb(0, 156, 158);
+            font-size: 2rem;
+            margin-left: 0.6rem;
+            margin-top: 0.5rem;
+          "
+        ></i>
+          </div>
+        </div>
+        <div class="col-md-10" id="my messages">
+          <h1
+            style="
+              margin-top: 0.8rem;
+              margin-right: 1rem;
+              text-decoration: underline;
+            "
+          >
+            Your messages?
+          </h1>
+        </div>
+      </div>
+      <p style="width: 20rem; margin-left: 0.5rem">
+        <u>Purpose</u>: To find a specific message that you have received/sent.
+      </p>
+      <p style="width: 20rem; margin-left: 0.5rem">
+        <u>How to</u>: Navigate to the My Messages screen using the side navigation bar and clicks on the Messages icon. 
+        The system will display all the my messages screen with a list of messages related to you. Either click on the recieved tab to see recieved messages or the sent tab to see sent messages
+        
+
+      </p>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div
+      style="
+        border: solid rgb(226, 224, 224);
+        height: 15rem;
+        width: 22rem;
+        margin-left: 2rem;
+      "
+    >
+      <div class="row">
+        <div class="col-md-2">
+          <div
+            style="
+              border-radius: 10rem;
+              background-color: whitesmoke;
+              height: 3rem;
+              width: 3rem;
+              margin-top: 0.3rem;
+              margin-left: 0.3rem;
+            "
+          >
+          <i
+          class="fa fa-comment"
+          aria-hidden="true"
+          style="
+            color: rgb(0, 156, 158);
+            font-size: 2rem;
+            margin-left: 0.6rem;
+            margin-top: 0.5rem;
+          "
+        ></i>
+          </div>
+        </div>
+        <div class="col-md-10" id="delete message">
+          <h1
+            style="
+              margin-top: 0.8rem;
+              margin-right: 1rem;
+              text-decoration: underline;
+            "
+          >
+            Delete your messages?
+          </h1>
+        </div>
+      </div>
+      <p style="width: 20rem; margin-left: 0.5rem">
+        <u>Purpose</u>:To delete a sent message from the system.
+        
+      </p>
+      <p style="width: 20rem; margin-left: 0.5rem">
+        <u>How to</u>:  
+         Proceed to select the sent tab and select the delete button of the message you want to delete. This will cause a confirmation message to pop-up where the student can confirm the deletion.
+         If the message was sent less that 24 hours ago you will be unable to delete the message.
+
+      </p>
+    </div>
+  </div>
+ 
+</div>
+<br>
+<div class="row">
+  <div class="col-md-4" id="shop">
+    <div id="shopping"
+      style="
+        border: solid rgb(226, 224, 224);
+        height: 15rem;
+        width: 22rem;
+        margin-left: 2rem;
+      "
+    >
+      <div class="row">
+        <div class="col-md-2" id="basket">
+          <div
+            style="
+              border-radius: 10rem;
+              background-color: whitesmoke;
+              height: 3rem;
+              width: 3rem;
+              margin-top: 0.3rem;
+              margin-left: 0.3rem;
+            "
+          >
+          <i
+          class="fa fa-shopping-cart"
+          aria-hidden="true"
+          style="
+            color: rgb(0, 156, 158);
+            font-size: 2rem;
+            margin-left: 0.5rem;
+            margin-top: 0.5rem;
+          "
+        ></i>
+          </div>
+        </div>
+        <div class="col-md-10" id="add to basket">
+          <h1 id="add item"
+            style="
+              margin-top: 0.8rem;
+              margin-right: 1rem;
+              text-decoration: underline;
+            "
+          >
+          Add to basket?
+          </h1>
+        </div>
+      </div>
+      <p style="width: 20rem; margin-left: 0.5rem">
+        <u>Purpose</u>:To add an item from the shop into the cart so it can then be purchased.
+        
+        
+      </p>
+      <p style="width: 20rem; margin-left: 0.5rem">
+        <u>How to</u>: Navigates to the Shop screen using the side navigation bar on the home screen. 
+        For subscriptions select a module in the dropdown and same with short courses select an option in the dropdown. then select which items you wish to purchase by clicking the Buy button on the card.
+
+      </p>
+    </div>
+  </div>
+ 
+  <div class="col-md-4">
+    <div
+      style="
+        border: solid rgb(226, 224, 224);
+        height: 15rem;
+        width: 22rem;
+        margin-left: 2rem;
+      "
+    >
+      <div class="row">
+        <div class="col-md-2">
+          <div
+            style="
+              border-radius: 10rem;
+              background-color: whitesmoke;
+              height: 3rem;
+              width: 3rem;
+              margin-top: 0.3rem;
+              margin-left: 0.3rem;
+            "
+          >
+          <i
+          class="fa fa-shopping-cart"
+          aria-hidden="true"
+          style="
+            color: rgb(0, 156, 158);
+            font-size: 2rem;
+            margin-left: 0.5rem;
+            margin-top: 0.5rem;
+          "
+        ></i>
+          </div>
+        </div>
+        <div class="col-md-10" id="remove item">
+          <h1 id="remove items"
+            style="
+              margin-top: 0.8rem;
+              margin-right: 1rem;
+              text-decoration: underline;
+            "
+          >
+          Remove basket items?
+          </h1>
+        </div>
+      </div>
+      <p style="width: 20rem; margin-left: 0.5rem">
+        <u>Purpose</u>:To remove an unwanted item from the shopping cart.
+                
+      </p>
+      <p style="width: 20rem; margin-left: 0.5rem">
+        <u>How to</u>: Navigates to the Cart drop down by clicking on the cart icon in the top navigation bar on the shop screen. 
+         Select which items you wish to remove by clicking the “x” icon button relating to a specific instance in the cart.
+         The system will remove that item from your cart.
+
+
+      </p>
+    </div>
+  </div>
+ 
+  <div class="col-md-4">
+    <div
+      style="
+        border: solid rgb(226, 224, 224);
+        height: 15rem;
+        width: 22rem;
+        margin-left: 2rem;
+      "
+    >
+      <div class="row">
+        <div class="col-md-2">
+          <div
+            style="
+              border-radius: 10rem;
+              background-color: whitesmoke;
+              height: 3rem;
+              width: 3rem;
+              margin-top: 0.3rem;
+              margin-left: 0.3rem;
+            "
+          >
+          <i
+          class="fa fa-shopping-cart"
+          aria-hidden="true"
+          style="
+            color: rgb(0, 156, 158);
+            font-size: 2rem;
+            margin-left: 0.5rem;
+            margin-top: 0.5rem;
+          "
+        ></i>
+          </div>
+        </div>
+        <div class="col-md-10" id="checkout">
+          <h1 id="pay"
+            style="
+              margin-top: 0.8rem;
+              margin-right: 1rem;
+              text-decoration: underline;
+            "
+          >
+          Checkout?
+          </h1>
+        </div>
+      </div>
+      <p style="width: 20rem; margin-left: 0.5rem" id="payment">
+        <u>Purpose</u>:To make a payment for the  the cart.
+        
+      </p>
+      <p style="width: 20rem; margin-left: 0.5rem">
+        <u>How to</u>: Navigate to the Cart drop down by clicking on the cart icon in the navigation bar.
+          The student then clicks the checkout button and then the system prompts for confirmation and the student gives it by clicking the yes button on the pop-up which diverts the student to Paystack payment gateway.
+
+
+      </p>
+    </div>
+  </div>
+</div>
+<br>
+<div class="row">
+  <div class="col-md-4" id="feedback">
+    <div id="my feedback"
+      style="
+        border: solid rgb(226, 224, 224);
+        height: 15rem;
+        width: 22rem;
+        margin-left: 2rem;
+      "
+    >
+      <div class="row">
+        <div class="col-md-2">
+          <div
+            style="
+              border-radius: 10rem;
+              background-color: whitesmoke;
+              height: 3rem;
+              width: 3rem;
+              margin-top: 0.3rem;
+              margin-left: 0.3rem;
+            "
+          >
+          <i
+          class="fa fa-commenting"
+          aria-hidden="true"
+          style="
+            color: rgb(0, 156, 158);
+            font-size: 2rem;
+            margin-left: 0.5rem;
+            margin-top: 0.5rem;
+          "
+        ></i>
+          </div>
+        </div>
+        <div class="col-md-10" id="create feedback">
+          <h1 id="add feedback"
+            style="
+              margin-top: 0.8rem;
+              margin-right: 1rem;
+              text-decoration: underline;
+            "
+          >
+          Create feedback?
+          </h1>
+        </div>
+      </div>
+      <p style="width: 20rem; margin-left: 0.5rem">
+        <u>Purpose</u>:to provide feedback on past sessions.
+        
+        
+      </p>
+      <p style="width: 20rem; margin-left: 0.5rem">
+        <u>How to</u>: Navigates to the Past Session Feedback screen using the side navigation bar on the student home screen.
+        he student then selects which session they wish to provide feedback for by clicking the plus button on the specific session instance.
+        Then provided all their feedback details in the input fields provided and click submit.
+      </p>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div
+      style="
+        border: solid rgb(226, 224, 224);
+        height: 15rem;
+        width: 22rem;
+        margin-left: 2rem;
+      "
+    >
+      <div class="row">
+        <div class="col-md-2">
+          <div
+            style="
+              border-radius: 10rem;
+              background-color: whitesmoke;
+              height: 3rem;
+              width: 3rem;
+              margin-top: 0.3rem;
+              margin-left: 0.3rem;
+            "
+          >
+          <i
+          class="fa fa-commenting"
+          aria-hidden="true"
+          style="
+            color: rgb(0, 156, 158);
+            font-size: 2rem;
+            margin-left: 0.5rem;
+            margin-top: 0.5rem;
+          "
+        ></i>
+          </div>
+        </div>
+        <div class="col-md-10" id="my feedback">
+          <h1 id="view feedback"
+            style="
+              margin-top: 0.8rem;
+              margin-right: 1rem;
+              text-decoration: underline;
+            "
+          >
+          My feedback?
+          </h1>
+        </div>
+      </div>
+      <p style="width: 20rem; margin-left: 0.5rem">
+        <u>Purpose</u>:To allow students to find their feedback.
+
+      </p>
+      <p style="width: 20rem; margin-left: 0.5rem">
+        <u>How to</u>: Navigates to the Past Session Feedback screen using the side navigation bar on the student home screen.
+         Then click the My Feedback tab and then provide the search criteria of their choosing in the search input field provided. In turn the system will display your feedback
+         that relates to the search criteria 
+
+      </p>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div
+      style="
+        border: solid rgb(226, 224, 224);
+        height: 15rem;
+        width: 22rem;
+        margin-left: 2rem;
+      "
+    >
+      <div class="row">
+        <div class="col-md-2">
+          <div
+            style="
+              border-radius: 10rem;
+              background-color: whitesmoke;
+              height: 3rem;
+              width: 3rem;
+              margin-top: 0.3rem;
+              margin-left: 0.3rem;
+            "
+          >
+          <i
+          class="fa fa-commenting"
+          aria-hidden="true"
+          style="
+            color: rgb(0, 156, 158);
+            font-size: 2rem;
+            margin-left: 0.5rem;
+            margin-top: 0.5rem;
+          "
+        ></i>
+          </div>
+        </div>
+        <div class="col-md-10" id="delete feedback">
+          <h1 id="remve feedback"
+            style="
+              margin-top: 0.8rem;
+              margin-right: 1rem;
+              text-decoration: underline;
+            "
+          >
+          Delete feedback?
+          </h1>
+        </div>
+      </div>
+      <p style="width: 20rem; margin-left: 0.5rem">
+        <u>Purpose</u>:To allow students to remove feedback.
+
+
+      </p>
+      <p style="width: 20rem; margin-left: 0.5rem">
+        <u>How to</u>: Navigate to the Past Session Feedback screen using the side navigation bar on the student home screen.
+         Then click the My Feedback tab and locate the specific instance you wish to delete, 
+         Then proceed to click the delete button. The system prompts for confirmation and select the yes option to confirm. 
+
+
+      </p>
+    </div>
+  </div>
+</div>
+<br>
+<div class="row" id="group session">
+  <div class="col-md-4" id="group sessions">
+    <div id="group"
+      style="
+        border: solid rgb(226, 224, 224);
+        height: 15rem;
+        width: 22rem;
+        margin-left: 2rem;
+      "
+    >
+      <div class="row">
+        <div class="col-md-2">
+          <div
+            style="
+              border-radius: 10rem;
+              background-color: whitesmoke;
+              height: 3rem;
+              width: 3rem;
+              margin-top: 0.3rem;
+              margin-left: 0.3rem;
+            "
+          >
+          <i
+          class="fa fa-users"
+          aria-hidden="true"
+          style="
+            color: rgb(0, 156, 158);
+            font-size: 2rem;
+            margin-left: 0.5rem;
+            margin-top: 0.5rem;
+          "
+        ></i>
+          </div>
+        </div>
+        <div class="col-md-10">
+          <h1
+            style="
+              margin-top: 0.8rem;
+              margin-right: 1rem;
+              text-decoration: underline;
+            "
+          >
+          Group Sessions?
+          </h1>
+        </div>
+      </div>
+      <p style="width: 20rem; margin-left: 0.5rem">
+        <u>Purpose</u>:Explenation on group sessions.
+
+
+      </p>
+      <p style="width: 20rem; margin-left: 0.5rem">
+        <u>How to</u>: Group sessions are sessions that consist of multiple students and one tutor. They are based on a specific module
+        and happen weekly based on the schedule of the tutor. In order to be part of group session you must buy group tickets for a module in the shop.
+        Each time the tutor creates a session you will be invited and loose a ticket.
+
+
+      </p>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div
+      style="
+        border: solid rgb(226, 224, 224);
+        height: 15rem;
+        width: 22rem;
+        margin-left: 2rem;
+      "
+    >
+      <div class="row">
+        <div class="col-md-2">
+          <div
+            style="
+              border-radius: 10rem;
+              background-color: whitesmoke;
+              height: 3rem;
+              width: 3rem;
+              margin-top: 0.3rem;
+              margin-left: 0.3rem;
+            "
+          >
+          <i
+          class="fa fa-users"
+          aria-hidden="true"
+          style="
+            color: rgb(0, 156, 158);
+            font-size: 2rem;
+            margin-left: 0.5rem;
+            margin-top: 0.5rem;
+          "
+        ></i>
+          </div>
+        </div>
+        <div class="col-md-10" id="view group">
+          <h1  id="view group session"
+            style="
+              margin-top: 0.8rem;
+              margin-right: 1rem;
+              text-decoration: underline;
+            "
+          >
+          My group sessions?
+          </h1>
+        </div>
+      </div>
+      <p style="width: 20rem; margin-left: 0.5rem"  id="view group sessions">
+        <u>Purpose</u>:To allow the viewing of group sessions.
+
+
+      </p>
+      <p style="width: 20rem; margin-left: 0.5rem" id="my group sessions">
+        <u>How to</u>: Navigate to the home screen and click on the group session icon in the side nav bar.
+        The system will redirect you to the group session screen where a list of your upcoming group sessions will be displayed.
+
+      </p>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div
+      style="
+        border: solid rgb(226, 224, 224);
+        height: 15rem;
+        width: 22rem;
+        margin-left: 2rem;
+      "
+    >
+      <div class="row">
+        <div class="col-md-2">
+          <div
+            style="
+              border-radius: 10rem;
+              background-color: whitesmoke;
+              height: 3rem;
+              width: 3rem;
+              margin-top: 0.3rem;
+              margin-left: 0.3rem;
+            "
+          >
+          <i
+          class="fa fa-users"
+          aria-hidden="true"
+          style="
+            color: rgb(0, 156, 158);
+            font-size: 2rem;
+            margin-left: 0.5rem;
+            margin-top: 0.5rem;
+          "
+        ></i>
+          </div>
+        </div>
+        <div class="col-md-10" id="group session content">
+          <h1 id="content"
+            style="
+              margin-top: 0.8rem;
+              margin-right: 1rem;
+              text-decoration: underline;
+            "
+          >
+           Group session content?
+          </h1>
+        </div>
+      </div>
+      <p style="width: 20rem; margin-left: 0.5rem">
+        <u>Purpose</u>:To allow the viewing of session content.
+
+
+      </p>
+      <p style="width: 20rem; margin-left: 0.5rem">
+        <u>How to</u>: Navigate to the home screen and click on the group session content icon in the side nav bar.
+        The system will redirect you to the group session content screen where a list of your past group sessions will be displayed. 
+        Click on the content button of a specific session to view its uploaded content.
+
+      </p>
+    </div>
+  </div>
+</div>
+<br>
+<div class="row" id="individual session">
+  <div class="col-md-4" id="individual">
+    <div
+      style="
+        border: solid rgb(226, 224, 224);
+        height: 15rem;
+        width: 22rem;
+        margin-left: 2rem;
+      "
+    >
+      <div class="row">
+        <div class="col-md-2">
+          <div
+            style="
+              border-radius: 10rem;
+              background-color: whitesmoke;
+              height: 3rem;
+              width: 3rem;
+              margin-top: 0.3rem;
+              margin-left: 0.3rem;
+            "
+          >
+          <i
+          class="fa fa-calendar"
+          aria-hidden="true"
+          style="
+            color: rgb(0, 156, 158);
+            font-size: 2rem;
+            margin-left: 0.6rem;
+            margin-top: 0.5rem;
+          "
+        ></i>
+          </div>
+        </div>
+        <div class="col-md-10">
+          <h1
+            style="
+              margin-top: 0.8rem;
+              margin-right: 1rem;
+              text-decoration: underline;
+            "
+          >
+           Individual session?
+          </h1>
+        </div>
+      </div>
+      <p style="width: 20rem; margin-left: 0.5rem">
+        <u>Purpose</u>:Explenation on group session.
+
+
+      </p>
+      <p style="width: 20rem; margin-left: 0.5rem">
+        <u>How to</u>: Group sessions are sessions that consist of one students and one tutor. 
+        They are based on a specific module and happen weekly based on the schedule of the tutor.
+         In order to be part of Individual session you must buy individual tickets for a module in the shop. In turn
+         you will have to book a session which rsults in the loss of a ticket.
+
+      </p>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div
+      style="
+        border: solid rgb(226, 224, 224);
+        height: 15rem;
+        width: 22rem;
+        margin-left: 2rem;
+      "
+    >
+      <div class="row">
+        <div class="col-md-2">
+          <div
+            style="
+              border-radius: 10rem;
+              background-color: whitesmoke;
+              height: 3rem;
+              width: 3rem;
+              margin-top: 0.3rem;
+              margin-left: 0.3rem;
+            "
+          >
+          <i
+          class="fa fa-calendar"
+          aria-hidden="true"
+          style="
+            color: rgb(0, 156, 158);
+            font-size: 2rem;
+            margin-left: 0.6rem;
+            margin-top: 0.5rem;
+          "
+        ></i>
+          </div>
+        </div>
+        <div class="col-md-10" id="my individual session">
+          <h1 id="view individual session"
+            style="
+              margin-top: 0.8rem;
+              margin-right: 1rem;
+              text-decoration: underline;
+            "
+          >
+          My individual session?
+          </h1>
+        </div>
+      </div>
+      <p style="width: 20rem; margin-left: 0.5rem">
+        <u>Purpose</u> Viewing of your individual sessions.
+
+
+      </p>
+      <p style="width: 20rem; margin-left: 0.5rem">
+        <u>How to</u>: Navigate to the home screen and click on the Individual session icon in the side nav bar. 
+        The system will redirect you to the individual session screen click the my sessions tab and a list of your upcoming individual sessions will be displayed.
+
+      </p>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div
+      style="
+        border: solid rgb(226, 224, 224);
+        height: 15rem;
+        width: 22rem;
+        margin-left: 2rem;
+      "
+    >
+      <div class="row">
+        <div class="col-md-2">
+          <div
+            style="
+              border-radius: 10rem;
+              background-color: whitesmoke;
+              height: 3rem;
+              width: 3rem;
+              margin-top: 0.3rem;
+              margin-left: 0.3rem;
+            "
+          >
+          <i
+          class="fa fa-calendar"
+          aria-hidden="true"
+          style="
+            color: rgb(0, 156, 158);
+            font-size: 2rem;
+            margin-left: 0.6rem;
+            margin-top: 0.5rem;
+          "
+        ></i>
+          </div>
+        </div>
+        <div class="col-md-10" id="edit individual">
+          <h1 id="edit individual session"
+            style="
+              margin-top: 0.8rem;
+              margin-right: 1rem;
+              text-decoration: underline;
+            "
+          >
+          Edit individual session?
+          </h1>
+        </div>
+      </div>
+      <p style="width: 20rem; margin-left: 0.5rem">
+        <u>Purpose</u> Updationg your individual sessions.
+
+
+      </p>
+      <p style="width: 20rem; margin-left: 0.5rem">
+        <u>How to</u>:
+       On the individual session
+      click the edit button of the specific session you want to edit. Provide all the required details and submit. The system will send an email to the tutor and depending on your request the tutor can choose to update the booking. Updates cant be made if the session is less than 24 hours away.
+
+      </p>
+    </div>
+  </div>
+</div>
+<br>
+<div class="row">
+  <div class="col-md-4">
+    <div
+      style="
+        border: solid rgb(226, 224, 224);
+        height: 15rem;
+        width: 22rem;
+        margin-left: 2rem;
+      "
+    >
+      <div class="row">
+        <div class="col-md-2">
+          <div
+            style="
+              border-radius: 10rem;
+              background-color: whitesmoke;
+              height: 3rem;
+              width: 3rem;
+              margin-top: 0.3rem;
+              margin-left: 0.3rem;
+            "
+          >
+          <i
+          class="fa fa-calendar"
+          aria-hidden="true"
+          style="
+            color: rgb(0, 156, 158);
+            font-size: 2rem;
+            margin-left: 0.6rem;
+            margin-top: 0.5rem;
+          "
+        ></i>
+          </div>
+        </div>
+        <div class="col-md-10" id="delete individual">
+          <h2 id="delete individual session"
+            style="
+              margin-top: 0.8rem;
+              margin-right: 1rem;
+              text-decoration: underline;
+            "
+          >
+          Delete individual session?
+          </h2>
+        </div>
+      </div>
+      <p style="width: 20rem; margin-left: 0.5rem">
+        <u>Purpose</u> deleting your individual sessions.
+
+
+      </p>
+      <p style="width: 20rem; margin-left: 0.5rem">
+        <u>How to</u>:
+       On the individual session
+      click the delete button of the specific session you want to delete. The system will prompt for confirmation, click the yes button to confrim.
+      On successfull deletion you will be refunded your ticket. Deletion cannot take place 24 hours before a session will start.
+
+      </p>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div
+      style="
+        border: solid rgb(226, 224, 224);
+        height: 15rem;
+        width: 22rem;
+        margin-left: 2rem;
+      "
+    >
+      <div class="row">
+        <div class="col-md-2">
+          <div
+            style="
+              border-radius: 10rem;
+              background-color: whitesmoke;
+              height: 3rem;
+              width: 3rem;
+              margin-top: 0.3rem;
+              margin-left: 0.3rem;
+            "
+          >
+          <i
+          class="fa fa-calendar"
+          aria-hidden="true"
+          style="
+            color: rgb(0, 156, 158);
+            font-size: 2rem;
+            margin-left: 0.6rem;
+            margin-top: 0.5rem;
+          "
+        ></i>
+          </div>
+        </div>
+        <div class="col-md-10" id="book">
+          <h2 id="book individual"
+            style="
+              margin-top: 0.8rem;
+              margin-right: 1rem;
+              text-decoration: underline;
+            "
+          >
+          Book individual session?
+          </h2>
+        </div>
+      </div>
+      <p style="width: 20rem; margin-left: 0.5rem"  id="book individual session">
+        <u>Purpose</u> Book an individual session.
+
+
+      </p>
+      <p style="width: 20rem; margin-left: 0.5rem">
+        <u>How to</u>:
+       On the individual session clicki the shedule tab, in the drop down select a module that you have purshed tickets for and then click the search button. The system will display availabe slots for that module. Proceed to click the book button of a specific slot and provide the relevant details.
+     The system will prompt for confirmation.
+
+      </p>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div
+      style="
+        border: solid rgb(226, 224, 224);
+        height: 15rem;
+        width: 22rem;
+        margin-left: 2rem;
+      "
+    >
+      <div class="row">
+        <div class="col-md-2">
+          <div
+            style="
+              border-radius: 10rem;
+              background-color: whitesmoke;
+              height: 3rem;
+              width: 3rem;
+              margin-top: 0.3rem;
+              margin-left: 0.3rem;
+            "
+          >
+          <i
+          class="fa fa-ticket"
+          aria-hidden="true"
+          style="
+            color: rgb(0, 156, 158);
+            font-size: 2rem;
+            margin-left: 0.5rem;
+            margin-top: 0.5rem;
+          "
+        ></i>
+          </div>
+        </div>
+        <div class="col-md-10" id="ticket">
+          <h1 id="tickets"
+            style="
+              margin-top: 0.8rem;
+              margin-right: 1rem;
+              text-decoration: underline;
+            "
+          >
+          Tickets?
+          </h1>
+        </div>
+      </div>
+      <p style="width: 20rem; margin-left: 0.5rem">
+        <u>Purpose</u> Explenation on tickets.
+
+
+      </p>
+      <p style="width: 20rem; margin-left: 0.5rem">
+        <u>How to</u>: Tickets are purchasabel through the store for a specific module. Tickets allow you to either attend a group session or book an individual session, depending
+        on the type of ticket. Tickets do have an expiery date which you can view by navigarting to the my subscriptions tab in the side bar of the home screen.
+      
+
+      </p>
+    </div>
+  </div>
+</div>
+<br>
+<div class="row">
+  <div class="col-md-4" id="short course">
+    <div id="short course"
+      style="
+        border: solid rgb(226, 224, 224);
+        height: 15rem;
+        width: 22rem;
+        margin-left: 2rem;
+      "
+    >
+      <div class="row" id="short">
+        <div class="col-md-2">
+          <div
+            style="
+              border-radius: 10rem;
+              background-color: whitesmoke;
+              height: 3rem;
+              width: 3rem;
+              margin-top: 0.3rem;
+              margin-left: 0.3rem;
+            "
+          >
+          <i
+          class="fa fa-video-camera"
+          aria-hidden="true"
+          style="
+            color: rgb(0, 156, 158);
+            font-size: 2rem;
+            margin-left: 0.5rem;
+            margin-top: 0.5rem;
+          "
+        ></i>
+          </div>
+        </div>
+        <div class="col-md-10">
+          <h1
+            style="
+              margin-top: 0.8rem;
+              margin-right: 1rem;
+              text-decoration: underline;
+            "
+          >
+          Short courses?
+          </h1>
+        </div>
+      </div>
+      <p style="width: 20rem; margin-left: 0.5rem">
+        <u>Purpose</u> Explenation on short courses.
+
+
+      </p>
+      <p style="width: 20rem; margin-left: 0.5rem">
+        <u>How to</u>: Short courses are products taht you can buy in the store that relate to a specific topic. Short courses
+        consist of a video on a topic and any other resources such as notes for that specific topic.
+
+      </p>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div
+      style="
+        border: solid rgb(226, 224, 224);
+        height: 15rem;
+        width: 22rem;
+        margin-left: 2rem;
+      "
+    >
+      <div class="row">
+        <div class="col-md-2">
+          <div
+            style="
+              border-radius: 10rem;
+              background-color: whitesmoke;
+              height: 3rem;
+              width: 3rem;
+              margin-top: 0.3rem;
+              margin-left: 0.3rem;
+            "
+          >
+          <i
+          class="fa fa-video-camera"
+          aria-hidden="true"
+          style="
+            color: rgb(0, 156, 158);
+            font-size: 2rem;
+            margin-left: 0.5rem;
+            margin-top: 0.5rem;
+          "
+        ></i>
+          </div>
+        </div>
+        <div class="col-md-10" id="view short course">
+          <h1 id="my short course"
+            style="
+              margin-top: 0.8rem;
+              margin-right: 1rem;
+              text-decoration: underline;
+            "
+          >
+          My short courses?
+          </h1>
+        </div>
+      </div>
+      <p style="width: 20rem; margin-left: 0.5rem">
+        <u>Purpose</u> How to view your short courses.
+
+
+      </p>
+      <p style="width: 20rem; margin-left: 0.5rem">
+        <u>How to</u>: Navigate to the home page, if you have bough a short course you will see a card displaying the details of that short course.
+        Proceed to click on the learn button for that specific course. You will be directed to the content page where you can view the recources for that short course.
+
+      </p>
+    </div>
+  </div>
+  <div class="col-md-4" id="about">
+    <div
+      style="
+        border: solid rgb(226, 224, 224);
+        height: 15rem;
+        width: 22rem;
+        margin-left: 2rem;
+      "
+    >
+      <div class="row">
+        <div class="col-md-2">
+          <div
+            style="
+              border-radius: 10rem;
+              background-color: whitesmoke;
+              height: 3rem;
+              width: 3rem;
+              margin-top: 0.3rem;
+              margin-left: 0.3rem;
+            "
+          >
+          <i
+          class="fa fa-video-camera"
+          aria-hidden="true"
+          style="
+            color: rgb(0, 156, 158);
+            font-size: 2rem;
+            margin-left: 0.5rem;
+            margin-top: 0.5rem;
+          "
+        ></i>
+          </div>
+        </div>
+        <div class="col-md-10" id="resources">
+          <h1 id="resource"
+            style="
+              margin-top: 0.8rem;
+              margin-right: 1rem;
+              text-decoration: underline;
+            "
+          >
+          Resources?
+          </h1>
+        </div>
+      </div>
+      <p style="width: 20rem; margin-left: 0.5rem">
+        <u>Purpose</u> How to view Resources.
+
+
+      </p>
+      <p style="width: 20rem; margin-left: 0.5rem">
+        <u>How to</u>: Navigate to the home page and click on the resources icon. The system will redirect you to the resources page where you can select a module and search for it resources.
+        Resources are uploaded by a tutor and consist of practice tests, notes or articles.
+
+      </p>
+    </div>
+  </div>
+</div>
+<br>
+<footer>
+  <nav id="foot" class="navbar" style="width: 100%">
+    <a class="navbar-brand" href="#"> </a>
+    <span class="TDO" style="margin-right: auto"> &lt; TDO &gt;</span>
+    <div class="topnav-right">
+      <a href="#"> <i class="fa fa-facebook"></i> </a>
+      <a href="#"> <i class="fa fa-instagram"></i> </a>
+      <a href="#"> <i class="fa fa-twitter"></i> </a>
+      <a>TutorDevOps@gmail.com</a>
+    </div>
+  </nav>
+</footer>

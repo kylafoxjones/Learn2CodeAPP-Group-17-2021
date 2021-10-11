@@ -54,7 +54,7 @@
     <br />
 
     <!-- start of ngif -->
-    <div  *ngIf="(content | json) == '{}'">
+    <div  *ngIf="(content | json) != '{}'">
       <div
         style="
           box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
@@ -167,7 +167,7 @@
     </div>
     
 
-    <div *ngIf="(content | json) != '{}'">
+    <div *ngIf="(content | json) == '{}'">
       <div
         style="
           box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
@@ -201,7 +201,7 @@
   <nav
     id="foot"
     class="navbar"
-    style="width: 100%; position: absolute; bottom: 0"
+    style="width: 100%; bottom: 0"
   >
     <a class="navbar-brand" href="#"> </a>
     <span class="TDO" style="margin-right: auto"> &lt; TDO &gt;</span>

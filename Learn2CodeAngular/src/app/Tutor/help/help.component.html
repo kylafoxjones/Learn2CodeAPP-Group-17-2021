@@ -1,0 +1,1678 @@
+<nav class="navbar navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">
+      <img
+        src="../.././assets/pics/HD logo.png"
+        width="40"
+        height="40"
+        class="d-inline-block align-top"
+        alt=""
+      />
+    </a>
+    <span class="TDO" style="color: rgb(0, 156, 158); margin-right: auto"
+      >TutorDevOps</span
+    >
+    <div class="topnav-right">
+      <span
+      [routerLink]="['/tutorhome']"
+        style="color: whitesmoke; margin-right: 2rem; padding-left: 1.5rem"
+        >Home</span
+      >
+    </div>
+  </nav>
+  <div style="background-color: rgb(0, 156, 158); height: 15rem">
+    <h1
+      style="
+        text-align: center;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+          Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        font-size: 3rem;
+        padding-top: 3rem;
+        color: white;
+      "
+    >
+      Hi, how can we help?
+    </h1>
+    <div
+      class="input-group"
+      style="width: 30rem; margin-left: 25rem; padding-top: 1rem"
+    >
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Enter search term here..."
+        style="width: 6rem"
+        [(ngModel)]="searchTerm"
+      />
+      <div class="input-group-append">
+        <button class="btn btn-info" type="button"  (click)="scrollFn()">
+          <i class="fa fa-search"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+  <br />
+  <br />
+  <div class="row">
+      <div class="col-md-4" id="profile">
+          <div
+            style="
+              border: solid rgb(226, 224, 224);
+              height: 15rem;
+              width: 22rem;
+              margin-left: 2rem;
+            "
+          >
+            <div class="row">
+              <div class="col-md-2">
+                <div
+                  style="
+                    border-radius: 10rem;
+                    background-color: whitesmoke;
+                    height: 3rem;
+                    width: 3rem;
+                    margin-top: 0.3rem;
+                    margin-left: 0.3rem;
+                  "
+                >
+                  <i
+                    class="fa fa-user"
+                    aria-hidden="true"
+                    style="
+                      color: rgb(0, 156, 158);
+                      font-size: 2rem;
+                      margin-left: 0.8rem;
+                      margin-top: 0.5rem;
+                    "
+                  ></i>
+                </div>
+              </div>
+              <div class="col-md-10">
+                <h1
+                  style="
+                    margin-top: 0.8rem;
+                    margin-right: 1rem;
+                    text-decoration: underline;
+                  "
+                >
+                  View your profile?
+                </h1>
+              </div>
+            </div>
+            <p style="width: 20rem; margin-left: 0.5rem">
+              <u>Purpose</u>: To View the profile of the Tutor who is logged in.
+            </p>
+            <p style="width: 20rem; margin-left: 0.5rem">
+              <u>How to</u>: Log in to the system, the system will display the tutor home page where you will see your profile and its details which are displayed on a card.
+              
+            </p>
+          </div>
+        </div>
+  
+    <div class="col-md-4">
+      <div
+        style="
+          border: solid rgb(226, 224, 224);
+          height: 15rem;
+          width: 22rem;
+          margin-left: 2rem;
+        "
+      >
+        <div class="row">
+          <div class="col-md-2">
+            <div
+              style="
+                border-radius: 10rem;
+                background-color: whitesmoke;
+                height: 3rem;
+                width: 3rem;
+                margin-top: 0.3rem;
+                margin-left: 0.3rem;
+              "
+            >
+              <i
+                class="fa fa-user"
+                aria-hidden="true"
+                style="
+                  color: rgb(0, 156, 158);
+                  font-size: 2rem;
+                  margin-left: 0.8rem;
+                  margin-top: 0.5rem;
+                "
+              ></i>
+            </div>
+          </div>
+          <div class="col-md-10" id="edit profile">
+            <h1
+              style="
+                margin-top: 0.8rem;
+                margin-right: 1rem;
+                text-decoration: underline;
+              "
+            >
+              Edit your profile?
+            </h1>
+          </div>
+        </div>
+        <p style="width: 20rem; margin-left: 0.5rem">
+          <u>Purpose</u>: For the tutor to edit their personal information on the system.
+
+        </p>
+        <p style="width: 20rem; margin-left: 0.5rem">
+          <u>How to</u>: Select the edit button on the profile card on the tutor homepage, this causes a pop-up to appear with all the appropriate input fields for the tutor to enter new information.
+           Then proceed to select the update button and thereafter the yes button on the confirmation pop-up in order to update your profile.  
+
+        </p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div
+        style="
+          border: solid rgb(226, 224, 224);
+          height: 15rem;
+          width: 22rem;
+          margin-left: 2rem;
+        "
+      >
+        <div class="row">
+          <div class="col-md-2">
+            <div
+              style="
+                border-radius: 10rem;
+                background-color: whitesmoke;
+                height: 3rem;
+                width: 3rem;
+                margin-top: 0.3rem;
+                margin-left: 0.3rem;
+              "
+            >
+              <i
+                class="fa fa-user"
+                aria-hidden="true"
+                style="
+                  color: rgb(0, 156, 158);
+                  font-size: 2rem;
+                  margin-left: 0.8rem;
+                  margin-top: 0.5rem;
+                "
+              ></i>
+            </div>
+          </div>
+          <div class="col-md-10" id="delete profile">
+            <h1
+              style="
+                margin-top: 0.8rem;
+                margin-right: 1rem;
+                text-decoration: underline;
+              "
+            >
+              Delete your profile?
+            </h1>
+          </div>
+        </div>
+        <p style="width: 20rem; margin-left: 0.5rem">
+          <u>Purpose</u>: To delete your profile from the system.
+        </p>
+        <p style="width: 20rem; margin-left: 0.5rem">
+          <u>How to</u>: Select the delete button on profile card on the tutor homepage, this causes a confirmation pop-up to appear. Proceed to confirm the deletion of your profile by selecting the yes button. If you whish to abort the deletion click the cancel button.
+
+
+        </p>
+      </div>
+    </div>
+   
+  </div>
+  <br>
+  
+  
+  <div class="row" id="messaging">
+      <div class="col-md-4" id="message">
+          <div id="messages"
+            style="
+              border: solid rgb(226, 224, 224);
+              height: 15rem;
+              width: 22rem;
+              margin-left: 2rem;
+            "
+          >
+            <div class="row">
+              <div class="col-md-2">
+                <div
+                  style="
+                    border-radius: 10rem;
+                    background-color: whitesmoke;
+                    height: 3rem;
+                    width: 3rem;
+                    margin-top: 0.3rem;
+                    margin-left: 0.3rem;
+                  "
+                >
+                  <i
+                    class="fa fa-comment"
+                    aria-hidden="true"
+                    style="
+                      color: rgb(0, 156, 158);
+                      font-size: 2rem;
+                      margin-left: 0.6rem;
+                      margin-top: 0.5rem;
+                    "
+                  ></i>
+                </div>
+              </div>
+              <div class="col-md-10" id="send message">
+                <h1 id="create message"
+                  style="
+                    margin-top: 0.8rem;
+                    margin-right: 1rem;
+                    text-decoration: underline;
+                  "
+                >
+                  Sending a message?
+                </h1>
+              </div>
+            </div>
+            <p style="width: 20rem; margin-left: 0.5rem">
+              <u>Purpose</u>: To send a message to a specific student.
+            </p>
+            <p style="width: 20rem; margin-left: 0.5rem">
+              <u>How to</u>: Navigate to the home page and clcik on the student icon on the sidebar. The system will display all students, simply click on the message icon 
+               relating to the student you wish to send a message to on the students screen. A pop up will display asking for your message, provide the message and click send. The system will prompt a confirmation.
+  
+  
+            </p>
+          </div>
+        </div>
+  
+    <div class="col-md-4">
+      <div
+        style="
+          border: solid rgb(226, 224, 224);
+          height: 15rem;
+          width: 22rem;
+          margin-left: 2rem;
+        "
+      >
+        <div class="row">
+          <div class="col-md-2">
+            <div
+              style="
+                border-radius: 10rem;
+                background-color: whitesmoke;
+                height: 3rem;
+                width: 3rem;
+                margin-top: 0.3rem;
+                margin-left: 0.3rem;
+              "
+            >
+            <i
+            class="fa fa-comment"
+            aria-hidden="true"
+            style="
+              color: rgb(0, 156, 158);
+              font-size: 2rem;
+              margin-left: 0.6rem;
+              margin-top: 0.5rem;
+            "
+          ></i>
+            </div>
+          </div>
+          <div class="col-md-10" id="view messages">
+            <h1
+              style="
+                margin-top: 0.8rem;
+                margin-right: 1rem;
+                text-decoration: underline;
+              "
+            >
+              Your messages?
+            </h1>
+          </div>
+        </div>
+        <p style="width: 20rem; margin-left: 0.5rem">
+          <u>Purpose</u>: To find a specific message that you have received/sent.
+        </p>
+        <p style="width: 20rem; margin-left: 0.5rem">
+          <u>How to</u>: Navigate to the My Messages screen using the side navigation bar and clicks on the Messages icon. 
+          The system will display all the my messages screen with a list of messages related to you. Either click on the recieved tab to see recieved messages or the sent tab to see sent messages
+          
+  
+        </p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div
+        style="
+          border: solid rgb(226, 224, 224);
+          height: 15rem;
+          width: 22rem;
+          margin-left: 2rem;
+        "
+      >
+        <div class="row">
+          <div class="col-md-2">
+            <div
+              style="
+                border-radius: 10rem;
+                background-color: whitesmoke;
+                height: 3rem;
+                width: 3rem;
+                margin-top: 0.3rem;
+                margin-left: 0.3rem;
+              "
+            >
+            <i
+            class="fa fa-comment"
+            aria-hidden="true"
+            style="
+              color: rgb(0, 156, 158);
+              font-size: 2rem;
+              margin-left: 0.6rem;
+              margin-top: 0.5rem;
+            "
+          ></i>
+            </div>
+          </div>
+          <div class="col-md-10" id="delete message">
+            <h1 id="remove message"
+              style="
+                margin-top: 0.8rem;
+                margin-right: 1rem;
+                text-decoration: underline;
+              "
+            >
+              Delete your messages?
+            </h1>
+          </div>
+        </div>
+        <p style="width: 20rem; margin-left: 0.5rem">
+          <u>Purpose</u>:To delete a sent message from the system.
+          
+        </p>
+        <p style="width: 20rem; margin-left: 0.5rem">
+          <u>How to</u>:  
+           Proceed to select the sent tab and select the delete button of the message you want to delete. This will cause a confirmation message to pop-up where the student can confirm the deletion.
+           If the message was sent less that 24 hours ago you will be unable to delete the message.
+  
+        </p>
+      </div>
+    </div>
+   
+  </div>
+  <br>
+  <div class="row" id="password">
+    <div class="col-md-4" id="logout">
+      <div
+        style="
+          border: solid rgb(226, 224, 224);
+          height: 15rem;
+          width: 22rem;
+          margin-left: 2rem;
+        "
+      >
+        <div class="row">
+          <div class="col-md-2">
+            <div
+              style="
+                border-radius: 10rem;
+                background-color: whitesmoke;
+                height: 3rem;
+                width: 3rem;
+                margin-top: 0.3rem;
+                margin-left: 0.3rem;
+              "
+            >
+            <i
+            class="fa fa-unlock-alt"
+            aria-hidden="true"
+            style="
+              color: rgb(0, 156, 158);
+              font-size: 2rem;
+              margin-left: 0.9rem;
+              margin-top: 0.5rem;
+            "
+          ></i>
+            </div>
+          </div>
+          <div class="col-md-10" id="change password">
+            <h1
+              style="
+                margin-top: 0.8rem;
+                margin-right: 1rem;
+                text-decoration: underline;
+              "
+            >
+            Change Password?
+            </h1>
+          </div>
+        </div>
+        <p style="width: 20rem; margin-left: 0.5rem">
+          <u>Purpose</u>:To change your password once logged in.          
+          
+          
+        </p>
+        <p style="width: 20rem; margin-left: 0.5rem">
+          <u>How to</u>: Proceed to click the change password button on your profile card.
+           Then fill in your new password details in the appropriate input fields on the pop-up. Inorder to save the new password
+             click the submit button and the system will prompt confirmation. In turn to confirm you must click the yes button.
+
+  
+        </p>
+      </div>
+    </div>
+   
+    <div class="col-md-4">
+      <div
+        style="
+          border: solid rgb(226, 224, 224);
+          height: 15rem;
+          width: 22rem;
+          margin-left: 2rem;
+        "
+      >
+        <div class="row">
+          <div class="col-md-2">
+            <div
+              style="
+                border-radius: 10rem;
+                background-color: whitesmoke;
+                height: 3rem;
+                width: 3rem;
+                margin-top: 0.3rem;
+                margin-left: 0.3rem;
+              "
+            >
+            <i
+            class="fa fa-unlock-alt"
+            aria-hidden="true"
+            style="
+              color: rgb(0, 156, 158);
+              font-size: 2rem;
+              margin-left: 0.9rem;
+              margin-top: 0.5rem;
+            "
+          ></i>
+            </div>
+          </div>
+          <div class="col-md-10" id="reset password">
+            <h1
+              style="
+                margin-top: 0.8rem;
+                margin-right: 1rem;
+                text-decoration: underline;
+              "
+            >
+            Reset password?
+            </h1>
+          </div>
+        </div>
+        <p style="width: 20rem; margin-left: 0.5rem">
+          <u>Purpose</u>:To allow the user to reset their password using their email address.
+          
+                  
+        </p>
+        <p style="width: 20rem; margin-left: 0.5rem">
+          <u>How to</u>: On the login page click the “forgot password” hyperlink. Proceed to enter yor email in the space provided. The system will then send an email providing a reset link.  Follow the link and provide a new password and click the submit button.
+
+  
+  
+        </p>
+      </div>
+    </div>
+   
+    <div class="col-md-4" id="logout">
+      <div
+        style="
+          border: solid rgb(226, 224, 224);
+          height: 15rem;
+          width: 22rem;
+          margin-left: 2rem;
+        "
+      >
+        <div class="row">
+          <div class="col-md-2">
+            <div
+              style="
+                border-radius: 10rem;
+                background-color: whitesmoke;
+                height: 3rem;
+                width: 3rem;
+                margin-top: 0.3rem;
+                margin-left: 0.3rem;
+              "
+            >
+            <i
+            class="fa fa-unlock-alt"
+            aria-hidden="true"
+            style="
+              color: rgb(0, 156, 158);
+              font-size: 2rem;
+              margin-left: 0.9rem;
+              margin-top: 0.5rem;
+            "
+          ></i>
+            </div>
+          </div>
+          <div  class="col-md-10">
+            <h1
+              style="
+                margin-top: 0.8rem;
+                margin-right: 1rem;
+                text-decoration: underline;
+              "
+            >
+            Logout?
+            </h1>
+          </div>
+        </div>
+        <p style="width: 20rem; margin-left: 0.5rem">
+          <u>Purpose</u>: To logout of the Learn2Code system.
+          
+        </p>
+        <p style="width: 20rem; margin-left: 0.5rem">
+          <u>How to</u>:  Navigate to the dropdown menu by clicking the profile picture icon on the far right of the top navigation bar. Then proceed to click the logout button.
+
+  
+  
+        </p>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="row" id="sessions">
+    <div class="col-md-4" id="session">
+      <div
+        style="
+          border: solid rgb(226, 224, 224);
+          height: 15rem;
+          width: 22rem;
+          margin-left: 2rem;
+        "
+      >
+        <div class="row">
+          <div class="col-md-2">
+            <div
+              style="
+                border-radius: 10rem;
+                background-color: whitesmoke;
+                height: 3rem;
+                width: 3rem;
+                margin-top: 0.3rem;
+                margin-left: 0.3rem;
+              "
+            >
+            <i
+            class="fa fa-calendar"
+            aria-hidden="true"
+            style="
+              color: rgb(0, 156, 158);
+              font-size: 2rem;
+              margin-left: 0.5rem;
+              margin-top: 0.5rem;
+            "
+          ></i>
+            </div>
+          </div>
+          <div class="col-md-10">
+            <h1
+              style="
+                margin-top: 0.8rem;
+                margin-right: 1rem;
+                text-decoration: underline;
+              "
+            >
+            Sessions?
+            </h1>
+          </div>
+        </div>
+        <p style="width: 20rem; margin-left: 0.6rem">
+          <u>Purpose</u>:to explain sessions.
+          
+          
+        </p>
+        <p style="width: 20rem; margin-left: 0.5rem">
+          <u>How to</u>: A tutor can create a number of sessions during the week as long as they do not clash with existing sessions.
+          You as a tutor can either create individual sessions which are one on one sessions or group sessions which are with multiple students.
+          The sessions you create are based on the specific modules that you are registered for.
+        </p>
+      </div>
+    </div>
+  
+    <div class="col-md-4">
+      <div
+        style="
+          border: solid rgb(226, 224, 224);
+          height: 15rem;
+          width: 22rem;
+          margin-left: 2rem;
+        "
+      >
+        <div class="row">
+          <div class="col-md-2">
+            <div
+              style="
+                border-radius: 10rem;
+                background-color: whitesmoke;
+                height: 3rem;
+                width: 3rem;
+                margin-top: 0.3rem;
+                margin-left: 0.3rem;
+              "
+            >
+            <i
+            class="fa fa-calendar"
+            aria-hidden="true"
+            style="
+              color: rgb(0, 156, 158);
+              font-size: 2rem;
+              margin-left: 0.6rem;
+              margin-top: 0.5rem;
+            "
+          ></i>
+            </div>
+          </div>
+          <div class="col-md-10" id="create session">
+            <h1 id="add session"
+              style="
+                margin-top: 0.8rem;
+                margin-right: 1rem;
+                text-decoration: underline;
+              "
+            >
+            Creating sessions?
+            </h1>
+          </div>
+        </div>
+        <p style="width: 20rem; margin-left: 0.5rem">
+          <u>Purpose</u>: To allow the tutor a create a new session.
+  
+        </p>
+        <p style="width: 20rem; margin-left: 0.5rem">
+          <u>How to</u>: Navigate to the my schedule screen by clicking the sessions icon on the side navbar, clicks on the my sessions tab and then on the new session button.
+           Then fill in and select the appropriate session information and selects the create button.
+            The system will prompt confirmation and  provide it by clicking the yes button.
+
+  
+        </p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div
+        style="
+          border: solid rgb(226, 224, 224);
+          height: 15rem;
+          width: 22rem;
+          margin-left: 2rem;
+        "
+      >
+        <div class="row">
+          <div class="col-md-2">
+            <div
+              style="
+                border-radius: 10rem;
+                background-color: whitesmoke;
+                height: 3rem;
+                width: 3rem;
+                margin-top: 0.3rem;
+                margin-left: 0.3rem;
+              "
+            >
+            <i
+            class="fa fa-calendar"
+            aria-hidden="true"
+            style="
+              color: rgb(0, 156, 158);
+              font-size: 2rem;
+              margin-left: 0.6rem;
+              margin-top: 0.5rem;
+            "
+          ></i>
+            </div>
+          </div>
+          <div class="col-md-10">
+            <h1
+              style="
+                margin-top: 0.8rem;
+                margin-right: 1rem;
+                text-decoration: underline;
+              "
+            >
+            My sessions?
+            </h1>
+          </div>
+        </div>
+        <p style="width: 20rem; margin-left: 0.5rem">
+          <u>Purpose</u>:Allows the tutor to view their sessions.
+  
+  
+        </p>
+        <p style="width: 20rem; margin-left: 0.5rem">
+          <u>How to</u>: Navigate to the my schedule screen and click on the my sessions tab.
+          The system will display a lsit of all your sessions, alternatively click on the calendar tab to see all your sessinons on a calendar. 
+           
+  
+  
+        </p>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="row" id="finalize">
+    <div class="col-md-4" id="finalize sessions">
+      <div
+        style="
+          border: solid rgb(226, 224, 224);
+          height: 15rem;
+          width: 22rem;
+          margin-left: 2rem;
+        "
+      >
+        <div class="row">
+          <div class="col-md-2">
+            <div
+              style="
+                border-radius: 10rem;
+                background-color: whitesmoke;
+                height: 3rem;
+                width: 3rem;
+                margin-top: 0.3rem;
+                margin-left: 0.3rem;
+              "
+            >
+            <i
+            class="fa fa-calendar"
+            aria-hidden="true"
+            style="
+              color: rgb(0, 156, 158);
+              font-size: 2rem;
+              margin-left: 0.6rem;
+              margin-top: 0.5rem;
+            "
+          ></i>
+            </div>
+          </div>
+          <div class="col-md-10" id="updte session">
+            <h1 id="edit session"
+              style="
+                margin-top: 0.8rem;
+                margin-right: 1rem;
+                text-decoration: underline;
+              "
+            >
+            Update sessions?
+            </h1>
+          </div>
+        </div>
+        <p style="width: 20rem; margin-left: 0.5rem">
+          <u>Purpose</u>:Let a tutor edit their sessions.
+  
+  
+        </p>
+        <p style="width: 20rem; margin-left: 0.5rem">
+          <u>How to</u>: Navigate to the my schedule screen, click on the my sessions tab and then on the edit button on the specific session.
+           Then edit and select the appropriate session information and select the create button. 
+           The system will prompt confirmation and click the yes button on the alert.
+          Sessions can't be updated 24 hours before they start.
+  
+  
+        </p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div
+        style="
+          border: solid rgb(226, 224, 224);
+          height: 15rem;
+          width: 22rem;
+          margin-left: 2rem;
+        "
+      >
+        <div class="row">
+          <div class="col-md-2">
+            <div
+              style="
+                border-radius: 10rem;
+                background-color: whitesmoke;
+                height: 3rem;
+                width: 3rem;
+                margin-top: 0.3rem;
+                margin-left: 0.3rem;
+              "
+            >
+            <i
+            class="fa fa-calendar"
+            aria-hidden="true"
+            style="
+              color: rgb(0, 156, 158);
+              font-size: 2rem;
+              margin-left: 0.6rem;
+              margin-top: 0.5rem;
+            "
+          ></i>
+            </div>
+          </div>
+          <div class="col-md-10" id="delete session">
+            <h1 id="remove session"
+              style="
+                margin-top: 0.8rem;
+                margin-right: 1rem;
+                text-decoration: underline;
+              "
+            >
+            Delete sessions?
+            </h1>
+          </div>
+        </div>
+        <p style="width: 20rem; margin-left: 0.5rem">
+          <u>Purpose</u>:Deleting a session that has been created.
+  
+  
+        </p>
+        <p style="width: 20rem; margin-left: 0.5rem">
+          <u>How to</u>: Navigates to the my schedule screen, 
+          click on the my sessions tab and then on the delete button on the specific session. 
+          The system will prompt confirmation and the tutor will provide it by clicking the yes button on the alert.
+          Sessions can't be deleted 24 hours before they start.
+
+  
+        </p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div
+        style="
+          border: solid rgb(226, 224, 224);
+          height: 15rem;
+          width: 22rem;
+          margin-left: 2rem;
+        "
+      >
+        <div class="row">
+          <div class="col-md-2">
+            <div
+              style="
+                border-radius: 10rem;
+                background-color: whitesmoke;
+                height: 3rem;
+                width: 3rem;
+                margin-top: 0.3rem;
+                margin-left: 0.3rem;
+              "
+            >
+            <i
+            class="fa fa-calendar"
+            aria-hidden="true"
+            style="
+              color: rgb(0, 156, 158);
+              font-size: 2rem;
+              margin-left: 0.7rem;
+              margin-top: 0.5rem;
+            "
+          ></i>
+            </div>
+          </div>
+          <div class="col-md-10">
+            <h1
+              style="
+                margin-top: 0.8rem;
+                margin-right: 1rem;
+                text-decoration: underline;
+              "
+            >
+             Finalize sessions?
+            </h1>
+          </div>
+        </div>
+        <p style="width: 20rem; margin-left: 0.5rem">
+          <u>Purpose</u>:The finalization of a group session.
+          
+  
+  
+        </p>
+        <p style="width: 20rem; margin-left: 0.5rem">
+          <u>How to</u>: Navigate to the my schedule screen, 
+          click on the my sessions tab and then select the finalize button for the specific session you want to finalize.
+           This will cause a pop-up to appear where the take attendance button and the upload content button will be enabled,
+            these 2 functions need to be done in order for the finalize button to be enabled. 
+
+
+  
+        </p>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="row" id="attendance">
+    <div class="col-md-4" id="Attendance">
+      <div
+        style="
+          border: solid rgb(226, 224, 224);
+          height: 15rem;
+          width: 22rem;
+          margin-left: 2rem;
+        "
+      >
+        <div class="row">
+          <div class="col-md-2">
+            <div
+              style="
+                border-radius: 10rem;
+                background-color: whitesmoke;
+                height: 3rem;
+                width: 3rem;
+                margin-top: 0.3rem;
+                margin-left: 0.3rem;
+              "
+            >
+            <i
+            class="fa fa-list-ul"
+            aria-hidden="true"
+            style="
+              color: rgb(0, 156, 158);
+              font-size: 2rem;
+              margin-left: 0.5rem;
+              margin-top: 0.5rem;
+            "
+          ></i>
+            </div>
+          </div>
+          <div class="col-md-10" id="take attendance">
+            <h1
+              style="
+                margin-top: 0.8rem;
+                margin-right: 1rem;
+                text-decoration: underline;
+              "
+            >
+             Take attendance?
+            </h1>
+          </div>
+        </div>
+        <p style="width: 20rem; margin-left: 0.5rem">
+          <u>Purpose</u>:To take register for a group session.
+  
+  
+        </p>
+        <p style="width: 20rem; margin-left: 0.5rem">
+          <u>How to</u>: Navigate to the attendance screen by either the home side navigation bar by clicking the attendance icon.
+          Click the "+" button for a specific session to take attendance and proceed to check all the students that attended. Click the submit button to save.
+
+  
+        </p>
+      </div>
+    </div>
+  
+    <div class="col-md-4">
+      <div
+        style="
+          border: solid rgb(226, 224, 224);
+          height: 15rem;
+          width: 22rem;
+          margin-left: 2rem;
+        "
+      >
+        <div class="row">
+          <div class="col-md-2">
+            <div
+              style="
+                border-radius: 10rem;
+                background-color: whitesmoke;
+                height: 3rem;
+                width: 3rem;
+                margin-top: 0.3rem;
+                margin-left: 0.3rem;
+              "
+            >
+            <i
+            class="fa fa-list-ul"
+            aria-hidden="true"
+            style="
+              color: rgb(0, 156, 158);
+              font-size: 2rem;
+              margin-left: 0.5rem;
+              margin-top: 0.5rem;
+            "
+          ></i>
+            </div>
+          </div>
+          <div class="col-md-10" id="update attendance">
+            <h1 id="edit attendance"
+              style="
+                margin-top: 0.8rem;
+                margin-right: 1rem;
+                text-decoration: underline;
+              "
+            >
+            Update attendance?
+            </h1>
+          </div>
+        </div>
+        <p style="width: 20rem; margin-left: 0.5rem">
+          <u>Purpose</u> To edit the attendance list of students.
+  
+  
+        </p>
+        <p style="width: 20rem; margin-left: 0.5rem">
+          <u>How to</u>: Navigate to the attendance screen by either the home side navigation bar by clicking the attendance icon.
+            Click the edit button on the specific session, then click the check-box next to the for the students
+            that attended and leave the check-boxes blank next to those who didn't attend the session. Then click the submit button to save.
+
+
+  
+        </p>
+      </div>
+    </div>
+  
+    <div class="col-md-4">
+      <div
+        style="
+          border: solid rgb(226, 224, 224);
+          height: 15rem;
+          width: 22rem;
+          margin-left: 2rem;
+        "
+      >
+        <div class="row">
+          <div class="col-md-2">
+            <div
+              style="
+                border-radius: 10rem;
+                background-color: whitesmoke;
+                height: 3rem;
+                width: 3rem;
+                margin-top: 0.3rem;
+                margin-left: 0.3rem;
+              "
+            >
+            <i
+            class="fa fa-list-ul"
+            aria-hidden="true"
+            style="
+              color: rgb(0, 156, 158);
+              font-size: 2rem;
+              margin-left: 0.5rem;
+              margin-top: 0.5rem;
+            "
+          ></i>
+            </div>
+          </div>
+          <div class="col-md-10" id="delete attendance">
+            <h1 id="remove attendance"
+              style="
+                margin-top: 0.8rem;
+                margin-right: 1rem;
+                text-decoration: underline;
+              "
+            >
+            Delete attendance?
+            </h1>
+          </div>
+        </div>
+        <p style="width: 20rem; margin-left: 0.5rem">
+          <u>Purpose</u> To delete the attendance list of students that attend the group sessions.
+          
+  
+  
+        </p>
+        <p style="width: 20rem; margin-left: 0.5rem">
+          <u>How to</u>:  Navigate to the attendance screen by either the home side navigation bar by clicking the attendance icon. 
+          Then click the delete button on the specific session. The system will prompt confirmation, confirm by clicking the yes button.
+
+         
+  
+        </p>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="row" id="category">
+    <div class="col-md-4" id="resource category">
+      <div
+        style="
+          border: solid rgb(226, 224, 224);
+          height: 15rem;
+          width: 22rem;
+          margin-left: 2rem;
+        "
+      >
+        <div class="row">
+          <div class="col-md-2">
+            <div
+              style="
+                border-radius: 10rem;
+                background-color: whitesmoke;
+                height: 3rem;
+                width: 3rem;
+                margin-top: 0.3rem;
+                margin-left: 0.3rem;
+              "
+            >
+            <i
+            class="fa fa-users"
+            aria-hidden="true"
+            style="
+              color: rgb(0, 156, 158);
+              font-size: 2rem;
+              margin-left: 0.5rem;
+              margin-top: 0.5rem;
+            "
+          ></i>
+            </div>
+          </div>
+          <div class="col-md-10" id="create resource category">
+            <h2 id="add recource category"
+              style="
+                margin-top: 0.8rem;
+                margin-right: 1rem;
+                text-decoration: underline;
+              "
+            >
+            Create resource category?
+            </h2>
+          </div>
+        </div>
+        <p style="width: 20rem; margin-left: 0.5rem">
+          <u>Purpose:</u> To add a resource category to the system.
+  
+  
+        </p>
+        <p style="width: 20rem; margin-left: 0.5rem">
+          <u>How to</u>: Navigate to the resources screen from the side nav bar by clicking the resources icon, click on the resource categories tab and then on the add category button.
+          Then add a new category name into the input field on the pop-up and select the submit button. This causes a confirmation message to appear. Select yes to confirm
+          
+  
+        </p>
+      </div>
+    </div>
+  
+    <div class="col-md-4">
+      <div
+        style="
+          border: solid rgb(226, 224, 224);
+          height: 15rem;
+          width: 22rem;
+          margin-left: 2rem;
+        "
+      >
+        <div class="row">
+          <div class="col-md-2">
+            <div
+              style="
+                border-radius: 10rem;
+                background-color: whitesmoke;
+                height: 3rem;
+                width: 3rem;
+                margin-top: 0.3rem;
+                margin-left: 0.3rem;
+              "
+            >
+            <i
+            class="fa fa-users"
+            aria-hidden="true"
+            style="
+              color: rgb(0, 156, 158);
+              font-size: 2rem;
+              margin-left: 0.5rem;
+              margin-top: 0.5rem;
+            "
+          ></i>
+            </div>
+          </div>
+          <div class="col-md-10" id="update resource category">
+            <h2 id="edit resource category"
+              style="
+                margin-top: 0.8rem;
+                margin-right: 1rem;
+                text-decoration: underline;
+              "
+            >
+            Update resource category?
+            </h2>
+          </div>
+        </div>
+        <p style="width: 20rem; margin-left: 0.5rem">
+          <u>Purpose:</u> To update a resource category name. 
+  
+  
+        </p>
+        <p style="width: 20rem; margin-left: 0.5rem">
+          <u>How to</u>: Navigates to the resources screen from the side navigation bar on the tutorhome, 
+          click on the resource categories tab and then on the edit button of the specific resource category you want to edit. A pop-up appears where you can make all changes to the category name and submit the changes.
+           A confirmation pop-up will appear. click yes to save.
+  
+        </p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div
+        style="
+          border: solid rgb(226, 224, 224);
+          height: 15rem;
+          width: 22rem;
+          margin-left: 2rem;
+        "
+      >
+        <div class="row">
+          <div class="col-md-2">
+            <div
+              style="
+                border-radius: 10rem;
+                background-color: whitesmoke;
+                height: 3rem;
+                width: 3rem;
+                margin-top: 0.3rem;
+                margin-left: 0.3rem;
+              "
+            >
+            <i
+            class="fa fa-users"
+            aria-hidden="true"
+            style="
+              color: rgb(0, 156, 158);
+              font-size: 2rem;
+              margin-left: 0.5rem;
+              margin-top: 0.5rem;
+            "
+          ></i>
+            </div>
+          </div>
+          <div class="col-md-10" id="delete resource category">
+            <h2 id="remove resource category"
+              style="
+                margin-top: 0.8rem;
+                margin-right: 1rem;
+                text-decoration: underline;
+              "
+            >
+            Delete resource category?
+            </h2>
+          </div>
+        </div>
+        <p style="width: 20rem; margin-left: 0.5rem">
+          <u>Purpose:</u>To be able to delete the resource category.
+  
+  
+        </p>
+        <p style="width: 20rem; margin-left: 0.5rem">
+          <u>How to</u>: Navigates to the resources screen from the side navigation bar on the tutorhome,
+           click on the resource categories tab and then on the delete button of the specific resource category you want to delete.
+            A confirmation pop-up appears, then confirm the deletion by selecting the yes button.
+
+        </p>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="row" id="resource">
+    <div class="col-md-4">
+      <div
+        style="
+          border: solid rgb(226, 224, 224);
+          height: 15rem;
+          width: 22rem;
+          margin-left: 2rem;
+        "
+      >
+        <div class="row">
+          <div class="col-md-2">
+            <div
+              style="
+                border-radius: 10rem;
+                background-color: whitesmoke;
+                height: 3rem;
+                width: 3rem;
+                margin-top: 0.3rem;
+                margin-left: 0.3rem;
+              "
+            >
+            <i
+            class="fa fa-cube"
+            aria-hidden="true"
+            style="
+              color: rgb(0, 156, 158);
+              font-size: 2rem;
+              margin-left: 0.6rem;
+              margin-top: 0.5rem;
+            "
+          ></i>
+            </div>
+          </div>
+          <div class="col-md-10" id="create resource">
+            <h1 id="add resource"
+              style="
+                margin-top: 0.8rem;
+                margin-right: 1rem;
+                text-decoration: underline;
+              "
+            >
+            Create resource?
+            </h1>
+          </div>
+        </div>
+        <p style="width: 20rem; margin-left: 0.5rem">
+          <u>Purpose:</u> To add a resource file to a module.
+  
+  
+        </p>
+        <p style="width: 20rem; margin-left: 0.5rem">
+          <u>How to</u>: Navigate to the resources screen by using the side navigation bar on home screen.
+            Then click on the resources button on a specific module card.
+            Proceed to click on the add resource button and provide the content that the pop-up prompts. Then clicks the submit button. The system will prompt confirmation and click the yes button to confirm.
+
+  
+        </p>
+      </div>
+    </div>
+  
+    <div class="col-md-4">
+      <div
+        style="
+          border: solid rgb(226, 224, 224);
+          height: 15rem;
+          width: 22rem;
+          margin-left: 2rem;
+        "
+      >
+        <div class="row">
+          <div class="col-md-2">
+            <div
+              style="
+                border-radius: 10rem;
+                background-color: whitesmoke;
+                height: 3rem;
+                width: 3rem;
+                margin-top: 0.3rem;
+                margin-left: 0.3rem;
+              "
+            >
+            <i
+            class="fa fa-cube"
+            aria-hidden="true"
+            style="
+              color: rgb(0, 156, 158);
+              font-size: 2rem;
+              margin-left: 0.6rem;
+              margin-top: 0.5rem;
+            "
+          ></i>
+            </div>
+          </div>
+          <div class="col-md-10" id="edit resource">
+            <h1 id="update resource"
+              style="
+                margin-top: 0.8rem;
+                margin-right: 1rem;
+                text-decoration: underline;
+              "
+            >
+            Edit resource?
+            </h1>
+          </div>
+        </div>
+        <p style="width: 20rem; margin-left: 0.5rem">
+          <u>Purpose:</u> To edit a resource belonging to a module. 
+  
+  
+        </p>
+        <p style="width: 20rem; margin-left: 0.5rem">
+          <u>How to</u>: Navigates to the resources screen from the side navigation bar on the tutorhome, 
+          click on the resource categories tab and then on the edit button of the specific resource category you want to edit. A pop-up appears where you can make all changes to the category name and submit the changes.
+           A confirmation pop-up will appear. click yes to save.
+  
+        </p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div
+        style="
+          border: solid rgb(226, 224, 224);
+          height: 15rem;
+          width: 22rem;
+          margin-left: 2rem;
+        "
+      >
+        <div class="row">
+          <div class="col-md-2">
+            <div
+              style="
+                border-radius: 10rem;
+                background-color: whitesmoke;
+                height: 3rem;
+                width: 3rem;
+                margin-top: 0.3rem;
+                margin-left: 0.3rem;
+              "
+            >
+            <i
+            class="fa fa-cube"
+            aria-hidden="true"
+            style="
+              color: rgb(0, 156, 158);
+              font-size: 2rem;
+              margin-left: 0.6rem;
+              margin-top: 0.5rem;
+            "
+          ></i>
+            </div>
+          </div>
+          <div class="col-md-10" id="delete resource">
+            <h2 id="remove resource"
+              style="
+                margin-top: 0.8rem;
+                margin-right: 1rem;
+                text-decoration: underline;
+              "
+            >
+            Delete resources?
+            </h2>
+          </div>
+        </div>
+        <p style="width: 20rem; margin-left: 0.5rem">
+          <u>Purpose:</u> To remove resources belonging to a module.          
+  
+  
+        </p>
+        <p style="width: 20rem; margin-left: 0.5rem">
+          <u>How to</u>: Navigate to the resources screen by using the side navigation bar on the tutor home screen.
+            Then click on the resources button on a specific module card,
+           then click on the delete button. The system will prompt confirmation and you will confirm by clicking the yes button.
+
+        </p>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="row" id="content">
+    <div class="col-md-4" id="session content">
+      <div
+        style="
+          border: solid rgb(226, 224, 224);
+          height: 15rem;
+          width: 22rem;
+          margin-left: 2rem;
+        "
+      >
+        <div class="row">
+          <div class="col-md-2">
+            <div
+              style="
+                border-radius: 10rem;
+                background-color: whitesmoke;
+                height: 3rem;
+                width: 3rem;
+                margin-top: 0.3rem;
+                margin-left: 0.3rem;
+              "
+            >
+            <i
+            class="fa fa-video-camera"
+            aria-hidden="true"
+            style="
+              color: rgb(0, 156, 158);
+              font-size: 2rem;
+              margin-left: 0.5rem;
+              margin-top: 0.5rem;
+            "
+          ></i>
+            </div>
+          </div>
+          <div class="col-md-10" id="create session content">
+            <h1 id="add session content"
+              style="
+                margin-top: 0.8rem;
+                margin-right: 1rem;
+                text-decoration: underline;
+              "
+            >
+            Create session content?
+            </h1>
+          </div>
+        </div>
+        <p style="width: 20rem; margin-left: 0.5rem">
+          <u>Purpose:</u> To add content for group session.
+          
+  
+  
+        </p>
+        <p style="width: 20rem; margin-left: 0.5rem">
+          <u>How to</u>: Navigates to the specific session content screen by either the home side navigation bar and selecting the appropriate session you want to add content.
+           Thereafter select the add content button and a pop-up appears where the appropriate content type is selected and the video and notes files are added.
+         
+
+  
+        </p>
+      </div>
+    </div>
+  
+    <div class="col-md-4">
+      <div
+        style="
+          border: solid rgb(226, 224, 224);
+          height: 15rem;
+          width: 22rem;
+          margin-left: 2rem;
+        "
+      >
+        <div class="row">
+          <div class="col-md-2">
+            <div
+              style="
+                border-radius: 10rem;
+                background-color: whitesmoke;
+                height: 3rem;
+                width: 3rem;
+                margin-top: 0.3rem;
+                margin-left: 0.3rem;
+              "
+            >
+            <i
+            class="fa fa-video-camera"
+            aria-hidden="true"
+            style="
+              color: rgb(0, 156, 158);
+              font-size: 2rem;
+              margin-left: 0.5rem;
+              margin-top: 0.5rem;
+            "
+          ></i>
+            </div>
+          </div>
+          <div class="col-md-10" id="update session content">
+            <h1 id="edit session content"
+              style="
+                margin-top: 0.8rem;
+                margin-right: 1rem;
+                text-decoration: underline;
+              "
+            >
+            Update session content?
+            </h1>
+          </div>
+        </div>
+        <p style="width: 20rem; margin-left: 0.5rem">
+          <u>Purpose:</u> To edit content for a group session.
+          
+  
+  
+        </p>
+        <p style="width: 20rem; margin-left: 0.5rem">
+          <u>How to</u>: Navigates to the specific session content screen by either the home side navigation bar and selecting the appropriate session you want to edit content for.
+           Thereafter select the edit button and a pop-up appears where the appropriate content type is selected and the video and notes files are added.
+           
+
+
+  
+        </p>
+      </div>
+    </div>
+    <div class="col-md-4" id="about">
+      <div
+        style="
+          border: solid rgb(226, 224, 224);
+          height: 15rem;
+          width: 22rem;
+          margin-left: 2rem;
+        "
+      >
+        <div class="row">
+          <div class="col-md-2">
+            <div
+              style="
+                border-radius: 10rem;
+                background-color: whitesmoke;
+                height: 3rem;
+                width: 3rem;
+                margin-top: 0.3rem;
+                margin-left: 0.3rem;
+              "
+            >
+            <i
+            class="fa fa-video-camera"
+            aria-hidden="true"
+            style="
+              color: rgb(0, 156, 158);
+              font-size: 2rem;
+              margin-left: 0.5rem;
+              margin-top: 0.5rem;
+            "
+          ></i>
+            </div>
+          </div>
+          <div class="col-md-10" id="delete session content">
+            <h1 id="remove session content"
+              style="
+                margin-top: 0.8rem;
+                margin-right: 1rem;
+                text-decoration: underline;
+              "
+            >
+            Delete session content?
+            </h1>
+          </div>
+        </div>
+        <p style="width: 20rem; margin-left: 0.5rem">
+          <u>Purpose:</u>Remove specific content for a group session.
+          
+  
+  
+        </p>
+        <p style="width: 20rem; margin-left: 0.5rem">
+          <u>How to</u>: Navigates to the specific session content screen by either the home side navigation bar and selecting the appropriate session you want to edit content for, then click the delete button.
+           The system will prompt confirmation, confirm by clicking the yes button.
+  
+        </p>
+      </div>
+    </div>
+  </div>
+  <br>
+  <footer>
+    <nav id="foot" class="navbar" style="width: 100%">
+      <a class="navbar-brand" href="#"> </a>
+      <span class="TDO" style="margin-right: auto"> &lt; TDO &gt;</span>
+      <div class="topnav-right">
+        <a href="#"> <i class="fa fa-facebook"></i> </a>
+        <a href="#"> <i class="fa fa-instagram"></i> </a>
+        <a href="#"> <i class="fa fa-twitter"></i> </a>
+        <a>TutorDevOps@gmail.com</a>
+      </div>
+    </nav>
+  </footer>
+  

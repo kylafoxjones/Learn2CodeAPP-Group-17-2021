@@ -42,6 +42,7 @@ import { CourseContentComponent } from './course-content/course-content.componen
 import { AddCourseContentComponent } from './course-content/add-course-content/add-course-content.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { HelpComponent } from './help/help.component';
 
 @NgModule({
   declarations: [
@@ -70,6 +71,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     UploadCsvFileComponent,
     CourseContentComponent,
     AddCourseContentComponent,
+    HelpComponent,
   
    
   ],

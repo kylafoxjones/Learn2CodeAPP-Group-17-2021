@@ -15,10 +15,12 @@ import { SessionsComponent } from './sessions/sessions.component';
 import { ViewSessionContentComponent } from './view-session-content/view-session-content.component';
 import { SpecificSessionContentComponent } from './view-session-content/specific-session-content/specific-session-content.component';
 import { ViewSubscriptionsComponent } from './view-subscriptions/view-subscriptions.component';
+
 import {
   AuthGuard as AuthGuard
 } from '../Login/auth.guard';
 import { StudentGuard } from './student resources/guards/student.guard';
+import { HelpComponent } from './help/help.component';
 const routes: Routes =  [
   
   {
@@ -91,6 +93,11 @@ const routes: Routes =  [
         component: SpecificSessionContentComponent,
         canActivate: [AuthGuard, StudentGuard]
       },
+      {
+        path: 'StudentHelp',
+        component:HelpComponent 
+      },
+      
       
       {
         path: 'viewresubscriptions',

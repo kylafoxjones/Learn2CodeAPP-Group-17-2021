@@ -1,0 +1,1711 @@
+<nav class="navbar navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">
+      <img
+        src="../.././assets/pics/HD logo.png"
+        width="40"
+        height="40"
+        class="d-inline-block align-top"
+        alt=""
+      />
+    </a>
+    <span class="TDO" style="color: rgb(0, 156, 158); margin-right: auto"
+      >TutorDevOps</span
+    >
+    <div class="topnav-right">
+      <span
+      routerLink="/adminhome"
+        style="color: whitesmoke; margin-right: 2rem; padding-left: 1.5rem"
+        >Home</span
+      >
+    </div>
+  </nav>
+  <div style="background-color: rgb(0, 156, 158); height: 15rem">
+    <h1
+      style="
+        text-align: center;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+          Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        font-size: 3rem;
+        padding-top: 3rem;
+        color: white;
+      "
+    >
+      Hi, how can we help?
+    </h1>
+    <div
+      class="input-group"
+      style="width: 30rem; margin-left: 25rem; padding-top: 1rem"
+    >
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Enter search term here..."
+        style="width: 6rem"
+        [(ngModel)]="searchTerm"
+      />
+      <div class="input-group-append">
+        <button class="btn btn-info" type="button"  (click)="scrollFn()">
+          <i class="fa fa-search"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+  <br />
+  <br />
+  <div class="row">
+      <div class="col-md-4" id="tutor">
+          <div id="tutors"
+            style="
+              border: solid rgb(226, 224, 224);
+              height: 15rem;
+              width: 22rem;
+              margin-left: 2rem;
+            "
+          >
+            <div class="row">
+              <div class="col-md-2">
+                <div
+                  style="
+                    border-radius: 10rem;
+                    background-color: whitesmoke;
+                    height: 3rem;
+                    width: 3rem;
+                    margin-top: 0.3rem;
+                    margin-left: 0.3rem;
+                  "
+                >
+                  <i
+                    class="fa fa-user"
+                    aria-hidden="true"
+                    style="
+                      color: rgb(0, 156, 158);
+                      font-size: 2rem;
+                      margin-left: 0.8rem;
+                      margin-top: 0.5rem;
+                    "
+                  ></i>
+                </div>
+              </div>
+              <div class="col-md-10" id="tutor application">
+                <h1 id="application"
+                  style="
+                    margin-top: 0.8rem;
+                    margin-right: 1rem;
+                    text-decoration: underline;
+                  "
+                >
+                Tutor applications?
+                </h1>
+              </div>
+            </div>
+            <p style="width: 20rem; margin-left: 0.5rem">
+              <u>Purpose</u>:To see a list of all the tutor applications on the system.
+            </p>
+            <p style="width: 20rem; margin-left: 0.5rem">
+              <u>How to</u>: Navigate to the tutor application option on the adminhome side navigation bar. The system will display a table with all the tutor applications with their relevant details and downloadable cv.
+              
+            </p>
+          </div>
+        </div>
+  
+    <div class="col-md-4">
+      <div
+        style="
+          border: solid rgb(226, 224, 224);
+          height: 15rem;
+          width: 22rem;
+          margin-left: 2rem;
+        "
+      >
+        <div class="row">
+          <div class="col-md-2">
+            <div
+              style="
+                border-radius: 10rem;
+                background-color: whitesmoke;
+                height: 3rem;
+                width: 3rem;
+                margin-top: 0.3rem;
+                margin-left: 0.3rem;
+              "
+            >
+              <i
+                class="fa fa-user"
+                aria-hidden="true"
+                style="
+                  color: rgb(0, 156, 158);
+                  font-size: 2rem;
+                  margin-left: 0.8rem;
+                  margin-top: 0.5rem;
+                "
+              ></i>
+            </div>
+          </div>
+          <div class="col-md-10" id="reject tutor">
+            <h1 id="reject tutor application"
+              style="
+                margin-top: 0.8rem;
+                margin-right: 1rem;
+                text-decoration: underline;
+              "
+            >
+            Accept/reject Tutor application?
+            </h1>
+          </div>
+        </div>
+        <p style="width: 20rem; margin-left: 0.5rem" id="accept tutor">
+          <u>Purpose</u>: To accept or reject a tutor application.
+          
+
+        </p>
+        <p style="width: 20rem; margin-left: 0.5rem" id="accept">
+          <u>How to</u>: Navigate to a specific tutor application by means of the tutor application icon on the side nav bar, then either click the accept or reject button.
+          Both options will require confirmation by clicking the yes button on the prompt.
+  
+
+        </p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div
+        style="
+          border: solid rgb(226, 224, 224);
+          height: 15rem;
+          width: 22rem;
+          margin-left: 2rem;
+        "
+      >
+        <div class="row">
+          <div class="col-md-2">
+            <div
+              style="
+                border-radius: 10rem;
+                background-color: whitesmoke;
+                height: 3rem;
+                width: 3rem;
+                margin-top: 0.3rem;
+                margin-left: 0.3rem;
+              "
+            >
+              <i
+                class="fa fa-user"
+                aria-hidden="true"
+                style="
+                  color: rgb(0, 156, 158);
+                  font-size: 2rem;
+                  margin-left: 0.8rem;
+                  margin-top: 0.5rem;
+                "
+              ></i>
+            </div>
+          </div>
+          <div class="col-md-10" id="create tutor">
+            <h1 id="add tutor"
+              style="
+                margin-top: 0.8rem;
+                margin-right: 1rem;
+                text-decoration: underline;
+              "
+            >
+            Create Tutor?
+            </h1>
+          </div>
+        </div>
+        <p style="width: 20rem; margin-left: 0.5rem">
+          <u>Purpose</u>: To give a tutor access to the system.
+          
+        </p>
+        <p style="width: 20rem; margin-left: 0.5rem">
+          <u>How to</u>: When selecting the accept option on a tutor application and confirming the acceptance of the applicant,
+           the system will redirect you to a create tutor pop-up where they enter a temporary username and password that is sent via email to the tutor for them to gain access to the system and set up their profile.
+
+
+
+        </p>
+      </div>
+    </div>
+   
+  </div>
+  <br>
+  
+  
+  <div class="row">
+      <div class="col-md-4" id="university">
+          <div id="universities"
+            style="
+              border: solid rgb(226, 224, 224);
+              height: 15rem;
+              width: 22rem;
+              margin-left: 2rem;
+            "
+          >
+            <div class="row">
+              <div class="col-md-2">
+                <div
+                  style="
+                    border-radius: 10rem;
+                    background-color: whitesmoke;
+                    height: 3rem;
+                    width: 3rem;
+                    margin-top: 0.3rem;
+                    margin-left: 0.3rem;
+                  "
+                >
+                  <i
+                    class="fa fa-user"
+                    aria-hidden="true"
+                    style="
+                      color: rgb(0, 156, 158);
+                      font-size: 2rem;
+                      margin-left: 0.8rem;
+                      margin-top: 0.5rem;
+                    "
+                  ></i>
+                </div>
+              </div>
+              <div class="col-md-10" id="delete tutor">
+                <h1 id="remove tutor"
+                  style="
+                    margin-top: 0.8rem;
+                    margin-right: 1rem;
+                    text-decoration: underline;
+                  "
+                >
+                Delete Tutor?
+                </h1>
+              </div>
+            </div>
+            <p style="width: 20rem; margin-left: 0.5rem">
+              <u>Purpose</u>: To delete tutor from the system.
+              
+            </p>
+            <p style="width: 20rem; margin-left: 0.5rem">
+              <u>How to</u>: Navigate to the tutors screen from the side navigation bar on the admin home screen by means of clicking the tutors icon. 
+               Select the delete button on the row of the tutor that you want to delete. 
+              A confirmation message will appear where you can confirm the deletion with the click of the yes button.
+
+  
+  
+            </p>
+          </div>
+        </div>
+  
+    <div class="col-md-4">
+      <div
+        style="
+          border: solid rgb(226, 224, 224);
+          height: 15rem;
+          width: 22rem;
+          margin-left: 2rem;
+        "
+      >
+        <div class="row">
+          <div class="col-md-2">
+            <div
+              style="
+                border-radius: 10rem;
+                background-color: whitesmoke;
+                height: 3rem;
+                width: 3rem;
+                margin-top: 0.3rem;
+                margin-left: 0.3rem;
+              "
+            >
+            <i
+            class="fa fa-university"
+            aria-hidden="true"
+            style="
+              color: rgb(0, 156, 158);
+              font-size: 2rem;
+              margin-left: 0.5rem;
+              margin-top: 0.5rem;
+            "
+          ></i>
+            </div>
+          </div>
+          <div class="col-md-10" id="create university">
+            <h1 id="add university"
+              style="
+                margin-top: 0.8rem;
+                margin-right: 1rem;
+                text-decoration: underline;
+              "
+            >
+            Create University?
+            </h1>
+          </div>
+        </div>
+        <p style="width: 20rem; margin-left: 0.5rem">
+          <u>Purpose</u>: To add a university to the system.
+        </p>
+        <p style="width: 20rem; margin-left: 0.5rem">
+          <u>How to</u>: Navigates to the University screen by selecting the Universities tab in the side nav bar.
+            Select the create university button and a pop-up appears,
+            enter the new university name into the input field and selects the submit button.
+            The system generates a confirmation pop-up modal and confirm by selecting yes.
+          
+  
+        </p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div
+        style="
+          border: solid rgb(226, 224, 224);
+          height: 15rem;
+          width: 22rem;
+          margin-left: 2rem;
+        "
+      >
+        <div class="row">
+          <div class="col-md-2">
+            <div
+              style="
+                border-radius: 10rem;
+                background-color: whitesmoke;
+                height: 3rem;
+                width: 3rem;
+                margin-top: 0.3rem;
+                margin-left: 0.3rem;
+              "
+            >
+            <i
+            class="fa fa-university"
+            aria-hidden="true"
+            style="
+              color: rgb(0, 156, 158);
+              font-size: 2rem;
+              margin-left: 0.5rem;
+              margin-top: 0.5rem;
+            "
+          ></i>
+            </div>
+          </div>
+          <div class="col-md-10" id="update university">
+            <h1 id="edit university"
+              style="
+                margin-top: 0.8rem;
+                margin-right: 1rem;
+                text-decoration: underline;
+              "
+            >
+            Update University?
+            </h1>
+          </div>
+        </div>
+        <p style="width: 20rem; margin-left: 0.5rem">
+          <u>Purpose</u>: To edit a university on the system.
+          
+        </p>
+        <p style="width: 20rem; margin-left: 0.5rem">
+          <u>How to</u>:  
+           Navigate to a specific university by means of clicking the university icon on the side nav bar and clicks the edit button,
+            then edits the input field provided and clicks the submit button.
+            The system prompts for confirmation and confirm by selecting yes.
+  
+        </p>
+      </div>
+    </div>
+   
+  </div>
+  <br>
+  <div class="row" id="degree">
+    <div class="col-md-4" id="degrees">
+      <div
+        style="
+          border: solid rgb(226, 224, 224);
+          height: 15rem;
+          width: 22rem;
+          margin-left: 2rem;
+        "
+      >
+        <div class="row">
+          <div class="col-md-2">
+            <div
+              style="
+                border-radius: 10rem;
+                background-color: whitesmoke;
+                height: 3rem;
+                width: 3rem;
+                margin-top: 0.3rem;
+                margin-left: 0.3rem;
+              "
+            >
+            <i
+            class="fa fa-university"
+            aria-hidden="true"
+            style="
+              color: rgb(0, 156, 158);
+              font-size: 2rem;
+              margin-left: 0.5rem;
+              margin-top: 0.5rem;
+            "
+          ></i>
+            </div>
+          </div>
+          <div class="col-md-10" id="delete university">
+            <h1 id="remove university"
+              style="
+                margin-top: 0.8rem;
+                margin-right: 1rem;
+                text-decoration: underline;
+              "
+            >
+            Delete University?
+            </h1>
+          </div>
+        </div>
+        <p style="width: 20rem; margin-left: 0.5rem">
+          <u>Purpose</u>:To delete a university on the system.          
+          
+          
+        </p>
+        <p style="width: 20rem; margin-left: 0.5rem">
+          <u>How to</u>: Navigate to a specific university by means of clicking the university icon on the side nav bar and clicks the delete button. 
+          The system prompts for confirmation and give it by clicking the yes button on the pop-up.
+
+
+  
+        </p>
+      </div>
+    </div>
+   
+    <div class="col-md-4">
+      <div
+        style="
+          border: solid rgb(226, 224, 224);
+          height: 15rem;
+          width: 22rem;
+          margin-left: 2rem;
+        "
+      >
+        <div class="row">
+          <div class="col-md-2">
+            <div
+              style="
+                border-radius: 10rem;
+                background-color: whitesmoke;
+                height: 3rem;
+                width: 3rem;
+                margin-top: 0.3rem;
+                margin-left: 0.3rem;
+              "
+            >
+            <i
+            class="fa fa-certificate"
+            aria-hidden="true"
+            style="
+              color: rgb(0, 156, 158);
+              font-size: 2rem;
+              margin-left: 0.7rem;
+              margin-top: 0.5rem;
+            "
+          ></i>
+            </div>
+          </div>
+          <div class="col-md-10" id="create degree">
+            <h1 id="add degree"
+              style="
+                margin-top: 0.8rem;
+                margin-right: 1rem;
+                text-decoration: underline;
+              "
+            >
+            Create Degree?
+            </h1>
+          </div>
+        </div>
+        <p style="width: 20rem; margin-left: 0.5rem">
+          <u>Purpose</u>:To add a degree to the system.
+          
+                  
+        </p>
+        <p style="width: 20rem; margin-left: 0.5rem">
+          <u>How to</u>: Navigate to the Degree screen by selecting the university row that offers the specified degree on the university screen,
+           select the add button and a pop-up appears.
+            Enters the new degree name into the input field and select the submit button.
+             The system generates a confirmation pop-up modal and confirm the creation by selecting yes.
+
+  
+  
+        </p>
+      </div>
+    </div>
+   
+    <div class="col-md-4" id="logout">
+      <div
+        style="
+          border: solid rgb(226, 224, 224);
+          height: 15rem;
+          width: 22rem;
+          margin-left: 2rem;
+        "
+      >
+        <div class="row">
+          <div class="col-md-2">
+            <div
+              style="
+                border-radius: 10rem;
+                background-color: whitesmoke;
+                height: 3rem;
+                width: 3rem;
+                margin-top: 0.3rem;
+                margin-left: 0.3rem;
+              "
+            >
+            <i
+            class="fa fa-certificate"
+            aria-hidden="true"
+            style="
+              color: rgb(0, 156, 158);
+              font-size: 2rem;
+              margin-left: 0.7rem;
+              margin-top: 0.5rem;
+            "
+          ></i>
+            </div>
+          </div>
+          <div  class="col-md-10" id="update degree">
+            <h1 id="edit degree"
+              style="
+                margin-top: 0.8rem;
+                margin-right: 1rem;
+                text-decoration: underline;
+              "
+            >
+            Update Degree?
+            </h1>
+          </div>
+        </div>
+        <p style="width: 20rem; margin-left: 0.5rem">
+          <u>Purpose</u>: To edit a degree on the system.
+          
+        </p>
+        <p style="width: 20rem; margin-left: 0.5rem">
+          <u>How to</u>: Navigate to the Degree screen by selecting the university row that offers the specified degree and clicks the edit button for the degree.
+            Then edits the input field provided and clicks the submit button. 
+           The system prompts for confirmation and  give it by clicking the yes button on the pop-up.
+
+
+  
+  
+        </p>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-md-4" id="module">
+      <div id="modules"
+        style="
+          border: solid rgb(226, 224, 224);
+          height: 15rem;
+          width: 22rem;
+          margin-left: 2rem;
+        "
+      >
+        <div class="row">
+          <div class="col-md-2">
+            <div
+              style="
+                border-radius: 10rem;
+                background-color: whitesmoke;
+                height: 3rem;
+                width: 3rem;
+                margin-top: 0.3rem;
+                margin-left: 0.3rem;
+              "
+            >
+            <i
+            class="fa fa-certificate"
+            aria-hidden="true"
+            style="
+              color: rgb(0, 156, 158);
+              font-size: 2rem;
+              margin-left: 0.7rem;
+              margin-top: 0.5rem;
+            "
+          ></i>
+            </div>
+          </div>
+          <div class="col-md-10" id="delete degree">
+            <h1 id="remove degree"
+              style="
+                margin-top: 0.8rem;
+                margin-right: 1rem;
+                text-decoration: underline;
+              "
+            >
+            Delete Degree?
+            </h1>
+          </div>
+        </div>
+        <p style="width: 20rem; margin-left: 0.6rem">
+          <u>Purpose</u>:To delete a degree on the system.
+          
+          
+        </p>
+        <p style="width: 20rem; margin-left: 0.5rem">
+          <u>How to</u>: Navigate to the Degree screen by selecting the university row that offers the specified degree. 
+         Select the delete button of the degree you want to remove from the system. 
+          The system prompts for confirmation and give it by clicking the yes button on the pop-up.
+        </p>
+      </div>
+    </div>
+  
+    <div class="col-md-4">
+      <div
+        style="
+          border: solid rgb(226, 224, 224);
+          height: 15rem;
+          width: 22rem;
+          margin-left: 2rem;
+        "
+      >
+        <div class="row">
+          <div class="col-md-2">
+            <div
+              style="
+                border-radius: 10rem;
+                background-color: whitesmoke;
+                height: 3rem;
+                width: 3rem;
+                margin-top: 0.3rem;
+                margin-left: 0.3rem;
+              "
+            >
+            <i
+            class="fa fa-calendar"
+            aria-hidden="true"
+            style="
+              color: rgb(0, 156, 158);
+              font-size: 2rem;
+              margin-left: 0.6rem;
+              margin-top: 0.5rem;
+            "
+          ></i>
+            </div>
+          </div>
+          <div class="col-md-10" id="create module">
+            <h1 id="add module"
+              style="
+                margin-top: 0.8rem;
+                margin-right: 1rem;
+                text-decoration: underline;
+              "
+            >
+            Create Module?
+            </h1>
+          </div>
+        </div>
+        <p style="width: 20rem; margin-left: 0.5rem">
+          <u>Purpose</u>: To add a module to the system.
+  
+        </p>
+        <p style="width: 20rem; margin-left: 0.5rem">
+          <u>How to</u>: Navigate to the Module screen by selecting the degree row that contains the specified module.
+            Selects the create Module button and a pop-up appears.
+             Enters the new module code into the input field and selects the submit button.
+              The system generates a confirmation pop-up modal and confirm the creation  by selecting yes.
+
+
+  
+        </p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div
+        style="
+          border: solid rgb(226, 224, 224);
+          height: 15rem;
+          width: 22rem;
+          margin-left: 2rem;
+        "
+      >
+        <div class="row">
+          <div class="col-md-2">
+            <div
+              style="
+                border-radius: 10rem;
+                background-color: whitesmoke;
+                height: 3rem;
+                width: 3rem;
+                margin-top: 0.3rem;
+                margin-left: 0.3rem;
+              "
+            >
+            <i
+            class="fa fa-calendar"
+            aria-hidden="true"
+            style="
+              color: rgb(0, 156, 158);
+              font-size: 2rem;
+              margin-left: 0.6rem;
+              margin-top: 0.5rem;
+            "
+          ></i>
+            </div>
+          </div>
+          <div class="col-md-10" id="update module">
+            <h1 id="edit module"
+              style="
+                margin-top: 0.8rem;
+                margin-right: 1rem;
+                text-decoration: underline;
+              "
+            >
+            Update Module?
+            </h1>
+          </div>
+        </div>
+        <p style="width: 20rem; margin-left: 0.5rem">
+          <u>Purpose</u>:To edit a module on the system.
+  
+  
+        </p>
+        <p style="width: 20rem; margin-left: 0.5rem">
+          <u>How to</u>: Navigate to the Module screen by selecting the degree row that contains the specified module and clicks the edit button.
+            Then edit the input field provided and clicks the submit button.
+            The system prompts for confirmation and give it by clicking the yes button on the pop-up.
+
+           
+  
+  
+        </p>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="row" id="course">
+    <div class="col-md-4" id="courses">
+      <div
+        style="
+          border: solid rgb(226, 224, 224);
+          height: 15rem;
+          width: 22rem;
+          margin-left: 2rem;
+        "
+      >
+        <div class="row">
+          <div class="col-md-2">
+            <div
+              style="
+                border-radius: 10rem;
+                background-color: whitesmoke;
+                height: 3rem;
+                width: 3rem;
+                margin-top: 0.3rem;
+                margin-left: 0.3rem;
+              "
+            >
+            <i
+            class="fa fa-calendar"
+            aria-hidden="true"
+            style="
+              color: rgb(0, 156, 158);
+              font-size: 2rem;
+              margin-left: 0.6rem;
+              margin-top: 0.5rem;
+            "
+          ></i>
+            </div>
+          </div>
+          <div class="col-md-10" id="delete module">
+            <h1 id="remove module"
+              style="
+                margin-top: 0.8rem;
+                margin-right: 1rem;
+                text-decoration: underline;
+              "
+            >
+            Delete Module?
+            </h1>
+          </div>
+        </div>
+        <p style="width: 20rem; margin-left: 0.5rem">
+          <u>Purpose</u>:To delete a module on the system.
+  
+  
+        </p>
+        <p style="width: 20rem; margin-left: 0.5rem">
+          <u>How to</u>: Navigates to the Module screen by selecting the degree row that contains the specified module.
+            Selects the delete button of the module you to remove from the system.
+            The system prompts for confirmation and give it by clicking the yes button on the pop-up.
+
+  
+        </p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div
+        style="
+          border: solid rgb(226, 224, 224);
+          height: 15rem;
+          width: 22rem;
+          margin-left: 2rem;
+        "
+      >
+        <div class="row">
+          <div class="col-md-2">
+            <div
+              style="
+                border-radius: 10rem;
+                background-color: whitesmoke;
+                height: 3rem;
+                width: 3rem;
+                margin-top: 0.3rem;
+                margin-left: 0.3rem;
+              "
+            >
+            <i
+            class="fa fa-video-camera"
+            aria-hidden="true"
+            style="
+              color: rgb(0, 156, 158);
+              font-size: 2rem;
+              margin-left: 0.6rem;
+              margin-top: 0.5rem;
+            "
+          ></i>
+            </div>
+          </div>
+          <div class="col-md-10" id="create course">
+            <h1 id="add course"
+              style="
+                margin-top: 0.8rem;
+                margin-right: 1rem;
+                text-decoration: underline;
+              "
+            >
+            Create Course?
+            </h1>
+          </div>
+        </div>
+        <p style="width: 20rem; margin-left: 0.5rem">
+          <u>Purpose</u>:To add a course to the system.
+  
+  
+        </p>
+        <p style="width: 20rem; margin-left: 0.5rem">
+          <u>How to</u>: Navigate to the course screen by selecting the Courses tab in the admin home side navigation bar. 
+           Select the add button and a pop-up appears, 
+           enter the new course name into the input field and selects the submit button. 
+          The system generates a confirmation pop-up modal and confirm the creation by selecting yes.
+
+
+  
+        </p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div
+        style="
+          border: solid rgb(226, 224, 224);
+          height: 15rem;
+          width: 22rem;
+          margin-left: 2rem;
+        "
+      >
+        <div class="row">
+          <div class="col-md-2">
+            <div
+              style="
+                border-radius: 10rem;
+                background-color: whitesmoke;
+                height: 3rem;
+                width: 3rem;
+                margin-top: 0.3rem;
+                margin-left: 0.3rem;
+              "
+            >
+            <i
+            class="fa fa-video-camera"
+            aria-hidden="true"
+            style="
+              color: rgb(0, 156, 158);
+              font-size: 2rem;
+              margin-left: 0.7rem;
+              margin-top: 0.5rem;
+            "
+          ></i>
+            </div>
+          </div>
+          <div class="col-md-10" id="edit course">
+            <h1 id="update course"
+              style="
+                margin-top: 0.8rem;
+                margin-right: 1rem;
+                text-decoration: underline;
+              "
+            >
+            Update Course?
+            </h1>
+          </div>
+        </div>
+        <p style="width: 20rem; margin-left: 0.5rem">
+          <u>Purpose</u>:To edit a course on the system.
+          
+  
+  
+        </p>
+        <p style="width: 20rem; margin-left: 0.5rem">
+          <u>How to</u>: Navigate to the Courses screen by clicking on courses button on the side navigation bar and clicks the edit button.
+            Then edit the input field provided and clicks the submit button.
+            The system prompts for confirmation and give it by clicking the yes button on the pop-up.
+
+
+
+  
+        </p>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="row" id="course content category">
+    <div class="col-md-4" id="category">
+      <div id="content category"
+        style="
+          border: solid rgb(226, 224, 224);
+          height: 15rem;
+          width: 22rem;
+          margin-left: 2rem;
+        "
+      >
+        <div class="row">
+          <div class="col-md-2">
+            <div
+              style="
+                border-radius: 10rem;
+                background-color: whitesmoke;
+                height: 3rem;
+                width: 3rem;
+                margin-top: 0.3rem;
+                margin-left: 0.3rem;
+              "
+            >
+            <i
+            class="fa fa-video-camera"
+            aria-hidden="true"
+            style="
+              color: rgb(0, 156, 158);
+              font-size: 2rem;
+              margin-left: 0.5rem;
+              margin-top: 0.5rem;
+            "
+          ></i>
+            </div>
+          </div>
+          <div class="col-md-10" id="delete course">
+            <h1 id="remove course"
+              style="
+                margin-top: 0.8rem;
+                margin-right: 1rem;
+                text-decoration: underline;
+              "
+            >
+            Delete Course?
+            </h1>
+          </div>
+        </div>
+        <p style="width: 20rem; margin-left: 0.5rem">
+          <u>Purpose</u>:To delete a course on the system.
+  
+  
+        </p>
+        <p style="width: 20rem; margin-left: 0.5rem">
+          <u>How to</u>: Navigate to the Courses screen by clicking on courses button on the side navigation bar. 
+          Select the delete button of the course you want to remove from the system. The system prompts for confirmation and give it by clicking the yes button on the pop-up.
+
+  
+        </p>
+      </div>
+    </div>
+  
+    <div class="col-md-4">
+      <div
+        style="
+          border: solid rgb(226, 224, 224);
+          height: 15rem;
+          width: 22rem;
+          margin-left: 2rem;
+        "
+      >
+        <div class="row">
+          <div class="col-md-2">
+            <div
+              style="
+                border-radius: 10rem;
+                background-color: whitesmoke;
+                height: 3rem;
+                width: 3rem;
+                margin-top: 0.3rem;
+                margin-left: 0.3rem;
+              "
+            >
+            <i
+            class="fa fa-list-ul"
+            aria-hidden="true"
+            style="
+              color: rgb(0, 156, 158);
+              font-size: 2rem;
+              margin-left: 0.5rem;
+              margin-top: 0.5rem;
+            "
+          ></i>
+            </div>
+          </div>
+          <div class="col-md-10" id="create course content category">
+            <h3  id="create content category"
+              style="
+                margin-top: 0.8rem;
+                margin-right: 1rem;
+                text-decoration: underline;;
+              "
+            >
+            Create Course content category?
+            </h3>
+          </div>
+        </div>
+        <p style="width: 20rem; margin-left: 0.5rem" id="create category">
+          <u>Purpose:</u> to add content category to the system.
+  
+  
+        </p>
+        <p style="width: 20rem; margin-left: 0.5rem">
+          <u>How to</u>: Navigate to the list of content categories screen by selecting the Course instance on the Courses screen.
+            Select the add button and a pop-up appears,
+         enter the new course content category details into the input fields and selects the submit button. The system generates a confirmation pop-up modal and confirm the creation by selecting yes.
+
+
+
+  
+        </p>
+      </div>
+    </div>
+  
+    <div class="col-md-4">
+      <div
+        style="
+          border: solid rgb(226, 224, 224);
+          height: 15rem;
+          width: 22rem;
+          margin-left: 2rem;
+        "
+      >
+        <div class="row">
+          <div class="col-md-2">
+            <div
+              style="
+                border-radius: 10rem;
+                background-color: whitesmoke;
+                height: 3rem;
+                width: 3rem;
+                margin-top: 0.3rem;
+                margin-left: 0.3rem;
+              "
+            >
+            <i
+            class="fa fa-list-ul"
+            aria-hidden="true"
+            style="
+              color: rgb(0, 156, 158);
+              font-size: 2rem;
+              margin-left: 0.5rem;
+              margin-top: 0.5rem;
+            "
+          ></i>
+            </div>
+          </div>
+          <div class="col-md-10" id="update course content category">
+            <h3 id="update content category"
+              style="
+                margin-top: 0.8rem;
+                margin-right: 1rem;
+                text-decoration: underline;
+              "
+            >
+            Update Course content category?
+            </h3>
+          </div>
+        </div>
+        <p style="width: 20rem; margin-left: 0.5rem" id="edit content category">
+          <u>Purpose</u> To edit a content category on the system.
+          
+          
+  
+  
+        </p>
+        <p style="width: 20rem; margin-left: 0.5rem">
+          <u>How to</u>: Navigate to the list of content categories screen by selecting the Course instance on the Courses screen and clicks the edit button. 
+           Then edit the input fields provided and clicks the submit button. 
+          The system prompts for confirmation and give it by clicking the yes button on the pop-up.
+
+
+         
+  
+        </p>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-md-4" id="course content">
+      <div id="content"
+        style="
+          border: solid rgb(226, 224, 224);
+          height: 15rem;
+          width: 22rem;
+          margin-left: 2rem;
+        "
+      >
+        <div class="row">
+          <div class="col-md-2">
+            <div
+              style="
+                border-radius: 10rem;
+                background-color: whitesmoke;
+                height: 3rem;
+                width: 3rem;
+                margin-top: 0.3rem;
+                margin-left: 0.3rem;
+              "
+            >
+            <i
+            class="fa fa-list-ul"
+            aria-hidden="true"
+            style="
+              color: rgb(0, 156, 158);
+              font-size: 2rem;
+              margin-left: 0.5rem;
+              margin-top: 0.5rem;
+            "
+          ></i>
+            </div>
+          </div>
+          <div class="col-md-10" id="delete content category">
+            <h3 id="delete category"
+              style="
+                margin-top: 0.8rem;
+                margin-right: 1rem;
+                text-decoration: underline;
+              "
+            >
+            Delete Course content category?
+            </h3>
+          </div>
+        </div>
+        <p style="width: 20rem; margin-left: 0.5rem">
+          <u>Purpose:</u> To delete a content category on the system.
+  
+  
+        </p>
+        <p style="width: 20rem; margin-left: 0.5rem">
+          <u>How to</u>: navigate to the list of content categories screen by selecting the Course instance on the Courses screen.
+           Selects the delete button of the course content category you want to remove from the system. The system prompts for confirmation and give it by clicking the yes button on the pop-up.
+          
+  
+        </p>
+      </div>
+    </div>
+  
+    <div class="col-md-4">
+      <div
+        style="
+          border: solid rgb(226, 224, 224);
+          height: 15rem;
+          width: 22rem;
+          margin-left: 2rem;
+        "
+      >
+        <div class="row">
+          <div class="col-md-2">
+            <div
+              style="
+                border-radius: 10rem;
+                background-color: whitesmoke;
+                height: 3rem;
+                width: 3rem;
+                margin-top: 0.3rem;
+                margin-left: 0.3rem;
+              "
+            >
+            <i
+            class="fa fa-video-camera"
+            aria-hidden="true"
+            style="
+              color: rgb(0, 156, 158);
+              font-size: 2rem;
+              margin-left: 0.5rem;
+              margin-top: 0.5rem;
+            "
+          ></i>
+            </div>
+          </div>
+          <div class="col-md-10" id="create course content">
+            <h2 id="add course content"
+              style="
+                margin-top: 0.8rem;
+                margin-right: 1rem;
+                text-decoration: underline;
+              "
+            >
+            Create Course content?
+            </h2>
+          </div>
+        </div>
+        <p style="width: 20rem; margin-left: 0.5rem">
+          <u>Purpose:</u> To add course content on the system.
+  
+  
+        </p>
+        <p style="width: 20rem; margin-left: 0.5rem">
+          <u>How to</u>: Navigates to the list of course content files screen by selecting the Course content category instance on the Course content categories screen,
+            select the add button and a pop-up appears. Provides the course content details and selects the submit button.
+             The system prompts for confirmation and confirm by selecting yes.
+
+  
+        </p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div
+        style="
+          border: solid rgb(226, 224, 224);
+          height: 15rem;
+          width: 22rem;
+          margin-left: 2rem;
+        "
+      >
+        <div class="row">
+          <div class="col-md-2">
+            <div
+              style="
+                border-radius: 10rem;
+                background-color: whitesmoke;
+                height: 3rem;
+                width: 3rem;
+                margin-top: 0.3rem;
+                margin-left: 0.3rem;
+              "
+            >
+            <i
+            class="fa fa-video-camera"
+            aria-hidden="true"
+            style="
+              color: rgb(0, 156, 158);
+              font-size: 2rem;
+              margin-left: 0.5rem;
+              margin-top: 0.5rem;
+            "
+          ></i>
+            </div>
+          </div>
+          <div class="col-md-10" id="update course content">
+            <h2 id="edit course content"
+              style="
+                margin-top: 0.8rem;
+                margin-right: 1rem;
+                text-decoration: underline;
+              "
+            >
+            Update Course content?
+            </h2>
+          </div>
+        </div>
+        <p style="width: 20rem; margin-left: 0.5rem">
+          <u>Purpose:</u>To edit a course content on the system.
+  
+  
+        </p>
+        <p style="width: 20rem; margin-left: 0.5rem">
+          <u>How to</u>: Navigate to the list of course content files screen by selecting the Course content category instance on the Course content categories screen and clicks the edit button.
+            Then edit the input fields provided and clicks the submit button. The system prompts for confirmation and gives it by clicking the yes button on the pop-up.
+
+        </p>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="row" id="csv">
+    <div class="col-md-4" id="CSV">
+      <div
+        style="
+          border: solid rgb(226, 224, 224);
+          height: 15rem;
+          width: 22rem;
+          margin-left: 2rem;
+        "
+      >
+        <div class="row">
+          <div class="col-md-2">
+            <div
+              style="
+                border-radius: 10rem;
+                background-color: whitesmoke;
+                height: 3rem;
+                width: 3rem;
+                margin-top: 0.3rem;
+                margin-left: 0.3rem;
+              "
+            >
+            <i
+            class="fa fa-video-camera"
+            aria-hidden="true"
+            style="
+              color: rgb(0, 156, 158);
+              font-size: 2rem;
+              margin-left: 0.6rem;
+              margin-top: 0.5rem;
+            "
+          ></i>
+            </div>
+          </div>
+          <div class="col-md-10" id="delete course content">
+            <h1 id="remove course content"
+              style="
+                margin-top: 0.8rem;
+                margin-right: 1rem;
+                text-decoration: underline;
+              "
+            >
+            Delete Course content?
+            </h1>
+          </div>
+        </div>
+        <p style="width: 20rem; margin-left: 0.5rem">
+          <u>Purpose:</u> To delete course content on the system.
+          
+  
+  
+        </p>
+        <p style="width: 20rem; margin-left: 0.5rem">
+          <u>How to</u>: Navigate to the list of course content files screen by selecting the Course content category instance on the Course content categories screen.
+           Select the delete button of the course content file you want to remove from the system.
+            The system prompts for confirmation and give it by clicking the yes button on the pop-up.
+
+
+  
+        </p>
+      </div>
+    </div>
+  
+    <div class="col-md-4">
+      <div
+        style="
+          border: solid rgb(226, 224, 224);
+          height: 15rem;
+          width: 22rem;
+          margin-left: 2rem;
+        "
+      >
+        <div class="row">
+          <div class="col-md-2">
+            <div
+              style="
+                border-radius: 10rem;
+                background-color: whitesmoke;
+                height: 3rem;
+                width: 3rem;
+                margin-top: 0.3rem;
+                margin-left: 0.3rem;
+              "
+            >
+            <i
+            class="fa fa-file-excel-o" aria-hidden="true"
+            aria-hidden="true"
+            style="
+              color: rgb(0, 156, 158);
+              font-size: 2rem;
+              margin-left: 0.7rem;
+              margin-top: 0.5rem;
+            "
+          ></i>
+            </div>
+          </div>
+          <div class="col-md-10" id="upload">
+            <h1 id="upload csv"
+              style="
+                margin-top: 0.8rem;
+                margin-right: 1rem;
+                text-decoration: underline;
+              "
+            >
+            Upload csv?
+            </h1>
+          </div>
+        </div>
+        <p style="width: 20rem; margin-left: 0.5rem">
+          <u>Purpose:</u> to upload payments to the system. 
+  
+  
+        </p>
+        <p style="width: 20rem; margin-left: 0.5rem">
+          <u>How to</u>: Navigate to the Payments screen by selecting the payments button on the side navigation bar, then clicks the upload button.
+           Proceed to upload your file and cloick the submit button to save.
+  
+        </p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div
+        style="
+          border: solid rgb(226, 224, 224);
+          height: 15rem;
+          width: 22rem;
+          margin-left: 2rem;
+        "
+      >
+        <div class="row">
+          <div class="col-md-2">
+            <div
+              style="
+                border-radius: 10rem;
+                background-color: whitesmoke;
+                height: 3rem;
+                width: 3rem;
+                margin-top: 0.3rem;
+                margin-left: 0.3rem;
+              "
+            >
+            <i
+             class="fa fa-file-text-o" aria-hidden="true"
+            aria-hidden="true"
+            style="
+              color: rgb(0, 156, 158);
+              font-size: 2rem;
+              margin-left: 0.7rem;
+              margin-top: 0.5rem;
+            "
+          ></i>
+            </div>
+          </div>
+          <div class="col-md-10" id="create subscription">
+            <h2 id="create subscription"
+              style="
+                margin-top: 0.8rem;
+                margin-right: 1rem;
+                text-decoration: underline;
+              "
+            >
+            Create Subscription?
+            </h2>
+          </div>
+        </div>
+        <p style="width: 20rem; margin-left: 0.5rem">
+          <u>Purpose:</u> To add a subscription to the system.          
+  
+  
+        </p>
+        <p style="width: 20rem; margin-left: 0.5rem">
+          <u>How to</u>: Navigate to the List of Subscriptions screen by selecting the Subscriptions tab in the side nav bar.
+            Selects the add button and a pop-up appears, 
+            enter the subscription details into the input fields and selects the submit button. 
+           The system generates a confirmation pop-up modal and confirms the creation by selecting yes.
+
+
+        </p>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-md-4" id="subscription">
+      <div
+        style="
+          border: solid rgb(226, 224, 224);
+          height: 15rem;
+          width: 22rem;
+          margin-left: 2rem;
+        "
+      >
+        <div class="row">
+          <div class="col-md-2">
+            <div
+              style="
+                border-radius: 10rem;
+                background-color: whitesmoke;
+                height: 3rem;
+                width: 3rem;
+                margin-top: 0.3rem;
+                margin-left: 0.3rem;
+              "
+            >
+            <i
+            class="fa fa-file-text-o" aria-hidden="true"
+            aria-hidden="true"
+            style="
+              color: rgb(0, 156, 158);
+              font-size: 2rem;
+              margin-left: 0.7rem;
+              margin-top: 0.5rem;
+            "
+          ></i>
+            </div>
+          </div>
+          <div class="col-md-10" id="update subscription">
+            <h1 id="edit subscription"
+              style="
+                margin-top: 0.8rem;
+                margin-right: 1rem;
+                text-decoration: underline;
+              "
+            >
+            Update Subscription?
+            </h1>
+          </div>
+        </div>
+        <p style="width: 20rem; margin-left: 0.5rem">
+          <u>Purpose:</u> To edit a subscription on the system.
+          
+  
+  
+        </p>
+        <p style="width: 20rem; margin-left: 0.5rem">
+          <u>How to</u>: Navigate to the List of Subscriptions screen by selecting the Subscriptions tab in the side nav bar.
+           Select the edit button of the subscription you want to update. Then edit the input fields provided and clicks the submit button. The system prompts for confirmation and gives it by clicking the yes button on the pop-up.
+
+         
+
+  
+        </p>
+      </div>
+    </div>
+  
+    <div class="col-md-4">
+      <div
+        style="
+          border: solid rgb(226, 224, 224);
+          height: 15rem;
+          width: 22rem;
+          margin-left: 2rem;
+        "
+      >
+        <div class="row">
+          <div class="col-md-2">
+            <div
+              style="
+                border-radius: 10rem;
+                background-color: whitesmoke;
+                height: 3rem;
+                width: 3rem;
+                margin-top: 0.3rem;
+                margin-left: 0.3rem;
+              "
+            >
+            <i
+            class="fa fa-file-text-o" aria-hidden="true"
+            aria-hidden="true"
+            style="
+              color: rgb(0, 156, 158);
+              font-size: 2rem;
+              margin-left: 0.7rem;
+              margin-top: 0.5rem;
+            "
+          ></i>
+            </div>
+          </div>
+          <div class="col-md-10" id="delete subscription">
+            <h1 id="remove subscription"
+              style="
+                margin-top: 0.8rem;
+                margin-right: 1rem;
+                text-decoration: underline;
+              "
+            >
+            Delete Subscription?
+            </h1>
+          </div>
+        </div>
+        <p style="width: 20rem; margin-left: 0.5rem">
+          <u>Purpose:</u>To delete a subscription on the system.
+          
+  
+  
+        </p>
+        <p style="width: 20rem; margin-left: 0.5rem">
+          <u>How to</u>: Navigate to the List of Subscriptions screen by selecting the Subscriptions tab in the side nav bar.
+            Select the delete button of the subscription you want to remove from the system. 
+           The system prompts for confirmation and give it by clicking the yes button on the pop-up.
+
+
+
+  
+        </p>
+      </div>
+    </div>
+    <div class="col-md-4" id="about">
+      <div
+        style="
+          border: solid rgb(226, 224, 224);
+          height: 15rem;
+          width: 22rem;
+          margin-left: 2rem;
+        "
+      >
+        <div class="row">
+          <div class="col-md-2">
+            <div
+              style="
+                border-radius: 10rem;
+                background-color: whitesmoke;
+                height: 3rem;
+                width: 3rem;
+                margin-top: 0.3rem;
+                margin-left: 0.3rem;
+              "
+            >
+            <i
+            class="fa fa-user"
+            aria-hidden="true"
+            style="
+              color: rgb(0, 156, 158);
+              font-size: 2rem;
+              margin-left: 0.8rem;
+              margin-top: 0.5rem;
+            "
+          ></i>
+            </div>
+          </div>
+          <div class="col-md-10">
+            <h1
+              style="
+                margin-top: 0.8rem;
+                margin-right: 1rem;
+                text-decoration: underline;
+              "
+            >
+            Search Student?
+            </h1>
+          </div>
+        </div>
+        <p style="width: 20rem; margin-left: 0.5rem">
+          <u>Purpose:</u>To search for a specific student on the system.
+          
+          
+  
+  
+        </p>
+        <p style="width: 20rem; margin-left: 0.5rem">
+          <u>How to</u>: Navigate to the List of Students screen by selecting the Students tab in the admin home side navigation bar.
+           You can enter the required search criteria in the search input and select the search button.
+
+  
+        </p>
+      </div>
+    </div>
+  </div>
+  <br>
+  <footer>
+    <nav id="foot" class="navbar" style="width: 100%">
+      <a class="navbar-brand" href="#"> </a>
+      <span class="TDO" style="margin-right: auto"> &lt; TDO &gt;</span>
+      <div class="topnav-right">
+        <a href="#"> <i class="fa fa-facebook"></i> </a>
+        <a href="#"> <i class="fa fa-instagram"></i> </a>
+        <a href="#"> <i class="fa fa-twitter"></i> </a>
+        <a>TutorDevOps@gmail.com</a>
+      </div>
+    </nav>
+  </footer>
+  
+

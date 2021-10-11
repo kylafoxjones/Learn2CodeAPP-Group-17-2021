@@ -53,7 +53,8 @@ import { MatTooltipModule} from '@angular/material/tooltip';
 import { ViewindvidualsessionComponent } from './session/viewindvidualsession/viewindvidualsession.component';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import dayGridPlugin from '@fullcalendar/daygrid';
-import interactionPlugin from '@fullcalendar/interaction'; 
+import interactionPlugin from '@fullcalendar/interaction';
+import { HelpComponent } from './help/help.component'; 
 
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   dayGridPlugin,
@@ -89,6 +90,7 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     PickModulesComponent,
     ViewgroupSessionComponent,
     ViewindvidualsessionComponent,
+    HelpComponent,
     //SessionsComponent,
     
  

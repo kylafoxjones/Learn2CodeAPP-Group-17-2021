@@ -18,6 +18,7 @@ import {
 } from '../Login/auth.guard';
 import { TutorGuard } from './tutor resources/guards/tutor.guard';
 import { TutorComponent } from './tutor.component';
+import { HelpComponent } from './help/help.component';
 
 const routes: Routes = [
   
@@ -60,6 +61,11 @@ const routes: Routes = [
           path: 'messages',
           component: SentRecievedMessagesComponent,
           canActivate: [AuthGuard, TutorGuard]
+        },
+        {
+          path: 'TutorHelp',
+          component: HelpComponent,
+          
         },
         {
         path: 'attendance',
