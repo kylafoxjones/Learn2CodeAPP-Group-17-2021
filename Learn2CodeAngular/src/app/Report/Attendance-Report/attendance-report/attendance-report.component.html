@@ -84,6 +84,24 @@
             <i class="fa fa-search"></i></button
         ></span>
       </div>
+      <div class="col-md-6">
+        <div style="padding: 0.4rem">
+          <button
+            (click)="DownloadPDF(); x()"
+            style="margin-left: 8rem; width: 10rem"
+            class="btn btn-info"
+          >
+            Generate PDF
+          </button>
+          <button
+            (click)="RedirectReportHome()"
+            style="margin-left: 1rem; width: 8rem"
+            class="btn btn-primary"
+          >
+            Report Home
+          </button>
+        </div>
+      </div>
     </div>
 
     <div
@@ -94,11 +112,13 @@
         margin: auto;
         border-radius: 15px;
       "
-      id="AttendanceData"
+     
     >
-      <br />
-
-      <br />
+    <div  id="AttendanceData">
+<span style="margin-left: 2rem;">
+  <h2>Students Registered Total: {{reg}}</h2>
+</span>
+      
       <table
         class="table table-hover"
         style="width: 100%; margin: auto; padding-top: 2rem"
@@ -132,6 +152,7 @@
           </tr>
         </tbody>
       </table>
+    </div>
       <br />
       <br />
       <pagination-controls
@@ -141,7 +162,7 @@
       <br />
       <br />
 
-      <div>
+      <!-- <div>
         <div>
           <div class="chart">
             <canvas
@@ -158,25 +179,185 @@
             <br />
           </div>
         </div>
+      </div> -->
+    </div>
+    <br>
+    <div
+    style="
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
+        0 6px 6px rgba(0, 0, 0, 0.23);
+      width: 80%;
+      margin: auto;
+      border-radius: 15px;
+    "
+   
+  >
+  <div  id="totalattend">
+<span style="margin-left: 2rem;">
+ 
+<h2>Students Attended Total: {{attendreg}}</h2>
+</span>
+   
+    <table
+      class="table table-hover"
+      style="width: 100%; margin: auto; padding-top: 2rem"
+    >
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Surname</th>
+          <th scope="col">Email</th>
+          <th scope="col">Module</th>
+          <th scope="col">Session</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="
+            let item of attended
+              | paginate
+                : {
+                    itemsPerPage: 5,
+                    currentPage: page1,
+                    totalItems: totalLength1
+                  }
+          "
+        >
+          <td>{{ item.student.studentName }}</td>
+          <td>{{ item.student.studentSurname }}</td>
+          <td>{{ item.student.identity.email }}</td>
+          <td>{{ item.bookingInstance.module.moduleCode }}</td>
+          <td>{{ item.bookingInstance.title }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+    <br />
+    <br />
+    <pagination-controls
+      style="padding-left: 0px !important; display: flex; float: right"
+      (pageChange)="page1 = $event"
+    ></pagination-controls>
+    <br />
+    <br />
+
+    <!-- <div>
+      <div>
+        <div class="chart">
+          <canvas
+            baseChart
+            [data]="pieChartData"
+            [labels]="pieChartLabels"
+            [chartType]="pieChartType"
+            [options]="pieChartOptions"
+            [colors]="pieChartColors"
+            [legend]="pieChartLegend"
+            style="height: 300px"
+          >
+          </canvas>
+          <br />
+        </div>
+      </div>
+    </div> -->
+  </div>
+  <br>
+  <div
+  style="
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
+      0 6px 6px rgba(0, 0, 0, 0.23);
+    width: 80%;
+    margin: auto;
+    border-radius: 15px;
+  "
+
+>
+  <div  id="missedtable">
+<span style="margin-left: 2rem;">
+<h2>Students Absent Total: {{regmissed}}</h2>
+</span>
+  
+  <table
+    class="table table-hover"
+    style="width: 100%; margin: auto; padding-top: 2rem"
+  >
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Surname</th>
+        <th scope="col">Email</th>
+        <th scope="col">Module</th>
+        <th scope="col">Session</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        *ngFor="
+          let item of missed
+            | paginate
+              : {
+                  itemsPerPage: 5,
+                  currentPage: page1,
+                  totalItems: totalLength1
+                }
+        "
+      >
+        <td>{{ item.student.studentName }}</td>
+        <td>{{ item.student.studentSurname }}</td>
+        <td>{{ item.student.identity.email }}</td>
+        <td>{{ item.bookingInstance.module.moduleCode }}</td>
+        <td>{{ item.bookingInstance.title }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+  <br />
+  <br />
+  <pagination-controls
+    style="padding-left: 0px !important; display: flex; float: right"
+    (pageChange)="page1 = $event"
+  ></pagination-controls>
+  <br />
+  <br />
+
+  <!-- <div>
+    <div>
+      <div class="chart">
+        <canvas
+          baseChart
+          [data]="pieChartData"
+          [labels]="pieChartLabels"
+          [chartType]="pieChartType"
+          [options]="pieChartOptions"
+          [colors]="pieChartColors"
+          [legend]="pieChartLegend"
+          style="height: 300px"
+        >
+        </canvas>
+        <br />
       </div>
     </div>
+  </div> -->
+</div>
     <br />
-    <div style="padding: 0.4rem">
-      <button
-        (click)="DownloadPDF(); x()"
-        style="margin-left: 8rem; width: 10rem"
-        class="btn btn-info"
-      >
-        Generate PDF
-      </button>
-      <button
-        (click)="RedirectReportHome()"
-        style="margin-left: 1rem; width: 8rem"
-        class="btn btn-primary"
-      >
-        Report Home
-      </button>
+    <div>
+      <div id="charts">
+        <div class="chart">
+          <canvas
+            baseChart
+            [data]="pieChartData"
+            [labels]="pieChartLabels"
+            [chartType]="pieChartType"
+            [options]="pieChartOptions"
+            [colors]="pieChartColors"
+            [legend]="pieChartLegend"
+            style="height: 300px"
+          >
+          </canvas>
+          <br />
+        </div>
+      </div>
     </div>
+    
   </nb-layout-column>
 </nb-layout>
 <footer>

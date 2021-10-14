@@ -48,6 +48,7 @@ export class ShopComponent implements OnInit {
     this.getAllSubscriptions();
     this.getAllCourses();
     this.getModules();
+    console.log('sssss',this.total);
     
   }
 
@@ -198,6 +199,7 @@ export class ShopComponent implements OnInit {
 
   // Funx for adding course to basket
   addToCourseCart(newCartProduct: any) {
+    console.log('sssss',this.total);
     let courseObjToSendToDB = {
       BasketId: this.basketForStudentLoggedIn.id,
       CourseSubCategoryId: newCartProduct.id,
@@ -218,7 +220,7 @@ export class ShopComponent implements OnInit {
   checkout() {
     //basketForStudentLoggedIn holds every item (both subscription + course)
     //basketForStudentLoggedIn.totalPrice has the overall price for checkout
-
+console.log('sssss',this.total);
     Swal.fire({
       title: 'Are you sure you want to checkout?',
       icon: 'question',
@@ -240,6 +242,7 @@ export class ShopComponent implements OnInit {
         this.getSubscriptionBasket();
         this.getBasketForStudent();
       });
+      this.reference = `ref-${Math.ceil(Math.random() * 10e13)}`;
   }
 
   removeItemFromCourseCart(obj) {
@@ -247,6 +250,7 @@ export class ShopComponent implements OnInit {
       this.getCourseBasket();
       this.getBasketForStudent();
     });
+    this.reference = `ref-${Math.ceil(Math.random() * 10e13)}`;
   }
 
   paymentInit() {
@@ -283,6 +287,7 @@ export class ShopComponent implements OnInit {
 
   paymentCancel() {
     console.log('payment failed');
+    this.reference = `ref-${Math.ceil(Math.random() * 10e13)}`;
   }
 
   // paymentInit() {

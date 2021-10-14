@@ -230,6 +230,79 @@
       </div>
     </div>
 
+    <div class="row"  *ngFor="let item of TutorSessionmodule">
+      <div class="col-md-3">
+        <div
+          style="
+            width: 103%;
+            margin: auto;
+            border-radius: 15px;
+            margin-left: 2rem;
+            height: 100%;
+          "
+        >
+          <h1 style="margin-left: 3rem">Summary:</h1>
+          <div style="margin-left: 3rem">
+            <h2>Module: {{ item[0].moduleCode }}</h2>
+            <h2>Sessions: {{ item.length }}</h2>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-9 ">
+        
+        <div
+          style="
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
+              0 6px 6px rgba(0, 0, 0, 0.23);
+            width: 80%;
+            margin: auto;
+            border-radius: 15px;
+            margin-right: 7rem;
+          "
+        >
+          <br />
+
+          <br />
+          <table
+            class="table table-hover"
+            style="width: 90%; margin: auto; padding-top: 2rem"
+          >
+            <thead>
+              <tr>
+                <th scope="col">Tutor Name</th>
+                <th scope="col">Surname</th>
+                <th scope="col">Email</th>
+                
+                <th scope="col">Session Title</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr
+                *ngFor="
+                  let x of item                   
+                "
+              >
+                <td>{{ x.tutorName }}</td>
+                <td>{{ x.tutorSurname }}</td>
+                <td>{{ x.tutorEmail }}</td>
+               
+                <td>{{ x.title }}</td>
+              </tr>
+            </tbody>
+          </table>
+          <br />
+          <br />
+          <pagination-controls
+            style="padding-left: 0px !important; display: flex; float: right"
+            (pageChange)="page1 = $event"
+          ></pagination-controls>
+          <br />
+          <br />
+        </div>
+        <br />
+      </div>
+    </div>
+
     <div style="padding: 0.4rem">
       <button
         (click)="DownloadPDF(); x()"

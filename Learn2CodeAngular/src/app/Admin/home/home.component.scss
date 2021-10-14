@@ -1,0 +1,20 @@
+::ng-deep{
+    .legend-labels{
+      background: none  !important;
+      width: 13rem !important;
+      margin-right: 30rem  !important;
+    }
+  }
+
+  .html2canvas-container { 
+    width: 3000px; 
+    height: 3000px; 
+}
+   
+   
+::ng-deep{
+    .html2canvas { 
+        width: 3000px; 
+        height: 3000px; 
+    }
+  }

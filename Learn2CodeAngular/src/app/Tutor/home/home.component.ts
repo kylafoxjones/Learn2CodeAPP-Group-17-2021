@@ -68,9 +68,13 @@ export class HomeComponent implements OnInit {
         
         this.TutorService.deletetutor(id).subscribe((result) => {
         
-          Swal.fire('Successful Deletion', '', 'success').then(function(){localStorage.removeItem('token');
-          localStorage.removeItem('id');
-          this.router.navigate(['/loginhomepage/login']);});
+          Swal.fire('Successful Deletion', '', 'success').then(function(){localStorage.clear();
+         
+         
+          
+          });
+          localStorage.clear();
+          this.logout();
         },(error) => {
           
           Swal.fire('Error!', error.error, 'error');

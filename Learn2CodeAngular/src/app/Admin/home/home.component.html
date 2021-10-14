@@ -96,7 +96,7 @@
 <div class="row" style="padding-bottom: 1rem;padding-top: 0.5rem;">
   <div class="col-md-6" >
     <h5 style="position: relative; left: 250px;bottom: 30px;">Students at Universities</h5>
-      <div id="StudentOfUniData" style="width: 500px;height:200px;margin-left: 9rem;">
+      <div id="StudentOfUniData" style="width: 450px;height:300px;margin-left: 7rem;" class="container-fluid">
 
 
         <ngx-charts-bar-vertical
@@ -111,25 +111,27 @@
         [showYAxisLabel]="showYAxisLabel"
         [xAxisLabel]="xAxisLabel"
         [yAxisLabel]="yAxisLabel"
+        [yAxisTickFormatting]="axisFormat"
         >
       </ngx-charts-bar-vertical>
 
-      <div>
-        <button style="margin-left: 11.7rem;margin-top: 1.5rem;" class="btn btn-info" (click)="DownloadUniPDF();x()">Download</button>
-       </div>
+     
       </div>
+      <div style="margin-left: 5rem;">
+        <button style="margin-left: 14.7rem;margin-top: 1.5rem;" class="btn btn-info" (click)="DownloadUniPDF();x()">Download</button>
+       </div>
 
 
   </div>
   <div class="col-md-6" >
-    <h5 style="position: relative;left: 230px;bottom: 30px;">Courses Sold</h5>
-      <div id="CourseData" class="chart-wrapper" style="width: 700px;
-                                                       height:280px;
+    <h5 style="position: relative;left: 230px;bottom: 30px;margin-left: 1rem;">Courses Sold</h5>
+      <div id="CourseData" class="chart-wrapper" style="width: 510px;
+                                                       height:350px;
                                                        position: relative;
-                                                       bottom: 60px;
-                                                       right: 50px;">
+                                                       bottom: 65px;
+                                                       margin-left: 6rem;">
 
-        <ngx-charts-pie-chart
+        <ngx-charts-pie-chart class="z"
 
         [scheme]="colorScheme1"
         [results]="CourseData"
@@ -141,15 +143,21 @@
 
         >
       </ngx-charts-pie-chart>
-    <button style=" margin-left: 18.5rem;" class="btn btn-info" (click)="DownloadCoursePDF();x()">Download</button>
+      
+    <button style=" margin-left: 18.5rem;margin-top: 2.4rem;" class="btn btn-info" (click)="DownloadCoursePDF();x()">Download</button>
     </div>
 
   </div>
 
 
 </div>
+
+
 </nb-layout-column>
 </nb-layout>
+<br>
+<br>
+<br>
 <footer>
   <nav style="height: 3rem;"  id="foot" class="navbar ">
     <a class="navbar-brand" href="#">

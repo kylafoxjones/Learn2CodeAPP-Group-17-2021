@@ -97,6 +97,7 @@ today = new Date();
      
       this.getcalendarSessions();
       this.getMyIndivSessions();
+      this. getMyGroupSessions();
      
       this.service.getcalendarSessions(this.tutor.id).subscribe((res) => {
      

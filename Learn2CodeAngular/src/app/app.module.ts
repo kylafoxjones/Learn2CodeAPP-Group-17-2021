@@ -25,6 +25,7 @@ import { RouterModule } from '@angular/router';
 import { JwtModule } from '@auth0/angular-jwt';
 import * as $ from 'jquery';
 import { ajax, css } from "jquery";
+import { DatePipe } from '@angular/common';
 
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   dayGridPlugin,
@@ -71,7 +72,7 @@ export function tokenGetter() {
     }),
     //  NgbModule,
   ],
-  providers: [ MatDatepickerModule],
+  providers: [ MatDatepickerModule,DatePipe],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

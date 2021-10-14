@@ -77,6 +77,8 @@ export class ProfileComponent implements OnInit {
           Swal.fire('Successful Deletion', '', 'success').then(function(){localStorage.removeItem('token');
           localStorage.removeItem('id');
           this.router.navigate(['/loginhomepage/login']);});
+          localStorage.clear();
+          this.logout()
         },(error) => {
           
           Swal.fire('Error!', error.error, 'error');

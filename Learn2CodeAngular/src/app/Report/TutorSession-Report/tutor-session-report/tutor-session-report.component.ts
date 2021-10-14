@@ -29,6 +29,7 @@ export class TutorSessionReportComponent implements OnInit {
     //Lists
     TutorDropdown:any = [];
     TutorSession: any = [];
+    TutorSessionmodule: any = [];
     //object details
     TutorID: any = 0;
     Start:any;
@@ -93,6 +94,26 @@ export class TutorSessionReportComponent implements OnInit {
         this.totalLength1 = this.TutorSession.length;
         console.log(this.TutorName);
         console.log(this.TutorSession);
+        this.getTutorSessionsmodule()
+
+      })
+    }
+
+    getTutorSessionsmodule(){
+
+
+      this.ObjectToSend.TutorId = this.TutorID;
+      this.ObjectToSend.StartDate = this.Start;
+      this.ObjectToSend.EndDate = this.End;
+      console.log(this.ObjectToSend);
+      this.ReportService.GetTotalTutorsessionsmodules(this.ObjectToSend).subscribe((result) => {
+
+
+        this.TutorSessionmodule = result;
+        //this.TutorName = this.TutorSession[0].tutorName;
+        //this.totalLength1 = this.TutorSession.length;
+        //console.log(this.TutorName);
+      console.log(this.TutorSessionmodule);
 
 
       })

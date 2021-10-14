@@ -42,6 +42,14 @@ export class ReportingService {
     return this.http.get(this.apiUrl + 'SessionAttendanceReport/' + id);
   }
 
+  getAttendedListattended(id: number) {
+    return this.http.get(this.apiUrl + 'SessionAttendanceReportattended/' + id);
+  }
+
+  getAttendedListmissed(id: number) {
+    return this.http.get(this.apiUrl + 'SessionAttendanceReportabcent/' + id);
+  }
+
   getAttendedGraphInfo(id: number) {
     return this.http.get(this.apiUrl + 'SessionAttendanceGraph/' + id);
   }
@@ -85,6 +93,18 @@ export class ReportingService {
     );
   }
 
+  GetTotalTutorsessionsmodules(obj) {
+    this.TutorSessionDetails = {
+      TutorId: obj.TutorId,
+      StartDate: obj.StartDate,
+      EndDate: obj.EndDate,
+    };
+    return this.http.post(
+      this.apiUrl + 'GetTotalTutorsessionsmodule',
+      this.TutorSessionDetails
+    );
+  }
+
   ///#endregion
 
   //#region SalesReport
@@ -108,5 +128,9 @@ export class ReportingService {
     return this.http.post(this.apiUrl + 'ExportSalesReport', obj, {
       responseType: 'blob',
     });
+  }
+
+  attendmodule(id): Observable<any> {
+    return this.http.get(this.apiUrl + 'moduleattendance/'+ id);
   }
 }
