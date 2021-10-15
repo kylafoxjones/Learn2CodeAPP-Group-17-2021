@@ -151,26 +151,12 @@
         </div>
       </div>
     </div>
-
+    <div id="test">
     <div class="row" id="TutorsessionData">
-      <div class="col-md-3">
-        <div
-          style="
-            width: 103%;
-            margin: auto;
-            border-radius: 15px;
-            margin-left: 2rem;
-            height: 100%;
-          "
-        >
-          <h1 style="margin-left: 3rem">Summary:</h1>
-          <div style="margin-left: 3rem">
-            <h2>Tutor: {{ TutorName }}</h2>
-            <h2>Sessions: {{ TutorSession.length }}</h2>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-9">
+    <div>
+
+   
+      <div class="col-md-12">
         <div
           style="
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
@@ -184,6 +170,11 @@
           <br />
 
           <br />
+          <div class="example">
+          <div style="margin-left: 3rem">
+            <h2>Tutor: {{ TutorName }}</h2>
+            <h2>Total sessions: {{ TutorSession.length }}</h2>
+          </div>
           <table
             class="table table-hover"
             style="width: 90%; margin: auto; padding-top: 2rem"
@@ -201,12 +192,7 @@
               <tr
                 *ngFor="
                   let item of TutorSession
-                    | paginate
-                      : {
-                          itemsPerPage: 5,
-                          currentPage: page1,
-                          totalItems: totalLength1
-                        }
+                   
                 "
               >
                 <td>{{ item.tutorName }}</td>
@@ -217,39 +203,26 @@
               </tr>
             </tbody>
           </table>
+        </div>
           <br />
           <br />
-          <pagination-controls
+          <!-- <pagination-controls
             style="padding-left: 0px !important; display: flex; float: right"
             (pageChange)="page1 = $event"
-          ></pagination-controls>
+          ></pagination-controls> -->
           <br />
           <br />
         </div>
         <br />
       </div>
     </div>
-
+    
     <div class="row"  *ngFor="let item of TutorSessionmodule">
-      <div class="col-md-3">
-        <div
-          style="
-            width: 103%;
-            margin: auto;
-            border-radius: 15px;
-            margin-left: 2rem;
-            height: 100%;
-          "
-        >
-          <h1 style="margin-left: 3rem">Summary:</h1>
-          <div style="margin-left: 3rem">
-            <h2>Module: {{ item[0].moduleCode }}</h2>
-            <h2>Sessions: {{ item.length }}</h2>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-9 ">
-        
+     
+       
+      <div class="col-md-12 ">
+       
+      
         <div
           style="
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
@@ -263,6 +236,11 @@
           <br />
 
           <br />
+          <div class="example"  >
+          <div style="margin-left: 3rem">
+            <h2>Module: {{ item[0].moduleCode }}</h2>
+            <h2>Total sessions: {{ item.length }}</h2>
+          </div>
           <table
             class="table table-hover"
             style="width: 90%; margin: auto; padding-top: 2rem"
@@ -290,22 +268,25 @@
               </tr>
             </tbody>
           </table>
+        </div>
           <br />
           <br />
-          <pagination-controls
+          <!-- <pagination-controls
             style="padding-left: 0px !important; display: flex; float: right"
             (pageChange)="page1 = $event"
-          ></pagination-controls>
+          ></pagination-controls> -->
           <br />
           <br />
         </div>
         <br />
       </div>
     </div>
+  </div>
+</div>
 
     <div style="padding: 0.4rem">
       <button
-        (click)="DownloadPDF(); x()"
+        (click)="DownloadPDFtable(); x()"
         style="margin-left: 25rem; width: 10rem"
         class="btn btn-info"
       >

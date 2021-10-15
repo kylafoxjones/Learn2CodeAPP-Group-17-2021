@@ -116,7 +116,7 @@
       </div>
       <div class="col-md-5">
         <div style="margin-top: 1rem; margin-right: 1rem">
-          <button (click)="DownloadPDF(); x()" class="btn btn-info">
+          <button (click)="DownloadPDFtable(); x()" class="btn btn-info">
             Generate PDF
           </button>
           <button
@@ -278,6 +278,29 @@
       </div>
     </div>
     <br />
+    <table  id="hiddentable"
+    class="table table-hover"
+    style="width: 90%; margin: auto; padding-top: 2rem; margin-top: 9rem; display:none;"
+  >
+    <thead>
+      <tr>
+        <th scope="col">Full Name</th>
+        <th scope="col">Date</th>
+        <th scope="col">Amount</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        *ngFor="
+          let item of SubscriptionReportTable"
+      >
+        <td>{{ item.fullName }}</td>
+        <td>{{ item.date }}</td>
+        <td>{{ item.amount }}</td>
+      </tr>
+    </tbody>
+  </table>
+    <br>
   </nb-layout-column>
 </nb-layout>
 <footer>
